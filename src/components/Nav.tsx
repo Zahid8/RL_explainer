@@ -9,6 +9,7 @@ const links = [
   ["mastery", "Mastery"],
   ["equations", "Equations"],
   ["evidence", "Evidence"],
+  ["exercises", "Exercises"],
   ["algorithms", "Algorithms"],
   ["labs", "Labs"],
   ["glossary", "Glossary"],
