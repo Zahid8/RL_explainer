@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { TeX } from "@/components/Math";
 import { Chip, Plain } from "@/components/Section";
 import { algorithmsForChapter, type AlgorithmDetail } from "@/lib/algorithmCatalog";
+import { algorithmDerivation, type AlgorithmDerivation } from "@/lib/algorithmDerivations";
 import { algorithmDossier, type AlgorithmDossierSection } from "@/lib/algorithmDossier";
 import { algorithmProfile, profileRows, type AlgorithmProfile } from "@/lib/algorithmProfiles";
 import { workedExampleForAlgorithm, type AlgorithmWorkedExample } from "@/lib/algorithmWorkedExamples";
@@ -277,6 +278,7 @@ function AlgorithmCard({ algorithm }: { algorithm: AlgorithmDetail }) {
   const dossier = algorithmDossier(algorithm);
   const worked = workedExampleForAlgorithm(algorithm);
   const profile = algorithmProfile(algorithm);
+  const derivation = algorithmDerivation(algorithm);
 
   return (
     <article id={algorithm.id} className="scroll-mt-24 overflow-hidden rounded-xl border border-line bg-panel">
@@ -297,6 +299,7 @@ function AlgorithmCard({ algorithm }: { algorithm: AlgorithmDetail }) {
             <Panel title="Pseudocode" items={algorithm.pseudocode} accent="violet" mono ordered />
           </div>
           {algorithm.equations.length ? <div className="mt-5 grid gap-3">{algorithm.equations.map((equation) => <TeX key={equation} block>{equation}</TeX>)}</div> : null}
+          <AlgorithmDerivationBlock derivation={derivation} />
           <AlgorithmProfileBlock profile={profile} />
           <WorkedExampleBlock example={worked} />
           <div className="mt-5 grid gap-5 lg:grid-cols-2">
@@ -333,6 +336,34 @@ function DossierBlock({ section }: { section: AlgorithmDossierSection }) {
   );
 }
 
+
+
+function AlgorithmDerivationBlock({ derivation }: { derivation: AlgorithmDerivation }) {
+  return (
+    <div className="mt-5 rounded-xl border border-cyan/25 bg-cyan/[0.045] p-4">
+      <div className="flex flex-wrap gap-2"><Chip accent="cyan">Derivation path</Chip><Chip accent="blue">easy + technical</Chip></div>
+      <h4 className="display mt-3 text-2xl font-medium text-ink">{derivation.title}</h4>
+      <div className="mt-3 grid gap-3 md:grid-cols-2">
+        <MiniBlock label="Easy idea" text={derivation.bigIdea} />
+        <MiniBlock label="Technical route" text={derivation.technicalPath} tint />
+      </div>
+      <div className="mt-4 grid gap-3 lg:grid-cols-2">
+        {derivation.steps.map((step) => (
+          <article key={step.label} className="rounded-lg border border-line bg-white p-3">
+            <p className="mono text-[10px] uppercase tracking-[0.14em] text-cyan">{step.label}</p>
+            <p className="mt-2 text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Easy:</span> {step.easy}</p>
+            <p className="mt-2 text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Technical:</span> {step.technical}</p>
+          </article>
+        ))}
+      </div>
+      <div className="mt-4 grid gap-4 lg:grid-cols-3">
+        <Panel title="Equation audit" items={derivation.equationNotes} accent="cyan" />
+        <Panel title="Coding trace" items={derivation.codingTrace} accent="lime" />
+        <MiniBlock label="Proof / debug obligation" text={derivation.proofObligation} tint />
+      </div>
+    </div>
+  );
+}
 
 function AlgorithmProfileBlock({ profile }: { profile: AlgorithmProfile }) {
   return (

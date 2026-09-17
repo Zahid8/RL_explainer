@@ -62,6 +62,7 @@ A single-page, light-theme explainer site for `../RLbook2020.pdf` (Sutton & Bart
   - failure modes,
   - six-section implementation dossiers covering inputs/state/output, target/error anatomy, bias-variance position, control knobs, stability contract, and debugging,
   - worked update microscopes with toy numeric/symbolic traces and debug probes,
+  - derivation paths that walk from estimand to target, residual, credit assignment, control move, and proof/debug obligation,
   - technical profile axes covering role, data regime, target-policy relation, model use, backup style, approximation, credit assignment, objective, convergence handle, compute/memory, best use, and avoid-when notes,
   - related methods.
 - Algorithm player that shows the shared structure across RL methods.
@@ -109,7 +110,7 @@ Local runtime pieces on this workstation:
 - `src/lib/formulaAtlas.ts` - 44 equation/formal-template cards spanning the whole book.
 - `src/lib/evidenceGuide.ts` - 147 figure/table/example guide cards spanning all 17 chapters.
 - `src/lib/exerciseCoach.ts` - 145 exercise-coach cards generated from the PDF exercise anchors without copying exercise text.
-- `src/lib/algorithmCatalog.ts`, `src/lib/algorithmDossier.ts`, `src/lib/algorithmWorkedExamples.ts`, and `src/lib/algorithmProfiles.ts` - 109 detailed algorithm/procedure cards keyed by chapter, with dossier, worked-example, and technical-profile enrichment.
+- `src/lib/algorithmCatalog.ts`, `src/lib/algorithmDerivations.ts`, `src/lib/algorithmDossier.ts`, `src/lib/algorithmWorkedExamples.ts`, and `src/lib/algorithmProfiles.ts` - 109 detailed algorithm/procedure cards keyed by chapter, with derivation, dossier, worked-example, and technical-profile enrichment.
 - `src/lib/algorithmSourceAudit.ts` - PDF-source crosswalk mapping named algorithm boxes/methods to the detailed cards on each chapter page.
 - `src/app/page.tsx` - page composition and section order.
 - `src/app/chapters/[chapter]/page.tsx` - static chapter-detail route for all 17 chapters.
