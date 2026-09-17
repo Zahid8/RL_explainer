@@ -8,6 +8,7 @@ import { FormulaAtlas } from "@/components/FormulaAtlas";
 import { Glossary } from "@/components/Glossary";
 import { Hero } from "@/components/Hero";
 import { MasteryNotebook } from "@/components/MasteryNotebook";
+import { MotionGlyph } from "@/components/MotionGlyph";
 import { Nav } from "@/components/Nav";
 import { Section, Note } from "@/components/Section";
 import { TermLab } from "@/components/TermLab";
@@ -115,8 +116,10 @@ export default function Home() {
             ["Connect", "Chapters 14-17", "Psychology, dopamine, applications, options, state, reward, and frontiers."],
           ].map(([title, range, copy]) => (
             <article key={title} className="rounded-xl border border-line bg-panel p-6">
-              <p className="eyebrow">{range}</p>
-              <h3 className="display mt-3 text-3xl font-medium text-ink">{title}</h3>
+              <div className="flex items-start justify-between gap-3">
+                <div><p className="eyebrow">{range}</p><h3 className="display mt-3 text-3xl font-medium text-ink">{title}</h3></div>
+                <MotionGlyph label={title} variant={title === "Connect" ? "tree" : title === "Generalize" ? "bars" : title === "Solve tables" ? "formula" : "target"} accent={title === "Connect" ? "violet" : title === "Generalize" ? "lime" : title === "Solve tables" ? "blue" : "cyan"} />
+              </div>
               <p className="mt-4 text-sm leading-relaxed text-muted">{copy}</p>
             </article>
           ))}

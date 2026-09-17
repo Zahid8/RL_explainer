@@ -56,6 +56,7 @@ A single-page, light-theme explainer site for `../RLbook2020.pdf` (Sutton & Bart
   - exercise coaching.
 - Global algorithm index page at `/algorithms` with chapter coverage dashboard, family grouping, source cue mapping, and direct links to all expanded cards.
 - Whole-book coverage audit page at `/coverage` proving chapter route coverage and algorithm detail-layer completeness from current repository data.
+- Animated and interactive graphics throughout the site: every homepage section, chapter header/story block, chapter section heading, algorithm card, global algorithm index card/chapter cluster, and coverage section gets reusable hover/click reinforcement-learning motion sketches plus animated micro-glyphs inside dense explanation cards, metrics, panels, proof blocks, notes, and study-route cards.
 - Algorithm catalog with 109 detailed algorithm/procedure cards across the book, including:
   - objective and core update,
   - operational steps,
@@ -117,6 +118,8 @@ Local runtime pieces on this workstation:
 - `src/lib/chapterDependencyMap.ts` - cross-chapter prerequisite/unlock maps, concept gates, skip risks, and review loops for every chapter page.
 - `src/lib/coverageAudit.ts` - current-state coverage ledger for chapter routes and algorithm detail layers.
 - `src/app/coverage/page.tsx` - rendered whole-book coverage audit and completeness matrix.
+- `src/components/AnimatedConceptGraphic.tsx` - reusable animated SVG concept graphic with hover/click phase controls for section and algorithm visuals.
+- `src/components/MotionGlyph.tsx` - lightweight server-rendered animated SVG micro-visuals used across metrics, notes, panels, proofs, study cards, and dense explanation blocks.
 - `src/lib/algorithmCatalog.ts`, `src/lib/algorithmDerivations.ts`, `src/lib/algorithmDossier.ts`, `src/lib/algorithmWorkedExamples.ts`, and `src/lib/algorithmProfiles.ts` - 109 detailed algorithm/procedure cards keyed by chapter, with derivation, dossier, worked-example, and technical-profile enrichment.
 - `src/lib/algorithmSourceAudit.ts` - PDF-source crosswalk mapping named algorithm boxes/methods to the detailed cards on each chapter page.
 - `src/app/page.tsx` - page composition and section order.

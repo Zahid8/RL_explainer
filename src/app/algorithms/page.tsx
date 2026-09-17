@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { AnimatedConceptGraphic } from "@/components/AnimatedConceptGraphic";
+import { MotionGlyph } from "@/components/MotionGlyph";
 import { Chip } from "@/components/Section";
 import { algorithmCatalog, algorithmTotals, type AlgorithmDetail } from "@/lib/algorithmCatalog";
 import { algorithmDerivation, derivationPreview } from "@/lib/algorithmDerivations";
@@ -30,17 +32,20 @@ export default function AlgorithmIndexPage() {
             <Link href="/" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">← Home overview</Link>
             <a href="#all-algorithms" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Jump to all cards</a>
           </div>
-          <div className="grid gap-8 lg:grid-cols-[1fr_420px] lg:items-end">
+          <div className="grid gap-8 lg:grid-cols-[1fr_460px] lg:items-end">
             <div>
               <p className="eyebrow">Whole-book algorithm index</p>
               <h1 className="display mt-4 max-w-5xl text-[clamp(42px,7vw,88px)] font-medium text-ink">Every RL algorithmic thread, cross-linked.</h1>
               <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted">This page is the global coverage ledger for the chapter pages: source cues from the PDF, detailed algorithm cards, implementation dossiers, worked update microscopes, and direct links back to the chapter explanations.</p>
             </div>
-            <div className="grid grid-cols-2 overflow-hidden rounded-xl border border-line bg-white">
-              <Stat value={String(algorithmTotals.total)} label="algorithm cards" />
-              <Stat value={String(algorithmSourceAudits.length)} label="source cues" />
-              <Stat value={String(algorithmTotals.chapters)} label="chapters" />
-              <Stat value={String(families.length)} label="families" />
+            <div className="grid gap-4">
+              <AnimatedConceptGraphic label="Algorithm universe" variant="algorithm" caption="Hover or click the phases to see how every algorithm cycles through sensing, target construction, updating, and action pressure." compact />
+              <div className="grid grid-cols-2 overflow-hidden rounded-xl border border-line bg-white">
+                <Stat value={String(algorithmTotals.total)} label="algorithm cards" />
+                <Stat value={String(algorithmSourceAudits.length)} label="source cues" />
+                <Stat value={String(algorithmTotals.chapters)} label="chapters" />
+                <Stat value={String(families.length)} label="families" />
+              </div>
             </div>
           </div>
         </div>
@@ -48,13 +53,18 @@ export default function AlgorithmIndexPage() {
 
       <div className="mx-auto grid max-w-[1280px] gap-12 px-6 py-12 lg:px-10">
         <section className="rounded-xl border border-line bg-panel p-5">
-          <p className="eyebrow mb-3">Index navigation</p>
-          <div className="flex flex-wrap gap-2">
-            {byChapter.map(({ chapter, algorithms, sourceAudits }) => (
-              <a key={chapter.n} href={`#chapter-${chapter.n}`} className="mono rounded-full border border-line bg-panel-2 px-3 py-2 text-[11px] uppercase tracking-[0.12em] text-muted hover:border-cyan hover:text-ink">
-                Ch {chapter.n}: {algorithms.length} cards / {sourceAudits.length} cues
-              </a>
-            ))}
+          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start">
+            <div>
+              <p className="eyebrow mb-3">Index navigation</p>
+              <div className="flex flex-wrap gap-2">
+                {byChapter.map(({ chapter, algorithms, sourceAudits }) => (
+                  <a key={chapter.n} href={`#chapter-${chapter.n}`} className="mono rounded-full border border-line bg-panel-2 px-3 py-2 text-[11px] uppercase tracking-[0.12em] text-muted hover:border-cyan hover:text-ink">
+                    Ch {chapter.n}: {algorithms.length} cards / {sourceAudits.length} cues
+                  </a>
+                ))}
+              </div>
+            </div>
+            <AnimatedConceptGraphic label="Jump map" variant="tree" caption="Each chip jumps to an animated chapter cluster; every cluster contains interactive algorithm cards." compact />
           </div>
         </section>
 
@@ -97,13 +107,14 @@ export default function AlgorithmIndexPage() {
           <div className="mt-6 grid gap-10">
             {byChapter.map(({ chapter, algorithms, sourceAudits }) => (
               <section id={`chapter-${chapter.n}`} key={chapter.n} className="scroll-mt-24 rounded-2xl border border-line bg-panel-2 p-5 lg:p-6">
-                <div className="flex flex-wrap items-start justify-between gap-4">
+                <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start">
                   <div>
                     <p className="eyebrow">Chapter {chapter.n} / {chapter.part}</p>
                     <h2 className="display mt-2 text-[clamp(30px,4vw,48px)] font-medium text-ink">{chapter.title}</h2>
                     <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted">{chapter.technical}</p>
+                    <Link href={`/chapters/${chapter.n}`} className="mono mt-4 inline-flex rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.12em] text-muted hover:border-cyan hover:text-ink">Open full page</Link>
                   </div>
-                  <Link href={`/chapters/${chapter.n}`} className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.12em] text-muted hover:border-cyan hover:text-ink">Open full page</Link>
+                  <AnimatedConceptGraphic label={`Chapter ${chapter.n} cluster`} variant="chapter" caption={chapter.claim} compact />
                 </div>
                 <div className="mt-5 grid gap-5">
                   {algorithms.map((algorithm) => <AlgorithmIndexCard key={algorithm.id} algorithm={algorithm} sourceAudits={sourceAudits.filter((audit) => audit.catalogIds.includes(algorithm.id))} />)}
@@ -129,6 +140,7 @@ function AlgorithmIndexCard({ algorithm, sourceAudits }: { algorithm: AlgorithmD
       <div className="mt-4 grid gap-5 lg:grid-cols-[0.85fr_1.15fr]">
         <div>
           <h3 className="display text-3xl font-medium text-ink">{algorithm.name}</h3>
+          <div className="mt-4"><AnimatedConceptGraphic label={algorithm.name} variant="algorithm" caption={algorithm.plain} compact /></div>
           <p className="mt-3 text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Easy:</span> {algorithm.plain}</p>
           <p className="mt-2 text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Technical:</span> {algorithm.technical}</p>
           <p className="mt-3 rounded-lg border border-line bg-panel-2 p-3 text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Core update:</span> {algorithm.coreUpdate}</p>
@@ -149,18 +161,42 @@ function AlgorithmIndexCard({ algorithm, sourceAudits }: { algorithm: AlgorithmD
   );
 }
 
+function glyphVariantForLabel(label: string): "loop" | "bars" | "tree" | "target" | "formula" | "check" {
+  if (/derivation|formula|technical|core|target|update/i.test(label)) return "formula";
+  if (/profile|objective|family|axis|cards|algorithm/i.test(label)) return "target";
+  if (/chapter|source|coverage|cue|map/i.test(label)) return "tree";
+  if (/worked|dossier|preview|steps|pseudo/i.test(label)) return "bars";
+  if (/warning|debug|check|complete/i.test(label)) return "check";
+  return "loop";
+}
+
+function glyphAccentForLabel(label: string): "cyan" | "orange" | "blue" | "violet" | "lime" {
+  if (/debug|warning|risk|failure/i.test(label)) return "orange";
+  if (/derivation|formula|profile|technical/i.test(label)) return "violet";
+  if (/worked|check|complete/i.test(label)) return "lime";
+  if (/chapter|source|coverage/i.test(label)) return "blue";
+  return "cyan";
+}
+
 function Stat({ value, label }: { value: string; label: string }) {
-  return <div className="border-b border-r border-line p-4"><p className="display text-3xl text-ink">{value}</p><p className="mono mt-2 text-[10px] uppercase tracking-[0.16em] text-dim">{label}</p></div>;
+  return (
+    <div className="border-b border-r border-line p-4">
+      <div className="flex items-start justify-between gap-2">
+        <div><p className="display text-3xl text-ink">{value}</p><p className="mono mt-2 text-[10px] uppercase tracking-[0.16em] text-dim">{label}</p></div>
+        <MotionGlyph label={label} variant={glyphVariantForLabel(label)} accent={glyphAccentForLabel(label)} className="-mr-2 -mt-2 scale-75" />
+      </div>
+    </div>
+  );
 }
 
 function Metric({ value, label }: { value: number; label: string }) {
-  return <div className="rounded-lg border border-line bg-panel-2 p-3"><p className="display text-2xl text-ink">{value}</p><p className="mono mt-1 text-[10px] uppercase tracking-[0.14em] text-dim">{label}</p></div>;
+  return <div className="rounded-lg border border-line bg-panel-2 p-3"><div className="flex items-start justify-between gap-2"><div><p className="display text-2xl text-ink">{value}</p><p className="mono mt-1 text-[10px] uppercase tracking-[0.14em] text-dim">{label}</p></div><MotionGlyph label={label} variant={glyphVariantForLabel(label)} accent={glyphAccentForLabel(label)} className="-mr-2 -mt-2 scale-75" /></div></div>;
 }
 
 function SectionTitle({ eyebrow, title, lead }: { eyebrow: string; title: string; lead: string }) {
-  return <div><p className="eyebrow">{eyebrow}</p><h2 className="display mt-3 text-[clamp(30px,4vw,48px)] font-medium text-ink">{title}</h2><p className="mt-4 max-w-4xl text-base leading-relaxed text-muted">{lead}</p></div>;
+  return <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start"><div><p className="eyebrow">{eyebrow}</p><h2 className="display mt-3 text-[clamp(30px,4vw,48px)] font-medium text-ink">{title}</h2><p className="mt-4 max-w-4xl text-base leading-relaxed text-muted">{lead}</p></div><AnimatedConceptGraphic label={eyebrow} variant="coverage" caption={lead} compact /></div>;
 }
 
 function MiniPanel({ title, items }: { title: string; items: string[] }) {
-  return <div className="rounded-lg border border-line bg-white p-4"><p className="mono mb-3 text-[10px] uppercase tracking-[0.14em] text-dim">{title}</p><ul className="grid gap-2 text-sm leading-relaxed text-muted">{items.map((item, index) => <li key={`${title}-${index}`} className="flex gap-2"><span className="text-cyan">•</span><span>{item}</span></li>)}</ul></div>;
+  return <div className="rounded-lg border border-line bg-white p-4"><div className="mb-3 flex items-start justify-between gap-2"><p className="mono text-[10px] uppercase tracking-[0.14em] text-dim">{title}</p><MotionGlyph label={title} variant={glyphVariantForLabel(title)} accent={glyphAccentForLabel(title)} className="-mr-2 -mt-2 scale-75" /></div><ul className="grid gap-2 text-sm leading-relaxed text-muted">{items.map((item, index) => <li key={`${title}-${index}`} className="flex gap-2"><span className="text-cyan">•</span><span>{item}</span></li>)}</ul></div>;
 }

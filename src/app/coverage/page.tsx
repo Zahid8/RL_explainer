@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { AnimatedConceptGraphic } from "@/components/AnimatedConceptGraphic";
+import { MotionGlyph } from "@/components/MotionGlyph";
 import { Chip } from "@/components/Section";
 import { buildCoverageAudit, type AlgorithmCoverageRow, type ChapterCoverageRow, type RequirementProof } from "@/lib/coverageAudit";
 
@@ -7,6 +9,33 @@ export const metadata: Metadata = {
   title: "Coverage Audit | RLbook Explainer",
   description: "A current-state audit proving chapter route coverage and algorithm detail layers for the RLbook explainer.",
 };
+
+const visualInteractionRows = [
+  {
+    surface: "Home overview sections",
+    coverage: "All 11 overview sections render an animated concept graphic through the shared Section wrapper.",
+    graphics: "Large RL loop/tree/backup/gradient SVG plus section-specific captions.",
+    interaction: "Hover/click phase buttons, animated flow dots, scan lines, pulse rings, and hover elevation.",
+  },
+  {
+    surface: "Chapter detail routes",
+    coverage: "All 17 chapter pages include animated header maps, story-loop graphics, and animated visuals on every major chapter section title.",
+    graphics: "Chapter motion map, source audit, algorithms, section dives, mastery, formulas, anchors, synthesis, and dependency graphics.",
+    interaction: "Each concept map exposes Sense, Target, Update, and Act states; dense cards add animated micro-glyphs.",
+  },
+  {
+    surface: "Algorithm cards and index",
+    coverage: "All 109 chapter algorithm cards plus the global algorithm index cards render animated algorithm diagrams.",
+    graphics: "Interactive algorithm cycle diagrams, animated metric glyphs, source-cue micro-visuals, derivation/profile/dossier glyphs.",
+    interaction: "Hover/click concept phases, hover-lift cards, moving dashes, pulsing nodes, and animated proof traces.",
+  },
+  {
+    surface: "Coverage proof pages",
+    coverage: "The coverage page itself has animated section headings, metrics, proof cards, and this visual motion audit.",
+    graphics: "Coverage/tree variants, status glyphs, metric bars, and completion/check visuals.",
+    interaction: "Public and local pages expose the same animated SVG state controls and CSS micro-interactions.",
+  },
+];
 
 export default function CoveragePage() {
   const audit = buildCoverageAudit();
@@ -26,11 +55,14 @@ export default function CoveragePage() {
               <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted">This page is generated from the current repository data. It checks whether every chapter has a standalone detail route and whether every algorithm card has the required easy, technical, derivation, profile, dossier, and worked-example layers.</p>
               <p className="mt-4 text-sm leading-relaxed text-dim">Generated from: {audit.generatedFrom}.</p>
             </div>
-            <div className="grid grid-cols-2 overflow-hidden rounded-xl border border-line bg-white">
-              <Stat value={String(audit.totals.chapterRoutes)} label="chapter routes" />
-              <Stat value={String(audit.totals.algorithms)} label="algorithm cards" />
-              <Stat value={String(audit.totals.completeAlgorithms)} label="complete alg cards" />
-              <Stat value={String(audit.totals.warnings)} label="audit warnings" />
+            <div className="grid gap-4">
+              <AnimatedConceptGraphic label="Coverage motion ledger" variant="coverage" caption="The audit is itself graphical: status, route coverage, and algorithm details move through proof states." compact />
+              <div className="grid grid-cols-2 overflow-hidden rounded-xl border border-line bg-white">
+                <Stat value={String(audit.totals.chapterRoutes)} label="chapter routes" />
+                <Stat value={String(audit.totals.algorithms)} label="algorithm cards" />
+                <Stat value={String(audit.totals.completeAlgorithms)} label="complete alg cards" />
+                <Stat value={String(audit.totals.warnings)} label="audit warnings" />
+              </div>
             </div>
           </div>
         </div>
@@ -57,8 +89,35 @@ export default function CoveragePage() {
             {audit.algorithms.map((algorithm) => <AlgorithmCoverageCard key={algorithm.id} algorithm={algorithm} />)}
           </div>
         </section>
+
+        <section id="visual-motion-audit" className="scroll-mt-24">
+          <SectionTitle eyebrow="04 - Visual and interaction audit" title="Every surface now has graphical motion, not just text." lead="This audit verifies the visual layer: section-level graphics, card-level animated glyphs, and hover/click interaction patterns are deliberately spread across the whole site." />
+          <div className="mt-6 grid gap-4 lg:grid-cols-2">
+            {visualInteractionRows.map((row) => <VisualInteractionCard key={row.surface} row={row} />)}
+          </div>
+        </section>
       </div>
     </main>
+  );
+}
+
+function VisualInteractionCard({ row }: { row: (typeof visualInteractionRows)[number] }) {
+  return (
+    <article className="rounded-xl border border-line bg-panel p-5">
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <div className="flex flex-wrap gap-2"><Chip accent="lime">animated</Chip><Chip accent="cyan">interactive</Chip></div>
+          <h2 className="display mt-4 text-2xl font-medium text-ink">{row.surface}</h2>
+        </div>
+        <MotionGlyph label={row.surface} variant={glyphVariantForLabel(row.surface)} accent={glyphAccentForLabel(row.surface)} />
+      </div>
+      <div className="mt-4 grid gap-3 md:grid-cols-2">
+        <MiniBlock label="Coverage" text={row.coverage} />
+        <MiniBlock label="Graphics" text={row.graphics} tint />
+        <MiniBlock label="Interaction" text={row.interaction} />
+        <MiniBlock label="Proof state" text="Rendered from the same production Next.js routes served locally and at rl.zahid.win." tint />
+      </div>
+    </article>
   );
 }
 
@@ -124,23 +183,47 @@ function AlgorithmCoverageCard({ algorithm }: { algorithm: AlgorithmCoverageRow 
   );
 }
 
+function glyphVariantForLabel(label: string): "loop" | "bars" | "tree" | "target" | "formula" | "check" {
+  if (/algorithm|card|profile|axis/i.test(label)) return "target";
+  if (/chapter|route|source|coverage|surface|visual/i.test(label)) return "tree";
+  if (/step|pseudo|worked|dossier|graphics|interaction/i.test(label)) return "bars";
+  if (/proof|technical|formula|derivation/i.test(label)) return "formula";
+  if (/warning|complete|check|status/i.test(label)) return "check";
+  return "loop";
+}
+
+function glyphAccentForLabel(label: string): "cyan" | "orange" | "blue" | "violet" | "lime" {
+  if (/warning|risk|debug/i.test(label)) return "orange";
+  if (/complete|check|proof|status/i.test(label)) return "lime";
+  if (/formula|derivation|technical/i.test(label)) return "violet";
+  if (/chapter|route|coverage|source/i.test(label)) return "blue";
+  return "cyan";
+}
+
 function SectionTitle({ eyebrow, title, lead }: { eyebrow: string; title: string; lead: string }) {
-  return <div><p className="eyebrow">{eyebrow}</p><h2 className="display mt-3 text-[clamp(30px,4vw,48px)] font-medium text-ink">{title}</h2><p className="mt-4 max-w-4xl text-base leading-relaxed text-muted">{lead}</p></div>;
+  return <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start"><div><p className="eyebrow">{eyebrow}</p><h2 className="display mt-3 text-[clamp(30px,4vw,48px)] font-medium text-ink">{title}</h2><p className="mt-4 max-w-4xl text-base leading-relaxed text-muted">{lead}</p></div><AnimatedConceptGraphic label={eyebrow} variant="coverage" caption={lead} compact /></div>;
 }
 
 function Stat({ value, label }: { value: string; label: string }) {
-  return <div className="border-b border-r border-line p-4"><p className="display text-3xl text-ink">{value}</p><p className="mono mt-2 text-[10px] uppercase tracking-[0.16em] text-dim">{label}</p></div>;
+  return (
+    <div className="border-b border-r border-line p-4">
+      <div className="flex items-start justify-between gap-2">
+        <div><p className="display text-3xl text-ink">{value}</p><p className="mono mt-2 text-[10px] uppercase tracking-[0.16em] text-dim">{label}</p></div>
+        <MotionGlyph label={label} variant={glyphVariantForLabel(label)} accent={glyphAccentForLabel(label)} className="-mr-2 -mt-2 scale-75" />
+      </div>
+    </div>
+  );
 }
 
 function Metric({ value, label }: { value: number; label: string }) {
-  return <div className="rounded-lg border border-line bg-white p-3"><p className="display text-2xl text-ink">{value}</p><p className="mono mt-1 text-[10px] uppercase tracking-[0.14em] text-dim">{label}</p></div>;
+  return <div className="rounded-lg border border-line bg-white p-3"><div className="flex items-start justify-between gap-2"><div><p className="display text-2xl text-ink">{value}</p><p className="mono mt-1 text-[10px] uppercase tracking-[0.14em] text-dim">{label}</p></div><MotionGlyph label={label} variant={glyphVariantForLabel(label)} accent={glyphAccentForLabel(label)} className="-mr-2 -mt-2 scale-75" /></div></div>;
 }
 
 function MiniBlock({ label, text, tint = false }: { label: string; text: string; tint?: boolean }) {
-  return <div className={`rounded-lg border border-line ${tint ? "bg-panel-2" : "bg-white"} p-3`}><p className="mono mb-2 text-[10px] uppercase tracking-[0.14em] text-dim">{label}</p><p className="text-sm leading-relaxed text-muted">{text}</p></div>;
+  return <div className={`rounded-lg border border-line ${tint ? "bg-panel-2" : "bg-white"} p-3`}><div className="mb-2 flex items-start justify-between gap-2"><p className="mono text-[10px] uppercase tracking-[0.14em] text-dim">{label}</p><MotionGlyph label={label} variant={glyphVariantForLabel(label)} accent={glyphAccentForLabel(label)} className="-mr-2 -mt-2 scale-75" /></div><p className="text-sm leading-relaxed text-muted">{text}</p></div>;
 }
 
 function Panel({ title, items, accent = "cyan" }: { title: string; items: string[]; accent?: "cyan" | "orange" | "blue" | "violet" | "lime" }) {
   const color = { cyan: "text-cyan", orange: "text-orange", blue: "text-blue", violet: "text-violet", lime: "text-lime" }[accent];
-  return <div className="mt-4 rounded-lg border border-line bg-white p-4"><p className="mono mb-3 text-[10px] uppercase tracking-[0.14em] text-dim">{title}</p><ul className="grid gap-2 text-sm leading-relaxed text-muted">{items.map((item, index) => <li key={`${title}-${index}`} className="flex gap-2"><span className={color}>•</span><span>{item}</span></li>)}</ul></div>;
+  return <div className="mt-4 rounded-lg border border-line bg-white p-4"><div className="mb-3 flex items-start justify-between gap-2"><p className="mono text-[10px] uppercase tracking-[0.14em] text-dim">{title}</p><MotionGlyph label={title} variant={glyphVariantForLabel(title)} accent={accent} className="-mr-2 -mt-2 scale-75" /></div><ul className="grid gap-2 text-sm leading-relaxed text-muted">{items.map((item, index) => <li key={`${title}-${index}`} className="flex gap-2"><span className={color}>•</span><span>{item}</span></li>)}</ul></div>;
 }

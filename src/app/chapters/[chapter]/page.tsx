@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { TeX } from "@/components/Math";
+import { AnimatedConceptGraphic } from "@/components/AnimatedConceptGraphic";
+import { MotionGlyph } from "@/components/MotionGlyph";
 import { Chip, Plain } from "@/components/Section";
 import { algorithmsForChapter, type AlgorithmDetail } from "@/lib/algorithmCatalog";
 import { algorithmDerivation, type AlgorithmDerivation } from "@/lib/algorithmDerivations";
@@ -65,29 +67,33 @@ export default async function ChapterPage({ params }: { params: Params }) {
               {next ? <Link className="mono rounded-full border border-line bg-white px-3 py-2 text-[11px] uppercase tracking-[0.12em] text-muted hover:border-cyan" href={`/chapters/${next.n}`}>Ch {next.n} →</Link> : null}
             </div>
           </div>
-          <div className="grid gap-8 lg:grid-cols-[1fr_360px] lg:items-end">
+          <div className="grid gap-8 lg:grid-cols-[1fr_420px] lg:items-end">
             <div>
               <p className="eyebrow">Chapter {item.n} / {item.part}</p>
               <h1 className="display mt-4 max-w-5xl text-[clamp(42px,7vw,88px)] font-medium text-ink">{item.title}</h1>
               <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted">{item.claim}</p>
             </div>
-            <div className="grid grid-cols-2 overflow-hidden rounded-xl border border-line bg-white">
-              <Stat value={String(deep?.sectionDetails.length ?? item.sections.length)} label="section notes" />
-              <Stat value={String(algorithms.length)} label="algorithms" />
-              <Stat value={String(formulas.length)} label="formula cards" />
-              <Stat value={String(sourceAudits.length)} label="source cues" />
+            <div className="grid gap-4">
+              <AnimatedConceptGraphic label={`Chapter ${item.n} motion map`} variant="chapter" caption={item.easy} compact />
+              <div className="grid grid-cols-2 overflow-hidden rounded-xl border border-line bg-white">
+                <Stat value={String(deep?.sectionDetails.length ?? item.sections.length)} label="section notes" />
+                <Stat value={String(algorithms.length)} label="algorithms" />
+                <Stat value={String(formulas.length)} label="formula cards" />
+                <Stat value={String(sourceAudits.length)} label="source cues" />
+              </div>
             </div>
           </div>
         </div>
       </header>
 
       <div className="mx-auto grid max-w-[1280px] gap-12 px-6 py-12 lg:px-10">
-        <section className="grid gap-5 lg:grid-cols-2">
+        <section className="grid gap-5 lg:grid-cols-[1fr_1fr_360px]">
           <Plain title="Easy chapter story"><p>{item.easy}</p></Plain>
           <div className="rounded-xl border border-line bg-panel p-5">
             <p className="eyebrow mb-3">Technical chapter story</p>
             <p className="text-sm leading-relaxed text-muted">{item.technical}</p>
           </div>
+          <AnimatedConceptGraphic label="Story loop" variant="loop" caption="The easy story and the technical story update each other: intuition points at notation, notation checks intuition." compact />
         </section>
 
         <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, evidence: evidence.length, exercises: exercises.length, sourceAudits: sourceAudits.length }} />
@@ -232,7 +238,14 @@ function getChapter(n: number) {
 }
 
 function Stat({ value, label }: { value: string; label: string }) {
-  return <div className="border-b border-r border-line p-4"><p className="display text-3xl text-ink">{value}</p><p className="mono mt-2 text-[10px] uppercase tracking-[0.16em] text-dim">{label}</p></div>;
+  return (
+    <div className="border-b border-r border-line p-4">
+      <div className="flex items-start justify-between gap-2">
+        <div><p className="display text-3xl text-ink">{value}</p><p className="mono mt-2 text-[10px] uppercase tracking-[0.16em] text-dim">{label}</p></div>
+        <MotionGlyph label={label} variant={glyphVariantForLabel(label)} accent={glyphAccentForLabel(label)} className="-mr-2 -mt-2 scale-75" />
+      </div>
+    </div>
+  );
 }
 
 function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; sections: number; formulas: number; evidence: number; exercises: number; sourceAudits: number } }) {
@@ -257,7 +270,37 @@ function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; 
 }
 
 function SectionTitle({ eyebrow, title, lead }: { eyebrow: string; title: string; lead: string }) {
-  return <div><p className="eyebrow">{eyebrow}</p><h2 className="display mt-3 text-[clamp(30px,4vw,48px)] font-medium text-ink">{title}</h2><p className="mt-4 max-w-4xl text-base leading-relaxed text-muted">{lead}</p></div>;
+  return (
+    <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start">
+      <div><p className="eyebrow">{eyebrow}</p><h2 className="display mt-3 text-[clamp(30px,4vw,48px)] font-medium text-ink">{title}</h2><p className="mt-4 max-w-4xl text-base leading-relaxed text-muted">{lead}</p></div>
+      <AnimatedConceptGraphic label={eyebrow} variant={visualVariantForTitle(eyebrow)} caption={lead} compact />
+    </div>
+  );
+}
+
+function visualVariantForTitle(text: string) {
+  if (/algorithm|source|coverage/i.test(text)) return "algorithm";
+  if (/formula|equation/i.test(text)) return "formula";
+  if (/dependency|synthesis/i.test(text)) return "tree";
+  if (/mastery|section/i.test(text)) return "gradient";
+  return "loop";
+}
+
+function glyphVariantForLabel(label: string): "loop" | "bars" | "tree" | "target" | "formula" | "check" {
+  if (/formula|equation|technical|core|proof|target|update/i.test(label)) return "formula";
+  if (/step|process|protocol|trace|pseudo|calculation/i.test(label)) return "bars";
+  if (/dependency|gate|source|coverage|chapter|related/i.test(label)) return "tree";
+  if (/check|warning|trap|debug|failure|risk|status/i.test(label)) return "check";
+  if (/objective|goal|profile|metric|axis/i.test(label)) return "target";
+  return "loop";
+}
+
+function glyphAccentForLabel(label: string): "cyan" | "orange" | "blue" | "violet" | "lime" {
+  if (/warning|trap|debug|failure|risk|watch/i.test(label)) return "orange";
+  if (/formula|equation|technical|profile|axis/i.test(label)) return "violet";
+  if (/check|complete|implementation|test/i.test(label)) return "lime";
+  if (/source|chapter|dependency|coverage/i.test(label)) return "blue";
+  return "cyan";
 }
 
 
@@ -412,6 +455,7 @@ function AlgorithmCard({ algorithm }: { algorithm: AlgorithmDetail }) {
         <div className="bg-panel p-5 lg:p-6">
           <div className="flex flex-wrap gap-2"><Chip accent="cyan">{algorithm.family}</Chip><Chip accent="blue">{algorithm.bookAnchor}</Chip></div>
           <h3 className="display mt-4 text-[clamp(26px,3vw,38px)] font-medium text-ink">{algorithm.name}</h3>
+          <div className="mt-4"><AnimatedConceptGraphic label={algorithm.name} variant="algorithm" caption={algorithm.plain} compact /></div>
           <div className="mt-5 grid gap-3">
             <MiniBlock label="Plain explanation" text={algorithm.plain} />
             <MiniBlock label="Technical explanation" text={algorithm.technical} tint />
@@ -526,7 +570,15 @@ function WorkedExampleBlock({ example }: { example: AlgorithmWorkedExample }) {
 }
 
 function MiniBlock({ label, text, tint = false }: { label: string; text: string; tint?: boolean }) {
-  return <div className={`rounded-lg border border-line ${tint ? "bg-panel-2" : "bg-white"} p-3`}><p className="mono mb-2 text-[10px] uppercase tracking-[0.14em] text-dim">{label}</p><p className="text-sm leading-relaxed text-muted">{text}</p></div>;
+  return (
+    <div className={`rounded-lg border border-line ${tint ? "bg-panel-2" : "bg-white"} p-3`}>
+      <div className="mb-2 flex items-start justify-between gap-2">
+        <p className="mono text-[10px] uppercase tracking-[0.14em] text-dim">{label}</p>
+        <MotionGlyph label={label} variant={glyphVariantForLabel(label)} accent={glyphAccentForLabel(label)} className="-mr-2 -mt-2 scale-75" />
+      </div>
+      <p className="text-sm leading-relaxed text-muted">{text}</p>
+    </div>
+  );
 }
 
 function Panel({ title, items, accent = "cyan", ordered = false, mono = false }: { title: string; items: string[]; accent?: "cyan" | "orange" | "blue" | "violet" | "lime"; ordered?: boolean; mono?: boolean }) {
@@ -538,11 +590,19 @@ function Panel({ title, items, accent = "cyan", ordered = false, mono = false }:
     violet: "text-violet",
     lime: "text-lime",
   }[accent];
-  return <div className="rounded-lg border border-line bg-white p-4"><p className="mono mb-3 text-[10px] uppercase tracking-[0.14em] text-dim">{title}</p><List className={`grid gap-2 text-sm leading-relaxed text-muted ${mono ? "mono text-xs" : ""}`}>{items.map((item, index) => <li key={`${item}-${index}`} className="flex gap-2"><span className={color}>{ordered ? `${index + 1}.` : "•"}</span><span>{item}</span></li>)}</List></div>;
+  return (
+    <div className="rounded-lg border border-line bg-white p-4">
+      <div className="mb-3 flex items-start justify-between gap-2">
+        <p className="mono text-[10px] uppercase tracking-[0.14em] text-dim">{title}</p>
+        <MotionGlyph label={title} variant={glyphVariantForLabel(title)} accent={accent} className="-mr-2 -mt-2 scale-75" />
+      </div>
+      <List className={`grid gap-2 text-sm leading-relaxed text-muted ${mono ? "mono text-xs" : ""}`}>{items.map((item, index) => <li key={`${item}-${index}`} className="flex gap-2"><span className={color}>{ordered ? `${index + 1}.` : "•"}</span><span>{item}</span></li>)}</List>
+    </div>
+  );
 }
 
 function DetailGroup({ label, items }: { label: string; items: { label: string; source: string; easy: string; technical: string; steps: string[] }[] }) {
-  return <div><p className="eyebrow mb-3">{label}</p><div className="grid gap-4 lg:grid-cols-2">{items.map((item) => <article key={item.label} className="rounded-xl border border-line bg-panel p-5"><div className="flex flex-wrap gap-2"><Chip accent="cyan">{item.source}</Chip></div><h3 className="display mt-3 text-2xl font-medium text-ink">{item.label}</h3><div className="mt-4 grid gap-3 md:grid-cols-2"><MiniBlock label="Easy" text={item.easy} /><MiniBlock label="Technical" text={item.technical} tint /></div><ol className="mt-4 grid gap-2 text-sm leading-relaxed text-muted">{item.steps.map((step, index) => <li key={step}>{index + 1}. {step}</li>)}</ol></article>)}</div></div>;
+  return <div><p className="eyebrow mb-3">{label}</p><div className="grid gap-4 lg:grid-cols-2">{items.map((item) => <article key={item.label} className="rounded-xl border border-line bg-panel p-5"><div className="flex items-start justify-between gap-3"><div><div className="flex flex-wrap gap-2"><Chip accent="cyan">{item.source}</Chip></div><h3 className="display mt-3 text-2xl font-medium text-ink">{item.label}</h3></div><MotionGlyph label={item.label} variant={glyphVariantForLabel(item.label)} accent="cyan" /></div><div className="mt-4 grid gap-3 md:grid-cols-2"><MiniBlock label="Easy" text={item.easy} /><MiniBlock label="Technical" text={item.technical} tint /></div><ol className="mt-4 grid gap-2 text-sm leading-relaxed text-muted">{item.steps.map((step, index) => <li key={step}>{index + 1}. {step}</li>)}</ol></article>)}</div></div>;
 }
 
 function TagRow({ tags }: { tags: string[] }) {
