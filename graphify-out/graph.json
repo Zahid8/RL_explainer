@@ -45,7 +45,7 @@
       "source_file": "src/components/MasteryNotebook.tsx",
       "source_location": "L1",
       "id": "src_components_masterynotebook_tsx",
-      "community": 11,
+      "community": 12,
       "norm_label": "masterynotebook.tsx"
     },
     {
@@ -54,7 +54,7 @@
       "source_file": "src/components/MasteryNotebook.tsx",
       "source_location": "L7",
       "id": "components_masterynotebook_partlabel",
-      "community": 11,
+      "community": 12,
       "norm_label": "partlabel()"
     },
     {
@@ -63,7 +63,7 @@
       "source_file": "src/components/EvidenceGuide.tsx",
       "source_location": "L1",
       "id": "src_components_evidenceguide_tsx",
-      "community": 12,
+      "community": 13,
       "norm_label": "evidenceguide.tsx"
     },
     {
@@ -72,7 +72,7 @@
       "source_file": "src/components/EvidenceGuide.tsx",
       "source_location": "L17",
       "id": "components_evidenceguide_partlabel",
-      "community": 12,
+      "community": 13,
       "norm_label": "partlabel()"
     },
     {
@@ -81,7 +81,7 @@
       "source_file": "src/components/Nav.tsx",
       "source_location": "L1",
       "id": "src_components_nav_tsx",
-      "community": 13,
+      "community": 14,
       "norm_label": "nav.tsx"
     },
     {
@@ -90,7 +90,7 @@
       "source_file": "src/components/Nav.tsx",
       "source_location": "L24",
       "id": "components_nav_onscroll",
-      "community": 13,
+      "community": 14,
       "norm_label": "onscroll()"
     },
     {
@@ -99,7 +99,7 @@
       "source_file": "src/components/TermLab.tsx",
       "source_location": "L1",
       "id": "src_components_termlab_tsx",
-      "community": 14,
+      "community": 15,
       "norm_label": "termlab.tsx"
     },
     {
@@ -108,7 +108,7 @@
       "source_file": "src/components/TermLab.tsx",
       "source_location": "L16",
       "id": "components_termlab_onkey",
-      "community": 14,
+      "community": 15,
       "norm_label": "onkey()"
     },
     {
@@ -126,7 +126,7 @@
       "source_file": "src/components/Hero.tsx",
       "source_location": "L1",
       "id": "src_components_hero_tsx",
-      "community": 15,
+      "community": 16,
       "norm_label": "hero.tsx"
     },
     {
@@ -135,7 +135,7 @@
       "source_file": "src/components/Hero.tsx",
       "source_location": "L4",
       "id": "components_hero_hero",
-      "community": 15,
+      "community": 16,
       "norm_label": "hero()"
     },
     {
@@ -153,7 +153,7 @@
       "source_file": "src/components/ExerciseCoach.tsx",
       "source_location": "L1",
       "id": "src_components_exercisecoach_tsx",
-      "community": 7,
+      "community": 8,
       "norm_label": "exercisecoach.tsx"
     },
     {
@@ -162,7 +162,7 @@
       "source_file": "src/components/ExerciseCoach.tsx",
       "source_location": "L19",
       "id": "components_exercisecoach_partlabel",
-      "community": 7,
+      "community": 8,
       "norm_label": "partlabel()"
     },
     {
@@ -171,7 +171,7 @@
       "source_file": "src/components/ExerciseCoach.tsx",
       "source_location": "L21",
       "id": "components_exercisecoach_exercisecoach",
-      "community": 7,
+      "community": 8,
       "norm_label": "exercisecoach()"
     },
     {
@@ -180,7 +180,7 @@
       "source_file": "src/components/Math.tsx",
       "source_location": "L1",
       "id": "src_components_math_tsx",
-      "community": 16,
+      "community": 17,
       "norm_label": "math.tsx"
     },
     {
@@ -189,7 +189,7 @@
       "source_file": "src/components/Math.tsx",
       "source_location": "L6",
       "id": "components_math_tex",
-      "community": 16,
+      "community": 17,
       "norm_label": "tex()"
     },
     {
@@ -207,7 +207,7 @@
       "source_file": "src/components/FormulaAtlas.tsx",
       "source_location": "L1",
       "id": "src_components_formulaatlas_tsx",
-      "community": 17,
+      "community": 18,
       "norm_label": "formulaatlas.tsx"
     },
     {
@@ -216,7 +216,7 @@
       "source_file": "src/components/FormulaAtlas.tsx",
       "source_location": "L12",
       "id": "components_formulaatlas_formulaatlas",
-      "community": 17,
+      "community": 18,
       "norm_label": "formulaatlas()"
     },
     {
@@ -225,7 +225,7 @@
       "source_file": "src/components/Section.tsx",
       "source_location": "L1",
       "id": "src_components_section_tsx",
-      "community": 6,
+      "community": 7,
       "norm_label": "section.tsx"
     },
     {
@@ -234,7 +234,7 @@
       "source_file": "src/components/Section.tsx",
       "source_location": "L3",
       "id": "components_section_section",
-      "community": 6,
+      "community": 7,
       "norm_label": "section()"
     },
     {
@@ -243,7 +243,7 @@
       "source_file": "src/components/Section.tsx",
       "source_location": "L30",
       "id": "components_section_plain",
-      "community": 6,
+      "community": 7,
       "norm_label": "plain()"
     },
     {
@@ -252,7 +252,7 @@
       "source_file": "src/components/Section.tsx",
       "source_location": "L39",
       "id": "components_section_note",
-      "community": 6,
+      "community": 7,
       "norm_label": "note()"
     },
     {
@@ -261,7 +261,7 @@
       "source_file": "src/components/Section.tsx",
       "source_location": "L48",
       "id": "components_section_chip",
-      "community": 6,
+      "community": 7,
       "norm_label": "chip()"
     },
     {
@@ -270,7 +270,7 @@
       "source_file": "src/components/EquationWall.tsx",
       "source_location": "L1",
       "id": "src_components_equationwall_tsx",
-      "community": 18,
+      "community": 19,
       "norm_label": "equationwall.tsx"
     },
     {
@@ -279,7 +279,7 @@
       "source_file": "src/components/EquationWall.tsx",
       "source_location": "L5",
       "id": "components_equationwall_equationwall",
-      "community": 18,
+      "community": 19,
       "norm_label": "equationwall()"
     },
     {
@@ -288,7 +288,7 @@
       "source_file": "src/components/BookMap.tsx",
       "source_location": "L1",
       "id": "src_components_bookmap_tsx",
-      "community": 19,
+      "community": 20,
       "norm_label": "bookmap.tsx"
     },
     {
@@ -297,7 +297,7 @@
       "source_file": "src/components/BookMap.tsx",
       "source_location": "L4",
       "id": "components_bookmap_bookmap",
-      "community": 19,
+      "community": 20,
       "norm_label": "bookmap()"
     },
     {
@@ -306,7 +306,7 @@
       "source_file": "src/components/three/SceneMount.tsx",
       "source_location": "L1",
       "id": "src_components_three_scenemount_tsx",
-      "community": 20,
+      "community": 21,
       "norm_label": "scenemount.tsx"
     },
     {
@@ -315,7 +315,7 @@
       "source_file": "src/components/three/SceneMount.tsx",
       "source_location": "L7",
       "id": "three_scenemount_scenemount",
-      "community": 20,
+      "community": 21,
       "norm_label": "scenemount()"
     },
     {
@@ -333,7 +333,7 @@
       "source_file": "src/components/figures/BellmanLab.tsx",
       "source_location": "L1",
       "id": "src_components_figures_bellmanlab_tsx",
-      "community": 8,
+      "community": 9,
       "norm_label": "bellmanlab.tsx"
     },
     {
@@ -342,7 +342,7 @@
       "source_file": "src/components/figures/BellmanLab.tsx",
       "source_location": "L6",
       "id": "figures_bellmanlab_bellmanlab",
-      "community": 8,
+      "community": 9,
       "norm_label": "bellmanlab()"
     },
     {
@@ -351,7 +351,7 @@
       "source_file": "src/components/figures/BellmanLab.tsx",
       "source_location": "L47",
       "id": "figures_bellmanlab_control",
-      "community": 8,
+      "community": 9,
       "norm_label": "control()"
     },
     {
@@ -360,7 +360,7 @@
       "source_file": "src/components/figures/TermGlyph.tsx",
       "source_location": "L1",
       "id": "src_components_figures_termglyph_tsx",
-      "community": 21,
+      "community": 22,
       "norm_label": "termglyph.tsx"
     },
     {
@@ -369,7 +369,7 @@
       "source_file": "src/components/figures/TermGlyph.tsx",
       "source_location": "L3",
       "id": "figures_termglyph_bars",
-      "community": 21,
+      "community": 22,
       "norm_label": "bars()"
     },
     {
@@ -387,7 +387,7 @@
       "source_file": "src/components/figures/BanditLab.tsx",
       "source_location": "L1",
       "id": "src_components_figures_banditlab_tsx",
-      "community": 9,
+      "community": 10,
       "norm_label": "banditlab.tsx"
     },
     {
@@ -396,7 +396,7 @@
       "source_file": "src/components/figures/BanditLab.tsx",
       "source_location": "L8",
       "id": "figures_banditlab_nextrng",
-      "community": 9,
+      "community": 10,
       "norm_label": "nextrng()"
     },
     {
@@ -405,8 +405,53 @@
       "source_file": "src/components/figures/BanditLab.tsx",
       "source_location": "L12",
       "id": "figures_banditlab_banditlab",
-      "community": 9,
+      "community": 10,
       "norm_label": "banditlab()"
+    },
+    {
+      "label": "coverageAudit.ts",
+      "file_type": "code",
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L1",
+      "id": "src_lib_coverageaudit_ts",
+      "community": 4,
+      "norm_label": "coverageaudit.ts"
+    },
+    {
+      "label": "buildCoverageAudit()",
+      "file_type": "code",
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L84",
+      "id": "lib_coverageaudit_buildcoverageaudit",
+      "community": 4,
+      "norm_label": "buildcoverageaudit()"
+    },
+    {
+      "label": "chapterCoverageRow()",
+      "file_type": "code",
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L117",
+      "id": "lib_coverageaudit_chaptercoveragerow",
+      "community": 4,
+      "norm_label": "chaptercoveragerow()"
+    },
+    {
+      "label": "algorithmCoverageRow()",
+      "file_type": "code",
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L169",
+      "id": "lib_coverageaudit_algorithmcoveragerow",
+      "community": 4,
+      "norm_label": "algorithmcoveragerow()"
+    },
+    {
+      "label": "requirementProofs()",
+      "file_type": "code",
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L203",
+      "id": "lib_coverageaudit_requirementproofs",
+      "community": 4,
+      "norm_label": "requirementproofs()"
     },
     {
       "label": "chapterSynthesis.ts",
@@ -504,7 +549,7 @@
       "source_file": "src/lib/algorithmSourceAudit.ts",
       "source_location": "L1",
       "id": "src_lib_algorithmsourceaudit_ts",
-      "community": 22,
+      "community": 4,
       "norm_label": "algorithmsourceaudit.ts"
     },
     {
@@ -513,7 +558,7 @@
       "source_file": "src/lib/algorithmSourceAudit.ts",
       "source_location": "L119",
       "id": "lib_algorithmsourceaudit_sourceauditsforchapter",
-      "community": 22,
+      "community": 4,
       "norm_label": "sourceauditsforchapter()"
     },
     {
@@ -522,7 +567,7 @@
       "source_file": "src/lib/algorithmCatalog.ts",
       "source_location": "L1",
       "id": "src_lib_algorithmcatalog_ts",
-      "community": 23,
+      "community": 4,
       "norm_label": "algorithmcatalog.ts"
     },
     {
@@ -531,7 +576,7 @@
       "source_file": "src/lib/algorithmCatalog.ts",
       "source_location": "L3861",
       "id": "lib_algorithmcatalog_algorithmsforchapter",
-      "community": 23,
+      "community": 4,
       "norm_label": "algorithmsforchapter()"
     },
     {
@@ -549,7 +594,7 @@
       "source_file": "src/lib/evidenceGuide.ts",
       "source_location": "L1",
       "id": "src_lib_evidenceguide_ts",
-      "community": 24,
+      "community": 23,
       "norm_label": "evidenceguide.ts"
     },
     {
@@ -558,7 +603,7 @@
       "source_file": "src/lib/evidenceGuide.ts",
       "source_location": "L13",
       "id": "lib_evidenceguide_item",
-      "community": 24,
+      "community": 23,
       "norm_label": "item()"
     },
     {
@@ -567,7 +612,7 @@
       "source_file": "src/lib/deepDives.ts",
       "source_location": "L1",
       "id": "src_lib_deepdives_ts",
-      "community": 25,
+      "community": 24,
       "norm_label": "deepdives.ts"
     },
     {
@@ -576,7 +621,7 @@
       "source_file": "src/lib/deepDives.ts",
       "source_location": "L16",
       "id": "lib_deepdives_d",
-      "community": 25,
+      "community": 24,
       "norm_label": "d()"
     },
     {
@@ -720,7 +765,7 @@
       "source_file": "src/lib/chapterDependencyMap.ts",
       "source_location": "L1",
       "id": "src_lib_chapterdependencymap_ts",
-      "community": 4,
+      "community": 5,
       "norm_label": "chapterdependencymap.ts"
     },
     {
@@ -729,7 +774,7 @@
       "source_file": "src/lib/chapterDependencyMap.ts",
       "source_location": "L30",
       "id": "lib_chapterdependencymap_chapterdependencymap",
-      "community": 4,
+      "community": 5,
       "norm_label": "chapterdependencymap()"
     },
     {
@@ -738,7 +783,7 @@
       "source_file": "src/lib/chapterDependencyMap.ts",
       "source_location": "L47",
       "id": "lib_chapterdependencymap_dominantprofiles",
-      "community": 4,
+      "community": 5,
       "norm_label": "dominantprofiles()"
     },
     {
@@ -747,7 +792,7 @@
       "source_file": "src/lib/chapterDependencyMap.ts",
       "source_location": "L54",
       "id": "lib_chapterdependencymap_linkfromprevious",
-      "community": 4,
+      "community": 5,
       "norm_label": "linkfromprevious()"
     },
     {
@@ -756,7 +801,7 @@
       "source_file": "src/lib/chapterDependencyMap.ts",
       "source_location": "L64",
       "id": "lib_chapterdependencymap_linktonext",
-      "community": 4,
+      "community": 5,
       "norm_label": "linktonext()"
     },
     {
@@ -765,7 +810,7 @@
       "source_file": "src/lib/chapterDependencyMap.ts",
       "source_location": "L74",
       "id": "lib_chapterdependencymap_conceptgates",
-      "community": 4,
+      "community": 5,
       "norm_label": "conceptgates()"
     },
     {
@@ -774,7 +819,7 @@
       "source_file": "src/lib/chapterDependencyMap.ts",
       "source_location": "L127",
       "id": "lib_chapterdependencymap_skiprisks",
-      "community": 4,
+      "community": 5,
       "norm_label": "skiprisks()"
     },
     {
@@ -783,7 +828,7 @@
       "source_file": "src/lib/chapterDependencyMap.ts",
       "source_location": "L141",
       "id": "lib_chapterdependencymap_reviewloop",
-      "community": 4,
+      "community": 5,
       "norm_label": "reviewloop()"
     },
     {
@@ -792,7 +837,7 @@
       "source_file": "src/lib/chapterDependencyMap.ts",
       "source_location": "L153",
       "id": "lib_chapterdependencymap_topcounts",
-      "community": 4,
+      "community": 5,
       "norm_label": "topcounts()"
     },
     {
@@ -801,7 +846,7 @@
       "source_file": "src/lib/motion.ts",
       "source_location": "L1",
       "id": "src_lib_motion_ts",
-      "community": 26,
+      "community": 25,
       "norm_label": "motion.ts"
     },
     {
@@ -810,7 +855,7 @@
       "source_file": "src/lib/motion.ts",
       "source_location": "L2",
       "id": "lib_motion_reduced",
-      "community": 26,
+      "community": 25,
       "norm_label": "reduced()"
     },
     {
@@ -837,7 +882,7 @@
       "source_file": "src/lib/algorithmProfiles.ts",
       "source_location": "L39",
       "id": "lib_algorithmprofiles_profilerows",
-      "community": 1,
+      "community": 4,
       "norm_label": "profilerows()"
     },
     {
@@ -954,7 +999,7 @@
       "source_file": "src/lib/algorithmDossier.ts",
       "source_location": "L1",
       "id": "src_lib_algorithmdossier_ts",
-      "community": 5,
+      "community": 6,
       "norm_label": "algorithmdossier.ts"
     },
     {
@@ -963,7 +1008,7 @@
       "source_file": "src/lib/algorithmDossier.ts",
       "source_location": "L12",
       "id": "lib_algorithmdossier_algorithmdossier",
-      "community": 5,
+      "community": 6,
       "norm_label": "algorithmdossier()"
     },
     {
@@ -972,7 +1017,7 @@
       "source_file": "src/lib/algorithmDossier.ts",
       "source_location": "L84",
       "id": "lib_algorithmdossier_inferknobs",
-      "community": 5,
+      "community": 6,
       "norm_label": "inferknobs()"
     },
     {
@@ -981,7 +1026,7 @@
       "source_file": "src/lib/algorithmDossier.ts",
       "source_location": "L115",
       "id": "lib_algorithmdossier_inferestimatorshape",
-      "community": 5,
+      "community": 6,
       "norm_label": "inferestimatorshape()"
     },
     {
@@ -990,7 +1035,7 @@
       "source_file": "src/lib/algorithmDossier.ts",
       "source_location": "L130",
       "id": "lib_algorithmdossier_inferbiasvarianceposition",
-      "community": 5,
+      "community": 6,
       "norm_label": "inferbiasvarianceposition()"
     },
     {
@@ -999,7 +1044,7 @@
       "source_file": "src/lib/algorithmDossier.ts",
       "source_location": "L142",
       "id": "lib_algorithmdossier_inferstabilitycontract",
-      "community": 5,
+      "community": 6,
       "norm_label": "inferstabilitycontract()"
     },
     {
@@ -1008,7 +1053,7 @@
       "source_file": "src/lib/algorithmDossier.ts",
       "source_location": "L159",
       "id": "lib_algorithmdossier_inferimplementationinvariants",
-      "community": 5,
+      "community": 6,
       "norm_label": "inferimplementationinvariants()"
     },
     {
@@ -1017,7 +1062,7 @@
       "source_file": "src/lib/algorithmDossier.ts",
       "source_location": "L182",
       "id": "lib_algorithmdossier_inferdiagnostics",
-      "community": 5,
+      "community": 6,
       "norm_label": "inferdiagnostics()"
     },
     {
@@ -1026,7 +1071,7 @@
       "source_file": "src/lib/algorithmDossier.ts",
       "source_location": "L199",
       "id": "lib_algorithmdossier_outputphrase",
-      "community": 5,
+      "community": 6,
       "norm_label": "outputphrase()"
     },
     {
@@ -1257,6 +1302,24 @@
     {
       "label": "page.tsx",
       "file_type": "code",
+      "source_file": "src/app/coverage/page.tsx",
+      "source_location": "L1",
+      "id": "src_app_coverage_page_tsx",
+      "community": 26,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "Metric()",
+      "file_type": "code",
+      "source_file": "src/app/coverage/page.tsx",
+      "source_location": "L135",
+      "id": "coverage_page_metric",
+      "community": 26,
+      "norm_label": "metric()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
       "source_file": "src/app/algorithms/page.tsx",
       "source_location": "L1",
       "id": "src_app_algorithms_page_tsx",
@@ -1269,7 +1332,7 @@
       "source_file": "src/app/chapters/[chapter]/page.tsx",
       "source_location": "L1",
       "id": "src_app_chapters_chapter_page_tsx",
-      "community": 10,
+      "community": 11,
       "norm_label": "page.tsx"
     },
     {
@@ -1278,7 +1341,7 @@
       "source_file": "src/app/chapters/[chapter]/page.tsx",
       "source_location": "L25",
       "id": "chapter_page_generatestaticparams",
-      "community": 10,
+      "community": 11,
       "norm_label": "generatestaticparams()"
     },
     {
@@ -1287,7 +1350,7 @@
       "source_file": "src/app/chapters/[chapter]/page.tsx",
       "source_location": "L29",
       "id": "chapter_page_generatemetadata",
-      "community": 10,
+      "community": 11,
       "norm_label": "generatemetadata()"
     }
   ],
@@ -1543,6 +1606,186 @@
       "source": "src_components_figures_banditlab_tsx",
       "target": "figures_banditlab_banditlab",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L84",
+      "weight": 1.0,
+      "_src": "src_lib_coverageaudit_ts",
+      "_tgt": "lib_coverageaudit_buildcoverageaudit",
+      "source": "src_lib_coverageaudit_ts",
+      "target": "lib_coverageaudit_buildcoverageaudit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L117",
+      "weight": 1.0,
+      "_src": "src_lib_coverageaudit_ts",
+      "_tgt": "lib_coverageaudit_chaptercoveragerow",
+      "source": "src_lib_coverageaudit_ts",
+      "target": "lib_coverageaudit_chaptercoveragerow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L169",
+      "weight": 1.0,
+      "_src": "src_lib_coverageaudit_ts",
+      "_tgt": "lib_coverageaudit_algorithmcoveragerow",
+      "source": "src_lib_coverageaudit_ts",
+      "target": "lib_coverageaudit_algorithmcoveragerow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L203",
+      "weight": 1.0,
+      "_src": "src_lib_coverageaudit_ts",
+      "_tgt": "lib_coverageaudit_requirementproofs",
+      "source": "src_lib_coverageaudit_ts",
+      "target": "lib_coverageaudit_requirementproofs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L111",
+      "weight": 1.0,
+      "_src": "lib_coverageaudit_buildcoverageaudit",
+      "_tgt": "lib_coverageaudit_requirementproofs",
+      "source": "lib_coverageaudit_buildcoverageaudit",
+      "target": "lib_coverageaudit_requirementproofs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L121",
+      "weight": 1.0,
+      "_src": "lib_coverageaudit_chaptercoveragerow",
+      "_tgt": "lib_algorithmcatalog_algorithmsforchapter",
+      "source": "lib_coverageaudit_chaptercoveragerow",
+      "target": "lib_algorithmcatalog_algorithmsforchapter"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L123",
+      "weight": 1.0,
+      "_src": "lib_coverageaudit_chaptercoveragerow",
+      "_tgt": "lib_chaptersynthesis_chaptersynthesis",
+      "source": "lib_coverageaudit_chaptercoveragerow",
+      "target": "lib_chaptersynthesis_chaptersynthesis"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L124",
+      "weight": 1.0,
+      "_src": "lib_coverageaudit_chaptercoveragerow",
+      "_tgt": "lib_chapterdependencymap_chapterdependencymap",
+      "source": "lib_coverageaudit_chaptercoveragerow",
+      "target": "lib_chapterdependencymap_chapterdependencymap"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L129",
+      "weight": 1.0,
+      "_src": "lib_coverageaudit_chaptercoveragerow",
+      "_tgt": "lib_algorithmsourceaudit_sourceauditsforchapter",
+      "source": "lib_coverageaudit_chaptercoveragerow",
+      "target": "lib_algorithmsourceaudit_sourceauditsforchapter"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L170",
+      "weight": 1.0,
+      "_src": "lib_coverageaudit_algorithmcoveragerow",
+      "_tgt": "lib_algorithmsourceaudit_sourceauditsforchapter",
+      "source": "lib_coverageaudit_algorithmcoveragerow",
+      "target": "lib_algorithmsourceaudit_sourceauditsforchapter"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L171",
+      "weight": 1.0,
+      "_src": "lib_coverageaudit_algorithmcoveragerow",
+      "_tgt": "lib_algorithmdossier_algorithmdossier",
+      "source": "lib_coverageaudit_algorithmcoveragerow",
+      "target": "lib_algorithmdossier_algorithmdossier"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L172",
+      "weight": 1.0,
+      "_src": "lib_coverageaudit_algorithmcoveragerow",
+      "_tgt": "lib_algorithmderivations_algorithmderivation",
+      "source": "lib_coverageaudit_algorithmcoveragerow",
+      "target": "lib_algorithmderivations_algorithmderivation"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L173",
+      "weight": 1.0,
+      "_src": "lib_coverageaudit_algorithmcoveragerow",
+      "_tgt": "lib_algorithmprofiles_algorithmprofile",
+      "source": "lib_coverageaudit_algorithmcoveragerow",
+      "target": "lib_algorithmprofiles_algorithmprofile"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L174",
+      "weight": 1.0,
+      "_src": "lib_coverageaudit_algorithmcoveragerow",
+      "_tgt": "lib_algorithmworkedexamples_workedexampleforalgorithm",
+      "source": "lib_coverageaudit_algorithmcoveragerow",
+      "target": "lib_algorithmworkedexamples_workedexampleforalgorithm"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L176",
+      "weight": 1.0,
+      "_src": "lib_coverageaudit_algorithmcoveragerow",
+      "_tgt": "lib_algorithmprofiles_profilerows",
+      "source": "lib_coverageaudit_algorithmcoveragerow",
+      "target": "lib_algorithmprofiles_profilerows"
     },
     {
       "relation": "contains",
@@ -3186,6 +3429,18 @@
       "_tgt": "lib_algorithmworkedexamples_genericexample",
       "source": "lib_algorithmworkedexamples_workedexampleforalgorithm",
       "target": "lib_algorithmworkedexamples_genericexample",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/coverage/page.tsx",
+      "source_location": "L135",
+      "weight": 1.0,
+      "_src": "src_app_coverage_page_tsx",
+      "_tgt": "coverage_page_metric",
+      "source": "src_app_coverage_page_tsx",
+      "target": "coverage_page_metric",
       "confidence_score": 1.0
     },
     {
