@@ -25,6 +25,12 @@ A single-page, light-theme explainer site for `../RLbook2020.pdf` (Sutton & Bart
   - diagnostic traps with fixes,
   - self-check questions with answers.
 - Equation spine for the recurring return, value, Bellman, TD, Q-learning, and policy-gradient forms.
+- Formula atlas with 44 additional book-wide equations/formal templates, each with:
+  - easy handle,
+  - technical handle,
+  - use-when note,
+  - watch-out note,
+  - symbol chips.
 - Algorithm player that shows the shared structure across RL methods.
 - Interactive teaching labs for bandit exploration, Bellman backup arithmetic, and lambda-return mixing.
 - Glossary for recurring RL vocabulary.
@@ -56,9 +62,11 @@ The latest validation was run on port `3510` with desktop and mobile headless Ch
 - `src/lib/paper.ts` - core explainer content, typed chapter data, terms, glossary, and equation metadata.
 - `src/lib/deepDives.ts` - 161 section-level detailed notes, mechanics, and remember-this summaries for every chapter.
 - `src/lib/mastery.ts` - 170 additional derivation, process, diagnostic-trap, and self-check tiles for every chapter.
+- `src/lib/formulaAtlas.ts` - 44 equation/formal-template cards spanning the whole book.
 - `src/app/page.tsx` - page composition and section order.
 - `src/components/TermLab.tsx` - interactive notation browser.
 - `src/components/ChapterExplorer.tsx` - filterable chapter-by-chapter cards.
 - `src/components/MasteryNotebook.tsx` - searchable ultra-detail notebook rendered below the chapter explorer.
+- `src/components/FormulaAtlas.tsx` - searchable/filterable formula atlas rendered under the equation spine.
 - `src/components/figures/` - SVG/browser-computed teaching figures.
 - `src/components/three/` - dynamic R3F hero scene.

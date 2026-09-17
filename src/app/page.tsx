@@ -2,6 +2,7 @@ import { AlgorithmPlayer } from "@/components/AlgorithmPlayer";
 import { BookMap } from "@/components/BookMap";
 import { ChapterExplorer } from "@/components/ChapterExplorer";
 import { EquationWall } from "@/components/EquationWall";
+import { FormulaAtlas } from "@/components/FormulaAtlas";
 import { Glossary } from "@/components/Glossary";
 import { Hero } from "@/components/Hero";
 import { MasteryNotebook } from "@/components/MasteryNotebook";
@@ -59,6 +60,7 @@ export default function Home() {
         lead="The exact book contains many more equations. This spine highlights the recurring forms that reappear as dynamic programming, Monte Carlo, TD, traces, approximation, and policy gradients."
       >
         <EquationWall />
+        <FormulaAtlas />
       </Section>
       <Section
         id="algorithms"
@@ -106,7 +108,7 @@ export default function Home() {
             <p>This explainer is paraphrased from the extracted PDF and organized around the book&apos;s chapter and section structure. It avoids copying the book&apos;s prose and labels synthetic diagrams/labs as illustrative.</p>
           </Note>
           <Note title="Coverage note">
-            <p>The chapter list covers {chapters.length} chapters, all top-level sections shown in the PDF contents, 161 section notes, and an added mastery notebook for derivations, procedures, traps, and self-checks. For classroom use, treat the cards as a guided map, not as a replacement for exercises or proofs in the book.</p>
+            <p>The chapter list covers {chapters.length} chapters, all top-level sections shown in the PDF contents, 161 section notes, a 170-tile mastery notebook, and a 44-item formula atlas. For classroom use, treat the cards as a guided map, not as a replacement for exercises or proofs in the book.</p>
           </Note>
         </div>
       </Section>
