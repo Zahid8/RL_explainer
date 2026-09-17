@@ -1,11 +1,11 @@
 # Graph Report - rlbook-explainer  (2026-09-17)
 
 ## Corpus Check
-- 39 files · ~701,592 words
+- 40 files · ~711,988 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 96 nodes · 84 edges · 2 communities detected
+- 99 nodes · 86 edges · 2 communities detected
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
