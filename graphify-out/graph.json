@@ -153,7 +153,7 @@
       "source_file": "src/components/ExerciseCoach.tsx",
       "source_location": "L1",
       "id": "src_components_exercisecoach_tsx",
-      "community": 3,
+      "community": 4,
       "norm_label": "exercisecoach.tsx"
     },
     {
@@ -162,7 +162,7 @@
       "source_file": "src/components/ExerciseCoach.tsx",
       "source_location": "L19",
       "id": "components_exercisecoach_partlabel",
-      "community": 3,
+      "community": 4,
       "norm_label": "partlabel()"
     },
     {
@@ -171,7 +171,7 @@
       "source_file": "src/components/ExerciseCoach.tsx",
       "source_location": "L21",
       "id": "components_exercisecoach_exercisecoach",
-      "community": 3,
+      "community": 4,
       "norm_label": "exercisecoach()"
     },
     {
@@ -225,7 +225,7 @@
       "source_file": "src/components/Section.tsx",
       "source_location": "L1",
       "id": "src_components_section_tsx",
-      "community": 2,
+      "community": 3,
       "norm_label": "section.tsx"
     },
     {
@@ -234,7 +234,7 @@
       "source_file": "src/components/Section.tsx",
       "source_location": "L3",
       "id": "components_section_section",
-      "community": 2,
+      "community": 3,
       "norm_label": "section()"
     },
     {
@@ -243,7 +243,7 @@
       "source_file": "src/components/Section.tsx",
       "source_location": "L30",
       "id": "components_section_plain",
-      "community": 2,
+      "community": 3,
       "norm_label": "plain()"
     },
     {
@@ -252,7 +252,7 @@
       "source_file": "src/components/Section.tsx",
       "source_location": "L39",
       "id": "components_section_note",
-      "community": 2,
+      "community": 3,
       "norm_label": "note()"
     },
     {
@@ -261,7 +261,7 @@
       "source_file": "src/components/Section.tsx",
       "source_location": "L48",
       "id": "components_section_chip",
-      "community": 2,
+      "community": 3,
       "norm_label": "chip()"
     },
     {
@@ -333,7 +333,7 @@
       "source_file": "src/components/figures/BellmanLab.tsx",
       "source_location": "L1",
       "id": "src_components_figures_bellmanlab_tsx",
-      "community": 4,
+      "community": 5,
       "norm_label": "bellmanlab.tsx"
     },
     {
@@ -342,7 +342,7 @@
       "source_file": "src/components/figures/BellmanLab.tsx",
       "source_location": "L6",
       "id": "figures_bellmanlab_bellmanlab",
-      "community": 4,
+      "community": 5,
       "norm_label": "bellmanlab()"
     },
     {
@@ -351,7 +351,7 @@
       "source_file": "src/components/figures/BellmanLab.tsx",
       "source_location": "L47",
       "id": "figures_bellmanlab_control",
-      "community": 4,
+      "community": 5,
       "norm_label": "control()"
     },
     {
@@ -387,7 +387,7 @@
       "source_file": "src/components/figures/BanditLab.tsx",
       "source_location": "L1",
       "id": "src_components_figures_banditlab_tsx",
-      "community": 5,
+      "community": 6,
       "norm_label": "banditlab.tsx"
     },
     {
@@ -396,7 +396,7 @@
       "source_file": "src/components/figures/BanditLab.tsx",
       "source_location": "L8",
       "id": "figures_banditlab_nextrng",
-      "community": 5,
+      "community": 6,
       "norm_label": "nextrng()"
     },
     {
@@ -405,7 +405,7 @@
       "source_file": "src/components/figures/BanditLab.tsx",
       "source_location": "L12",
       "id": "figures_banditlab_banditlab",
-      "community": 5,
+      "community": 6,
       "norm_label": "banditlab()"
     },
     {
@@ -535,12 +535,147 @@
       "norm_label": "reduced()"
     },
     {
+      "label": "algorithmProfiles.ts",
+      "file_type": "code",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L1",
+      "id": "src_lib_algorithmprofiles_ts",
+      "community": 1,
+      "norm_label": "algorithmprofiles.ts"
+    },
+    {
+      "label": "algorithmProfile()",
+      "file_type": "code",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L18",
+      "id": "lib_algorithmprofiles_algorithmprofile",
+      "community": 1,
+      "norm_label": "algorithmprofile()"
+    },
+    {
+      "label": "profileRows()",
+      "file_type": "code",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L39",
+      "id": "lib_algorithmprofiles_profilerows",
+      "community": 1,
+      "norm_label": "profilerows()"
+    },
+    {
+      "label": "inferRole()",
+      "file_type": "code",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L56",
+      "id": "lib_algorithmprofiles_inferrole",
+      "community": 1,
+      "norm_label": "inferrole()"
+    },
+    {
+      "label": "inferDataRegime()",
+      "file_type": "code",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L87",
+      "id": "lib_algorithmprofiles_inferdataregime",
+      "community": 1,
+      "norm_label": "inferdataregime()"
+    },
+    {
+      "label": "inferTargetPolicy()",
+      "file_type": "code",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L105",
+      "id": "lib_algorithmprofiles_infertargetpolicy",
+      "community": 1,
+      "norm_label": "infertargetpolicy()"
+    },
+    {
+      "label": "inferModelUse()",
+      "file_type": "code",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L127",
+      "id": "lib_algorithmprofiles_infermodeluse",
+      "community": 1,
+      "norm_label": "infermodeluse()"
+    },
+    {
+      "label": "inferBackupStyle()",
+      "file_type": "code",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L151",
+      "id": "lib_algorithmprofiles_inferbackupstyle",
+      "community": 1,
+      "norm_label": "inferbackupstyle()"
+    },
+    {
+      "label": "inferApproximation()",
+      "file_type": "code",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L173",
+      "id": "lib_algorithmprofiles_inferapproximation",
+      "community": 1,
+      "norm_label": "inferapproximation()"
+    },
+    {
+      "label": "inferCreditAssignment()",
+      "file_type": "code",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L198",
+      "id": "lib_algorithmprofiles_infercreditassignment",
+      "community": 1,
+      "norm_label": "infercreditassignment()"
+    },
+    {
+      "label": "inferObjectiveView()",
+      "file_type": "code",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L216",
+      "id": "lib_algorithmprofiles_inferobjectiveview",
+      "community": 1,
+      "norm_label": "inferobjectiveview()"
+    },
+    {
+      "label": "inferConvergenceHandle()",
+      "file_type": "code",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L236",
+      "id": "lib_algorithmprofiles_inferconvergencehandle",
+      "community": 1,
+      "norm_label": "inferconvergencehandle()"
+    },
+    {
+      "label": "inferComputeMemory()",
+      "file_type": "code",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L256",
+      "id": "lib_algorithmprofiles_infercomputememory",
+      "community": 1,
+      "norm_label": "infercomputememory()"
+    },
+    {
+      "label": "inferBestUse()",
+      "file_type": "code",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L276",
+      "id": "lib_algorithmprofiles_inferbestuse",
+      "community": 1,
+      "norm_label": "inferbestuse()"
+    },
+    {
+      "label": "inferAvoidWhen()",
+      "file_type": "code",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L298",
+      "id": "lib_algorithmprofiles_inferavoidwhen",
+      "community": 1,
+      "norm_label": "inferavoidwhen()"
+    },
+    {
       "label": "algorithmDossier.ts",
       "file_type": "code",
       "source_file": "src/lib/algorithmDossier.ts",
       "source_location": "L1",
       "id": "src_lib_algorithmdossier_ts",
-      "community": 1,
+      "community": 2,
       "norm_label": "algorithmdossier.ts"
     },
     {
@@ -549,7 +684,7 @@
       "source_file": "src/lib/algorithmDossier.ts",
       "source_location": "L12",
       "id": "lib_algorithmdossier_algorithmdossier",
-      "community": 1,
+      "community": 2,
       "norm_label": "algorithmdossier()"
     },
     {
@@ -558,7 +693,7 @@
       "source_file": "src/lib/algorithmDossier.ts",
       "source_location": "L84",
       "id": "lib_algorithmdossier_inferknobs",
-      "community": 1,
+      "community": 2,
       "norm_label": "inferknobs()"
     },
     {
@@ -567,7 +702,7 @@
       "source_file": "src/lib/algorithmDossier.ts",
       "source_location": "L115",
       "id": "lib_algorithmdossier_inferestimatorshape",
-      "community": 1,
+      "community": 2,
       "norm_label": "inferestimatorshape()"
     },
     {
@@ -576,7 +711,7 @@
       "source_file": "src/lib/algorithmDossier.ts",
       "source_location": "L130",
       "id": "lib_algorithmdossier_inferbiasvarianceposition",
-      "community": 1,
+      "community": 2,
       "norm_label": "inferbiasvarianceposition()"
     },
     {
@@ -585,7 +720,7 @@
       "source_file": "src/lib/algorithmDossier.ts",
       "source_location": "L142",
       "id": "lib_algorithmdossier_inferstabilitycontract",
-      "community": 1,
+      "community": 2,
       "norm_label": "inferstabilitycontract()"
     },
     {
@@ -594,7 +729,7 @@
       "source_file": "src/lib/algorithmDossier.ts",
       "source_location": "L159",
       "id": "lib_algorithmdossier_inferimplementationinvariants",
-      "community": 1,
+      "community": 2,
       "norm_label": "inferimplementationinvariants()"
     },
     {
@@ -603,7 +738,7 @@
       "source_file": "src/lib/algorithmDossier.ts",
       "source_location": "L182",
       "id": "lib_algorithmdossier_inferdiagnostics",
-      "community": 1,
+      "community": 2,
       "norm_label": "inferdiagnostics()"
     },
     {
@@ -612,7 +747,7 @@
       "source_file": "src/lib/algorithmDossier.ts",
       "source_location": "L199",
       "id": "lib_algorithmdossier_outputphrase",
-      "community": 1,
+      "community": 2,
       "norm_label": "outputphrase()"
     },
     {
@@ -846,26 +981,8 @@
       "source_file": "src/app/algorithms/page.tsx",
       "source_location": "L1",
       "id": "src_app_algorithms_page_tsx",
-      "community": 6,
+      "community": 40,
       "norm_label": "page.tsx"
-    },
-    {
-      "label": "SectionTitle()",
-      "file_type": "code",
-      "source_file": "src/app/algorithms/page.tsx",
-      "source_location": "L154",
-      "id": "algorithms_page_sectiontitle",
-      "community": 6,
-      "norm_label": "sectiontitle()"
-    },
-    {
-      "label": "MiniPanel()",
-      "file_type": "code",
-      "source_file": "src/app/algorithms/page.tsx",
-      "source_location": "L158",
-      "id": "algorithms_page_minipanel",
-      "community": 6,
-      "norm_label": "minipanel()"
     },
     {
       "label": "page.tsx",
@@ -880,7 +997,7 @@
       "label": "generateStaticParams()",
       "file_type": "code",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L21",
+      "source_location": "L22",
       "id": "chapter_page_generatestaticparams",
       "community": 7,
       "norm_label": "generatestaticparams()"
@@ -889,7 +1006,7 @@
       "label": "generateMetadata()",
       "file_type": "code",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L25",
+      "source_location": "L26",
       "id": "chapter_page_generatemetadata",
       "community": 7,
       "norm_label": "generatemetadata()"
@@ -1206,6 +1323,318 @@
       "_tgt": "lib_motion_reduced",
       "source": "src_lib_motion_ts",
       "target": "lib_motion_reduced",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_src": "src_lib_algorithmprofiles_ts",
+      "_tgt": "lib_algorithmprofiles_algorithmprofile",
+      "source": "src_lib_algorithmprofiles_ts",
+      "target": "lib_algorithmprofiles_algorithmprofile",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L39",
+      "weight": 1.0,
+      "_src": "src_lib_algorithmprofiles_ts",
+      "_tgt": "lib_algorithmprofiles_profilerows",
+      "source": "src_lib_algorithmprofiles_ts",
+      "target": "lib_algorithmprofiles_profilerows",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L56",
+      "weight": 1.0,
+      "_src": "src_lib_algorithmprofiles_ts",
+      "_tgt": "lib_algorithmprofiles_inferrole",
+      "source": "src_lib_algorithmprofiles_ts",
+      "target": "lib_algorithmprofiles_inferrole",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L87",
+      "weight": 1.0,
+      "_src": "src_lib_algorithmprofiles_ts",
+      "_tgt": "lib_algorithmprofiles_inferdataregime",
+      "source": "src_lib_algorithmprofiles_ts",
+      "target": "lib_algorithmprofiles_inferdataregime",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L105",
+      "weight": 1.0,
+      "_src": "src_lib_algorithmprofiles_ts",
+      "_tgt": "lib_algorithmprofiles_infertargetpolicy",
+      "source": "src_lib_algorithmprofiles_ts",
+      "target": "lib_algorithmprofiles_infertargetpolicy",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L127",
+      "weight": 1.0,
+      "_src": "src_lib_algorithmprofiles_ts",
+      "_tgt": "lib_algorithmprofiles_infermodeluse",
+      "source": "src_lib_algorithmprofiles_ts",
+      "target": "lib_algorithmprofiles_infermodeluse",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L151",
+      "weight": 1.0,
+      "_src": "src_lib_algorithmprofiles_ts",
+      "_tgt": "lib_algorithmprofiles_inferbackupstyle",
+      "source": "src_lib_algorithmprofiles_ts",
+      "target": "lib_algorithmprofiles_inferbackupstyle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L173",
+      "weight": 1.0,
+      "_src": "src_lib_algorithmprofiles_ts",
+      "_tgt": "lib_algorithmprofiles_inferapproximation",
+      "source": "src_lib_algorithmprofiles_ts",
+      "target": "lib_algorithmprofiles_inferapproximation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L198",
+      "weight": 1.0,
+      "_src": "src_lib_algorithmprofiles_ts",
+      "_tgt": "lib_algorithmprofiles_infercreditassignment",
+      "source": "src_lib_algorithmprofiles_ts",
+      "target": "lib_algorithmprofiles_infercreditassignment",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L216",
+      "weight": 1.0,
+      "_src": "src_lib_algorithmprofiles_ts",
+      "_tgt": "lib_algorithmprofiles_inferobjectiveview",
+      "source": "src_lib_algorithmprofiles_ts",
+      "target": "lib_algorithmprofiles_inferobjectiveview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L236",
+      "weight": 1.0,
+      "_src": "src_lib_algorithmprofiles_ts",
+      "_tgt": "lib_algorithmprofiles_inferconvergencehandle",
+      "source": "src_lib_algorithmprofiles_ts",
+      "target": "lib_algorithmprofiles_inferconvergencehandle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L256",
+      "weight": 1.0,
+      "_src": "src_lib_algorithmprofiles_ts",
+      "_tgt": "lib_algorithmprofiles_infercomputememory",
+      "source": "src_lib_algorithmprofiles_ts",
+      "target": "lib_algorithmprofiles_infercomputememory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L276",
+      "weight": 1.0,
+      "_src": "src_lib_algorithmprofiles_ts",
+      "_tgt": "lib_algorithmprofiles_inferbestuse",
+      "source": "src_lib_algorithmprofiles_ts",
+      "target": "lib_algorithmprofiles_inferbestuse",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L298",
+      "weight": 1.0,
+      "_src": "src_lib_algorithmprofiles_ts",
+      "_tgt": "lib_algorithmprofiles_inferavoidwhen",
+      "source": "src_lib_algorithmprofiles_ts",
+      "target": "lib_algorithmprofiles_inferavoidwhen",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_src": "lib_algorithmprofiles_algorithmprofile",
+      "_tgt": "lib_algorithmprofiles_inferrole",
+      "source": "lib_algorithmprofiles_algorithmprofile",
+      "target": "lib_algorithmprofiles_inferrole",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L25",
+      "weight": 1.0,
+      "_src": "lib_algorithmprofiles_algorithmprofile",
+      "_tgt": "lib_algorithmprofiles_inferdataregime",
+      "source": "lib_algorithmprofiles_algorithmprofile",
+      "target": "lib_algorithmprofiles_inferdataregime",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_src": "lib_algorithmprofiles_algorithmprofile",
+      "_tgt": "lib_algorithmprofiles_infertargetpolicy",
+      "source": "lib_algorithmprofiles_algorithmprofile",
+      "target": "lib_algorithmprofiles_infertargetpolicy",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_src": "lib_algorithmprofiles_algorithmprofile",
+      "_tgt": "lib_algorithmprofiles_infermodeluse",
+      "source": "lib_algorithmprofiles_algorithmprofile",
+      "target": "lib_algorithmprofiles_infermodeluse",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L28",
+      "weight": 1.0,
+      "_src": "lib_algorithmprofiles_algorithmprofile",
+      "_tgt": "lib_algorithmprofiles_inferbackupstyle",
+      "source": "lib_algorithmprofiles_algorithmprofile",
+      "target": "lib_algorithmprofiles_inferbackupstyle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L29",
+      "weight": 1.0,
+      "_src": "lib_algorithmprofiles_algorithmprofile",
+      "_tgt": "lib_algorithmprofiles_inferapproximation",
+      "source": "lib_algorithmprofiles_algorithmprofile",
+      "target": "lib_algorithmprofiles_inferapproximation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L30",
+      "weight": 1.0,
+      "_src": "lib_algorithmprofiles_algorithmprofile",
+      "_tgt": "lib_algorithmprofiles_infercreditassignment",
+      "source": "lib_algorithmprofiles_algorithmprofile",
+      "target": "lib_algorithmprofiles_infercreditassignment",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_src": "lib_algorithmprofiles_algorithmprofile",
+      "_tgt": "lib_algorithmprofiles_inferobjectiveview",
+      "source": "lib_algorithmprofiles_algorithmprofile",
+      "target": "lib_algorithmprofiles_inferobjectiveview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L32",
+      "weight": 1.0,
+      "_src": "lib_algorithmprofiles_algorithmprofile",
+      "_tgt": "lib_algorithmprofiles_inferconvergencehandle",
+      "source": "lib_algorithmprofiles_algorithmprofile",
+      "target": "lib_algorithmprofiles_inferconvergencehandle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L33",
+      "weight": 1.0,
+      "_src": "lib_algorithmprofiles_algorithmprofile",
+      "_tgt": "lib_algorithmprofiles_infercomputememory",
+      "source": "lib_algorithmprofiles_algorithmprofile",
+      "target": "lib_algorithmprofiles_infercomputememory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_src": "lib_algorithmprofiles_algorithmprofile",
+      "_tgt": "lib_algorithmprofiles_inferbestuse",
+      "source": "lib_algorithmprofiles_algorithmprofile",
+      "target": "lib_algorithmprofiles_inferbestuse",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/algorithmProfiles.ts",
+      "source_location": "L35",
+      "weight": 1.0,
+      "_src": "lib_algorithmprofiles_algorithmprofile",
+      "_tgt": "lib_algorithmprofiles_inferavoidwhen",
+      "source": "lib_algorithmprofiles_algorithmprofile",
+      "target": "lib_algorithmprofiles_inferavoidwhen",
       "confidence_score": 1.0
     },
     {
@@ -1883,32 +2312,8 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "src/app/algorithms/page.tsx",
-      "source_location": "L154",
-      "weight": 1.0,
-      "_src": "src_app_algorithms_page_tsx",
-      "_tgt": "algorithms_page_sectiontitle",
-      "source": "src_app_algorithms_page_tsx",
-      "target": "algorithms_page_sectiontitle",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/app/algorithms/page.tsx",
-      "source_location": "L158",
-      "weight": 1.0,
-      "_src": "src_app_algorithms_page_tsx",
-      "_tgt": "algorithms_page_minipanel",
-      "source": "src_app_algorithms_page_tsx",
-      "target": "algorithms_page_minipanel",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L21",
+      "source_location": "L22",
       "weight": 1.0,
       "_src": "src_app_chapters_chapter_page_tsx",
       "_tgt": "chapter_page_generatestaticparams",
@@ -1920,7 +2325,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L25",
+      "source_location": "L26",
       "weight": 1.0,
       "_src": "src_app_chapters_chapter_page_tsx",
       "_tgt": "chapter_page_generatemetadata",
