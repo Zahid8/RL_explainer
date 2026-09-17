@@ -3296,7 +3296,560 @@ export const algorithmCatalog = [
       "GVFs",
       "web-service value optimization"
     ]
+  },
+
+  {
+    "chapter": 8,
+    "id": "ch8-10",
+    "name": "Random-sample one-step tabular Q-planning",
+    "family": "Planning backup",
+    "bookAnchor": "Section 8.1 boxed Q-planning procedure",
+    "plain": "Practice Q-learning updates in imagination by sampling state-action pairs from the model instead of waiting for the real world to visit them.",
+    "technical": "A model-based planning primitive that samples a state-action pair, samples or enumerates the model's predicted next reward and state, and applies the ordinary one-step Q-learning target to the stored action value.",
+    "objective": "Turn a learned or given model into additional Bellman backups between real actions.",
+    "coreUpdate": "Q(S,A) <- Q(S,A)+alpha[R+gamma max_a Q(S',a)-Q(S,A)] using a model-generated transition.",
+    "steps": [
+      "Select a previously seen or model-supported state-action pair.",
+      "Query the model for reward and successor state.",
+      "Build the one-step Q-learning target from the simulated transition.",
+      "Update Q exactly as direct reinforcement learning would."
+    ],
+    "pseudocode": [
+      "repeat planning step:",
+      "  sample S,A from planning distribution",
+      "  R,S_next <- Model(S,A)",
+      "  Q(S,A) <- Q(S,A)+alpha*(R+gamma*max_a Q(S_next,a)-Q(S,A))"
+    ],
+    "equations": [
+      "Q(s,a)\\leftarrow Q(s,a)+\\alpha[r+\\gamma\\max_{a'}Q(s',a')-Q(s,a)]"
+    ],
+    "implementationNotes": [
+      "Use the same update routine for real and simulated transitions to prevent semantic drift.",
+      "The planning distribution is an algorithmic choice; uniform sampling is simple but often inefficient."
+    ],
+    "failureModes": [
+      "Sampling impossible or stale state-action pairs can waste computation.",
+      "A biased model produces confident but wrong value propagation."
+    ],
+    "related": [
+      "Dyna-Q",
+      "Q-learning",
+      "trajectory sampling"
+    ]
+  },
+  {
+    "chapter": 10,
+    "id": "ch10-5",
+    "name": "Differential semi-gradient n-step Sarsa",
+    "family": "Average-reward approximate control",
+    "bookAnchor": "Section 10.5 boxed algorithm",
+    "plain": "For continuing tasks, learn from chunks of reward after subtracting the current average reward estimate at every step.",
+    "technical": "Extends differential semi-gradient Sarsa by replacing the one-step differential TD target with an n-step differential return, updating action-value weights and the average reward estimate on compatible time-scales.",
+    "objective": "Improve approximate action values in continuing control problems without discounting.",
+    "coreUpdate": "w <- w + alpha [G_{t:t+n}-qhat(S_t,A_t,w)] grad qhat(S_t,A_t,w), with differential rewards R-bar subtracted inside G.",
+    "steps": [
+      "Maintain a rolling buffer of states, actions, rewards, and average-reward estimates.",
+      "Construct an n-step differential return by subtracting R_bar from each reward.",
+      "Bootstrap from qhat at the nth successor if nonterminal/continuing.",
+      "Update weights toward that differential target and update R_bar from TD error."
+    ],
+    "pseudocode": [
+      "for each continuing step:",
+      "  store S_t,A_t,R_{t+1}",
+      "  tau <- t-n+1",
+      "  G <- sum_{k=tau+1}^{tau+n}(R_k-R_bar)+qhat(S_{tau+n},A_{tau+n},w)",
+      "  w <- w+alpha*(G-qhat(S_tau,A_tau,w))*grad qhat"
+    ],
+    "equations": [
+      "G_{t:t+n}=\\sum_{k=t+1}^{t+n}(R_k-\\bar R)+\\hat q(S_{t+n},A_{t+n},w)"
+    ],
+    "implementationNotes": [
+      "Do not use a terminal reset in a continuing task unless the problem is continuing only by artificial episodes.",
+      "The reward-rate estimate can lag badly if alpha_R is too small."
+    ],
+    "failureModes": [
+      "Using discounted-return code here silently changes the objective.",
+      "Incorrect buffer indexing turns the n-step return into a shifted target."
+    ],
+    "related": [
+      "differential Sarsa",
+      "average reward",
+      "n-step Sarsa"
+    ]
+  },
+  {
+    "chapter": 12,
+    "id": "ch12-9",
+    "name": "Online lambda-return algorithm",
+    "family": "Eligibility traces / forward view",
+    "bookAnchor": "Section 12.4",
+    "plain": "Redo earlier updates whenever a longer lambda-return becomes available, so online predictions track the forward-view target more closely.",
+    "technical": "Maintains interim lambda-returns and revises recent state estimates online, bridging the conceptual forward view and practical incremental trace methods before true-online refinements.",
+    "objective": "Make forward-view lambda-return learning operate during an episode instead of only after it.",
+    "coreUpdate": "Recompute interim G_t^lambda from newly observed rewards and bootstrap values, then correct affected predictions.",
+    "steps": [
+      "Keep recent states and previous interim lambda-return estimates.",
+      "After each new transition, update the interim return for earlier times.",
+      "Apply corrections to the corresponding value estimates.",
+      "At episode end, finish remaining returns with terminal values."
+    ],
+    "pseudocode": [
+      "after observing R,S_next:",
+      "  for recent tau:",
+      "    recompute interim lambda-return G_tau^lambda|t",
+      "    V(S_tau) <- V(S_tau)+alpha*(new-old interim target)"
+    ],
+    "equations": [
+      "G_t^\\lambda=(1-\\lambda)\\sum_{n=1}^{\\infty}\\lambda^{n-1}G_{t:t+n}"
+    ],
+    "implementationNotes": [
+      "This algorithm is mainly explanatory; backward-view TD(lambda) and true-online TD(lambda) are usually easier to implement efficiently."
+    ],
+    "failureModes": [
+      "Naively redoing many updates can be expensive.",
+      "Mixing old and new weights in recomputed returns can break the intended equivalence."
+    ],
+    "related": [
+      "offline lambda-return",
+      "TD(lambda)",
+      "true online TD(lambda)"
+    ]
+  },
+  {
+    "chapter": 12,
+    "id": "ch12-10",
+    "name": "True online Sarsa(lambda)",
+    "family": "Control traces",
+    "bookAnchor": "Section 12.7 boxed algorithm",
+    "plain": "Use Sarsa with a dutch trace correction so online control matches the lambda-return idea more faithfully while learning action values.",
+    "technical": "Combines action-value function approximation, epsilon-greedy or target-policy action selection, dutch traces, and the true-online correction term with Q_old to preserve online forward-view equivalence.",
+    "objective": "Provide an online trace-based control algorithm with better theoretical forward-view alignment than conventional Sarsa(lambda).",
+    "coreUpdate": "w <- w + alpha(delta + Q - Q_old) z - alpha(Q - Q_old) x, with z <- gamma lambda z + (1-alpha gamma lambda z^T x)x.",
+    "steps": [
+      "Select actions from the current policy or epsilon-greedy action values.",
+      "Compute current and next action-value predictions.",
+      "Update the dutch eligibility trace for the active state-action features.",
+      "Apply the true-online weight correction and carry Q_old forward."
+    ],
+    "pseudocode": [
+      "Q <- w dot x(S,A)",
+      "delta <- R + gamma*Q_next - Q",
+      "z <- gamma*lambda*z + (1-alpha*gamma*lambda*z dot x)*x",
+      "w <- w + alpha*(delta+Q-Q_old)*z - alpha*(Q-Q_old)*x",
+      "Q_old <- Q_next"
+    ],
+    "equations": [
+      "z_t=\\gamma\\lambda z_{t-1}+(1-\\alpha\\gamma\\lambda z_{t-1}^\\top x_t)x_t",
+      "w_{t+1}=w_t+\\alpha(\\delta_t+Q_t-Q_{old})z_t-\\alpha(Q_t-Q_{old})x_t"
+    ],
+    "implementationNotes": [
+      "Requires storing Q_old and the previous feature vector; omitting either changes the algorithm.",
+      "Works naturally with sparse binary features such as tile coding."
+    ],
+    "failureModes": [
+      "Using accumulating traces instead of dutch traces loses the true-online property.",
+      "Forgetting to zero terminal features causes terminal bootstrapping leakage."
+    ],
+    "related": [
+      "Sarsa(lambda)",
+      "true online TD(lambda)",
+      "tile coding"
+    ]
+  },
+  {
+    "chapter": 12,
+    "id": "ch12-11",
+    "name": "Expected Sarsa(lambda)",
+    "family": "Control traces",
+    "bookAnchor": "Section 12.9 notes",
+    "plain": "Replace the sampled next action in trace-based Sarsa with the policy's expected next value when that expectation is available.",
+    "technical": "A trace-based action-value method that uses Expected Sarsa's policy expectation inside the TD error while retaining eligibility traces over recently responsible state-action features.",
+    "objective": "Reduce next-action sampling variance in lambda-style control backups.",
+    "coreUpdate": "delta <- R + gamma sum_a pi(a|S') qhat(S',a,w) - qhat(S,A,w); then update traced features.",
+    "steps": [
+      "Compute the expected next action value under the target/behavior policy.",
+      "Form the Expected-Sarsa TD error.",
+      "Update or decay action-value traces.",
+      "Adjust weights for all active traced features."
+    ],
+    "pseudocode": [
+      "expected <- sum_a pi(a|S_next)*qhat(S_next,a,w)",
+      "delta <- R + gamma*expected - qhat(S,A,w)",
+      "z <- trace_update(z,x(S,A))",
+      "w <- w + alpha*delta*z"
+    ],
+    "equations": [
+      "\\delta_t=R_{t+1}+\\gamma\\sum_a\\pi(a|S_{t+1})\\hat q(S_{t+1},a,w)-\\hat q(S_t,A_t,w)"
+    ],
+    "implementationNotes": [
+      "Requires enumerating actions or approximating the expectation.",
+      "In epsilon-greedy policies, compute the exact greedy-action mass including ties."
+    ],
+    "failureModes": [
+      "Using a sampled A' turns it back into Sarsa(lambda).",
+      "Wrong policy probabilities bias the expectation and the control update."
+    ],
+    "related": [
+      "Expected Sarsa",
+      "Sarsa(lambda)",
+      "Tree Backup(lambda)"
+    ]
+  },
+  {
+    "chapter": 12,
+    "id": "ch12-12",
+    "name": "Hybrid TD(lambda) / HTD(lambda)",
+    "family": "Off-policy traces",
+    "bookAnchor": "Section 12.11 notes",
+    "plain": "Blend ordinary TD-style traces with gradient-style corrections to get a more stable off-policy trace method.",
+    "technical": "HTD(lambda) combines aspects of conventional TD(lambda) and gradient-TD trace algorithms, aiming to retain practical learning speed while addressing off-policy instability in linear approximation.",
+    "objective": "Provide a compromise trace algorithm in the off-policy approximate prediction setting.",
+    "coreUpdate": "Hybrid correction between TD(lambda)-style primary weights and gradient-TD secondary correction terms.",
+    "steps": [
+      "Maintain primary value weights and any required correction quantities.",
+      "Compute off-policy TD error with ratios or target-policy weighting.",
+      "Apply a hybrid trace/correction update.",
+      "Monitor stability against TD(lambda) and GTD(lambda) baselines."
+    ],
+    "pseudocode": [
+      "rho <- pi(A|S)/b(A|S)",
+      "delta <- R + gamma*vhat(S_next,w) - vhat(S,w)",
+      "update traces and hybrid correction",
+      "w <- w + corrected off-policy trace step"
+    ],
+    "equations": [],
+    "implementationNotes": [
+      "Treat as an advanced off-policy linear method; log ratios, traces, and weight norms.",
+      "Compare against emphatic TD(lambda) when emphasis weighting is available."
+    ],
+    "failureModes": [
+      "Can still be sensitive to feature conditioning and large behavior-target mismatch.",
+      "A missing correction term makes it ordinary off-policy TD(lambda), which can diverge."
+    ],
+    "related": [
+      "GTD(lambda)",
+      "Emphatic TD(lambda)",
+      "deadly triad"
+    ]
+  },
+  {
+    "chapter": 13,
+    "id": "ch13-7",
+    "name": "One-step actor-critic (episodic)",
+    "family": "Actor-critic",
+    "bookAnchor": "Section 13.5 boxed algorithm",
+    "plain": "Let a critic judge the last action with a one-step TD error, then let the actor make that action more or less likely.",
+    "technical": "Uses a differentiable stochastic actor and differentiable value-function critic; the critic updates by semi-gradient TD and the actor updates log policy parameters proportional to the TD error and discount weighting term.",
+    "objective": "Make policy-gradient control fully online instead of waiting for complete Monte Carlo returns.",
+    "coreUpdate": "delta <- R + gamma vhat(S',w) - vhat(S,w); w <- w + alpha_w delta grad vhat; theta <- theta + alpha_theta I delta grad log pi(A|S,theta).",
+    "steps": [
+      "Sample an action from the current actor.",
+      "Observe reward and next state.",
+      "Compute the critic's one-step TD error.",
+      "Update critic weights and actor parameters from the same error signal."
+    ],
+    "pseudocode": [
+      "A ~ pi(.|S,theta)",
+      "take A observe R,S_next",
+      "delta <- R + gamma*vhat(S_next,w)-vhat(S,w)",
+      "w <- w+alpha_w*delta*grad_w vhat(S,w)",
+      "theta <- theta+alpha_theta*I*delta*grad_theta log pi(A|S,theta)"
+    ],
+    "equations": [
+      "\\delta_t=R_{t+1}+\\gamma\\hat v(S_{t+1},w)-\\hat v(S_t,w)",
+      "\\theta\\leftarrow\\theta+\\alpha_\\theta I_t\\delta_t\\nabla_\\theta\\ln\\pi(A_t|S_t,\\theta)"
+    ],
+    "implementationNotes": [
+      "The actor and critic need separate step-sizes.",
+      "The critic baseline reduces variance but its bias can steer the actor if poorly learned."
+    ],
+    "failureModes": [
+      "Updating the actor with raw reward instead of TD error loses bootstrapped advantage information.",
+      "A saturated policy can make gradients vanish before the critic improves."
+    ],
+    "related": [
+      "REINFORCE with baseline",
+      "continuing actor-critic",
+      "TD error"
+    ]
+  },
+  {
+    "chapter": 13,
+    "id": "ch13-8",
+    "name": "Actor-critic with eligibility traces (episodic)",
+    "family": "Actor-critic traces",
+    "bookAnchor": "Section 13.5 boxed trace algorithm",
+    "plain": "Keep one trace for the actor and one trace for the critic so a TD error can credit many recent choices, not just the last one.",
+    "technical": "Maintains separate eligibility traces z_theta and z_w for the policy-gradient log-probability features and value-gradient features; the same TD error updates both traced parameter sets.",
+    "objective": "Combine actor-critic online learning with multi-step credit assignment.",
+    "coreUpdate": "z_w <- gamma lambda_w z_w + grad_w vhat(S,w); z_theta <- gamma lambda_theta z_theta + I grad_theta log pi(A|S,theta); w,theta move by delta times their traces.",
+    "steps": [
+      "Initialize actor and critic traces at episode start.",
+      "Sample action and compute TD error after the transition.",
+      "Accumulate/decay critic and actor traces separately.",
+      "Apply TD-error-scaled updates to both parameter vectors."
+    ],
+    "pseudocode": [
+      "delta <- R + gamma*vhat(S_next,w)-vhat(S,w)",
+      "z_w <- gamma*lambda_w*z_w + grad_w vhat(S,w)",
+      "z_theta <- gamma*lambda_theta*z_theta + I*grad log pi(A|S,theta)",
+      "w <- w + alpha_w*delta*z_w",
+      "theta <- theta + alpha_theta*delta*z_theta"
+    ],
+    "equations": [
+      "z^\\theta_t=\\gamma\\lambda_\\theta z^\\theta_{t-1}+I_t\\nabla_\\theta\\ln\\pi(A_t|S_t,\\theta)",
+      "z^w_t=\\gamma\\lambda_w z^w_{t-1}+\\nabla_w\\hat v(S_t,w)"
+    ],
+    "implementationNotes": [
+      "Separate lambda values are allowed for actor and critic.",
+      "Reset both traces at episode boundaries and handle terminal vhat as zero."
+    ],
+    "failureModes": [
+      "Sharing a single trace between actor and critic mixes incompatible feature spaces.",
+      "Large traces can create high-variance actor steps."
+    ],
+    "related": [
+      "one-step actor-critic",
+      "TD(lambda)",
+      "eligibility traces"
+    ]
+  },
+  {
+    "chapter": 16,
+    "id": "ch16-10",
+    "name": "Experience replay for deep Q-learning",
+    "family": "Deep RL stabilizer",
+    "bookAnchor": "Section 16.5 Atari/DQN discussion",
+    "plain": "Store past transitions and train on shuffled memories so a neural Q-learner does not chase only the latest correlated experience.",
+    "technical": "A replay buffer changes the update distribution for DQN-style Q-learning by sampling stored transitions, improving data reuse and weakening temporal correlations in stochastic-gradient updates.",
+    "objective": "Stabilize and improve sample efficiency of neural-network Q-learning.",
+    "coreUpdate": "Sample (S,A,R,S') from replay and minimize [R+gamma max_a Q_target(S',a)-Q(S,A;w)]^2.",
+    "steps": [
+      "Append each real transition to a finite replay buffer.",
+      "Sample minibatches uniformly or by priority.",
+      "Compute Q-learning targets for sampled transitions.",
+      "Apply stochastic-gradient updates to network weights."
+    ],
+    "pseudocode": [
+      "D <- replay buffer",
+      "after each step store (S,A,R,S_next,done)",
+      "batch <- sample(D)",
+      "target <- R + gamma*(1-done)*max_a Q_target(S_next,a)",
+      "gradient step on squared TD error"
+    ],
+    "equations": [
+      "L(w)=\\mathbb{E}_{(s,a,r,s')\\sim D}[(r+\\gamma\\max_{a'}Q(s',a';w^-)-Q(s,a;w))^2]"
+    ],
+    "implementationNotes": [
+      "Replay does not by itself fix overestimation; combine with target networks or double methods as needed.",
+      "Coverage in the buffer controls what the network can learn."
+    ],
+    "failureModes": [
+      "A stale or imbalanced buffer can overrepresent old behavior.",
+      "Sequential sampling from replay defeats the decorrelation purpose."
+    ],
+    "related": [
+      "DQN",
+      "Q-learning",
+      "target network"
+    ]
+  },
+  {
+    "chapter": 16,
+    "id": "ch16-11",
+    "name": "Target-network stabilized DQN",
+    "family": "Deep RL stabilizer",
+    "bookAnchor": "Section 16.5 Atari/DQN discussion",
+    "plain": "Use a slower frozen copy of the Q-network to make targets less like a moving mirror.",
+    "technical": "DQN-style learning periodically copies online weights into target weights w^- and uses the target network in the bootstrap term, reducing harmful feedback between predictions and targets.",
+    "objective": "Reduce instability caused by chasing bootstrap targets produced by the same rapidly changing network.",
+    "coreUpdate": "y=R+gamma max_a Q(S',a;w^-), then update online w to reduce (y-Q(S,A;w))^2; periodically set w^- <- w.",
+    "steps": [
+      "Maintain online and target Q-network weights.",
+      "Compute TD targets with the target network only.",
+      "Update the online network by gradient descent.",
+      "Periodically or slowly copy online weights to target weights."
+    ],
+    "pseudocode": [
+      "target <- R + gamma*max_a Q(S_next,a;w_target)",
+      "w <- w - alpha*grad_w(target-Q(S,A;w))^2",
+      "every C steps: w_target <- w"
+    ],
+    "equations": [
+      "y_t=R_{t+1}+\\gamma\\max_a Q(S_{t+1},a;w^-)"
+    ],
+    "implementationNotes": [
+      "Hard updates use a copy interval; soft updates use Polyak averaging.",
+      "Keep target-network parameters out of the gradient graph."
+    ],
+    "failureModes": [
+      "Updating the target every step collapses the stabilizing separation.",
+      "A target updated too rarely can make learning lag behind a changed policy distribution."
+    ],
+    "related": [
+      "DQN",
+      "experience replay",
+      "Q-learning"
+    ]
+  },
+  {
+    "chapter": 16,
+    "id": "ch16-12",
+    "name": "Fitted Q-iteration / batch reinforcement learning",
+    "family": "Batch RL",
+    "bookAnchor": "Section 16.6 web-service applications",
+    "plain": "When interaction is expensive or historical, repeatedly fit a value model to a fixed dataset instead of learning only online.",
+    "technical": "Fitted Q-iteration builds supervised regression targets from a batch of transitions and iteratively refits an action-value approximator to approximate Bellman optimality over the dataset distribution.",
+    "objective": "Learn value-based policies from logged datasets when online exploration is unavailable or limited.",
+    "coreUpdate": "Fit Q_k to targets y_i=r_i+gamma max_a Q_{k-1}(s'_i,a) over all logged transitions.",
+    "steps": [
+      "Collect or load a batch of transition tuples.",
+      "Initialize an action-value regressor.",
+      "Build Bellman targets with the previous regressor.",
+      "Refit the regressor and repeat for several fitted iterations."
+    ],
+    "pseudocode": [
+      "for k in fitted iterations:",
+      "  for each logged transition i:",
+      "    y_i <- r_i + gamma*max_a Q_{k-1}(s_i_next,a)",
+      "  fit regressor Q_k to (s_i,a_i)->y_i"
+    ],
+    "equations": [
+      "y_i^{(k)}=r_i+\\gamma\\max_a Q_{k-1}(s'_i,a)"
+    ],
+    "implementationNotes": [
+      "Logged-action coverage is critical; extrapolating to unseen actions is a major risk.",
+      "Use validation/off-policy evaluation before deployment."
+    ],
+    "failureModes": [
+      "Distribution shift can make high-valued unseen actions artifacts of the function approximator.",
+      "Batch data may encode a poor behavior policy with limited support."
+    ],
+    "related": [
+      "LTV optimization",
+      "Q-learning",
+      "function approximation"
+    ]
+  },
+  {
+    "chapter": 17,
+    "id": "ch17-4",
+    "name": "Intra-option learning",
+    "family": "Hierarchical RL",
+    "bookAnchor": "Section 17.3 options discussion",
+    "plain": "Update an option whenever the current experience is consistent with that option, even if the agent did not explicitly choose it at the top level.",
+    "technical": "Uses off-policy updates for option-value or intra-option value functions so temporally extended actions can learn from primitive transitions generated during ongoing behavior.",
+    "objective": "Make option learning more data-efficient than waiting only for completed option executions.",
+    "coreUpdate": "Option-value backups combine immediate reward with continuation probability 1-beta_o(s') and termination value beta_o(s') max_o' Q(s',o').",
+    "steps": [
+      "For each relevant option, test whether its intra-option policy assigns probability to the observed action.",
+      "Compute the option continuation/termination backup.",
+      "Apply an off-policy correction if learning about an option not currently controlling behavior.",
+      "Update option values before the option necessarily terminates."
+    ],
+    "pseudocode": [
+      "for option o consistent with transition:",
+      "  target <- R + gamma*((1-beta_o(S_next))*Q(S_next,o)+beta_o(S_next)*max_o2 Q(S_next,o2))",
+      "  Q(S,o) <- Q(S,o)+alpha*rho*(target-Q(S,o))"
+    ],
+    "equations": [
+      "U(s',o)=(1-\\beta_o(s'))Q(s',o)+\\beta_o(s')\\max_{o'}Q(s',o')"
+    ],
+    "implementationNotes": [
+      "You must implement initiation sets and termination functions before debugging value updates.",
+      "Off-policy intra-option learning can reuse much more experience than option-completion learning."
+    ],
+    "failureModes": [
+      "Updating options whose policies could not have generated the action creates invalid credit.",
+      "Bad termination probabilities can trap the agent in or out of options."
+    ],
+    "related": [
+      "options framework",
+      "SMDP learning",
+      "off-policy learning"
+    ]
+  },
+  {
+    "chapter": 17,
+    "id": "ch17-5",
+    "name": "Option value iteration / SMDP planning",
+    "family": "Hierarchical planning",
+    "bookAnchor": "Section 17.3 option Bellman equations",
+    "plain": "Plan over skills as if they were actions that last for a while, discounting across however long each skill runs.",
+    "technical": "Generalizes Bellman optimality backups to semi-Markov options by backing up reward accumulated over an option's duration plus discounted value at the option termination state.",
+    "objective": "Use dynamic programming ideas when the action choices are temporally extended options rather than primitive actions.",
+    "coreUpdate": "V(s) <- max_o E[R_{t+1}+...+gamma^{k-1}R_{t+k}+gamma^k V(S_{t+k}) | S_t=s,o].",
+    "steps": [
+      "Enumerate available options from the state's initiation set.",
+      "Evaluate each option's multi-step reward and termination distribution.",
+      "Discount the terminal state's value by the random duration.",
+      "Choose or improve the policy over options."
+    ],
+    "pseudocode": [
+      "for each state s:",
+      "  for each option o in I(s):",
+      "    backup[o] <- expected discounted reward during o + expected gamma^duration*V(termination_state)",
+      "  V(s) <- max_o backup[o]"
+    ],
+    "equations": [
+      "V(s)=\\max_o\\mathbb{E}[R_{t+1}+\\cdots+\\gamma^{k-1}R_{t+k}+\\gamma^kV(S_{t+k})|S_t=s,o]"
+    ],
+    "implementationNotes": [
+      "Duration k is random; do not treat all options as one-step unless they actually terminate every step.",
+      "Planning over options trades a smaller decision tree for model/option-evaluation complexity."
+    ],
+    "failureModes": [
+      "Ignoring option duration overvalues long options.",
+      "An option set with poor coverage can make the hierarchical optimum worse than primitive-action control."
+    ],
+    "related": [
+      "options framework",
+      "value iteration",
+      "SMDP"
+    ]
+  },
+  {
+    "chapter": 17,
+    "id": "ch17-6",
+    "name": "Potential-based reward shaping",
+    "family": "Reward design",
+    "bookAnchor": "Section 17.4 reward design discussion",
+    "plain": "Give extra hints using a potential score, but structure them so the best final policy stays the same.",
+    "technical": "Adds shaping reward F(s,s')=gamma Phi(s')-Phi(s), which changes transient learning signals while preserving optimal policies under standard discounted assumptions.",
+    "objective": "Speed learning without changing which behavior is truly optimal.",
+    "coreUpdate": "R'_t = R_t + gamma Phi(S_{t+1}) - Phi(S_t).",
+    "steps": [
+      "Define a potential function that measures progress-like state information.",
+      "Add the discounted potential difference to each reward.",
+      "Train the RL algorithm on shaped reward.",
+      "Check policy invariance and remove shaping from evaluation if needed."
+    ],
+    "pseudocode": [
+      "Phi <- progress potential",
+      "for transition S,R,S_next:",
+      "  F <- gamma*Phi(S_next)-Phi(S)",
+      "  shaped_R <- R + F",
+      "  feed shaped_R to learner"
+    ],
+    "equations": [
+      "F(s,s')=\\gamma\\Phi(s')-\\Phi(s)",
+      "R'(s,a,s')=R(s,a,s')+F(s,s')"
+    ],
+    "implementationNotes": [
+      "Use shaping as an optimization aid, not as a hidden change to the task objective.",
+      "Potential-based shaping is safest when the discount and terminal handling match the theoretical assumptions."
+    ],
+    "failureModes": [
+      "Arbitrary shaping can create reward hacking and different optimal policies.",
+      "Terminal potentials handled incorrectly can add spurious terminal bonuses."
+    ],
+    "related": [
+      "reward design",
+      "potential functions",
+      "policy invariance"
+    ]
   }
+
 ] satisfies AlgorithmDetail[];
 
 export const algorithmTotals = {

@@ -44,6 +44,7 @@ A single-page, light-theme explainer site for `../RLbook2020.pdf` (Sutton & Bart
   - three-step solution strategy,
   - checkpoint for whether the answer is on track.
 - Standalone, highly detailed chapter pages for every chapter, each combining:
+  - Book-source algorithm audit mapping PDF algorithm boxes/source methods to detailed cards,
   - chapter overview,
   - algorithmic machinery,
   - section deep dives,
@@ -51,7 +52,7 @@ A single-page, light-theme explainer site for `../RLbook2020.pdf` (Sutton & Bart
   - formula cards,
   - figure/example anchors,
   - exercise coaching.
-- Algorithm catalog with 95 detailed algorithm/procedure cards across the book, including:
+- Algorithm catalog with 109 detailed algorithm/procedure cards across the book, including:
   - objective and core update,
   - operational steps,
   - pseudocode,
@@ -105,7 +106,8 @@ Local runtime pieces on this workstation:
 - `src/lib/formulaAtlas.ts` - 44 equation/formal-template cards spanning the whole book.
 - `src/lib/evidenceGuide.ts` - 147 figure/table/example guide cards spanning all 17 chapters.
 - `src/lib/exerciseCoach.ts` - 145 exercise-coach cards generated from the PDF exercise anchors without copying exercise text.
-- `src/lib/algorithmCatalog.ts` and `src/lib/algorithmDossier.ts` - 95 detailed algorithm/procedure cards keyed by chapter.
+- `src/lib/algorithmCatalog.ts` and `src/lib/algorithmDossier.ts` - 109 detailed algorithm/procedure cards keyed by chapter.
+- `src/lib/algorithmSourceAudit.ts` - PDF-source crosswalk mapping named algorithm boxes/methods to the detailed cards on each chapter page.
 - `src/app/page.tsx` - page composition and section order.
 - `src/app/chapters/[chapter]/page.tsx` - static chapter-detail route for all 17 chapters.
 - `src/components/TermLab.tsx` - interactive notation browser.

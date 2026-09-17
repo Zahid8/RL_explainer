@@ -5,6 +5,7 @@ import { TeX } from "@/components/Math";
 import { Chip, Plain } from "@/components/Section";
 import { algorithmsForChapter, type AlgorithmDetail } from "@/lib/algorithmCatalog";
 import { algorithmDossier, type AlgorithmDossierSection } from "@/lib/algorithmDossier";
+import { sourceAuditsForChapter, type AlgorithmSourceAudit } from "@/lib/algorithmSourceAudit";
 import { chapterDeepDives } from "@/lib/deepDives";
 import { evidenceGuideItems } from "@/lib/evidenceGuide";
 import { exerciseCoachCards } from "@/lib/exerciseCoach";
@@ -40,6 +41,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
   const mastery = chapterMastery.find((entry) => entry.n === item.n);
   const algorithms = algorithmsForChapter(item.n);
   const formulas = formulaAtlas.filter((formula) => formula.chapter === item.n);
+  const sourceAudits = sourceAuditsForChapter(item.n);
   const evidence = evidenceGuideItems.filter((entry) => entry.chapter === item.n);
   const exercises = exerciseCoachCards.filter((entry) => entry.chapter === item.n);
   const prev = chapters.find((entry) => entry.n === item.n - 1);
@@ -66,7 +68,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
               <Stat value={String(deep?.sectionDetails.length ?? item.sections.length)} label="section notes" />
               <Stat value={String(algorithms.length)} label="algorithms" />
               <Stat value={String(formulas.length)} label="formula cards" />
-              <Stat value={String(evidence.length + exercises.length)} label="anchors + exercises" />
+              <Stat value={String(sourceAudits.length)} label="source cues" />
             </div>
           </div>
         </div>
@@ -81,10 +83,17 @@ export default async function ChapterPage({ params }: { params: Params }) {
           </div>
         </section>
 
-        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, evidence: evidence.length, exercises: exercises.length }} />
+        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, evidence: evidence.length, exercises: exercises.length, sourceAudits: sourceAudits.length }} />
+
+        <section id="source-audit" className="scroll-mt-24">
+          <SectionTitle eyebrow="01 - Book-source algorithm audit" title="Named algorithm boxes and source methods from the PDF, mapped to this page." lead="This crosswalk is the coverage check: every source entry names where it appears in the book and which detailed card(s) below explain it." />
+          <div className="mt-6 grid gap-4 lg:grid-cols-2">
+            {sourceAudits.map((audit) => <SourceAuditCard key={audit.sourceTitle} audit={audit} algorithms={algorithms} />)}
+          </div>
+        </section>
 
         <section id="algorithms" className="scroll-mt-24">
-          <SectionTitle eyebrow="01 - Algorithmic machinery" title="Every algorithmic idea attached to this chapter, explained as implementation steps." lead="Each card names the objective, the update target, operational steps, pseudocode, equations, implementation notes, and failure modes." />
+          <SectionTitle eyebrow="02 - Algorithmic machinery" title="Every algorithmic idea attached to this chapter, explained as implementation steps." lead="Each card names the objective, the update target, operational steps, pseudocode, equations, implementation notes, and failure modes." />
           <div className="mt-6 grid gap-5">
             {algorithms.map((algorithm) => <AlgorithmCard key={algorithm.id} algorithm={algorithm} />)}
           </div>
@@ -92,7 +101,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
 
         {deep ? (
           <section id="sections" className="scroll-mt-24">
-            <SectionTitle eyebrow="02 - Section-by-section deep dive" title="The chapter broken into its PDF section structure." lead={deep.focus} />
+            <SectionTitle eyebrow="03 - Section-by-section deep dive" title="The chapter broken into its PDF section structure." lead={deep.focus} />
             <div className="mt-6 grid gap-5 lg:grid-cols-[0.8fr_1.2fr]">
               <div className="grid gap-4 self-start">
                 <Panel title="Mechanics to trace" items={deep.mechanics} accent="cyan" />
@@ -119,7 +128,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
 
         {mastery ? (
           <section id="mastery" className="scroll-mt-24">
-            <SectionTitle eyebrow="03 - Mastery notebook" title="Derivations, process walkthroughs, traps, and checks." lead={mastery.thesis} />
+            <SectionTitle eyebrow="04 - Mastery notebook" title="Derivations, process walkthroughs, traps, and checks." lead={mastery.thesis} />
             <div className="mt-6 grid gap-5">
               <DetailGroup label="Derivation clinics" items={mastery.derivations} />
               <DetailGroup label="Process walkthroughs" items={mastery.process} />
@@ -147,7 +156,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
         ) : null}
 
         <section id="formulas" className="scroll-mt-24">
-          <SectionTitle eyebrow="04 - Formula atlas for this chapter" title="Formal templates and what each symbol is doing." lead="These are the chapter-relevant entries from the global formula atlas." />
+          <SectionTitle eyebrow="05 - Formula atlas for this chapter" title="Formal templates and what each symbol is doing." lead="These are the chapter-relevant entries from the global formula atlas." />
           <div className="mt-6 grid gap-4 lg:grid-cols-2">
             {formulas.map((formula) => (
               <article key={formula.label} className="rounded-xl border border-line bg-panel p-5">
@@ -167,7 +176,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
         </section>
 
         <section id="anchors" className="scroll-mt-24">
-          <SectionTitle eyebrow="05 - Figures, examples, and practice" title="All book anchors for this chapter in one place." lead="Use this as the chapter study checklist after reading the original PDF." />
+          <SectionTitle eyebrow="06 - Figures, examples, and practice" title="All book anchors for this chapter in one place." lead="Use this as the chapter study checklist after reading the original PDF." />
           <div className="mt-6 grid gap-6 lg:grid-cols-2">
             <div>
               <p className="eyebrow mb-3">Figure / table / example companion</p>
@@ -215,8 +224,9 @@ function Stat({ value, label }: { value: string; label: string }) {
   return <div className="border-b border-r border-line p-4"><p className="display text-3xl text-ink">{value}</p><p className="mono mt-2 text-[10px] uppercase tracking-[0.16em] text-dim">{label}</p></div>;
 }
 
-function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; sections: number; formulas: number; evidence: number; exercises: number } }) {
+function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; sections: number; formulas: number; evidence: number; exercises: number; sourceAudits: number } }) {
   const items = [
+    ["source-audit", `${counts.sourceAudits} source cues`],
     ["algorithms", `${counts.algorithms} algorithms`],
     ["sections", `${counts.sections} section notes`],
     ["mastery", "mastery notebook"],
@@ -237,11 +247,35 @@ function SectionTitle({ eyebrow, title, lead }: { eyebrow: string; title: string
   return <div><p className="eyebrow">{eyebrow}</p><h2 className="display mt-3 text-[clamp(30px,4vw,48px)] font-medium text-ink">{title}</h2><p className="mt-4 max-w-4xl text-base leading-relaxed text-muted">{lead}</p></div>;
 }
 
+
+function SourceAuditCard({ audit, algorithms }: { audit: AlgorithmSourceAudit; algorithms: AlgorithmDetail[] }) {
+  const covered = audit.catalogIds
+    .map((id) => algorithms.find((algorithm) => algorithm.id === id))
+    .filter((algorithm): algorithm is AlgorithmDetail => Boolean(algorithm));
+
+  return (
+    <article className="rounded-xl border border-line bg-panel p-5">
+      <div className="flex flex-wrap gap-2"><Chip accent="cyan">{audit.bookAnchor}</Chip><Chip accent="violet">{audit.sourceCue}</Chip></div>
+      <h3 className="display mt-4 text-2xl font-medium text-ink">{audit.sourceTitle}</h3>
+      <div className="mt-4 grid gap-3 md:grid-cols-2">
+        <MiniBlock label="Easy coverage" text={audit.easy} />
+        <MiniBlock label="Technical coverage" text={audit.technical} tint />
+      </div>
+      <div className="mt-4 rounded-lg border border-line bg-panel-2 p-3">
+        <p className="mono mb-2 text-[10px] uppercase tracking-[0.14em] text-dim">Detailed card coverage</p>
+        <div className="flex flex-wrap gap-1.5">
+          {covered.map((algorithm) => <a key={algorithm.id} href={`#${algorithm.id}`} className="mono rounded-full border border-line bg-white px-2 py-1 text-[10px] text-dim hover:border-cyan hover:text-ink">{algorithm.name}</a>)}
+        </div>
+      </div>
+    </article>
+  );
+}
+
 function AlgorithmCard({ algorithm }: { algorithm: AlgorithmDetail }) {
   const dossier = algorithmDossier(algorithm);
 
   return (
-    <article className="overflow-hidden rounded-xl border border-line bg-panel">
+    <article id={algorithm.id} className="scroll-mt-24 overflow-hidden rounded-xl border border-line bg-panel">
       <div className="grid gap-px bg-line lg:grid-cols-[0.85fr_1.15fr]">
         <div className="bg-panel p-5 lg:p-6">
           <div className="flex flex-wrap gap-2"><Chip accent="cyan">{algorithm.family}</Chip><Chip accent="blue">{algorithm.bookAnchor}</Chip></div>
