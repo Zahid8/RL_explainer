@@ -1,12 +1,12 @@
 # Graph Report - rlbook-explainer  (2026-09-17)
 
 ## Corpus Check
-- 42 files · ~742,127 words
+- 43 files · ~754,466 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 124 nodes · 130 edges · 4 communities detected
-- Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
+- 134 nodes · 147 edges · 5 communities detected
+- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 1 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
@@ -14,21 +14,23 @@
 - [[_COMMUNITY_Community 1|Community 1]]
 - [[_COMMUNITY_Community 2|Community 2]]
 - [[_COMMUNITY_Community 3|Community 3]]
+- [[_COMMUNITY_Community 4|Community 4]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `workedExampleForAlgorithm()` - 21 edges
-2. `algorithmProfile()` - 13 edges
+2. `algorithmProfile()` - 14 edges
 3. `algorithmDerivation()` - 10 edges
 4. `algorithmDossier()` - 8 edges
-5. `classifyAlgorithm()` - 2 edges
-6. `estimateSubject()` - 2 edges
-7. `targetConstruction()` - 2 edges
-8. `errorSignal()` - 2 edges
-9. `creditAssignment()` - 2 edges
-10. `controlMove()` - 2 edges
+5. `chapterSynthesis()` - 5 edges
+6. `comparisonAxes()` - 4 edges
+7. `ladderItem()` - 3 edges
+8. `dependencyStack()` - 2 edges
+9. `studyProtocol()` - 2 edges
+10. `oralExamPrompts()` - 2 edges
 
 ## Surprising Connections (you probably didn't know these)
-- None detected - all connections are within the same source files.
+- `ladderItem()` --calls--> `algorithmProfile()`  [INFERRED]
+  src/lib/chapterSynthesis.ts → src/lib/algorithmProfiles.ts
 
 ## Communities
 
@@ -45,8 +47,17 @@ Cohesion: 0.3
 Nodes (10): algorithmDerivation(), classifyAlgorithm(), codingTrace(), controlMove(), creditAssignment(), equationNotes(), errorSignal(), estimateSubject() (+2 more)
 
 ### Community 3 - "Community 3"
+Cohesion: 0.36
+Nodes (9): chapterSynthesis(), comparisonAxes(), dependencyStack(), groupBy(), implementationTest(), ladderItem(), oralExamPrompts(), studyProtocol() (+1 more)
+
+### Community 4 - "Community 4"
 Cohesion: 0.42
 Nodes (8): algorithmDossier(), inferBiasVariancePosition(), inferDiagnostics(), inferEstimatorShape(), inferImplementationInvariants(), inferKnobs(), inferStabilityContract(), outputPhrase()
 
 ## Suggested Questions
-_Not enough signal to generate questions. This usually means the corpus has no AMBIGUOUS edges, no bridge nodes, no INFERRED relationships, and all communities are tightly cohesive. Add more files or run with --mode deep to extract richer edges._
+_Questions this graph is uniquely positioned to answer:_
+
+- **Why does `algorithmProfile()` connect `Community 1` to `Community 3`?**
+  _High betweenness centrality (0.020) - this node is a cross-community bridge._
+- **Why does `ladderItem()` connect `Community 3` to `Community 1`?**
+  _High betweenness centrality (0.015) - this node is a cross-community bridge._
