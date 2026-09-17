@@ -166,12 +166,21 @@
       "norm_label": "motionglyph()"
     },
     {
+      "label": "FormulaLectureReader.tsx",
+      "file_type": "code",
+      "source_file": "src/components/FormulaLectureReader.tsx",
+      "source_location": "L1",
+      "id": "src_components_formulalecturereader_tsx",
+      "community": 39,
+      "norm_label": "formulalecturereader.tsx"
+    },
+    {
       "label": "Glossary.tsx",
       "file_type": "code",
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/Glossary.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_glossary_tsx",
-      "community": 39,
+      "community": 40,
       "norm_label": "glossary.tsx"
     },
     {
@@ -198,7 +207,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/AlgorithmPlayer.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_algorithmplayer_tsx",
-      "community": 40,
+      "community": 41,
       "norm_label": "algorithmplayer.tsx"
     },
     {
@@ -234,7 +243,7 @@
       "source_file": "src/components/InteractiveBlackboard.tsx",
       "source_location": "L1",
       "id": "src_components_interactiveblackboard_tsx",
-      "community": 41,
+      "community": 42,
       "norm_label": "interactiveblackboard.tsx"
     },
     {
@@ -261,23 +270,23 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/ChapterExplorer.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_chapterexplorer_tsx",
-      "community": 42,
+      "community": 43,
       "norm_label": "chapterexplorer.tsx"
     },
     {
       "label": "FormulaAtlas.tsx",
       "file_type": "code",
-      "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/FormulaAtlas.tsx",
+      "source_file": "src/components/FormulaAtlas.tsx",
       "source_location": "L1",
-      "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_formulaatlas_tsx",
+      "id": "src_components_formulaatlas_tsx",
       "community": 26,
       "norm_label": "formulaatlas.tsx"
     },
     {
       "label": "FormulaAtlas()",
       "file_type": "code",
-      "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/FormulaAtlas.tsx",
-      "source_location": "L12",
+      "source_file": "src/components/FormulaAtlas.tsx",
+      "source_location": "L13",
       "id": "components_formulaatlas_formulaatlas",
       "community": 26,
       "norm_label": "formulaatlas()"
@@ -378,7 +387,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/three/LearningLoopScene.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_three_learningloopscene_tsx",
-      "community": 43,
+      "community": 44,
       "norm_label": "learningloopscene.tsx"
     },
     {
@@ -432,7 +441,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/figures/TraceLab.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_figures_tracelab_tsx",
-      "community": 44,
+      "community": 45,
       "norm_label": "tracelab.tsx"
     },
     {
@@ -475,7 +484,7 @@
       "label": "buildCoverageAudit()",
       "file_type": "code",
       "source_file": "src/lib/coverageAudit.ts",
-      "source_location": "L99",
+      "source_location": "L101",
       "id": "lib_coverageaudit_buildcoverageaudit",
       "community": 0,
       "norm_label": "buildcoverageaudit()"
@@ -484,7 +493,7 @@
       "label": "chapterCoverageRow()",
       "file_type": "code",
       "source_file": "src/lib/coverageAudit.ts",
-      "source_location": "L143",
+      "source_location": "L147",
       "id": "lib_coverageaudit_chaptercoveragerow",
       "community": 0,
       "norm_label": "chaptercoveragerow()"
@@ -493,7 +502,7 @@
       "label": "algorithmCoverageRow()",
       "file_type": "code",
       "source_file": "src/lib/coverageAudit.ts",
-      "source_location": "L214",
+      "source_location": "L222",
       "id": "lib_coverageaudit_algorithmcoveragerow",
       "community": 2,
       "norm_label": "algorithmcoveragerow()"
@@ -502,7 +511,7 @@
       "label": "requirementProofs()",
       "file_type": "code",
       "source_file": "src/lib/coverageAudit.ts",
-      "source_location": "L248",
+      "source_location": "L256",
       "id": "lib_coverageaudit_requirementproofs",
       "community": 0,
       "norm_label": "requirementproofs()"
@@ -783,7 +792,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/mastery.ts",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_lib_mastery_ts",
-      "community": 45,
+      "community": 46,
       "norm_label": "mastery.ts"
     },
     {
@@ -828,7 +837,7 @@
       "source_file": "src/lib/paper.ts",
       "source_location": "L1",
       "id": "src_lib_paper_ts",
-      "community": 46,
+      "community": 47,
       "norm_label": "paper.ts"
     },
     {
@@ -837,7 +846,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/gsap.ts",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_lib_gsap_ts",
-      "community": 47,
+      "community": 48,
       "norm_label": "gsap.ts"
     },
     {
@@ -873,7 +882,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/exerciseCoach.ts",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_lib_exercisecoach_ts",
-      "community": 48,
+      "community": 49,
       "norm_label": "exercisecoach.ts"
     },
     {
@@ -1356,11 +1365,29 @@
     {
       "label": "formulaAtlas.ts",
       "file_type": "code",
-      "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/formulaAtlas.ts",
+      "source_file": "src/lib/formulaAtlas.ts",
       "source_location": "L1",
-      "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_lib_formulaatlas_ts",
-      "community": 49,
+      "id": "src_lib_formulaatlas_ts",
+      "community": 0,
       "norm_label": "formulaatlas.ts"
+    },
+    {
+      "label": "formulasForChapter()",
+      "file_type": "code",
+      "source_file": "src/lib/formulaAtlas.ts",
+      "source_location": "L671",
+      "id": "lib_formulaatlas_formulasforchapter",
+      "community": 0,
+      "norm_label": "formulasforchapter()"
+    },
+    {
+      "label": "formulaLectureModeCount()",
+      "file_type": "code",
+      "source_file": "src/lib/formulaAtlas.ts",
+      "source_location": "L675",
+      "id": "lib_formulaatlas_formulalecturemodecount",
+      "community": 0,
+      "norm_label": "formulalecturemodecount()"
     },
     {
       "label": "algorithmWorkedExamples.ts",
@@ -1591,7 +1618,7 @@
       "label": "SectionTitle()",
       "file_type": "code",
       "source_file": "src/app/coverage/page.tsx",
-      "source_location": "L218",
+      "source_location": "L220",
       "id": "coverage_page_sectiontitle",
       "community": 34,
       "norm_label": "sectiontitle()"
@@ -1618,7 +1645,7 @@
       "label": "glyphVariantForLabel()",
       "file_type": "code",
       "source_file": "src/app/book/page.tsx",
-      "source_location": "L266",
+      "source_location": "L277",
       "id": "book_page_glyphvariantforlabel",
       "community": 8,
       "norm_label": "glyphvariantforlabel()"
@@ -1636,7 +1663,7 @@
       "label": "generateStaticParams()",
       "file_type": "code",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L33",
+      "source_location": "L34",
       "id": "chapter_page_generatestaticparams",
       "community": 8,
       "norm_label": "generatestaticparams()"
@@ -1645,7 +1672,7 @@
       "label": "generateMetadata()",
       "file_type": "code",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L37",
+      "source_location": "L38",
       "id": "chapter_page_generatemetadata",
       "community": 8,
       "norm_label": "generatemetadata()"
@@ -1654,7 +1681,7 @@
       "label": "glyphAccentForLabel()",
       "file_type": "code",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L333",
+      "source_location": "L339",
       "id": "chapter_page_glyphaccentforlabel",
       "community": 8,
       "norm_label": "glyphaccentforlabel()"
@@ -1663,7 +1690,7 @@
       "label": "glyphVariantForLabel()",
       "file_type": "code",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L461",
+      "source_location": "L467",
       "id": "chapter_page_glyphvariantforlabel",
       "community": 8,
       "norm_label": "glyphvariantforlabel()"
@@ -1976,12 +2003,12 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/FormulaAtlas.tsx",
-      "source_location": "L12",
+      "source_file": "src/components/FormulaAtlas.tsx",
+      "source_location": "L13",
       "weight": 1.0,
-      "_src": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_formulaatlas_tsx",
+      "_src": "src_components_formulaatlas_tsx",
       "_tgt": "components_formulaatlas_formulaatlas",
-      "source": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_formulaatlas_tsx",
+      "source": "src_components_formulaatlas_tsx",
       "target": "components_formulaatlas_formulaatlas",
       "confidence_score": 1.0
     },
@@ -2121,7 +2148,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/coverageAudit.ts",
-      "source_location": "L99",
+      "source_location": "L101",
       "weight": 1.0,
       "_src": "src_lib_coverageaudit_ts",
       "_tgt": "lib_coverageaudit_buildcoverageaudit",
@@ -2133,7 +2160,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/coverageAudit.ts",
-      "source_location": "L143",
+      "source_location": "L147",
       "weight": 1.0,
       "_src": "src_lib_coverageaudit_ts",
       "_tgt": "lib_coverageaudit_chaptercoveragerow",
@@ -2145,7 +2172,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/coverageAudit.ts",
-      "source_location": "L214",
+      "source_location": "L222",
       "weight": 1.0,
       "_src": "src_lib_coverageaudit_ts",
       "_tgt": "lib_coverageaudit_algorithmcoveragerow",
@@ -2157,7 +2184,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/coverageAudit.ts",
-      "source_location": "L248",
+      "source_location": "L256",
       "weight": 1.0,
       "_src": "src_lib_coverageaudit_ts",
       "_tgt": "lib_coverageaudit_requirementproofs",
@@ -2169,7 +2196,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/coverageAudit.ts",
-      "source_location": "L137",
+      "source_location": "L141",
       "weight": 1.0,
       "_src": "lib_coverageaudit_buildcoverageaudit",
       "_tgt": "lib_coverageaudit_requirementproofs",
@@ -2230,6 +2257,18 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L109",
+      "weight": 1.0,
+      "_src": "lib_coverageaudit_buildcoverageaudit",
+      "_tgt": "lib_formulaatlas_formulalecturemodecount",
+      "source": "lib_coverageaudit_buildcoverageaudit",
+      "target": "lib_formulaatlas_formulalecturemodecount"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/coverageAudit.ts",
       "source_location": "L91",
       "weight": 1.0,
       "_src": "lib_coverageaudit_buildcoverageaudit",
@@ -2272,6 +2311,30 @@
       "_tgt": "lib_chapterdependencymap_chapterdependencymap",
       "source": "lib_coverageaudit_chaptercoveragerow",
       "target": "lib_chapterdependencymap_chapterdependencymap"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L156",
+      "weight": 1.0,
+      "_src": "lib_coverageaudit_chaptercoveragerow",
+      "_tgt": "lib_formulaatlas_formulasforchapter",
+      "source": "lib_coverageaudit_chaptercoveragerow",
+      "target": "lib_formulaatlas_formulasforchapter"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L157",
+      "weight": 1.0,
+      "_src": "lib_coverageaudit_chaptercoveragerow",
+      "_tgt": "lib_formulaatlas_formulalecturemodecount",
+      "source": "lib_coverageaudit_chaptercoveragerow",
+      "target": "lib_formulaatlas_formulalecturemodecount"
     },
     {
       "relation": "calls",
@@ -3908,6 +3971,42 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "src/lib/formulaAtlas.ts",
+      "source_location": "L671",
+      "weight": 1.0,
+      "_src": "src_lib_formulaatlas_ts",
+      "_tgt": "lib_formulaatlas_formulasforchapter",
+      "source": "src_lib_formulaatlas_ts",
+      "target": "lib_formulaatlas_formulasforchapter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/formulaAtlas.ts",
+      "source_location": "L675",
+      "weight": 1.0,
+      "_src": "src_lib_formulaatlas_ts",
+      "_tgt": "lib_formulaatlas_formulalecturemodecount",
+      "source": "src_lib_formulaatlas_ts",
+      "target": "lib_formulaatlas_formulalecturemodecount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/formulaAtlas.ts",
+      "source_location": "L676",
+      "weight": 1.0,
+      "_src": "lib_formulaatlas_formulalecturemodecount",
+      "_tgt": "lib_formulaatlas_formulasforchapter",
+      "source": "lib_formulaatlas_formulasforchapter",
+      "target": "lib_formulaatlas_formulalecturemodecount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/algorithmWorkedExamples.ts",
       "source_location": "L13",
       "weight": 1.0,
@@ -4401,7 +4500,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/coverage/page.tsx",
-      "source_location": "L218",
+      "source_location": "L220",
       "weight": 1.0,
       "_src": "src_app_coverage_page_tsx",
       "_tgt": "coverage_page_sectiontitle",
@@ -4413,7 +4512,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/book/page.tsx",
-      "source_location": "L266",
+      "source_location": "L277",
       "weight": 1.0,
       "_src": "src_app_book_page_tsx",
       "_tgt": "book_page_glyphvariantforlabel",
@@ -4437,7 +4536,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L33",
+      "source_location": "L34",
       "weight": 1.0,
       "_src": "src_app_chapters_chapter_page_tsx",
       "_tgt": "chapter_page_generatestaticparams",
@@ -4449,7 +4548,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L37",
+      "source_location": "L38",
       "weight": 1.0,
       "_src": "src_app_chapters_chapter_page_tsx",
       "_tgt": "chapter_page_generatemetadata",
@@ -4461,7 +4560,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L333",
+      "source_location": "L339",
       "weight": 1.0,
       "_src": "src_app_chapters_chapter_page_tsx",
       "_tgt": "chapter_page_glyphaccentforlabel",
@@ -4473,7 +4572,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L793",
+      "source_location": "L799",
       "weight": 1.0,
       "_src": "src_app_chapters_chapter_page_tsx",
       "_tgt": "chapter_page_glyphvariantforlabel",
@@ -4485,7 +4584,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L461",
+      "source_location": "L467",
       "weight": 1.0,
       "_src": "chapter_page_glyphvariantforlabel",
       "_tgt": "chapter_page_glyphaccentforlabel",

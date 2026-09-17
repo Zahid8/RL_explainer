@@ -10,6 +10,8 @@ export interface FormulaNote {
   watchOut: string;
 }
 
+export const formulaLectureModes = ["plain story", "symbols", "trace", "use case", "pitfall"] as const;
+
 export const formulaAtlas = [
   {
     "chapter": 1,
@@ -665,3 +667,12 @@ export const formulaAtlas = [
     "watchOut": "A GVF is defined by the whole question: cumulant, policy, discount, and state representation."
   }
 ] satisfies FormulaNote[];
+
+export function formulasForChapter(chapter: number) {
+  return formulaAtlas.filter((formula) => formula.chapter === chapter);
+}
+
+export function formulaLectureModeCount(chapter?: number) {
+  const formulas = typeof chapter === "number" ? formulasForChapter(chapter) : formulaAtlas;
+  return formulas.length * formulaLectureModes.length;
+}

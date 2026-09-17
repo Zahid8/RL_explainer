@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { formulaAtlas } from "@/lib/formulaAtlas";
+import { FormulaLectureReader } from "./FormulaLectureReader";
 import { TeX } from "./Math";
 import { Chip } from "./Section";
 
@@ -46,6 +47,8 @@ export function FormulaAtlas() {
           ))}
         </div>
       </div>
+
+      <FormulaLectureReader formulas={visible} contextTitle="Global formula atlas: all chapters" compact />
 
       <div className="grid gap-4 lg:grid-cols-2">
         {visible.map((formula) => (

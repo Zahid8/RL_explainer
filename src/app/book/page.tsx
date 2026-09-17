@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AnimatedConceptGraphic } from "@/components/AnimatedConceptGraphic";
+import { FormulaLectureReader } from "@/components/FormulaLectureReader";
 import { InteractiveBlackboard } from "@/components/InteractiveBlackboard";
 import { SectionLessonReader } from "@/components/SectionLessonReader";
 import { MotionGlyph } from "@/components/MotionGlyph";
 import { Chip } from "@/components/Section";
 import { manuscriptForChapter, manuscriptSectionCount, type ChapterManuscript } from "@/lib/chapterManuscripts";
 import { blackboardForChapter, blackboardStageCount, type ChapterBlackboard } from "@/lib/interactiveBlackboards";
+import { formulaLectureModeCount, formulasForChapter, type FormulaNote } from "@/lib/formulaAtlas";
 import { chapters } from "@/lib/paper";
 import { sectionLessonModeCount, sectionLessonsForChapter, sectionNarrativeCount, type SectionTextbookLesson } from "@/lib/sectionNarratives";
 import { standaloneLectureForChapter, standaloneLectureTileCount, type StandaloneChapterLecture } from "@/lib/standaloneBook";
@@ -16,7 +18,7 @@ export const metadata: Metadata = {
   description: "A linear standalone web-book reader for the RLbook explainer: from basics to advanced, chapter by chapter, in original words.",
 };
 
-const lectures = chapters.map((chapter) => ({ chapter, lecture: standaloneLectureForChapter(chapter), manuscript: manuscriptForChapter(chapter.n), blackboard: blackboardForChapter(chapter.n), sectionLessons: sectionLessonsForChapter(chapter.n) }));
+const lectures = chapters.map((chapter) => ({ chapter, lecture: standaloneLectureForChapter(chapter), manuscript: manuscriptForChapter(chapter.n), blackboard: blackboardForChapter(chapter.n), sectionLessons: sectionLessonsForChapter(chapter.n), formulas: formulasForChapter(chapter.n), formulaModes: formulaLectureModeCount(chapter.n) }));
 
 export default function BookPage() {
   const lectureBeats = standaloneLectureTileCount();
@@ -24,6 +26,7 @@ export default function BookPage() {
   const blackboardStages = blackboardStageCount();
   const sectionNarratives = sectionNarrativeCount();
   const guidedSectionModes = sectionLessonModeCount();
+  const formulaModes = formulaLectureModeCount();
 
   return (
     <main className="min-h-screen bg-bg text-ink">
@@ -46,6 +49,7 @@ export default function BookPage() {
                 <Chip accent="violet">{blackboardStages} blackboard stages</Chip>
                 <Chip accent="cyan">{sectionNarratives} section manuscripts</Chip>
                 <Chip accent="blue">{guidedSectionModes} guided section modes</Chip>
+                <Chip accent="violet">{formulaModes} formula lecture modes</Chip>
                 <Chip accent="lime">{lectureBeats} lecture beats</Chip>
                 <Chip accent="violet">beginner → advanced</Chip>
                 <Chip accent="orange">original wording</Chip>
@@ -83,14 +87,14 @@ export default function BookPage() {
         </aside>
 
         <div className="grid gap-12">
-          {lectures.map(({ chapter, lecture, manuscript, blackboard, sectionLessons }) => <BookChapter key={chapter.n} chapter={chapter} lecture={lecture} manuscript={manuscript} blackboard={blackboard} sectionLessons={sectionLessons} />)}
+          {lectures.map(({ chapter, lecture, manuscript, blackboard, sectionLessons, formulas, formulaModes }) => <BookChapter key={chapter.n} chapter={chapter} lecture={lecture} manuscript={manuscript} blackboard={blackboard} sectionLessons={sectionLessons} formulas={formulas} formulaModes={formulaModes} />)}
         </div>
       </div>
     </main>
   );
 }
 
-function BookChapter({ chapter, lecture, manuscript, blackboard, sectionLessons }: { chapter: (typeof chapters)[number]; lecture: StandaloneChapterLecture; manuscript: ChapterManuscript; blackboard: ChapterBlackboard; sectionLessons: SectionTextbookLesson[] }) {
+function BookChapter({ chapter, lecture, manuscript, blackboard, sectionLessons, formulas, formulaModes }: { chapter: (typeof chapters)[number]; lecture: StandaloneChapterLecture; manuscript: ChapterManuscript; blackboard: ChapterBlackboard; sectionLessons: SectionTextbookLesson[]; formulas: FormulaNote[]; formulaModes: number }) {
   return (
     <article id={`book-chapter-${chapter.n}`} className="scroll-mt-24 overflow-hidden rounded-2xl border border-line bg-panel">
       <div className="grid gap-px bg-line lg:grid-cols-[0.9fr_1.1fr]">
@@ -177,6 +181,14 @@ function BookChapter({ chapter, lecture, manuscript, blackboard, sectionLessons 
             <h3 className="display mt-2 text-3xl font-medium text-ink">Pick any section and switch between beginner, technical, board, formula, algorithm, and check modes.</h3>
           </div>
           <SectionLessonReader lessons={sectionLessons} chapterTitle={`Chapter ${chapter.n}: ${chapter.title}`} compact />
+        </section>
+        <section className="grid gap-4">
+          <div>
+            <p className="eyebrow">Interactive formula lecturer</p>
+            <h3 className="display mt-2 text-3xl font-medium text-ink">Read each equation as a story, symbol map, trace, use case, and pitfall.</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted">{formulas.length} chapter formulas become {formulaModes} equation lecture modes in this continuous book view.</p>
+          </div>
+          <FormulaLectureReader formulas={formulas} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} compact />
         </section>
         <section className="grid gap-4">
           <div>

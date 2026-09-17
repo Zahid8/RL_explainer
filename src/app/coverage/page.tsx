@@ -25,9 +25,9 @@ const visualInteractionRows = [
   },
   {
     surface: "Linear book blackboards",
-    coverage: "The /book reader renders every chapter's compact blackboard inline, so the continuous web-book path has the same visual lecture model as chapter routes.",
-    graphics: "One staged board per chapter, with gradient path, stage nodes, visual cue, beginner explanation, technical explanation, board note, and self-check.",
-    interaction: "Readers click stage pills and toggle the technical panel while staying inside the linear reading flow.",
+    coverage: "The /book reader renders every chapter's compact blackboard and formula lecturer inline, so the continuous web-book path has both visual chapter models and equation walkthroughs.",
+    graphics: "One staged board per chapter plus animated formula diagrams with story, symbol, trace, use-case, and pitfall views.",
+    interaction: "Readers click stage pills, toggle technical panels, choose formula cards, and switch equation lecture modes while staying inside the linear reading flow.",
   },
   {
     surface: "Algorithm cards and index",
@@ -69,6 +69,7 @@ export default function CoveragePage() {
                 <Stat value={String(audit.totals.blackboardStages)} label="blackboard stages" />
                 <Stat value={String(audit.totals.sectionNarratives)} label="section manuscripts" />
                 <Stat value={String(audit.totals.sectionInteractiveModes)} label="guided modes" />
+                <Stat value={String(audit.totals.formulaInteractiveModes)} label="formula modes" />
                 <Stat value={String(audit.totals.lectureBeats)} label="lecture beats" />
                 <Stat value={String(audit.totals.completeAlgorithms)} label="complete alg cards" />
                 <Stat value={String(audit.totals.warnings)} label="audit warnings" />
@@ -155,7 +156,7 @@ function ChapterCoverageCard({ chapter }: { chapter: ChapterCoverageRow }) {
         </div>
         <Link href={chapter.route} className="mono rounded-full border border-line bg-white px-3 py-2 text-[11px] uppercase tracking-[0.12em] text-muted hover:border-cyan hover:text-ink">Open chapter</Link>
       </div>
-      <div className="mt-4 grid gap-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-[repeat(13,minmax(0,1fr))]">
+      <div className="mt-4 grid gap-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-[repeat(14,minmax(0,1fr))]">
         <Metric label="algorithms" value={chapter.algorithms} />
         <Metric label="source cues" value={chapter.sourceCues} />
         <Metric label="manuscript" value={chapter.manuscriptSections} />
@@ -166,6 +167,7 @@ function ChapterCoverageCard({ chapter }: { chapter: ChapterCoverageRow }) {
         <Metric label="sections" value={chapter.sectionNotes} />
         <Metric label="mastery" value={chapter.masteryTiles} />
         <Metric label="formulas" value={chapter.formulas} />
+        <Metric label="formula modes" value={chapter.formulaInteractiveModes} />
         <Metric label="anchors" value={chapter.evidenceAnchors} />
         <Metric label="exercises" value={chapter.exerciseGuides} />
         <Metric label="gates" value={chapter.synthesisGates + chapter.dependencyGates} />

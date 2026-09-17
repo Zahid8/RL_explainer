@@ -1,12 +1,12 @@
 # Graph Report - rlbook-explainer  (2026-09-17)
 
 ## Corpus Check
-- 59 files · ~838,408 words
+- 60 files · ~840,585 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 204 nodes · 246 edges · 13 communities detected
-- Extraction: 91% EXTRACTED · 9% INFERRED · 0% AMBIGUOUS · INFERRED: 23 edges (avg confidence: 0.8)
+- 207 nodes · 252 edges · 13 communities detected
+- Extraction: 90% EXTRACTED · 10% INFERRED · 0% AMBIGUOUS · INFERRED: 26 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
@@ -27,10 +27,10 @@
 ## God Nodes (most connected - your core abstractions)
 1. `workedExampleForAlgorithm()` - 22 edges
 2. `algorithmProfile()` - 15 edges
-3. `algorithmDerivation()` - 11 edges
-4. `chapterCoverageRow()` - 9 edges
+3. `chapterCoverageRow()` - 11 edges
+4. `algorithmDerivation()` - 11 edges
 5. `algorithmDossier()` - 9 edges
-6. `buildCoverageAudit()` - 7 edges
+6. `buildCoverageAudit()` - 8 edges
 7. `algorithmCoverageRow()` - 7 edges
 8. `chapterSynthesis()` - 6 edges
 9. `chapterDependencyMap()` - 6 edges
@@ -51,8 +51,8 @@
 ## Communities
 
 ### Community 0 - "Community 0"
-Cohesion: 0.12
-Nodes (13): algorithmsForChapter(), sourceAuditsForChapter(), manuscriptForChapter(), manuscriptSectionCount(), buildCoverageAudit(), chapterCoverageRow(), requirementProofs(), blackboardForChapter() (+5 more)
+Cohesion: 0.11
+Nodes (15): algorithmsForChapter(), sourceAuditsForChapter(), manuscriptForChapter(), manuscriptSectionCount(), buildCoverageAudit(), chapterCoverageRow(), requirementProofs(), formulaLectureModeCount() (+7 more)
 
 ### Community 1 - "Community 1"
 Cohesion: 0.18
@@ -110,14 +110,14 @@ Nodes (2): evalJs(), send()
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `algorithmCoverageRow()` connect `Community 2` to `Community 0`, `Community 1`, `Community 3`, `Community 7`?**
-  _High betweenness centrality (0.200) - this node is a cross-community bridge._
+  _High betweenness centrality (0.203) - this node is a cross-community bridge._
 - **Why does `chapterCoverageRow()` connect `Community 0` to `Community 4`, `Community 5`, `Community 6`?**
-  _High betweenness centrality (0.125) - this node is a cross-community bridge._
+  _High betweenness centrality (0.134) - this node is a cross-community bridge._
 - **Why does `workedExampleForAlgorithm()` connect `Community 1` to `Community 2`?**
   _High betweenness centrality (0.096) - this node is a cross-community bridge._
 - **Are the 2 inferred relationships involving `algorithmProfile()` (e.g. with `algorithmCoverageRow()` and `ladderItem()`) actually correct?**
   _`algorithmProfile()` has 2 INFERRED edges - model-reasoned connections that need verification._
-- **Are the 8 inferred relationships involving `chapterCoverageRow()` (e.g. with `algorithmsForChapter()` and `chapterSynthesis()`) actually correct?**
-  _`chapterCoverageRow()` has 8 INFERRED edges - model-reasoned connections that need verification._
+- **Are the 10 inferred relationships involving `chapterCoverageRow()` (e.g. with `algorithmsForChapter()` and `chapterSynthesis()`) actually correct?**
+  _`chapterCoverageRow()` has 10 INFERRED edges - model-reasoned connections that need verification._
 - **Should `Community 0` be split into smaller, more focused modules?**
-  _Cohesion score 0.12 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.11 - nodes in this community are weakly interconnected._

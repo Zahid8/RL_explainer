@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { TeX } from "@/components/Math";
 import { AnimatedConceptGraphic } from "@/components/AnimatedConceptGraphic";
+import { FormulaLectureReader } from "@/components/FormulaLectureReader";
 import { InteractiveBlackboard } from "@/components/InteractiveBlackboard";
 import { SectionLessonReader } from "@/components/SectionLessonReader";
 import { MotionGlyph } from "@/components/MotionGlyph";
@@ -18,7 +19,7 @@ import { sourceAuditsForChapter, type AlgorithmSourceAudit } from "@/lib/algorit
 import { chapterDeepDives } from "@/lib/deepDives";
 import { evidenceGuideItems } from "@/lib/evidenceGuide";
 import { exerciseCoachCards } from "@/lib/exerciseCoach";
-import { formulaAtlas } from "@/lib/formulaAtlas";
+import { formulaLectureModeCount, formulasForChapter } from "@/lib/formulaAtlas";
 import { blackboardForChapter } from "@/lib/interactiveBlackboards";
 import { chapterMastery } from "@/lib/mastery";
 import { chapters } from "@/lib/paper";
@@ -55,7 +56,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
   const algorithms = algorithmsForChapter(item.n);
   const synthesis = chapterSynthesis(item, algorithms);
   const dependencyMap = chapterDependencyMap(item, chapters, algorithms);
-  const formulas = formulaAtlas.filter((formula) => formula.chapter === item.n);
+  const formulas = formulasForChapter(item.n);
+  const formulaModes = formulaLectureModeCount(item.n);
   const sourceAudits = sourceAuditsForChapter(item.n);
   const evidence = evidenceGuideItems.filter((entry) => entry.chapter === item.n);
   const exercises = exerciseCoachCards.filter((entry) => entry.chapter === item.n);
@@ -89,6 +91,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
                 <Stat value={String(deep?.sectionDetails.length ?? item.sections.length)} label="section notes" />
                 <Stat value={String(algorithms.length)} label="algorithms" />
                 <Stat value={String(formulas.length)} label="formula cards" />
+                <Stat value={String(formulaModes)} label="formula modes" />
                 <Stat value={String(sourceAudits.length)} label="source cues" />
               </div>
             </div>
@@ -106,7 +109,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
           <AnimatedConceptGraphic label="Story loop" variant="loop" caption="The easy story and the technical story update each other: intuition points at notation, notation checks intuition." compact />
         </section>
 
-        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, sectionLessons: sectionLessons.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, evidence: evidence.length, exercises: exercises.length, sourceAudits: sourceAudits.length }} />
+        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, sectionLessons: sectionLessons.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, formulaModes, evidence: evidence.length, exercises: exercises.length, sourceAudits: sourceAudits.length }} />
 
         <ChapterManuscriptBlock manuscript={manuscript} />
 
@@ -203,7 +206,10 @@ export default async function ChapterPage({ params }: { params: Params }) {
         ) : null}
 
         <section id="formulas" className="scroll-mt-24">
-          <SectionTitle eyebrow="05 - Formula atlas for this chapter" title="Formal templates and what each symbol is doing." lead="These are the chapter-relevant entries from the global formula atlas." />
+          <SectionTitle eyebrow="05 - Formula atlas for this chapter" title="Formal templates and what each symbol is doing." lead="These are the chapter-relevant entries from the global formula atlas, plus an interactive lecturer that moves each formula through story, symbols, trace, use, and pitfall modes." />
+          <div className="mt-6">
+            <FormulaLectureReader formulas={formulas} contextTitle={`Chapter ${item.n}: ${item.title}`} />
+          </div>
           <div className="mt-6 grid gap-4 lg:grid-cols-2">
             {formulas.map((formula) => (
               <article key={formula.label} className="rounded-xl border border-line bg-panel p-5">
@@ -278,7 +284,7 @@ function Stat({ value, label }: { value: string; label: string }) {
   );
 }
 
-function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; manuscriptSections: number; blackboardStages: number; sectionLessons: number; lectureBeats: number; sections: number; formulas: number; evidence: number; exercises: number; sourceAudits: number } }) {
+function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; manuscriptSections: number; blackboardStages: number; sectionLessons: number; lectureBeats: number; sections: number; formulas: number; formulaModes: number; evidence: number; exercises: number; sourceAudits: number } }) {
   const items = [
     ["manuscript", `${counts.manuscriptSections} manuscript moves`],
     ["blackboard", `${counts.blackboardStages} blackboard stages`],
@@ -291,7 +297,7 @@ function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; 
     ["algorithms", `${counts.algorithms} algorithms`],
     ["sections", `${counts.sections} section notes`],
     ["mastery", "mastery notebook"],
-    ["formulas", `${counts.formulas} formulas`],
+    ["formulas", `${counts.formulas} formulas · ${counts.formulaModes} modes`],
     ["anchors", `${counts.evidence} anchors + ${counts.exercises} exercises`],
   ];
   return (
