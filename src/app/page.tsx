@@ -16,12 +16,14 @@ import { BanditLab } from "@/components/figures/BanditLab";
 import { BellmanLab } from "@/components/figures/BellmanLab";
 import { TraceLab } from "@/components/figures/TraceLab";
 import { manuscriptSectionCount } from "@/lib/chapterManuscripts";
+import { blackboardStageCount } from "@/lib/interactiveBlackboards";
 import { chapters } from "@/lib/paper";
 import { standaloneLectureTileCount } from "@/lib/standaloneBook";
 
 export default function Home() {
   const lectureBeats = standaloneLectureTileCount();
   const manuscriptMoves = manuscriptSectionCount();
+  const blackboardStages = blackboardStageCount();
 
   return (
     <main>
@@ -34,7 +36,7 @@ export default function Home() {
         lead="The site now teaches the material as a first-principles course: each chapter starts from zero, uses graphical mental models, then builds the technical definitions, equations, algorithms, and checkpoints in its own words."
         tint
       >
-        <StandaloneBookPledge lectureBeats={lectureBeats} manuscriptMoves={manuscriptMoves} />
+        <StandaloneBookPledge lectureBeats={lectureBeats} manuscriptMoves={manuscriptMoves} blackboardStages={blackboardStages} />
       </Section>
       <Section
         id="terms"
@@ -143,7 +145,7 @@ export default function Home() {
             <p>This is an original standalone teaching site organized around the book&apos;s chapter and section structure. It avoids copying the book&apos;s prose and labels synthetic diagrams/labs as illustrative.</p>
           </Note>
           <Note title="Coverage note">
-            <p>The chapter list covers {chapters.length} chapters, {manuscriptMoves} bespoke manuscript moves, {lectureBeats} standalone lecture beats, all top-level sections shown in the PDF contents, 161 section notes, a 170-tile mastery notebook, a 44-item formula atlas, a 147-card figure/example atlas, and 145 exercise-coach cards. Use the route pages as a complete original lecture path, then use the practice prompts to check whether the ideas are really yours.</p>
+            <p>The chapter list covers {chapters.length} chapters, {manuscriptMoves} bespoke manuscript moves, {blackboardStages} interactive blackboard stages, {lectureBeats} standalone lecture beats, all top-level sections shown in the PDF contents, 161 section notes, a 170-tile mastery notebook, a 44-item formula atlas, a 147-card figure/example atlas, and 145 exercise-coach cards. Use the route pages as a complete original lecture path, then use the practice prompts to check whether the ideas are really yours.</p>
           </Note>
         </div>
       </Section>
@@ -170,16 +172,17 @@ export default function Home() {
   );
 }
 
-function StandaloneBookPledge({ lectureBeats, manuscriptMoves }: { lectureBeats: number; manuscriptMoves: number }) {
+function StandaloneBookPledge({ lectureBeats, manuscriptMoves, blackboardStages }: { lectureBeats: number; manuscriptMoves: number; blackboardStages: number }) {
   const cards = [
     ["Start from zero", "Every chapter begins with a beginner story, a mental picture to draw, and a promise of what you will be able to explain by the end."],
+    ["Draw before equations", `${blackboardStages} clickable blackboard stages let each chapter show a visual model, beginner explanation, technical explanation, board note, and self-check before the dense cards.`],
     ["Teach each section", `${manuscriptMoves} bespoke manuscript moves and ${lectureBeats} section-level lecture beats turn the chapter outline into questions, visual metaphors, technical builds, board-work steps, and checkpoints.`],
     ["Go technical", "Algorithms, formulas, derivations, profiles, worked microscopes, traps, and implementation checks are still present after the easy explanation."],
     ["Stay original", "The wording is newly written for this web book: it follows the chapter structure and technical ideas without copying the copyrighted prose or figures."],
   ];
 
   return (
-    <div className="grid gap-5 lg:grid-cols-4">
+    <div className="grid gap-5 lg:grid-cols-5">
       {cards.map(([title, text], index) => (
         <article key={title} className="rounded-xl border border-line bg-panel p-6">
           <div className="flex items-start justify-between gap-3">
@@ -187,7 +190,7 @@ function StandaloneBookPledge({ lectureBeats, manuscriptMoves }: { lectureBeats:
               <p className="mono text-[11px] uppercase tracking-[0.14em] text-cyan">Book principle {index + 1}</p>
               <h3 className="display mt-3 text-3xl font-medium text-ink">{title}</h3>
             </div>
-            <MotionGlyph label={title} variant={index === 1 ? "bars" : index === 2 ? "formula" : index === 3 ? "check" : "loop"} accent={index === 2 ? "violet" : index === 3 ? "lime" : "cyan"} />
+            <MotionGlyph label={title} variant={index === 1 ? "tree" : index === 2 ? "bars" : index === 3 ? "formula" : index === 4 ? "check" : "loop"} accent={index === 3 ? "violet" : index === 4 ? "lime" : "cyan"} />
           </div>
           <p className="mt-4 text-sm leading-relaxed text-muted">{text}</p>
           {index === 0 ? <a className="mono mt-4 inline-flex rounded-full border border-cyan bg-white px-3 py-2 text-[11px] uppercase tracking-[0.14em] text-cyan hover:bg-cyan hover:text-white" href="/book">Open linear book mode</a> : null}

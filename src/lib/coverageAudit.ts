@@ -12,6 +12,7 @@ import { exerciseCoachCards } from "@/lib/exerciseCoach";
 import { formulaAtlas } from "@/lib/formulaAtlas";
 import { chapterMastery } from "@/lib/mastery";
 import { manuscriptForChapter, manuscriptSectionCount } from "@/lib/chapterManuscripts";
+import { blackboardForChapter, blackboardStageCount } from "@/lib/interactiveBlackboards";
 import { chapters } from "@/lib/paper";
 import { standaloneLectureForChapter, standaloneLectureTileCount } from "@/lib/standaloneBook";
 
@@ -30,6 +31,7 @@ export interface ChapterCoverageRow {
   algorithms: number;
   sourceCues: number;
   manuscriptSections: number;
+  blackboardStages: number;
   lectureBeats: number;
   sectionNotes: number;
   masteryTiles: number;
@@ -74,6 +76,7 @@ export interface CoverageAudit {
     algorithmFamilies: number;
     sourceCues: number;
     manuscriptSections: number;
+    blackboardStages: number;
     lectureBeats: number;
     sectionNotes: number;
     masteryTiles: number;
@@ -93,6 +96,7 @@ export function buildCoverageAudit(): CoverageAudit {
   const algorithmRows = algorithmCatalog.map(algorithmCoverageRow);
   const sourceCues = chapters.reduce((sum, chapter) => sum + sourceAuditsForChapter(chapter.n).length, 0);
   const manuscriptSections = manuscriptSectionCount();
+  const blackboardStages = blackboardStageCount();
   const lectureBeats = standaloneLectureTileCount();
   const sectionNotes = chapters.reduce((sum, chapter) => sum + (chapterDeepDives[chapter.n]?.sectionDetails.length ?? 0), 0);
   const masteryTiles = chapterMastery.reduce((sum, chapter) => sum + chapter.derivations.length + chapter.process.length + chapter.traps.length + chapter.checks.length, 0);
@@ -107,6 +111,7 @@ export function buildCoverageAudit(): CoverageAudit {
     algorithmFamilies: new Set(algorithmCatalog.map((algorithm) => algorithm.family)).size,
     sourceCues,
     manuscriptSections,
+    blackboardStages,
     lectureBeats,
     sectionNotes,
     masteryTiles,
@@ -140,12 +145,14 @@ function chapterCoverageRow(chapterNumber: number): ChapterCoverageRow {
   const exercises = exerciseCoachCards.filter((item) => item.chapter === chapterNumber);
   const sourceCues = sourceAuditsForChapter(chapterNumber);
   const manuscript = manuscriptForChapter(chapterNumber);
+  const blackboard = blackboardForChapter(chapterNumber);
   const lecture = standaloneLectureForChapter(chapter);
 
   const masteryTiles = mastery ? mastery.derivations.length + mastery.process.length + mastery.traps.length + mastery.checks.length : 0;
   const layers = [
     "standalone route",
     "original manuscript",
+    "interactive blackboard",
     "from-scratch lecture",
     "chapter synthesis ladder",
     "cross-chapter dependency map",
@@ -161,6 +168,7 @@ function chapterCoverageRow(chapterNumber: number): ChapterCoverageRow {
     algorithms.length ? "" : "No algorithm cards found for this chapter.",
     sourceCues.length ? "" : "No source-audit cues found for this chapter.",
     manuscript.sections.length >= 3 ? "" : "Original manuscript has fewer than three chapter-specific moves.",
+    blackboard.stages.length >= 4 ? "" : "Interactive blackboard has fewer than four stages.",
     lecture.beats.length >= (deep?.sectionDetails.length ?? chapter.sections.length) ? "" : "Standalone lecture beats do not cover every section.",
     deep?.sectionDetails.length ? "" : "No section-level deep dives found for this chapter.",
     masteryTiles ? "" : "No mastery tiles found for this chapter.",
@@ -173,6 +181,7 @@ function chapterCoverageRow(chapterNumber: number): ChapterCoverageRow {
     algorithms: algorithms.length,
     sourceCues: sourceCues.length,
     manuscriptSections: manuscript.sections.length,
+    blackboardStages: blackboard.stages.length,
     lectureBeats: lecture.beats.length,
     sectionNotes: deep?.sectionDetails.length ?? 0,
     masteryTiles,
@@ -224,10 +233,17 @@ function requirementProofs(totals: CoverageAudit["totals"]): RequirementProof[] 
   return [
     {
       label: "Linear standalone book reader",
-      status: totals.bookReaderRoutes === 1 && totals.lectureBeats >= totals.sectionNotes && totals.manuscriptSections >= 51 ? "complete" : "warning",
-      evidence: `/book is the continuous web-book route and renders ${totals.manuscriptSections} bespoke manuscript moves plus the same ${totals.lectureBeats} lecture beats used by the chapter lessons.`,
+      status: totals.bookReaderRoutes === 1 && totals.lectureBeats >= totals.sectionNotes && totals.manuscriptSections >= 51 && totals.blackboardStages >= 68 ? "complete" : "warning",
+      evidence: `/book is the continuous web-book route and renders ${totals.manuscriptSections} bespoke manuscript moves, ${totals.blackboardStages} interactive blackboard stages, plus the same ${totals.lectureBeats} lecture beats used by the chapter lessons.`,
       easy: "Readers can now read the whole course in order without jumping between chapter cards.",
       technical: "The App Router `/book` page imports the chapter dataset and standaloneLectureForChapter() output, then renders every chapter sequentially with table of contents anchors and links to full chapter labs.",
+    },
+    {
+      label: "Interactive graphical lecture boards",
+      status: totals.blackboardStages >= 68 ? "complete" : "warning",
+      evidence: `${totals.blackboardStages} clickable blackboard stages are present: four stages for each of the 17 chapters.`,
+      easy: "Every chapter now has a visual board students can click through instead of only reading prose.",
+      technical: "interactiveBlackboards.ts provides staged beginner/technical/visual/check content for each chapter, rendered by the client-side InteractiveBlackboard component in /book and chapter routes.",
     },
     {
       label: "Original bespoke manuscript prose",

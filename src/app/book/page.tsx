@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AnimatedConceptGraphic } from "@/components/AnimatedConceptGraphic";
+import { InteractiveBlackboard } from "@/components/InteractiveBlackboard";
 import { MotionGlyph } from "@/components/MotionGlyph";
 import { Chip } from "@/components/Section";
 import { manuscriptForChapter, manuscriptSectionCount, type ChapterManuscript } from "@/lib/chapterManuscripts";
+import { blackboardForChapter, blackboardStageCount, type ChapterBlackboard } from "@/lib/interactiveBlackboards";
 import { chapters } from "@/lib/paper";
 import { standaloneLectureForChapter, standaloneLectureTileCount, type StandaloneChapterLecture } from "@/lib/standaloneBook";
 
@@ -12,11 +14,12 @@ export const metadata: Metadata = {
   description: "A linear standalone web-book reader for the RLbook explainer: from basics to advanced, chapter by chapter, in original words.",
 };
 
-const lectures = chapters.map((chapter) => ({ chapter, lecture: standaloneLectureForChapter(chapter), manuscript: manuscriptForChapter(chapter.n) }));
+const lectures = chapters.map((chapter) => ({ chapter, lecture: standaloneLectureForChapter(chapter), manuscript: manuscriptForChapter(chapter.n), blackboard: blackboardForChapter(chapter.n) }));
 
 export default function BookPage() {
   const lectureBeats = standaloneLectureTileCount();
   const manuscriptSections = manuscriptSectionCount();
+  const blackboardStages = blackboardStageCount();
 
   return (
     <main className="min-h-screen bg-bg text-ink">
@@ -36,6 +39,7 @@ export default function BookPage() {
               <div className="mt-6 flex flex-wrap gap-2">
                 <Chip accent="cyan">17 chapters</Chip>
                 <Chip accent="blue">{manuscriptSections} manuscript moves</Chip>
+                <Chip accent="violet">{blackboardStages} blackboard stages</Chip>
                 <Chip accent="lime">{lectureBeats} lecture beats</Chip>
                 <Chip accent="violet">beginner → advanced</Chip>
                 <Chip accent="orange">original wording</Chip>
@@ -73,14 +77,14 @@ export default function BookPage() {
         </aside>
 
         <div className="grid gap-12">
-          {lectures.map(({ chapter, lecture, manuscript }) => <BookChapter key={chapter.n} chapter={chapter} lecture={lecture} manuscript={manuscript} />)}
+          {lectures.map(({ chapter, lecture, manuscript, blackboard }) => <BookChapter key={chapter.n} chapter={chapter} lecture={lecture} manuscript={manuscript} blackboard={blackboard} />)}
         </div>
       </div>
     </main>
   );
 }
 
-function BookChapter({ chapter, lecture, manuscript }: { chapter: (typeof chapters)[number]; lecture: StandaloneChapterLecture; manuscript: ChapterManuscript }) {
+function BookChapter({ chapter, lecture, manuscript, blackboard }: { chapter: (typeof chapters)[number]; lecture: StandaloneChapterLecture; manuscript: ChapterManuscript; blackboard: ChapterBlackboard }) {
   return (
     <article id={`book-chapter-${chapter.n}`} className="scroll-mt-24 overflow-hidden rounded-2xl border border-line bg-panel">
       <div className="grid gap-px bg-line lg:grid-cols-[0.9fr_1.1fr]">
@@ -152,6 +156,13 @@ function BookChapter({ chapter, lecture, manuscript }: { chapter: (typeof chapte
             ))}
           </div>
           <p className="rounded-lg border border-lime/30 bg-lime/[0.06] p-3 text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Chapter landing:</span> {manuscript.closing}</p>
+        </section>
+        <section className="grid gap-4">
+          <div>
+            <p className="eyebrow">Interactive blackboard</p>
+            <h3 className="display mt-2 text-3xl font-medium text-ink">Click the chapter&apos;s visual learning model.</h3>
+          </div>
+          <InteractiveBlackboard board={blackboard} compact />
         </section>
         <div className="grid gap-3 md:grid-cols-2">
           <MiniLesson label="Hands-on reading sequence" text={lecture.handsOnSequence.join(" ")} />

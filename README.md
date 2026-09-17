@@ -5,12 +5,13 @@ A standalone, light-theme web textbook for `../RLbook2020.pdf` (Sutton & Barto, 
 ## What is included
 
 - Hero overview with the RL learning-loop visual and standalone web-book framing.
-- Linear standalone book reader at `/book`, rendering all 17 chapters in order with table-of-contents anchors, bespoke manuscript prose, from-zero explanations, visual mental models, section lecture beats, board-work steps, and links to full chapter labs.
+- Linear standalone book reader at `/book`, rendering all 17 chapters in order with table-of-contents anchors, bespoke manuscript prose, clickable interactive blackboards, from-zero explanations, visual mental models, section lecture beats, board-work steps, and links to full chapter labs.
 - Term lab covering 20 recurring symbols and concepts before formulas appear.
 - Book map for the three major arcs: tabular methods, approximation, and deeper links.
 - Chapter-by-chapter explorer for all 17 chapters, with:
   - links to standalone chapter pages at `/chapters/1` through `/chapters/17`,
   - bespoke original manuscript moves for every chapter,
+  - an interactive blackboard for every chapter with four staged visual moves, beginner/technical explanations, board notes, and self-checks,
   - from-scratch lecture pages that teach each chapter as a self-contained lesson rather than as a companion checklist,
   - deep detail mode containing 161 section-level notes,
   - section checklist from the PDF contents,
@@ -48,6 +49,7 @@ A standalone, light-theme web textbook for `../RLbook2020.pdf` (Sutton & Barto, 
   - checkpoint for whether the answer is on track.
 - Standalone, highly detailed chapter pages for every chapter, each combining:
   - Original chapter manuscript with beginner explanation, graphical lecture, technical version, and takeaway for each main move,
+  - Interactive blackboard lecture board with four clickable stages, an animated SVG model, beginner explanation, technical toggle, board note, and self-check,
   - Standalone from-scratch lecture with beginner openings, visual mental models, vocabulary, section lecture beats, board-work steps, and checkpoints,
   - Book-source algorithm audit mapping PDF algorithm boxes/source methods to detailed cards,
   - chapter synthesis ladder with dependencies, algorithm comparisons, study protocol, and oral-exam checks,
@@ -60,8 +62,8 @@ A standalone, light-theme web textbook for `../RLbook2020.pdf` (Sutton & Barto, 
   - figure/example anchors,
   - exercise coaching.
 - Global algorithm index page at `/algorithms` with chapter coverage dashboard, family grouping, source cue mapping, and direct links to all expanded cards.
-- Whole-book coverage audit page at `/coverage` proving chapter route coverage and algorithm detail-layer completeness from current repository data.
-- Animated and interactive graphics throughout the site: every homepage section, chapter header/story block, chapter section heading, algorithm card, global algorithm index card/chapter cluster, and coverage section gets reusable hover/click reinforcement-learning motion sketches plus animated micro-glyphs inside dense explanation cards, metrics, panels, proof blocks, notes, and study-route cards.
+- Whole-book coverage audit page at `/coverage` proving chapter route coverage, manuscript coverage, interactive blackboard coverage, and algorithm detail-layer completeness from current repository data.
+- Animated and interactive graphics throughout the site: every homepage section, chapter header/story block, chapter section heading, algorithm card, global algorithm index card/chapter cluster, and coverage section gets reusable hover/click reinforcement-learning motion sketches; every chapter also has a 4-stage blackboard; dense explanation cards, metrics, panels, proof blocks, notes, and study-route cards use animated micro-glyphs.
 - Algorithm catalog with 109 detailed algorithm/procedure cards across the book, including:
   - objective and core update,
   - operational steps,
@@ -123,10 +125,12 @@ Local runtime pieces on this workstation:
 - `src/lib/chapterSynthesis.ts` - chapter-level synthesis ladders connecting each chapter story to its algorithms, comparison axes, study protocol, and oral-exam checks.
 - `src/lib/chapterDependencyMap.ts` - cross-chapter prerequisite/unlock maps, concept gates, skip risks, and review loops for every chapter page.
 - `src/lib/chapterManuscripts.ts` - bespoke original prose layer for all 17 chapters, with 51 beginner-to-technical manuscript moves.
+- `src/lib/interactiveBlackboards.ts` - 17 chapter blackboards with 68 clickable visual stages spanning beginner explanation, technical explanation, board note, and self-check.
 - `src/lib/standaloneBook.ts` - standalone web-book lecture layer for all 17 chapters, generating from-zero openings, visual mental models, vocabulary, section lecture beats, board-work steps, and checkpoints.
 - `src/lib/coverageAudit.ts` - current-state coverage ledger for chapter routes and algorithm detail layers.
 - `src/app/book/page.tsx` - linear standalone book reader that puts all 17 chapter lectures on one continuous web-book page.
 - `src/app/coverage/page.tsx` - rendered whole-book coverage audit and completeness matrix.
+- `src/components/InteractiveBlackboard.tsx` - client-side staged blackboard component used by `/book` and every chapter route.
 - `src/components/AnimatedConceptGraphic.tsx` - reusable animated SVG concept graphic with hover/click phase controls for section and algorithm visuals.
 - `src/components/MotionGlyph.tsx` - lightweight server-rendered animated SVG micro-visuals used across metrics, notes, panels, proofs, study cards, and dense explanation blocks.
 - `src/lib/algorithmCatalog.ts`, `src/lib/algorithmDerivations.ts`, `src/lib/algorithmDossier.ts`, `src/lib/algorithmWorkedExamples.ts`, and `src/lib/algorithmProfiles.ts` - 109 detailed algorithm/procedure cards keyed by chapter, with derivation, dossier, worked-example, and technical-profile enrichment.

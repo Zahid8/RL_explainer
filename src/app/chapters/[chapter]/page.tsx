@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { TeX } from "@/components/Math";
 import { AnimatedConceptGraphic } from "@/components/AnimatedConceptGraphic";
+import { InteractiveBlackboard } from "@/components/InteractiveBlackboard";
 import { MotionGlyph } from "@/components/MotionGlyph";
 import { Chip, Plain } from "@/components/Section";
 import { algorithmsForChapter, type AlgorithmDetail } from "@/lib/algorithmCatalog";
@@ -17,6 +18,7 @@ import { chapterDeepDives } from "@/lib/deepDives";
 import { evidenceGuideItems } from "@/lib/evidenceGuide";
 import { exerciseCoachCards } from "@/lib/exerciseCoach";
 import { formulaAtlas } from "@/lib/formulaAtlas";
+import { blackboardForChapter } from "@/lib/interactiveBlackboards";
 import { chapterMastery } from "@/lib/mastery";
 import { chapters } from "@/lib/paper";
 import { manuscriptForChapter, type ChapterManuscript } from "@/lib/chapterManuscripts";
@@ -57,6 +59,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
   const exercises = exerciseCoachCards.filter((entry) => entry.chapter === item.n);
   const lecture = standaloneLectureForChapter(item);
   const manuscript = manuscriptForChapter(item.n);
+  const blackboard = blackboardForChapter(item.n);
   const prev = chapters.find((entry) => entry.n === item.n - 1);
   const next = chapters.find((entry) => entry.n === item.n + 1);
 
@@ -100,9 +103,16 @@ export default async function ChapterPage({ params }: { params: Params }) {
           <AnimatedConceptGraphic label="Story loop" variant="loop" caption="The easy story and the technical story update each other: intuition points at notation, notation checks intuition." compact />
         </section>
 
-        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, manuscriptSections: manuscript.sections.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, evidence: evidence.length, exercises: exercises.length, sourceAudits: sourceAudits.length }} />
+        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, evidence: evidence.length, exercises: exercises.length, sourceAudits: sourceAudits.length }} />
 
         <ChapterManuscriptBlock manuscript={manuscript} />
+
+        <section id="blackboard" className="scroll-mt-24">
+          <SectionTitle eyebrow="00b - Interactive blackboard" title="Click through the chapter's core visual model." lead="This is the graphical lecture board for the chapter: change stages, watch the diagram shift, then compare the beginner explanation with the technical version." />
+          <div className="mt-6">
+            <InteractiveBlackboard board={blackboard} />
+          </div>
+        </section>
 
         <StandaloneLectureBlock lecture={lecture} />
 
@@ -256,9 +266,10 @@ function Stat({ value, label }: { value: string; label: string }) {
   );
 }
 
-function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; manuscriptSections: number; lectureBeats: number; sections: number; formulas: number; evidence: number; exercises: number; sourceAudits: number } }) {
+function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; manuscriptSections: number; blackboardStages: number; lectureBeats: number; sections: number; formulas: number; evidence: number; exercises: number; sourceAudits: number } }) {
   const items = [
     ["manuscript", `${counts.manuscriptSections} manuscript moves`],
+    ["blackboard", `${counts.blackboardStages} blackboard stages`],
     ["lecture", `${counts.lectureBeats} lecture beats`],
     ["synthesis", "synthesis ladder"],
     ["dependencies", "dependency map"],
