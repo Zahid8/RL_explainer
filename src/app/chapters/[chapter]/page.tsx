@@ -5,6 +5,7 @@ import { TeX } from "@/components/Math";
 import { Chip, Plain } from "@/components/Section";
 import { algorithmsForChapter, type AlgorithmDetail } from "@/lib/algorithmCatalog";
 import { algorithmDerivation, type AlgorithmDerivation } from "@/lib/algorithmDerivations";
+import { chapterSynthesis, type ChapterSynthesis } from "@/lib/chapterSynthesis";
 import { algorithmDossier, type AlgorithmDossierSection } from "@/lib/algorithmDossier";
 import { algorithmProfile, profileRows, type AlgorithmProfile } from "@/lib/algorithmProfiles";
 import { workedExampleForAlgorithm, type AlgorithmWorkedExample } from "@/lib/algorithmWorkedExamples";
@@ -43,6 +44,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
   const deep = chapterDeepDives[item.n];
   const mastery = chapterMastery.find((entry) => entry.n === item.n);
   const algorithms = algorithmsForChapter(item.n);
+  const synthesis = chapterSynthesis(item, algorithms);
   const formulas = formulaAtlas.filter((formula) => formula.chapter === item.n);
   const sourceAudits = sourceAuditsForChapter(item.n);
   const evidence = evidenceGuideItems.filter((entry) => entry.chapter === item.n);
@@ -87,6 +89,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
         </section>
 
         <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, evidence: evidence.length, exercises: exercises.length, sourceAudits: sourceAudits.length }} />
+
+        <ChapterSynthesisBlock synthesis={synthesis} />
 
         <section id="source-audit" className="scroll-mt-24">
           <SectionTitle eyebrow="01 - Book-source algorithm audit" title="Named algorithm boxes and source methods from the PDF, mapped to this page." lead="This crosswalk is the coverage check: every source entry names where it appears in the book and which detailed card(s) below explain it." />
@@ -229,6 +233,7 @@ function Stat({ value, label }: { value: string; label: string }) {
 
 function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; sections: number; formulas: number; evidence: number; exercises: number; sourceAudits: number } }) {
   const items = [
+    ["synthesis", "synthesis ladder"],
     ["source-audit", `${counts.sourceAudits} source cues`],
     ["algorithms", `${counts.algorithms} algorithms`],
     ["sections", `${counts.sections} section notes`],
@@ -250,6 +255,68 @@ function SectionTitle({ eyebrow, title, lead }: { eyebrow: string; title: string
   return <div><p className="eyebrow">{eyebrow}</p><h2 className="display mt-3 text-[clamp(30px,4vw,48px)] font-medium text-ink">{title}</h2><p className="mt-4 max-w-4xl text-base leading-relaxed text-muted">{lead}</p></div>;
 }
 
+
+
+function ChapterSynthesisBlock({ synthesis }: { synthesis: ChapterSynthesis }) {
+  return (
+    <section id="synthesis" className="scroll-mt-24">
+      <SectionTitle eyebrow="00 - Chapter synthesis ladder" title="How the chapter fits together before the individual cards." lead="This is the bridge between an easy reading and an implementation reading: dependencies, algorithm contrasts, study passes, and oral-exam checks." />
+      <div className="mt-6 grid gap-5 lg:grid-cols-2">
+        <Plain title="Easy synthesis"><p>{synthesis.easyThesis}</p></Plain>
+        <MiniBlock label="Technical synthesis" text={synthesis.technicalThesis} tint />
+      </div>
+      <div className="mt-6 grid gap-4 lg:grid-cols-3">
+        {synthesis.dependencyStack.map((step) => (
+          <article key={step.label} className="rounded-xl border border-line bg-panel p-4">
+            <p className="mono text-[10px] uppercase tracking-[0.14em] text-cyan">{step.label}</p>
+            <p className="mt-3 text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Easy:</span> {step.easy}</p>
+            <p className="mt-2 text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Technical:</span> {step.technical}</p>
+          </article>
+        ))}
+      </div>
+      <div className="mt-6 grid gap-4 lg:grid-cols-2">
+        <div className="rounded-xl border border-line bg-panel p-4">
+          <p className="eyebrow mb-3">Algorithm ladder</p>
+          <div className="grid gap-3">
+            {synthesis.algorithmLadder.map((item, index) => (
+              <article key={item.id} className="rounded-lg border border-line bg-white p-3">
+                <div className="flex flex-wrap gap-2"><Chip accent="cyan">Step {index + 1}</Chip><Chip accent="blue">{item.family}</Chip></div>
+                <a href={`#${item.id}`} className="display mt-2 block text-xl font-medium text-ink hover:text-cyan">{item.name}</a>
+                <p className="mt-2 text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Starts from:</span> {item.startsFrom}</p>
+                <p className="mt-2 text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Adds:</span> {item.adds}</p>
+                <p className="mt-2 text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Use when:</span> {item.useWhen}</p>
+                <p className="mt-2 text-sm leading-relaxed text-muted"><span className="font-medium text-orange">Main risk:</span> {item.mainRisk}</p>
+                <p className="mt-2 rounded-md border border-line bg-panel-2 p-2 text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Implementation test:</span> {item.implementationTest}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+        <div className="grid gap-4 self-start">
+          <Panel title="Study protocol" items={synthesis.studyProtocol} accent="lime" ordered />
+          <div className="rounded-xl border border-line bg-panel p-4">
+            <p className="eyebrow mb-3">Comparison axes</p>
+            <div className="grid gap-3">
+              {synthesis.comparisonAxes.map((axis) => (
+                <article key={axis.label} className="rounded-lg border border-line bg-white p-3">
+                  <p className="mono text-[10px] uppercase tracking-[0.14em] text-violet">{axis.label}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Easy:</span> {axis.easy}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Technical:</span> {axis.technical}</p>
+                  <TagRow tags={axis.members} />
+                </article>
+              ))}
+            </div>
+          </div>
+          <div className="rounded-xl border border-line bg-panel p-4">
+            <p className="eyebrow mb-3">Oral exam checks</p>
+            <div className="grid gap-3">
+              {synthesis.oralExamPrompts.map((prompt) => <MiniBlock key={prompt.prompt} label={prompt.prompt} text={prompt.answer} />)}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 function SourceAuditCard({ audit, algorithms }: { audit: AlgorithmSourceAudit; algorithms: AlgorithmDetail[] }) {
   const covered = audit.catalogIds
