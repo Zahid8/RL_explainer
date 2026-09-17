@@ -2,6 +2,7 @@ import { AlgorithmPlayer } from "@/components/AlgorithmPlayer";
 import { BookMap } from "@/components/BookMap";
 import { ChapterExplorer } from "@/components/ChapterExplorer";
 import { EquationWall } from "@/components/EquationWall";
+import { EvidenceGuide } from "@/components/EvidenceGuide";
 import { FormulaAtlas } from "@/components/FormulaAtlas";
 import { Glossary } from "@/components/Glossary";
 import { Hero } from "@/components/Hero";
@@ -63,8 +64,17 @@ export default function Home() {
         <FormulaAtlas />
       </Section>
       <Section
+        id="evidence"
+        eyebrow="05 - Figure and example companion"
+        title={<>Every major visual anchor becomes a study card: what it shows and why it matters.</>}
+        lead="The book teaches through plots, backup diagrams, tasks, and named examples. This companion makes those anchors searchable without copying the original figures."
+        tint
+      >
+        <EvidenceGuide />
+      </Section>
+      <Section
         id="algorithms"
-        eyebrow="05 - Algorithm player"
+        eyebrow="06 - Algorithm player"
         title={<>Most RL algorithms differ in the target they build and the policy pressure they apply.</>}
         lead="The player abstracts the family resemblance: interact, construct a target, update, improve, and optionally plan. Specific chapters specialize each line."
       >
@@ -72,10 +82,9 @@ export default function Home() {
       </Section>
       <Section
         id="labs"
-        eyebrow="06 - Interactive labs"
+        eyebrow="07 - Interactive labs"
         title={<>Three browser labs compute the central mechanics instead of only describing them.</>}
         lead="The labs use synthetic teaching numbers, clearly marked as illustrative. They are not benchmark results from the book."
-        tint
       >
         <div className="grid gap-6">
           <BanditLab />
@@ -85,7 +94,7 @@ export default function Home() {
       </Section>
       <Section
         id="study"
-        eyebrow="07 - Study route"
+        eyebrow="08 - Study route"
         title={<>A practical route through the details.</>}
         lead="For a first pass, read by dependencies rather than page count: formulation, tabular backups, sampling, approximation, policy gradients, then the broader connections."
       >
@@ -108,13 +117,13 @@ export default function Home() {
             <p>This explainer is paraphrased from the extracted PDF and organized around the book&apos;s chapter and section structure. It avoids copying the book&apos;s prose and labels synthetic diagrams/labs as illustrative.</p>
           </Note>
           <Note title="Coverage note">
-            <p>The chapter list covers {chapters.length} chapters, all top-level sections shown in the PDF contents, 161 section notes, a 170-tile mastery notebook, and a 44-item formula atlas. For classroom use, treat the cards as a guided map, not as a replacement for exercises or proofs in the book.</p>
+            <p>The chapter list covers {chapters.length} chapters, all top-level sections shown in the PDF contents, 161 section notes, a 170-tile mastery notebook, a 44-item formula atlas, and a 147-card figure/example companion. For classroom use, treat the cards as a guided map, not as a replacement for exercises or proofs in the book.</p>
           </Note>
         </div>
       </Section>
       <Section
         id="glossary"
-        eyebrow="08 - Glossary"
+        eyebrow="09 - Glossary"
         title={<>The recurring vocabulary, unfolded one term at a time.</>}
         lead="These definitions are written for readers who may be meeting reinforcement learning for the first time but still need the technical distinction."
         tint
