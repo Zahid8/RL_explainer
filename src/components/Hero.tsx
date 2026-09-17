@@ -23,6 +23,7 @@ export function Hero() {
           <p className="mt-4 text-sm leading-7 text-dim">Source: {book.source}. This site paraphrases and explains; it does not reproduce the book.</p>
           <div className="mt-9 flex flex-wrap gap-3">
             <a className="rounded-lg bg-cyan px-5 py-3 text-sm font-medium text-white" href="#chapters">Start with chapters</a>
+            <a className="rounded-lg border border-line bg-panel px-5 py-3 text-sm font-medium text-ink" href="/algorithms">Browse all algorithms</a>
             <a className="rounded-lg border border-line bg-panel px-5 py-3 text-sm font-medium text-ink" href="#labs">Try the interactive labs</a>
           </div>
           <div className="mt-12 grid max-w-3xl gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-4">

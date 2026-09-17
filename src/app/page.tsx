@@ -85,7 +85,7 @@ export default function Home() {
         id="algorithms"
         eyebrow="07 - Algorithm player"
         title={<>Most RL algorithms differ in the target they build and the policy pressure they apply.</>}
-        lead="The player abstracts the family resemblance: interact, construct a target, update, improve, and optionally plan. Specific chapters specialize each line."
+        lead="The player abstracts the family resemblance: interact, construct a target, update, improve, and optionally plan. Specific chapters specialize each line; the standalone algorithm index cross-links all 109 cards back to their chapter treatments."
       >
         <AlgorithmPlayer />
       </Section>

@@ -61,8 +61,8 @@ export function Nav() {
             </a>
           ))}
         </div>
-        <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="#chapters">
-          17 chapters
+        <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/algorithms">
+          109 algorithms
         </a>
       </div>
       <div className="h-px bg-line-soft">

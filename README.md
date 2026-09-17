@@ -52,6 +52,7 @@ A single-page, light-theme explainer site for `../RLbook2020.pdf` (Sutton & Bart
   - formula cards,
   - figure/example anchors,
   - exercise coaching.
+- Global algorithm index page at `/algorithms` with chapter coverage dashboard, family grouping, source cue mapping, and direct links to all expanded cards.
 - Algorithm catalog with 109 detailed algorithm/procedure cards across the book, including:
   - objective and core update,
   - operational steps,
@@ -111,6 +112,7 @@ Local runtime pieces on this workstation:
 - `src/lib/algorithmSourceAudit.ts` - PDF-source crosswalk mapping named algorithm boxes/methods to the detailed cards on each chapter page.
 - `src/app/page.tsx` - page composition and section order.
 - `src/app/chapters/[chapter]/page.tsx` - static chapter-detail route for all 17 chapters.
+- `src/app/algorithms/page.tsx` - global whole-book algorithm index and coverage dashboard.
 - `src/components/TermLab.tsx` - interactive notation browser.
 - `src/components/ChapterExplorer.tsx` - filterable chapter-by-chapter cards.
 - `src/components/MasteryNotebook.tsx` - searchable ultra-detail notebook rendered below the chapter explorer.
