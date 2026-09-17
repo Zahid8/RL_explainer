@@ -45,7 +45,7 @@
       "source_file": "src/components/MasteryNotebook.tsx",
       "source_location": "L1",
       "id": "src_components_masterynotebook_tsx",
-      "community": 12,
+      "community": 11,
       "norm_label": "masterynotebook.tsx"
     },
     {
@@ -54,7 +54,7 @@
       "source_file": "src/components/MasteryNotebook.tsx",
       "source_location": "L7",
       "id": "components_masterynotebook_partlabel",
-      "community": 12,
+      "community": 11,
       "norm_label": "partlabel()"
     },
     {
@@ -63,7 +63,7 @@
       "source_file": "src/components/EvidenceGuide.tsx",
       "source_location": "L1",
       "id": "src_components_evidenceguide_tsx",
-      "community": 13,
+      "community": 12,
       "norm_label": "evidenceguide.tsx"
     },
     {
@@ -72,7 +72,7 @@
       "source_file": "src/components/EvidenceGuide.tsx",
       "source_location": "L17",
       "id": "components_evidenceguide_partlabel",
-      "community": 13,
+      "community": 12,
       "norm_label": "partlabel()"
     },
     {
@@ -81,7 +81,7 @@
       "source_file": "src/components/Nav.tsx",
       "source_location": "L1",
       "id": "src_components_nav_tsx",
-      "community": 14,
+      "community": 13,
       "norm_label": "nav.tsx"
     },
     {
@@ -90,8 +90,17 @@
       "source_file": "src/components/Nav.tsx",
       "source_location": "L24",
       "id": "components_nav_onscroll",
-      "community": 14,
+      "community": 13,
       "norm_label": "onscroll()"
+    },
+    {
+      "label": "AnimatedConceptGraphic.tsx",
+      "file_type": "code",
+      "source_file": "src/components/AnimatedConceptGraphic.tsx",
+      "source_location": "L1",
+      "id": "src_components_animatedconceptgraphic_tsx",
+      "community": 31,
+      "norm_label": "animatedconceptgraphic.tsx"
     },
     {
       "label": "TermLab.tsx",
@@ -99,7 +108,7 @@
       "source_file": "src/components/TermLab.tsx",
       "source_location": "L1",
       "id": "src_components_termlab_tsx",
-      "community": 15,
+      "community": 14,
       "norm_label": "termlab.tsx"
     },
     {
@@ -108,8 +117,26 @@
       "source_file": "src/components/TermLab.tsx",
       "source_location": "L16",
       "id": "components_termlab_onkey",
-      "community": 15,
+      "community": 14,
       "norm_label": "onkey()"
+    },
+    {
+      "label": "MotionGlyph.tsx",
+      "file_type": "code",
+      "source_file": "src/components/MotionGlyph.tsx",
+      "source_location": "L1",
+      "id": "src_components_motionglyph_tsx",
+      "community": 15,
+      "norm_label": "motionglyph.tsx"
+    },
+    {
+      "label": "MotionGlyph()",
+      "file_type": "code",
+      "source_file": "src/components/MotionGlyph.tsx",
+      "source_location": "L12",
+      "id": "components_motionglyph_motionglyph",
+      "community": 15,
+      "norm_label": "motionglyph()"
     },
     {
       "label": "Glossary.tsx",
@@ -117,7 +144,7 @@
       "source_file": "src/components/Glossary.tsx",
       "source_location": "L1",
       "id": "src_components_glossary_tsx",
-      "community": 31,
+      "community": 32,
       "norm_label": "glossary.tsx"
     },
     {
@@ -144,7 +171,7 @@
       "source_file": "src/components/AlgorithmPlayer.tsx",
       "source_location": "L1",
       "id": "src_components_algorithmplayer_tsx",
-      "community": 32,
+      "community": 33,
       "norm_label": "algorithmplayer.tsx"
     },
     {
@@ -198,7 +225,7 @@
       "source_file": "src/components/ChapterExplorer.tsx",
       "source_location": "L1",
       "id": "src_components_chapterexplorer_tsx",
-      "community": 33,
+      "community": 34,
       "norm_label": "chapterexplorer.tsx"
     },
     {
@@ -232,37 +259,28 @@
       "label": "Section()",
       "file_type": "code",
       "source_file": "src/components/Section.tsx",
-      "source_location": "L3",
+      "source_location": "L5",
       "id": "components_section_section",
       "community": 7,
       "norm_label": "section()"
     },
     {
-      "label": "Plain()",
+      "label": "visualVariantForSection()",
       "file_type": "code",
       "source_file": "src/components/Section.tsx",
-      "source_location": "L30",
-      "id": "components_section_plain",
+      "source_location": "L37",
+      "id": "components_section_visualvariantforsection",
       "community": 7,
-      "norm_label": "plain()"
+      "norm_label": "visualvariantforsection()"
     },
     {
-      "label": "Note()",
+      "label": "glyphVariantForText()",
       "file_type": "code",
       "source_file": "src/components/Section.tsx",
-      "source_location": "L39",
-      "id": "components_section_note",
+      "source_location": "L46",
+      "id": "components_section_glyphvariantfortext",
       "community": 7,
-      "norm_label": "note()"
-    },
-    {
-      "label": "Chip()",
-      "file_type": "code",
-      "source_file": "src/components/Section.tsx",
-      "source_location": "L48",
-      "id": "components_section_chip",
-      "community": 7,
-      "norm_label": "chip()"
+      "norm_label": "glyphvariantfortext()"
     },
     {
       "label": "EquationWall.tsx",
@@ -324,7 +342,7 @@
       "source_file": "src/components/three/LearningLoopScene.tsx",
       "source_location": "L1",
       "id": "src_components_three_learningloopscene_tsx",
-      "community": 34,
+      "community": 35,
       "norm_label": "learningloopscene.tsx"
     },
     {
@@ -378,7 +396,7 @@
       "source_file": "src/components/figures/TraceLab.tsx",
       "source_location": "L1",
       "id": "src_components_figures_tracelab_tsx",
-      "community": 35,
+      "community": 36,
       "norm_label": "tracelab.tsx"
     },
     {
@@ -414,7 +432,7 @@
       "source_file": "src/lib/coverageAudit.ts",
       "source_location": "L1",
       "id": "src_lib_coverageaudit_ts",
-      "community": 4,
+      "community": 1,
       "norm_label": "coverageaudit.ts"
     },
     {
@@ -423,7 +441,7 @@
       "source_file": "src/lib/coverageAudit.ts",
       "source_location": "L84",
       "id": "lib_coverageaudit_buildcoverageaudit",
-      "community": 4,
+      "community": 1,
       "norm_label": "buildcoverageaudit()"
     },
     {
@@ -432,7 +450,7 @@
       "source_file": "src/lib/coverageAudit.ts",
       "source_location": "L117",
       "id": "lib_coverageaudit_chaptercoveragerow",
-      "community": 4,
+      "community": 1,
       "norm_label": "chaptercoveragerow()"
     },
     {
@@ -441,7 +459,7 @@
       "source_file": "src/lib/coverageAudit.ts",
       "source_location": "L169",
       "id": "lib_coverageaudit_algorithmcoveragerow",
-      "community": 4,
+      "community": 1,
       "norm_label": "algorithmcoveragerow()"
     },
     {
@@ -450,7 +468,7 @@
       "source_file": "src/lib/coverageAudit.ts",
       "source_location": "L203",
       "id": "lib_coverageaudit_requirementproofs",
-      "community": 4,
+      "community": 1,
       "norm_label": "requirementproofs()"
     },
     {
@@ -459,7 +477,7 @@
       "source_file": "src/lib/chapterSynthesis.ts",
       "source_location": "L1",
       "id": "src_lib_chaptersynthesis_ts",
-      "community": 3,
+      "community": 4,
       "norm_label": "chaptersynthesis.ts"
     },
     {
@@ -468,7 +486,7 @@
       "source_file": "src/lib/chapterSynthesis.ts",
       "source_location": "L39",
       "id": "lib_chaptersynthesis_chaptersynthesis",
-      "community": 3,
+      "community": 4,
       "norm_label": "chaptersynthesis()"
     },
     {
@@ -477,7 +495,7 @@
       "source_file": "src/lib/chapterSynthesis.ts",
       "source_location": "L55",
       "id": "lib_chaptersynthesis_dependencystack",
-      "community": 3,
+      "community": 4,
       "norm_label": "dependencystack()"
     },
     {
@@ -486,7 +504,7 @@
       "source_file": "src/lib/chapterSynthesis.ts",
       "source_location": "L94",
       "id": "lib_chaptersynthesis_ladderitem",
-      "community": 3,
+      "community": 4,
       "norm_label": "ladderitem()"
     },
     {
@@ -495,7 +513,7 @@
       "source_file": "src/lib/chapterSynthesis.ts",
       "source_location": "L110",
       "id": "lib_chaptersynthesis_comparisonaxes",
-      "community": 3,
+      "community": 4,
       "norm_label": "comparisonaxes()"
     },
     {
@@ -504,7 +522,7 @@
       "source_file": "src/lib/chapterSynthesis.ts",
       "source_location": "L142",
       "id": "lib_chaptersynthesis_studyprotocol",
-      "community": 3,
+      "community": 4,
       "norm_label": "studyprotocol()"
     },
     {
@@ -513,7 +531,7 @@
       "source_file": "src/lib/chapterSynthesis.ts",
       "source_location": "L152",
       "id": "lib_chaptersynthesis_oralexamprompts",
-      "community": 3,
+      "community": 4,
       "norm_label": "oralexamprompts()"
     },
     {
@@ -522,7 +540,7 @@
       "source_file": "src/lib/chapterSynthesis.ts",
       "source_location": "L175",
       "id": "lib_chaptersynthesis_implementationtest",
-      "community": 3,
+      "community": 4,
       "norm_label": "implementationtest()"
     },
     {
@@ -531,7 +549,7 @@
       "source_file": "src/lib/chapterSynthesis.ts",
       "source_location": "L187",
       "id": "lib_chaptersynthesis_groupby",
-      "community": 3,
+      "community": 4,
       "norm_label": "groupby()"
     },
     {
@@ -540,7 +558,7 @@
       "source_file": "src/lib/chapterSynthesis.ts",
       "source_location": "L196",
       "id": "lib_chaptersynthesis_summarizegroups",
-      "community": 3,
+      "community": 4,
       "norm_label": "summarizegroups()"
     },
     {
@@ -549,7 +567,7 @@
       "source_file": "src/lib/algorithmSourceAudit.ts",
       "source_location": "L1",
       "id": "src_lib_algorithmsourceaudit_ts",
-      "community": 4,
+      "community": 1,
       "norm_label": "algorithmsourceaudit.ts"
     },
     {
@@ -558,7 +576,7 @@
       "source_file": "src/lib/algorithmSourceAudit.ts",
       "source_location": "L119",
       "id": "lib_algorithmsourceaudit_sourceauditsforchapter",
-      "community": 4,
+      "community": 1,
       "norm_label": "sourceauditsforchapter()"
     },
     {
@@ -567,7 +585,7 @@
       "source_file": "src/lib/algorithmCatalog.ts",
       "source_location": "L1",
       "id": "src_lib_algorithmcatalog_ts",
-      "community": 4,
+      "community": 1,
       "norm_label": "algorithmcatalog.ts"
     },
     {
@@ -576,7 +594,7 @@
       "source_file": "src/lib/algorithmCatalog.ts",
       "source_location": "L3861",
       "id": "lib_algorithmcatalog_algorithmsforchapter",
-      "community": 4,
+      "community": 1,
       "norm_label": "algorithmsforchapter()"
     },
     {
@@ -585,7 +603,7 @@
       "source_file": "src/lib/mastery.ts",
       "source_location": "L1",
       "id": "src_lib_mastery_ts",
-      "community": 36,
+      "community": 37,
       "norm_label": "mastery.ts"
     },
     {
@@ -630,7 +648,7 @@
       "source_file": "src/lib/paper.ts",
       "source_location": "L1",
       "id": "src_lib_paper_ts",
-      "community": 37,
+      "community": 38,
       "norm_label": "paper.ts"
     },
     {
@@ -639,7 +657,7 @@
       "source_file": "src/lib/gsap.ts",
       "source_location": "L1",
       "id": "src_lib_gsap_ts",
-      "community": 38,
+      "community": 39,
       "norm_label": "gsap.ts"
     },
     {
@@ -648,7 +666,7 @@
       "source_file": "src/lib/exerciseCoach.ts",
       "source_location": "L1",
       "id": "src_lib_exercisecoach_ts",
-      "community": 39,
+      "community": 40,
       "norm_label": "exercisecoach.ts"
     },
     {
@@ -657,7 +675,7 @@
       "source_file": "src/lib/algorithmDerivations.ts",
       "source_location": "L1",
       "id": "src_lib_algorithmderivations_ts",
-      "community": 2,
+      "community": 3,
       "norm_label": "algorithmderivations.ts"
     },
     {
@@ -666,7 +684,7 @@
       "source_file": "src/lib/algorithmDerivations.ts",
       "source_location": "L37",
       "id": "lib_algorithmderivations_algorithmderivation",
-      "community": 2,
+      "community": 3,
       "norm_label": "algorithmderivation()"
     },
     {
@@ -675,7 +693,7 @@
       "source_file": "src/lib/algorithmDerivations.ts",
       "source_location": "L89",
       "id": "lib_algorithmderivations_derivationpreview",
-      "community": 2,
+      "community": 3,
       "norm_label": "derivationpreview()"
     },
     {
@@ -684,7 +702,7 @@
       "source_file": "src/lib/algorithmDerivations.ts",
       "source_location": "L98",
       "id": "lib_algorithmderivations_classifyalgorithm",
-      "community": 2,
+      "community": 3,
       "norm_label": "classifyalgorithm()"
     },
     {
@@ -693,7 +711,7 @@
       "source_file": "src/lib/algorithmDerivations.ts",
       "source_location": "L117",
       "id": "lib_algorithmderivations_estimatesubject",
-      "community": 2,
+      "community": 3,
       "norm_label": "estimatesubject()"
     },
     {
@@ -702,7 +720,7 @@
       "source_file": "src/lib/algorithmDerivations.ts",
       "source_location": "L156",
       "id": "lib_algorithmderivations_targetconstruction",
-      "community": 2,
+      "community": 3,
       "norm_label": "targetconstruction()"
     },
     {
@@ -711,7 +729,7 @@
       "source_file": "src/lib/algorithmDerivations.ts",
       "source_location": "L242",
       "id": "lib_algorithmderivations_errorsignal",
-      "community": 2,
+      "community": 3,
       "norm_label": "errorsignal()"
     },
     {
@@ -720,7 +738,7 @@
       "source_file": "src/lib/algorithmDerivations.ts",
       "source_location": "L284",
       "id": "lib_algorithmderivations_creditassignment",
-      "community": 2,
+      "community": 3,
       "norm_label": "creditassignment()"
     },
     {
@@ -729,7 +747,7 @@
       "source_file": "src/lib/algorithmDerivations.ts",
       "source_location": "L334",
       "id": "lib_algorithmderivations_controlmove",
-      "community": 2,
+      "community": 3,
       "norm_label": "controlmove()"
     },
     {
@@ -738,7 +756,7 @@
       "source_file": "src/lib/algorithmDerivations.ts",
       "source_location": "L371",
       "id": "lib_algorithmderivations_stabilityrequirement",
-      "community": 2,
+      "community": 3,
       "norm_label": "stabilityrequirement()"
     },
     {
@@ -747,7 +765,7 @@
       "source_file": "src/lib/algorithmDerivations.ts",
       "source_location": "L430",
       "id": "lib_algorithmderivations_equationnotes",
-      "community": 2,
+      "community": 3,
       "norm_label": "equationnotes()"
     },
     {
@@ -756,7 +774,7 @@
       "source_file": "src/lib/algorithmDerivations.ts",
       "source_location": "L455",
       "id": "lib_algorithmderivations_codingtrace",
-      "community": 2,
+      "community": 3,
       "norm_label": "codingtrace()"
     },
     {
@@ -765,7 +783,7 @@
       "source_file": "src/lib/chapterDependencyMap.ts",
       "source_location": "L1",
       "id": "src_lib_chapterdependencymap_ts",
-      "community": 5,
+      "community": 1,
       "norm_label": "chapterdependencymap.ts"
     },
     {
@@ -774,7 +792,7 @@
       "source_file": "src/lib/chapterDependencyMap.ts",
       "source_location": "L30",
       "id": "lib_chapterdependencymap_chapterdependencymap",
-      "community": 5,
+      "community": 1,
       "norm_label": "chapterdependencymap()"
     },
     {
@@ -783,7 +801,7 @@
       "source_file": "src/lib/chapterDependencyMap.ts",
       "source_location": "L47",
       "id": "lib_chapterdependencymap_dominantprofiles",
-      "community": 5,
+      "community": 1,
       "norm_label": "dominantprofiles()"
     },
     {
@@ -792,7 +810,7 @@
       "source_file": "src/lib/chapterDependencyMap.ts",
       "source_location": "L54",
       "id": "lib_chapterdependencymap_linkfromprevious",
-      "community": 5,
+      "community": 1,
       "norm_label": "linkfromprevious()"
     },
     {
@@ -801,7 +819,7 @@
       "source_file": "src/lib/chapterDependencyMap.ts",
       "source_location": "L64",
       "id": "lib_chapterdependencymap_linktonext",
-      "community": 5,
+      "community": 1,
       "norm_label": "linktonext()"
     },
     {
@@ -810,7 +828,7 @@
       "source_file": "src/lib/chapterDependencyMap.ts",
       "source_location": "L74",
       "id": "lib_chapterdependencymap_conceptgates",
-      "community": 5,
+      "community": 1,
       "norm_label": "conceptgates()"
     },
     {
@@ -819,7 +837,7 @@
       "source_file": "src/lib/chapterDependencyMap.ts",
       "source_location": "L127",
       "id": "lib_chapterdependencymap_skiprisks",
-      "community": 5,
+      "community": 1,
       "norm_label": "skiprisks()"
     },
     {
@@ -828,7 +846,7 @@
       "source_file": "src/lib/chapterDependencyMap.ts",
       "source_location": "L141",
       "id": "lib_chapterdependencymap_reviewloop",
-      "community": 5,
+      "community": 1,
       "norm_label": "reviewloop()"
     },
     {
@@ -837,7 +855,7 @@
       "source_file": "src/lib/chapterDependencyMap.ts",
       "source_location": "L153",
       "id": "lib_chapterdependencymap_topcounts",
-      "community": 5,
+      "community": 1,
       "norm_label": "topcounts()"
     },
     {
@@ -864,7 +882,7 @@
       "source_file": "src/lib/algorithmProfiles.ts",
       "source_location": "L1",
       "id": "src_lib_algorithmprofiles_ts",
-      "community": 1,
+      "community": 2,
       "norm_label": "algorithmprofiles.ts"
     },
     {
@@ -873,7 +891,7 @@
       "source_file": "src/lib/algorithmProfiles.ts",
       "source_location": "L18",
       "id": "lib_algorithmprofiles_algorithmprofile",
-      "community": 1,
+      "community": 2,
       "norm_label": "algorithmprofile()"
     },
     {
@@ -882,7 +900,7 @@
       "source_file": "src/lib/algorithmProfiles.ts",
       "source_location": "L39",
       "id": "lib_algorithmprofiles_profilerows",
-      "community": 4,
+      "community": 1,
       "norm_label": "profilerows()"
     },
     {
@@ -891,7 +909,7 @@
       "source_file": "src/lib/algorithmProfiles.ts",
       "source_location": "L56",
       "id": "lib_algorithmprofiles_inferrole",
-      "community": 1,
+      "community": 2,
       "norm_label": "inferrole()"
     },
     {
@@ -900,7 +918,7 @@
       "source_file": "src/lib/algorithmProfiles.ts",
       "source_location": "L87",
       "id": "lib_algorithmprofiles_inferdataregime",
-      "community": 1,
+      "community": 2,
       "norm_label": "inferdataregime()"
     },
     {
@@ -909,7 +927,7 @@
       "source_file": "src/lib/algorithmProfiles.ts",
       "source_location": "L105",
       "id": "lib_algorithmprofiles_infertargetpolicy",
-      "community": 1,
+      "community": 2,
       "norm_label": "infertargetpolicy()"
     },
     {
@@ -918,7 +936,7 @@
       "source_file": "src/lib/algorithmProfiles.ts",
       "source_location": "L127",
       "id": "lib_algorithmprofiles_infermodeluse",
-      "community": 1,
+      "community": 2,
       "norm_label": "infermodeluse()"
     },
     {
@@ -927,7 +945,7 @@
       "source_file": "src/lib/algorithmProfiles.ts",
       "source_location": "L151",
       "id": "lib_algorithmprofiles_inferbackupstyle",
-      "community": 1,
+      "community": 2,
       "norm_label": "inferbackupstyle()"
     },
     {
@@ -936,7 +954,7 @@
       "source_file": "src/lib/algorithmProfiles.ts",
       "source_location": "L173",
       "id": "lib_algorithmprofiles_inferapproximation",
-      "community": 1,
+      "community": 2,
       "norm_label": "inferapproximation()"
     },
     {
@@ -945,7 +963,7 @@
       "source_file": "src/lib/algorithmProfiles.ts",
       "source_location": "L198",
       "id": "lib_algorithmprofiles_infercreditassignment",
-      "community": 1,
+      "community": 2,
       "norm_label": "infercreditassignment()"
     },
     {
@@ -954,7 +972,7 @@
       "source_file": "src/lib/algorithmProfiles.ts",
       "source_location": "L216",
       "id": "lib_algorithmprofiles_inferobjectiveview",
-      "community": 1,
+      "community": 2,
       "norm_label": "inferobjectiveview()"
     },
     {
@@ -963,7 +981,7 @@
       "source_file": "src/lib/algorithmProfiles.ts",
       "source_location": "L236",
       "id": "lib_algorithmprofiles_inferconvergencehandle",
-      "community": 1,
+      "community": 2,
       "norm_label": "inferconvergencehandle()"
     },
     {
@@ -972,7 +990,7 @@
       "source_file": "src/lib/algorithmProfiles.ts",
       "source_location": "L256",
       "id": "lib_algorithmprofiles_infercomputememory",
-      "community": 1,
+      "community": 2,
       "norm_label": "infercomputememory()"
     },
     {
@@ -981,7 +999,7 @@
       "source_file": "src/lib/algorithmProfiles.ts",
       "source_location": "L276",
       "id": "lib_algorithmprofiles_inferbestuse",
-      "community": 1,
+      "community": 2,
       "norm_label": "inferbestuse()"
     },
     {
@@ -990,7 +1008,7 @@
       "source_file": "src/lib/algorithmProfiles.ts",
       "source_location": "L298",
       "id": "lib_algorithmprofiles_inferavoidwhen",
-      "community": 1,
+      "community": 2,
       "norm_label": "inferavoidwhen()"
     },
     {
@@ -999,7 +1017,7 @@
       "source_file": "src/lib/algorithmDossier.ts",
       "source_location": "L1",
       "id": "src_lib_algorithmdossier_ts",
-      "community": 6,
+      "community": 5,
       "norm_label": "algorithmdossier.ts"
     },
     {
@@ -1008,7 +1026,7 @@
       "source_file": "src/lib/algorithmDossier.ts",
       "source_location": "L12",
       "id": "lib_algorithmdossier_algorithmdossier",
-      "community": 6,
+      "community": 5,
       "norm_label": "algorithmdossier()"
     },
     {
@@ -1017,7 +1035,7 @@
       "source_file": "src/lib/algorithmDossier.ts",
       "source_location": "L84",
       "id": "lib_algorithmdossier_inferknobs",
-      "community": 6,
+      "community": 5,
       "norm_label": "inferknobs()"
     },
     {
@@ -1026,7 +1044,7 @@
       "source_file": "src/lib/algorithmDossier.ts",
       "source_location": "L115",
       "id": "lib_algorithmdossier_inferestimatorshape",
-      "community": 6,
+      "community": 5,
       "norm_label": "inferestimatorshape()"
     },
     {
@@ -1035,7 +1053,7 @@
       "source_file": "src/lib/algorithmDossier.ts",
       "source_location": "L130",
       "id": "lib_algorithmdossier_inferbiasvarianceposition",
-      "community": 6,
+      "community": 5,
       "norm_label": "inferbiasvarianceposition()"
     },
     {
@@ -1044,7 +1062,7 @@
       "source_file": "src/lib/algorithmDossier.ts",
       "source_location": "L142",
       "id": "lib_algorithmdossier_inferstabilitycontract",
-      "community": 6,
+      "community": 5,
       "norm_label": "inferstabilitycontract()"
     },
     {
@@ -1053,7 +1071,7 @@
       "source_file": "src/lib/algorithmDossier.ts",
       "source_location": "L159",
       "id": "lib_algorithmdossier_inferimplementationinvariants",
-      "community": 6,
+      "community": 5,
       "norm_label": "inferimplementationinvariants()"
     },
     {
@@ -1062,7 +1080,7 @@
       "source_file": "src/lib/algorithmDossier.ts",
       "source_location": "L182",
       "id": "lib_algorithmdossier_inferdiagnostics",
-      "community": 6,
+      "community": 5,
       "norm_label": "inferdiagnostics()"
     },
     {
@@ -1071,7 +1089,7 @@
       "source_file": "src/lib/algorithmDossier.ts",
       "source_location": "L199",
       "id": "lib_algorithmdossier_outputphrase",
-      "community": 6,
+      "community": 5,
       "norm_label": "outputphrase()"
     },
     {
@@ -1080,7 +1098,7 @@
       "source_file": "src/lib/formulaAtlas.ts",
       "source_location": "L1",
       "id": "src_lib_formulaatlas_ts",
-      "community": 40,
+      "community": 41,
       "norm_label": "formulaatlas.ts"
     },
     {
@@ -1287,7 +1305,7 @@
       "source_file": "src/app/page.tsx",
       "source_location": "L1",
       "id": "src_app_page_tsx",
-      "community": 41,
+      "community": 42,
       "norm_label": "page.tsx"
     },
     {
@@ -1296,7 +1314,7 @@
       "source_file": "src/app/layout.tsx",
       "source_location": "L1",
       "id": "src_app_layout_tsx",
-      "community": 42,
+      "community": 43,
       "norm_label": "layout.tsx"
     },
     {
@@ -1309,13 +1327,13 @@
       "norm_label": "page.tsx"
     },
     {
-      "label": "Metric()",
+      "label": "SectionTitle()",
       "file_type": "code",
       "source_file": "src/app/coverage/page.tsx",
-      "source_location": "L135",
-      "id": "coverage_page_metric",
+      "source_location": "L203",
+      "id": "coverage_page_sectiontitle",
       "community": 26,
-      "norm_label": "metric()"
+      "norm_label": "sectiontitle()"
     },
     {
       "label": "page.tsx",
@@ -1323,7 +1341,7 @@
       "source_file": "src/app/algorithms/page.tsx",
       "source_location": "L1",
       "id": "src_app_algorithms_page_tsx",
-      "community": 43,
+      "community": 44,
       "norm_label": "page.tsx"
     },
     {
@@ -1332,26 +1350,44 @@
       "source_file": "src/app/chapters/[chapter]/page.tsx",
       "source_location": "L1",
       "id": "src_app_chapters_chapter_page_tsx",
-      "community": 11,
+      "community": 6,
       "norm_label": "page.tsx"
     },
     {
       "label": "generateStaticParams()",
       "file_type": "code",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L25",
+      "source_location": "L27",
       "id": "chapter_page_generatestaticparams",
-      "community": 11,
+      "community": 6,
       "norm_label": "generatestaticparams()"
     },
     {
       "label": "generateMetadata()",
       "file_type": "code",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L29",
+      "source_location": "L31",
       "id": "chapter_page_generatemetadata",
-      "community": 11,
+      "community": 6,
       "norm_label": "generatemetadata()"
+    },
+    {
+      "label": "glyphAccentForLabel()",
+      "file_type": "code",
+      "source_file": "src/app/chapters/[chapter]/page.tsx",
+      "source_location": "L298",
+      "id": "chapter_page_glyphaccentforlabel",
+      "community": 6,
+      "norm_label": "glyphaccentforlabel()"
+    },
+    {
+      "label": "glyphVariantForLabel()",
+      "file_type": "code",
+      "source_file": "src/app/chapters/[chapter]/page.tsx",
+      "source_location": "L577",
+      "id": "chapter_page_glyphvariantforlabel",
+      "community": 6,
+      "norm_label": "glyphvariantforlabel()"
     }
   ],
   "links": [
@@ -1401,6 +1437,18 @@
       "_tgt": "components_termlab_onkey",
       "source": "src_components_termlab_tsx",
       "target": "components_termlab_onkey",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/MotionGlyph.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_src": "src_components_motionglyph_tsx",
+      "_tgt": "components_motionglyph_motionglyph",
+      "source": "src_components_motionglyph_tsx",
+      "target": "components_motionglyph_motionglyph",
       "confidence_score": 1.0
     },
     {
@@ -1467,7 +1515,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/Section.tsx",
-      "source_location": "L3",
+      "source_location": "L5",
       "weight": 1.0,
       "_src": "src_components_section_tsx",
       "_tgt": "components_section_section",
@@ -1479,36 +1527,24 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/Section.tsx",
-      "source_location": "L30",
+      "source_location": "L37",
       "weight": 1.0,
       "_src": "src_components_section_tsx",
-      "_tgt": "components_section_plain",
+      "_tgt": "components_section_visualvariantforsection",
       "source": "src_components_section_tsx",
-      "target": "components_section_plain",
+      "target": "components_section_visualvariantforsection",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/Section.tsx",
-      "source_location": "L39",
+      "source_location": "L46",
       "weight": 1.0,
       "_src": "src_components_section_tsx",
-      "_tgt": "components_section_note",
+      "_tgt": "components_section_glyphvariantfortext",
       "source": "src_components_section_tsx",
-      "target": "components_section_note",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/Section.tsx",
-      "source_location": "L48",
-      "weight": 1.0,
-      "_src": "src_components_section_tsx",
-      "_tgt": "components_section_chip",
-      "source": "src_components_section_tsx",
-      "target": "components_section_chip",
+      "target": "components_section_glyphvariantfortext",
       "confidence_score": 1.0
     },
     {
@@ -3435,19 +3471,19 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/coverage/page.tsx",
-      "source_location": "L135",
+      "source_location": "L203",
       "weight": 1.0,
       "_src": "src_app_coverage_page_tsx",
-      "_tgt": "coverage_page_metric",
+      "_tgt": "coverage_page_sectiontitle",
       "source": "src_app_coverage_page_tsx",
-      "target": "coverage_page_metric",
+      "target": "coverage_page_sectiontitle",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L25",
+      "source_location": "L27",
       "weight": 1.0,
       "_src": "src_app_chapters_chapter_page_tsx",
       "_tgt": "chapter_page_generatestaticparams",
@@ -3459,12 +3495,48 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L29",
+      "source_location": "L31",
       "weight": 1.0,
       "_src": "src_app_chapters_chapter_page_tsx",
       "_tgt": "chapter_page_generatemetadata",
       "source": "src_app_chapters_chapter_page_tsx",
       "target": "chapter_page_generatemetadata",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/chapters/[chapter]/page.tsx",
+      "source_location": "L298",
+      "weight": 1.0,
+      "_src": "src_app_chapters_chapter_page_tsx",
+      "_tgt": "chapter_page_glyphaccentforlabel",
+      "source": "src_app_chapters_chapter_page_tsx",
+      "target": "chapter_page_glyphaccentforlabel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/chapters/[chapter]/page.tsx",
+      "source_location": "L597",
+      "weight": 1.0,
+      "_src": "src_app_chapters_chapter_page_tsx",
+      "_tgt": "chapter_page_glyphvariantforlabel",
+      "source": "src_app_chapters_chapter_page_tsx",
+      "target": "chapter_page_glyphvariantforlabel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/chapters/[chapter]/page.tsx",
+      "source_location": "L577",
+      "weight": 1.0,
+      "_src": "chapter_page_glyphvariantforlabel",
+      "_tgt": "chapter_page_glyphaccentforlabel",
+      "source": "chapter_page_glyphaccentforlabel",
+      "target": "chapter_page_glyphvariantforlabel",
       "confidence_score": 1.0
     }
   ],
