@@ -35,7 +35,7 @@ export function chapterDependencyMap(chapter: Chapter, allChapters: Chapter[], a
 
   return {
     easyMap: `Use this as the study GPS for Chapter ${chapter.n}. It tells you what earlier ideas you must bring in, what gates you must pass inside this chapter, and what later chapters become easier once this chapter is solid.`,
-    technicalMap: `Dependency view: Chapter ${chapter.n} (${chapter.title}) consumes earlier notation/objectives, introduces ${families.join(", ") || "chapter-specific machinery"}, and exports assumptions about ${dominantProfiles(profiles)}. The map below is an implementation-oriented prerequisite checklist rather than a replacement for the PDF.`,
+    technicalMap: `Dependency view: Chapter ${chapter.n} (${chapter.title}) consumes earlier notation/objectives, introduces ${families.join(", ") || "chapter-specific machinery"}, and exports assumptions about ${dominantProfiles(profiles)}. The map below is an implementation-oriented prerequisite checklist for the standalone web-book lesson.`,
     incoming: previous.map((item) => linkFromPrevious(item, chapter)),
     outgoing: next.map((item) => linkToNext(chapter, item)),
     gates: conceptGates(chapter, algorithms),

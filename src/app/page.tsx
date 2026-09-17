@@ -16,40 +16,52 @@ import { BanditLab } from "@/components/figures/BanditLab";
 import { BellmanLab } from "@/components/figures/BellmanLab";
 import { TraceLab } from "@/components/figures/TraceLab";
 import { chapters } from "@/lib/paper";
+import { standaloneLectureTileCount } from "@/lib/standaloneBook";
 
 export default function Home() {
+  const lectureBeats = standaloneLectureTileCount();
+
   return (
     <main>
       <Nav />
       <Hero />
       <Section
+        id="book"
+        eyebrow="00 - Standalone web book"
+        title={<>A complete original RL lecture book, not a companion checklist.</>}
+        lead="The site now teaches the material as a first-principles course: each chapter starts from zero, uses graphical mental models, then builds the technical definitions, equations, algorithms, and checkpoints in its own words."
+        tint
+      >
+        <StandaloneBookPledge lectureBeats={lectureBeats} />
+      </Section>
+      <Section
         id="terms"
-        eyebrow="00 - Term lab"
+        eyebrow="01 - Term lab"
         title={<>Every symbol gets a plain-English handle before it appears in formulas.</>}
-        lead="The original book is mathematically careful. This lab gives the notation a visual and verbal anchor so the chapter explanations can stay technical without becoming opaque."
+        lead="The web book is mathematically careful, but it never assumes you already speak RL notation. This lab gives each symbol a visual and verbal anchor before the chapter lessons use it."
       >
         <TermLab />
       </Section>
       <Section
         id="map"
-        eyebrow="01 - Book map"
+        eyebrow="02 - Book map"
         title={<>The book moves from tables, to approximation, to the broader science of learning.</>}
-        lead="TASK.md is written for papers, so this explainer adapts its two-layer design to a textbook: overview first, then dense chapter cards with exact section coverage."
+        lead="Use this as the route map for the standalone course: foundations first, tabular backups next, approximation after that, then psychology, neuroscience, applications, and open design questions."
         tint
       >
         <BookMap />
       </Section>
       <Section
         id="chapters"
-        eyebrow="02 - Chapter-by-chapter explainer"
+        eyebrow="03 - Chapter-by-chapter web book"
         title={<>Seventeen chapters, each with the technical layer and the easy layer side by side.</>}
-        lead="Use the filters or search box to jump. Every chapter card includes the section checklist from the PDF contents, key ideas, algorithm names, equations/forms, examples, confusions, and a bridge to the next chapter."
+        lead="Use the filters or search box to jump. Every chapter opens into a full standalone lecture page with from-scratch explanations, graphical board work, section beats, technical definitions, algorithms, formulas, examples, confusions, and a bridge to the next chapter."
       >
         <ChapterExplorer />
       </Section>
       <Section
         id="mastery"
-        eyebrow="03 - Ultra-detail notebook"
+        eyebrow="04 - Ultra-detail notebook"
         title={<>The deeper study layer adds derivations, algorithms, traps, and checks for every chapter.</>}
         lead="The first chapter cards give the map. This notebook goes another level down: it turns key equations into step-by-step derivation clinics, turns procedures into walkthroughs, and names the mistakes that usually break understanding."
         tint
@@ -58,7 +70,7 @@ export default function Home() {
       </Section>
       <Section
         id="equations"
-        eyebrow="04 - Equation spine"
+        eyebrow="05 - Equation spine"
         title={<>Six equations carry most of the book&apos;s algorithmic shape.</>}
         lead="The exact book contains many more equations. This spine highlights the recurring forms that reappear as dynamic programming, Monte Carlo, TD, traces, approximation, and policy gradients."
       >
@@ -67,16 +79,16 @@ export default function Home() {
       </Section>
       <Section
         id="evidence"
-        eyebrow="05 - Figure and example companion"
+        eyebrow="06 - Figure and example lecture atlas"
         title={<>Every major visual anchor becomes a study card: what it shows and why it matters.</>}
-        lead="The book teaches through plots, backup diagrams, tasks, and named examples. This companion makes those anchors searchable without copying the original figures."
+        lead="The course teaches through plots, backup diagrams, tasks, and named examples. This atlas makes those anchors searchable and explains the idea without copying the original figures."
         tint
       >
         <EvidenceGuide />
       </Section>
       <Section
         id="exercises"
-        eyebrow="06 - Exercise coach"
+        eyebrow="07 - Exercise coach"
         title={<>Every exercise becomes a guided practice card: goal, method, and checkpoint.</>}
         lead="The original exercise text belongs in the book. This layer gives a study plan around it: what skill each numbered exercise trains, how to start, and how to know your solution is coherent."
       >
@@ -84,7 +96,7 @@ export default function Home() {
       </Section>
       <Section
         id="algorithms"
-        eyebrow="07 - Algorithm player"
+        eyebrow="08 - Algorithm player"
         title={<>Most RL algorithms differ in the target they build and the policy pressure they apply.</>}
         lead="The player abstracts the family resemblance: interact, construct a target, update, improve, and optionally plan. Specific chapters specialize each line; the standalone algorithm index cross-links all 109 cards back to their chapter treatments."
       >
@@ -92,7 +104,7 @@ export default function Home() {
       </Section>
       <Section
         id="labs"
-        eyebrow="08 - Interactive labs"
+        eyebrow="09 - Interactive labs"
         title={<>Three browser labs compute the central mechanics instead of only describing them.</>}
         lead="The labs use synthetic teaching numbers, clearly marked as illustrative. They are not benchmark results from the book."
       >
@@ -104,7 +116,7 @@ export default function Home() {
       </Section>
       <Section
         id="study"
-        eyebrow="09 - Study route"
+        eyebrow="10 - Study route"
         title={<>A practical route through the details.</>}
         lead="For a first pass, read by dependencies rather than page count: formulation, tabular backups, sampling, approximation, policy gradients, then the broader connections."
       >
@@ -126,16 +138,16 @@ export default function Home() {
         </div>
         <div className="mt-6 grid gap-5 lg:grid-cols-2">
           <Note title="Accuracy note">
-            <p>This explainer is paraphrased from the extracted PDF and organized around the book&apos;s chapter and section structure. It avoids copying the book&apos;s prose and labels synthetic diagrams/labs as illustrative.</p>
+            <p>This is an original standalone teaching site organized around the book&apos;s chapter and section structure. It avoids copying the book&apos;s prose and labels synthetic diagrams/labs as illustrative.</p>
           </Note>
           <Note title="Coverage note">
-            <p>The chapter list covers {chapters.length} chapters, all top-level sections shown in the PDF contents, 161 section notes, a 170-tile mastery notebook, a 44-item formula atlas, a 147-card figure/example companion, and 145 exercise-coach cards. For classroom use, treat the cards as a guided map, not as a replacement for exercises or proofs in the book.</p>
+            <p>The chapter list covers {chapters.length} chapters, {lectureBeats} standalone lecture beats, all top-level sections shown in the PDF contents, 161 section notes, a 170-tile mastery notebook, a 44-item formula atlas, a 147-card figure/example atlas, and 145 exercise-coach cards. Use the route pages as a complete original lecture path, then use the practice prompts to check whether the ideas are really yours.</p>
           </Note>
         </div>
       </Section>
       <Section
         id="glossary"
-        eyebrow="10 - Glossary"
+        eyebrow="11 - Glossary"
         title={<>The recurring vocabulary, unfolded one term at a time.</>}
         lead="These definitions are written for readers who may be meeting reinforcement learning for the first time but still need the technical distinction."
         tint
@@ -146,12 +158,38 @@ export default function Home() {
         <div className="mx-auto grid max-w-[1280px] gap-5 px-6 py-12 lg:grid-cols-[1fr_auto] lg:px-10">
           <div>
             <p className="eyebrow text-white/60">Footer</p>
-            <p className="display mt-2 text-3xl">RLbook 2020 Explainer</p>
-            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/70">Built from TASK.md&apos;s explainer-site spec and the local RLbook2020.pdf. All long-form explanations are paraphrased; equations are included as technical notation needed for study.</p>
+            <p className="display mt-2 text-3xl">RLbook standalone web textbook</p>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/70">Built from TASK.md&apos;s explainer-site spec and the local RLbook2020.pdf structure. All long-form explanations are original paraphrases; equations are included as technical notation needed for study.</p>
           </div>
           <a className="mono self-start rounded-full border border-white/20 px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-white/80" href="#top">Back to top</a>
         </div>
       </footer>
     </main>
+  );
+}
+
+function StandaloneBookPledge({ lectureBeats }: { lectureBeats: number }) {
+  const cards = [
+    ["Start from zero", "Every chapter begins with a beginner story, a mental picture to draw, and a promise of what you will be able to explain by the end."],
+    ["Teach each section", `${lectureBeats} section-level lecture beats turn the chapter outline into questions, visual metaphors, technical builds, board-work steps, and checkpoints.`],
+    ["Go technical", "Algorithms, formulas, derivations, profiles, worked microscopes, traps, and implementation checks are still present after the easy explanation."],
+    ["Stay original", "The wording is newly written for this web book: it follows the chapter structure and technical ideas without copying the copyrighted prose or figures."],
+  ];
+
+  return (
+    <div className="grid gap-5 lg:grid-cols-4">
+      {cards.map(([title, text], index) => (
+        <article key={title} className="rounded-xl border border-line bg-panel p-6">
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <p className="mono text-[11px] uppercase tracking-[0.14em] text-cyan">Book principle {index + 1}</p>
+              <h3 className="display mt-3 text-3xl font-medium text-ink">{title}</h3>
+            </div>
+            <MotionGlyph label={title} variant={index === 1 ? "bars" : index === 2 ? "formula" : index === 3 ? "check" : "loop"} accent={index === 2 ? "violet" : index === 3 ? "lime" : "cyan"} />
+          </div>
+          <p className="mt-4 text-sm leading-relaxed text-muted">{text}</p>
+        </article>
+      ))}
+    </div>
   );
 }

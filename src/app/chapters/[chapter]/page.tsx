@@ -19,6 +19,7 @@ import { exerciseCoachCards } from "@/lib/exerciseCoach";
 import { formulaAtlas } from "@/lib/formulaAtlas";
 import { chapterMastery } from "@/lib/mastery";
 import { chapters } from "@/lib/paper";
+import { standaloneLectureForChapter, type StandaloneChapterLecture } from "@/lib/standaloneBook";
 
 export const dynamicParams = false;
 
@@ -53,6 +54,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
   const sourceAudits = sourceAuditsForChapter(item.n);
   const evidence = evidenceGuideItems.filter((entry) => entry.chapter === item.n);
   const exercises = exerciseCoachCards.filter((entry) => entry.chapter === item.n);
+  const lecture = standaloneLectureForChapter(item);
   const prev = chapters.find((entry) => entry.n === item.n - 1);
   const next = chapters.find((entry) => entry.n === item.n + 1);
 
@@ -96,7 +98,9 @@ export default async function ChapterPage({ params }: { params: Params }) {
           <AnimatedConceptGraphic label="Story loop" variant="loop" caption="The easy story and the technical story update each other: intuition points at notation, notation checks intuition." compact />
         </section>
 
-        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, evidence: evidence.length, exercises: exercises.length, sourceAudits: sourceAudits.length }} />
+        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, evidence: evidence.length, exercises: exercises.length, sourceAudits: sourceAudits.length }} />
+
+        <StandaloneLectureBlock lecture={lecture} />
 
         <ChapterSynthesisBlock synthesis={synthesis} />
 
@@ -193,10 +197,10 @@ export default async function ChapterPage({ params }: { params: Params }) {
         </section>
 
         <section id="anchors" className="scroll-mt-24">
-          <SectionTitle eyebrow="06 - Figures, examples, and practice" title="All book anchors for this chapter in one place." lead="Use this as the chapter study checklist after reading the original PDF." />
+          <SectionTitle eyebrow="06 - Figures, examples, and practice" title="All book anchors for this chapter in one place." lead="Use this as the built-in chapter study checklist. Source figures remain the reference artwork; these cards teach what each anchor means in original words." />
           <div className="mt-6 grid gap-6 lg:grid-cols-2">
             <div>
-              <p className="eyebrow mb-3">Figure / table / example companion</p>
+              <p className="eyebrow mb-3">Figure / table / example lecture atlas</p>
               <div className="grid gap-3">
                 {evidence.map((entry) => (
                   <article key={`${entry.kind}-${entry.ref}-${entry.title}`} className="rounded-lg border border-line bg-panel p-4">
@@ -248,8 +252,9 @@ function Stat({ value, label }: { value: string; label: string }) {
   );
 }
 
-function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; sections: number; formulas: number; evidence: number; exercises: number; sourceAudits: number } }) {
+function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; lectureBeats: number; sections: number; formulas: number; evidence: number; exercises: number; sourceAudits: number } }) {
   const items = [
+    ["lecture", `${counts.lectureBeats} lecture beats`],
     ["synthesis", "synthesis ladder"],
     ["dependencies", "dependency map"],
     ["source-audit", `${counts.sourceAudits} source cues`],
@@ -301,6 +306,85 @@ function glyphAccentForLabel(label: string): "cyan" | "orange" | "blue" | "viole
   if (/check|complete|implementation|test/i.test(label)) return "lime";
   if (/source|chapter|dependency|coverage/i.test(label)) return "blue";
   return "cyan";
+}
+
+
+function StandaloneLectureBlock({ lecture }: { lecture: StandaloneChapterLecture }) {
+  return (
+    <section id="lecture" className="scroll-mt-24">
+      <SectionTitle
+        eyebrow="00 - Standalone lecture from scratch"
+        title="Read this first: the chapter as a complete web-book lesson."
+        lead="This layer is not a pointer back to the PDF. It teaches the chapter in original words: first intuition, then pictures, then technical objects, then board-work checkpoints."
+      />
+      <div className="mt-6 grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
+        <article className="rounded-xl border border-line bg-panel p-5">
+          <div className="flex flex-wrap gap-2"><Chip accent="cyan">beginner-first</Chip><Chip accent="lime">standalone</Chip></div>
+          <h3 className="display mt-4 text-3xl font-medium text-ink">Chapter promise</h3>
+          <p className="mt-3 text-base leading-relaxed text-muted">{lecture.promise}</p>
+          <div className="mt-5 grid gap-3">
+            {lecture.startFromZero.map((paragraph, index) => (
+              <p key={paragraph} className="rounded-lg border border-line bg-white p-4 text-sm leading-relaxed text-muted">
+                <span className="font-medium text-ink">From zero {index + 1}:</span> {paragraph}
+              </p>
+            ))}
+          </div>
+        </article>
+        <div className="grid gap-5">
+          <MiniBlock label="Mental model to draw" text={lecture.mentalModel} />
+          <MiniBlock label="Why this chapter now" text={lecture.whyNow} tint />
+          <Panel title="Learning contract" items={lecture.learningContract} accent="cyan" />
+        </div>
+      </div>
+
+      <div className="mt-6 grid gap-5 lg:grid-cols-[0.8fr_1.2fr]">
+        <div className="grid gap-5 self-start">
+          <div className="rounded-xl border border-line bg-panel p-5">
+            <p className="eyebrow mb-3">Vocabulary before formulas</p>
+            <div className="grid gap-3">
+              {lecture.vocabulary.map((item) => (
+                <article key={item.name} className="rounded-lg border border-line bg-white p-3">
+                  <div className="flex items-start justify-between gap-3">
+                    <h4 className="font-medium text-ink">{item.name}</h4>
+                    <MotionGlyph label={item.name} variant={glyphVariantForLabel(item.name)} accent={glyphAccentForLabel(item.name)} className="-mr-2 -mt-2 motion-glyph-small" />
+                  </div>
+                  <p className="mt-2 text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Plain:</span> {item.plain}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Technical:</span> {item.technical}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted"><span className="font-medium text-orange">Why it matters:</span> {item.why}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+          <Panel title="Hands-on sequence" items={lecture.handsOnSequence} accent="lime" ordered />
+          <Panel title="Technical finish" items={lecture.technicalFinish} accent="violet" ordered />
+          <MiniBlock label="Completion standard" text={lecture.completionStandard} tint />
+          <MiniBlock label="Bridge to the next chapter" text={lecture.nextChapterBridge} />
+        </div>
+        <div className="grid gap-4">
+          {lecture.beats.map((beat, index) => (
+            <article key={beat.section} className="rounded-xl border border-line bg-panel p-5">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                <div>
+                  <div className="flex flex-wrap gap-2"><Chip accent="cyan">Beat {index + 1}</Chip><Chip accent="blue">{beat.terms.length ? beat.terms.slice(0, 2).join(" / ") : "concept"}</Chip></div>
+                  <h3 className="display mt-3 text-2xl font-medium text-ink">{beat.section}</h3>
+                </div>
+                <MotionGlyph label={beat.section} variant={glyphVariantForLabel(beat.section)} accent={glyphAccentForLabel(beat.section)} />
+              </div>
+              <p className="mt-4 rounded-lg border border-cyan/25 bg-cyan/[0.045] p-3 text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Lecture question:</span> {beat.question}</p>
+              <div className="mt-4 grid gap-3 md:grid-cols-2">
+                <MiniBlock label="From scratch" text={beat.fromScratch} />
+                <MiniBlock label="Picture it" text={beat.visualLecture} tint />
+                <MiniBlock label="Technical build" text={beat.technicalBuild} tint />
+                <MiniBlock label="Checkpoint" text={beat.checkpoint} />
+              </div>
+              <Panel title="Board work" items={beat.boardWork} accent="blue" ordered />
+              <TagRow tags={beat.terms} />
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
 
 

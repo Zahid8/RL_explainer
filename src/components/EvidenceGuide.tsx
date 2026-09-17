@@ -40,10 +40,10 @@ export function EvidenceGuide() {
     <div className="grid gap-7">
       <div className="grid gap-4 rounded-xl border border-line bg-panel p-5 lg:grid-cols-[1fr_auto] lg:items-end">
         <div>
-          <p className="eyebrow">Figure and example companion</p>
+          <p className="eyebrow">Figure and example lecture atlas</p>
           <h3 className="display mt-2 text-3xl font-medium text-ink">147 book anchors: figures, the TD-Gammon table, and worked examples.</h3>
           <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted">
-            This layer tells you what each visual or named example is doing in the argument. It does not reproduce the book&apos;s figures; it gives a study guide for what to look for and why each anchor matters technically.
+            This layer teaches what each visual or named example is doing in the argument. It does not reproduce the book&apos;s figures; it gives an original explanation of what to look for and why each anchor matters technically.
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
             <Chip accent="cyan">{evidenceTotals.figures} figures</Chip>

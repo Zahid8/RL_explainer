@@ -12,6 +12,7 @@ import { exerciseCoachCards } from "@/lib/exerciseCoach";
 import { formulaAtlas } from "@/lib/formulaAtlas";
 import { chapterMastery } from "@/lib/mastery";
 import { chapters } from "@/lib/paper";
+import { standaloneLectureForChapter, standaloneLectureTileCount } from "@/lib/standaloneBook";
 
 export interface RequirementProof {
   label: string;
@@ -27,6 +28,7 @@ export interface ChapterCoverageRow {
   route: string;
   algorithms: number;
   sourceCues: number;
+  lectureBeats: number;
   sectionNotes: number;
   masteryTiles: number;
   formulas: number;
@@ -68,6 +70,7 @@ export interface CoverageAudit {
     algorithms: number;
     algorithmFamilies: number;
     sourceCues: number;
+    lectureBeats: number;
     sectionNotes: number;
     masteryTiles: number;
     formulas: number;
@@ -85,6 +88,7 @@ export function buildCoverageAudit(): CoverageAudit {
   const chapterRows = chapters.map((chapter) => chapterCoverageRow(chapter.n));
   const algorithmRows = algorithmCatalog.map(algorithmCoverageRow);
   const sourceCues = chapters.reduce((sum, chapter) => sum + sourceAuditsForChapter(chapter.n).length, 0);
+  const lectureBeats = standaloneLectureTileCount();
   const sectionNotes = chapters.reduce((sum, chapter) => sum + (chapterDeepDives[chapter.n]?.sectionDetails.length ?? 0), 0);
   const masteryTiles = chapterMastery.reduce((sum, chapter) => sum + chapter.derivations.length + chapter.process.length + chapter.traps.length + chapter.checks.length, 0);
   const warnings = chapterRows.reduce((sum, row) => sum + row.warnings.length, 0) + algorithmRows.filter((row) => row.status === "warning").length;
@@ -96,6 +100,7 @@ export function buildCoverageAudit(): CoverageAudit {
     algorithms: algorithmCatalog.length,
     algorithmFamilies: new Set(algorithmCatalog.map((algorithm) => algorithm.family)).size,
     sourceCues,
+    lectureBeats,
     sectionNotes,
     masteryTiles,
     formulas: formulaAtlas.length,
@@ -127,10 +132,12 @@ function chapterCoverageRow(chapterNumber: number): ChapterCoverageRow {
   const evidence = evidenceGuideItems.filter((item) => item.chapter === chapterNumber);
   const exercises = exerciseCoachCards.filter((item) => item.chapter === chapterNumber);
   const sourceCues = sourceAuditsForChapter(chapterNumber);
+  const lecture = standaloneLectureForChapter(chapter);
 
   const masteryTiles = mastery ? mastery.derivations.length + mastery.process.length + mastery.traps.length + mastery.checks.length : 0;
   const layers = [
     "standalone route",
+    "from-scratch lecture",
     "chapter synthesis ladder",
     "cross-chapter dependency map",
     "book-source algorithm audit",
@@ -144,6 +151,7 @@ function chapterCoverageRow(chapterNumber: number): ChapterCoverageRow {
   const warnings = [
     algorithms.length ? "" : "No algorithm cards found for this chapter.",
     sourceCues.length ? "" : "No source-audit cues found for this chapter.",
+    lecture.beats.length >= (deep?.sectionDetails.length ?? chapter.sections.length) ? "" : "Standalone lecture beats do not cover every section.",
     deep?.sectionDetails.length ? "" : "No section-level deep dives found for this chapter.",
     masteryTiles ? "" : "No mastery tiles found for this chapter.",
   ].filter(Boolean);
@@ -154,6 +162,7 @@ function chapterCoverageRow(chapterNumber: number): ChapterCoverageRow {
     route: `/chapters/${chapterNumber}`,
     algorithms: algorithms.length,
     sourceCues: sourceCues.length,
+    lectureBeats: lecture.beats.length,
     sectionNotes: deep?.sectionDetails.length ?? 0,
     masteryTiles,
     formulas: formulas.length,
@@ -203,6 +212,13 @@ function algorithmCoverageRow(algorithm: (typeof algorithmCatalog)[number]): Alg
 function requirementProofs(totals: CoverageAudit["totals"]): RequirementProof[] {
   return [
     {
+      label: "Standalone web-book lecture layer",
+      status: totals.chapters === 17 && totals.lectureBeats >= totals.sectionNotes ? "complete" : "warning",
+      evidence: `${totals.lectureBeats} from-scratch lecture beats are generated across ${totals.chapters} chapters, covering the ${totals.sectionNotes} section-note anchors.`,
+      easy: "The site now teaches each chapter directly instead of only pointing readers back to a source text.",
+      technical: "Each chapter route composes a standaloneLectureForChapter() object with beginner openings, visual mental models, vocabulary, section beat questions, technical builds, board-work steps, and checkpoints.",
+    },
+    {
       label: "Separate page for each chapter",
       status: totals.chapterRoutes === 17 ? "complete" : "warning",
       evidence: `${totals.chapterRoutes}/17 static chapter route data rows are present at /chapters/[chapter].`,
@@ -211,10 +227,10 @@ function requirementProofs(totals: CoverageAudit["totals"]): RequirementProof[] 
     },
     {
       label: "Highly detailed chapter explanations",
-      status: totals.sectionNotes >= 161 && totals.masteryTiles >= 170 ? "complete" : "warning",
-      evidence: `${totals.sectionNotes} section notes, ${totals.masteryTiles} mastery tiles, ${totals.formulas} formulas, ${totals.evidenceAnchors} anchors, and ${totals.exerciseGuides} exercise guides are connected to chapters.`,
-      easy: "Each chapter has story, sections, formulas, examples, exercises, traps, and review scaffolding.",
-      technical: "Chapter pages now compose synthesis, dependency maps, source audits, algorithm cards, deep dives, mastery notes, formula atlas entries, evidence anchors, and exercise coaching.",
+      status: totals.lectureBeats >= 161 && totals.sectionNotes >= 161 && totals.masteryTiles >= 170 ? "complete" : "warning",
+      evidence: `${totals.lectureBeats} lecture beats, ${totals.sectionNotes} section notes, ${totals.masteryTiles} mastery tiles, ${totals.formulas} formulas, ${totals.evidenceAnchors} anchors, and ${totals.exerciseGuides} exercise guides are connected to chapters.`,
+      easy: "Each chapter has a from-scratch lecture, story, sections, formulas, examples, exercises, traps, and review scaffolding.",
+      technical: "Chapter pages now compose standalone lectures, synthesis, dependency maps, source audits, algorithm cards, deep dives, mastery notes, formula atlas entries, evidence anchors, and exercise coaching.",
     },
     {
       label: "Every algorithm has technical and easy explanation",

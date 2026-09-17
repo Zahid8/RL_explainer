@@ -17,10 +17,10 @@ export function Hero() {
           </div>
           <h1 className="display text-[clamp(42px,7vw,84px)] font-normal text-ink">
             Reinforcement Learning,
-            <span className="block italic text-cyan">chapter by chapter.</span>
+            <span className="block italic text-cyan">as a standalone web book.</span>
           </h1>
           <p className="mt-7 max-w-2xl text-[18px] leading-8 text-muted">{book.claim}</p>
-          <p className="mt-4 text-sm leading-7 text-dim">Source: {book.source}. This site paraphrases and explains; it does not reproduce the book.</p>
+          <p className="mt-4 text-sm leading-7 text-dim">Source structure: {book.source}. This is an original, standalone teaching rewrite in new words and diagrams; it does not reproduce the book&apos;s prose.</p>
           <div className="mt-9 flex flex-wrap gap-3">
             <a className="rounded-lg bg-cyan px-5 py-3 text-sm font-medium text-white" href="#chapters">Start with chapters</a>
             <a className="rounded-lg border border-line bg-panel px-5 py-3 text-sm font-medium text-ink" href="/algorithms">Browse all algorithms</a>

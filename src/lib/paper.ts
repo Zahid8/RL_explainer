@@ -61,7 +61,7 @@ export interface AlgorithmLine {
 
 export const book = {
   title: "Reinforcement Learning: An Introduction",
-  subtitle: "Second edition chapter-by-chapter explainer",
+  subtitle: "Standalone original web textbook for the second edition",
   authors: "Richard S. Sutton and Andrew G. Barto",
   source: "RLbook2020.pdf, 2020 MIT Press PDF of the 2018 second edition",
   claim:
@@ -70,7 +70,7 @@ export const book = {
     { value: "17", label: "chapters explained" },
     { value: "3", label: "parts: tabular, approximation, deeper links" },
     { value: "548", label: "PDF pages parsed" },
-    { value: "4200+", label: "detail tiles and notes" },
+    { value: "5000+", label: "lecture tiles and notes" },
   ],
 };
 

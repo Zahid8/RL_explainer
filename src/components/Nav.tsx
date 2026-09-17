@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 
 const links = [
+  ["book", "Book"],
   ["terms", "Terms"],
   ["map", "Map"],
   ["chapters", "Chapters"],

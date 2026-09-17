@@ -1,14 +1,15 @@
 # RLbook 2020 Explainer
 
-A single-page, light-theme explainer site for `../RLbook2020.pdf` (Sutton & Barto, *Reinforcement Learning: An Introduction*, second edition PDF). It adapts the local `../TASK.md` paper-explainer spec to a textbook: every chapter gets a technical layer plus an easy explanation layer.
+A standalone, light-theme web textbook for `../RLbook2020.pdf` (Sutton & Barto, *Reinforcement Learning: An Introduction*, second edition PDF). It adapts the local `../TASK.md` paper-explainer spec to a full chapter-by-chapter RL course: every chapter now starts from first principles, uses graphical lecture metaphors, then builds the technical layer in original wording.
 
 ## What is included
 
-- Hero overview with the RL learning-loop visual.
+- Hero overview with the RL learning-loop visual and standalone web-book framing.
 - Term lab covering 20 recurring symbols and concepts before formulas appear.
 - Book map for the three major arcs: tabular methods, approximation, and deeper links.
 - Chapter-by-chapter explorer for all 17 chapters, with:
   - links to standalone chapter pages at `/chapters/1` through `/chapters/17`,
+  - from-scratch lecture pages that teach each chapter as a self-contained lesson rather than as a companion checklist,
   - deep detail mode containing 161 section-level notes,
   - section checklist from the PDF contents,
   - core claim,
@@ -32,7 +33,7 @@ A single-page, light-theme explainer site for `../RLbook2020.pdf` (Sutton & Bart
   - use-when note,
   - watch-out note,
   - symbol chips.
-- Figure and example companion with 147 book anchors:
+- Figure and example lecture atlas with 147 book anchors:
   - 103 figure guide cards,
   - 1 TD-Gammon result-table guide card,
   - 43 named-example guide cards,
@@ -44,6 +45,7 @@ A single-page, light-theme explainer site for `../RLbook2020.pdf` (Sutton & Bart
   - three-step solution strategy,
   - checkpoint for whether the answer is on track.
 - Standalone, highly detailed chapter pages for every chapter, each combining:
+  - Standalone from-scratch lecture with beginner openings, visual mental models, vocabulary, section lecture beats, board-work steps, and checkpoints,
   - Book-source algorithm audit mapping PDF algorithm boxes/source methods to detailed cards,
   - chapter synthesis ladder with dependencies, algorithm comparisons, study protocol, and oral-exam checks,
   - cross-chapter dependency map with prerequisites, outgoing unlocks, concept gates, skip risks, and review loop,
@@ -73,7 +75,7 @@ A single-page, light-theme explainer site for `../RLbook2020.pdf` (Sutton & Bart
 - Interactive teaching labs for bandit exploration, Bellman backup arithmetic, and lambda-return mixing.
 - Glossary for recurring RL vocabulary.
 
-The prose is paraphrased from the PDF structure and RL concepts; it intentionally does not reproduce the book text. Synthetic figures/labs are labelled as illustrative teaching devices, not reported book results.
+The prose is a standalone original teaching rewrite based on the PDF structure and RL concepts; it intentionally does not reproduce the book text. Synthetic figures/labs are labelled as illustrative teaching devices, not reported book results.
 
 ## Run locally
 
@@ -117,6 +119,7 @@ Local runtime pieces on this workstation:
 - `src/lib/exerciseCoach.ts` - 145 exercise-coach cards generated from the PDF exercise anchors without copying exercise text.
 - `src/lib/chapterSynthesis.ts` - chapter-level synthesis ladders connecting each chapter story to its algorithms, comparison axes, study protocol, and oral-exam checks.
 - `src/lib/chapterDependencyMap.ts` - cross-chapter prerequisite/unlock maps, concept gates, skip risks, and review loops for every chapter page.
+- `src/lib/standaloneBook.ts` - standalone web-book lecture layer for all 17 chapters, generating from-zero openings, visual mental models, vocabulary, section lecture beats, board-work steps, and checkpoints.
 - `src/lib/coverageAudit.ts` - current-state coverage ledger for chapter routes and algorithm detail layers.
 - `src/app/coverage/page.tsx` - rendered whole-book coverage audit and completeness matrix.
 - `src/components/AnimatedConceptGraphic.tsx` - reusable animated SVG concept graphic with hover/click phase controls for section and algorithm visuals.
@@ -130,7 +133,7 @@ Local runtime pieces on this workstation:
 - `src/components/ChapterExplorer.tsx` - filterable chapter-by-chapter cards.
 - `src/components/MasteryNotebook.tsx` - searchable ultra-detail notebook rendered below the chapter explorer.
 - `src/components/FormulaAtlas.tsx` - searchable/filterable formula atlas rendered under the equation spine.
-- `src/components/EvidenceGuide.tsx` - searchable/filterable companion for figures, the TD-Gammon table, and named examples.
+- `src/components/EvidenceGuide.tsx` - searchable/filterable lecture atlas for figures, the TD-Gammon table, and named examples.
 - `src/components/ExerciseCoach.tsx` - searchable/filterable exercise coaching layer.
 - `src/components/figures/` - SVG/browser-computed teaching figures.
 - `src/components/three/` - dynamic R3F hero scene.
