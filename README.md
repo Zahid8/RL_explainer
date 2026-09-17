@@ -5,11 +5,13 @@ A standalone, light-theme web textbook for `../RLbook2020.pdf` (Sutton & Barto, 
 ## What is included
 
 - Hero overview with the RL learning-loop visual and standalone web-book framing.
-- Linear standalone book reader at `/book`, rendering all 17 chapters in order with table-of-contents anchors, bespoke manuscript prose, clickable interactive blackboards, full section-level textbook manuscripts, guided section lecture controls, interactive formula lecture controls, from-zero explanations, visual mental models, section lecture beats, board-work steps, and links to full chapter labs.
+- Linear standalone book reader at `/book`, rendering all 17 chapters in order with table-of-contents anchors, zero-knowledge starter ladders, bespoke manuscript prose, clickable interactive blackboards, full section-level textbook manuscripts, guided section lecture controls, interactive formula lecture controls, from-zero explanations, visual mental models, section lecture beats, board-work steps, and links to full chapter labs.
+- Zero-knowledge primer for readers with no RL background: 85 chapter starter rungs and 340 primer modes across plain explanation, board picture, technical pass, and practice prompt.
 - Term lab covering 20 recurring symbols and concepts before formulas appear.
 - Book map for the three major arcs: tabular methods, approximation, and deeper links.
 - Chapter-by-chapter explorer for all 17 chapters, with:
   - links to standalone chapter pages at `/chapters/1` through `/chapters/17`,
+  - a zero-knowledge starter ladder for every chapter with five prerequisite rungs and four interactive modes per rung,
   - bespoke original manuscript moves for every chapter,
   - an interactive blackboard for every chapter with four staged visual moves, beginner/technical explanations, board notes, and self-checks,
   - a full section-by-section textbook manuscript layer covering every section anchor with beginner framing, technical pass, board walkthrough, formula bridge, algorithm bridge, misconception guard, and self-check,
@@ -52,6 +54,7 @@ A standalone, light-theme web textbook for `../RLbook2020.pdf` (Sutton & Barto, 
   - checkpoint for whether the answer is on track.
 - Standalone, highly detailed chapter pages for every chapter, each combining:
   - Original chapter manuscript with beginner explanation, graphical lecture, technical version, and takeaway for each main move,
+  - Zero-knowledge starter ladder that teaches prerequisite intuition before the chapter manuscript and technical cards,
   - Interactive blackboard lecture board with four clickable stages, an animated SVG model, beginner explanation, technical toggle, board note, and self-check,
   - Full section textbook manuscript rewriting every section as original beginner-to-technical prose,
   - Interactive section lecturer that lets readers choose a section and switch through six guided modes,
@@ -68,7 +71,7 @@ A standalone, light-theme web textbook for `../RLbook2020.pdf` (Sutton & Barto, 
   - figure/example anchors,
   - exercise coaching.
 - Global algorithm index page at `/algorithms` with chapter coverage dashboard, family grouping, source cue mapping, and direct links to all expanded cards.
-- Whole-book coverage audit page at `/coverage` proving chapter route coverage, manuscript coverage, section-level textbook coverage, guided section lecture coverage, interactive formula lecture coverage, interactive blackboard coverage, and algorithm detail-layer completeness from current repository data.
+- Whole-book coverage audit page at `/coverage` proving chapter route coverage, zero-knowledge starter coverage, manuscript coverage, section-level textbook coverage, guided section lecture coverage, interactive formula lecture coverage, interactive blackboard coverage, and algorithm detail-layer completeness from current repository data.
 - Animated and interactive graphics throughout the site: every homepage section, chapter header/story block, chapter section heading, formula reader, algorithm card, global algorithm index card/chapter cluster, and coverage section gets reusable hover/click reinforcement-learning motion sketches; every chapter also has a 4-stage blackboard; dense explanation cards, metrics, panels, proof blocks, notes, and study-route cards use animated micro-glyphs.
 - Algorithm catalog with 109 detailed algorithm/procedure cards across the book, including:
   - objective and core update,
@@ -130,11 +133,13 @@ Local runtime pieces on this workstation:
 - `src/lib/exerciseCoach.ts` - 145 exercise-coach cards generated from the PDF exercise anchors without copying exercise text.
 - `src/lib/chapterSynthesis.ts` - chapter-level synthesis ladders connecting each chapter story to its algorithms, comparison axes, study protocol, and oral-exam checks.
 - `src/lib/chapterDependencyMap.ts` - cross-chapter prerequisite/unlock maps, concept gates, skip risks, and review loops for every chapter page.
+- `src/lib/zeroKnowledgeLadders.ts` - 85 starter rungs across all chapters, each with plain, visual, technical, and practice modes for readers who know no RL yet.
 - `src/lib/chapterManuscripts.ts` - bespoke original prose layer for all 17 chapters, with 51 beginner-to-technical manuscript moves.
 - `src/lib/interactiveBlackboards.ts` - 17 chapter blackboards with 68 clickable visual stages spanning beginner explanation, technical explanation, board note, and self-check.
 - `src/lib/sectionNarratives.ts` - section-by-section original textbook manuscript layer covering all 161 section anchors with from-scratch prose, technical pass, board walkthrough, formula/algorithm bridges, misconception guard, and self-check.
 - `src/components/SectionLessonReader.tsx` - client-side guided lecture console for section manuscripts, exposing six modes per section with an animated board.
 - `src/components/FormulaLectureReader.tsx` - client-side equation lecture console for formula cards, exposing story, symbols, trace, use-case, and pitfall modes with an animated equation board.
+- `src/components/ZeroKnowledgeLadderReader.tsx` - client-side starter ladder console that lets readers choose chapter/rung and switch among plain, visual, technical, and practice modes.
 - `src/lib/standaloneBook.ts` - standalone web-book lecture layer for all 17 chapters, generating from-zero openings, visual mental models, vocabulary, section lecture beats, board-work steps, and checkpoints.
 - `src/lib/coverageAudit.ts` - current-state coverage ledger for chapter routes and algorithm detail layers.
 - `src/app/book/page.tsx` - linear standalone book reader that puts all 17 chapter lectures on one continuous web-book page.

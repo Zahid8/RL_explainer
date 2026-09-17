@@ -12,6 +12,7 @@ import { MotionGlyph } from "@/components/MotionGlyph";
 import { Nav } from "@/components/Nav";
 import { Section, Note } from "@/components/Section";
 import { TermLab } from "@/components/TermLab";
+import { ZeroKnowledgeLadderReader } from "@/components/ZeroKnowledgeLadderReader";
 import { BanditLab } from "@/components/figures/BanditLab";
 import { BellmanLab } from "@/components/figures/BellmanLab";
 import { TraceLab } from "@/components/figures/TraceLab";
@@ -21,6 +22,7 @@ import { blackboardStageCount } from "@/lib/interactiveBlackboards";
 import { chapters } from "@/lib/paper";
 import { sectionLessonModeCount, sectionNarrativeCount } from "@/lib/sectionNarratives";
 import { standaloneLectureTileCount } from "@/lib/standaloneBook";
+import { zeroKnowledgeLadders, zeroKnowledgeModeCount, zeroKnowledgeRungCount } from "@/lib/zeroKnowledgeLadders";
 
 export default function Home() {
   const lectureBeats = standaloneLectureTileCount();
@@ -29,6 +31,8 @@ export default function Home() {
   const sectionNarratives = sectionNarrativeCount();
   const guidedSectionModes = sectionLessonModeCount();
   const formulaLectureModes = formulaLectureModeCount();
+  const zeroKnowledgeRungs = zeroKnowledgeRungCount();
+  const zeroKnowledgeModes = zeroKnowledgeModeCount();
 
   return (
     <main>
@@ -41,7 +45,15 @@ export default function Home() {
         lead="The site now teaches the material as a first-principles course: each chapter starts from zero, uses graphical mental models, then builds the technical definitions, equations, algorithms, and checkpoints in its own words."
         tint
       >
-        <StandaloneBookPledge lectureBeats={lectureBeats} manuscriptMoves={manuscriptMoves} blackboardStages={blackboardStages} sectionNarratives={sectionNarratives} guidedSectionModes={guidedSectionModes} formulaLectureModes={formulaLectureModes} />
+        <StandaloneBookPledge lectureBeats={lectureBeats} manuscriptMoves={manuscriptMoves} blackboardStages={blackboardStages} sectionNarratives={sectionNarratives} guidedSectionModes={guidedSectionModes} formulaLectureModes={formulaLectureModes} zeroKnowledgeRungs={zeroKnowledgeRungs} zeroKnowledgeModes={zeroKnowledgeModes} />
+      </Section>
+      <Section
+        id="primer"
+        eyebrow="00b - Zero-knowledge primer"
+        title={<>Start here if reinforcement learning is totally new.</>}
+        lead="Before the dense chapter cards, every chapter gets a five-rung ladder that begins with everyday intuition, draws the board picture, names the technical object, and gives a practice prompt."
+      >
+        <ZeroKnowledgeLadderReader ladders={zeroKnowledgeLadders} contextTitle="Whole-book beginner-to-technical starter ladder" />
       </Section>
       <Section
         id="terms"
@@ -150,7 +162,7 @@ export default function Home() {
             <p>This is an original standalone teaching site organized around the book&apos;s chapter and section structure. It avoids copying the book&apos;s prose and labels synthetic diagrams/labs as illustrative.</p>
           </Note>
           <Note title="Coverage note">
-            <p>The chapter list covers {chapters.length} chapters, {manuscriptMoves} bespoke manuscript moves, {blackboardStages} interactive blackboard stages, {sectionNarratives} section-level textbook manuscripts, {guidedSectionModes} guided section modes, {formulaLectureModes} formula lecture modes, {lectureBeats} standalone lecture beats, all top-level sections shown in the PDF contents, 161 section notes, a 170-tile mastery notebook, a 44-item formula atlas, a 147-card figure/example atlas, and 145 exercise-coach cards. Use the route pages as a complete original lecture path, then use the practice prompts to check whether the ideas are really yours.</p>
+            <p>The chapter list covers {chapters.length} chapters, {zeroKnowledgeRungs} zero-knowledge starter rungs, {zeroKnowledgeModes} primer modes, {manuscriptMoves} bespoke manuscript moves, {blackboardStages} interactive blackboard stages, {sectionNarratives} section-level textbook manuscripts, {guidedSectionModes} guided section modes, {formulaLectureModes} formula lecture modes, {lectureBeats} standalone lecture beats, all top-level sections shown in the PDF contents, 161 section notes, a 170-tile mastery notebook, a 44-item formula atlas, a 147-card figure/example atlas, and 145 exercise-coach cards. Use the route pages as a complete original lecture path, then use the practice prompts to check whether the ideas are really yours.</p>
           </Note>
         </div>
       </Section>
@@ -177,9 +189,9 @@ export default function Home() {
   );
 }
 
-function StandaloneBookPledge({ lectureBeats, manuscriptMoves, blackboardStages, sectionNarratives, guidedSectionModes, formulaLectureModes }: { lectureBeats: number; manuscriptMoves: number; blackboardStages: number; sectionNarratives: number; guidedSectionModes: number; formulaLectureModes: number }) {
+function StandaloneBookPledge({ lectureBeats, manuscriptMoves, blackboardStages, sectionNarratives, guidedSectionModes, formulaLectureModes, zeroKnowledgeRungs, zeroKnowledgeModes }: { lectureBeats: number; manuscriptMoves: number; blackboardStages: number; sectionNarratives: number; guidedSectionModes: number; formulaLectureModes: number; zeroKnowledgeRungs: number; zeroKnowledgeModes: number }) {
   const cards = [
-    ["Start from zero", "Every chapter begins with a beginner story, a mental picture to draw, and a promise of what you will be able to explain by the end."],
+    ["Start from zero", `${zeroKnowledgeRungs} zero-knowledge starter rungs and ${zeroKnowledgeModes} primer modes make every chapter begin with everyday intuition, a board picture, technical wording, and a practice check.`],
     ["Draw before equations", `${blackboardStages} clickable blackboard stages let each chapter show a visual model, beginner explanation, technical explanation, board note, and self-check before the dense cards.`],
     ["Teach each section", `${sectionNarratives} section-level textbook manuscripts, ${guidedSectionModes} guided section modes, ${manuscriptMoves} bespoke manuscript moves, and ${lectureBeats} section-level lecture beats turn the chapter outline into prose lessons, questions, visual metaphors, technical builds, board-work steps, and checkpoints.`],
     ["Go technical", `${formulaLectureModes} formula lecture modes sit beside algorithms, derivations, profiles, worked microscopes, traps, and implementation checks so equations are taught as stories, symbol maps, traces, use cases, and pitfalls.`],

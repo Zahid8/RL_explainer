@@ -19,9 +19,9 @@ const visualInteractionRows = [
   },
   {
     surface: "Chapter detail routes",
-    coverage: "All 17 chapter pages include animated header maps, story-loop graphics, clickable blackboards, guided section readers, and animated visuals on every major chapter section title.",
-    graphics: "Chapter motion map, interactive blackboard, guided section reader, source audit, algorithms, section dives, mastery, formulas, anchors, synthesis, and dependency graphics.",
-    interaction: "Each concept map exposes Sense, Target, Update, and Act states; each blackboard has four click-through stages and a technical toggle; each section reader has six mode controls; dense cards add animated micro-glyphs.",
+    coverage: "All 17 chapter pages include animated header maps, zero-knowledge starter ladders, story-loop graphics, clickable blackboards, guided section readers, and animated visuals on every major chapter section title.",
+    graphics: "Chapter motion map, starter ladder board, interactive blackboard, guided section reader, source audit, algorithms, section dives, mastery, formulas, anchors, synthesis, and dependency graphics.",
+    interaction: "Each concept map exposes Sense, Target, Update, and Act states; each starter ladder has four learning modes; each blackboard has four click-through stages and a technical toggle; each section reader has six mode controls; dense cards add animated micro-glyphs.",
   },
   {
     surface: "Linear book blackboards",
@@ -65,6 +65,8 @@ export default function CoveragePage() {
               <AnimatedConceptGraphic label="Coverage motion ledger" variant="coverage" caption="The audit is itself graphical: status, route coverage, and algorithm details move through proof states." compact />
               <div className="grid grid-cols-2 overflow-hidden rounded-xl border border-line bg-white">
                 <Stat value={String(audit.totals.chapterRoutes)} label="chapter routes" />
+                <Stat value={String(audit.totals.zeroKnowledgeRungs)} label="starter rungs" />
+                <Stat value={String(audit.totals.zeroKnowledgeModes)} label="primer modes" />
                 <Stat value={String(audit.totals.manuscriptSections)} label="manuscript moves" />
                 <Stat value={String(audit.totals.blackboardStages)} label="blackboard stages" />
                 <Stat value={String(audit.totals.sectionNarratives)} label="section manuscripts" />
@@ -156,9 +158,11 @@ function ChapterCoverageCard({ chapter }: { chapter: ChapterCoverageRow }) {
         </div>
         <Link href={chapter.route} className="mono rounded-full border border-line bg-white px-3 py-2 text-[11px] uppercase tracking-[0.12em] text-muted hover:border-cyan hover:text-ink">Open chapter</Link>
       </div>
-      <div className="mt-4 grid gap-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-[repeat(14,minmax(0,1fr))]">
+      <div className="mt-4 grid gap-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-[repeat(16,minmax(0,1fr))]">
         <Metric label="algorithms" value={chapter.algorithms} />
         <Metric label="source cues" value={chapter.sourceCues} />
+        <Metric label="starter" value={chapter.zeroKnowledgeRungs} />
+        <Metric label="primer modes" value={chapter.zeroKnowledgeModes} />
         <Metric label="manuscript" value={chapter.manuscriptSections} />
         <Metric label="blackboard" value={chapter.blackboardStages} />
         <Metric label="section text" value={chapter.sectionNarratives} />

@@ -6,6 +6,7 @@ import { AnimatedConceptGraphic } from "@/components/AnimatedConceptGraphic";
 import { FormulaLectureReader } from "@/components/FormulaLectureReader";
 import { InteractiveBlackboard } from "@/components/InteractiveBlackboard";
 import { SectionLessonReader } from "@/components/SectionLessonReader";
+import { ZeroKnowledgeLadderReader } from "@/components/ZeroKnowledgeLadderReader";
 import { MotionGlyph } from "@/components/MotionGlyph";
 import { Chip, Plain } from "@/components/Section";
 import { algorithmsForChapter, type AlgorithmDetail } from "@/lib/algorithmCatalog";
@@ -26,6 +27,7 @@ import { chapters } from "@/lib/paper";
 import { manuscriptForChapter, type ChapterManuscript } from "@/lib/chapterManuscripts";
 import { sectionLessonsForChapter, type SectionTextbookLesson } from "@/lib/sectionNarratives";
 import { standaloneLectureForChapter, type StandaloneChapterLecture } from "@/lib/standaloneBook";
+import { zeroKnowledgeLadderForChapter, zeroKnowledgeModeCount, type ZeroKnowledgeLadder } from "@/lib/zeroKnowledgeLadders";
 
 export const dynamicParams = false;
 
@@ -62,6 +64,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
   const evidence = evidenceGuideItems.filter((entry) => entry.chapter === item.n);
   const exercises = exerciseCoachCards.filter((entry) => entry.chapter === item.n);
   const lecture = standaloneLectureForChapter(item);
+  const starter = zeroKnowledgeLadderForChapter(item.n);
+  const starterModes = zeroKnowledgeModeCount(item.n);
   const manuscript = manuscriptForChapter(item.n);
   const blackboard = blackboardForChapter(item.n);
   const sectionLessons = sectionLessonsForChapter(item.n);
@@ -88,6 +92,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
             <div className="grid gap-4">
               <AnimatedConceptGraphic label={`Chapter ${item.n} motion map`} variant="chapter" caption={item.easy} compact />
               <div className="grid grid-cols-2 overflow-hidden rounded-xl border border-line bg-white">
+                <Stat value={String(starter.rungs.length)} label="starter rungs" />
                 <Stat value={String(deep?.sectionDetails.length ?? item.sections.length)} label="section notes" />
                 <Stat value={String(algorithms.length)} label="algorithms" />
                 <Stat value={String(formulas.length)} label="formula cards" />
@@ -109,7 +114,9 @@ export default async function ChapterPage({ params }: { params: Params }) {
           <AnimatedConceptGraphic label="Story loop" variant="loop" caption="The easy story and the technical story update each other: intuition points at notation, notation checks intuition." compact />
         </section>
 
-        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, sectionLessons: sectionLessons.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, formulaModes, evidence: evidence.length, exercises: exercises.length, sourceAudits: sourceAudits.length }} />
+        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, starterRungs: starter.rungs.length, starterModes, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, sectionLessons: sectionLessons.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, formulaModes, evidence: evidence.length, exercises: exercises.length, sourceAudits: sourceAudits.length }} />
+
+        <ChapterStarterLadderBlock chapter={item} starter={starter} starterModes={starterModes} />
 
         <ChapterManuscriptBlock manuscript={manuscript} />
 
@@ -284,8 +291,9 @@ function Stat({ value, label }: { value: string; label: string }) {
   );
 }
 
-function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; manuscriptSections: number; blackboardStages: number; sectionLessons: number; lectureBeats: number; sections: number; formulas: number; formulaModes: number; evidence: number; exercises: number; sourceAudits: number } }) {
+function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; starterRungs: number; starterModes: number; manuscriptSections: number; blackboardStages: number; sectionLessons: number; lectureBeats: number; sections: number; formulas: number; formulaModes: number; evidence: number; exercises: number; sourceAudits: number } }) {
   const items = [
+    ["starter", `${counts.starterRungs} starter rungs · ${counts.starterModes} modes`],
     ["manuscript", `${counts.manuscriptSections} manuscript moves`],
     ["blackboard", `${counts.blackboardStages} blackboard stages`],
     ["section-reader", `${counts.sectionLessons * 6} guided modes`],
@@ -342,6 +350,24 @@ function glyphAccentForLabel(label: string): "cyan" | "orange" | "blue" | "viole
   if (/check|complete|implementation|test/i.test(label)) return "lime";
   if (/source|chapter|dependency|coverage/i.test(label)) return "blue";
   return "cyan";
+}
+
+function ChapterStarterLadderBlock({ chapter, starter, starterModes }: { chapter: (typeof chapters)[number]; starter: ZeroKnowledgeLadder; starterModes: number }) {
+  return (
+    <section id="starter" className="scroll-mt-24">
+      <SectionTitle
+        eyebrow="00z - Zero-knowledge starter ladder"
+        title="Begin here if you know nothing about this chapter yet."
+        lead="This ladder is deliberately before the manuscript, formulas, and algorithms: it gives everyday intuition, a board picture, precise language, and a practice prompt for the chapter's prerequisite ideas."
+      />
+      <div className="mt-6 grid gap-4">
+        <div className="rounded-xl border border-lime/30 bg-lime/[0.06] p-4">
+          <p className="text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Chapter {chapter.n} starter promise:</span> {starter.promise} The {starter.rungs.length} rungs below expose {starterModes} learning modes before the dense chapter layers begin.</p>
+        </div>
+        <ZeroKnowledgeLadderReader ladders={[starter]} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} />
+      </div>
+    </section>
+  );
 }
 
 
