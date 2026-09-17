@@ -93,7 +93,7 @@ npm run build
 npm run start -- -p 3510
 ```
 
-The latest validation was run on port `3510` with desktop and mobile headless Chrome screenshots under `tmp/qa/` (ignored by git).
+The latest validation was run on port `3510` with desktop and mobile headless Chrome screenshots under `tmp/qa/` (ignored by git). The animation QA also uses headless Chrome/CDP to click phase controls, confirm moving SVG dots and CSS animation names, and check that controls do not overflow on desktop or mobile routes.
 
 ## Public tunnel
 

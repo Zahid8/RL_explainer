@@ -49,7 +49,7 @@ export function AnimatedConceptGraphic({
   const [phaseTitle, phaseText] = phaseCopy[phase];
 
   return (
-    <div className={`rl-graphic group/graphic relative overflow-hidden rounded-xl border border-line bg-white ${compact ? "p-3" : "p-4"}`}>
+    <div className={`rl-graphic group/graphic relative overflow-hidden rounded-xl border border-line bg-white ${compact ? "p-3" : "p-4"}`} data-rl-graphic={variant}>
       <div className="pointer-events-none absolute inset-0 paper-grid opacity-40" />
       <div className="pointer-events-none absolute -right-10 -top-10 size-28 rounded-full blur-2xl" style={{ background: colors.glow }} />
       <div className="relative flex items-start justify-between gap-3">
@@ -79,10 +79,12 @@ export function AnimatedConceptGraphic({
           {Array.from({ length: 9 }, (_, index) => <line key={index} x1="34" x2="486" y1={42 + index * 21} y2={42 + index * 21} stroke="rgba(13,22,18,0.14)" />)}
           {Array.from({ length: 10 }, (_, index) => <line key={index} y1="35" y2="216" x1={52 + index * 43} x2={52 + index * 43} stroke="rgba(13,22,18,0.11)" />)}
         </g>
-        <path className="rl-flow-path" d={geometry.path} fill="none" stroke={`url(#${rawId}-grad)`} strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+        <path id={`${rawId}-motion-path`} className="rl-flow-path" d={geometry.path} fill="none" stroke={`url(#${rawId}-grad)`} strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
         <path className="rl-flow-dash" d={geometry.path} fill="none" stroke={colors.stroke} strokeWidth="2" strokeLinecap="round" strokeDasharray="12 15" opacity="0.8" />
         <circle className="rl-flow-dot" r="7" fill={colors.stroke} filter={`url(#${rawId}-glow)`}>
-          <animateMotion dur="5.8s" repeatCount="indefinite" path={geometry.path} />
+          <animateMotion dur="5.8s" repeatCount="indefinite">
+            <mpath href={`#${rawId}-motion-path`} />
+          </animateMotion>
         </circle>
         {geometry.nodes.map((node, index) => {
           const active = index === phase;
@@ -99,20 +101,22 @@ export function AnimatedConceptGraphic({
         {variant === "gradient" ? <GradientOverlay color={colors.stroke} /> : null}
       </svg>
 
-      <div className="relative grid gap-3 md:grid-cols-[1fr_auto] md:items-end">
+      <div className={`relative grid gap-3 ${compact ? "" : "xl:grid-cols-[minmax(0,1fr)_minmax(220px,260px)] xl:items-end"}`}>
         <div className="rounded-lg border border-line bg-panel-2 p-3">
           <p className="mono text-[10px] uppercase tracking-[0.14em] text-dim">Current animation state</p>
-          <p className="mt-1 text-sm leading-relaxed text-muted"><span className="font-medium text-ink">{phaseTitle}:</span> {caption ?? phaseText}</p>
+          <p className="mt-1 text-sm leading-relaxed text-muted" data-rl-state-copy aria-live="polite"><span className="font-medium text-ink">{phaseTitle}:</span> {phaseText}</p>
+          {caption ? <p className={`rl-context-copy mt-2 text-xs leading-relaxed text-dim ${compact ? "rl-context-copy-compact" : ""}`}><span className="font-medium text-ink">Context:</span> {caption}</p> : null}
         </div>
-        <div className="grid grid-cols-4 gap-1.5 md:w-[260px]">
+        <div className="grid w-full min-w-0 grid-cols-4 gap-1.5">
           {phaseCopy.map(([title], index) => (
             <button
               key={title}
               type="button"
+              data-rl-phase-button={title}
               onMouseEnter={() => setPhase(index)}
               onFocus={() => setPhase(index)}
               onClick={() => setPhase(index)}
-              className={`mono rounded-md border px-2 py-2 text-[10px] uppercase tracking-[0.12em] transition ${phase === index ? "border-cyan bg-cyan text-white" : "border-line bg-white text-dim hover:border-cyan hover:text-ink"}`}
+              className={`mono min-w-0 rounded-md border px-1.5 py-2 text-[10px] uppercase tracking-[0.08em] transition ${phase === index ? "border-cyan bg-cyan text-white" : "border-line bg-white text-dim hover:border-cyan hover:text-ink"}`}
               aria-pressed={phase === index}
             >
               {title}

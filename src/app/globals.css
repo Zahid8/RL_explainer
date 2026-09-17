@@ -106,6 +106,8 @@ button, input { font: inherit; }
 .rl-graphic {
   box-shadow: 0 16px 40px rgba(16, 22, 19, 0.06);
   transform: translateZ(0);
+  content-visibility: auto;
+  contain-intrinsic-size: 420px;
 }
 
 .rl-graphic:hover {
@@ -123,6 +125,7 @@ button, input { font: inherit; }
 .rl-node,
 .rl-node-active {
   transition: transform 240ms ease, opacity 240ms ease;
+  transform-box: fill-box;
 }
 
 .rl-node-active {
@@ -132,6 +135,7 @@ button, input { font: inherit; }
 .rl-pulse-ring {
   animation: rl-pulse-ring 2.6s ease-out infinite;
   transform-origin: center;
+  transform-box: fill-box;
 }
 
 .rl-scan-lines {
@@ -146,6 +150,7 @@ button, input { font: inherit; }
 .rl-gradient-bars rect {
   animation: rl-bar-rise 1.8s ease-in-out infinite alternate;
   transform-origin: bottom;
+  transform-box: fill-box;
 }
 
 .rl-gradient-bars rect:nth-child(2) { animation-delay: 120ms; }
@@ -162,6 +167,12 @@ button, input { font: inherit; }
   justify-content: center;
   filter: drop-shadow(0 8px 16px rgba(16, 22, 19, 0.08));
   transition: transform 220ms ease, filter 220ms ease;
+}
+
+.motion-glyph-small {
+  width: 54px;
+  min-width: 54px;
+  height: 33px;
 }
 
 .motion-glyph svg {
@@ -204,6 +215,7 @@ button, input { font: inherit; }
   stroke-width: 2;
   opacity: 0.62;
   transform-origin: 36px 22px;
+  transform-box: fill-box;
   animation: motion-glyph-ring 2.4s ease-in-out infinite;
 }
 
@@ -214,6 +226,7 @@ button, input { font: inherit; }
 .motion-glyph-dot {
   fill: currentColor;
   transform-origin: center;
+  transform-box: fill-box;
   animation: motion-glyph-dot 1.7s ease-in-out infinite;
 }
 
@@ -224,6 +237,7 @@ button, input { font: inherit; }
   fill: currentColor;
   opacity: 0.72;
   transform-origin: bottom;
+  transform-box: fill-box;
   animation: motion-glyph-bar 1.6s ease-in-out infinite alternate;
 }
 
@@ -235,6 +249,13 @@ article:hover .motion-glyph,
 .motion-glyph:hover {
   transform: translateY(-2px) scale(1.03);
   filter: drop-shadow(0 12px 20px rgba(16, 22, 19, 0.12));
+}
+
+.rl-context-copy-compact {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
 
 @keyframes rl-dash {

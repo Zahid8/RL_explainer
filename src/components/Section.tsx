@@ -57,7 +57,7 @@ export function Plain({ title = "Plain words", children }: { title?: string; chi
     <aside className="rounded-xl border border-line bg-white p-5">
       <div className="mb-3 flex items-start justify-between gap-3">
         <p className="eyebrow text-lime">{title}</p>
-        <MotionGlyph label={title} variant={glyphVariantForText(title)} accent="lime" className="-mr-2 -mt-2 scale-75" />
+        <MotionGlyph label={title} variant={glyphVariantForText(title)} accent="lime" className="-mr-2 -mt-2 motion-glyph-small" />
       </div>
       <div className="text-[15px] leading-relaxed text-muted">{children}</div>
     </aside>
@@ -69,7 +69,7 @@ export function Note({ title, children }: { title: string; children: ReactNode }
     <aside className="rounded-xl border border-line bg-panel-2 p-5">
       <div className="mb-2 flex items-start justify-between gap-3">
         <p className="mono text-xs uppercase tracking-[0.16em] text-dim">{title}</p>
-        <MotionGlyph label={title} variant={glyphVariantForText(title)} accent="orange" className="-mr-2 -mt-2 scale-75" />
+        <MotionGlyph label={title} variant={glyphVariantForText(title)} accent="orange" className="-mr-2 -mt-2 motion-glyph-small" />
       </div>
       <div className="text-sm leading-relaxed text-muted">{children}</div>
     </aside>

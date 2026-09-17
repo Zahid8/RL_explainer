@@ -209,21 +209,21 @@ function Stat({ value, label }: { value: string; label: string }) {
     <div className="border-b border-r border-line p-4">
       <div className="flex items-start justify-between gap-2">
         <div><p className="display text-3xl text-ink">{value}</p><p className="mono mt-2 text-[10px] uppercase tracking-[0.16em] text-dim">{label}</p></div>
-        <MotionGlyph label={label} variant={glyphVariantForLabel(label)} accent={glyphAccentForLabel(label)} className="-mr-2 -mt-2 scale-75" />
+        <MotionGlyph label={label} variant={glyphVariantForLabel(label)} accent={glyphAccentForLabel(label)} className="-mr-2 -mt-2 motion-glyph-small" />
       </div>
     </div>
   );
 }
 
 function Metric({ value, label }: { value: number; label: string }) {
-  return <div className="rounded-lg border border-line bg-white p-3"><div className="flex items-start justify-between gap-2"><div><p className="display text-2xl text-ink">{value}</p><p className="mono mt-1 text-[10px] uppercase tracking-[0.14em] text-dim">{label}</p></div><MotionGlyph label={label} variant={glyphVariantForLabel(label)} accent={glyphAccentForLabel(label)} className="-mr-2 -mt-2 scale-75" /></div></div>;
+  return <div className="rounded-lg border border-line bg-white p-3"><div className="flex items-start justify-between gap-2"><div><p className="display text-2xl text-ink">{value}</p><p className="mono mt-1 text-[10px] uppercase tracking-[0.14em] text-dim">{label}</p></div><MotionGlyph label={label} variant={glyphVariantForLabel(label)} accent={glyphAccentForLabel(label)} className="-mr-2 -mt-2 motion-glyph-small" /></div></div>;
 }
 
 function MiniBlock({ label, text, tint = false }: { label: string; text: string; tint?: boolean }) {
-  return <div className={`rounded-lg border border-line ${tint ? "bg-panel-2" : "bg-white"} p-3`}><div className="mb-2 flex items-start justify-between gap-2"><p className="mono text-[10px] uppercase tracking-[0.14em] text-dim">{label}</p><MotionGlyph label={label} variant={glyphVariantForLabel(label)} accent={glyphAccentForLabel(label)} className="-mr-2 -mt-2 scale-75" /></div><p className="text-sm leading-relaxed text-muted">{text}</p></div>;
+  return <div className={`rounded-lg border border-line ${tint ? "bg-panel-2" : "bg-white"} p-3`}><div className="mb-2 flex items-start justify-between gap-2"><p className="mono text-[10px] uppercase tracking-[0.14em] text-dim">{label}</p><MotionGlyph label={label} variant={glyphVariantForLabel(label)} accent={glyphAccentForLabel(label)} className="-mr-2 -mt-2 motion-glyph-small" /></div><p className="text-sm leading-relaxed text-muted">{text}</p></div>;
 }
 
 function Panel({ title, items, accent = "cyan" }: { title: string; items: string[]; accent?: "cyan" | "orange" | "blue" | "violet" | "lime" }) {
   const color = { cyan: "text-cyan", orange: "text-orange", blue: "text-blue", violet: "text-violet", lime: "text-lime" }[accent];
-  return <div className="mt-4 rounded-lg border border-line bg-white p-4"><div className="mb-3 flex items-start justify-between gap-2"><p className="mono text-[10px] uppercase tracking-[0.14em] text-dim">{title}</p><MotionGlyph label={title} variant={glyphVariantForLabel(title)} accent={accent} className="-mr-2 -mt-2 scale-75" /></div><ul className="grid gap-2 text-sm leading-relaxed text-muted">{items.map((item, index) => <li key={`${title}-${index}`} className="flex gap-2"><span className={color}>•</span><span>{item}</span></li>)}</ul></div>;
+  return <div className="mt-4 rounded-lg border border-line bg-white p-4"><div className="mb-3 flex items-start justify-between gap-2"><p className="mono text-[10px] uppercase tracking-[0.14em] text-dim">{title}</p><MotionGlyph label={title} variant={glyphVariantForLabel(title)} accent={accent} className="-mr-2 -mt-2 motion-glyph-small" /></div><ul className="grid gap-2 text-sm leading-relaxed text-muted">{items.map((item, index) => <li key={`${title}-${index}`} className="flex gap-2"><span className={color}>•</span><span>{item}</span></li>)}</ul></div>;
 }

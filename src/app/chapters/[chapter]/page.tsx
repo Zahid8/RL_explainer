@@ -242,7 +242,7 @@ function Stat({ value, label }: { value: string; label: string }) {
     <div className="border-b border-r border-line p-4">
       <div className="flex items-start justify-between gap-2">
         <div><p className="display text-3xl text-ink">{value}</p><p className="mono mt-2 text-[10px] uppercase tracking-[0.16em] text-dim">{label}</p></div>
-        <MotionGlyph label={label} variant={glyphVariantForLabel(label)} accent={glyphAccentForLabel(label)} className="-mr-2 -mt-2 scale-75" />
+        <MotionGlyph label={label} variant={glyphVariantForLabel(label)} accent={glyphAccentForLabel(label)} className="-mr-2 -mt-2 motion-glyph-small" />
       </div>
     </div>
   );
@@ -574,7 +574,7 @@ function MiniBlock({ label, text, tint = false }: { label: string; text: string;
     <div className={`rounded-lg border border-line ${tint ? "bg-panel-2" : "bg-white"} p-3`}>
       <div className="mb-2 flex items-start justify-between gap-2">
         <p className="mono text-[10px] uppercase tracking-[0.14em] text-dim">{label}</p>
-        <MotionGlyph label={label} variant={glyphVariantForLabel(label)} accent={glyphAccentForLabel(label)} className="-mr-2 -mt-2 scale-75" />
+        <MotionGlyph label={label} variant={glyphVariantForLabel(label)} accent={glyphAccentForLabel(label)} className="-mr-2 -mt-2 motion-glyph-small" />
       </div>
       <p className="text-sm leading-relaxed text-muted">{text}</p>
     </div>
@@ -594,7 +594,7 @@ function Panel({ title, items, accent = "cyan", ordered = false, mono = false }:
     <div className="rounded-lg border border-line bg-white p-4">
       <div className="mb-3 flex items-start justify-between gap-2">
         <p className="mono text-[10px] uppercase tracking-[0.14em] text-dim">{title}</p>
-        <MotionGlyph label={title} variant={glyphVariantForLabel(title)} accent={accent} className="-mr-2 -mt-2 scale-75" />
+        <MotionGlyph label={title} variant={glyphVariantForLabel(title)} accent={accent} className="-mr-2 -mt-2 motion-glyph-small" />
       </div>
       <List className={`grid gap-2 text-sm leading-relaxed text-muted ${mono ? "mono text-xs" : ""}`}>{items.map((item, index) => <li key={`${item}-${index}`} className="flex gap-2"><span className={color}>{ordered ? `${index + 1}.` : "•"}</span><span>{item}</span></li>)}</List>
     </div>
