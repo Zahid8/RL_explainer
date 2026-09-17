@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Chip } from "@/components/Section";
 import { algorithmCatalog, algorithmTotals, type AlgorithmDetail } from "@/lib/algorithmCatalog";
 import { algorithmDossier } from "@/lib/algorithmDossier";
+import { algorithmProfile, profileRows } from "@/lib/algorithmProfiles";
 import { algorithmSourceAudits } from "@/lib/algorithmSourceAudit";
 import { workedExampleForAlgorithm } from "@/lib/algorithmWorkedExamples";
 import { chapters } from "@/lib/paper";
@@ -118,6 +119,7 @@ export default function AlgorithmIndexPage() {
 function AlgorithmIndexCard({ algorithm, sourceAudits }: { algorithm: AlgorithmDetail; sourceAudits: typeof algorithmSourceAudits }) {
   const dossier = algorithmDossier(algorithm);
   const worked = workedExampleForAlgorithm(algorithm);
+  const profile = algorithmProfile(algorithm);
 
   return (
     <article className="rounded-xl border border-line bg-panel p-5">
@@ -135,6 +137,7 @@ function AlgorithmIndexCard({ algorithm, sourceAudits }: { algorithm: AlgorithmD
         </div>
         <div className="grid gap-4">
           <MiniPanel title="PDF source cues" items={sourceAudits.length ? sourceAudits.map((audit) => `${audit.bookAnchor}: ${audit.sourceTitle}`) : ["No separate source-audit row; this card supports chapter context, formulation, or an application procedure."]} />
+          <MiniPanel title="Technical profile axes" items={profileRows(profile).slice(0, 6).map(([label, value]) => `${label}: ${value}`)} />
           <MiniPanel title="Dossier sections" items={dossier.map((section) => section.label)} />
           <MiniPanel title="Worked microscope preview" items={[worked.title, ...worked.calculation.slice(0, 3), `Debug: ${worked.debuggingProbe}`]} />
         </div>

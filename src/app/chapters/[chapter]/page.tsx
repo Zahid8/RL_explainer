@@ -5,6 +5,7 @@ import { TeX } from "@/components/Math";
 import { Chip, Plain } from "@/components/Section";
 import { algorithmsForChapter, type AlgorithmDetail } from "@/lib/algorithmCatalog";
 import { algorithmDossier, type AlgorithmDossierSection } from "@/lib/algorithmDossier";
+import { algorithmProfile, profileRows, type AlgorithmProfile } from "@/lib/algorithmProfiles";
 import { workedExampleForAlgorithm, type AlgorithmWorkedExample } from "@/lib/algorithmWorkedExamples";
 import { sourceAuditsForChapter, type AlgorithmSourceAudit } from "@/lib/algorithmSourceAudit";
 import { chapterDeepDives } from "@/lib/deepDives";
@@ -275,6 +276,7 @@ function SourceAuditCard({ audit, algorithms }: { audit: AlgorithmSourceAudit; a
 function AlgorithmCard({ algorithm }: { algorithm: AlgorithmDetail }) {
   const dossier = algorithmDossier(algorithm);
   const worked = workedExampleForAlgorithm(algorithm);
+  const profile = algorithmProfile(algorithm);
 
   return (
     <article id={algorithm.id} className="scroll-mt-24 overflow-hidden rounded-xl border border-line bg-panel">
@@ -295,6 +297,7 @@ function AlgorithmCard({ algorithm }: { algorithm: AlgorithmDetail }) {
             <Panel title="Pseudocode" items={algorithm.pseudocode} accent="violet" mono ordered />
           </div>
           {algorithm.equations.length ? <div className="mt-5 grid gap-3">{algorithm.equations.map((equation) => <TeX key={equation} block>{equation}</TeX>)}</div> : null}
+          <AlgorithmProfileBlock profile={profile} />
           <WorkedExampleBlock example={worked} />
           <div className="mt-5 grid gap-5 lg:grid-cols-2">
             <Panel title="Implementation notes" items={algorithm.implementationNotes} accent="lime" />
@@ -330,6 +333,22 @@ function DossierBlock({ section }: { section: AlgorithmDossierSection }) {
   );
 }
 
+
+function AlgorithmProfileBlock({ profile }: { profile: AlgorithmProfile }) {
+  return (
+    <div className="mt-5 rounded-xl border border-violet/25 bg-violet/[0.045] p-4">
+      <div className="flex flex-wrap gap-2"><Chip accent="violet">Technical profile axes</Chip></div>
+      <div className="mt-4 grid gap-2 md:grid-cols-2">
+        {profileRows(profile).map(([label, value]) => (
+          <div key={label} className="rounded-lg border border-line bg-white p-3">
+            <p className="mono text-[10px] uppercase tracking-[0.14em] text-dim">{label}</p>
+            <p className="mt-2 text-sm leading-relaxed text-muted">{value}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 function WorkedExampleBlock({ example }: { example: AlgorithmWorkedExample }) {
   return (
