@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AnimatedConceptGraphic } from "@/components/AnimatedConceptGraphic";
 import { InteractiveBlackboard } from "@/components/InteractiveBlackboard";
+import { SectionLessonReader } from "@/components/SectionLessonReader";
 import { MotionGlyph } from "@/components/MotionGlyph";
 import { Chip } from "@/components/Section";
 import { manuscriptForChapter, manuscriptSectionCount, type ChapterManuscript } from "@/lib/chapterManuscripts";
 import { blackboardForChapter, blackboardStageCount, type ChapterBlackboard } from "@/lib/interactiveBlackboards";
 import { chapters } from "@/lib/paper";
-import { sectionLessonsForChapter, sectionNarrativeCount, type SectionTextbookLesson } from "@/lib/sectionNarratives";
+import { sectionLessonModeCount, sectionLessonsForChapter, sectionNarrativeCount, type SectionTextbookLesson } from "@/lib/sectionNarratives";
 import { standaloneLectureForChapter, standaloneLectureTileCount, type StandaloneChapterLecture } from "@/lib/standaloneBook";
 
 export const metadata: Metadata = {
@@ -22,6 +23,7 @@ export default function BookPage() {
   const manuscriptSections = manuscriptSectionCount();
   const blackboardStages = blackboardStageCount();
   const sectionNarratives = sectionNarrativeCount();
+  const guidedSectionModes = sectionLessonModeCount();
 
   return (
     <main className="min-h-screen bg-bg text-ink">
@@ -43,6 +45,7 @@ export default function BookPage() {
                 <Chip accent="blue">{manuscriptSections} manuscript moves</Chip>
                 <Chip accent="violet">{blackboardStages} blackboard stages</Chip>
                 <Chip accent="cyan">{sectionNarratives} section manuscripts</Chip>
+                <Chip accent="blue">{guidedSectionModes} guided section modes</Chip>
                 <Chip accent="lime">{lectureBeats} lecture beats</Chip>
                 <Chip accent="violet">beginner → advanced</Chip>
                 <Chip accent="orange">original wording</Chip>
@@ -168,6 +171,13 @@ function BookChapter({ chapter, lecture, manuscript, blackboard, sectionLessons 
           <InteractiveBlackboard board={blackboard} compact />
         </section>
 
+        <section className="grid gap-4">
+          <div>
+            <p className="eyebrow">Interactive section lecturer</p>
+            <h3 className="display mt-2 text-3xl font-medium text-ink">Pick any section and switch between beginner, technical, board, formula, algorithm, and check modes.</h3>
+          </div>
+          <SectionLessonReader lessons={sectionLessons} chapterTitle={`Chapter ${chapter.n}: ${chapter.title}`} compact />
+        </section>
         <section className="grid gap-4">
           <div>
             <p className="eyebrow">Full section textbook manuscript</p>

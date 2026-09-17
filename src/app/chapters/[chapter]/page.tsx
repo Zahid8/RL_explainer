@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { TeX } from "@/components/Math";
 import { AnimatedConceptGraphic } from "@/components/AnimatedConceptGraphic";
 import { InteractiveBlackboard } from "@/components/InteractiveBlackboard";
+import { SectionLessonReader } from "@/components/SectionLessonReader";
 import { MotionGlyph } from "@/components/MotionGlyph";
 import { Chip, Plain } from "@/components/Section";
 import { algorithmsForChapter, type AlgorithmDetail } from "@/lib/algorithmCatalog";
@@ -113,6 +114,13 @@ export default async function ChapterPage({ params }: { params: Params }) {
           <SectionTitle eyebrow="00b - Interactive blackboard" title="Click through the chapter's core visual model." lead="This is the graphical lecture board for the chapter: change stages, watch the diagram shift, then compare the beginner explanation with the technical version." />
           <div className="mt-6">
             <InteractiveBlackboard board={blackboard} />
+          </div>
+        </section>
+
+        <section id="section-reader" className="scroll-mt-24">
+          <SectionTitle eyebrow="00c - Interactive section lecturer" title="Control the lecture mode for every section." lead="Choose a section, then switch between beginner, technical, board, formula, algorithm, and self-check views. This turns the section manuscript into a graphical lecture console." />
+          <div className="mt-6">
+            <SectionLessonReader lessons={sectionLessons} chapterTitle={`Chapter ${item.n}: ${item.title}`} />
           </div>
         </section>
 
@@ -274,6 +282,7 @@ function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; 
   const items = [
     ["manuscript", `${counts.manuscriptSections} manuscript moves`],
     ["blackboard", `${counts.blackboardStages} blackboard stages`],
+    ["section-reader", `${counts.sectionLessons * 6} guided modes`],
     ["section-manuscript", `${counts.sectionLessons} section manuscripts`],
     ["lecture", `${counts.lectureBeats} lecture beats`],
     ["synthesis", "synthesis ladder"],

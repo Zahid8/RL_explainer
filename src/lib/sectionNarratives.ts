@@ -20,6 +20,8 @@ export interface SectionTextbookLesson {
   terms: string[];
 }
 
+export const sectionLessonModes = ["from scratch", "technical", "board", "formula", "algorithm", "self-check"] as const;
+
 export function sectionLessonsForChapter(chapterNumber: number): SectionTextbookLesson[] {
   const chapter = chapters.find((candidate) => candidate.n === chapterNumber);
   const deep = chapterDeepDives[chapterNumber];
@@ -69,6 +71,10 @@ export function sectionLessonsForChapter(chapterNumber: number): SectionTextbook
 
 export function sectionNarrativeCount() {
   return chapters.reduce((sum, chapter) => sum + sectionLessonsForChapter(chapter.n).length, 0);
+}
+
+export function sectionLessonModeCount() {
+  return sectionNarrativeCount() * sectionLessonModes.length;
 }
 
 function stripSectionNumber(section: string) {

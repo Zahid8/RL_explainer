@@ -122,6 +122,10 @@ button, input { font: inherit; }
   animation: rl-dash 1.8s linear infinite;
 }
 
+.rl-dash {
+  animation: rl-dash 1.8s linear infinite;
+}
+
 .rl-node,
 .rl-node-active {
   transition: transform 240ms ease, opacity 240ms ease;

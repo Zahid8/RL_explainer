@@ -14,7 +14,7 @@ import { chapterMastery } from "@/lib/mastery";
 import { manuscriptForChapter, manuscriptSectionCount } from "@/lib/chapterManuscripts";
 import { blackboardForChapter, blackboardStageCount } from "@/lib/interactiveBlackboards";
 import { chapters } from "@/lib/paper";
-import { sectionLessonsForChapter, sectionNarrativeCount } from "@/lib/sectionNarratives";
+import { sectionLessonModeCount, sectionLessonModes, sectionLessonsForChapter, sectionNarrativeCount } from "@/lib/sectionNarratives";
 import { standaloneLectureForChapter, standaloneLectureTileCount } from "@/lib/standaloneBook";
 
 export interface RequirementProof {
@@ -34,6 +34,7 @@ export interface ChapterCoverageRow {
   manuscriptSections: number;
   blackboardStages: number;
   sectionNarratives: number;
+  sectionInteractiveModes: number;
   lectureBeats: number;
   sectionNotes: number;
   masteryTiles: number;
@@ -80,6 +81,7 @@ export interface CoverageAudit {
     manuscriptSections: number;
     blackboardStages: number;
     sectionNarratives: number;
+    sectionInteractiveModes: number;
     lectureBeats: number;
     sectionNotes: number;
     masteryTiles: number;
@@ -101,6 +103,7 @@ export function buildCoverageAudit(): CoverageAudit {
   const manuscriptSections = manuscriptSectionCount();
   const blackboardStages = blackboardStageCount();
   const sectionNarratives = sectionNarrativeCount();
+  const sectionInteractiveModes = sectionLessonModeCount();
   const lectureBeats = standaloneLectureTileCount();
   const sectionNotes = chapters.reduce((sum, chapter) => sum + (chapterDeepDives[chapter.n]?.sectionDetails.length ?? 0), 0);
   const masteryTiles = chapterMastery.reduce((sum, chapter) => sum + chapter.derivations.length + chapter.process.length + chapter.traps.length + chapter.checks.length, 0);
@@ -117,6 +120,7 @@ export function buildCoverageAudit(): CoverageAudit {
     manuscriptSections,
     blackboardStages,
     sectionNarratives,
+    sectionInteractiveModes,
     lectureBeats,
     sectionNotes,
     masteryTiles,
@@ -160,6 +164,7 @@ function chapterCoverageRow(chapterNumber: number): ChapterCoverageRow {
     "original manuscript",
     "interactive blackboard",
     "section textbook manuscript",
+    "interactive section lecturer",
     "from-scratch lecture",
     "chapter synthesis ladder",
     "cross-chapter dependency map",
@@ -177,6 +182,7 @@ function chapterCoverageRow(chapterNumber: number): ChapterCoverageRow {
     manuscript.sections.length >= 3 ? "" : "Original manuscript has fewer than three chapter-specific moves.",
     blackboard.stages.length >= 4 ? "" : "Interactive blackboard has fewer than four stages.",
     sectionLessons.length >= (deep?.sectionDetails.length ?? chapter.sections.length) ? "" : "Section textbook manuscript does not cover every section.",
+    sectionLessons.length * sectionLessonModes.length >= 6 * (deep?.sectionDetails.length ?? chapter.sections.length) ? "" : "Interactive section lecturer does not expose all six modes for every section.",
     lecture.beats.length >= (deep?.sectionDetails.length ?? chapter.sections.length) ? "" : "Standalone lecture beats do not cover every section.",
     deep?.sectionDetails.length ? "" : "No section-level deep dives found for this chapter.",
     masteryTiles ? "" : "No mastery tiles found for this chapter.",
@@ -191,6 +197,7 @@ function chapterCoverageRow(chapterNumber: number): ChapterCoverageRow {
     manuscriptSections: manuscript.sections.length,
     blackboardStages: blackboard.stages.length,
     sectionNarratives: sectionLessons.length,
+    sectionInteractiveModes: sectionLessons.length * sectionLessonModes.length,
     lectureBeats: lecture.beats.length,
     sectionNotes: deep?.sectionDetails.length ?? 0,
     masteryTiles,
@@ -242,8 +249,8 @@ function requirementProofs(totals: CoverageAudit["totals"]): RequirementProof[] 
   return [
     {
       label: "Linear standalone book reader",
-      status: totals.bookReaderRoutes === 1 && totals.lectureBeats >= totals.sectionNotes && totals.sectionNarratives >= totals.sectionNotes && totals.manuscriptSections >= 51 && totals.blackboardStages >= 68 ? "complete" : "warning",
-      evidence: `/book is the continuous web-book route and renders ${totals.manuscriptSections} bespoke manuscript moves, ${totals.blackboardStages} interactive blackboard stages, ${totals.sectionNarratives} section textbook manuscripts, plus the same ${totals.lectureBeats} lecture beats used by the chapter lessons.`,
+      status: totals.bookReaderRoutes === 1 && totals.lectureBeats >= totals.sectionNotes && totals.sectionNarratives >= totals.sectionNotes && totals.sectionInteractiveModes >= totals.sectionNotes * 6 && totals.manuscriptSections >= 51 && totals.blackboardStages >= 68 ? "complete" : "warning",
+      evidence: `/book is the continuous web-book route and renders ${totals.manuscriptSections} bespoke manuscript moves, ${totals.blackboardStages} interactive blackboard stages, ${totals.sectionNarratives} section textbook manuscripts, ${totals.sectionInteractiveModes} guided section lecture modes, plus the same ${totals.lectureBeats} lecture beats used by the chapter lessons.`,
       easy: "Readers can now read the whole course in order without jumping between chapter cards.",
       technical: "The App Router `/book` page imports the chapter dataset and standaloneLectureForChapter() output, then renders every chapter sequentially with table of contents anchors and links to full chapter labs.",
     },
@@ -254,7 +261,13 @@ function requirementProofs(totals: CoverageAudit["totals"]): RequirementProof[] 
       easy: "Every chapter now has a visual board students can click through instead of only reading prose.",
       technical: "interactiveBlackboards.ts provides staged beginner/technical/visual/check content for each chapter, rendered by the client-side InteractiveBlackboard component in /book and chapter routes.",
     },
-
+    {
+      label: "Interactive section lecture controls",
+      status: totals.sectionInteractiveModes >= totals.sectionNotes * 6 ? "complete" : "warning",
+      evidence: `${totals.sectionInteractiveModes} guided section modes are available: six lecture controls for each of the ${totals.sectionNarratives} section manuscripts.`,
+      easy: "Every section can now be driven like a lecture console: pick the section, then switch between beginner, technical, board, formula, algorithm, and self-check views.",
+      technical: "SectionLessonReader is a client component over sectionNarratives.ts data, exposing six mode controls and an animated SVG board for every section in `/book` and chapter routes.",
+    },
     {
       label: "Full section-by-section textbook manuscript",
       status: totals.sectionNarratives >= totals.sectionNotes ? "complete" : "warning",
@@ -285,10 +298,10 @@ function requirementProofs(totals: CoverageAudit["totals"]): RequirementProof[] 
     },
     {
       label: "Highly detailed chapter explanations",
-      status: totals.lectureBeats >= 161 && totals.sectionNarratives >= 161 && totals.sectionNotes >= 161 && totals.masteryTiles >= 170 ? "complete" : "warning",
-      evidence: `${totals.sectionNarratives} section textbook manuscripts, ${totals.lectureBeats} lecture beats, ${totals.sectionNotes} section notes, ${totals.masteryTiles} mastery tiles, ${totals.formulas} formulas, ${totals.evidenceAnchors} anchors, and ${totals.exerciseGuides} exercise guides are connected to chapters.`,
+      status: totals.lectureBeats >= 161 && totals.sectionInteractiveModes >= 966 && totals.sectionNarratives >= 161 && totals.sectionNotes >= 161 && totals.masteryTiles >= 170 ? "complete" : "warning",
+      evidence: `${totals.sectionNarratives} section textbook manuscripts, ${totals.sectionInteractiveModes} guided section modes, ${totals.lectureBeats} lecture beats, ${totals.sectionNotes} section notes, ${totals.masteryTiles} mastery tiles, ${totals.formulas} formulas, ${totals.evidenceAnchors} anchors, and ${totals.exerciseGuides} exercise guides are connected to chapters.`,
       easy: "Each chapter has a from-scratch lecture, story, sections, formulas, examples, exercises, traps, and review scaffolding.",
-      technical: "Chapter pages now compose section textbook manuscripts, standalone lectures, synthesis, dependency maps, source audits, algorithm cards, deep dives, mastery notes, formula atlas entries, evidence anchors, and exercise coaching.",
+      technical: "Chapter pages now compose interactive section lecture controls, section textbook manuscripts, standalone lectures, synthesis, dependency maps, source audits, algorithm cards, deep dives, mastery notes, formula atlas entries, evidence anchors, and exercise coaching.",
     },
     {
       label: "Every algorithm has technical and easy explanation",
