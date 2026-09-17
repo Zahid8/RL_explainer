@@ -9,7 +9,7 @@
       "source_file": "eslint.config.mjs",
       "source_location": "L1",
       "id": "eslint_config_mjs",
-      "community": 27,
+      "community": 32,
       "norm_label": "eslint.config.mjs"
     },
     {
@@ -18,7 +18,7 @@
       "source_file": "next-env.d.ts",
       "source_location": "L1",
       "id": "next_env_d_ts",
-      "community": 28,
+      "community": 33,
       "norm_label": "next-env.d.ts"
     },
     {
@@ -27,7 +27,7 @@
       "source_file": "postcss.config.mjs",
       "source_location": "L1",
       "id": "postcss_config_mjs",
-      "community": 29,
+      "community": 34,
       "norm_label": "postcss.config.mjs"
     },
     {
@@ -36,7 +36,7 @@
       "source_file": "next.config.ts",
       "source_location": "L1",
       "id": "next_config_ts",
-      "community": 30,
+      "community": 35,
       "norm_label": "next.config.ts"
     },
     {
@@ -45,7 +45,7 @@
       "source_file": "src/components/MasteryNotebook.tsx",
       "source_location": "L1",
       "id": "src_components_masterynotebook_tsx",
-      "community": 11,
+      "community": 15,
       "norm_label": "masterynotebook.tsx"
     },
     {
@@ -54,7 +54,7 @@
       "source_file": "src/components/MasteryNotebook.tsx",
       "source_location": "L7",
       "id": "components_masterynotebook_partlabel",
-      "community": 11,
+      "community": 15,
       "norm_label": "partlabel()"
     },
     {
@@ -63,7 +63,7 @@
       "source_file": "src/components/EvidenceGuide.tsx",
       "source_location": "L1",
       "id": "src_components_evidenceguide_tsx",
-      "community": 12,
+      "community": 16,
       "norm_label": "evidenceguide.tsx"
     },
     {
@@ -72,7 +72,7 @@
       "source_file": "src/components/EvidenceGuide.tsx",
       "source_location": "L17",
       "id": "components_evidenceguide_partlabel",
-      "community": 12,
+      "community": 16,
       "norm_label": "partlabel()"
     },
     {
@@ -81,7 +81,7 @@
       "source_file": "src/components/Nav.tsx",
       "source_location": "L1",
       "id": "src_components_nav_tsx",
-      "community": 13,
+      "community": 17,
       "norm_label": "nav.tsx"
     },
     {
@@ -90,7 +90,7 @@
       "source_file": "src/components/Nav.tsx",
       "source_location": "L24",
       "id": "components_nav_onscroll",
-      "community": 13,
+      "community": 17,
       "norm_label": "onscroll()"
     },
     {
@@ -99,8 +99,17 @@
       "source_file": "src/components/AnimatedConceptGraphic.tsx",
       "source_location": "L1",
       "id": "src_components_animatedconceptgraphic_tsx",
-      "community": 31,
+      "community": 18,
       "norm_label": "animatedconceptgraphic.tsx"
+    },
+    {
+      "label": "AnimatedConceptGraphic()",
+      "file_type": "code",
+      "source_file": "src/components/AnimatedConceptGraphic.tsx",
+      "source_location": "L34",
+      "id": "components_animatedconceptgraphic_animatedconceptgraphic",
+      "community": 18,
+      "norm_label": "animatedconceptgraphic()"
     },
     {
       "label": "TermLab.tsx",
@@ -108,7 +117,7 @@
       "source_file": "src/components/TermLab.tsx",
       "source_location": "L1",
       "id": "src_components_termlab_tsx",
-      "community": 14,
+      "community": 19,
       "norm_label": "termlab.tsx"
     },
     {
@@ -117,7 +126,7 @@
       "source_file": "src/components/TermLab.tsx",
       "source_location": "L16",
       "id": "components_termlab_onkey",
-      "community": 14,
+      "community": 19,
       "norm_label": "onkey()"
     },
     {
@@ -126,7 +135,7 @@
       "source_file": "src/components/MotionGlyph.tsx",
       "source_location": "L1",
       "id": "src_components_motionglyph_tsx",
-      "community": 15,
+      "community": 20,
       "norm_label": "motionglyph.tsx"
     },
     {
@@ -135,7 +144,7 @@
       "source_file": "src/components/MotionGlyph.tsx",
       "source_location": "L12",
       "id": "components_motionglyph_motionglyph",
-      "community": 15,
+      "community": 20,
       "norm_label": "motionglyph()"
     },
     {
@@ -144,7 +153,7 @@
       "source_file": "src/components/Glossary.tsx",
       "source_location": "L1",
       "id": "src_components_glossary_tsx",
-      "community": 32,
+      "community": 36,
       "norm_label": "glossary.tsx"
     },
     {
@@ -153,7 +162,7 @@
       "source_file": "src/components/Hero.tsx",
       "source_location": "L1",
       "id": "src_components_hero_tsx",
-      "community": 16,
+      "community": 21,
       "norm_label": "hero.tsx"
     },
     {
@@ -162,7 +171,7 @@
       "source_file": "src/components/Hero.tsx",
       "source_location": "L4",
       "id": "components_hero_hero",
-      "community": 16,
+      "community": 21,
       "norm_label": "hero()"
     },
     {
@@ -171,7 +180,7 @@
       "source_file": "src/components/AlgorithmPlayer.tsx",
       "source_location": "L1",
       "id": "src_components_algorithmplayer_tsx",
-      "community": 33,
+      "community": 37,
       "norm_label": "algorithmplayer.tsx"
     },
     {
@@ -180,7 +189,7 @@
       "source_file": "src/components/ExerciseCoach.tsx",
       "source_location": "L1",
       "id": "src_components_exercisecoach_tsx",
-      "community": 8,
+      "community": 12,
       "norm_label": "exercisecoach.tsx"
     },
     {
@@ -189,7 +198,7 @@
       "source_file": "src/components/ExerciseCoach.tsx",
       "source_location": "L19",
       "id": "components_exercisecoach_partlabel",
-      "community": 8,
+      "community": 12,
       "norm_label": "partlabel()"
     },
     {
@@ -198,7 +207,7 @@
       "source_file": "src/components/ExerciseCoach.tsx",
       "source_location": "L21",
       "id": "components_exercisecoach_exercisecoach",
-      "community": 8,
+      "community": 12,
       "norm_label": "exercisecoach()"
     },
     {
@@ -207,7 +216,7 @@
       "source_file": "src/components/Math.tsx",
       "source_location": "L1",
       "id": "src_components_math_tsx",
-      "community": 17,
+      "community": 22,
       "norm_label": "math.tsx"
     },
     {
@@ -216,7 +225,7 @@
       "source_file": "src/components/Math.tsx",
       "source_location": "L6",
       "id": "components_math_tex",
-      "community": 17,
+      "community": 22,
       "norm_label": "tex()"
     },
     {
@@ -225,7 +234,7 @@
       "source_file": "src/components/ChapterExplorer.tsx",
       "source_location": "L1",
       "id": "src_components_chapterexplorer_tsx",
-      "community": 34,
+      "community": 38,
       "norm_label": "chapterexplorer.tsx"
     },
     {
@@ -234,7 +243,7 @@
       "source_file": "src/components/FormulaAtlas.tsx",
       "source_location": "L1",
       "id": "src_components_formulaatlas_tsx",
-      "community": 18,
+      "community": 23,
       "norm_label": "formulaatlas.tsx"
     },
     {
@@ -243,7 +252,7 @@
       "source_file": "src/components/FormulaAtlas.tsx",
       "source_location": "L12",
       "id": "components_formulaatlas_formulaatlas",
-      "community": 18,
+      "community": 23,
       "norm_label": "formulaatlas()"
     },
     {
@@ -252,7 +261,7 @@
       "source_file": "src/components/Section.tsx",
       "source_location": "L1",
       "id": "src_components_section_tsx",
-      "community": 7,
+      "community": 10,
       "norm_label": "section.tsx"
     },
     {
@@ -261,7 +270,7 @@
       "source_file": "src/components/Section.tsx",
       "source_location": "L5",
       "id": "components_section_section",
-      "community": 7,
+      "community": 10,
       "norm_label": "section()"
     },
     {
@@ -270,7 +279,7 @@
       "source_file": "src/components/Section.tsx",
       "source_location": "L37",
       "id": "components_section_visualvariantforsection",
-      "community": 7,
+      "community": 10,
       "norm_label": "visualvariantforsection()"
     },
     {
@@ -279,7 +288,7 @@
       "source_file": "src/components/Section.tsx",
       "source_location": "L46",
       "id": "components_section_glyphvariantfortext",
-      "community": 7,
+      "community": 10,
       "norm_label": "glyphvariantfortext()"
     },
     {
@@ -288,7 +297,7 @@
       "source_file": "src/components/EquationWall.tsx",
       "source_location": "L1",
       "id": "src_components_equationwall_tsx",
-      "community": 19,
+      "community": 24,
       "norm_label": "equationwall.tsx"
     },
     {
@@ -297,7 +306,7 @@
       "source_file": "src/components/EquationWall.tsx",
       "source_location": "L5",
       "id": "components_equationwall_equationwall",
-      "community": 19,
+      "community": 24,
       "norm_label": "equationwall()"
     },
     {
@@ -306,7 +315,7 @@
       "source_file": "src/components/BookMap.tsx",
       "source_location": "L1",
       "id": "src_components_bookmap_tsx",
-      "community": 20,
+      "community": 25,
       "norm_label": "bookmap.tsx"
     },
     {
@@ -315,7 +324,7 @@
       "source_file": "src/components/BookMap.tsx",
       "source_location": "L4",
       "id": "components_bookmap_bookmap",
-      "community": 20,
+      "community": 25,
       "norm_label": "bookmap()"
     },
     {
@@ -324,7 +333,7 @@
       "source_file": "src/components/three/SceneMount.tsx",
       "source_location": "L1",
       "id": "src_components_three_scenemount_tsx",
-      "community": 21,
+      "community": 26,
       "norm_label": "scenemount.tsx"
     },
     {
@@ -333,7 +342,7 @@
       "source_file": "src/components/three/SceneMount.tsx",
       "source_location": "L7",
       "id": "three_scenemount_scenemount",
-      "community": 21,
+      "community": 26,
       "norm_label": "scenemount()"
     },
     {
@@ -342,7 +351,7 @@
       "source_file": "src/components/three/LearningLoopScene.tsx",
       "source_location": "L1",
       "id": "src_components_three_learningloopscene_tsx",
-      "community": 35,
+      "community": 39,
       "norm_label": "learningloopscene.tsx"
     },
     {
@@ -351,7 +360,7 @@
       "source_file": "src/components/figures/BellmanLab.tsx",
       "source_location": "L1",
       "id": "src_components_figures_bellmanlab_tsx",
-      "community": 9,
+      "community": 13,
       "norm_label": "bellmanlab.tsx"
     },
     {
@@ -360,7 +369,7 @@
       "source_file": "src/components/figures/BellmanLab.tsx",
       "source_location": "L6",
       "id": "figures_bellmanlab_bellmanlab",
-      "community": 9,
+      "community": 13,
       "norm_label": "bellmanlab()"
     },
     {
@@ -369,7 +378,7 @@
       "source_file": "src/components/figures/BellmanLab.tsx",
       "source_location": "L47",
       "id": "figures_bellmanlab_control",
-      "community": 9,
+      "community": 13,
       "norm_label": "control()"
     },
     {
@@ -378,7 +387,7 @@
       "source_file": "src/components/figures/TermGlyph.tsx",
       "source_location": "L1",
       "id": "src_components_figures_termglyph_tsx",
-      "community": 22,
+      "community": 27,
       "norm_label": "termglyph.tsx"
     },
     {
@@ -387,7 +396,7 @@
       "source_file": "src/components/figures/TermGlyph.tsx",
       "source_location": "L3",
       "id": "figures_termglyph_bars",
-      "community": 22,
+      "community": 27,
       "norm_label": "bars()"
     },
     {
@@ -396,7 +405,7 @@
       "source_file": "src/components/figures/TraceLab.tsx",
       "source_location": "L1",
       "id": "src_components_figures_tracelab_tsx",
-      "community": 36,
+      "community": 40,
       "norm_label": "tracelab.tsx"
     },
     {
@@ -405,7 +414,7 @@
       "source_file": "src/components/figures/BanditLab.tsx",
       "source_location": "L1",
       "id": "src_components_figures_banditlab_tsx",
-      "community": 10,
+      "community": 14,
       "norm_label": "banditlab.tsx"
     },
     {
@@ -414,7 +423,7 @@
       "source_file": "src/components/figures/BanditLab.tsx",
       "source_location": "L8",
       "id": "figures_banditlab_nextrng",
-      "community": 10,
+      "community": 14,
       "norm_label": "nextrng()"
     },
     {
@@ -423,7 +432,7 @@
       "source_file": "src/components/figures/BanditLab.tsx",
       "source_location": "L12",
       "id": "figures_banditlab_banditlab",
-      "community": 10,
+      "community": 14,
       "norm_label": "banditlab()"
     },
     {
@@ -603,7 +612,7 @@
       "source_file": "src/lib/mastery.ts",
       "source_location": "L1",
       "id": "src_lib_mastery_ts",
-      "community": 37,
+      "community": 41,
       "norm_label": "mastery.ts"
     },
     {
@@ -612,7 +621,7 @@
       "source_file": "src/lib/evidenceGuide.ts",
       "source_location": "L1",
       "id": "src_lib_evidenceguide_ts",
-      "community": 23,
+      "community": 28,
       "norm_label": "evidenceguide.ts"
     },
     {
@@ -621,7 +630,7 @@
       "source_file": "src/lib/evidenceGuide.ts",
       "source_location": "L13",
       "id": "lib_evidenceguide_item",
-      "community": 23,
+      "community": 28,
       "norm_label": "item()"
     },
     {
@@ -630,7 +639,7 @@
       "source_file": "src/lib/deepDives.ts",
       "source_location": "L1",
       "id": "src_lib_deepdives_ts",
-      "community": 24,
+      "community": 29,
       "norm_label": "deepdives.ts"
     },
     {
@@ -639,7 +648,7 @@
       "source_file": "src/lib/deepDives.ts",
       "source_location": "L16",
       "id": "lib_deepdives_d",
-      "community": 24,
+      "community": 29,
       "norm_label": "d()"
     },
     {
@@ -648,7 +657,7 @@
       "source_file": "src/lib/paper.ts",
       "source_location": "L1",
       "id": "src_lib_paper_ts",
-      "community": 38,
+      "community": 42,
       "norm_label": "paper.ts"
     },
     {
@@ -657,7 +666,7 @@
       "source_file": "src/lib/gsap.ts",
       "source_location": "L1",
       "id": "src_lib_gsap_ts",
-      "community": 39,
+      "community": 43,
       "norm_label": "gsap.ts"
     },
     {
@@ -666,7 +675,7 @@
       "source_file": "src/lib/exerciseCoach.ts",
       "source_location": "L1",
       "id": "src_lib_exercisecoach_ts",
-      "community": 40,
+      "community": 44,
       "norm_label": "exercisecoach.ts"
     },
     {
@@ -864,7 +873,7 @@
       "source_file": "src/lib/motion.ts",
       "source_location": "L1",
       "id": "src_lib_motion_ts",
-      "community": 25,
+      "community": 30,
       "norm_label": "motion.ts"
     },
     {
@@ -873,7 +882,7 @@
       "source_file": "src/lib/motion.ts",
       "source_location": "L2",
       "id": "lib_motion_reduced",
-      "community": 25,
+      "community": 30,
       "norm_label": "reduced()"
     },
     {
@@ -1098,7 +1107,7 @@
       "source_file": "src/lib/formulaAtlas.ts",
       "source_location": "L1",
       "id": "src_lib_formulaatlas_ts",
-      "community": 41,
+      "community": 45,
       "norm_label": "formulaatlas.ts"
     },
     {
@@ -1305,7 +1314,7 @@
       "source_file": "src/app/page.tsx",
       "source_location": "L1",
       "id": "src_app_page_tsx",
-      "community": 42,
+      "community": 46,
       "norm_label": "page.tsx"
     },
     {
@@ -1314,7 +1323,7 @@
       "source_file": "src/app/layout.tsx",
       "source_location": "L1",
       "id": "src_app_layout_tsx",
-      "community": 43,
+      "community": 47,
       "norm_label": "layout.tsx"
     },
     {
@@ -1323,7 +1332,7 @@
       "source_file": "src/app/coverage/page.tsx",
       "source_location": "L1",
       "id": "src_app_coverage_page_tsx",
-      "community": 26,
+      "community": 31,
       "norm_label": "page.tsx"
     },
     {
@@ -1332,7 +1341,7 @@
       "source_file": "src/app/coverage/page.tsx",
       "source_location": "L203",
       "id": "coverage_page_sectiontitle",
-      "community": 26,
+      "community": 31,
       "norm_label": "sectiontitle()"
     },
     {
@@ -1341,7 +1350,7 @@
       "source_file": "src/app/algorithms/page.tsx",
       "source_location": "L1",
       "id": "src_app_algorithms_page_tsx",
-      "community": 44,
+      "community": 48,
       "norm_label": "page.tsx"
     },
     {
@@ -1388,6 +1397,177 @@
       "id": "chapter_page_glyphvariantforlabel",
       "community": 6,
       "norm_label": "glyphvariantforlabel()"
+    },
+    {
+      "label": "audit-animation-routes.mjs",
+      "file_type": "code",
+      "source_file": "tmp/qa/audit-animation-routes.mjs",
+      "source_location": "L1",
+      "id": "tmp_qa_audit_animation_routes_mjs",
+      "community": 7,
+      "norm_label": "audit-animation-routes.mjs"
+    },
+    {
+      "label": "waitJson()",
+      "file_type": "code",
+      "source_file": "tmp/qa/audit-animation-routes.mjs",
+      "source_location": "L10",
+      "id": "qa_audit_animation_routes_waitjson",
+      "community": 7,
+      "norm_label": "waitjson()"
+    },
+    {
+      "label": "send()",
+      "file_type": "code",
+      "source_file": "tmp/qa/audit-animation-routes.mjs",
+      "source_location": "L17",
+      "id": "qa_audit_animation_routes_send",
+      "community": 7,
+      "norm_label": "send()"
+    },
+    {
+      "label": "evalJs()",
+      "file_type": "code",
+      "source_file": "tmp/qa/audit-animation-routes.mjs",
+      "source_location": "L18",
+      "id": "qa_audit_animation_routes_evaljs",
+      "community": 7,
+      "norm_label": "evaljs()"
+    },
+    {
+      "label": "audit()",
+      "file_type": "code",
+      "source_file": "tmp/qa/audit-animation-routes.mjs",
+      "source_location": "L20",
+      "id": "qa_audit_animation_routes_audit",
+      "community": 7,
+      "norm_label": "audit()"
+    },
+    {
+      "label": "audit-all-routes-no-overflow.mjs",
+      "file_type": "code",
+      "source_file": "tmp/qa/audit-all-routes-no-overflow.mjs",
+      "source_location": "L1",
+      "id": "tmp_qa_audit_all_routes_no_overflow_mjs",
+      "community": 8,
+      "norm_label": "audit-all-routes-no-overflow.mjs"
+    },
+    {
+      "label": "waitJson()",
+      "file_type": "code",
+      "source_file": "tmp/qa/audit-all-routes-no-overflow.mjs",
+      "source_location": "L4",
+      "id": "qa_audit_all_routes_no_overflow_waitjson",
+      "community": 8,
+      "norm_label": "waitjson()"
+    },
+    {
+      "label": "send()",
+      "file_type": "code",
+      "source_file": "tmp/qa/audit-all-routes-no-overflow.mjs",
+      "source_location": "L5",
+      "id": "qa_audit_all_routes_no_overflow_send",
+      "community": 8,
+      "norm_label": "send()"
+    },
+    {
+      "label": "evalJs()",
+      "file_type": "code",
+      "source_file": "tmp/qa/audit-all-routes-no-overflow.mjs",
+      "source_location": "L5",
+      "id": "qa_audit_all_routes_no_overflow_evaljs",
+      "community": 8,
+      "norm_label": "evaljs()"
+    },
+    {
+      "label": "audit()",
+      "file_type": "code",
+      "source_file": "tmp/qa/audit-all-routes-no-overflow.mjs",
+      "source_location": "L7",
+      "id": "qa_audit_all_routes_no_overflow_audit",
+      "community": 8,
+      "norm_label": "audit()"
+    },
+    {
+      "label": "audit-animation-summary.mjs",
+      "file_type": "code",
+      "source_file": "tmp/qa/audit-animation-summary.mjs",
+      "source_location": "L1",
+      "id": "tmp_qa_audit_animation_summary_mjs",
+      "community": 9,
+      "norm_label": "audit-animation-summary.mjs"
+    },
+    {
+      "label": "waitJson()",
+      "file_type": "code",
+      "source_file": "tmp/qa/audit-animation-summary.mjs",
+      "source_location": "L5",
+      "id": "qa_audit_animation_summary_waitjson",
+      "community": 9,
+      "norm_label": "waitjson()"
+    },
+    {
+      "label": "send()",
+      "file_type": "code",
+      "source_file": "tmp/qa/audit-animation-summary.mjs",
+      "source_location": "L10",
+      "id": "qa_audit_animation_summary_send",
+      "community": 9,
+      "norm_label": "send()"
+    },
+    {
+      "label": "evalJs()",
+      "file_type": "code",
+      "source_file": "tmp/qa/audit-animation-summary.mjs",
+      "source_location": "L11",
+      "id": "qa_audit_animation_summary_evaljs",
+      "community": 9,
+      "norm_label": "evaljs()"
+    },
+    {
+      "label": "audit()",
+      "file_type": "code",
+      "source_file": "tmp/qa/audit-animation-summary.mjs",
+      "source_location": "L13",
+      "id": "qa_audit_animation_summary_audit",
+      "community": 9,
+      "norm_label": "audit()"
+    },
+    {
+      "label": "audit-interactions.mjs",
+      "file_type": "code",
+      "source_file": "tmp/qa/audit-interactions.mjs",
+      "source_location": "L1",
+      "id": "tmp_qa_audit_interactions_mjs",
+      "community": 11,
+      "norm_label": "audit-interactions.mjs"
+    },
+    {
+      "label": "waitJson()",
+      "file_type": "code",
+      "source_file": "tmp/qa/audit-interactions.mjs",
+      "source_location": "L13",
+      "id": "qa_audit_interactions_waitjson",
+      "community": 11,
+      "norm_label": "waitjson()"
+    },
+    {
+      "label": "send()",
+      "file_type": "code",
+      "source_file": "tmp/qa/audit-interactions.mjs",
+      "source_location": "L38",
+      "id": "qa_audit_interactions_send",
+      "community": 11,
+      "norm_label": "send()"
+    },
+    {
+      "label": "evalJs()",
+      "file_type": "code",
+      "source_file": "tmp/qa/audit-interactions.mjs",
+      "source_location": "L43",
+      "id": "qa_audit_interactions_evaljs",
+      "community": 11,
+      "norm_label": "evaljs()"
     }
   ],
   "links": [
@@ -1425,6 +1605,18 @@
       "_tgt": "components_nav_onscroll",
       "source": "src_components_nav_tsx",
       "target": "components_nav_onscroll",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/AnimatedConceptGraphic.tsx",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_src": "src_components_animatedconceptgraphic_tsx",
+      "_tgt": "components_animatedconceptgraphic_animatedconceptgraphic",
+      "source": "src_components_animatedconceptgraphic_tsx",
+      "target": "components_animatedconceptgraphic_animatedconceptgraphic",
       "confidence_score": 1.0
     },
     {
@@ -3537,6 +3729,306 @@
       "_tgt": "chapter_page_glyphaccentforlabel",
       "source": "chapter_page_glyphaccentforlabel",
       "target": "chapter_page_glyphvariantforlabel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tmp/qa/audit-animation-routes.mjs",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_src": "tmp_qa_audit_animation_routes_mjs",
+      "_tgt": "qa_audit_animation_routes_waitjson",
+      "source": "tmp_qa_audit_animation_routes_mjs",
+      "target": "qa_audit_animation_routes_waitjson",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tmp/qa/audit-animation-routes.mjs",
+      "source_location": "L17",
+      "weight": 1.0,
+      "_src": "tmp_qa_audit_animation_routes_mjs",
+      "_tgt": "qa_audit_animation_routes_send",
+      "source": "tmp_qa_audit_animation_routes_mjs",
+      "target": "qa_audit_animation_routes_send",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tmp/qa/audit-animation-routes.mjs",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_src": "tmp_qa_audit_animation_routes_mjs",
+      "_tgt": "qa_audit_animation_routes_evaljs",
+      "source": "tmp_qa_audit_animation_routes_mjs",
+      "target": "qa_audit_animation_routes_evaljs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tmp/qa/audit-animation-routes.mjs",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_src": "tmp_qa_audit_animation_routes_mjs",
+      "_tgt": "qa_audit_animation_routes_audit",
+      "source": "tmp_qa_audit_animation_routes_mjs",
+      "target": "qa_audit_animation_routes_audit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "tmp/qa/audit-animation-routes.mjs",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_src": "qa_audit_animation_routes_evaljs",
+      "_tgt": "qa_audit_animation_routes_send",
+      "source": "qa_audit_animation_routes_send",
+      "target": "qa_audit_animation_routes_evaljs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "tmp/qa/audit-animation-routes.mjs",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_src": "qa_audit_animation_routes_audit",
+      "_tgt": "qa_audit_animation_routes_send",
+      "source": "qa_audit_animation_routes_send",
+      "target": "qa_audit_animation_routes_audit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "tmp/qa/audit-animation-routes.mjs",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_src": "qa_audit_animation_routes_audit",
+      "_tgt": "qa_audit_animation_routes_evaljs",
+      "source": "qa_audit_animation_routes_evaljs",
+      "target": "qa_audit_animation_routes_audit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tmp/qa/audit-all-routes-no-overflow.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_src": "tmp_qa_audit_all_routes_no_overflow_mjs",
+      "_tgt": "qa_audit_all_routes_no_overflow_waitjson",
+      "source": "tmp_qa_audit_all_routes_no_overflow_mjs",
+      "target": "qa_audit_all_routes_no_overflow_waitjson",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tmp/qa/audit-all-routes-no-overflow.mjs",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_src": "tmp_qa_audit_all_routes_no_overflow_mjs",
+      "_tgt": "qa_audit_all_routes_no_overflow_send",
+      "source": "tmp_qa_audit_all_routes_no_overflow_mjs",
+      "target": "qa_audit_all_routes_no_overflow_send",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tmp/qa/audit-all-routes-no-overflow.mjs",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_src": "tmp_qa_audit_all_routes_no_overflow_mjs",
+      "_tgt": "qa_audit_all_routes_no_overflow_evaljs",
+      "source": "tmp_qa_audit_all_routes_no_overflow_mjs",
+      "target": "qa_audit_all_routes_no_overflow_evaljs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tmp/qa/audit-all-routes-no-overflow.mjs",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_src": "tmp_qa_audit_all_routes_no_overflow_mjs",
+      "_tgt": "qa_audit_all_routes_no_overflow_audit",
+      "source": "tmp_qa_audit_all_routes_no_overflow_mjs",
+      "target": "qa_audit_all_routes_no_overflow_audit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "tmp/qa/audit-all-routes-no-overflow.mjs",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_src": "qa_audit_all_routes_no_overflow_evaljs",
+      "_tgt": "qa_audit_all_routes_no_overflow_send",
+      "source": "qa_audit_all_routes_no_overflow_send",
+      "target": "qa_audit_all_routes_no_overflow_evaljs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "tmp/qa/audit-all-routes-no-overflow.mjs",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_src": "qa_audit_all_routes_no_overflow_audit",
+      "_tgt": "qa_audit_all_routes_no_overflow_send",
+      "source": "qa_audit_all_routes_no_overflow_send",
+      "target": "qa_audit_all_routes_no_overflow_audit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "tmp/qa/audit-all-routes-no-overflow.mjs",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_src": "qa_audit_all_routes_no_overflow_audit",
+      "_tgt": "qa_audit_all_routes_no_overflow_evaljs",
+      "source": "qa_audit_all_routes_no_overflow_evaljs",
+      "target": "qa_audit_all_routes_no_overflow_audit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tmp/qa/audit-animation-summary.mjs",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_src": "tmp_qa_audit_animation_summary_mjs",
+      "_tgt": "qa_audit_animation_summary_waitjson",
+      "source": "tmp_qa_audit_animation_summary_mjs",
+      "target": "qa_audit_animation_summary_waitjson",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tmp/qa/audit-animation-summary.mjs",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_src": "tmp_qa_audit_animation_summary_mjs",
+      "_tgt": "qa_audit_animation_summary_send",
+      "source": "tmp_qa_audit_animation_summary_mjs",
+      "target": "qa_audit_animation_summary_send",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tmp/qa/audit-animation-summary.mjs",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_src": "tmp_qa_audit_animation_summary_mjs",
+      "_tgt": "qa_audit_animation_summary_evaljs",
+      "source": "tmp_qa_audit_animation_summary_mjs",
+      "target": "qa_audit_animation_summary_evaljs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tmp/qa/audit-animation-summary.mjs",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_src": "tmp_qa_audit_animation_summary_mjs",
+      "_tgt": "qa_audit_animation_summary_audit",
+      "source": "tmp_qa_audit_animation_summary_mjs",
+      "target": "qa_audit_animation_summary_audit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "tmp/qa/audit-animation-summary.mjs",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_src": "qa_audit_animation_summary_evaljs",
+      "_tgt": "qa_audit_animation_summary_send",
+      "source": "qa_audit_animation_summary_send",
+      "target": "qa_audit_animation_summary_evaljs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "tmp/qa/audit-animation-summary.mjs",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_src": "qa_audit_animation_summary_audit",
+      "_tgt": "qa_audit_animation_summary_send",
+      "source": "qa_audit_animation_summary_send",
+      "target": "qa_audit_animation_summary_audit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "tmp/qa/audit-animation-summary.mjs",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_src": "qa_audit_animation_summary_audit",
+      "_tgt": "qa_audit_animation_summary_evaljs",
+      "source": "qa_audit_animation_summary_evaljs",
+      "target": "qa_audit_animation_summary_audit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tmp/qa/audit-interactions.mjs",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_src": "tmp_qa_audit_interactions_mjs",
+      "_tgt": "qa_audit_interactions_waitjson",
+      "source": "tmp_qa_audit_interactions_mjs",
+      "target": "qa_audit_interactions_waitjson",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tmp/qa/audit-interactions.mjs",
+      "source_location": "L38",
+      "weight": 1.0,
+      "_src": "tmp_qa_audit_interactions_mjs",
+      "_tgt": "qa_audit_interactions_send",
+      "source": "tmp_qa_audit_interactions_mjs",
+      "target": "qa_audit_interactions_send",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tmp/qa/audit-interactions.mjs",
+      "source_location": "L43",
+      "weight": 1.0,
+      "_src": "tmp_qa_audit_interactions_mjs",
+      "_tgt": "qa_audit_interactions_evaljs",
+      "source": "tmp_qa_audit_interactions_mjs",
+      "target": "qa_audit_interactions_evaljs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "tmp/qa/audit-interactions.mjs",
+      "source_location": "L44",
+      "weight": 1.0,
+      "_src": "qa_audit_interactions_evaljs",
+      "_tgt": "qa_audit_interactions_send",
+      "source": "qa_audit_interactions_send",
+      "target": "qa_audit_interactions_evaljs",
       "confidence_score": 1.0
     }
   ],
