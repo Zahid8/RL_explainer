@@ -1,11 +1,11 @@
 # Graph Report - rlbook-explainer  (2026-09-17)
 
 ## Corpus Check
-- 41 files · ~731,694 words
+- 42 files · ~742,127 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 112 nodes · 110 edges · 3 communities detected
+- 124 nodes · 130 edges · 4 communities detected
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
@@ -13,18 +13,19 @@
 - [[_COMMUNITY_Community 0|Community 0]]
 - [[_COMMUNITY_Community 1|Community 1]]
 - [[_COMMUNITY_Community 2|Community 2]]
+- [[_COMMUNITY_Community 3|Community 3]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `workedExampleForAlgorithm()` - 21 edges
 2. `algorithmProfile()` - 13 edges
-3. `algorithmDossier()` - 8 edges
-4. `inferRole()` - 2 edges
-5. `inferDataRegime()` - 2 edges
-6. `inferTargetPolicy()` - 2 edges
-7. `inferModelUse()` - 2 edges
-8. `inferBackupStyle()` - 2 edges
-9. `inferApproximation()` - 2 edges
-10. `inferCreditAssignment()` - 2 edges
+3. `algorithmDerivation()` - 10 edges
+4. `algorithmDossier()` - 8 edges
+5. `classifyAlgorithm()` - 2 edges
+6. `estimateSubject()` - 2 edges
+7. `targetConstruction()` - 2 edges
+8. `errorSignal()` - 2 edges
+9. `creditAssignment()` - 2 edges
+10. `controlMove()` - 2 edges
 
 ## Surprising Connections (you probably didn't know these)
 - None detected - all connections are within the same source files.
@@ -40,6 +41,10 @@ Cohesion: 0.25
 Nodes (13): algorithmProfile(), inferApproximation(), inferAvoidWhen(), inferBackupStyle(), inferBestUse(), inferComputeMemory(), inferConvergenceHandle(), inferCreditAssignment() (+5 more)
 
 ### Community 2 - "Community 2"
+Cohesion: 0.3
+Nodes (10): algorithmDerivation(), classifyAlgorithm(), codingTrace(), controlMove(), creditAssignment(), equationNotes(), errorSignal(), estimateSubject() (+2 more)
+
+### Community 3 - "Community 3"
 Cohesion: 0.42
 Nodes (8): algorithmDossier(), inferBiasVariancePosition(), inferDiagnostics(), inferEstimatorShape(), inferImplementationInvariants(), inferKnobs(), inferStabilityContract(), outputPhrase()
 
