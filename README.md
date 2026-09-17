@@ -8,6 +8,7 @@ A single-page, light-theme explainer site for `../RLbook2020.pdf` (Sutton & Bart
 - Term lab covering 20 recurring symbols and concepts before formulas appear.
 - Book map for the three major arcs: tabular methods, approximation, and deeper links.
 - Chapter-by-chapter explorer for all 17 chapters, with:
+  - deep detail mode containing 120+ section-level notes,
   - section checklist from the PDF contents,
   - core claim,
   - plain-English explanation,
@@ -47,7 +48,8 @@ The latest validation was run on port `3510` with desktop and mobile headless Ch
 
 ## Important files
 
-- `src/lib/paper.ts` - all explainer content, typed chapter data, terms, glossary, and equation metadata.
+- `src/lib/paper.ts` - core explainer content, typed chapter data, terms, glossary, and equation metadata.
+- `src/lib/deepDives.ts` - 120+ section-level detailed notes, mechanics, and remember-this summaries for every chapter.
 - `src/app/page.tsx` - page composition and section order.
 - `src/components/TermLab.tsx` - interactive notation browser.
 - `src/components/ChapterExplorer.tsx` - filterable chapter-by-chapter cards.

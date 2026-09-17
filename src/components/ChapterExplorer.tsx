@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { chapterDeepDives } from "@/lib/deepDives";
 import { chapters, type Chapter } from "@/lib/paper";
 import { Chip, Plain } from "./Section";
 
@@ -15,7 +16,14 @@ export function ChapterExplorer() {
     const q = query.trim().toLowerCase();
     return chapters.filter((chapter) => {
       const matchesFilter = filter === "All" || chapter.part === filter;
-      const haystack = [chapter.title, chapter.claim, chapter.technical, chapter.easy, ...chapter.keyIdeas, ...chapter.sections].join(" ").toLowerCase();
+      const deep = chapterDeepDives[chapter.n];
+      const deepText = deep ? [
+        deep.focus,
+        ...deep.mechanics,
+        ...deep.remember,
+        ...deep.sectionDetails.flatMap((item) => [item.section, item.easy, item.technical, ...item.details, ...item.terms]),
+      ] : [];
+      const haystack = [chapter.title, chapter.claim, chapter.technical, chapter.easy, ...chapter.keyIdeas, ...chapter.sections, ...deepText].join(" ").toLowerCase();
       return matchesFilter && (!q || haystack.includes(q));
     });
   }, [filter, query]);
@@ -77,6 +85,7 @@ function ChapterCard({ chapter }: { chapter: Chapter }) {
             </ul>
           </div>
           <p className="mt-5 border-l-2 border-cyan pl-4 text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Bridge forward:</span> {chapter.bridge}</p>
+          <DeepDive chapter={chapter} />
         </div>
       </div>
     </article>
@@ -91,5 +100,73 @@ function TwoColumnList({ title, items, compact = false }: { title: string; items
         {items.map((item) => <li key={item} className="rounded-lg border border-line bg-white px-3 py-2">{item}</li>)}
       </ul>
     </div>
+  );
+}
+
+
+function DeepDive({ chapter }: { chapter: Chapter }) {
+  const deep = chapterDeepDives[chapter.n];
+  if (!deep) return null;
+  return (
+    <details className="mt-6 rounded-xl border border-line bg-white p-5" open={chapter.n === 1}>
+      <summary className="cursor-pointer list-none">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p className="eyebrow">Deep detail mode</p>
+            <h4 className="display mt-1 text-2xl font-medium text-ink">Section-by-section notes from the chapter</h4>
+          </div>
+          <span className="mono rounded-full border border-line bg-panel-2 px-3 py-1 text-[11px] uppercase tracking-[0.12em] text-dim">
+            {deep.sectionDetails.length} sections
+          </span>
+        </div>
+      </summary>
+      <div className="mt-5 grid gap-5">
+        <div className="rounded-lg border border-line bg-panel-2 p-4">
+          <p className="mono mb-2 text-[11px] uppercase tracking-[0.14em] text-dim">Chapter focus</p>
+          <p className="text-sm leading-relaxed text-muted">{deep.focus}</p>
+        </div>
+        <div className="grid gap-4 lg:grid-cols-2">
+          <div className="rounded-lg border border-line bg-white p-4">
+            <p className="mono mb-3 text-[11px] uppercase tracking-[0.14em] text-dim">Mechanics to trace</p>
+            <ul className="grid gap-2 text-sm leading-relaxed text-muted">
+              {deep.mechanics.map((item) => <li key={item} className="flex gap-2"><span className="text-cyan">•</span><span>{item}</span></li>)}
+            </ul>
+          </div>
+          <div className="rounded-lg border border-line bg-white p-4">
+            <p className="mono mb-3 text-[11px] uppercase tracking-[0.14em] text-dim">If you remember only this</p>
+            <ul className="grid gap-2 text-sm leading-relaxed text-muted">
+              {deep.remember.map((item) => <li key={item} className="flex gap-2"><span className="text-orange">•</span><span>{item}</span></li>)}
+            </ul>
+          </div>
+        </div>
+        <div className="grid gap-3">
+          {deep.sectionDetails.map((item) => (
+            <article key={item.section} className="rounded-lg border border-line bg-panel p-4">
+              <div className="flex flex-col gap-2 lg:flex-row lg:items-start lg:justify-between">
+                <h5 className="display text-xl font-medium text-ink">{item.section}</h5>
+                {item.terms.length ? (
+                  <div className="flex flex-wrap gap-1.5 lg:justify-end">
+                    {item.terms.map((term) => <span key={term} className="mono rounded-full border border-line bg-panel-2 px-2 py-1 text-[10px] text-dim">{term}</span>)}
+                  </div>
+                ) : null}
+              </div>
+              <div className="mt-4 grid gap-3 lg:grid-cols-2">
+                <div className="rounded-md border border-line bg-white p-3">
+                  <p className="mono mb-2 text-[10px] uppercase tracking-[0.14em] text-dim">Easy explanation</p>
+                  <p className="text-sm leading-relaxed text-muted">{item.easy}</p>
+                </div>
+                <div className="rounded-md border border-line bg-panel-2 p-3">
+                  <p className="mono mb-2 text-[10px] uppercase tracking-[0.14em] text-dim">Technical detail</p>
+                  <p className="text-sm leading-relaxed text-muted">{item.technical}</p>
+                </div>
+              </div>
+              <ul className="mt-3 grid gap-2 text-sm leading-relaxed text-muted">
+                {item.details.map((detail) => <li key={detail} className="flex gap-2"><span className="text-lime">•</span><span>{detail}</span></li>)}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </div>
+    </details>
   );
 }
