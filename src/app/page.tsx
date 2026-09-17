@@ -1,69 +1,125 @@
-import Image from "next/image";
+import { AlgorithmPlayer } from "@/components/AlgorithmPlayer";
+import { BookMap } from "@/components/BookMap";
+import { ChapterExplorer } from "@/components/ChapterExplorer";
+import { EquationWall } from "@/components/EquationWall";
+import { Glossary } from "@/components/Glossary";
+import { Hero } from "@/components/Hero";
+import { Nav } from "@/components/Nav";
+import { Section, Note } from "@/components/Section";
+import { TermLab } from "@/components/TermLab";
+import { BanditLab } from "@/components/figures/BanditLab";
+import { BellmanLab } from "@/components/figures/BellmanLab";
+import { TraceLab } from "@/components/figures/TraceLab";
+import { chapters } from "@/lib/paper";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main>
+      <Nav />
+      <Hero />
+      <Section
+        id="terms"
+        eyebrow="00 - Term lab"
+        title={<>Every symbol gets a plain-English handle before it appears in formulas.</>}
+        lead="The original book is mathematically careful. This lab gives the notation a visual and verbal anchor so the chapter explanations can stay technical without becoming opaque."
+      >
+        <TermLab />
+      </Section>
+      <Section
+        id="map"
+        eyebrow="01 - Book map"
+        title={<>The book moves from tables, to approximation, to the broader science of learning.</>}
+        lead="TASK.md is written for papers, so this explainer adapts its two-layer design to a textbook: overview first, then dense chapter cards with exact section coverage."
+        tint
+      >
+        <BookMap />
+      </Section>
+      <Section
+        id="chapters"
+        eyebrow="02 - Chapter-by-chapter explainer"
+        title={<>Seventeen chapters, each with the technical layer and the easy layer side by side.</>}
+        lead="Use the filters or search box to jump. Every chapter card includes the section checklist from the PDF contents, key ideas, algorithm names, equations/forms, examples, confusions, and a bridge to the next chapter."
+      >
+        <ChapterExplorer />
+      </Section>
+      <Section
+        id="equations"
+        eyebrow="03 - Equation spine"
+        title={<>Six equations carry most of the book&apos;s algorithmic shape.</>}
+        lead="The exact book contains many more equations. This spine highlights the recurring forms that reappear as dynamic programming, Monte Carlo, TD, traces, approximation, and policy gradients."
+        tint
+      >
+        <EquationWall />
+      </Section>
+      <Section
+        id="algorithms"
+        eyebrow="04 - Algorithm player"
+        title={<>Most RL algorithms differ in the target they build and the policy pressure they apply.</>}
+        lead="The player abstracts the family resemblance: interact, construct a target, update, improve, and optionally plan. Specific chapters specialize each line."
+      >
+        <AlgorithmPlayer />
+      </Section>
+      <Section
+        id="labs"
+        eyebrow="05 - Interactive labs"
+        title={<>Three browser labs compute the central mechanics instead of only describing them.</>}
+        lead="The labs use synthetic teaching numbers, clearly marked as illustrative. They are not benchmark results from the book."
+        tint
+      >
+        <div className="grid gap-6">
+          <BanditLab />
+          <BellmanLab />
+          <TraceLab />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </Section>
+      <Section
+        id="study"
+        eyebrow="06 - Study route"
+        title={<>A practical route through the details.</>}
+        lead="For a first pass, read by dependencies rather than page count: formulation, tabular backups, sampling, approximation, policy gradients, then the broader connections."
+      >
+        <div className="grid gap-5 lg:grid-cols-4">
+          {[
+            ["Formulate", "Chapters 1-3", "Agent, state, action, reward, return, policy, value, and dynamics."],
+            ["Solve tables", "Chapters 4-8", "Exact backups, sampled returns, TD updates, n-step methods, and planning."],
+            ["Generalize", "Chapters 9-13", "Features, weights, stability problems, traces, and policy gradients."],
+            ["Connect", "Chapters 14-17", "Psychology, dopamine, applications, options, state, reward, and frontiers."],
+          ].map(([title, range, copy]) => (
+            <article key={title} className="rounded-xl border border-line bg-panel p-6">
+              <p className="eyebrow">{range}</p>
+              <h3 className="display mt-3 text-3xl font-medium text-ink">{title}</h3>
+              <p className="mt-4 text-sm leading-relaxed text-muted">{copy}</p>
+            </article>
+          ))}
         </div>
-      </main>
-    </div>
+        <div className="mt-6 grid gap-5 lg:grid-cols-2">
+          <Note title="Accuracy note">
+            <p>This explainer is paraphrased from the extracted PDF and organized around the book&apos;s chapter and section structure. It avoids copying the book&apos;s prose and labels synthetic diagrams/labs as illustrative.</p>
+          </Note>
+          <Note title="Coverage note">
+            <p>The chapter list covers {chapters.length} chapters and all top-level sections shown in the PDF contents. For classroom use, treat the cards as a guided map, not as a replacement for exercises or proofs in the book.</p>
+          </Note>
+        </div>
+      </Section>
+      <Section
+        id="glossary"
+        eyebrow="07 - Glossary"
+        title={<>The recurring vocabulary, unfolded one term at a time.</>}
+        lead="These definitions are written for readers who may be meeting reinforcement learning for the first time but still need the technical distinction."
+        tint
+      >
+        <Glossary />
+      </Section>
+      <footer className="border-t border-line bg-ink text-white">
+        <div className="mx-auto grid max-w-[1280px] gap-5 px-6 py-12 lg:grid-cols-[1fr_auto] lg:px-10">
+          <div>
+            <p className="eyebrow text-white/60">Footer</p>
+            <p className="display mt-2 text-3xl">RLbook 2020 Explainer</p>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/70">Built from TASK.md&apos;s explainer-site spec and the local RLbook2020.pdf. All long-form explanations are paraphrased; equations are included as technical notation needed for study.</p>
+          </div>
+          <a className="mono self-start rounded-full border border-white/20 px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-white/80" href="#top">Back to top</a>
+        </div>
+      </footer>
+    </main>
   );
 }

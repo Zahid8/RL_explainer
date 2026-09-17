@@ -1,0 +1,70 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
+const links = [
+  ["terms", "Terms"],
+  ["map", "Map"],
+  ["chapters", "Chapters"],
+  ["equations", "Equations"],
+  ["algorithms", "Algorithms"],
+  ["labs", "Labs"],
+  ["glossary", "Glossary"],
+] as const;
+
+export function Nav() {
+  const [progress, setProgress] = useState(0);
+  const [active, setActive] = useState("terms");
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - window.innerHeight;
+      setProgress(max > 0 ? window.scrollY / max : 0);
+      setScrolled(window.scrollY > 40);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible?.target.id) setActive(visible.target.id);
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: [0, 0.25, 0.5, 1] },
+    );
+    links.forEach(([id]) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <nav className={`fixed inset-x-0 top-0 z-50 transition-colors ${scrolled ? "border-b border-line bg-bg/85 backdrop-blur-xl" : "bg-transparent"}`}>
+      <div className="mx-auto flex h-16 max-w-[1280px] items-center justify-between px-6 lg:px-10">
+        <a href="#top" className="flex items-center gap-3" aria-label="Back to top">
+          <span className="mono grid size-8 place-items-center rounded-lg bg-ink text-xs text-white">RL</span>
+          <span className="display text-xl font-medium text-ink">RLbook Explainer</span>
+        </a>
+        <div className="hidden items-center gap-5 lg:flex">
+          {links.map(([id, label]) => (
+            <a key={id} href={`#${id}`} className={`mono text-[11px] uppercase tracking-[0.14em] transition-colors ${active === id ? "text-cyan" : "text-dim hover:text-ink"}`}>
+              {label}
+            </a>
+          ))}
+        </div>
+        <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="#chapters">
+          17 chapters
+        </a>
+      </div>
+      <div className="h-px bg-line-soft">
+        <div className="h-px bg-cyan" style={{ width: `${Math.round(progress * 100)}%` }} />
+      </div>
+    </nav>
+  );
+}
