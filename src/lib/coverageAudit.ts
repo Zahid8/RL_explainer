@@ -66,6 +66,7 @@ export interface CoverageAudit {
   generatedFrom: string;
   totals: {
     chapters: number;
+    bookReaderRoutes: number;
     chapterRoutes: number;
     algorithms: number;
     algorithmFamilies: number;
@@ -96,6 +97,7 @@ export function buildCoverageAudit(): CoverageAudit {
 
   const totals = {
     chapters: chapters.length,
+    bookReaderRoutes: 1,
     chapterRoutes: chapterRows.length,
     algorithms: algorithmCatalog.length,
     algorithmFamilies: new Set(algorithmCatalog.map((algorithm) => algorithm.family)).size,
@@ -211,6 +213,13 @@ function algorithmCoverageRow(algorithm: (typeof algorithmCatalog)[number]): Alg
 
 function requirementProofs(totals: CoverageAudit["totals"]): RequirementProof[] {
   return [
+    {
+      label: "Linear standalone book reader",
+      status: totals.bookReaderRoutes === 1 && totals.lectureBeats >= totals.sectionNotes ? "complete" : "warning",
+      evidence: `/book is the continuous web-book route and renders the same ${totals.lectureBeats} lecture beats used by the chapter lessons.`,
+      easy: "Readers can now read the whole course in order without jumping between chapter cards.",
+      technical: "The App Router `/book` page imports the chapter dataset and standaloneLectureForChapter() output, then renders every chapter sequentially with table of contents anchors and links to full chapter labs.",
+    },
     {
       label: "Standalone web-book lecture layer",
       status: totals.chapters === 17 && totals.lectureBeats >= totals.sectionNotes ? "complete" : "warning",

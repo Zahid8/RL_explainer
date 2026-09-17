@@ -5,6 +5,7 @@ A standalone, light-theme web textbook for `../RLbook2020.pdf` (Sutton & Barto, 
 ## What is included
 
 - Hero overview with the RL learning-loop visual and standalone web-book framing.
+- Linear standalone book reader at `/book`, rendering all 17 chapters in order with table-of-contents anchors, from-zero explanations, visual mental models, section lecture beats, board-work steps, and links to full chapter labs.
 - Term lab covering 20 recurring symbols and concepts before formulas appear.
 - Book map for the three major arcs: tabular methods, approximation, and deeper links.
 - Chapter-by-chapter explorer for all 17 chapters, with:
@@ -121,6 +122,7 @@ Local runtime pieces on this workstation:
 - `src/lib/chapterDependencyMap.ts` - cross-chapter prerequisite/unlock maps, concept gates, skip risks, and review loops for every chapter page.
 - `src/lib/standaloneBook.ts` - standalone web-book lecture layer for all 17 chapters, generating from-zero openings, visual mental models, vocabulary, section lecture beats, board-work steps, and checkpoints.
 - `src/lib/coverageAudit.ts` - current-state coverage ledger for chapter routes and algorithm detail layers.
+- `src/app/book/page.tsx` - linear standalone book reader that puts all 17 chapter lectures on one continuous web-book page.
 - `src/app/coverage/page.tsx` - rendered whole-book coverage audit and completeness matrix.
 - `src/components/AnimatedConceptGraphic.tsx` - reusable animated SVG concept graphic with hover/click phase controls for section and algorithm visuals.
 - `src/components/MotionGlyph.tsx` - lightweight server-rendered animated SVG micro-visuals used across metrics, notes, panels, proofs, study cards, and dense explanation blocks.

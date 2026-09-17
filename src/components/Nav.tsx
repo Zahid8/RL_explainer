@@ -63,6 +63,7 @@ export function Nav() {
           ))}
         </div>
         <div className="flex items-center gap-2">
+          <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/book">Book mode</a>
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/algorithms">109 algorithms</a>
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/coverage">Coverage</a>
         </div>

@@ -22,7 +22,8 @@ export function Hero() {
           <p className="mt-7 max-w-2xl text-[18px] leading-8 text-muted">{book.claim}</p>
           <p className="mt-4 text-sm leading-7 text-dim">Source structure: {book.source}. This is an original, standalone teaching rewrite in new words and diagrams; it does not reproduce the book&apos;s prose.</p>
           <div className="mt-9 flex flex-wrap gap-3">
-            <a className="rounded-lg bg-cyan px-5 py-3 text-sm font-medium text-white" href="#chapters">Start with chapters</a>
+            <a className="rounded-lg bg-cyan px-5 py-3 text-sm font-medium text-white" href="/book">Read book mode</a>
+            <a className="rounded-lg border border-line bg-panel px-5 py-3 text-sm font-medium text-ink" href="#chapters">Start with chapters</a>
             <a className="rounded-lg border border-line bg-panel px-5 py-3 text-sm font-medium text-ink" href="/algorithms">Browse all algorithms</a>
             <a className="rounded-lg border border-line bg-panel px-5 py-3 text-sm font-medium text-ink" href="/coverage">Open coverage audit</a>
             <a className="rounded-lg border border-line bg-panel px-5 py-3 text-sm font-medium text-ink" href="#labs">Try the interactive labs</a>

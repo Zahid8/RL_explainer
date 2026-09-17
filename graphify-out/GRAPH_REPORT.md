@@ -1,12 +1,12 @@
 # Graph Report - rlbook-explainer  (2026-09-17)
 
 ## Corpus Check
-- 53 files · ~824,016 words
+- 54 files · ~825,162 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 187 nodes · 225 edges · 12 communities detected
-- Extraction: 94% EXTRACTED · 6% INFERRED · 0% AMBIGUOUS · INFERRED: 14 edges (avg confidence: 0.8)
+- 189 nodes · 227 edges · 12 communities detected
+- Extraction: 93% EXTRACTED · 7% INFERRED · 0% AMBIGUOUS · INFERRED: 15 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
@@ -78,8 +78,8 @@ Cohesion: 0.42
 Nodes (8): algorithmDossier(), inferBiasVariancePosition(), inferDiagnostics(), inferEstimatorShape(), inferImplementationInvariants(), inferKnobs(), inferStabilityContract(), outputPhrase()
 
 ### Community 7 - "Community 7"
-Cohesion: 0.4
-Nodes (2): glyphAccentForLabel(), glyphVariantForLabel()
+Cohesion: 0.29
+Nodes (3): glyphVariantForLabel(), glyphAccentForLabel(), glyphVariantForLabel()
 
 ### Community 8 - "Community 8"
 Cohesion: 0.7
@@ -98,8 +98,6 @@ Cohesion: 0.67
 Nodes (2): evalJs(), send()
 
 ## Knowledge Gaps
-- **Thin community `Community 7`** (6 nodes): `generateMetadata()`, `generateStaticParams()`, `glyphAccentForLabel()`, `glyphVariantForLabel()`, `StandaloneLectureBlock()`, `page.tsx`
-  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 12`** (4 nodes): `audit-interactions.mjs`, `evalJs()`, `send()`, `waitJson()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 
@@ -107,11 +105,11 @@ Nodes (2): evalJs(), send()
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `algorithmCoverageRow()` connect `Community 2` to `Community 0`, `Community 1`, `Community 3`, `Community 6`?**
-  _High betweenness centrality (0.195) - this node is a cross-community bridge._
+  _High betweenness centrality (0.190) - this node is a cross-community bridge._
 - **Why does `chapterCoverageRow()` connect `Community 1` to `Community 4`, `Community 5`?**
-  _High betweenness centrality (0.105) - this node is a cross-community bridge._
+  _High betweenness centrality (0.102) - this node is a cross-community bridge._
 - **Why does `workedExampleForAlgorithm()` connect `Community 0` to `Community 2`?**
-  _High betweenness centrality (0.098) - this node is a cross-community bridge._
+  _High betweenness centrality (0.096) - this node is a cross-community bridge._
 - **Are the 2 inferred relationships involving `algorithmProfile()` (e.g. with `algorithmCoverageRow()` and `ladderItem()`) actually correct?**
   _`algorithmProfile()` has 2 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 6 inferred relationships involving `algorithmCoverageRow()` (e.g. with `sourceAuditsForChapter()` and `algorithmDossier()`) actually correct?**

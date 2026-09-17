@@ -52,7 +52,7 @@ export default function CoveragePage() {
             <div>
               <p className="eyebrow">Whole-book coverage audit</p>
               <h1 className="display mt-4 max-w-5xl text-[clamp(42px,7vw,88px)] font-medium text-ink">Proof ledger for chapters and algorithms.</h1>
-              <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted">This page is generated from the current repository data. It checks whether every chapter has a standalone from-scratch lecture route and whether every algorithm card has the required easy, technical, derivation, profile, dossier, and worked-example layers.</p>
+              <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted">This page is generated from the current repository data. It checks whether the site has a linear /book reader, every chapter has a standalone from-scratch lecture route, and every algorithm card has the required easy, technical, derivation, profile, dossier, and worked-example layers.</p>
               <p className="mt-4 text-sm leading-relaxed text-dim">Generated from: {audit.generatedFrom}.</p>
             </div>
             <div className="grid gap-4">

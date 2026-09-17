@@ -188,6 +188,7 @@ function StandaloneBookPledge({ lectureBeats }: { lectureBeats: number }) {
             <MotionGlyph label={title} variant={index === 1 ? "bars" : index === 2 ? "formula" : index === 3 ? "check" : "loop"} accent={index === 2 ? "violet" : index === 3 ? "lime" : "cyan"} />
           </div>
           <p className="mt-4 text-sm leading-relaxed text-muted">{text}</p>
+          {index === 0 ? <a className="mono mt-4 inline-flex rounded-full border border-cyan bg-white px-3 py-2 text-[11px] uppercase tracking-[0.14em] text-cyan hover:bg-cyan hover:text-white" href="/book">Open linear book mode</a> : null}
         </article>
       ))}
     </div>
