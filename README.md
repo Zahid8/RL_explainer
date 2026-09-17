@@ -58,6 +58,7 @@ A single-page, light-theme explainer site for `../RLbook2020.pdf` (Sutton & Bart
   - equations,
   - implementation notes,
   - failure modes,
+  - six-section implementation dossiers covering inputs/state/output, target/error anatomy, bias-variance position, control knobs, stability contract, and debugging,
   - related methods.
 - Algorithm player that shows the shared structure across RL methods.
 - Interactive teaching labs for bandit exploration, Bellman backup arithmetic, and lambda-return mixing.
@@ -84,6 +85,17 @@ npm run start -- -p 3510
 ```
 
 The latest validation was run on port `3510` with desktop and mobile headless Chrome screenshots under `tmp/qa/` (ignored by git).
+
+## Public tunnel
+
+The production build is bound through the existing Cloudflare `papers` tunnel at:
+
+- `https://rl.zahid.win/`
+
+Local runtime pieces on this workstation:
+
+- `rlbook-explainer.service` user systemd service runs `npm run start -- -H 127.0.0.1 -p 3510`.
+- `papers-tunnel.service` routes `rl.zahid.win` to `http://127.0.0.1:3510` from `~/.cloudflared/papers.yml`.
 
 ## Important files
 
