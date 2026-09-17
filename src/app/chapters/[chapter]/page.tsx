@@ -19,6 +19,7 @@ import { exerciseCoachCards } from "@/lib/exerciseCoach";
 import { formulaAtlas } from "@/lib/formulaAtlas";
 import { chapterMastery } from "@/lib/mastery";
 import { chapters } from "@/lib/paper";
+import { manuscriptForChapter, type ChapterManuscript } from "@/lib/chapterManuscripts";
 import { standaloneLectureForChapter, type StandaloneChapterLecture } from "@/lib/standaloneBook";
 
 export const dynamicParams = false;
@@ -55,6 +56,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
   const evidence = evidenceGuideItems.filter((entry) => entry.chapter === item.n);
   const exercises = exerciseCoachCards.filter((entry) => entry.chapter === item.n);
   const lecture = standaloneLectureForChapter(item);
+  const manuscript = manuscriptForChapter(item.n);
   const prev = chapters.find((entry) => entry.n === item.n - 1);
   const next = chapters.find((entry) => entry.n === item.n + 1);
 
@@ -98,7 +100,9 @@ export default async function ChapterPage({ params }: { params: Params }) {
           <AnimatedConceptGraphic label="Story loop" variant="loop" caption="The easy story and the technical story update each other: intuition points at notation, notation checks intuition." compact />
         </section>
 
-        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, evidence: evidence.length, exercises: exercises.length, sourceAudits: sourceAudits.length }} />
+        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, manuscriptSections: manuscript.sections.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, evidence: evidence.length, exercises: exercises.length, sourceAudits: sourceAudits.length }} />
+
+        <ChapterManuscriptBlock manuscript={manuscript} />
 
         <StandaloneLectureBlock lecture={lecture} />
 
@@ -252,8 +256,9 @@ function Stat({ value, label }: { value: string; label: string }) {
   );
 }
 
-function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; lectureBeats: number; sections: number; formulas: number; evidence: number; exercises: number; sourceAudits: number } }) {
+function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; manuscriptSections: number; lectureBeats: number; sections: number; formulas: number; evidence: number; exercises: number; sourceAudits: number } }) {
   const items = [
+    ["manuscript", `${counts.manuscriptSections} manuscript moves`],
     ["lecture", `${counts.lectureBeats} lecture beats`],
     ["synthesis", "synthesis ladder"],
     ["dependencies", "dependency map"],
@@ -306,6 +311,46 @@ function glyphAccentForLabel(label: string): "cyan" | "orange" | "blue" | "viole
   if (/check|complete|implementation|test/i.test(label)) return "lime";
   if (/source|chapter|dependency|coverage/i.test(label)) return "blue";
   return "cyan";
+}
+
+
+function ChapterManuscriptBlock({ manuscript }: { manuscript: ChapterManuscript }) {
+  return (
+    <section id="manuscript" className="scroll-mt-24">
+      <SectionTitle
+        eyebrow="00a - Original chapter manuscript"
+        title="A bespoke prose lecture before the cards and audits."
+        lead="This is the web-book manuscript layer: a direct explanation in new words, written as if the chapter were being taught on a board from zero to technical precision."
+      />
+      <div className="mt-6 grid gap-5 lg:grid-cols-[0.8fr_1.2fr]">
+        <article className="rounded-xl border border-line bg-panel p-5">
+          <div className="flex flex-wrap gap-2"><Chip accent="cyan">original prose</Chip><Chip accent="lime">chapter {manuscript.n}</Chip></div>
+          <h3 className="display mt-4 text-3xl font-medium text-ink">Opening lecture</h3>
+          <p className="mt-3 text-base leading-relaxed text-muted">{manuscript.opening}</p>
+          <p className="mt-4 rounded-lg border border-lime/30 bg-lime/[0.06] p-3 text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Where this chapter lands:</span> {manuscript.closing}</p>
+        </article>
+        <div className="grid gap-4">
+          {manuscript.sections.map((section, index) => (
+            <article key={section.title} className="rounded-xl border border-line bg-panel p-5">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                <div>
+                  <div className="flex flex-wrap gap-2"><Chip accent="cyan">Move {index + 1}</Chip><Chip accent="violet">beginner → technical</Chip></div>
+                  <h3 className="display mt-3 text-2xl font-medium text-ink">{section.title}</h3>
+                </div>
+                <MotionGlyph label={section.title} variant={glyphVariantForLabel(section.title)} accent={glyphAccentForLabel(section.title)} />
+              </div>
+              <div className="mt-4 grid gap-3 md:grid-cols-2">
+                <MiniBlock label="Beginner explanation" text={section.beginner} />
+                <MiniBlock label="Graphical lecture" text={section.visual} tint />
+                <MiniBlock label="Technical version" text={section.technical} tint />
+                <MiniBlock label="Takeaway" text={section.takeaway} />
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
 
 

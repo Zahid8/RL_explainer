@@ -15,11 +15,13 @@ import { TermLab } from "@/components/TermLab";
 import { BanditLab } from "@/components/figures/BanditLab";
 import { BellmanLab } from "@/components/figures/BellmanLab";
 import { TraceLab } from "@/components/figures/TraceLab";
+import { manuscriptSectionCount } from "@/lib/chapterManuscripts";
 import { chapters } from "@/lib/paper";
 import { standaloneLectureTileCount } from "@/lib/standaloneBook";
 
 export default function Home() {
   const lectureBeats = standaloneLectureTileCount();
+  const manuscriptMoves = manuscriptSectionCount();
 
   return (
     <main>
@@ -32,7 +34,7 @@ export default function Home() {
         lead="The site now teaches the material as a first-principles course: each chapter starts from zero, uses graphical mental models, then builds the technical definitions, equations, algorithms, and checkpoints in its own words."
         tint
       >
-        <StandaloneBookPledge lectureBeats={lectureBeats} />
+        <StandaloneBookPledge lectureBeats={lectureBeats} manuscriptMoves={manuscriptMoves} />
       </Section>
       <Section
         id="terms"
@@ -141,7 +143,7 @@ export default function Home() {
             <p>This is an original standalone teaching site organized around the book&apos;s chapter and section structure. It avoids copying the book&apos;s prose and labels synthetic diagrams/labs as illustrative.</p>
           </Note>
           <Note title="Coverage note">
-            <p>The chapter list covers {chapters.length} chapters, {lectureBeats} standalone lecture beats, all top-level sections shown in the PDF contents, 161 section notes, a 170-tile mastery notebook, a 44-item formula atlas, a 147-card figure/example atlas, and 145 exercise-coach cards. Use the route pages as a complete original lecture path, then use the practice prompts to check whether the ideas are really yours.</p>
+            <p>The chapter list covers {chapters.length} chapters, {manuscriptMoves} bespoke manuscript moves, {lectureBeats} standalone lecture beats, all top-level sections shown in the PDF contents, 161 section notes, a 170-tile mastery notebook, a 44-item formula atlas, a 147-card figure/example atlas, and 145 exercise-coach cards. Use the route pages as a complete original lecture path, then use the practice prompts to check whether the ideas are really yours.</p>
           </Note>
         </div>
       </Section>
@@ -168,10 +170,10 @@ export default function Home() {
   );
 }
 
-function StandaloneBookPledge({ lectureBeats }: { lectureBeats: number }) {
+function StandaloneBookPledge({ lectureBeats, manuscriptMoves }: { lectureBeats: number; manuscriptMoves: number }) {
   const cards = [
     ["Start from zero", "Every chapter begins with a beginner story, a mental picture to draw, and a promise of what you will be able to explain by the end."],
-    ["Teach each section", `${lectureBeats} section-level lecture beats turn the chapter outline into questions, visual metaphors, technical builds, board-work steps, and checkpoints.`],
+    ["Teach each section", `${manuscriptMoves} bespoke manuscript moves and ${lectureBeats} section-level lecture beats turn the chapter outline into questions, visual metaphors, technical builds, board-work steps, and checkpoints.`],
     ["Go technical", "Algorithms, formulas, derivations, profiles, worked microscopes, traps, and implementation checks are still present after the easy explanation."],
     ["Stay original", "The wording is newly written for this web book: it follows the chapter structure and technical ideas without copying the copyrighted prose or figures."],
   ];

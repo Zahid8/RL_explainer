@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AnimatedConceptGraphic } from "@/components/AnimatedConceptGraphic";
 import { MotionGlyph } from "@/components/MotionGlyph";
 import { Chip } from "@/components/Section";
+import { manuscriptForChapter, manuscriptSectionCount, type ChapterManuscript } from "@/lib/chapterManuscripts";
 import { chapters } from "@/lib/paper";
 import { standaloneLectureForChapter, standaloneLectureTileCount, type StandaloneChapterLecture } from "@/lib/standaloneBook";
 
@@ -11,10 +12,11 @@ export const metadata: Metadata = {
   description: "A linear standalone web-book reader for the RLbook explainer: from basics to advanced, chapter by chapter, in original words.",
 };
 
-const lectures = chapters.map((chapter) => ({ chapter, lecture: standaloneLectureForChapter(chapter) }));
+const lectures = chapters.map((chapter) => ({ chapter, lecture: standaloneLectureForChapter(chapter), manuscript: manuscriptForChapter(chapter.n) }));
 
 export default function BookPage() {
   const lectureBeats = standaloneLectureTileCount();
+  const manuscriptSections = manuscriptSectionCount();
 
   return (
     <main className="min-h-screen bg-bg text-ink">
@@ -33,6 +35,7 @@ export default function BookPage() {
               </p>
               <div className="mt-6 flex flex-wrap gap-2">
                 <Chip accent="cyan">17 chapters</Chip>
+                <Chip accent="blue">{manuscriptSections} manuscript moves</Chip>
                 <Chip accent="lime">{lectureBeats} lecture beats</Chip>
                 <Chip accent="violet">beginner → advanced</Chip>
                 <Chip accent="orange">original wording</Chip>
@@ -70,14 +73,14 @@ export default function BookPage() {
         </aside>
 
         <div className="grid gap-12">
-          {lectures.map(({ chapter, lecture }) => <BookChapter key={chapter.n} chapter={chapter} lecture={lecture} />)}
+          {lectures.map(({ chapter, lecture, manuscript }) => <BookChapter key={chapter.n} chapter={chapter} lecture={lecture} manuscript={manuscript} />)}
         </div>
       </div>
     </main>
   );
 }
 
-function BookChapter({ chapter, lecture }: { chapter: (typeof chapters)[number]; lecture: StandaloneChapterLecture }) {
+function BookChapter({ chapter, lecture, manuscript }: { chapter: (typeof chapters)[number]; lecture: StandaloneChapterLecture; manuscript: ChapterManuscript }) {
   return (
     <article id={`book-chapter-${chapter.n}`} className="scroll-mt-24 overflow-hidden rounded-2xl border border-line bg-panel">
       <div className="grid gap-px bg-line lg:grid-cols-[0.9fr_1.1fr]">
@@ -93,6 +96,10 @@ function BookChapter({ chapter, lecture }: { chapter: (typeof chapters)[number];
           <div className="mt-5 grid gap-3">
             <MiniLesson label="Mental model to draw" text={lecture.mentalModel} />
             <MiniLesson label="Why this chapter belongs here" text={lecture.whyNow} tint />
+          </div>
+          <div className="mt-5 rounded-xl border border-line bg-white p-4">
+            <p className="eyebrow mb-3">Original manuscript opening</p>
+            <p className="text-sm leading-relaxed text-muted">{manuscript.opening}</p>
           </div>
           <div className="mt-5 flex flex-wrap gap-2">
             <Link href={`/chapters/${chapter.n}`} className="mono rounded-full border border-cyan bg-cyan px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-white">Open full chapter lab</Link>
@@ -125,6 +132,27 @@ function BookChapter({ chapter, lecture }: { chapter: (typeof chapters)[number];
       </div>
 
       <div className="grid gap-5 bg-panel p-6 lg:p-7">
+        <section className="grid gap-4">
+          <div>
+            <p className="eyebrow">Bespoke chapter manuscript</p>
+            <h3 className="display mt-2 text-3xl font-medium text-ink">Three moves from beginner intuition to technical precision.</h3>
+          </div>
+          <div className="grid gap-4">
+            {manuscript.sections.map((section, index) => (
+              <article key={section.title} className="rounded-xl border border-line bg-white p-4">
+                <div className="flex flex-wrap gap-2"><Chip accent="cyan">Move {index + 1}</Chip><Chip accent="violet">original prose</Chip></div>
+                <h4 className="display mt-3 text-2xl font-medium text-ink">{section.title}</h4>
+                <div className="mt-4 grid gap-3 md:grid-cols-2">
+                  <MiniLesson label="Beginner explanation" text={section.beginner} />
+                  <MiniLesson label="Graphical lecture" text={section.visual} tint />
+                  <MiniLesson label="Technical version" text={section.technical} tint />
+                  <MiniLesson label="Takeaway" text={section.takeaway} />
+                </div>
+              </article>
+            ))}
+          </div>
+          <p className="rounded-lg border border-lime/30 bg-lime/[0.06] p-3 text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Chapter landing:</span> {manuscript.closing}</p>
+        </section>
         <div className="grid gap-3 md:grid-cols-2">
           <MiniLesson label="Hands-on reading sequence" text={lecture.handsOnSequence.join(" ")} />
           <MiniLesson label="Technical finish line" text={lecture.technicalFinish.join(" ")} tint />

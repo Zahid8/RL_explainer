@@ -59,6 +59,7 @@ export default function CoveragePage() {
               <AnimatedConceptGraphic label="Coverage motion ledger" variant="coverage" caption="The audit is itself graphical: status, route coverage, and algorithm details move through proof states." compact />
               <div className="grid grid-cols-2 overflow-hidden rounded-xl border border-line bg-white">
                 <Stat value={String(audit.totals.chapterRoutes)} label="chapter routes" />
+                <Stat value={String(audit.totals.manuscriptSections)} label="manuscript moves" />
                 <Stat value={String(audit.totals.lectureBeats)} label="lecture beats" />
                 <Stat value={String(audit.totals.completeAlgorithms)} label="complete alg cards" />
                 <Stat value={String(audit.totals.warnings)} label="audit warnings" />
@@ -145,9 +146,10 @@ function ChapterCoverageCard({ chapter }: { chapter: ChapterCoverageRow }) {
         </div>
         <Link href={chapter.route} className="mono rounded-full border border-line bg-white px-3 py-2 text-[11px] uppercase tracking-[0.12em] text-muted hover:border-cyan hover:text-ink">Open chapter</Link>
       </div>
-      <div className="mt-4 grid gap-3 md:grid-cols-4 lg:grid-cols-9">
+      <div className="mt-4 grid gap-3 md:grid-cols-4 lg:grid-cols-10">
         <Metric label="algorithms" value={chapter.algorithms} />
         <Metric label="source cues" value={chapter.sourceCues} />
+        <Metric label="manuscript" value={chapter.manuscriptSections} />
         <Metric label="lectures" value={chapter.lectureBeats} />
         <Metric label="sections" value={chapter.sectionNotes} />
         <Metric label="mastery" value={chapter.masteryTiles} />

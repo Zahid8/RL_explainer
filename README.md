@@ -5,11 +5,12 @@ A standalone, light-theme web textbook for `../RLbook2020.pdf` (Sutton & Barto, 
 ## What is included
 
 - Hero overview with the RL learning-loop visual and standalone web-book framing.
-- Linear standalone book reader at `/book`, rendering all 17 chapters in order with table-of-contents anchors, from-zero explanations, visual mental models, section lecture beats, board-work steps, and links to full chapter labs.
+- Linear standalone book reader at `/book`, rendering all 17 chapters in order with table-of-contents anchors, bespoke manuscript prose, from-zero explanations, visual mental models, section lecture beats, board-work steps, and links to full chapter labs.
 - Term lab covering 20 recurring symbols and concepts before formulas appear.
 - Book map for the three major arcs: tabular methods, approximation, and deeper links.
 - Chapter-by-chapter explorer for all 17 chapters, with:
   - links to standalone chapter pages at `/chapters/1` through `/chapters/17`,
+  - bespoke original manuscript moves for every chapter,
   - from-scratch lecture pages that teach each chapter as a self-contained lesson rather than as a companion checklist,
   - deep detail mode containing 161 section-level notes,
   - section checklist from the PDF contents,
@@ -46,6 +47,7 @@ A standalone, light-theme web textbook for `../RLbook2020.pdf` (Sutton & Barto, 
   - three-step solution strategy,
   - checkpoint for whether the answer is on track.
 - Standalone, highly detailed chapter pages for every chapter, each combining:
+  - Original chapter manuscript with beginner explanation, graphical lecture, technical version, and takeaway for each main move,
   - Standalone from-scratch lecture with beginner openings, visual mental models, vocabulary, section lecture beats, board-work steps, and checkpoints,
   - Book-source algorithm audit mapping PDF algorithm boxes/source methods to detailed cards,
   - chapter synthesis ladder with dependencies, algorithm comparisons, study protocol, and oral-exam checks,
@@ -120,6 +122,7 @@ Local runtime pieces on this workstation:
 - `src/lib/exerciseCoach.ts` - 145 exercise-coach cards generated from the PDF exercise anchors without copying exercise text.
 - `src/lib/chapterSynthesis.ts` - chapter-level synthesis ladders connecting each chapter story to its algorithms, comparison axes, study protocol, and oral-exam checks.
 - `src/lib/chapterDependencyMap.ts` - cross-chapter prerequisite/unlock maps, concept gates, skip risks, and review loops for every chapter page.
+- `src/lib/chapterManuscripts.ts` - bespoke original prose layer for all 17 chapters, with 51 beginner-to-technical manuscript moves.
 - `src/lib/standaloneBook.ts` - standalone web-book lecture layer for all 17 chapters, generating from-zero openings, visual mental models, vocabulary, section lecture beats, board-work steps, and checkpoints.
 - `src/lib/coverageAudit.ts` - current-state coverage ledger for chapter routes and algorithm detail layers.
 - `src/app/book/page.tsx` - linear standalone book reader that puts all 17 chapter lectures on one continuous web-book page.
