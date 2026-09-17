@@ -9,7 +9,7 @@
       "source_file": "eslint.config.mjs",
       "source_location": "L1",
       "id": "eslint_config_mjs",
-      "community": 14,
+      "community": 15,
       "norm_label": "eslint.config.mjs"
     },
     {
@@ -18,7 +18,7 @@
       "source_file": "next-env.d.ts",
       "source_location": "L1",
       "id": "next_env_d_ts",
-      "community": 15,
+      "community": 16,
       "norm_label": "next-env.d.ts"
     },
     {
@@ -27,7 +27,7 @@
       "source_file": "postcss.config.mjs",
       "source_location": "L1",
       "id": "postcss_config_mjs",
-      "community": 16,
+      "community": 17,
       "norm_label": "postcss.config.mjs"
     },
     {
@@ -36,7 +36,7 @@
       "source_file": "next.config.ts",
       "source_location": "L1",
       "id": "next_config_ts",
-      "community": 17,
+      "community": 18,
       "norm_label": "next.config.ts"
     },
     {
@@ -99,7 +99,7 @@
       "source_file": "src/components/Glossary.tsx",
       "source_location": "L1",
       "id": "src_components_glossary_tsx",
-      "community": 18,
+      "community": 19,
       "norm_label": "glossary.tsx"
     },
     {
@@ -126,7 +126,7 @@
       "source_file": "src/components/AlgorithmPlayer.tsx",
       "source_location": "L1",
       "id": "src_components_algorithmplayer_tsx",
-      "community": 19,
+      "community": 20,
       "norm_label": "algorithmplayer.tsx"
     },
     {
@@ -153,8 +153,26 @@
       "source_file": "src/components/ChapterExplorer.tsx",
       "source_location": "L1",
       "id": "src_components_chapterexplorer_tsx",
-      "community": 20,
+      "community": 21,
       "norm_label": "chapterexplorer.tsx"
+    },
+    {
+      "label": "FormulaAtlas.tsx",
+      "file_type": "code",
+      "source_file": "src/components/FormulaAtlas.tsx",
+      "source_location": "L1",
+      "id": "src_components_formulaatlas_tsx",
+      "community": 8,
+      "norm_label": "formulaatlas.tsx"
+    },
+    {
+      "label": "FormulaAtlas()",
+      "file_type": "code",
+      "source_file": "src/components/FormulaAtlas.tsx",
+      "source_location": "L12",
+      "id": "components_formulaatlas_formulaatlas",
+      "community": 8,
+      "norm_label": "formulaatlas()"
     },
     {
       "label": "Section.tsx",
@@ -207,7 +225,7 @@
       "source_file": "src/components/EquationWall.tsx",
       "source_location": "L1",
       "id": "src_components_equationwall_tsx",
-      "community": 8,
+      "community": 9,
       "norm_label": "equationwall.tsx"
     },
     {
@@ -216,7 +234,7 @@
       "source_file": "src/components/EquationWall.tsx",
       "source_location": "L5",
       "id": "components_equationwall_equationwall",
-      "community": 8,
+      "community": 9,
       "norm_label": "equationwall()"
     },
     {
@@ -225,7 +243,7 @@
       "source_file": "src/components/BookMap.tsx",
       "source_location": "L1",
       "id": "src_components_bookmap_tsx",
-      "community": 9,
+      "community": 10,
       "norm_label": "bookmap.tsx"
     },
     {
@@ -234,7 +252,7 @@
       "source_file": "src/components/BookMap.tsx",
       "source_location": "L4",
       "id": "components_bookmap_bookmap",
-      "community": 9,
+      "community": 10,
       "norm_label": "bookmap()"
     },
     {
@@ -243,7 +261,7 @@
       "source_file": "src/components/three/SceneMount.tsx",
       "source_location": "L1",
       "id": "src_components_three_scenemount_tsx",
-      "community": 10,
+      "community": 11,
       "norm_label": "scenemount.tsx"
     },
     {
@@ -252,7 +270,7 @@
       "source_file": "src/components/three/SceneMount.tsx",
       "source_location": "L7",
       "id": "three_scenemount_scenemount",
-      "community": 10,
+      "community": 11,
       "norm_label": "scenemount()"
     },
     {
@@ -261,7 +279,7 @@
       "source_file": "src/components/three/LearningLoopScene.tsx",
       "source_location": "L1",
       "id": "src_components_three_learningloopscene_tsx",
-      "community": 21,
+      "community": 22,
       "norm_label": "learningloopscene.tsx"
     },
     {
@@ -297,7 +315,7 @@
       "source_file": "src/components/figures/TermGlyph.tsx",
       "source_location": "L1",
       "id": "src_components_figures_termglyph_tsx",
-      "community": 11,
+      "community": 12,
       "norm_label": "termglyph.tsx"
     },
     {
@@ -306,7 +324,7 @@
       "source_file": "src/components/figures/TermGlyph.tsx",
       "source_location": "L3",
       "id": "figures_termglyph_bars",
-      "community": 11,
+      "community": 12,
       "norm_label": "bars()"
     },
     {
@@ -315,7 +333,7 @@
       "source_file": "src/components/figures/TraceLab.tsx",
       "source_location": "L1",
       "id": "src_components_figures_tracelab_tsx",
-      "community": 22,
+      "community": 23,
       "norm_label": "tracelab.tsx"
     },
     {
@@ -351,7 +369,7 @@
       "source_file": "src/lib/mastery.ts",
       "source_location": "L1",
       "id": "src_lib_mastery_ts",
-      "community": 23,
+      "community": 24,
       "norm_label": "mastery.ts"
     },
     {
@@ -360,7 +378,7 @@
       "source_file": "src/lib/deepDives.ts",
       "source_location": "L1",
       "id": "src_lib_deepdives_ts",
-      "community": 12,
+      "community": 13,
       "norm_label": "deepdives.ts"
     },
     {
@@ -369,7 +387,7 @@
       "source_file": "src/lib/deepDives.ts",
       "source_location": "L16",
       "id": "lib_deepdives_d",
-      "community": 12,
+      "community": 13,
       "norm_label": "d()"
     },
     {
@@ -378,7 +396,7 @@
       "source_file": "src/lib/paper.ts",
       "source_location": "L1",
       "id": "src_lib_paper_ts",
-      "community": 24,
+      "community": 25,
       "norm_label": "paper.ts"
     },
     {
@@ -387,7 +405,7 @@
       "source_file": "src/lib/gsap.ts",
       "source_location": "L1",
       "id": "src_lib_gsap_ts",
-      "community": 25,
+      "community": 26,
       "norm_label": "gsap.ts"
     },
     {
@@ -396,7 +414,7 @@
       "source_file": "src/lib/motion.ts",
       "source_location": "L1",
       "id": "src_lib_motion_ts",
-      "community": 13,
+      "community": 14,
       "norm_label": "motion.ts"
     },
     {
@@ -405,8 +423,17 @@
       "source_file": "src/lib/motion.ts",
       "source_location": "L2",
       "id": "lib_motion_reduced",
-      "community": 13,
+      "community": 14,
       "norm_label": "reduced()"
+    },
+    {
+      "label": "formulaAtlas.ts",
+      "file_type": "code",
+      "source_file": "src/lib/formulaAtlas.ts",
+      "source_location": "L1",
+      "id": "src_lib_formulaatlas_ts",
+      "community": 27,
+      "norm_label": "formulaatlas.ts"
     },
     {
       "label": "page.tsx",
@@ -414,7 +441,7 @@
       "source_file": "src/app/page.tsx",
       "source_location": "L1",
       "id": "src_app_page_tsx",
-      "community": 26,
+      "community": 28,
       "norm_label": "page.tsx"
     },
     {
@@ -423,7 +450,7 @@
       "source_file": "src/app/layout.tsx",
       "source_location": "L1",
       "id": "src_app_layout_tsx",
-      "community": 27,
+      "community": 29,
       "norm_label": "layout.tsx"
     }
   ],
@@ -486,6 +513,18 @@
       "_tgt": "components_math_tex",
       "source": "src_components_math_tsx",
       "target": "components_math_tex",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/FormulaAtlas.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_src": "src_components_formulaatlas_tsx",
+      "_tgt": "components_formulaatlas_formulaatlas",
+      "source": "src_components_formulaatlas_tsx",
+      "target": "components_formulaatlas_formulaatlas",
       "confidence_score": 1.0
     },
     {
