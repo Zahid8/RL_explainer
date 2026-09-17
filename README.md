@@ -8,6 +8,7 @@ A single-page, light-theme explainer site for `../RLbook2020.pdf` (Sutton & Bart
 - Term lab covering 20 recurring symbols and concepts before formulas appear.
 - Book map for the three major arcs: tabular methods, approximation, and deeper links.
 - Chapter-by-chapter explorer for all 17 chapters, with:
+  - links to standalone chapter pages at `/chapters/1` through `/chapters/17`,
   - deep detail mode containing 161 section-level notes,
   - section checklist from the PDF contents,
   - core claim,
@@ -42,6 +43,22 @@ A single-page, light-theme explainer site for `../RLbook2020.pdf` (Sutton & Bart
   - technical goal,
   - three-step solution strategy,
   - checkpoint for whether the answer is on track.
+- Standalone, highly detailed chapter pages for every chapter, each combining:
+  - chapter overview,
+  - algorithmic machinery,
+  - section deep dives,
+  - mastery derivations/processes/traps/checks,
+  - formula cards,
+  - figure/example anchors,
+  - exercise coaching.
+- Algorithm catalog with 95 detailed algorithm/procedure cards across the book, including:
+  - objective and core update,
+  - operational steps,
+  - pseudocode,
+  - equations,
+  - implementation notes,
+  - failure modes,
+  - related methods.
 - Algorithm player that shows the shared structure across RL methods.
 - Interactive teaching labs for bandit exploration, Bellman backup arithmetic, and lambda-return mixing.
 - Glossary for recurring RL vocabulary.
@@ -76,7 +93,9 @@ The latest validation was run on port `3510` with desktop and mobile headless Ch
 - `src/lib/formulaAtlas.ts` - 44 equation/formal-template cards spanning the whole book.
 - `src/lib/evidenceGuide.ts` - 147 figure/table/example guide cards spanning all 17 chapters.
 - `src/lib/exerciseCoach.ts` - 145 exercise-coach cards generated from the PDF exercise anchors without copying exercise text.
+- `src/lib/algorithmCatalog.ts` - 95 detailed algorithm/procedure cards keyed by chapter.
 - `src/app/page.tsx` - page composition and section order.
+- `src/app/chapters/[chapter]/page.tsx` - static chapter-detail route for all 17 chapters.
 - `src/components/TermLab.tsx` - interactive notation browser.
 - `src/components/ChapterExplorer.tsx` - filterable chapter-by-chapter cards.
 - `src/components/MasteryNotebook.tsx` - searchable ultra-detail notebook rendered below the chapter explorer.

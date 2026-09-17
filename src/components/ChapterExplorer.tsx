@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import { chapterDeepDives } from "@/lib/deepDives";
 import { chapters, type Chapter } from "@/lib/paper";
@@ -62,6 +63,9 @@ function ChapterCard({ chapter }: { chapter: Chapter }) {
           </div>
           <h3 className="display mt-5 text-[clamp(28px,3vw,40px)] font-medium text-ink">{chapter.n}. {chapter.title}</h3>
           <p className="mt-4 text-[16px] leading-relaxed text-muted">{chapter.claim}</p>
+          <Link href={`/chapters/${chapter.n}`} className="mono mt-5 inline-flex rounded-full border border-cyan bg-cyan px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-white">
+            Open full chapter page
+          </Link>
           <div className="mt-6 grid gap-4">
             <Plain title="Easy explanation"><p>{chapter.easy}</p></Plain>
             <div className="rounded-xl border border-line bg-panel-2 p-5">
