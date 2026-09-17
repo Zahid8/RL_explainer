@@ -6,6 +6,7 @@ const links = [
   ["terms", "Terms"],
   ["map", "Map"],
   ["chapters", "Chapters"],
+  ["mastery", "Mastery"],
   ["equations", "Equations"],
   ["algorithms", "Algorithms"],
   ["labs", "Labs"],

@@ -8,7 +8,7 @@ A single-page, light-theme explainer site for `../RLbook2020.pdf` (Sutton & Bart
 - Term lab covering 20 recurring symbols and concepts before formulas appear.
 - Book map for the three major arcs: tabular methods, approximation, and deeper links.
 - Chapter-by-chapter explorer for all 17 chapters, with:
-  - deep detail mode containing 120+ section-level notes,
+  - deep detail mode containing 161 section-level notes,
   - section checklist from the PDF contents,
   - core claim,
   - plain-English explanation,
@@ -19,6 +19,11 @@ A single-page, light-theme explainer site for `../RLbook2020.pdf` (Sutton & Bart
   - examples,
   - common confusions,
   - bridge to the next chapter.
+- Ultra-detail mastery notebook for all 17 chapters, adding 170 more detail tiles:
+  - derivation clinics for key equations and formal moves,
+  - algorithm/process walkthroughs,
+  - diagnostic traps with fixes,
+  - self-check questions with answers.
 - Equation spine for the recurring return, value, Bellman, TD, Q-learning, and policy-gradient forms.
 - Algorithm player that shows the shared structure across RL methods.
 - Interactive teaching labs for bandit exploration, Bellman backup arithmetic, and lambda-return mixing.
@@ -49,9 +54,11 @@ The latest validation was run on port `3510` with desktop and mobile headless Ch
 ## Important files
 
 - `src/lib/paper.ts` - core explainer content, typed chapter data, terms, glossary, and equation metadata.
-- `src/lib/deepDives.ts` - 120+ section-level detailed notes, mechanics, and remember-this summaries for every chapter.
+- `src/lib/deepDives.ts` - 161 section-level detailed notes, mechanics, and remember-this summaries for every chapter.
+- `src/lib/mastery.ts` - 170 additional derivation, process, diagnostic-trap, and self-check tiles for every chapter.
 - `src/app/page.tsx` - page composition and section order.
 - `src/components/TermLab.tsx` - interactive notation browser.
 - `src/components/ChapterExplorer.tsx` - filterable chapter-by-chapter cards.
+- `src/components/MasteryNotebook.tsx` - searchable ultra-detail notebook rendered below the chapter explorer.
 - `src/components/figures/` - SVG/browser-computed teaching figures.
 - `src/components/three/` - dynamic R3F hero scene.

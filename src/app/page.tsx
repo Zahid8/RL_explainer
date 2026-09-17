@@ -4,6 +4,7 @@ import { ChapterExplorer } from "@/components/ChapterExplorer";
 import { EquationWall } from "@/components/EquationWall";
 import { Glossary } from "@/components/Glossary";
 import { Hero } from "@/components/Hero";
+import { MasteryNotebook } from "@/components/MasteryNotebook";
 import { Nav } from "@/components/Nav";
 import { Section, Note } from "@/components/Section";
 import { TermLab } from "@/components/TermLab";
@@ -43,17 +44,25 @@ export default function Home() {
         <ChapterExplorer />
       </Section>
       <Section
+        id="mastery"
+        eyebrow="03 - Ultra-detail notebook"
+        title={<>The deeper study layer adds derivations, algorithms, traps, and checks for every chapter.</>}
+        lead="The first chapter cards give the map. This notebook goes another level down: it turns key equations into step-by-step derivation clinics, turns procedures into walkthroughs, and names the mistakes that usually break understanding."
+        tint
+      >
+        <MasteryNotebook />
+      </Section>
+      <Section
         id="equations"
-        eyebrow="03 - Equation spine"
+        eyebrow="04 - Equation spine"
         title={<>Six equations carry most of the book&apos;s algorithmic shape.</>}
         lead="The exact book contains many more equations. This spine highlights the recurring forms that reappear as dynamic programming, Monte Carlo, TD, traces, approximation, and policy gradients."
-        tint
       >
         <EquationWall />
       </Section>
       <Section
         id="algorithms"
-        eyebrow="04 - Algorithm player"
+        eyebrow="05 - Algorithm player"
         title={<>Most RL algorithms differ in the target they build and the policy pressure they apply.</>}
         lead="The player abstracts the family resemblance: interact, construct a target, update, improve, and optionally plan. Specific chapters specialize each line."
       >
@@ -61,7 +70,7 @@ export default function Home() {
       </Section>
       <Section
         id="labs"
-        eyebrow="05 - Interactive labs"
+        eyebrow="06 - Interactive labs"
         title={<>Three browser labs compute the central mechanics instead of only describing them.</>}
         lead="The labs use synthetic teaching numbers, clearly marked as illustrative. They are not benchmark results from the book."
         tint
@@ -74,7 +83,7 @@ export default function Home() {
       </Section>
       <Section
         id="study"
-        eyebrow="06 - Study route"
+        eyebrow="07 - Study route"
         title={<>A practical route through the details.</>}
         lead="For a first pass, read by dependencies rather than page count: formulation, tabular backups, sampling, approximation, policy gradients, then the broader connections."
       >
@@ -97,13 +106,13 @@ export default function Home() {
             <p>This explainer is paraphrased from the extracted PDF and organized around the book&apos;s chapter and section structure. It avoids copying the book&apos;s prose and labels synthetic diagrams/labs as illustrative.</p>
           </Note>
           <Note title="Coverage note">
-            <p>The chapter list covers {chapters.length} chapters and all top-level sections shown in the PDF contents. For classroom use, treat the cards as a guided map, not as a replacement for exercises or proofs in the book.</p>
+            <p>The chapter list covers {chapters.length} chapters, all top-level sections shown in the PDF contents, 161 section notes, and an added mastery notebook for derivations, procedures, traps, and self-checks. For classroom use, treat the cards as a guided map, not as a replacement for exercises or proofs in the book.</p>
           </Note>
         </div>
       </Section>
       <Section
         id="glossary"
-        eyebrow="07 - Glossary"
+        eyebrow="08 - Glossary"
         title={<>The recurring vocabulary, unfolded one term at a time.</>}
         lead="These definitions are written for readers who may be meeting reinforcement learning for the first time but still need the technical distinction."
         tint
