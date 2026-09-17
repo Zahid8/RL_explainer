@@ -70,7 +70,7 @@ export const book = {
     { value: "17", label: "chapters explained" },
     { value: "3", label: "parts: tabular, approximation, deeper links" },
     { value: "548", label: "PDF pages parsed" },
-    { value: "1400+", label: "detail tiles and notes" },
+    { value: "1800+", label: "detail tiles and notes" },
   ],
 };
 

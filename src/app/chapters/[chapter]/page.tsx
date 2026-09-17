@@ -5,6 +5,7 @@ import { TeX } from "@/components/Math";
 import { Chip, Plain } from "@/components/Section";
 import { algorithmsForChapter, type AlgorithmDetail } from "@/lib/algorithmCatalog";
 import { algorithmDossier, type AlgorithmDossierSection } from "@/lib/algorithmDossier";
+import { workedExampleForAlgorithm, type AlgorithmWorkedExample } from "@/lib/algorithmWorkedExamples";
 import { sourceAuditsForChapter, type AlgorithmSourceAudit } from "@/lib/algorithmSourceAudit";
 import { chapterDeepDives } from "@/lib/deepDives";
 import { evidenceGuideItems } from "@/lib/evidenceGuide";
@@ -273,6 +274,7 @@ function SourceAuditCard({ audit, algorithms }: { audit: AlgorithmSourceAudit; a
 
 function AlgorithmCard({ algorithm }: { algorithm: AlgorithmDetail }) {
   const dossier = algorithmDossier(algorithm);
+  const worked = workedExampleForAlgorithm(algorithm);
 
   return (
     <article id={algorithm.id} className="scroll-mt-24 overflow-hidden rounded-xl border border-line bg-panel">
@@ -293,6 +295,7 @@ function AlgorithmCard({ algorithm }: { algorithm: AlgorithmDetail }) {
             <Panel title="Pseudocode" items={algorithm.pseudocode} accent="violet" mono ordered />
           </div>
           {algorithm.equations.length ? <div className="mt-5 grid gap-3">{algorithm.equations.map((equation) => <TeX key={equation} block>{equation}</TeX>)}</div> : null}
+          <WorkedExampleBlock example={worked} />
           <div className="mt-5 grid gap-5 lg:grid-cols-2">
             <Panel title="Implementation notes" items={algorithm.implementationNotes} accent="lime" />
             <Panel title="Failure modes" items={algorithm.failureModes} accent="orange" />
@@ -324,6 +327,25 @@ function DossierBlock({ section }: { section: AlgorithmDossierSection }) {
         {section.checkpoints.map((checkpoint, index) => <li key={`${section.label}-${index}`} className="flex gap-2"><span className="text-cyan">•</span><span>{checkpoint}</span></li>)}
       </ul>
     </article>
+  );
+}
+
+
+function WorkedExampleBlock({ example }: { example: AlgorithmWorkedExample }) {
+  return (
+    <div className="mt-5 rounded-xl border border-blue/25 bg-blue/[0.045] p-4">
+      <div className="flex flex-wrap gap-2"><Chip accent="blue">{example.title}</Chip></div>
+      <p className="mt-3 text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Setup:</span> {example.setup}</p>
+      <div className="mt-4 grid gap-3 md:grid-cols-2">
+        <MiniBlock label="Easy walkthrough" text={example.easyWalkthrough} />
+        <MiniBlock label="Technical walkthrough" text={example.technicalWalkthrough} tint />
+      </div>
+      <div className="mt-4 grid gap-4 lg:grid-cols-2">
+        <Panel title="Calculation / symbolic trace" items={example.calculation} accent="blue" ordered />
+        <Panel title="Implementation checks" items={example.implementationChecks} accent="lime" />
+      </div>
+      <p className="mt-4 rounded-lg border border-orange/30 bg-orange/[0.06] p-3 text-sm leading-relaxed text-muted"><span className="font-medium text-orange">Debug probe:</span> {example.debuggingProbe}</p>
+    </div>
   );
 }
 
