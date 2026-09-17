@@ -61,9 +61,10 @@ export function Nav() {
             </a>
           ))}
         </div>
-        <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/algorithms">
-          109 algorithms
-        </a>
+        <div className="flex items-center gap-2">
+          <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/algorithms">109 algorithms</a>
+          <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/coverage">Coverage</a>
+        </div>
       </div>
       <div className="h-px bg-line-soft">
         <div className="h-px bg-cyan" style={{ width: `${Math.round(progress * 100)}%` }} />
