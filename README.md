@@ -104,6 +104,7 @@ The production build is bound through the existing Cloudflare `papers` tunnel at
 Local runtime pieces on this workstation:
 
 - `rlbook-explainer.service` user systemd service runs `npm run start -- -H 127.0.0.1 -p 3510`.
+- The service `WorkingDirectory` must point at the active checkout: `/home/zahid/Projects/rl_book/rlbook-explainer`. If chapter pages return `500`, verify it with `systemctl --user cat rlbook-explainer.service` before debugging Next.js route code.
 - `papers-tunnel.service` routes `rl.zahid.win` to `http://127.0.0.1:3510` from `~/.cloudflared/papers.yml`.
 
 ## Important files
