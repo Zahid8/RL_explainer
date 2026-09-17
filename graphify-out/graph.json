@@ -1,0 +1,622 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "eslint.config.mjs",
+      "file_type": "code",
+      "source_file": "eslint.config.mjs",
+      "source_location": "L1",
+      "id": "eslint_config_mjs",
+      "community": 13,
+      "norm_label": "eslint.config.mjs"
+    },
+    {
+      "label": "next-env.d.ts",
+      "file_type": "code",
+      "source_file": "next-env.d.ts",
+      "source_location": "L1",
+      "id": "next_env_d_ts",
+      "community": 14,
+      "norm_label": "next-env.d.ts"
+    },
+    {
+      "label": "postcss.config.mjs",
+      "file_type": "code",
+      "source_file": "postcss.config.mjs",
+      "source_location": "L1",
+      "id": "postcss_config_mjs",
+      "community": 15,
+      "norm_label": "postcss.config.mjs"
+    },
+    {
+      "label": "next.config.ts",
+      "file_type": "code",
+      "source_file": "next.config.ts",
+      "source_location": "L1",
+      "id": "next_config_ts",
+      "community": 16,
+      "norm_label": "next.config.ts"
+    },
+    {
+      "label": "Nav.tsx",
+      "file_type": "code",
+      "source_file": "src/components/Nav.tsx",
+      "source_location": "L1",
+      "id": "src_components_nav_tsx",
+      "community": 3,
+      "norm_label": "nav.tsx"
+    },
+    {
+      "label": "onScroll()",
+      "file_type": "code",
+      "source_file": "src/components/Nav.tsx",
+      "source_location": "L21",
+      "id": "components_nav_onscroll",
+      "community": 3,
+      "norm_label": "onscroll()"
+    },
+    {
+      "label": "TermLab.tsx",
+      "file_type": "code",
+      "source_file": "src/components/TermLab.tsx",
+      "source_location": "L1",
+      "id": "src_components_termlab_tsx",
+      "community": 4,
+      "norm_label": "termlab.tsx"
+    },
+    {
+      "label": "onKey()",
+      "file_type": "code",
+      "source_file": "src/components/TermLab.tsx",
+      "source_location": "L16",
+      "id": "components_termlab_onkey",
+      "community": 4,
+      "norm_label": "onkey()"
+    },
+    {
+      "label": "Glossary.tsx",
+      "file_type": "code",
+      "source_file": "src/components/Glossary.tsx",
+      "source_location": "L1",
+      "id": "src_components_glossary_tsx",
+      "community": 17,
+      "norm_label": "glossary.tsx"
+    },
+    {
+      "label": "Hero.tsx",
+      "file_type": "code",
+      "source_file": "src/components/Hero.tsx",
+      "source_location": "L1",
+      "id": "src_components_hero_tsx",
+      "community": 5,
+      "norm_label": "hero.tsx"
+    },
+    {
+      "label": "Hero()",
+      "file_type": "code",
+      "source_file": "src/components/Hero.tsx",
+      "source_location": "L4",
+      "id": "components_hero_hero",
+      "community": 5,
+      "norm_label": "hero()"
+    },
+    {
+      "label": "AlgorithmPlayer.tsx",
+      "file_type": "code",
+      "source_file": "src/components/AlgorithmPlayer.tsx",
+      "source_location": "L1",
+      "id": "src_components_algorithmplayer_tsx",
+      "community": 18,
+      "norm_label": "algorithmplayer.tsx"
+    },
+    {
+      "label": "Math.tsx",
+      "file_type": "code",
+      "source_file": "src/components/Math.tsx",
+      "source_location": "L1",
+      "id": "src_components_math_tsx",
+      "community": 6,
+      "norm_label": "math.tsx"
+    },
+    {
+      "label": "TeX()",
+      "file_type": "code",
+      "source_file": "src/components/Math.tsx",
+      "source_location": "L6",
+      "id": "components_math_tex",
+      "community": 6,
+      "norm_label": "tex()"
+    },
+    {
+      "label": "ChapterExplorer.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ChapterExplorer.tsx",
+      "source_location": "L1",
+      "id": "src_components_chapterexplorer_tsx",
+      "community": 19,
+      "norm_label": "chapterexplorer.tsx"
+    },
+    {
+      "label": "Section.tsx",
+      "file_type": "code",
+      "source_file": "src/components/Section.tsx",
+      "source_location": "L1",
+      "id": "src_components_section_tsx",
+      "community": 0,
+      "norm_label": "section.tsx"
+    },
+    {
+      "label": "Section()",
+      "file_type": "code",
+      "source_file": "src/components/Section.tsx",
+      "source_location": "L3",
+      "id": "components_section_section",
+      "community": 0,
+      "norm_label": "section()"
+    },
+    {
+      "label": "Plain()",
+      "file_type": "code",
+      "source_file": "src/components/Section.tsx",
+      "source_location": "L30",
+      "id": "components_section_plain",
+      "community": 0,
+      "norm_label": "plain()"
+    },
+    {
+      "label": "Note()",
+      "file_type": "code",
+      "source_file": "src/components/Section.tsx",
+      "source_location": "L39",
+      "id": "components_section_note",
+      "community": 0,
+      "norm_label": "note()"
+    },
+    {
+      "label": "Chip()",
+      "file_type": "code",
+      "source_file": "src/components/Section.tsx",
+      "source_location": "L48",
+      "id": "components_section_chip",
+      "community": 0,
+      "norm_label": "chip()"
+    },
+    {
+      "label": "EquationWall.tsx",
+      "file_type": "code",
+      "source_file": "src/components/EquationWall.tsx",
+      "source_location": "L1",
+      "id": "src_components_equationwall_tsx",
+      "community": 7,
+      "norm_label": "equationwall.tsx"
+    },
+    {
+      "label": "EquationWall()",
+      "file_type": "code",
+      "source_file": "src/components/EquationWall.tsx",
+      "source_location": "L5",
+      "id": "components_equationwall_equationwall",
+      "community": 7,
+      "norm_label": "equationwall()"
+    },
+    {
+      "label": "BookMap.tsx",
+      "file_type": "code",
+      "source_file": "src/components/BookMap.tsx",
+      "source_location": "L1",
+      "id": "src_components_bookmap_tsx",
+      "community": 8,
+      "norm_label": "bookmap.tsx"
+    },
+    {
+      "label": "BookMap()",
+      "file_type": "code",
+      "source_file": "src/components/BookMap.tsx",
+      "source_location": "L4",
+      "id": "components_bookmap_bookmap",
+      "community": 8,
+      "norm_label": "bookmap()"
+    },
+    {
+      "label": "SceneMount.tsx",
+      "file_type": "code",
+      "source_file": "src/components/three/SceneMount.tsx",
+      "source_location": "L1",
+      "id": "src_components_three_scenemount_tsx",
+      "community": 9,
+      "norm_label": "scenemount.tsx"
+    },
+    {
+      "label": "SceneMount()",
+      "file_type": "code",
+      "source_file": "src/components/three/SceneMount.tsx",
+      "source_location": "L7",
+      "id": "three_scenemount_scenemount",
+      "community": 9,
+      "norm_label": "scenemount()"
+    },
+    {
+      "label": "LearningLoopScene.tsx",
+      "file_type": "code",
+      "source_file": "src/components/three/LearningLoopScene.tsx",
+      "source_location": "L1",
+      "id": "src_components_three_learningloopscene_tsx",
+      "community": 20,
+      "norm_label": "learningloopscene.tsx"
+    },
+    {
+      "label": "BellmanLab.tsx",
+      "file_type": "code",
+      "source_file": "src/components/figures/BellmanLab.tsx",
+      "source_location": "L1",
+      "id": "src_components_figures_bellmanlab_tsx",
+      "community": 1,
+      "norm_label": "bellmanlab.tsx"
+    },
+    {
+      "label": "BellmanLab()",
+      "file_type": "code",
+      "source_file": "src/components/figures/BellmanLab.tsx",
+      "source_location": "L6",
+      "id": "figures_bellmanlab_bellmanlab",
+      "community": 1,
+      "norm_label": "bellmanlab()"
+    },
+    {
+      "label": "Control()",
+      "file_type": "code",
+      "source_file": "src/components/figures/BellmanLab.tsx",
+      "source_location": "L47",
+      "id": "figures_bellmanlab_control",
+      "community": 1,
+      "norm_label": "control()"
+    },
+    {
+      "label": "TermGlyph.tsx",
+      "file_type": "code",
+      "source_file": "src/components/figures/TermGlyph.tsx",
+      "source_location": "L1",
+      "id": "src_components_figures_termglyph_tsx",
+      "community": 10,
+      "norm_label": "termglyph.tsx"
+    },
+    {
+      "label": "bars()",
+      "file_type": "code",
+      "source_file": "src/components/figures/TermGlyph.tsx",
+      "source_location": "L3",
+      "id": "figures_termglyph_bars",
+      "community": 10,
+      "norm_label": "bars()"
+    },
+    {
+      "label": "TraceLab.tsx",
+      "file_type": "code",
+      "source_file": "src/components/figures/TraceLab.tsx",
+      "source_location": "L1",
+      "id": "src_components_figures_tracelab_tsx",
+      "community": 21,
+      "norm_label": "tracelab.tsx"
+    },
+    {
+      "label": "BanditLab.tsx",
+      "file_type": "code",
+      "source_file": "src/components/figures/BanditLab.tsx",
+      "source_location": "L1",
+      "id": "src_components_figures_banditlab_tsx",
+      "community": 2,
+      "norm_label": "banditlab.tsx"
+    },
+    {
+      "label": "nextRng()",
+      "file_type": "code",
+      "source_file": "src/components/figures/BanditLab.tsx",
+      "source_location": "L8",
+      "id": "figures_banditlab_nextrng",
+      "community": 2,
+      "norm_label": "nextrng()"
+    },
+    {
+      "label": "BanditLab()",
+      "file_type": "code",
+      "source_file": "src/components/figures/BanditLab.tsx",
+      "source_location": "L12",
+      "id": "figures_banditlab_banditlab",
+      "community": 2,
+      "norm_label": "banditlab()"
+    },
+    {
+      "label": "deepDives.ts",
+      "file_type": "code",
+      "source_file": "src/lib/deepDives.ts",
+      "source_location": "L1",
+      "id": "src_lib_deepdives_ts",
+      "community": 11,
+      "norm_label": "deepdives.ts"
+    },
+    {
+      "label": "d()",
+      "file_type": "code",
+      "source_file": "src/lib/deepDives.ts",
+      "source_location": "L16",
+      "id": "lib_deepdives_d",
+      "community": 11,
+      "norm_label": "d()"
+    },
+    {
+      "label": "paper.ts",
+      "file_type": "code",
+      "source_file": "src/lib/paper.ts",
+      "source_location": "L1",
+      "id": "src_lib_paper_ts",
+      "community": 22,
+      "norm_label": "paper.ts"
+    },
+    {
+      "label": "gsap.ts",
+      "file_type": "code",
+      "source_file": "src/lib/gsap.ts",
+      "source_location": "L1",
+      "id": "src_lib_gsap_ts",
+      "community": 23,
+      "norm_label": "gsap.ts"
+    },
+    {
+      "label": "motion.ts",
+      "file_type": "code",
+      "source_file": "src/lib/motion.ts",
+      "source_location": "L1",
+      "id": "src_lib_motion_ts",
+      "community": 12,
+      "norm_label": "motion.ts"
+    },
+    {
+      "label": "reduced()",
+      "file_type": "code",
+      "source_file": "src/lib/motion.ts",
+      "source_location": "L2",
+      "id": "lib_motion_reduced",
+      "community": 12,
+      "norm_label": "reduced()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "src/app/page.tsx",
+      "source_location": "L1",
+      "id": "src_app_page_tsx",
+      "community": 24,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "layout.tsx",
+      "file_type": "code",
+      "source_file": "src/app/layout.tsx",
+      "source_location": "L1",
+      "id": "src_app_layout_tsx",
+      "community": 25,
+      "norm_label": "layout.tsx"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/Nav.tsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_src": "src_components_nav_tsx",
+      "_tgt": "components_nav_onscroll",
+      "source": "src_components_nav_tsx",
+      "target": "components_nav_onscroll",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/TermLab.tsx",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_src": "src_components_termlab_tsx",
+      "_tgt": "components_termlab_onkey",
+      "source": "src_components_termlab_tsx",
+      "target": "components_termlab_onkey",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/Hero.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_src": "src_components_hero_tsx",
+      "_tgt": "components_hero_hero",
+      "source": "src_components_hero_tsx",
+      "target": "components_hero_hero",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/Math.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "src_components_math_tsx",
+      "_tgt": "components_math_tex",
+      "source": "src_components_math_tsx",
+      "target": "components_math_tex",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/Section.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_src": "src_components_section_tsx",
+      "_tgt": "components_section_section",
+      "source": "src_components_section_tsx",
+      "target": "components_section_section",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/Section.tsx",
+      "source_location": "L30",
+      "weight": 1.0,
+      "_src": "src_components_section_tsx",
+      "_tgt": "components_section_plain",
+      "source": "src_components_section_tsx",
+      "target": "components_section_plain",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/Section.tsx",
+      "source_location": "L39",
+      "weight": 1.0,
+      "_src": "src_components_section_tsx",
+      "_tgt": "components_section_note",
+      "source": "src_components_section_tsx",
+      "target": "components_section_note",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/Section.tsx",
+      "source_location": "L48",
+      "weight": 1.0,
+      "_src": "src_components_section_tsx",
+      "_tgt": "components_section_chip",
+      "source": "src_components_section_tsx",
+      "target": "components_section_chip",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/EquationWall.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_src": "src_components_equationwall_tsx",
+      "_tgt": "components_equationwall_equationwall",
+      "source": "src_components_equationwall_tsx",
+      "target": "components_equationwall_equationwall",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/BookMap.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_src": "src_components_bookmap_tsx",
+      "_tgt": "components_bookmap_bookmap",
+      "source": "src_components_bookmap_tsx",
+      "target": "components_bookmap_bookmap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/three/SceneMount.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_src": "src_components_three_scenemount_tsx",
+      "_tgt": "three_scenemount_scenemount",
+      "source": "src_components_three_scenemount_tsx",
+      "target": "three_scenemount_scenemount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/figures/BellmanLab.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "src_components_figures_bellmanlab_tsx",
+      "_tgt": "figures_bellmanlab_bellmanlab",
+      "source": "src_components_figures_bellmanlab_tsx",
+      "target": "figures_bellmanlab_bellmanlab",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/figures/BellmanLab.tsx",
+      "source_location": "L47",
+      "weight": 1.0,
+      "_src": "src_components_figures_bellmanlab_tsx",
+      "_tgt": "figures_bellmanlab_control",
+      "source": "src_components_figures_bellmanlab_tsx",
+      "target": "figures_bellmanlab_control",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/figures/TermGlyph.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_src": "src_components_figures_termglyph_tsx",
+      "_tgt": "figures_termglyph_bars",
+      "source": "src_components_figures_termglyph_tsx",
+      "target": "figures_termglyph_bars",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/figures/BanditLab.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_src": "src_components_figures_banditlab_tsx",
+      "_tgt": "figures_banditlab_nextrng",
+      "source": "src_components_figures_banditlab_tsx",
+      "target": "figures_banditlab_nextrng",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/figures/BanditLab.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_src": "src_components_figures_banditlab_tsx",
+      "_tgt": "figures_banditlab_banditlab",
+      "source": "src_components_figures_banditlab_tsx",
+      "target": "figures_banditlab_banditlab",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/deepDives.ts",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_src": "src_lib_deepdives_ts",
+      "_tgt": "lib_deepdives_d",
+      "source": "src_lib_deepdives_ts",
+      "target": "lib_deepdives_d",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/motion.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_src": "src_lib_motion_ts",
+      "_tgt": "lib_motion_reduced",
+      "source": "src_lib_motion_ts",
+      "target": "lib_motion_reduced",
+      "confidence_score": 1.0
+    }
+  ],
+  "hyperedges": []
+}
