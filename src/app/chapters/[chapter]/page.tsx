@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { TeX } from "@/components/Math";
 import { Chip, Plain } from "@/components/Section";
 import { algorithmsForChapter, type AlgorithmDetail } from "@/lib/algorithmCatalog";
+import { algorithmDossier, type AlgorithmDossierSection } from "@/lib/algorithmDossier";
 import { chapterDeepDives } from "@/lib/deepDives";
 import { evidenceGuideItems } from "@/lib/evidenceGuide";
 import { exerciseCoachCards } from "@/lib/exerciseCoach";
@@ -237,6 +238,8 @@ function SectionTitle({ eyebrow, title, lead }: { eyebrow: string; title: string
 }
 
 function AlgorithmCard({ algorithm }: { algorithm: AlgorithmDetail }) {
+  const dossier = algorithmDossier(algorithm);
+
   return (
     <article className="overflow-hidden rounded-xl border border-line bg-panel">
       <div className="grid gap-px bg-line lg:grid-cols-[0.85fr_1.15fr]">
@@ -260,9 +263,32 @@ function AlgorithmCard({ algorithm }: { algorithm: AlgorithmDetail }) {
             <Panel title="Implementation notes" items={algorithm.implementationNotes} accent="lime" />
             <Panel title="Failure modes" items={algorithm.failureModes} accent="orange" />
           </div>
+          <div className="mt-5 rounded-xl border border-line bg-panel-2 p-4">
+            <p className="mono text-[10px] uppercase tracking-[0.14em] text-dim">Detailed algorithm dossier</p>
+            <p className="mt-2 text-sm leading-relaxed text-muted">This expands the card into the implementation-level questions to answer before coding or deriving the method.</p>
+            <div className="mt-4 grid gap-3">
+              {dossier.map((section) => <DossierBlock key={section.label} section={section} />)}
+            </div>
+          </div>
           <TagRow tags={algorithm.related} />
         </div>
       </div>
+    </article>
+  );
+}
+
+
+function DossierBlock({ section }: { section: AlgorithmDossierSection }) {
+  return (
+    <article className="rounded-lg border border-line bg-white p-4">
+      <div className="flex flex-wrap gap-2"><Chip accent={section.accent}>{section.label}</Chip></div>
+      <div className="mt-3 grid gap-3 md:grid-cols-2">
+        <MiniBlock label="Easy" text={section.easy} />
+        <MiniBlock label="Technical" text={section.technical} tint />
+      </div>
+      <ul className="mt-3 grid gap-2 text-sm leading-relaxed text-muted">
+        {section.checkpoints.map((checkpoint, index) => <li key={`${section.label}-${index}`} className="flex gap-2"><span className="text-cyan">•</span><span>{checkpoint}</span></li>)}
+      </ul>
     </article>
   );
 }

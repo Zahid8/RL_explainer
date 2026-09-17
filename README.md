@@ -93,7 +93,7 @@ The latest validation was run on port `3510` with desktop and mobile headless Ch
 - `src/lib/formulaAtlas.ts` - 44 equation/formal-template cards spanning the whole book.
 - `src/lib/evidenceGuide.ts` - 147 figure/table/example guide cards spanning all 17 chapters.
 - `src/lib/exerciseCoach.ts` - 145 exercise-coach cards generated from the PDF exercise anchors without copying exercise text.
-- `src/lib/algorithmCatalog.ts` - 95 detailed algorithm/procedure cards keyed by chapter.
+- `src/lib/algorithmCatalog.ts` and `src/lib/algorithmDossier.ts` - 95 detailed algorithm/procedure cards keyed by chapter.
 - `src/app/page.tsx` - page composition and section order.
 - `src/app/chapters/[chapter]/page.tsx` - static chapter-detail route for all 17 chapters.
 - `src/components/TermLab.tsx` - interactive notation browser.
