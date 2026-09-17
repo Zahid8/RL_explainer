@@ -5,6 +5,7 @@ import { TeX } from "@/components/Math";
 import { Chip, Plain } from "@/components/Section";
 import { algorithmsForChapter, type AlgorithmDetail } from "@/lib/algorithmCatalog";
 import { algorithmDerivation, type AlgorithmDerivation } from "@/lib/algorithmDerivations";
+import { chapterDependencyMap, type ChapterDependencyMap } from "@/lib/chapterDependencyMap";
 import { chapterSynthesis, type ChapterSynthesis } from "@/lib/chapterSynthesis";
 import { algorithmDossier, type AlgorithmDossierSection } from "@/lib/algorithmDossier";
 import { algorithmProfile, profileRows, type AlgorithmProfile } from "@/lib/algorithmProfiles";
@@ -45,6 +46,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
   const mastery = chapterMastery.find((entry) => entry.n === item.n);
   const algorithms = algorithmsForChapter(item.n);
   const synthesis = chapterSynthesis(item, algorithms);
+  const dependencyMap = chapterDependencyMap(item, chapters, algorithms);
   const formulas = formulaAtlas.filter((formula) => formula.chapter === item.n);
   const sourceAudits = sourceAuditsForChapter(item.n);
   const evidence = evidenceGuideItems.filter((entry) => entry.chapter === item.n);
@@ -91,6 +93,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
         <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, evidence: evidence.length, exercises: exercises.length, sourceAudits: sourceAudits.length }} />
 
         <ChapterSynthesisBlock synthesis={synthesis} />
+
+        <ChapterDependencyMapBlock map={dependencyMap} />
 
         <section id="source-audit" className="scroll-mt-24">
           <SectionTitle eyebrow="01 - Book-source algorithm audit" title="Named algorithm boxes and source methods from the PDF, mapped to this page." lead="This crosswalk is the coverage check: every source entry names where it appears in the book and which detailed card(s) below explain it." />
@@ -234,6 +238,7 @@ function Stat({ value, label }: { value: string; label: string }) {
 function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; sections: number; formulas: number; evidence: number; exercises: number; sourceAudits: number } }) {
   const items = [
     ["synthesis", "synthesis ladder"],
+    ["dependencies", "dependency map"],
     ["source-audit", `${counts.sourceAudits} source cues`],
     ["algorithms", `${counts.algorithms} algorithms`],
     ["sections", `${counts.sections} section notes`],
@@ -315,6 +320,60 @@ function ChapterSynthesisBlock({ synthesis }: { synthesis: ChapterSynthesis }) {
         </div>
       </div>
     </section>
+  );
+}
+
+
+function ChapterDependencyMapBlock({ map }: { map: ChapterDependencyMap }) {
+  return (
+    <section id="dependencies" className="scroll-mt-24">
+      <SectionTitle eyebrow="00b - Cross-chapter dependency map" title="What this chapter needs, unlocks, and can break." lead="Use this map when a chapter feels isolated: it shows incoming prerequisites, outgoing bridges, concept gates, skip risks, and a review loop." />
+      <div className="mt-6 grid gap-5 lg:grid-cols-2">
+        <MiniBlock label="Easy map" text={map.easyMap} />
+        <MiniBlock label="Technical map" text={map.technicalMap} tint />
+      </div>
+      <div className="mt-6 grid gap-5 lg:grid-cols-2">
+        <DependencyLinks title="Incoming prerequisites" links={map.incoming} accent="cyan" />
+        <DependencyLinks title="Outgoing unlocks" links={map.outgoing} accent="violet" />
+      </div>
+      <div className="mt-6 grid gap-4 lg:grid-cols-2">
+        <div className="rounded-xl border border-line bg-panel p-4">
+          <p className="eyebrow mb-3">Concept gates</p>
+          <div className="grid gap-3">
+            {map.gates.map((gate) => (
+              <article key={gate.label} className="rounded-lg border border-line bg-white p-3">
+                <p className="mono text-[10px] uppercase tracking-[0.14em] text-cyan">{gate.label}</p>
+                <p className="mt-2 text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Easy:</span> {gate.easy}</p>
+                <p className="mt-2 text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Technical:</span> {gate.technical}</p>
+                <p className="mt-2 rounded-md border border-orange/30 bg-orange/[0.06] p-2 text-sm leading-relaxed text-muted"><span className="font-medium text-orange">Diagnostic:</span> {gate.diagnostic}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+        <div className="grid gap-4 self-start">
+          <Panel title="If you skip this, these break" items={map.skipRisks} accent="orange" />
+          <Panel title="Review loop" items={map.reviewLoop} accent="lime" ordered />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function DependencyLinks({ title, links, accent }: { title: string; links: ChapterDependencyMap["incoming"]; accent: "cyan" | "violet" }) {
+  return (
+    <div className="rounded-xl border border-line bg-panel p-4">
+      <p className="eyebrow mb-3">{title}</p>
+      <div className="grid gap-3">
+        {links.length ? links.map((link) => (
+          <article key={`${title}-${link.chapter}`} className="rounded-lg border border-line bg-white p-3">
+            <div className="flex flex-wrap gap-2"><Chip accent={accent}>Chapter {link.chapter}</Chip><Chip accent="blue">{link.relation}</Chip></div>
+            <h3 className="display mt-3 text-xl font-medium text-ink">{link.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Easy:</span> {link.easy}</p>
+            <p className="mt-2 text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Technical:</span> {link.technical}</p>
+          </article>
+        )) : <p className="rounded-lg border border-line bg-white p-3 text-sm leading-relaxed text-muted">No adjacent dependency in this direction; this chapter starts or completes a major arc.</p>}
+      </div>
+    </div>
   );
 }
 

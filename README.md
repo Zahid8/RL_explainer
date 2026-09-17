@@ -46,6 +46,7 @@ A single-page, light-theme explainer site for `../RLbook2020.pdf` (Sutton & Bart
 - Standalone, highly detailed chapter pages for every chapter, each combining:
   - Book-source algorithm audit mapping PDF algorithm boxes/source methods to detailed cards,
   - chapter synthesis ladder with dependencies, algorithm comparisons, study protocol, and oral-exam checks,
+  - cross-chapter dependency map with prerequisites, outgoing unlocks, concept gates, skip risks, and review loop,
   - chapter overview,
   - algorithmic machinery,
   - section deep dives,
@@ -112,6 +113,7 @@ Local runtime pieces on this workstation:
 - `src/lib/evidenceGuide.ts` - 147 figure/table/example guide cards spanning all 17 chapters.
 - `src/lib/exerciseCoach.ts` - 145 exercise-coach cards generated from the PDF exercise anchors without copying exercise text.
 - `src/lib/chapterSynthesis.ts` - chapter-level synthesis ladders connecting each chapter story to its algorithms, comparison axes, study protocol, and oral-exam checks.
+- `src/lib/chapterDependencyMap.ts` - cross-chapter prerequisite/unlock maps, concept gates, skip risks, and review loops for every chapter page.
 - `src/lib/algorithmCatalog.ts`, `src/lib/algorithmDerivations.ts`, `src/lib/algorithmDossier.ts`, `src/lib/algorithmWorkedExamples.ts`, and `src/lib/algorithmProfiles.ts` - 109 detailed algorithm/procedure cards keyed by chapter, with derivation, dossier, worked-example, and technical-profile enrichment.
 - `src/lib/algorithmSourceAudit.ts` - PDF-source crosswalk mapping named algorithm boxes/methods to the detailed cards on each chapter page.
 - `src/app/page.tsx` - page composition and section order.
