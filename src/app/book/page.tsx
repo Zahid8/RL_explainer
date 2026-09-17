@@ -7,6 +7,7 @@ import { Chip } from "@/components/Section";
 import { manuscriptForChapter, manuscriptSectionCount, type ChapterManuscript } from "@/lib/chapterManuscripts";
 import { blackboardForChapter, blackboardStageCount, type ChapterBlackboard } from "@/lib/interactiveBlackboards";
 import { chapters } from "@/lib/paper";
+import { sectionLessonsForChapter, sectionNarrativeCount, type SectionTextbookLesson } from "@/lib/sectionNarratives";
 import { standaloneLectureForChapter, standaloneLectureTileCount, type StandaloneChapterLecture } from "@/lib/standaloneBook";
 
 export const metadata: Metadata = {
@@ -14,12 +15,13 @@ export const metadata: Metadata = {
   description: "A linear standalone web-book reader for the RLbook explainer: from basics to advanced, chapter by chapter, in original words.",
 };
 
-const lectures = chapters.map((chapter) => ({ chapter, lecture: standaloneLectureForChapter(chapter), manuscript: manuscriptForChapter(chapter.n), blackboard: blackboardForChapter(chapter.n) }));
+const lectures = chapters.map((chapter) => ({ chapter, lecture: standaloneLectureForChapter(chapter), manuscript: manuscriptForChapter(chapter.n), blackboard: blackboardForChapter(chapter.n), sectionLessons: sectionLessonsForChapter(chapter.n) }));
 
 export default function BookPage() {
   const lectureBeats = standaloneLectureTileCount();
   const manuscriptSections = manuscriptSectionCount();
   const blackboardStages = blackboardStageCount();
+  const sectionNarratives = sectionNarrativeCount();
 
   return (
     <main className="min-h-screen bg-bg text-ink">
@@ -40,6 +42,7 @@ export default function BookPage() {
                 <Chip accent="cyan">17 chapters</Chip>
                 <Chip accent="blue">{manuscriptSections} manuscript moves</Chip>
                 <Chip accent="violet">{blackboardStages} blackboard stages</Chip>
+                <Chip accent="cyan">{sectionNarratives} section manuscripts</Chip>
                 <Chip accent="lime">{lectureBeats} lecture beats</Chip>
                 <Chip accent="violet">beginner → advanced</Chip>
                 <Chip accent="orange">original wording</Chip>
@@ -77,14 +80,14 @@ export default function BookPage() {
         </aside>
 
         <div className="grid gap-12">
-          {lectures.map(({ chapter, lecture, manuscript, blackboard }) => <BookChapter key={chapter.n} chapter={chapter} lecture={lecture} manuscript={manuscript} blackboard={blackboard} />)}
+          {lectures.map(({ chapter, lecture, manuscript, blackboard, sectionLessons }) => <BookChapter key={chapter.n} chapter={chapter} lecture={lecture} manuscript={manuscript} blackboard={blackboard} sectionLessons={sectionLessons} />)}
         </div>
       </div>
     </main>
   );
 }
 
-function BookChapter({ chapter, lecture, manuscript, blackboard }: { chapter: (typeof chapters)[number]; lecture: StandaloneChapterLecture; manuscript: ChapterManuscript; blackboard: ChapterBlackboard }) {
+function BookChapter({ chapter, lecture, manuscript, blackboard, sectionLessons }: { chapter: (typeof chapters)[number]; lecture: StandaloneChapterLecture; manuscript: ChapterManuscript; blackboard: ChapterBlackboard; sectionLessons: SectionTextbookLesson[] }) {
   return (
     <article id={`book-chapter-${chapter.n}`} className="scroll-mt-24 overflow-hidden rounded-2xl border border-line bg-panel">
       <div className="grid gap-px bg-line lg:grid-cols-[0.9fr_1.1fr]">
@@ -164,6 +167,17 @@ function BookChapter({ chapter, lecture, manuscript, blackboard }: { chapter: (t
           </div>
           <InteractiveBlackboard board={blackboard} compact />
         </section>
+
+        <section className="grid gap-4">
+          <div>
+            <p className="eyebrow">Full section textbook manuscript</p>
+            <h3 className="display mt-2 text-3xl font-medium text-ink">Each section rewritten as a self-contained mini-lesson.</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted">These entries are original prose lessons: start from the board story, translate into technical language, guard against the common mistake, and bridge to the next section.</p>
+          </div>
+          <div className="grid gap-3">
+            {sectionLessons.map((lesson, index) => <BookSectionLesson key={lesson.section} lesson={lesson} index={index} />)}
+          </div>
+        </section>
         <div className="grid gap-3 md:grid-cols-2">
           <MiniLesson label="Hands-on reading sequence" text={lecture.handsOnSequence.join(" ")} />
           <MiniLesson label="Technical finish line" text={lecture.technicalFinish.join(" ")} tint />
@@ -198,6 +212,38 @@ function BookChapter({ chapter, lecture, manuscript, blackboard }: { chapter: (t
         </div>
       </div>
     </article>
+  );
+}
+
+function BookSectionLesson({ lesson, index }: { lesson: SectionTextbookLesson; index: number }) {
+  return (
+    <details className="rounded-xl border border-line bg-white p-4" open={index === 0}>
+      <summary className="cursor-pointer list-none">
+        <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
+          <div>
+            <div className="flex flex-wrap gap-2"><Chip accent="cyan">Section manuscript {index + 1}</Chip><Chip accent="blue">{lesson.terms.slice(0, 2).join(" / ")}</Chip></div>
+            <h4 className="display mt-3 text-2xl font-medium text-ink">{lesson.section}</h4>
+            <p className="mt-2 text-sm leading-relaxed text-muted">{lesson.opener}</p>
+          </div>
+          <span className="mono rounded-full border border-line bg-panel-2 px-3 py-1 text-[11px] uppercase tracking-[0.12em] text-dim">read section</span>
+        </div>
+      </summary>
+      <div className="mt-4 grid gap-3 md:grid-cols-2">
+        <MiniLesson label="From scratch" text={lesson.fromScratch} />
+        <MiniLesson label="Technical pass" text={lesson.technicalPass} tint />
+        <MiniLesson label="Formula bridge" text={lesson.formulaBridge} tint />
+        <MiniLesson label="Algorithm bridge" text={lesson.algorithmBridge} />
+        <MiniLesson label="Misconception guard" text={lesson.misconceptionGuard} />
+        <MiniLesson label="Self-check" text={lesson.selfCheck} tint />
+      </div>
+      <div className="mt-4 rounded-lg border border-line bg-panel p-3">
+        <p className="mono mb-2 text-[10px] uppercase tracking-[0.14em] text-dim">Board walkthrough</p>
+        <ol className="grid gap-1 text-sm leading-relaxed text-muted">
+          {lesson.boardWalkthrough.map((step, stepIndex) => <li key={step}>{stepIndex + 1}. {step}</li>)}
+        </ol>
+      </div>
+      <p className="mt-4 rounded-lg border border-lime/30 bg-lime/[0.06] p-3 text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Next link:</span> {lesson.nextLink}</p>
+    </details>
   );
 }
 

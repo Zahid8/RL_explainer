@@ -22,6 +22,7 @@ import { blackboardForChapter } from "@/lib/interactiveBlackboards";
 import { chapterMastery } from "@/lib/mastery";
 import { chapters } from "@/lib/paper";
 import { manuscriptForChapter, type ChapterManuscript } from "@/lib/chapterManuscripts";
+import { sectionLessonsForChapter, type SectionTextbookLesson } from "@/lib/sectionNarratives";
 import { standaloneLectureForChapter, type StandaloneChapterLecture } from "@/lib/standaloneBook";
 
 export const dynamicParams = false;
@@ -60,6 +61,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
   const lecture = standaloneLectureForChapter(item);
   const manuscript = manuscriptForChapter(item.n);
   const blackboard = blackboardForChapter(item.n);
+  const sectionLessons = sectionLessonsForChapter(item.n);
   const prev = chapters.find((entry) => entry.n === item.n - 1);
   const next = chapters.find((entry) => entry.n === item.n + 1);
 
@@ -103,7 +105,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
           <AnimatedConceptGraphic label="Story loop" variant="loop" caption="The easy story and the technical story update each other: intuition points at notation, notation checks intuition." compact />
         </section>
 
-        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, evidence: evidence.length, exercises: exercises.length, sourceAudits: sourceAudits.length }} />
+        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, sectionLessons: sectionLessons.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, evidence: evidence.length, exercises: exercises.length, sourceAudits: sourceAudits.length }} />
 
         <ChapterManuscriptBlock manuscript={manuscript} />
 
@@ -113,6 +115,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
             <InteractiveBlackboard board={blackboard} />
           </div>
         </section>
+
+        <SectionTextbookBlock lessons={sectionLessons} />
 
         <StandaloneLectureBlock lecture={lecture} />
 
@@ -266,10 +270,11 @@ function Stat({ value, label }: { value: string; label: string }) {
   );
 }
 
-function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; manuscriptSections: number; blackboardStages: number; lectureBeats: number; sections: number; formulas: number; evidence: number; exercises: number; sourceAudits: number } }) {
+function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; manuscriptSections: number; blackboardStages: number; sectionLessons: number; lectureBeats: number; sections: number; formulas: number; evidence: number; exercises: number; sourceAudits: number } }) {
   const items = [
     ["manuscript", `${counts.manuscriptSections} manuscript moves`],
     ["blackboard", `${counts.blackboardStages} blackboard stages`],
+    ["section-manuscript", `${counts.sectionLessons} section manuscripts`],
     ["lecture", `${counts.lectureBeats} lecture beats`],
     ["synthesis", "synthesis ladder"],
     ["dependencies", "dependency map"],
@@ -364,6 +369,48 @@ function ChapterManuscriptBlock({ manuscript }: { manuscript: ChapterManuscript 
   );
 }
 
+
+
+function SectionTextbookBlock({ lessons }: { lessons: SectionTextbookLesson[] }) {
+  return (
+    <section id="section-manuscript" className="scroll-mt-24">
+      <SectionTitle
+        eyebrow="00c - Full section textbook manuscript"
+        title="Every section gets a from-scratch prose lesson."
+        lead="This is the closest layer to a standalone rewritten textbook: each PDF section title becomes an original mini-lesson with beginner framing, technical pass, board walkthrough, formula bridge, algorithm bridge, misconception guard, and self-check."
+      />
+      <div className="mt-6 grid gap-4">
+        {lessons.map((lesson, index) => (
+          <article key={lesson.section} className="rounded-xl border border-line bg-panel p-5">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+              <div>
+                <div className="flex flex-wrap gap-2"><Chip accent="cyan">Section manuscript {index + 1}</Chip><Chip accent="blue">{lesson.terms.slice(0, 3).join(" / ")}</Chip></div>
+                <h3 className="display mt-3 text-2xl font-medium text-ink">{lesson.section}</h3>
+              </div>
+              <MotionGlyph label={lesson.section} variant={glyphVariantForLabel(lesson.section)} accent={glyphAccentForLabel(lesson.section)} />
+            </div>
+            <p className="mt-4 rounded-lg border border-cyan/25 bg-cyan/[0.045] p-3 text-sm leading-relaxed text-muted">{lesson.opener}</p>
+            <div className="mt-4 grid gap-3 md:grid-cols-2">
+              <MiniBlock label="From scratch" text={lesson.fromScratch} />
+              <MiniBlock label="Technical pass" text={lesson.technicalPass} tint />
+              <MiniBlock label="Formula bridge" text={lesson.formulaBridge} tint />
+              <MiniBlock label="Algorithm bridge" text={lesson.algorithmBridge} />
+              <MiniBlock label="Misconception guard" text={lesson.misconceptionGuard} />
+              <MiniBlock label="Self-check" text={lesson.selfCheck} tint />
+            </div>
+            <div className="mt-4 rounded-lg border border-line bg-white p-4">
+              <p className="mono mb-2 text-[10px] uppercase tracking-[0.14em] text-dim">Board walkthrough</p>
+              <ol className="grid gap-2 text-sm leading-relaxed text-muted">
+                {lesson.boardWalkthrough.map((step, stepIndex) => <li key={step} className="flex gap-2"><span className="text-cyan">{stepIndex + 1}.</span><span>{step}</span></li>)}
+              </ol>
+            </div>
+            <p className="mt-4 rounded-lg border border-lime/30 bg-lime/[0.06] p-3 text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Next link:</span> {lesson.nextLink}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
 
 function StandaloneLectureBlock({ lecture }: { lecture: StandaloneChapterLecture }) {
   return (

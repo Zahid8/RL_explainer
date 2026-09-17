@@ -58,7 +58,7 @@ export default function CoveragePage() {
             <div>
               <p className="eyebrow">Whole-book coverage audit</p>
               <h1 className="display mt-4 max-w-5xl text-[clamp(42px,7vw,88px)] font-medium text-ink">Proof ledger for chapters and algorithms.</h1>
-              <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted">This page is generated from the current repository data. It checks whether the site has a linear /book reader, every chapter has a standalone from-scratch lecture route with an interactive blackboard, and every algorithm card has the required easy, technical, derivation, profile, dossier, and worked-example layers.</p>
+              <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted">This page is generated from the current repository data. It checks whether the site has a linear /book reader, every chapter has a standalone from-scratch lecture route with an interactive blackboard and section-level textbook manuscript, and every algorithm card has the required easy, technical, derivation, profile, dossier, and worked-example layers.</p>
               <p className="mt-4 text-sm leading-relaxed text-dim">Generated from: {audit.generatedFrom}.</p>
             </div>
             <div className="grid gap-4">
@@ -67,6 +67,7 @@ export default function CoveragePage() {
                 <Stat value={String(audit.totals.chapterRoutes)} label="chapter routes" />
                 <Stat value={String(audit.totals.manuscriptSections)} label="manuscript moves" />
                 <Stat value={String(audit.totals.blackboardStages)} label="blackboard stages" />
+                <Stat value={String(audit.totals.sectionNarratives)} label="section manuscripts" />
                 <Stat value={String(audit.totals.lectureBeats)} label="lecture beats" />
                 <Stat value={String(audit.totals.completeAlgorithms)} label="complete alg cards" />
                 <Stat value={String(audit.totals.warnings)} label="audit warnings" />
@@ -85,7 +86,7 @@ export default function CoveragePage() {
         </section>
 
         <section id="chapter-matrix" className="scroll-mt-24">
-          <SectionTitle eyebrow="02 - Chapter coverage matrix" title="Every chapter route and every major study layer in one audit table." lead="Open any chapter to inspect the rendered detail layers: manuscript, interactive blackboard, standalone lecture, synthesis, dependencies, source audit, algorithms, deep dives, mastery notes, formulas, anchors, and exercises." />
+          <SectionTitle eyebrow="02 - Chapter coverage matrix" title="Every chapter route and every major study layer in one audit table." lead="Open any chapter to inspect the rendered detail layers: manuscript, interactive blackboard, section-level textbook prose, standalone lecture, synthesis, dependencies, source audit, algorithms, deep dives, mastery notes, formulas, anchors, and exercises." />
           <div className="mt-6 grid gap-4">
             {audit.chapters.map((chapter) => <ChapterCoverageCard key={chapter.chapter} chapter={chapter} />)}
           </div>
@@ -153,11 +154,12 @@ function ChapterCoverageCard({ chapter }: { chapter: ChapterCoverageRow }) {
         </div>
         <Link href={chapter.route} className="mono rounded-full border border-line bg-white px-3 py-2 text-[11px] uppercase tracking-[0.12em] text-muted hover:border-cyan hover:text-ink">Open chapter</Link>
       </div>
-      <div className="mt-4 grid gap-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-11">
+      <div className="mt-4 grid gap-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-12">
         <Metric label="algorithms" value={chapter.algorithms} />
         <Metric label="source cues" value={chapter.sourceCues} />
         <Metric label="manuscript" value={chapter.manuscriptSections} />
         <Metric label="blackboard" value={chapter.blackboardStages} />
+        <Metric label="section text" value={chapter.sectionNarratives} />
         <Metric label="lectures" value={chapter.lectureBeats} />
         <Metric label="sections" value={chapter.sectionNotes} />
         <Metric label="mastery" value={chapter.masteryTiles} />

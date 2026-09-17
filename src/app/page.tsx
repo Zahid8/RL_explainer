@@ -18,12 +18,14 @@ import { TraceLab } from "@/components/figures/TraceLab";
 import { manuscriptSectionCount } from "@/lib/chapterManuscripts";
 import { blackboardStageCount } from "@/lib/interactiveBlackboards";
 import { chapters } from "@/lib/paper";
+import { sectionNarrativeCount } from "@/lib/sectionNarratives";
 import { standaloneLectureTileCount } from "@/lib/standaloneBook";
 
 export default function Home() {
   const lectureBeats = standaloneLectureTileCount();
   const manuscriptMoves = manuscriptSectionCount();
   const blackboardStages = blackboardStageCount();
+  const sectionNarratives = sectionNarrativeCount();
 
   return (
     <main>
@@ -36,7 +38,7 @@ export default function Home() {
         lead="The site now teaches the material as a first-principles course: each chapter starts from zero, uses graphical mental models, then builds the technical definitions, equations, algorithms, and checkpoints in its own words."
         tint
       >
-        <StandaloneBookPledge lectureBeats={lectureBeats} manuscriptMoves={manuscriptMoves} blackboardStages={blackboardStages} />
+        <StandaloneBookPledge lectureBeats={lectureBeats} manuscriptMoves={manuscriptMoves} blackboardStages={blackboardStages} sectionNarratives={sectionNarratives} />
       </Section>
       <Section
         id="terms"
@@ -145,7 +147,7 @@ export default function Home() {
             <p>This is an original standalone teaching site organized around the book&apos;s chapter and section structure. It avoids copying the book&apos;s prose and labels synthetic diagrams/labs as illustrative.</p>
           </Note>
           <Note title="Coverage note">
-            <p>The chapter list covers {chapters.length} chapters, {manuscriptMoves} bespoke manuscript moves, {blackboardStages} interactive blackboard stages, {lectureBeats} standalone lecture beats, all top-level sections shown in the PDF contents, 161 section notes, a 170-tile mastery notebook, a 44-item formula atlas, a 147-card figure/example atlas, and 145 exercise-coach cards. Use the route pages as a complete original lecture path, then use the practice prompts to check whether the ideas are really yours.</p>
+            <p>The chapter list covers {chapters.length} chapters, {manuscriptMoves} bespoke manuscript moves, {blackboardStages} interactive blackboard stages, {sectionNarratives} section-level textbook manuscripts, {lectureBeats} standalone lecture beats, all top-level sections shown in the PDF contents, 161 section notes, a 170-tile mastery notebook, a 44-item formula atlas, a 147-card figure/example atlas, and 145 exercise-coach cards. Use the route pages as a complete original lecture path, then use the practice prompts to check whether the ideas are really yours.</p>
           </Note>
         </div>
       </Section>
@@ -172,11 +174,11 @@ export default function Home() {
   );
 }
 
-function StandaloneBookPledge({ lectureBeats, manuscriptMoves, blackboardStages }: { lectureBeats: number; manuscriptMoves: number; blackboardStages: number }) {
+function StandaloneBookPledge({ lectureBeats, manuscriptMoves, blackboardStages, sectionNarratives }: { lectureBeats: number; manuscriptMoves: number; blackboardStages: number; sectionNarratives: number }) {
   const cards = [
     ["Start from zero", "Every chapter begins with a beginner story, a mental picture to draw, and a promise of what you will be able to explain by the end."],
     ["Draw before equations", `${blackboardStages} clickable blackboard stages let each chapter show a visual model, beginner explanation, technical explanation, board note, and self-check before the dense cards.`],
-    ["Teach each section", `${manuscriptMoves} bespoke manuscript moves and ${lectureBeats} section-level lecture beats turn the chapter outline into questions, visual metaphors, technical builds, board-work steps, and checkpoints.`],
+    ["Teach each section", `${sectionNarratives} section-level textbook manuscripts, ${manuscriptMoves} bespoke manuscript moves, and ${lectureBeats} section-level lecture beats turn the chapter outline into prose lessons, questions, visual metaphors, technical builds, board-work steps, and checkpoints.`],
     ["Go technical", "Algorithms, formulas, derivations, profiles, worked microscopes, traps, and implementation checks are still present after the easy explanation."],
     ["Stay original", "The wording is newly written for this web book: it follows the chapter structure and technical ideas without copying the copyrighted prose or figures."],
   ];
