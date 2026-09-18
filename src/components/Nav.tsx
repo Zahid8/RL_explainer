@@ -6,6 +6,7 @@ const links = [
   ["book", "Book"],
   ["primer", "Primer"],
   ["theater", "Theater"],
+  ["sections", "Sections"],
   ["search", "Search"],
   ["graph", "Graph"],
   ["symbols", "Symbols"],
@@ -78,6 +79,7 @@ export function Nav() {
         </div>
         <div className="flex items-center gap-2">
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/book">Book mode</a>
+          <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/sections">Sections</a>
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/search">Search</a>
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/graph">Graph</a>
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/symbols">Symbols</a>

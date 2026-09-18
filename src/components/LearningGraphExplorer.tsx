@@ -143,6 +143,7 @@ function kindColor(kind: LearningGraphNodeKind) {
   const colors: Record<LearningGraphNodeKind, string> = {
     chapter: "#0ea5e9",
     concept: "#22c55e",
+    section: "#0d9488",
     formula: "#8b5cf6",
     symbol: "#a855f7",
     proof: "#6366f1",
@@ -164,7 +165,7 @@ function accentForKind(kind: LearningGraphNodeKind): Accent {
   if (kind === "symbol") return "violet";
   if (kind === "proof") return "violet";
   if (kind === "algorithm" || kind === "code" || kind === "unlock") return "orange";
-  if (kind === "concept" || kind === "practice" || kind === "assumption" || kind === "exam") return "lime";
+  if (kind === "concept" || kind === "section" || kind === "practice" || kind === "assumption" || kind === "exam") return "lime";
   if (kind === "prerequisite" || kind === "chapter") return "blue";
   return "cyan";
 }
@@ -174,6 +175,6 @@ function kindLabel(kind: LearningGraphNodeKind) {
 }
 
 function shortLabel(label: string) {
-  const cleaned = label.replace(/^Chapter \d+:\s*/, "").replace(/^(Formula|Algorithm|Practice|Worked example):\s*/i, "");
+  const cleaned = label.replace(/^Chapter \d+:\s*/, "").replace(/^(Formula|Algorithm|Practice|Worked example|Section mastery):\s*/i, "");
   return cleaned.length > 18 ? `${cleaned.slice(0, 16)}…` : cleaned;
 }

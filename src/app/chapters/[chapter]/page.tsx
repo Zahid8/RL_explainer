@@ -15,6 +15,7 @@ import { FormulaLectureReader } from "@/components/FormulaLectureReader";
 import { InteractiveBlackboard } from "@/components/InteractiveBlackboard";
 import { LearningGraphExplorer } from "@/components/LearningGraphExplorer";
 import { SectionLessonReader } from "@/components/SectionLessonReader";
+import { SectionMasteryStudio } from "@/components/SectionMasteryStudio";
 import { SymbolDecoder } from "@/components/SymbolDecoder";
 import { ZeroKnowledgeLadderReader } from "@/components/ZeroKnowledgeLadderReader";
 import { MotionGlyph } from "@/components/MotionGlyph";
@@ -49,6 +50,7 @@ import { learningGraphEdgeCount, learningGraphForChapter, learningGraphNodeCount
 import { chapterMastery } from "@/lib/mastery";
 import { chapters } from "@/lib/paper";
 import { proofCardsForChapter, proofModeCount, type ProofLabCard } from "@/lib/proofLab";
+import { sectionMasteryCardsForChapter, sectionMasteryModeCount, type SectionMasteryCard } from "@/lib/sectionMastery";
 import { manuscriptForChapter, type ChapterManuscript } from "@/lib/chapterManuscripts";
 import { sectionLessonsForChapter, type SectionTextbookLesson } from "@/lib/sectionNarratives";
 import { standaloneLectureForChapter, type StandaloneChapterLecture } from "@/lib/standaloneBook";
@@ -109,6 +111,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
   const manuscript = manuscriptForChapter(item.n);
   const blackboard = blackboardForChapter(item.n);
   const sectionLessons = sectionLessonsForChapter(item.n);
+  const sectionMasteryCards = sectionMasteryCardsForChapter(item.n);
+  const sectionMasteryModes = sectionMasteryModeCount(item.n);
   const searchEntries = bookIndexEntriesForChapter(item.n);
   const searchEntryTotal = bookIndexEntryCount(item.n);
   const learningGraph = learningGraphForChapter(item.n);
@@ -151,6 +155,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
                 <Stat value={String(theaterSlides)} label="theater slides" />
                 <Stat value={String(theaterModes)} label="theater modes" />
                 <Stat value={String(deep?.sectionDetails.length ?? item.sections.length)} label="section notes" />
+                <Stat value={String(sectionMasteryCards.length)} label="section checks" />
+                <Stat value={String(sectionMasteryModes)} label="section mastery modes" />
                 <Stat value={String(algorithms.length)} label="algorithms" />
                 <Stat value={String(formulas.length)} label="formula cards" />
                 <Stat value={String(formulaModes)} label="formula modes" />
@@ -192,7 +198,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
           <AnimatedConceptGraphic label="Story loop" variant="loop" caption="The easy story and the technical story update each other: intuition points at notation, notation checks intuition." compact />
         </section>
 
-        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, starterRungs: starter.rungs.length, starterModes, theaterSlides, theaterModes, practiceCards: practiceCards.length, practiceModes, conceptCards: conceptCards.length, conceptModes, workedExamples: workedExamples.length, workedExampleModes, misconceptionCards: misconceptionCards.length, misconceptionModes, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, sectionLessons: sectionLessons.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, formulaModes, evidence: evidence.length, exercises: exercises.length, simulatorControls, simulatorReadouts, sourceAudits: sourceAudits.length, searchEntries: searchEntryTotal, graphNodes, graphEdges, symbolCards: symbolCards.length, symbolModes, codeCards: codeCards.length, codeModes, assumptionCards: assumptionCards.length, assumptionModes, proofCards: proofCards.length, proofModes, examCards: examCards.length, examModes }} />
+        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, starterRungs: starter.rungs.length, starterModes, theaterSlides, theaterModes, practiceCards: practiceCards.length, practiceModes, conceptCards: conceptCards.length, conceptModes, workedExamples: workedExamples.length, workedExampleModes, misconceptionCards: misconceptionCards.length, misconceptionModes, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, sectionLessons: sectionLessons.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, formulaModes, evidence: evidence.length, exercises: exercises.length, simulatorControls, simulatorReadouts, sourceAudits: sourceAudits.length, searchEntries: searchEntryTotal, graphNodes, graphEdges, symbolCards: symbolCards.length, symbolModes, codeCards: codeCards.length, codeModes, assumptionCards: assumptionCards.length, assumptionModes, proofCards: proofCards.length, proofModes, examCards: examCards.length, examModes, sectionMasteryCards: sectionMasteryCards.length, sectionMasteryModes }} />
 
         <section id="search" className="scroll-mt-24">
           <SectionTitle eyebrow="00a - Chapter search index" title="Search this chapter's explanations without leaving the page." lead="Use this chapter-local index when you remember a term, formula, trap, method, or example but do not know which layer contains it. It searches the original standalone prose and technical explanations for this chapter." />
@@ -247,6 +253,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
             <SectionLessonReader lessons={sectionLessons} chapterTitle={`Chapter ${item.n}: ${item.title}`} />
           </div>
         </section>
+
+        <ChapterSectionMasteryBlock chapter={item} cards={sectionMasteryCards} sectionMasteryModes={sectionMasteryModes} />
 
         <SectionTextbookBlock lessons={sectionLessons} />
 
@@ -405,7 +413,7 @@ function Stat({ value, label }: { value: string; label: string }) {
   );
 }
 
-function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; starterRungs: number; starterModes: number; theaterSlides: number; theaterModes: number; practiceCards: number; practiceModes: number; conceptCards: number; conceptModes: number; workedExamples: number; workedExampleModes: number; misconceptionCards: number; misconceptionModes: number; simulatorControls: number; simulatorReadouts: number; manuscriptSections: number; blackboardStages: number; sectionLessons: number; lectureBeats: number; sections: number; formulas: number; formulaModes: number; evidence: number; exercises: number; sourceAudits: number; searchEntries: number; graphNodes: number; graphEdges: number; symbolCards: number; symbolModes: number; codeCards: number; codeModes: number; assumptionCards: number; assumptionModes: number; proofCards: number; proofModes: number; examCards: number; examModes: number } }) {
+function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; starterRungs: number; starterModes: number; theaterSlides: number; theaterModes: number; practiceCards: number; practiceModes: number; conceptCards: number; conceptModes: number; workedExamples: number; workedExampleModes: number; misconceptionCards: number; misconceptionModes: number; simulatorControls: number; simulatorReadouts: number; manuscriptSections: number; blackboardStages: number; sectionLessons: number; sectionMasteryCards: number; sectionMasteryModes: number; lectureBeats: number; sections: number; formulas: number; formulaModes: number; evidence: number; exercises: number; sourceAudits: number; searchEntries: number; graphNodes: number; graphEdges: number; symbolCards: number; symbolModes: number; codeCards: number; codeModes: number; assumptionCards: number; assumptionModes: number; proofCards: number; proofModes: number; examCards: number; examModes: number } }) {
   const items = [
     ["search", `${counts.searchEntries} search entries`],
     ["learning-graph", `${counts.graphNodes} graph nodes · ${counts.graphEdges} links`],
@@ -424,6 +432,7 @@ function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; 
     ["manuscript", `${counts.manuscriptSections} manuscript moves`],
     ["blackboard", `${counts.blackboardStages} blackboard stages`],
     ["section-reader", `${counts.sectionLessons * 6} guided modes`],
+    ["section-mastery", `${counts.sectionMasteryCards} section checks · ${counts.sectionMasteryModes} modes`],
     ["section-manuscript", `${counts.sectionLessons} section manuscripts`],
     ["lecture", `${counts.lectureBeats} lecture beats`],
     ["synthesis", "synthesis ladder"],
@@ -537,6 +546,24 @@ function ChapterExamBlock({ chapter, cards, examModes }: { chapter: (typeof chap
   );
 }
 
+function ChapterSectionMasteryBlock({ chapter, cards, sectionMasteryModes }: { chapter: (typeof chapters)[number]; cards: SectionMasteryCard[]; sectionMasteryModes: number }) {
+  return (
+    <section id="section-mastery" className="scroll-mt-24">
+      <SectionTitle
+        eyebrow="00c2 - Section mastery studio"
+        title="Try every section cold before the chapter exam."
+        lead="This layer closes the loop for named sections: prompt yourself without notes, request a board hint, reveal a complete answer, read the technical pass, then transfer the idea to a tiny new task."
+      />
+      <div className="mt-6 grid gap-4">
+        <div className="rounded-xl border border-cyan/30 bg-cyan/[0.06] p-4">
+          <p className="text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Chapter {chapter.n} section promise:</span> {cards.length} section mastery cards expose {sectionMasteryModes} prompt, hint, answer, technical, and transfer modes tied back to the chapter section manuscripts.</p>
+        </div>
+        <SectionMasteryStudio cards={cards} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} />
+      </div>
+    </section>
+  );
+}
+
 function SectionTitle({ eyebrow, title, lead }: { eyebrow: string; title: string; lead: string }) {
   return (
     <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start">
@@ -556,10 +583,10 @@ function visualVariantForTitle(text: string) {
 
 function glyphVariantForLabel(label: string): "loop" | "bars" | "tree" | "target" | "formula" | "check" {
   if (/formula|equation|technical|core|proof|target|update/i.test(label)) return "formula";
-  if (/exam|rubric|transfer/i.test(label)) return "check";
+  if (/exam|rubric|transfer|section mastery/i.test(label)) return "check";
   if (/step|process|protocol|trace|pseudo|calculation|code|scaffold/i.test(label)) return "bars";
   if (/dependency|gate|source|coverage|chapter|related/i.test(label)) return "tree";
-  if (/check|warning|trap|debug|failure|risk|status|trust|guarantee|assumption|exam|rubric|transfer/i.test(label)) return "check";
+  if (/check|warning|trap|debug|failure|risk|status|trust|guarantee|assumption|exam|rubric|transfer|section mastery/i.test(label)) return "check";
   if (/objective|goal|profile|metric|axis/i.test(label)) return "target";
   return "loop";
 }
@@ -567,7 +594,7 @@ function glyphVariantForLabel(label: string): "loop" | "bars" | "tree" | "target
 function glyphAccentForLabel(label: string): "cyan" | "orange" | "blue" | "violet" | "lime" {
   if (/warning|trap|debug|failure|risk|watch/i.test(label)) return "orange";
   if (/formula|equation|technical|profile|axis/i.test(label)) return "violet";
-  if (/check|complete|implementation|test|exam|rubric|transfer/i.test(label)) return "lime";
+  if (/check|complete|implementation|test|exam|rubric|transfer|section mastery/i.test(label)) return "lime";
   if (/source|chapter|dependency|coverage/i.test(label)) return "blue";
   return "cyan";
 }

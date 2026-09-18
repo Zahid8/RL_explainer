@@ -8,7 +8,7 @@ import { allBookIndexEntries, bookIndexChapterCount, bookIndexEntryCount, bookIn
 
 export const metadata: Metadata = {
   title: "Whole-book Search | RLbook Explainer",
-  description: "Search the standalone RL web book across chapters, algorithms, formulas, examples, misconceptions, implementation code labs, assumption clinics, proof labs, chapter exams, and practice layers.",
+  description: "Search the standalone RL web book across chapters, algorithms, formulas, examples, misconceptions, implementation code labs, assumption clinics, proof labs, chapter exams, section mastery checks, and practice layers.",
 };
 
 type SearchParams = Promise<{ q?: string; query?: string; chapter?: string; layer?: string }>;
@@ -31,6 +31,7 @@ export default async function SearchPage({ searchParams }: { searchParams?: Sear
           <div className="mb-8 flex flex-wrap items-center justify-between gap-3">
             <Link href="/" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">← Home overview</Link>
             <Link href="/book" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Linear book</Link>
+            <Link href="/sections" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Section mastery</Link>
             <Link href="/symbols" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Symbol decoder</Link>
             <Link href="/code" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Code lab</Link>
             <Link href="/assumptions" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Trust clinic</Link>
@@ -43,7 +44,7 @@ export default async function SearchPage({ searchParams }: { searchParams?: Sear
               <p className="eyebrow">Whole-book knowledge index</p>
               <h1 className="display mt-4 max-w-5xl text-[clamp(42px,7vw,88px)] font-medium text-ink">Search the RL book from beginner story to advanced machinery.</h1>
               <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted">
-                This page turns the standalone web book into a searchable lecture desk. It indexes chapter stories, zero-knowledge rungs, guided theater slides, contextual symbol cards, implementation code labs, assumption clinics, proof arguments, chapter exams, concepts, worked examples, misconceptions, simulators, manuscripts, section lessons, algorithms, formulas, evidence anchors, and exercise coaches.
+                This page turns the standalone web book into a searchable lecture desk. It indexes chapter stories, zero-knowledge rungs, guided theater slides, contextual symbol cards, implementation code labs, assumption clinics, proof arguments, chapter exams, section mastery checks, concepts, worked examples, misconceptions, simulators, manuscripts, section lessons, algorithms, formulas, evidence anchors, and exercise coaches.
               </p>
               <div className="mt-6 flex flex-wrap gap-2">
                 <Chip accent="cyan">{entryCount} indexed entries</Chip>
@@ -54,7 +55,7 @@ export default async function SearchPage({ searchParams }: { searchParams?: Sear
               </div>
             </div>
             <div className="grid gap-4">
-              <AnimatedConceptGraphic label="Whole-book search" variant="tree" caption="A searchable index connects beginner intuition, board pictures, equations, algorithm machinery, code scaffolds, assumptions, guarantees, proof sketches, chapter exams, examples, traps, and exercises across the full course." compact />
+              <AnimatedConceptGraphic label="Whole-book search" variant="tree" caption="A searchable index connects beginner intuition, board pictures, equations, algorithm machinery, code scaffolds, assumptions, guarantees, proof sketches, chapter exams, section mastery checks, examples, traps, and exercises across the full course." compact />
               <div className="rounded-xl border border-line bg-white p-5">
                 <div className="mb-3 flex items-start justify-between gap-3">
                   <p className="eyebrow">Index composition</p>

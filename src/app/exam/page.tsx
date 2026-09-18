@@ -25,6 +25,7 @@ export default function ExamPage() {
             <Link href="/" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">← Home overview</Link>
             <Link href="/book" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Linear book</Link>
             <Link href="/proofs" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Proof lab</Link>
+            <Link href="/sections" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Section mastery</Link>
             <Link href="/assumptions" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Trust clinic</Link>
             <Link href="/coverage" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Coverage audit</Link>
           </div>
@@ -33,7 +34,7 @@ export default function ExamPage() {
               <p className="eyebrow">Chapter exam studio</p>
               <h1 className="display mt-4 max-w-5xl text-[clamp(42px,7vw,88px)] font-medium text-ink">Prove you can explain, draw, compute, debug, trust-check, and transfer each chapter.</h1>
               <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted">
-                A standalone book should not leave mastery vague. This studio gives every chapter generated oral-exam prompts with answer plans, high-quality solutions, self-grading rubrics, and transfer tests synthesized from the chapter&apos;s concepts, formulas, proofs, code labs, assumptions, worked examples, and simulator knobs.
+                A standalone book should not leave mastery vague. This studio gives every chapter generated oral-exam prompts with answer plans, high-quality solutions, self-grading rubrics, and transfer tests synthesized from the chapter&apos;s concepts, formulas, proofs, code labs, assumptions, worked examples, section mastery checks, and simulator knobs.
               </p>
               <div className="mt-6 flex flex-wrap gap-2">
                 <Chip accent="cyan">{chapterExamCardCount()} exam cards</Chip>

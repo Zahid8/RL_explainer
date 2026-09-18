@@ -13,21 +13,21 @@ export const metadata: Metadata = {
 const visualInteractionRows = [
   {
     surface: "Home overview sections",
-    coverage: "All overview sections render an animated concept graphic through the shared Section wrapper or a dedicated interactive lecture console, including the guided lecture theater, whole-book search console, interactive learning graph, contextual symbol decoder, implementation code lab, assumption guarantee clinic, proof intuition lab, chapter exam studio, and chapter simulator lab.",
+    coverage: "All overview sections render an animated concept graphic through the shared Section wrapper or a dedicated interactive lecture console, including the guided lecture theater, section mastery studio, whole-book search console, interactive learning graph, contextual symbol decoder, implementation code lab, assumption guarantee clinic, proof intuition lab, chapter exam studio, and chapter simulator lab.",
     graphics: "Large RL loop/tree/backup/gradient SVG plus section-specific captions.",
     interaction: "Hover/click phase buttons, animated flow dots, scan lines, pulse rings, and hover elevation.",
   },
   {
     surface: "Chapter detail routes",
-    coverage: "All 17 chapter pages include animated header maps, chapter-local search indexes, chapter learning graphs, contextual symbol decoders, implementation code labs, assumption guarantee clinics, proof intuition labs, chapter exam studios, zero-knowledge starter ladders, guided lecture theaters, active-recall practice coaches, concept microscopes, worked example studios, misconception clinics, chapter simulator labs, story-loop graphics, clickable blackboards, guided section readers, and animated visuals on every major chapter section title.",
-    graphics: "Chapter motion map, searchable index cards, interactive learning graph SVG, symbol decoder board, code scaffold board, assumption contract board, proof argument board, exam mastery board, starter ladder board, theater lecture board, practice coach board, simulator readout chart, interactive blackboard, guided section reader, source audit, algorithms, section dives, mastery, formulas, anchors, synthesis, and dependency graphics.",
-    interaction: "Each concept map exposes Sense, Target, Update, and Act states; each chapter search console filters query/layer/chapter state; each learning graph switches chapter/node/view state; each symbol decoder switches symbol/formula/pitfall/check state; each code lab switches plain/code/invariant/test/debug modes; each assumption clinic switches plain/assumption/guarantee/failure/repair modes; each proof lab switches plain/claim/proof/equation/stress modes; each exam studio switches prompt/plan/solution/rubric/transfer modes; each starter ladder has four learning modes; each lecture theater has five slides and five modes; each practice coach has five reveal modes; each concept microscope has five lecture modes; each worked example studio has five worked modes; each misconception clinic has five repair modes; each simulator has three sliders and four live readouts; each blackboard has four click-through stages and a technical toggle; each section reader has six mode controls; dense cards add animated micro-glyphs.",
+    coverage: "All 17 chapter pages include animated header maps, chapter-local search indexes, chapter learning graphs, contextual symbol decoders, implementation code labs, assumption guarantee clinics, proof intuition labs, chapter exam studios, section mastery studios, zero-knowledge starter ladders, guided lecture theaters, active-recall practice coaches, concept microscopes, worked example studios, misconception clinics, chapter simulator labs, story-loop graphics, clickable blackboards, guided section readers, and animated visuals on every major chapter section title.",
+    graphics: "Chapter motion map, searchable index cards, interactive learning graph SVG, symbol decoder board, code scaffold board, assumption contract board, proof argument board, exam mastery board, section mastery board, starter ladder board, theater lecture board, practice coach board, simulator readout chart, interactive blackboard, guided section reader, source audit, algorithms, section dives, mastery, formulas, anchors, synthesis, and dependency graphics.",
+    interaction: "Each concept map exposes Sense, Target, Update, and Act states; each chapter search console filters query/layer/chapter state; each learning graph switches chapter/node/view state; each symbol decoder switches symbol/formula/pitfall/check state; each code lab switches plain/code/invariant/test/debug modes; each assumption clinic switches plain/assumption/guarantee/failure/repair modes; each proof lab switches plain/claim/proof/equation/stress modes; each exam studio switches prompt/plan/solution/rubric/transfer modes; each section mastery studio switches prompt/hint/answer/technical/transfer modes; each starter ladder has four learning modes; each lecture theater has five slides and five modes; each practice coach has five reveal modes; each concept microscope has five lecture modes; each worked example studio has five worked modes; each misconception clinic has five repair modes; each simulator has three sliders and four live readouts; each blackboard has four click-through stages and a technical toggle; each section reader has six mode controls; dense cards add animated micro-glyphs.",
   },
   {
     surface: "Linear book interactive labs",
-    coverage: "The /book reader renders every chapter's compact lecture theater, simulator lab, blackboard, symbol decoder, implementation code lab, assumption guarantee clinic, proof lab, chapter exam studio, and formula lecturer inline, so the continuous web-book path has guided lecture slides, live tradeoff controls, visual chapter models, notation walkthroughs, code scaffolds, validity contracts, proof sketches, chapter exams, and equation walkthroughs.",
+    coverage: "The /book reader renders every chapter's compact lecture theater, simulator lab, blackboard, symbol decoder, implementation code lab, assumption guarantee clinic, proof lab, chapter exam studio, section mastery studio, and formula lecturer inline, so the continuous web-book path has guided lecture slides, live tradeoff controls, visual chapter models, notation walkthroughs, code scaffolds, validity contracts, proof sketches, chapter exams, section-by-section mastery checks, and equation walkthroughs.",
     graphics: "One guided lecture board, one simulator chart, one staged board per chapter, plus animated symbol and formula diagrams with story, symbol, trace, use-case, and pitfall views.",
-    interaction: "Readers switch lecture slides/modes, move simulator sliders, click stage pills, toggle technical panels, choose symbol cards, choose implementation cards, choose assumption clinics, choose proof cards, choose exam cards, choose formula cards, and switch equation lecture modes while staying inside the linear reading flow.",
+    interaction: "Readers switch lecture slides/modes, move simulator sliders, click stage pills, toggle technical panels, choose symbol cards, choose implementation cards, choose assumption clinics, choose proof cards, choose exam cards, choose section mastery cards, choose formula cards, and switch equation lecture modes while staying inside the linear reading flow.",
   },
   {
     surface: "Algorithm cards and index",
@@ -58,12 +58,13 @@ export default function CoveragePage() {
             <Link href="/assumptions" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Trust clinic</Link>
             <Link href="/proofs" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Proof lab</Link>
             <Link href="/exam" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Exam studio</Link>
+            <Link href="/sections" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Section mastery</Link>
           </div>
           <div className="grid gap-8 lg:grid-cols-[1fr_460px] lg:items-end">
             <div>
               <p className="eyebrow">Whole-book coverage audit</p>
               <h1 className="display mt-4 max-w-5xl text-[clamp(42px,7vw,88px)] font-medium text-ink">Proof ledger for chapters and algorithms.</h1>
-              <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted">This page is generated from the current repository data. It checks whether the site has a linear /book reader, a whole-book search index, an interactive learning graph, a contextual symbol decoder, an implementation code lab, an assumption guarantee clinic, a proof intuition lab, a chapter exam studio, every chapter has a standalone from-scratch lecture route with a chapter-local search console, chapter learning map, notation console, interactive blackboard, section-level textbook manuscript, and guided section lecture controls, and every algorithm card has the required easy, technical, derivation, profile, dossier, and worked-example layers.</p>
+              <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted">This page is generated from the current repository data. It checks whether the site has a linear /book reader, a whole-book search index, an interactive learning graph, a contextual symbol decoder, an implementation code lab, an assumption guarantee clinic, a proof intuition lab, a chapter exam studio, a section mastery studio, every chapter has a standalone from-scratch lecture route with a chapter-local search console, chapter learning map, notation console, interactive blackboard, section-level textbook manuscript, and guided section lecture controls, and every algorithm card has the required easy, technical, derivation, profile, dossier, and worked-example layers.</p>
               <p className="mt-4 text-sm leading-relaxed text-dim">Generated from: {audit.generatedFrom}.</p>
             </div>
             <div className="grid gap-4">
@@ -99,6 +100,8 @@ export default function CoveragePage() {
                 <Stat value={String(audit.totals.proofModes)} label="proof modes" />
                 <Stat value={String(audit.totals.examCards)} label="exam cards" />
                 <Stat value={String(audit.totals.examModes)} label="exam modes" />
+                <Stat value={String(audit.totals.sectionMasteryCards)} label="section mastery" />
+                <Stat value={String(audit.totals.sectionMasteryModes)} label="section modes" />
                 <Stat value={String(audit.totals.manuscriptSections)} label="manuscript moves" />
                 <Stat value={String(audit.totals.blackboardStages)} label="blackboard stages" />
                 <Stat value={String(audit.totals.sectionNarratives)} label="section manuscripts" />
@@ -122,7 +125,7 @@ export default function CoveragePage() {
         </section>
 
         <section id="chapter-matrix" className="scroll-mt-24">
-          <SectionTitle eyebrow="02 - Chapter coverage matrix" title="Every chapter route and every major study layer in one audit table." lead="Open any chapter to inspect the rendered detail layers: chapter search index, interactive learning graph, contextual symbol decoder, implementation code lab, assumption guarantee clinic, proof intuition lab, chapter exam studio, guided lecture theater, concept microscope, worked example studio, misconception clinic, chapter simulator lab, manuscript, interactive blackboard, interactive section lecturer, section-level textbook prose, standalone lecture, synthesis, dependencies, source audit, algorithms, deep dives, mastery notes, formulas, anchors, and exercises." />
+          <SectionTitle eyebrow="02 - Chapter coverage matrix" title="Every chapter route and every major study layer in one audit table." lead="Open any chapter to inspect the rendered detail layers: chapter search index, interactive learning graph, contextual symbol decoder, implementation code lab, assumption guarantee clinic, proof intuition lab, chapter exam studio, section mastery studio, guided lecture theater, concept microscope, worked example studio, misconception clinic, chapter simulator lab, manuscript, interactive blackboard, interactive section lecturer, section-level textbook prose, standalone lecture, synthesis, dependencies, source audit, algorithms, deep dives, mastery notes, formulas, anchors, and exercises." />
           <div className="mt-6 grid gap-4">
             {audit.chapters.map((chapter) => <ChapterCoverageCard key={chapter.chapter} chapter={chapter} />)}
           </div>
@@ -190,7 +193,7 @@ function ChapterCoverageCard({ chapter }: { chapter: ChapterCoverageRow }) {
         </div>
         <Link href={chapter.route} className="mono rounded-full border border-line bg-white px-3 py-2 text-[11px] uppercase tracking-[0.12em] text-muted hover:border-cyan hover:text-ink">Open chapter</Link>
       </div>
-      <div className="mt-4 grid gap-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-[repeat(43,minmax(0,1fr))]">
+      <div className="mt-4 grid gap-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-[repeat(45,minmax(0,1fr))]">
         <Metric label="algorithms" value={chapter.algorithms} />
         <Metric label="source cues" value={chapter.sourceCues} />
         <Metric label="starter" value={chapter.zeroKnowledgeRungs} />
@@ -222,6 +225,8 @@ function ChapterCoverageCard({ chapter }: { chapter: ChapterCoverageRow }) {
         <Metric label="proof modes" value={chapter.proofModes} />
         <Metric label="exam cards" value={chapter.examCards} />
         <Metric label="exam modes" value={chapter.examModes} />
+        <Metric label="section mastery" value={chapter.sectionMasteryCards} />
+        <Metric label="section modes" value={chapter.sectionMasteryModes} />
         <Metric label="manuscript" value={chapter.manuscriptSections} />
         <Metric label="blackboard" value={chapter.blackboardStages} />
         <Metric label="section text" value={chapter.sectionNarratives} />
@@ -268,13 +273,13 @@ function glyphVariantForLabel(label: string): "loop" | "bars" | "tree" | "target
   if (/chapter|route|source|coverage|surface|visual/i.test(label)) return "tree";
   if (/step|pseudo|worked|dossier|graphics|interaction/i.test(label)) return "bars";
   if (/proof|technical|formula|derivation/i.test(label)) return "formula";
-  if (/warning|complete|check|status|exam|rubric/i.test(label)) return "check";
+  if (/warning|complete|check|status|exam|rubric|section mastery/i.test(label)) return "check";
   return "loop";
 }
 
 function glyphAccentForLabel(label: string): "cyan" | "orange" | "blue" | "violet" | "lime" {
   if (/warning|risk|debug/i.test(label)) return "orange";
-  if (/complete|check|proof|status|exam|rubric/i.test(label)) return "lime";
+  if (/complete|check|proof|status|exam|rubric|section mastery/i.test(label)) return "lime";
   if (/formula|derivation|technical/i.test(label)) return "violet";
   if (/chapter|route|coverage|source/i.test(label)) return "blue";
   return "cyan";

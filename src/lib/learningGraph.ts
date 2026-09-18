@@ -10,9 +10,10 @@ import { conceptCardsForChapter } from "@/lib/conceptAtlas";
 import { formulasForChapter } from "@/lib/formulaAtlas";
 import { proofCardsForChapter } from "@/lib/proofLab";
 import { chapters } from "@/lib/paper";
+import { sectionMasteryCardsForChapter } from "@/lib/sectionMastery";
 import { symbolCardsForChapter } from "@/lib/symbolAtlas";
 
-export type LearningGraphNodeKind = "chapter" | "concept" | "formula" | "symbol" | "proof" | "algorithm" | "code" | "assumption" | "example" | "practice" | "exam" | "simulator" | "prerequisite" | "unlock";
+export type LearningGraphNodeKind = "chapter" | "concept" | "section" | "formula" | "symbol" | "proof" | "algorithm" | "code" | "assumption" | "example" | "practice" | "exam" | "simulator" | "prerequisite" | "unlock";
 
 export interface LearningGraphNode {
   id: string;
@@ -61,6 +62,7 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
 
   const algorithms = algorithmsForChapter(chapterNumber);
   const concepts = conceptCardsForChapter(chapterNumber).slice(0, 6);
+  const sectionMasteryCards = sectionMasteryCardsForChapter(chapterNumber).slice(0, 4);
   const formulas = formulasForChapter(chapterNumber).slice(0, 4);
   const symbols = symbolCardsForChapter(chapterNumber).slice(0, 5);
   const proofCards = proofCardsForChapter(chapterNumber).slice(0, 4);
@@ -112,6 +114,32 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
       relation: "chapter explains concept",
       easy: `Chapter ${chapterNumber} uses ${concept.term} as a named handle for the learner's story.`,
       technical: `The concept node inherits the chapter's formal objects and narrows them through ${concept.section}.`,
+    });
+  });
+
+  sectionMasteryCards.forEach((card, index) => {
+    const id = nodeId(chapterNumber, "section", card.section);
+    const concept = concepts[index % Math.max(concepts.length, 1)];
+    const from = concept ? nodeId(chapterNumber, "concept", concept.term) : centerId;
+    addNode({
+      id,
+      chapter: chapterNumber,
+      kind: "section",
+      title: card.section,
+      easy: `${card.prompt} Diagnostic: ${card.diagnostic}`,
+      technical: `${card.technical} Transfer: ${card.transfer}`,
+      route: `/chapters/${chapterNumber}#section-mastery`,
+      tags: ["section mastery", ...card.tags],
+      ...ringPoint("section", index, sectionMasteryCards.length),
+    });
+    addEdge({
+      id: edgeId(from, id, "section mastery"),
+      chapter: chapterNumber,
+      from,
+      to: id,
+      relation: "concept becomes section mastery",
+      easy: `The section card asks the learner to teach ${card.section} before moving to formula or exam layers.`,
+      technical: `The section node packages prompt, hint, answer, technical pass, diagnostic guard, and transfer test for a named section.`,
     });
   });
 
@@ -416,14 +444,15 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
   return {
     chapter: chapterNumber,
     title: chapter.title,
-    promise: `Graphical map for Chapter ${chapterNumber}: start from the chapter node, move through concepts, formulas, decoded symbols, proof sketches, methods, code scaffolds, assumptions, examples, practice, chapter exams, and simulator knobs, then check prerequisites and unlocks.`,
+    promise: `Graphical map for Chapter ${chapterNumber}: start from the chapter node, move through concepts, section mastery checks, formulas, decoded symbols, proof sketches, methods, code scaffolds, assumptions, examples, practice, chapter exams, and simulator knobs, then check prerequisites and unlocks.`,
     route: `/chapters/${chapterNumber}`,
     nodes,
     edges,
     readingPath: [
       "Read the center chapter promise.",
       "Click concept nodes until the plain story is clear.",
-      "Move to formulas only after you can draw the concept.",
+      "Open section mastery nodes to test whether you can teach each named section cold.",
+      "Move to formulas only after you can draw the concept and pass the section check.",
       "Decode symbol nodes before opening proof nodes that explain why the equation or chapter claim is valid.",
       "Use algorithm and code nodes to turn the proven target into variables, loops, invariants, and tests.",
       "Open assumption nodes to see when the method is valid, what guarantee it wants, and how to repair broken conditions.",
@@ -451,6 +480,7 @@ export function learningGraphChapterCount(): number {
 export const graphLegend: ChapterLearningGraph["legend"] = [
   { kind: "chapter", label: "Chapter center", easy: "The main question of the chapter.", technical: "The formal objects and assumptions that define the chapter." },
   { kind: "concept", label: "Concept", easy: "A word or idea you should be able to draw.", technical: "A chapter-specific object, distinction, or warning." },
+  { kind: "section", label: "Section mastery", easy: "A named section turned into a teach-back checkpoint.", technical: "Prompt, hint, answer, technical pass, diagnostic, and transfer for a section." },
   { kind: "formula", label: "Formula", easy: "A compact way to say the idea exactly.", technical: "Symbols, targets, expectations, and watch-outs." },
   { kind: "symbol", label: "Symbol", easy: "A mathematical mark decoded in plain English.", technical: "Notation semantics, formula context, pitfalls, and self-checks." },
   { kind: "proof", label: "Proof", easy: "Why the claim should be believed.", technical: "Claim, ingredients, proof sketch, equation bridge, and stress test." },
@@ -468,6 +498,7 @@ export const graphLegend: ChapterLearningGraph["legend"] = [
 function ringPoint(kind: LearningGraphNodeKind, index: number, total: number): { x: number; y: number } {
   const lanes: Record<string, { start: number; end: number; radius: number }> = {
     concept: { start: 205, end: 335, radius: 34 },
+    section: { start: 175, end: 265, radius: 30 },
     formula: { start: 300, end: 420, radius: 25 },
     symbol: { start: 255, end: 375, radius: 41 },
     proof: { start: 285, end: 405, radius: 33 },

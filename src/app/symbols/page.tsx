@@ -24,6 +24,7 @@ export default function SymbolsPage() {
             <Link href="/book" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Linear book</Link>
             <Link href="/search" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Search index</Link>
             <Link href="/graph" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Learning graph</Link>
+            <Link href="/sections" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Section mastery</Link>
             <Link href="/code" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Code lab</Link>
             <Link href="/assumptions" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Trust clinic</Link>
             <Link href="/proofs" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Proof lab</Link>
@@ -34,7 +35,7 @@ export default function SymbolsPage() {
             <div>
               <p className="eyebrow">Symbol decoder</p>
               <h1 className="display mt-4 max-w-5xl text-[clamp(42px,7vw,88px)] font-medium text-ink">Learn every recurring RL mark before equations feel scary.</h1>
-              <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted">This notation layer turns formula symbols into mini lectures. Each mark gets a plain-language role, a technical role, formula context, a watch-out, and a self-check so the standalone book can teach math from scratch before the code lab asks readers to name targets, updates, and invariants, before the proof lab asks why the equation is believable, and before the trust clinic asks when those targets are valid, and before the exam studio asks you to explain the symbols without hints.</p>
+              <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted">This notation layer turns formula symbols into mini lectures. Each mark gets a plain-language role, a technical role, formula context, a watch-out, and a self-check so the standalone book can teach math from scratch before the code lab asks readers to name targets, updates, and invariants, before the proof lab asks why the equation is believable, and before the trust clinic asks when those targets are valid, and before the section mastery studio and exam studio ask you to explain the symbols without hints.</p>
               <div className="mt-6 flex flex-wrap gap-2">
                 <Chip accent="cyan">{symbolCardCount()} chapter symbol cards</Chip>
                 <Chip accent="lime">{uniqueSymbolCount()} unique marks</Chip>

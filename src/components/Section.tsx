@@ -38,7 +38,7 @@ function visualVariantForSection(id: string) {
   if (/algorithm|chapter|mastery|code|assumption|proof|exam/.test(id)) return "algorithm";
   if (/equation|formula|term|symbol/.test(id)) return "formula";
   if (/evidence|exercise|coverage/.test(id)) return "coverage";
-  if (/map|study|glossary/.test(id)) return "tree";
+  if (/map|study|glossary|sections/.test(id)) return "tree";
   if (/lab/.test(id)) return "gradient";
   return "loop";
 }

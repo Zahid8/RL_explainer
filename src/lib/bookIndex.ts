@@ -20,6 +20,7 @@ import { simulatorForChapter } from "@/lib/chapterSimulators";
 import { workedExamplesForChapter } from "@/lib/chapterWorkedExamples";
 import { conceptCardsForChapter } from "@/lib/conceptAtlas";
 import { codeLabCardsForChapter } from "@/lib/codeLab";
+import { sectionMasteryCardsForChapter } from "@/lib/sectionMastery";
 import { sectionLessonsForChapter } from "@/lib/sectionNarratives";
 import { standaloneLectureForChapter } from "@/lib/standaloneBook";
 import { symbolCardsForChapter } from "@/lib/symbolAtlas";
@@ -42,6 +43,7 @@ export type BookIndexLayer =
   | "chapter manuscript"
   | "interactive blackboard"
   | "section manuscript"
+  | "section mastery"
   | "standalone lecture"
   | "chapter synthesis"
   | "dependency map"
@@ -112,6 +114,7 @@ function buildBookIndexEntries(): BookIndexEntry[] {
     const manuscript = manuscriptForChapter(chapter.n);
     const blackboard = blackboardForChapter(chapter.n);
     const sectionLessons = sectionLessonsForChapter(chapter.n);
+    const sectionMasteryCards = sectionMasteryCardsForChapter(chapter.n);
     const deep = chapterDeepDives[chapter.n];
     const mastery = chapterMastery.find((entry) => entry.n === chapter.n);
     const formulas = formulasForChapter(chapter.n);
@@ -376,6 +379,18 @@ function buildBookIndexEntries(): BookIndexEntry[] {
       technical: `${lesson.technicalPass} ${lesson.formulaBridge} ${lesson.algorithmBridge} ${lesson.misconceptionGuard} ${lesson.selfCheck}`,
       tags: ["section", ...lesson.terms, lesson.section, `Chapter ${chapter.n}`],
       weight: 90,
+    }));
+
+    sectionMasteryCards.forEach((card) => add({
+      ...chapterBase,
+      id: card.id,
+      title: `Section mastery: ${card.section}`,
+      layer: "section mastery",
+      route: `/chapters/${chapter.n}#section-mastery`,
+      summary: `${card.prompt} Diagnostic: ${card.diagnostic}`,
+      technical: `Hint: ${card.hint.join(" ")} Answer: ${card.answer} Technical: ${card.technical} Transfer: ${card.transfer}`,
+      tags: [card.section, ...card.tags, `Chapter ${chapter.n}`],
+      weight: 91,
     }));
 
     deep?.sectionDetails.forEach((section, index) => add({
