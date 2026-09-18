@@ -19,9 +19,9 @@ const visualInteractionRows = [
   },
   {
     surface: "Chapter detail routes",
-    coverage: "All 17 chapter pages include animated header maps, zero-knowledge starter ladders, active-recall practice coaches, concept microscopes, story-loop graphics, clickable blackboards, guided section readers, and animated visuals on every major chapter section title.",
+    coverage: "All 17 chapter pages include animated header maps, zero-knowledge starter ladders, active-recall practice coaches, concept microscopes, worked example studios, story-loop graphics, clickable blackboards, guided section readers, and animated visuals on every major chapter section title.",
     graphics: "Chapter motion map, starter ladder board, practice coach board, interactive blackboard, guided section reader, source audit, algorithms, section dives, mastery, formulas, anchors, synthesis, and dependency graphics.",
-    interaction: "Each concept map exposes Sense, Target, Update, and Act states; each starter ladder has four learning modes; each practice coach has five reveal modes; each concept microscope has five lecture modes; each blackboard has four click-through stages and a technical toggle; each section reader has six mode controls; dense cards add animated micro-glyphs.",
+    interaction: "Each concept map exposes Sense, Target, Update, and Act states; each starter ladder has four learning modes; each practice coach has five reveal modes; each concept microscope has five lecture modes; each worked example studio has five worked modes; each blackboard has four click-through stages and a technical toggle; each section reader has six mode controls; dense cards add animated micro-glyphs.",
   },
   {
     surface: "Linear book blackboards",
@@ -71,6 +71,8 @@ export default function CoveragePage() {
                 <Stat value={String(audit.totals.practiceInteractiveModes)} label="practice modes" />
                 <Stat value={String(audit.totals.conceptCards)} label="concept cards" />
                 <Stat value={String(audit.totals.conceptInteractiveModes)} label="concept modes" />
+                <Stat value={String(audit.totals.workedExamples)} label="worked examples" />
+                <Stat value={String(audit.totals.workedExampleInteractiveModes)} label="worked modes" />
                 <Stat value={String(audit.totals.manuscriptSections)} label="manuscript moves" />
                 <Stat value={String(audit.totals.blackboardStages)} label="blackboard stages" />
                 <Stat value={String(audit.totals.sectionNarratives)} label="section manuscripts" />
@@ -94,7 +96,7 @@ export default function CoveragePage() {
         </section>
 
         <section id="chapter-matrix" className="scroll-mt-24">
-          <SectionTitle eyebrow="02 - Chapter coverage matrix" title="Every chapter route and every major study layer in one audit table." lead="Open any chapter to inspect the rendered detail layers: concept microscope, manuscript, interactive blackboard, interactive section lecturer, section-level textbook prose, standalone lecture, synthesis, dependencies, source audit, algorithms, deep dives, mastery notes, formulas, anchors, and exercises." />
+          <SectionTitle eyebrow="02 - Chapter coverage matrix" title="Every chapter route and every major study layer in one audit table." lead="Open any chapter to inspect the rendered detail layers: concept microscope, worked example studio, manuscript, interactive blackboard, interactive section lecturer, section-level textbook prose, standalone lecture, synthesis, dependencies, source audit, algorithms, deep dives, mastery notes, formulas, anchors, and exercises." />
           <div className="mt-6 grid gap-4">
             {audit.chapters.map((chapter) => <ChapterCoverageCard key={chapter.chapter} chapter={chapter} />)}
           </div>
@@ -162,7 +164,7 @@ function ChapterCoverageCard({ chapter }: { chapter: ChapterCoverageRow }) {
         </div>
         <Link href={chapter.route} className="mono rounded-full border border-line bg-white px-3 py-2 text-[11px] uppercase tracking-[0.12em] text-muted hover:border-cyan hover:text-ink">Open chapter</Link>
       </div>
-      <div className="mt-4 grid gap-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-[repeat(20,minmax(0,1fr))]">
+      <div className="mt-4 grid gap-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-[repeat(22,minmax(0,1fr))]">
         <Metric label="algorithms" value={chapter.algorithms} />
         <Metric label="source cues" value={chapter.sourceCues} />
         <Metric label="starter" value={chapter.zeroKnowledgeRungs} />
@@ -171,6 +173,8 @@ function ChapterCoverageCard({ chapter }: { chapter: ChapterCoverageRow }) {
         <Metric label="practice modes" value={chapter.practiceInteractiveModes} />
         <Metric label="concepts" value={chapter.conceptCards} />
         <Metric label="concept modes" value={chapter.conceptInteractiveModes} />
+        <Metric label="worked" value={chapter.workedExamples} />
+        <Metric label="worked modes" value={chapter.workedExampleInteractiveModes} />
         <Metric label="manuscript" value={chapter.manuscriptSections} />
         <Metric label="blackboard" value={chapter.blackboardStages} />
         <Metric label="section text" value={chapter.sectionNarratives} />

@@ -10,6 +10,7 @@ import { InteractiveBlackboard } from "@/components/InteractiveBlackboard";
 import { SectionLessonReader } from "@/components/SectionLessonReader";
 import { ZeroKnowledgeLadderReader } from "@/components/ZeroKnowledgeLadderReader";
 import { MotionGlyph } from "@/components/MotionGlyph";
+import { WorkedExampleStudio } from "@/components/WorkedExampleStudio";
 import { Chip, Plain } from "@/components/Section";
 import { algorithmsForChapter, type AlgorithmDetail } from "@/lib/algorithmCatalog";
 import { algorithmDerivation, type AlgorithmDerivation } from "@/lib/algorithmDerivations";
@@ -24,6 +25,7 @@ import { evidenceGuideItems } from "@/lib/evidenceGuide";
 import { exerciseCoachCards } from "@/lib/exerciseCoach";
 import { practiceCardsForChapter, practiceModeCount, type ChapterPracticeCard } from "@/lib/chapterPractice";
 import { conceptCardsForChapter, conceptModeCount, type ChapterConceptCard } from "@/lib/conceptAtlas";
+import { workedExamplesForChapter, workedExampleModeCount, type ChapterWorkedExample } from "@/lib/chapterWorkedExamples";
 import { formulaLectureModeCount, formulasForChapter } from "@/lib/formulaAtlas";
 import { blackboardForChapter } from "@/lib/interactiveBlackboards";
 import { chapterMastery } from "@/lib/mastery";
@@ -74,6 +76,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
   const practiceModes = practiceModeCount(item.n);
   const conceptCards = conceptCardsForChapter(item.n);
   const conceptModes = conceptModeCount(item.n);
+  const workedExamples = workedExamplesForChapter(item.n);
+  const workedExampleModes = workedExampleModeCount(item.n);
   const manuscript = manuscriptForChapter(item.n);
   const blackboard = blackboardForChapter(item.n);
   const sectionLessons = sectionLessonsForChapter(item.n);
@@ -107,6 +111,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
                 <Stat value={String(formulaModes)} label="formula modes" />
                 <Stat value={String(conceptCards.length)} label="concept cards" />
                 <Stat value={String(conceptModes)} label="concept modes" />
+                <Stat value={String(workedExamples.length)} label="worked examples" />
+                <Stat value={String(workedExampleModes)} label="worked modes" />
                 <Stat value={String(sourceAudits.length)} label="source cues" />
               </div>
             </div>
@@ -124,13 +130,15 @@ export default async function ChapterPage({ params }: { params: Params }) {
           <AnimatedConceptGraphic label="Story loop" variant="loop" caption="The easy story and the technical story update each other: intuition points at notation, notation checks intuition." compact />
         </section>
 
-        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, starterRungs: starter.rungs.length, starterModes, practiceCards: practiceCards.length, practiceModes, conceptCards: conceptCards.length, conceptModes, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, sectionLessons: sectionLessons.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, formulaModes, evidence: evidence.length, exercises: exercises.length, sourceAudits: sourceAudits.length }} />
+        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, starterRungs: starter.rungs.length, starterModes, practiceCards: practiceCards.length, practiceModes, conceptCards: conceptCards.length, conceptModes, workedExamples: workedExamples.length, workedExampleModes, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, sectionLessons: sectionLessons.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, formulaModes, evidence: evidence.length, exercises: exercises.length, sourceAudits: sourceAudits.length }} />
 
         <ChapterStarterLadderBlock chapter={item} starter={starter} starterModes={starterModes} />
 
         <ChapterPracticeBlock chapter={item} cards={practiceCards} practiceModes={practiceModes} />
 
         <ChapterConceptBlock chapter={item} cards={conceptCards} conceptModes={conceptModes} />
+
+        <ChapterWorkedExampleBlock chapter={item} examples={workedExamples} workedExampleModes={workedExampleModes} />
 
         <ChapterManuscriptBlock manuscript={manuscript} />
 
@@ -305,11 +313,12 @@ function Stat({ value, label }: { value: string; label: string }) {
   );
 }
 
-function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; starterRungs: number; starterModes: number; practiceCards: number; practiceModes: number; conceptCards: number; conceptModes: number; manuscriptSections: number; blackboardStages: number; sectionLessons: number; lectureBeats: number; sections: number; formulas: number; formulaModes: number; evidence: number; exercises: number; sourceAudits: number } }) {
+function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; starterRungs: number; starterModes: number; practiceCards: number; practiceModes: number; conceptCards: number; conceptModes: number; workedExamples: number; workedExampleModes: number; manuscriptSections: number; blackboardStages: number; sectionLessons: number; lectureBeats: number; sections: number; formulas: number; formulaModes: number; evidence: number; exercises: number; sourceAudits: number } }) {
   const items = [
     ["starter", `${counts.starterRungs} starter rungs · ${counts.starterModes} modes`],
     ["practice", `${counts.practiceCards} practice checks · ${counts.practiceModes} modes`],
     ["concepts", `${counts.conceptCards} concepts · ${counts.conceptModes} modes`],
+    ["worked", `${counts.workedExamples} worked examples · ${counts.workedExampleModes} modes`],
     ["manuscript", `${counts.manuscriptSections} manuscript moves`],
     ["blackboard", `${counts.blackboardStages} blackboard stages`],
     ["section-reader", `${counts.sectionLessons * 6} guided modes`],
@@ -418,6 +427,24 @@ function ChapterConceptBlock({ chapter, cards, conceptModes }: { chapter: (typeo
           <p className="text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Chapter {chapter.n} concept set:</span> {cards.length} concepts expose {conceptModes} plain, visual, technical, contrast, and self-check modes before the later formula and algorithm layers use those words.</p>
         </div>
         <ConceptLectureDeck concepts={cards} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} />
+      </div>
+    </section>
+  );
+}
+
+function ChapterWorkedExampleBlock({ chapter, examples, workedExampleModes }: { chapter: (typeof chapters)[number]; examples: ChapterWorkedExample[]; workedExampleModes: number }) {
+  return (
+    <section id="worked" className="scroll-mt-24">
+      <SectionTitle
+        eyebrow="00w - Worked example studio"
+        title="Turn the explanation into tiny solved cases."
+        lead="This layer makes each chapter do something concrete: a toy world, board trace, tiny target calculation, method trace, and debug repair. It bridges reading and practice."
+      />
+      <div className="mt-6 grid gap-4">
+        <div className="rounded-xl border border-orange/30 bg-orange/[0.06] p-4">
+          <p className="text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Chapter {chapter.n} worked set:</span> {examples.length} worked examples expose {workedExampleModes} scenario, board, technical trace, pitfall, and self-check modes, so readers can see the chapter operate on tiny concrete cases.</p>
+        </div>
+        <WorkedExampleStudio examples={examples} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} />
       </div>
     </section>
   );

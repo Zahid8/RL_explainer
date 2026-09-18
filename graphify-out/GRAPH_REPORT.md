@@ -1,12 +1,12 @@
 # Graph Report - rlbook-explainer  (2026-09-18)
 
 ## Corpus Check
-- 69 files · ~855,178 words
+- 72 files · ~858,688 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 247 nodes · 312 edges · 17 communities detected
-- Extraction: 87% EXTRACTED · 13% INFERRED · 0% AMBIGUOUS · INFERRED: 40 edges (avg confidence: 0.8)
+- 259 nodes · 333 edges · 18 communities detected
+- Extraction: 86% EXTRACTED · 14% INFERRED · 0% AMBIGUOUS · INFERRED: 48 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
@@ -27,18 +27,19 @@
 - [[_COMMUNITY_Community 15|Community 15]]
 - [[_COMMUNITY_Community 16|Community 16]]
 - [[_COMMUNITY_Community 17|Community 17]]
+- [[_COMMUNITY_Community 18|Community 18]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `workedExampleForAlgorithm()` - 22 edges
-2. `chapterCoverageRow()` - 16 edges
-3. `algorithmProfile()` - 15 edges
-4. `buildCoverageAudit()` - 14 edges
+2. `chapterCoverageRow()` - 18 edges
+3. `buildCoverageAudit()` - 16 edges
+4. `algorithmProfile()` - 15 edges
 5. `algorithmDerivation()` - 11 edges
 6. `algorithmDossier()` - 9 edges
 7. `algorithmCoverageRow()` - 7 edges
-8. `chapterSynthesis()` - 6 edges
-9. `practiceCardsForChapter()` - 6 edges
-10. `chapterDependencyMap()` - 6 edges
+8. `workedExamplesForChapter()` - 7 edges
+9. `chapterSynthesis()` - 6 edges
+10. `practiceCardsForChapter()` - 6 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `chapterCoverageRow()` --calls--> `chapterSynthesis()`  [INFERRED]
@@ -47,16 +48,16 @@
   src/lib/coverageAudit.ts → /home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/algorithmSourceAudit.ts
 - `algorithmCoverageRow()` --calls--> `algorithmDossier()`  [INFERRED]
   src/lib/coverageAudit.ts → /home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/algorithmDossier.ts
-- `algorithmCoverageRow()` --calls--> `algorithmDerivation()`  [INFERRED]
-  src/lib/coverageAudit.ts → /home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/algorithmDerivations.ts
+- `algorithmCoverageRow()` --calls--> `algorithmProfile()`  [INFERRED]
+  src/lib/coverageAudit.ts → /home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/algorithmProfiles.ts
 - `algorithmCoverageRow()` --calls--> `workedExampleForAlgorithm()`  [INFERRED]
   src/lib/coverageAudit.ts → /home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/algorithmWorkedExamples.ts
 
 ## Communities
 
 ### Community 0 - "Community 0"
-Cohesion: 0.11
-Nodes (21): algorithmsForChapter(), manuscriptForChapter(), manuscriptSectionCount(), allPracticeCards(), practiceCardCount(), practiceCardsForChapter(), practiceModeCount(), buildCoverageAudit() (+13 more)
+Cohesion: 0.1
+Nodes (25): algorithmsForChapter(), manuscriptForChapter(), manuscriptSectionCount(), allPracticeCards(), practiceCardCount(), practiceCardsForChapter(), practiceModeCount(), allWorkedExamples() (+17 more)
 
 ### Community 1 - "Community 1"
 Cohesion: 0.18
@@ -64,27 +65,27 @@ Nodes (21): applicationExample(), approximationExample(), banditExample(), doubl
 
 ### Community 2 - "Community 2"
 Cohesion: 0.2
-Nodes (16): algorithmProfile(), inferApproximation(), inferAvoidWhen(), inferBackupStyle(), inferBestUse(), inferComputeMemory(), inferConvergenceHandle(), inferCreditAssignment() (+8 more)
+Nodes (13): algorithmDerivation(), classifyAlgorithm(), codingTrace(), controlMove(), creditAssignment(), equationNotes(), errorSignal(), estimateSubject() (+5 more)
 
 ### Community 3 - "Community 3"
-Cohesion: 0.3
-Nodes (10): algorithmDerivation(), classifyAlgorithm(), codingTrace(), controlMove(), creditAssignment(), equationNotes(), errorSignal(), estimateSubject() (+2 more)
+Cohesion: 0.27
+Nodes (13): algorithmProfile(), inferApproximation(), inferAvoidWhen(), inferBackupStyle(), inferBestUse(), inferComputeMemory(), inferConvergenceHandle(), inferCreditAssignment() (+5 more)
 
 ### Community 4 - "Community 4"
 Cohesion: 0.27
 Nodes (7): handsOnSequence(), lectureBeat(), questionForSection(), standaloneLectureForChapter(), uniqueTerms(), visualForSection(), vocabularyForChapter()
 
 ### Community 5 - "Community 5"
-Cohesion: 0.36
-Nodes (9): chapterSynthesis(), comparisonAxes(), dependencyStack(), groupBy(), implementationTest(), ladderItem(), oralExamPrompts(), studyProtocol() (+1 more)
+Cohesion: 0.2
+Nodes (3): glyphVariantForLabel(), glyphAccentForLabel(), glyphVariantForLabel()
 
 ### Community 6 - "Community 6"
 Cohesion: 0.36
-Nodes (8): allConceptCards(), candidateFromSection(), conceptCardCount(), conceptCardsForChapter(), conceptModeCount(), normalize(), slug(), uniqueCandidates()
+Nodes (9): chapterSynthesis(), comparisonAxes(), dependencyStack(), groupBy(), implementationTest(), ladderItem(), oralExamPrompts(), studyProtocol() (+1 more)
 
 ### Community 7 - "Community 7"
-Cohesion: 0.22
-Nodes (3): glyphVariantForLabel(), glyphAccentForLabel(), glyphVariantForLabel()
+Cohesion: 0.36
+Nodes (8): allConceptCards(), candidateFromSection(), conceptCardCount(), conceptCardsForChapter(), conceptModeCount(), normalize(), slug(), uniqueCandidates()
 
 ### Community 8 - "Community 8"
 Cohesion: 0.36
@@ -122,30 +123,36 @@ Nodes (2): evalJs(), send()
 Cohesion: 0.67
 Nodes (2): evalJs(), send()
 
+### Community 18 - "Community 18"
+Cohesion: 0.67
+Nodes (2): evalJs(), send()
+
 ## Knowledge Gaps
 - **Thin community `Community 14`** (4 nodes): `evalJs()`, `send()`, `waitJson()`, `audit-zero-knowledge-reader.mjs`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 15`** (4 nodes): `evalJs()`, `send()`, `waitJson()`, `audit-formula-reader.mjs`
+- **Thin community `Community 15`** (4 nodes): `evalJs()`, `send()`, `waitJson()`, `audit-concept-deck.mjs`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 16`** (4 nodes): `evalJs()`, `send()`, `waitJson()`, `audit-practice-coach.mjs`
+- **Thin community `Community 16`** (4 nodes): `evalJs()`, `send()`, `waitJson()`, `audit-formula-reader.mjs`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 17`** (4 nodes): `audit-interactions.mjs`, `evalJs()`, `send()`, `waitJson()`
+- **Thin community `Community 17`** (4 nodes): `evalJs()`, `send()`, `waitJson()`, `audit-practice-coach.mjs`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 18`** (4 nodes): `audit-interactions.mjs`, `evalJs()`, `send()`, `waitJson()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `algorithmCoverageRow()` connect `Community 2` to `Community 0`, `Community 9`, `Community 3`, `Community 1`?**
-  _High betweenness centrality (0.179) - this node is a cross-community bridge._
-- **Why does `chapterCoverageRow()` connect `Community 0` to `Community 2`, `Community 4`, `Community 5`, `Community 6`, `Community 8`?**
-  _High betweenness centrality (0.138) - this node is a cross-community bridge._
+  _High betweenness centrality (0.171) - this node is a cross-community bridge._
+- **Why does `chapterCoverageRow()` connect `Community 0` to `Community 2`, `Community 4`, `Community 6`, `Community 7`, `Community 8`?**
+  _High betweenness centrality (0.134) - this node is a cross-community bridge._
 - **Why does `workedExampleForAlgorithm()` connect `Community 1` to `Community 2`?**
-  _High betweenness centrality (0.081) - this node is a cross-community bridge._
-- **Are the 15 inferred relationships involving `chapterCoverageRow()` (e.g. with `algorithmsForChapter()` and `chapterSynthesis()`) actually correct?**
-  _`chapterCoverageRow()` has 15 INFERRED edges - model-reasoned connections that need verification._
+  _High betweenness centrality (0.076) - this node is a cross-community bridge._
+- **Are the 17 inferred relationships involving `chapterCoverageRow()` (e.g. with `algorithmsForChapter()` and `chapterSynthesis()`) actually correct?**
+  _`chapterCoverageRow()` has 17 INFERRED edges - model-reasoned connections that need verification._
+- **Are the 14 inferred relationships involving `buildCoverageAudit()` (e.g. with `zeroKnowledgeRungCount()` and `zeroKnowledgeModeCount()`) actually correct?**
+  _`buildCoverageAudit()` has 14 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 2 inferred relationships involving `algorithmProfile()` (e.g. with `algorithmCoverageRow()` and `ladderItem()`) actually correct?**
   _`algorithmProfile()` has 2 INFERRED edges - model-reasoned connections that need verification._
-- **Are the 12 inferred relationships involving `buildCoverageAudit()` (e.g. with `zeroKnowledgeRungCount()` and `zeroKnowledgeModeCount()`) actually correct?**
-  _`buildCoverageAudit()` has 12 INFERRED edges - model-reasoned connections that need verification._
 - **Should `Community 0` be split into smaller, more focused modules?**
-  _Cohesion score 0.11 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.1 - nodes in this community are weakly interconnected._
