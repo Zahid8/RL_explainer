@@ -11,6 +11,7 @@ import { ConceptLectureDeck } from "@/components/ConceptLectureDeck";
 import { ExerciseSolutionStudio } from "@/components/ExerciseSolutionStudio";
 import { FormulaLectureReader } from "@/components/FormulaLectureReader";
 import { InteractiveBlackboard } from "@/components/InteractiveBlackboard";
+import { MethodCompareStudio } from "@/components/MethodCompareStudio";
 import { SectionLessonReader } from "@/components/SectionLessonReader";
 import { SectionMasteryStudio } from "@/components/SectionMasteryStudio";
 import { MotionGlyph } from "@/components/MotionGlyph";
@@ -27,6 +28,7 @@ import { codeLabCardsForChapter, codeLabModeCount, type CodeLabCard } from "@/li
 import { assumptionCardsForChapter, assumptionModeCount, type AssumptionClinicCard } from "@/lib/assumptionClinic";
 import { chapterExamCardsForChapter, chapterExamModeCount, type ChapterExamCard } from "@/lib/chapterExam";
 import { learningGraphEdgeCount, learningGraphNodeCount } from "@/lib/learningGraph";
+import { methodCompareCardsForChapter, methodCompareModeCount, methodCompareCardCount, type MethodCompareCard } from "@/lib/methodCompare";
 import { blackboardForChapter, blackboardStageCount, type ChapterBlackboard } from "@/lib/interactiveBlackboards";
 import { practiceCardsForChapter, practiceModeCount, type ChapterPracticeCard } from "@/lib/chapterPractice";
 import { conceptCardsForChapter, conceptModeCount, type ChapterConceptCard } from "@/lib/conceptAtlas";
@@ -78,6 +80,8 @@ const lectures = chapters.map((chapter) => ({
   codeModes: codeLabModeCount(chapter.n),
   assumptionCards: assumptionCardsForChapter(chapter.n),
   assumptionModes: assumptionModeCount(chapter.n),
+  compareCards: methodCompareCardsForChapter(chapter.n),
+  compareModes: methodCompareModeCount(chapter.n),
   proofCards: proofCardsForChapter(chapter.n),
   proofModes: proofModeCount(chapter.n),
   examCards: chapterExamCardsForChapter(chapter.n),
@@ -110,6 +114,8 @@ export default function BookPage() {
   const symbolModes = symbolLectureModeCount();
   const codeModes = codeLabModeCount();
   const assumptionModes = assumptionModeCount();
+  const compareCards = methodCompareCardCount();
+  const compareModes = methodCompareModeCount();
   const proofModes = proofModeCount();
   const examModes = chapterExamModeCount();
   const sectionMasteryModes = sectionMasteryModeCount();
@@ -128,6 +134,7 @@ export default function BookPage() {
             <Link href="/symbols" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Symbol decoder</Link>
             <Link href="/code" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Code lab</Link>
             <Link href="/assumptions" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Trust clinic</Link>
+            <Link href="/compare" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Compare methods</Link>
             <Link href="/proofs" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Proof lab</Link>
             <Link href="/exam" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Exam studio</Link>
             <Link href="/exercises" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Exercise solutions</Link>
@@ -167,6 +174,8 @@ export default function BookPage() {
                 <Chip accent="violet">{symbolModes} symbol modes</Chip>
                 <Chip accent="orange">{codeModes} code modes</Chip>
                 <Chip accent="lime">{assumptionModes} trust modes</Chip>
+                <Chip accent="violet">{compareCards} comparisons</Chip>
+                <Chip accent="violet">{compareModes} compare modes</Chip>
                 <Chip accent="violet">{proofModes} proof modes</Chip>
                 <Chip accent="lime">{examModes} exam modes</Chip>
                 <Chip accent="lime">{lectureBeats} lecture beats</Chip>
@@ -189,9 +198,10 @@ export default function BookPage() {
                   <li>8. Use the symbol decoder whenever a mathematical mark needs a plain meaning, technical role, pitfall, and self-check.</li>
                   <li>9. Use the implementation code lab to translate algorithm names into state, target, update, invariants, tests, and debug checks.</li>
                   <li>10. Use the assumption clinic to ask when a method&apos;s data, target, update, and representation make its guarantee honest.</li>
-                  <li>11. Use the proof lab to turn formulas and chapter claims into claim, ingredient, proof-sketch, equation, and stress-test arguments.</li>
-                  <li>12. Use the chapter exam studio to answer, plan, reveal, grade, and transfer the chapter before moving on.</li>
-                  <li>13. Use the exercise solution studio to attempt, hint, solve, debug, and extend numbered practice problems.</li>
+                  <li>11. Use the method comparison studio to choose between nearby algorithms by data, target, backup style, model use, and failure risk.</li>
+                  <li>12. Use the proof lab to turn formulas and chapter claims into claim, ingredient, proof-sketch, equation, and stress-test arguments.</li>
+                  <li>13. Use the chapter exam studio to answer, plan, reveal, grade, and transfer the chapter before moving on.</li>
+                  <li>14. Use the exercise solution studio to attempt, hint, solve, debug, and extend numbered practice problems.</li>
                 </ol>
               </div>
             </div>
@@ -215,21 +225,21 @@ export default function BookPage() {
         </aside>
 
         <div className="grid gap-12">
-          {lectures.map(({ chapter, lecture, starter, starterModes, theater, theaterSlides, theaterModes, practiceCards, practiceModes, conceptCards, conceptModes, workedExamples, workedExampleModes, misconceptionCards, misconceptionModes, simulator, simulatorControls, simulatorReadouts, manuscript, blackboard, sectionLessons, sectionMasteryCards, sectionMasteryModes, symbolCards, symbolModes, codeCards, codeModes, assumptionCards, assumptionModes, proofCards, proofModes, examCards, examModes, formulas, formulaModes }) => <BookChapter key={chapter.n} chapter={chapter} lecture={lecture} starter={starter} starterModes={starterModes} theater={theater} theaterSlides={theaterSlides} theaterModes={theaterModes} practiceCards={practiceCards} practiceModes={practiceModes} conceptCards={conceptCards} conceptModes={conceptModes} workedExamples={workedExamples} workedExampleModes={workedExampleModes} misconceptionCards={misconceptionCards} misconceptionModes={misconceptionModes} simulator={simulator} simulatorControls={simulatorControls} simulatorReadouts={simulatorReadouts} manuscript={manuscript} blackboard={blackboard} sectionLessons={sectionLessons} sectionMasteryCards={sectionMasteryCards} sectionMasteryModes={sectionMasteryModes} symbolCards={symbolCards} symbolModes={symbolModes} codeCards={codeCards} codeModes={codeModes} assumptionCards={assumptionCards} assumptionModes={assumptionModes} proofCards={proofCards} proofModes={proofModes} examCards={examCards} examModes={examModes} formulas={formulas} formulaModes={formulaModes} />)}
+          {lectures.map(({ chapter, lecture, starter, starterModes, theater, theaterSlides, theaterModes, practiceCards, practiceModes, conceptCards, conceptModes, workedExamples, workedExampleModes, misconceptionCards, misconceptionModes, simulator, simulatorControls, simulatorReadouts, manuscript, blackboard, sectionLessons, sectionMasteryCards, sectionMasteryModes, symbolCards, symbolModes, codeCards, codeModes, assumptionCards, assumptionModes, compareCards, compareModes, proofCards, proofModes, examCards, examModes, formulas, formulaModes }) => <BookChapter key={chapter.n} chapter={chapter} lecture={lecture} starter={starter} starterModes={starterModes} theater={theater} theaterSlides={theaterSlides} theaterModes={theaterModes} practiceCards={practiceCards} practiceModes={practiceModes} conceptCards={conceptCards} conceptModes={conceptModes} workedExamples={workedExamples} workedExampleModes={workedExampleModes} misconceptionCards={misconceptionCards} misconceptionModes={misconceptionModes} simulator={simulator} simulatorControls={simulatorControls} simulatorReadouts={simulatorReadouts} manuscript={manuscript} blackboard={blackboard} sectionLessons={sectionLessons} sectionMasteryCards={sectionMasteryCards} sectionMasteryModes={sectionMasteryModes} symbolCards={symbolCards} symbolModes={symbolModes} codeCards={codeCards} codeModes={codeModes} assumptionCards={assumptionCards} assumptionModes={assumptionModes} compareCards={compareCards} compareModes={compareModes} proofCards={proofCards} proofModes={proofModes} examCards={examCards} examModes={examModes} formulas={formulas} formulaModes={formulaModes} />)}
         </div>
       </div>
     </main>
   );
 }
 
-function BookChapter({ chapter, lecture, starter, starterModes, theater, theaterSlides, theaterModes, practiceCards, practiceModes, conceptCards, conceptModes, workedExamples, workedExampleModes, misconceptionCards, misconceptionModes, simulator, simulatorControls, simulatorReadouts, manuscript, blackboard, sectionLessons, sectionMasteryCards, sectionMasteryModes, symbolCards, symbolModes, codeCards, codeModes, assumptionCards, assumptionModes, proofCards, proofModes, examCards, examModes, formulas, formulaModes }: { chapter: (typeof chapters)[number]; lecture: StandaloneChapterLecture; starter: ZeroKnowledgeLadder; starterModes: number; theater: ChapterLectureTheaterData; theaterSlides: number; theaterModes: number; practiceCards: ChapterPracticeCard[]; practiceModes: number; conceptCards: ChapterConceptCard[]; conceptModes: number; workedExamples: ChapterWorkedExample[]; workedExampleModes: number; misconceptionCards: ChapterMisconceptionCard[]; misconceptionModes: number; simulator: ChapterSimulator; simulatorControls: number; simulatorReadouts: number; manuscript: ChapterManuscript; blackboard: ChapterBlackboard; sectionLessons: SectionTextbookLesson[]; sectionMasteryCards: SectionMasteryCard[]; sectionMasteryModes: number; symbolCards: SymbolCard[]; symbolModes: number; codeCards: CodeLabCard[]; codeModes: number; assumptionCards: AssumptionClinicCard[]; assumptionModes: number; proofCards: ProofLabCard[]; proofModes: number; examCards: ChapterExamCard[]; examModes: number; formulas: FormulaNote[]; formulaModes: number }) {
+function BookChapter({ chapter, lecture, starter, starterModes, theater, theaterSlides, theaterModes, practiceCards, practiceModes, conceptCards, conceptModes, workedExamples, workedExampleModes, misconceptionCards, misconceptionModes, simulator, simulatorControls, simulatorReadouts, manuscript, blackboard, sectionLessons, sectionMasteryCards, sectionMasteryModes, symbolCards, symbolModes, codeCards, codeModes, assumptionCards, assumptionModes, compareCards, compareModes, proofCards, proofModes, examCards, examModes, formulas, formulaModes }: { chapter: (typeof chapters)[number]; lecture: StandaloneChapterLecture; starter: ZeroKnowledgeLadder; starterModes: number; theater: ChapterLectureTheaterData; theaterSlides: number; theaterModes: number; practiceCards: ChapterPracticeCard[]; practiceModes: number; conceptCards: ChapterConceptCard[]; conceptModes: number; workedExamples: ChapterWorkedExample[]; workedExampleModes: number; misconceptionCards: ChapterMisconceptionCard[]; misconceptionModes: number; simulator: ChapterSimulator; simulatorControls: number; simulatorReadouts: number; manuscript: ChapterManuscript; blackboard: ChapterBlackboard; sectionLessons: SectionTextbookLesson[]; sectionMasteryCards: SectionMasteryCard[]; sectionMasteryModes: number; symbolCards: SymbolCard[]; symbolModes: number; codeCards: CodeLabCard[]; codeModes: number; assumptionCards: AssumptionClinicCard[]; assumptionModes: number; compareCards: MethodCompareCard[]; compareModes: number; proofCards: ProofLabCard[]; proofModes: number; examCards: ChapterExamCard[]; examModes: number; formulas: FormulaNote[]; formulaModes: number }) {
   const exerciseSolutions = exerciseSolutionCardsForChapter(chapter.n);
   const exerciseSolutionModes = exerciseSolutionModeCount(chapter.n);
   return (
     <article id={`book-chapter-${chapter.n}`} className="scroll-mt-24 overflow-hidden rounded-2xl border border-line bg-panel">
       <div className="grid gap-px bg-line lg:grid-cols-[0.9fr_1.1fr]">
         <div className="bg-panel p-6 lg:p-7">
-          <div className="flex flex-wrap gap-2"><Chip accent="cyan">Chapter {chapter.n}</Chip><Chip accent="blue">{chapter.part}</Chip><Chip accent="lime">{lecture.beats.length} section lessons</Chip><Chip accent="cyan">{theaterSlides} theater slides</Chip><Chip accent="blue">{theaterModes} theater modes</Chip><Chip accent="violet">{conceptCards.length} concepts</Chip><Chip accent="violet">{symbolCards.length} symbols</Chip><Chip accent="orange">{codeCards.length} code labs</Chip><Chip accent="lime">{assumptionCards.length} trust clinics</Chip><Chip accent="violet">{proofCards.length} proofs</Chip><Chip accent="lime">{examCards.length} exams</Chip><Chip accent="cyan">{sectionMasteryCards.length} section drills</Chip><Chip accent="orange">{exerciseSolutions.length} exercise solutions</Chip><Chip accent="orange">{workedExamples.length} examples</Chip><Chip accent="orange">{misconceptionCards.length} clinics</Chip><Chip accent="cyan">{simulatorControls} sim controls</Chip><Chip accent="blue">{simulatorReadouts} readouts</Chip></div>
+          <div className="flex flex-wrap gap-2"><Chip accent="cyan">Chapter {chapter.n}</Chip><Chip accent="blue">{chapter.part}</Chip><Chip accent="lime">{lecture.beats.length} section lessons</Chip><Chip accent="cyan">{theaterSlides} theater slides</Chip><Chip accent="blue">{theaterModes} theater modes</Chip><Chip accent="violet">{conceptCards.length} concepts</Chip><Chip accent="violet">{symbolCards.length} symbols</Chip><Chip accent="orange">{codeCards.length} code labs</Chip><Chip accent="lime">{assumptionCards.length} trust clinics</Chip><Chip accent="violet">{compareCards.length} comparisons</Chip><Chip accent="violet">{proofCards.length} proofs</Chip><Chip accent="lime">{examCards.length} exams</Chip><Chip accent="cyan">{sectionMasteryCards.length} section drills</Chip><Chip accent="orange">{exerciseSolutions.length} exercise solutions</Chip><Chip accent="orange">{workedExamples.length} examples</Chip><Chip accent="orange">{misconceptionCards.length} clinics</Chip><Chip accent="cyan">{simulatorControls} sim controls</Chip><Chip accent="blue">{simulatorReadouts} readouts</Chip></div>
           <h2 className="display mt-5 text-[clamp(32px,5vw,56px)] font-medium text-ink">{chapter.title}</h2>
           <p className="mt-4 text-base leading-relaxed text-muted">{lecture.promise}</p>
           <div className="mt-5 grid gap-3">
@@ -331,6 +341,14 @@ function BookChapter({ chapter, lecture, starter, starterModes, theater, theater
             <p className="mt-2 text-sm leading-relaxed text-muted">{assumptionCards.length} assumption clinics become {assumptionModes} plain, assumption, guarantee, failure, and repair modes for this chapter.</p>
           </div>
           <AssumptionClinic cards={assumptionCards} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} compact />
+        </section>
+        <section className="grid gap-4">
+          <div>
+            <p className="eyebrow">Method comparison studio</p>
+            <h3 className="display mt-2 text-3xl font-medium text-ink">Compare methods before treating any algorithm as a recipe.</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted">{compareCards.length} comparison cards become {compareModes} choose, axis, tradeoff, failure, and bridge modes for this chapter.</p>
+          </div>
+          <MethodCompareStudio cards={compareCards} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} compact />
         </section>
         <section className="grid gap-4">
           <div>

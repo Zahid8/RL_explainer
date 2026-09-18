@@ -15,6 +15,7 @@ import { ExerciseSolutionStudio } from "@/components/ExerciseSolutionStudio";
 import { FormulaLectureReader } from "@/components/FormulaLectureReader";
 import { InteractiveBlackboard } from "@/components/InteractiveBlackboard";
 import { LearningGraphExplorer } from "@/components/LearningGraphExplorer";
+import { MethodCompareStudio } from "@/components/MethodCompareStudio";
 import { SectionLessonReader } from "@/components/SectionLessonReader";
 import { SectionMasteryStudio } from "@/components/SectionMasteryStudio";
 import { SymbolDecoder } from "@/components/SymbolDecoder";
@@ -49,6 +50,7 @@ import { chapterExamCardsForChapter, chapterExamModeCount, type ChapterExamCard 
 import { assumptionCardsForChapter, assumptionModeCount, type AssumptionClinicCard } from "@/lib/assumptionClinic";
 import { blackboardForChapter } from "@/lib/interactiveBlackboards";
 import { learningGraphEdgeCount, learningGraphForChapter, learningGraphNodeCount } from "@/lib/learningGraph";
+import { methodCompareCardsForChapter, methodCompareModeCount, type MethodCompareCard } from "@/lib/methodCompare";
 import { chapterMastery } from "@/lib/mastery";
 import { chapters } from "@/lib/paper";
 import { proofCardsForChapter, proofModeCount, type ProofLabCard } from "@/lib/proofLab";
@@ -128,6 +130,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
   const codeModes = codeLabModeCount(item.n);
   const assumptionCards = assumptionCardsForChapter(item.n);
   const assumptionModes = assumptionModeCount(item.n);
+  const compareCards = methodCompareCardsForChapter(item.n);
+  const compareModes = methodCompareModeCount(item.n);
   const proofCards = proofCardsForChapter(item.n);
   const proofModes = proofModeCount(item.n);
   const examCards = chapterExamCardsForChapter(item.n);
@@ -182,6 +186,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
                 <Stat value={String(codeModes)} label="code modes" />
                 <Stat value={String(assumptionCards.length)} label="trust clinics" />
                 <Stat value={String(assumptionModes)} label="trust modes" />
+                <Stat value={String(compareCards.length)} label="comparisons" />
+                <Stat value={String(compareModes)} label="compare modes" />
                 <Stat value={String(proofCards.length)} label="proof cards" />
                 <Stat value={String(proofModes)} label="proof modes" />
                 <Stat value={String(examCards.length)} label="exam cards" />
@@ -204,7 +210,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
           <AnimatedConceptGraphic label="Story loop" variant="loop" caption="The easy story and the technical story update each other: intuition points at notation, notation checks intuition." compact />
         </section>
 
-        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, starterRungs: starter.rungs.length, starterModes, theaterSlides, theaterModes, practiceCards: practiceCards.length, practiceModes, conceptCards: conceptCards.length, conceptModes, workedExamples: workedExamples.length, workedExampleModes, misconceptionCards: misconceptionCards.length, misconceptionModes, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, sectionLessons: sectionLessons.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, formulaModes, evidence: evidence.length, exercises: exercises.length, simulatorControls, simulatorReadouts, sourceAudits: sourceAudits.length, searchEntries: searchEntryTotal, graphNodes, graphEdges, symbolCards: symbolCards.length, symbolModes, codeCards: codeCards.length, codeModes, assumptionCards: assumptionCards.length, assumptionModes, proofCards: proofCards.length, proofModes, examCards: examCards.length, examModes, sectionMasteryCards: sectionMasteryCards.length, sectionMasteryModes, exerciseSolutions: exerciseSolutions.length, exerciseSolutionModes }} />
+        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, starterRungs: starter.rungs.length, starterModes, theaterSlides, theaterModes, practiceCards: practiceCards.length, practiceModes, conceptCards: conceptCards.length, conceptModes, workedExamples: workedExamples.length, workedExampleModes, misconceptionCards: misconceptionCards.length, misconceptionModes, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, sectionLessons: sectionLessons.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, formulaModes, evidence: evidence.length, exercises: exercises.length, simulatorControls, simulatorReadouts, sourceAudits: sourceAudits.length, searchEntries: searchEntryTotal, graphNodes, graphEdges, symbolCards: symbolCards.length, symbolModes, codeCards: codeCards.length, codeModes, assumptionCards: assumptionCards.length, assumptionModes, compareCards: compareCards.length, compareModes, proofCards: proofCards.length, proofModes, examCards: examCards.length, examModes, sectionMasteryCards: sectionMasteryCards.length, sectionMasteryModes, exerciseSolutions: exerciseSolutions.length, exerciseSolutionModes }} />
 
         <section id="search" className="scroll-mt-24">
           <SectionTitle eyebrow="00a - Chapter search index" title="Search this chapter's explanations without leaving the page." lead="Use this chapter-local index when you remember a term, formula, trap, method, or example but do not know which layer contains it. It searches the original standalone prose and technical explanations for this chapter." />
@@ -225,6 +231,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
         <ChapterCodeLabBlock chapter={item} cards={codeCards} codeModes={codeModes} />
 
         <ChapterAssumptionClinicBlock chapter={item} cards={assumptionCards} assumptionModes={assumptionModes} />
+
+        <ChapterMethodCompareBlock chapter={item} cards={compareCards} compareModes={compareModes} />
 
         <ChapterProofLabBlock chapter={item} cards={proofCards} proofModes={proofModes} />
 
@@ -421,13 +429,14 @@ function Stat({ value, label }: { value: string; label: string }) {
   );
 }
 
-function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; starterRungs: number; starterModes: number; theaterSlides: number; theaterModes: number; practiceCards: number; practiceModes: number; conceptCards: number; conceptModes: number; workedExamples: number; workedExampleModes: number; misconceptionCards: number; misconceptionModes: number; simulatorControls: number; simulatorReadouts: number; manuscriptSections: number; blackboardStages: number; sectionLessons: number; sectionMasteryCards: number; sectionMasteryModes: number; lectureBeats: number; sections: number; formulas: number; formulaModes: number; evidence: number; exercises: number; sourceAudits: number; searchEntries: number; graphNodes: number; graphEdges: number; symbolCards: number; symbolModes: number; codeCards: number; codeModes: number; assumptionCards: number; assumptionModes: number; proofCards: number; proofModes: number; examCards: number; examModes: number; exerciseSolutions: number; exerciseSolutionModes: number } }) {
+function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; starterRungs: number; starterModes: number; theaterSlides: number; theaterModes: number; practiceCards: number; practiceModes: number; conceptCards: number; conceptModes: number; workedExamples: number; workedExampleModes: number; misconceptionCards: number; misconceptionModes: number; simulatorControls: number; simulatorReadouts: number; manuscriptSections: number; blackboardStages: number; sectionLessons: number; sectionMasteryCards: number; sectionMasteryModes: number; lectureBeats: number; sections: number; formulas: number; formulaModes: number; evidence: number; exercises: number; sourceAudits: number; searchEntries: number; graphNodes: number; graphEdges: number; symbolCards: number; symbolModes: number; codeCards: number; codeModes: number; assumptionCards: number; assumptionModes: number; compareCards: number; compareModes: number; proofCards: number; proofModes: number; examCards: number; examModes: number; exerciseSolutions: number; exerciseSolutionModes: number } }) {
   const items = [
     ["search", `${counts.searchEntries} search entries`],
     ["learning-graph", `${counts.graphNodes} graph nodes · ${counts.graphEdges} links`],
     ["symbols", `${counts.symbolCards} symbols · ${counts.symbolModes} modes`],
     ["code-lab", `${counts.codeCards} code labs · ${counts.codeModes} modes`],
     ["assumptions", `${counts.assumptionCards} trust clinics · ${counts.assumptionModes} modes`],
+    ["method-compare", `${counts.compareCards} comparisons · ${counts.compareModes} modes`],
     ["proofs", `${counts.proofCards} proofs · ${counts.proofModes} modes`],
     ["exam", `${counts.examCards} exams · ${counts.examModes} modes`],
     ["exercise-solutions", `${counts.exerciseSolutions} exercise solutions · ${counts.exerciseSolutionModes} modes`],
@@ -519,11 +528,29 @@ function ChapterAssumptionClinicBlock({ chapter, cards, assumptionModes }: { cha
   );
 }
 
+function ChapterMethodCompareBlock({ chapter, cards, compareModes }: { chapter: (typeof chapters)[number]; cards: MethodCompareCard[]; compareModes: number }) {
+  return (
+    <section id="method-compare" className="scroll-mt-24">
+      <SectionTitle
+        eyebrow="00f - Method comparison studio"
+        title="Choose methods by target, data, model use, and failure risk."
+        lead="This layer makes algorithm choice explicit: compare a method with a nearby alternative, inspect the technical axes, name the tradeoff, predict the failure, and transfer the comparison to a new tiny task."
+      />
+      <div className="mt-6 grid gap-4">
+        <div className="rounded-xl border border-violet/30 bg-violet/[0.06] p-4">
+          <p className="text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Chapter {chapter.n} comparison promise:</span> {cards.length} method comparison cards expose {compareModes} choose, axis, tradeoff, failure, and bridge modes tied back to the chapter algorithm cards.</p>
+        </div>
+        <MethodCompareStudio cards={cards} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} compact />
+      </div>
+    </section>
+  );
+}
+
 function ChapterProofLabBlock({ chapter, cards, proofModes }: { chapter: (typeof chapters)[number]; cards: ProofLabCard[]; proofModes: number }) {
   return (
     <section id="proofs" className="scroll-mt-24">
       <SectionTitle
-        eyebrow="00f - Proof intuition lab"
+        eyebrow="00g - Proof intuition lab"
         title="Ask why the chapter's equations and claims are true."
         lead="This layer turns advanced formal material into proof thinking: claim, ingredients, proof sketch, equation bridge, stress test, and repair move."
       />
@@ -541,7 +568,7 @@ function ChapterExamBlock({ chapter, cards, examModes }: { chapter: (typeof chap
   return (
     <section id="exam" className="scroll-mt-24">
       <SectionTitle
-        eyebrow="00g - Chapter exam studio"
+        eyebrow="00h - Chapter exam studio"
         title="Prove you can explain, draw, compute, trust-check, and transfer the chapter."
         lead="This layer closes the standalone chapter loop: try an oral exam prompt, inspect a plan, reveal a strong solution, grade with a rubric, and transfer the idea to a new task."
       />
@@ -612,7 +639,7 @@ function ChapterExerciseSolutionBlock({ chapter, cards, exerciseSolutionModes }:
   return (
     <section id="exercise-solutions" className="scroll-mt-24">
       <SectionTitle
-        eyebrow="00g2 - Exercise solution studio"
+        eyebrow="00h2 - Exercise solution studio"
         title="Attempt, hint, solve, debug, and extend the chapter exercises."
         lead="This layer turns numbered exercise anchors into a guided solution workflow: try before revealing, take a hint, compare with an original model solution path, debug mistakes, and transfer the pattern to a new tiny RL world."
       />

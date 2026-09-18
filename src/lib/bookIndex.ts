@@ -9,6 +9,7 @@ import { evidenceGuideItems } from "@/lib/evidenceGuide";
 import { exerciseCoachCards } from "@/lib/exerciseCoach";
 import { exerciseSolutionCardsForChapter } from "@/lib/exerciseSolutionStudio";
 import { formulasForChapter } from "@/lib/formulaAtlas";
+import { methodCompareCardsForChapter } from "@/lib/methodCompare";
 import { proofCardsForChapter } from "@/lib/proofLab";
 import { blackboardForChapter } from "@/lib/interactiveBlackboards";
 import { chapterMastery } from "@/lib/mastery";
@@ -34,6 +35,7 @@ export type BookIndexLayer =
   | "symbol decoder"
   | "implementation code lab"
   | "assumption clinic"
+  | "method comparison"
   | "proof lab"
   | "chapter exam"
   | "active recall"
@@ -106,6 +108,7 @@ function buildBookIndexEntries(): BookIndexEntry[] {
     const symbolCards = symbolCardsForChapter(chapter.n);
     const codeCards = codeLabCardsForChapter(chapter.n);
     const assumptionCards = assumptionCardsForChapter(chapter.n);
+    const compareCards = methodCompareCardsForChapter(chapter.n);
     const proofCards = proofCardsForChapter(chapter.n);
     const examCards = chapterExamCardsForChapter(chapter.n);
     const practiceCards = practiceCardsForChapter(chapter.n);
@@ -237,6 +240,18 @@ function buildBookIndexEntries(): BookIndexEntry[] {
       summary: `${card.plain} Failure: ${card.failure}`,
       technical: `Assumptions: ${card.assumptions.join(" ")} Guarantee: ${card.guarantee} Repair: ${card.repair.join(" ")}`,
       tags: [card.family, card.algorithmId, ...card.tags, `Chapter ${chapter.n}`],
+      weight: 86,
+    }));
+
+    compareCards.forEach((card) => add({
+      ...chapterBase,
+      id: card.id,
+      title: `Method comparison: ${card.algorithmName} vs ${card.compareWith}`,
+      layer: "method comparison",
+      route: `/chapters/${chapter.n}#method-compare`,
+      summary: `${card.primaryQuestion} ${card.plainComparison}`,
+      technical: `${card.technicalComparison} Tradeoff: ${card.tradeoff} Failure: ${card.failureMode} Bridge: ${card.bridge}`,
+      tags: [card.family, card.algorithmName, card.compareWith, ...card.tags, `Chapter ${chapter.n}`],
       weight: 86,
     }));
 

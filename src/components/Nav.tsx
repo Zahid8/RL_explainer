@@ -27,6 +27,7 @@ const links = [
   ["evidence", "Evidence"],
   ["exercises", "Exercises"],
   ["algorithms", "Algorithms"],
+  ["compare", "Compare"],
   ["labs", "Labs"],
   ["glossary", "Glossary"],
 ] as const;
@@ -89,6 +90,7 @@ export function Nav() {
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/exam">Exam</a>
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/exercises">Exercises</a>
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/algorithms">109 algorithms</a>
+          <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/compare">Compare</a>
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/coverage">Coverage</a>
         </div>
       </div>

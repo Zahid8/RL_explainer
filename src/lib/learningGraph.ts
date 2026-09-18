@@ -9,12 +9,13 @@ import { workedExamplesForChapter } from "@/lib/chapterWorkedExamples";
 import { codeLabCardsForChapter } from "@/lib/codeLab";
 import { conceptCardsForChapter } from "@/lib/conceptAtlas";
 import { formulasForChapter } from "@/lib/formulaAtlas";
+import { methodCompareCardsForChapter } from "@/lib/methodCompare";
 import { proofCardsForChapter } from "@/lib/proofLab";
 import { chapters } from "@/lib/paper";
 import { sectionMasteryCardsForChapter } from "@/lib/sectionMastery";
 import { symbolCardsForChapter } from "@/lib/symbolAtlas";
 
-export type LearningGraphNodeKind = "chapter" | "concept" | "section" | "formula" | "symbol" | "proof" | "algorithm" | "code" | "assumption" | "example" | "practice" | "exercise" | "exam" | "simulator" | "prerequisite" | "unlock";
+export type LearningGraphNodeKind = "chapter" | "concept" | "section" | "formula" | "symbol" | "proof" | "algorithm" | "compare" | "code" | "assumption" | "example" | "practice" | "exercise" | "exam" | "simulator" | "prerequisite" | "unlock";
 
 export interface LearningGraphNode {
   id: string;
@@ -67,6 +68,7 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
   const formulas = formulasForChapter(chapterNumber).slice(0, 4);
   const symbols = symbolCardsForChapter(chapterNumber).slice(0, 5);
   const proofCards = proofCardsForChapter(chapterNumber).slice(0, 4);
+  const compareCards = methodCompareCardsForChapter(chapterNumber).slice(0, 5);
   const codeCards = codeLabCardsForChapter(chapterNumber).slice(0, 5);
   const assumptionCards = assumptionCardsForChapter(chapterNumber).slice(0, 5);
   const examples = workedExamplesForChapter(chapterNumber).slice(0, 4);
@@ -242,6 +244,31 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
       relation: "notation becomes method",
       easy: `${algorithm.name} turns the chapter's idea into steps a learner could run.`,
       technical: `The method consumes the chapter's target/residual vocabulary and exposes implementation steps, pseudocode, and failure modes.`,
+    });
+  });
+
+  compareCards.forEach((card, index) => {
+    const id = nodeId(chapterNumber, "compare", card.title);
+    const algorithm = algorithms.find((item) => item.id === card.algorithmId) ?? algorithms[index % Math.max(algorithms.length, 1)];
+    addNode({
+      id,
+      chapter: chapterNumber,
+      kind: "compare",
+      title: `${card.algorithmName} vs ${card.compareWith}`,
+      easy: `${card.primaryQuestion} ${card.plainComparison}`,
+      technical: `${card.technicalComparison} Tradeoff: ${card.tradeoff}`,
+      route: `/chapters/${chapterNumber}#method-compare`,
+      tags: [card.family, card.algorithmName, card.compareWith, ...card.tags],
+      ...ringPoint("compare", index, compareCards.length),
+    });
+    addEdge({
+      id: edgeId(algorithm ? nodeId(chapterNumber, "algorithm", algorithm.name) : centerId, id, "compare"),
+      chapter: chapterNumber,
+      from: algorithm ? nodeId(chapterNumber, "algorithm", algorithm.name) : centerId,
+      to: id,
+      relation: "method gets compared",
+      easy: `The comparison node asks when to choose the method instead of a nearby alternative.`,
+      technical: `The comparison node exposes choice criteria, profile axes, tradeoffs, failure checks, and transfer bridges.`,
     });
   });
 
@@ -473,7 +500,7 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
   return {
     chapter: chapterNumber,
     title: chapter.title,
-    promise: `Graphical map for Chapter ${chapterNumber}: start from the chapter node, move through concepts, section mastery checks, formulas, decoded symbols, proof sketches, methods, code scaffolds, assumptions, examples, practice, exercise solutions, chapter exams, and simulator knobs, then check prerequisites and unlocks.`,
+    promise: `Graphical map for Chapter ${chapterNumber}: start from the chapter node, move through concepts, section mastery checks, formulas, decoded symbols, proof sketches, methods, comparison boards, code scaffolds, assumptions, examples, practice, exercise solutions, chapter exams, and simulator knobs, then check prerequisites and unlocks.`,
     route: `/chapters/${chapterNumber}`,
     nodes,
     edges,
@@ -483,7 +510,8 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
       "Open section mastery nodes to test whether you can teach each named section cold.",
       "Move to formulas only after you can draw the concept and pass the section check.",
       "Decode symbol nodes before opening proof nodes that explain why the equation or chapter claim is valid.",
-      "Use algorithm and code nodes to turn the proven target into variables, loops, invariants, and tests.",
+      "Use algorithm nodes to name the procedure, then comparison nodes to choose among nearby methods by data, target, backup style, model use, and failure risk.",
+      "Use code nodes to turn the chosen method into variables, loops, invariants, and tests.",
       "Open assumption nodes to see when the method is valid, what guarantee it wants, and how to repair broken conditions.",
       "Use examples and practice nodes to rehearse the idea, then open exercise solution nodes to attempt, debug, and extend numbered problems.",
       "Open exam nodes to grade and transfer mastery.",
@@ -515,6 +543,7 @@ export const graphLegend: ChapterLearningGraph["legend"] = [
   { kind: "symbol", label: "Symbol", easy: "A mathematical mark decoded in plain English.", technical: "Notation semantics, formula context, pitfalls, and self-checks." },
   { kind: "proof", label: "Proof", easy: "Why the claim should be believed.", technical: "Claim, ingredients, proof sketch, equation bridge, and stress test." },
   { kind: "algorithm", label: "Algorithm", easy: "The procedure that changes estimates or behavior.", technical: "Target, residual, update, control pressure, and failure mode." },
+  { kind: "compare", label: "Method comparison", easy: "When to choose one method over a nearby alternative.", technical: "Choice criteria, profile axes, tradeoffs, failure checks, and transfer bridges." },
   { kind: "code", label: "Code lab", easy: "A method rewritten as implementation scaffolding.", technical: "State, target, update, invariants, tests, and debug checks." },
   { kind: "assumption", label: "Assumption", easy: "When the method deserves trust.", technical: "Data, target, update, representation, guarantee, failure, and repair conditions." },
   { kind: "example", label: "Worked example", easy: "A tiny world where the idea moves.", technical: "Trace-level evidence for the update." },
@@ -534,6 +563,7 @@ function ringPoint(kind: LearningGraphNodeKind, index: number, total: number): {
     symbol: { start: 255, end: 375, radius: 41 },
     proof: { start: 285, end: 405, radius: 33 },
     algorithm: { start: 25, end: 155, radius: 34 },
+    compare: { start: 350, end: 470, radius: 38 },
     code: { start: 15, end: 145, radius: 43 },
     assumption: { start: 335, end: 455, radius: 45 },
     example: { start: 65, end: 150, radius: 48 },
