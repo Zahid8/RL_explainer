@@ -28,6 +28,7 @@ import { conceptCardsForChapter } from "@/lib/conceptAtlas";
 import { codeLabCardsForChapter } from "@/lib/codeLab";
 import { sectionMasteryCardsForChapter } from "@/lib/sectionMastery";
 import { sectionLessonsForChapter } from "@/lib/sectionNarratives";
+import { socraticTutorCardsForChapter } from "@/lib/socraticTutor";
 import { standaloneLectureForChapter } from "@/lib/standaloneBook";
 import { symbolCardsForChapter } from "@/lib/symbolAtlas";
 import { zeroKnowledgeLadderForChapter } from "@/lib/zeroKnowledgeLadders";
@@ -39,6 +40,7 @@ export type BookIndexLayer =
   | "math rescue"
   | "visual story"
   | "analogy bridge"
+  | "socratic tutor"
   | "lecture theater"
   | "symbol decoder"
   | "implementation code lab"
@@ -116,6 +118,7 @@ function buildBookIndexEntries(): BookIndexEntry[] {
     const mathCards = mathRescueCardsForChapter(chapter.n);
     const visualStories = visualStoriesForChapter(chapter.n);
     const analogies = analogiesForChapter(chapter.n);
+    const tutorCards = socraticTutorCardsForChapter(chapter.n);
     const theater = lectureTheaterForChapter(chapter.n);
     const symbolCards = symbolCardsForChapter(chapter.n);
     const codeCards = codeLabCardsForChapter(chapter.n);
@@ -253,6 +256,18 @@ function buildBookIndexEntries(): BookIndexEntry[] {
       technical: `${card.technical} Limits: ${card.limits} Transfer: ${card.transfer}`,
       tags: [card.sourceLabel, card.anchor, ...card.tags, `Chapter ${chapter.n}`],
       weight: 92,
+    }));
+
+    tutorCards.forEach((card) => add({
+      ...chapterBase,
+      id: card.id,
+      title: `Socratic tutor: ${card.title.replace(/^Tutor: /, "")}`,
+      layer: "socratic tutor",
+      route: `/chapters/${chapter.n}#socratic-tutor`,
+      summary: `${card.learnerQuestion} Hint: ${card.tutorHint} Board: ${card.boardSteps.join(" ")}`,
+      technical: `${card.technicalAnswer} Try it: ${card.tryIt} Expected answer: ${card.expectedAnswer}`,
+      tags: [card.sourceLabel, card.anchor, ...card.tags, `Chapter ${chapter.n}`],
+      weight: 91,
     }));
 
     theater.slides.forEach((slide) => add({
