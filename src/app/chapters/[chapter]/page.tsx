@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { TeX } from "@/components/Math";
 import { AnimatedConceptGraphic } from "@/components/AnimatedConceptGraphic";
 import { ChapterPracticeCoach } from "@/components/ChapterPracticeCoach";
+import { ChapterLectureTheater } from "@/components/ChapterLectureTheater";
 import { ChapterSimulatorLab } from "@/components/ChapterSimulatorLab";
 import { ConceptLectureDeck } from "@/components/ConceptLectureDeck";
 import { FormulaLectureReader } from "@/components/FormulaLectureReader";
@@ -29,6 +30,7 @@ import { practiceCardsForChapter, practiceModeCount, type ChapterPracticeCard } 
 import { conceptCardsForChapter, conceptModeCount, type ChapterConceptCard } from "@/lib/conceptAtlas";
 import { workedExamplesForChapter, workedExampleModeCount, type ChapterWorkedExample } from "@/lib/chapterWorkedExamples";
 import { misconceptionCardsForChapter, misconceptionModeCount, type ChapterMisconceptionCard } from "@/lib/chapterMisconceptions";
+import { lectureTheaterForChapter, lectureTheaterModeCount, lectureTheaterSlideCount, type ChapterLectureTheater as ChapterLectureTheaterData } from "@/lib/chapterLectureTheater";
 import { simulatorControlCount, simulatorForChapter, simulatorReadoutCount, type ChapterSimulator } from "@/lib/chapterSimulators";
 import { formulaLectureModeCount, formulasForChapter } from "@/lib/formulaAtlas";
 import { blackboardForChapter } from "@/lib/interactiveBlackboards";
@@ -76,6 +78,9 @@ export default async function ChapterPage({ params }: { params: Params }) {
   const lecture = standaloneLectureForChapter(item);
   const starter = zeroKnowledgeLadderForChapter(item.n);
   const starterModes = zeroKnowledgeModeCount(item.n);
+  const theater = lectureTheaterForChapter(item.n);
+  const theaterSlides = lectureTheaterSlideCount(item.n);
+  const theaterModes = lectureTheaterModeCount(item.n);
   const practiceCards = practiceCardsForChapter(item.n);
   const practiceModes = practiceModeCount(item.n);
   const conceptCards = conceptCardsForChapter(item.n);
@@ -114,6 +119,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
               <AnimatedConceptGraphic label={`Chapter ${item.n} motion map`} variant="chapter" caption={item.easy} compact />
               <div className="grid grid-cols-2 overflow-hidden rounded-xl border border-line bg-white">
                 <Stat value={String(starter.rungs.length)} label="starter rungs" />
+                <Stat value={String(theaterSlides)} label="theater slides" />
+                <Stat value={String(theaterModes)} label="theater modes" />
                 <Stat value={String(deep?.sectionDetails.length ?? item.sections.length)} label="section notes" />
                 <Stat value={String(algorithms.length)} label="algorithms" />
                 <Stat value={String(formulas.length)} label="formula cards" />
@@ -143,9 +150,11 @@ export default async function ChapterPage({ params }: { params: Params }) {
           <AnimatedConceptGraphic label="Story loop" variant="loop" caption="The easy story and the technical story update each other: intuition points at notation, notation checks intuition." compact />
         </section>
 
-        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, starterRungs: starter.rungs.length, starterModes, practiceCards: practiceCards.length, practiceModes, conceptCards: conceptCards.length, conceptModes, workedExamples: workedExamples.length, workedExampleModes, misconceptionCards: misconceptionCards.length, misconceptionModes, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, sectionLessons: sectionLessons.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, formulaModes, evidence: evidence.length, exercises: exercises.length, simulatorControls, simulatorReadouts, sourceAudits: sourceAudits.length }} />
+        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, starterRungs: starter.rungs.length, starterModes, theaterSlides, theaterModes, practiceCards: practiceCards.length, practiceModes, conceptCards: conceptCards.length, conceptModes, workedExamples: workedExamples.length, workedExampleModes, misconceptionCards: misconceptionCards.length, misconceptionModes, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, sectionLessons: sectionLessons.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, formulaModes, evidence: evidence.length, exercises: exercises.length, simulatorControls, simulatorReadouts, sourceAudits: sourceAudits.length }} />
 
         <ChapterStarterLadderBlock chapter={item} starter={starter} starterModes={starterModes} />
+
+        <ChapterLectureTheaterBlock chapter={item} theater={theater} theaterSlides={theaterSlides} theaterModes={theaterModes} />
 
         <ChapterPracticeBlock chapter={item} cards={practiceCards} practiceModes={practiceModes} />
 
@@ -330,9 +339,10 @@ function Stat({ value, label }: { value: string; label: string }) {
   );
 }
 
-function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; starterRungs: number; starterModes: number; practiceCards: number; practiceModes: number; conceptCards: number; conceptModes: number; workedExamples: number; workedExampleModes: number; misconceptionCards: number; misconceptionModes: number; simulatorControls: number; simulatorReadouts: number; manuscriptSections: number; blackboardStages: number; sectionLessons: number; lectureBeats: number; sections: number; formulas: number; formulaModes: number; evidence: number; exercises: number; sourceAudits: number } }) {
+function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; starterRungs: number; starterModes: number; theaterSlides: number; theaterModes: number; practiceCards: number; practiceModes: number; conceptCards: number; conceptModes: number; workedExamples: number; workedExampleModes: number; misconceptionCards: number; misconceptionModes: number; simulatorControls: number; simulatorReadouts: number; manuscriptSections: number; blackboardStages: number; sectionLessons: number; lectureBeats: number; sections: number; formulas: number; formulaModes: number; evidence: number; exercises: number; sourceAudits: number } }) {
   const items = [
     ["starter", `${counts.starterRungs} starter rungs · ${counts.starterModes} modes`],
+    ["theater", `${counts.theaterSlides} lecture slides · ${counts.theaterModes} modes`],
     ["practice", `${counts.practiceCards} practice checks · ${counts.practiceModes} modes`],
     ["concepts", `${counts.conceptCards} concepts · ${counts.conceptModes} modes`],
     ["worked", `${counts.workedExamples} worked examples · ${counts.workedExampleModes} modes`],
@@ -409,6 +419,24 @@ function ChapterStarterLadderBlock({ chapter, starter, starterModes }: { chapter
           <p className="text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Chapter {chapter.n} starter promise:</span> {starter.promise} The {starter.rungs.length} rungs below expose {starterModes} learning modes before the dense chapter layers begin.</p>
         </div>
         <ZeroKnowledgeLadderReader ladders={[starter]} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} />
+      </div>
+    </section>
+  );
+}
+
+function ChapterLectureTheaterBlock({ chapter, theater, theaterSlides, theaterModes }: { chapter: (typeof chapters)[number]; theater: ChapterLectureTheaterData; theaterSlides: number; theaterModes: number }) {
+  return (
+    <section id="theater" className="scroll-mt-24">
+      <SectionTitle
+        eyebrow="00y - Guided lecture theater"
+        title="Walk the chapter as a graphical lecture, not a checklist."
+        lead="This layer gives the chapter a live five-slide lecture path: beginner story, board drawing, technical pass, equation lens, and teach-back check. It is designed for readers starting from zero and climbing toward advanced transfer."
+      />
+      <div className="mt-6 grid gap-4">
+        <div className="rounded-xl border border-cyan/30 bg-cyan/[0.06] p-4">
+          <p className="text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Chapter {chapter.n} lecture theater:</span> {theaterSlides} slides expose {theaterModes} beginner, picture, technical, equation, and check modes before the practice and dense chapter layers begin.</p>
+        </div>
+        <ChapterLectureTheater theaters={[theater]} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} />
       </div>
     </section>
   );

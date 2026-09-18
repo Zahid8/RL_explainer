@@ -5,8 +5,9 @@ A standalone, light-theme web textbook for `../RLbook2020.pdf` (Sutton & Barto, 
 ## What is included
 
 - Hero overview with the RL learning-loop visual and standalone web-book framing.
-- Linear standalone book reader at `/book`, rendering all 17 chapters in order with table-of-contents anchors, zero-knowledge starter ladders, active-recall practice coaches, concept microscopes, worked example studios, misconception clinics, chapter simulator labs, bespoke manuscript prose, clickable interactive blackboards, full section-level textbook manuscripts, guided section lecture controls, interactive formula lecture controls, from-zero explanations, visual mental models, section lecture beats, board-work steps, and links to full chapter labs.
+- Linear standalone book reader at `/book`, rendering all 17 chapters in order with table-of-contents anchors, zero-knowledge starter ladders, guided lecture theaters, active-recall practice coaches, concept microscopes, worked example studios, misconception clinics, chapter simulator labs, bespoke manuscript prose, clickable interactive blackboards, full section-level textbook manuscripts, guided section lecture controls, interactive formula lecture controls, from-zero explanations, visual mental models, section lecture beats, board-work steps, and links to full chapter labs.
 - Zero-knowledge primer for readers with no RL background: 85 chapter starter rungs and 340 primer modes across plain explanation, board picture, technical pass, and practice prompt.
+- Guided chapter lecture theater with 17 chapter theaters, 85 slide stages, and 425 modes across beginner story, board picture, technical pass, equation lens, and teach-back check.
 - Active-recall practice coach with 85 chapter checkpoints and 425 reveal modes across prompt, hint, solution, trap, and transfer views.
 - Concept microscope with 136 chapter concept cards and 680 lecture modes across plain role, board picture, technical use, contrast, and self-check views.
 - Worked example studio with 85 chapter examples and 425 worked modes across scenario, board steps, technical trace, pitfall, and self-check views.
@@ -17,6 +18,7 @@ A standalone, light-theme web textbook for `../RLbook2020.pdf` (Sutton & Barto, 
 - Chapter-by-chapter explorer for all 17 chapters, with:
   - links to standalone chapter pages at `/chapters/1` through `/chapters/17`,
   - a zero-knowledge starter ladder for every chapter with five prerequisite rungs and four interactive modes per rung,
+  - a guided lecture theater for every chapter with five slide stages and five beginner-to-advanced explanation modes,
   - an active-recall practice coach for every chapter with five checkpoint cards and five reveal modes per card,
   - a concept microscope for every chapter that teaches key terms and notation as plain role, board picture, technical use, contrast, and self-check,
   - a worked example studio for every chapter with toy worlds, board traces, tiny target calculations, method traces, and debug repairs,
@@ -65,6 +67,7 @@ A standalone, light-theme web textbook for `../RLbook2020.pdf` (Sutton & Barto, 
 - Standalone, highly detailed chapter pages for every chapter, each combining:
   - Original chapter manuscript with beginner explanation, graphical lecture, technical version, and takeaway for each main move,
   - Zero-knowledge starter ladder that teaches prerequisite intuition before the chapter manuscript and technical cards,
+  - Guided lecture theater that walks from beginner story to board picture, technical pass, equation lens, and teach-back check,
   - Active-recall practice coach that asks readers to explain, draw, read math, choose methods, repair misconceptions, and transfer the idea before revealing the answer,
   - Concept microscope that makes important words and symbols earn an everyday role, a board drawing, a technical use, a contrast, and a self-check,
   - Worked example studio that turns the chapter into tiny solved cases before exercises,
@@ -86,8 +89,8 @@ A standalone, light-theme web textbook for `../RLbook2020.pdf` (Sutton & Barto, 
   - figure/example anchors,
   - exercise coaching.
 - Global algorithm index page at `/algorithms` with chapter coverage dashboard, family grouping, source cue mapping, and direct links to all expanded cards.
-- Whole-book coverage audit page at `/coverage` proving chapter route coverage, zero-knowledge starter coverage, active-recall practice coverage, concept microscope coverage, worked example coverage, misconception clinic coverage, chapter simulator lab coverage, manuscript coverage, section-level textbook coverage, guided section lecture coverage, interactive formula lecture coverage, interactive blackboard coverage, and algorithm detail-layer completeness from current repository data.
-- Animated and interactive graphics throughout the site: every homepage section, chapter header/story block, concept microscope, worked example studio, misconception clinic, chapter simulator lab, chapter section heading, formula reader, algorithm card, global algorithm index card/chapter cluster, and coverage section gets reusable hover/click reinforcement-learning motion sketches; every chapter also has a 4-stage blackboard; dense explanation cards, metrics, panels, proof blocks, notes, and study-route cards use animated micro-glyphs.
+- Whole-book coverage audit page at `/coverage` proving chapter route coverage, zero-knowledge starter coverage, guided lecture theater coverage, active-recall practice coverage, concept microscope coverage, worked example coverage, misconception clinic coverage, chapter simulator lab coverage, manuscript coverage, section-level textbook coverage, guided section lecture coverage, interactive formula lecture coverage, interactive blackboard coverage, and algorithm detail-layer completeness from current repository data.
+- Animated and interactive graphics throughout the site: every homepage section, chapter header/story block, guided lecture theater, concept microscope, worked example studio, misconception clinic, chapter simulator lab, chapter section heading, formula reader, algorithm card, global algorithm index card/chapter cluster, and coverage section gets reusable hover/click reinforcement-learning motion sketches; every chapter also has a 4-stage blackboard; dense explanation cards, metrics, panels, proof blocks, notes, and study-route cards use animated micro-glyphs.
 - Algorithm catalog with 109 detailed algorithm/procedure cards across the book, including:
   - objective and core update,
   - operational steps,
@@ -124,7 +127,7 @@ npm run build
 npm run start -- -p 3510
 ```
 
-The latest validation was run on port `3510` with desktop and mobile headless Chrome screenshots under `tmp/qa/` (ignored by git). The animation QA also uses headless Chrome/CDP to click phase controls, confirm moving SVG dots and CSS animation names, and check that controls do not overflow on desktop or mobile routes. The concept microscope QA clicks concept and mode buttons on `/chapters/1`, verifies `data-concept`/`data-mode` changes, and checks for zero button overflow plus an active `rl-dash` animation. The worked-example QA clicks example and mode buttons, verifies `data-example`/`data-mode` changes, and checks the same overflow and animation invariants. The misconception-clinic QA clicks repair-card and mode buttons, verifies `data-card`/`data-mode` changes, and checks the same overflow and animation invariants. The chapter-simulator QA moves a range slider, verifies `data-exploration` changes, and checks the same overflow and animation invariants.
+The latest validation was run on port `3510` with desktop and mobile headless Chrome screenshots under `tmp/qa/` (ignored by git). The animation QA also uses headless Chrome/CDP to click phase controls, confirm moving SVG dots and CSS animation names, and check that controls do not overflow on desktop or mobile routes. The guided-lecture-theater QA clicks slide and mode buttons, verifies `data-slide`/`data-mode` changes, and checks for zero button overflow plus an active `rl-dash` animation. The concept microscope QA clicks concept and mode buttons on `/chapters/1`, verifies `data-concept`/`data-mode` changes, and checks for zero button overflow plus an active `rl-dash` animation. The worked-example QA clicks example and mode buttons, verifies `data-example`/`data-mode` changes, and checks the same overflow and animation invariants. The misconception-clinic QA clicks repair-card and mode buttons, verifies `data-card`/`data-mode` changes, and checks the same overflow and animation invariants. The chapter-simulator QA moves a range slider, verifies `data-exploration` changes, and checks the same overflow and animation invariants.
 
 ## Public tunnel
 
@@ -149,6 +152,7 @@ Local runtime pieces on this workstation:
 - `src/lib/chapterSynthesis.ts` - chapter-level synthesis ladders connecting each chapter story to its algorithms, comparison axes, study protocol, and oral-exam checks.
 - `src/lib/chapterDependencyMap.ts` - cross-chapter prerequisite/unlock maps, concept gates, skip risks, and review loops for every chapter page.
 - `src/lib/zeroKnowledgeLadders.ts` - 85 starter rungs across all chapters, each with plain, visual, technical, and practice modes for readers who know no RL yet.
+- `src/lib/chapterLectureTheater.ts` - 17 guided chapter theaters with 85 slide stages and 425 beginner/picture/technical/equation/check modes.
 - `src/lib/chapterPractice.ts` - 85 active-recall checkpoints across all chapters with prompt, hint, solution, trap, and transfer modes.
 - `src/lib/conceptAtlas.ts` - chapter concept microscope data generated from original chapter/section modules, with plain, visual, technical, contrast, and self-check modes.
 - `src/lib/chapterWorkedExamples.ts` - 85 worked examples across all chapters with scenario, board, trace, pitfall, and self-check modes.
@@ -160,6 +164,7 @@ Local runtime pieces on this workstation:
 - `src/components/SectionLessonReader.tsx` - client-side guided lecture console for section manuscripts, exposing six modes per section with an animated board.
 - `src/components/FormulaLectureReader.tsx` - client-side equation lecture console for formula cards, exposing story, symbols, trace, use-case, and pitfall modes with an animated equation board.
 - `src/components/ZeroKnowledgeLadderReader.tsx` - client-side starter ladder console that lets readers choose chapter/rung and switch among plain, visual, technical, and practice modes.
+- `src/components/ChapterLectureTheater.tsx` - client-side lecture theater console for choosing chapter, slide, and beginner-to-advanced explanation mode.
 - `src/components/ChapterPracticeCoach.tsx` - client-side active-recall console that reveals prompt, hint, solution, trap, and transfer views after the reader tries the checkpoint.
 - `src/components/ConceptLectureDeck.tsx` - client-side concept microscope console for switching among plain role, board picture, technical use, contrast, and self-check views.
 - `src/components/WorkedExampleStudio.tsx` - client-side worked-example console for switching among scenario, board, technical trace, pitfall, and self-check modes.
