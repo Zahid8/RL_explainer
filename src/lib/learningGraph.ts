@@ -18,9 +18,10 @@ import { proofCardsForChapter } from "@/lib/proofLab";
 import { chapters } from "@/lib/paper";
 import { sectionMasteryCardsForChapter } from "@/lib/sectionMastery";
 import { socraticTutorCardsForChapter } from "@/lib/socraticTutor";
+import { caseStudiesForChapter } from "@/lib/caseStudies";
 import { symbolCardsForChapter } from "@/lib/symbolAtlas";
 
-export type LearningGraphNodeKind = "chapter" | "foundation" | "math" | "story" | "analogy" | "tutor" | "concept" | "section" | "formula" | "symbol" | "proof" | "algorithm" | "compare" | "code" | "assumption" | "example" | "practice" | "exercise" | "exam" | "simulator" | "prerequisite" | "unlock";
+export type LearningGraphNodeKind = "chapter" | "foundation" | "math" | "story" | "analogy" | "tutor" | "case" | "concept" | "section" | "formula" | "symbol" | "proof" | "algorithm" | "compare" | "code" | "assumption" | "example" | "practice" | "exercise" | "exam" | "simulator" | "prerequisite" | "unlock";
 
 export interface LearningGraphNode {
   id: string;
@@ -73,6 +74,7 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
   const storyCards = visualStoriesForChapter(chapterNumber).slice(0, 4);
   const analogyCards = analogiesForChapter(chapterNumber).slice(0, 4);
   const tutorCards = socraticTutorCardsForChapter(chapterNumber).slice(0, 4);
+  const caseStudies = caseStudiesForChapter(chapterNumber).slice(0, 4);
   const concepts = conceptCardsForChapter(chapterNumber).slice(0, 6);
   const sectionMasteryCards = sectionMasteryCardsForChapter(chapterNumber).slice(0, 4);
   const formulas = formulasForChapter(chapterNumber).slice(0, 4);
@@ -244,6 +246,34 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
     });
   });
 
+  caseStudies.forEach((card, index) => {
+    const id = nodeId(chapterNumber, "case", card.title);
+    const tutor = tutorCards[index % Math.max(tutorCards.length, 1)];
+    const analogy = analogyCards[index % Math.max(analogyCards.length, 1)];
+    const story = storyCards[index % Math.max(storyCards.length, 1)];
+    const from = tutor ? nodeId(chapterNumber, "tutor", tutor.title) : analogy ? nodeId(chapterNumber, "analogy", analogy.title) : story ? nodeId(chapterNumber, "story", story.title) : centerId;
+    addNode({
+      id,
+      chapter: chapterNumber,
+      kind: "case",
+      title: card.title,
+      easy: `${card.scene} Goal: ${card.learnerGoal}`,
+      technical: `${card.technicalPass} Debug: ${card.debugProbe}`,
+      route: `/chapters/${chapterNumber}#case-studies`,
+      tags: [card.sourceLabel, card.anchor, ...card.tags],
+      ...ringPoint("case", index, caseStudies.length),
+    });
+    addEdge({
+      id: edgeId(from, id, "case study"),
+      chapter: chapterNumber,
+      from,
+      to: id,
+      relation: "tutor dialogue becomes complete case",
+      easy: `The case node turns ${card.anchor} into a full scenario with a scene, board walk, debug probe, and transfer challenge.`,
+      technical: `The case study node connects source layer ${card.sourceLabel} to scene, board frames, technical pass, debug probe, success checks, and transfer.`,
+    });
+  });
+
   concepts.forEach((concept, index) => {
     const id = nodeId(chapterNumber, "concept", concept.term);
     addNode({
@@ -257,19 +287,20 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
       tags: [concept.kind, concept.section, ...concept.tags],
       ...ringPoint("concept", index, concepts.length),
     });
+    const caseStudy = caseStudies[index % Math.max(caseStudies.length, 1)];
     const tutor = tutorCards[index % Math.max(tutorCards.length, 1)];
     const analogy = analogyCards[index % Math.max(analogyCards.length, 1)];
     const story = storyCards[index % Math.max(storyCards.length, 1)];
     const foundation = foundations[index % Math.max(foundations.length, 1)];
-    const storyOrFoundationId = tutor ? nodeId(chapterNumber, "tutor", tutor.title) : analogy ? nodeId(chapterNumber, "analogy", analogy.title) : story ? nodeId(chapterNumber, "story", story.title) : foundation ? nodeId(chapterNumber, "foundation", foundation.term) : centerId;
+    const storyOrFoundationId = caseStudy ? nodeId(chapterNumber, "case", caseStudy.title) : tutor ? nodeId(chapterNumber, "tutor", tutor.title) : analogy ? nodeId(chapterNumber, "analogy", analogy.title) : story ? nodeId(chapterNumber, "story", story.title) : foundation ? nodeId(chapterNumber, "foundation", foundation.term) : centerId;
     addEdge({
       id: edgeId(storyOrFoundationId, id, "concept"),
       chapter: chapterNumber,
       from: storyOrFoundationId,
       to: id,
-      relation: "visual scene becomes concept",
-      easy: `The learner first watches a scene, then uses ${concept.term} as a named handle for the chapter story.`,
-      technical: `The concept node inherits visual-story context plus the chapter's formal objects and narrows them through ${concept.section}.`,
+      relation: "complete case becomes concept",
+      easy: `The learner first runs a complete case, then uses ${concept.term} as a named handle for the chapter story.`,
+      technical: `The concept node inherits case-study context plus the chapter's formal objects and narrows them through ${concept.section}.`,
     });
   });
 
@@ -654,7 +685,7 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
   return {
     chapter: chapterNumber,
     title: chapter.title,
-    promise: `Graphical map for Chapter ${chapterNumber}: start from the chapter node, move through foundation terms, math rescue objects, visual story scenes, analogy bridges, Socratic tutor dialogues, concepts, section mastery checks, formulas, decoded symbols, proof sketches, methods, comparison boards, code scaffolds, assumptions, examples, practice, exercise solutions, chapter exams, and simulator knobs, then check prerequisites and unlocks.`,
+    promise: `Graphical map for Chapter ${chapterNumber}: start from the chapter node, move through foundation terms, math rescue objects, visual story scenes, analogy bridges, Socratic tutor dialogues, case studies, concepts, section mastery checks, formulas, decoded symbols, proof sketches, methods, comparison boards, code scaffolds, assumptions, examples, practice, exercise solutions, chapter exams, and simulator knobs, then check prerequisites and unlocks.`,
     route: `/chapters/${chapterNumber}`,
     nodes,
     edges,
@@ -665,6 +696,7 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
       "Click visual story nodes to watch learner, world, choice, feedback, memory, and next move before formulas appear.",
       "Click analogy nodes to map a familiar story into exact RL objects and read the limits before trusting it.",
       "Click tutor nodes to ask a beginner question, take a hint, draw the board, read the technical answer, and try a fresh case.",
+      "Click case nodes to run one complete scenario through scene, board walk, technical translation, debug probe, and transfer.",
       "Click concept nodes until the plain story is clear.",
       "Open section mastery nodes to test whether you can teach each named section cold.",
       "Move to formulas only after you can draw the concept and pass the section check.",
@@ -701,6 +733,7 @@ export const graphLegend: ChapterLearningGraph["legend"] = [
   { kind: "story", label: "Visual story", easy: "A scene that makes the chapter visible before formulas.", technical: "Scene, observation, move, board animation, technical translation, pitfall, and check." },
   { kind: "analogy", label: "Analogy bridge", easy: "A familiar story mapped carefully to exact RL objects.", technical: "Everyday doorway, mapping rows, technical translation, limits, and transfer check." },
   { kind: "tutor", label: "Socratic tutor", easy: "A beginner question answered as a guided tutor loop.", technical: "Learner question, hint, board steps, technical answer, try-it prompt, expected answer, and misconception probe." },
+  { kind: "case", label: "Case study", easy: "A complete scenario where the chapter idea works end to end.", technical: "Scene, learner goal, board frames, technical pass, debug probe, success checks, and transfer challenge." },
   { kind: "concept", label: "Concept", easy: "A word or idea you should be able to draw.", technical: "A chapter-specific object, distinction, or warning." },
   { kind: "section", label: "Section mastery", easy: "A named section turned into a teach-back checkpoint.", technical: "Prompt, hint, answer, technical pass, diagnostic, and transfer for a section." },
   { kind: "formula", label: "Formula", easy: "A compact way to say the idea exactly.", technical: "Symbols, targets, expectations, and watch-outs." },
@@ -726,6 +759,7 @@ function ringPoint(kind: LearningGraphNodeKind, index: number, total: number): {
     story: { start: 145, end: 285, radius: 32 },
     analogy: { start: 125, end: 245, radius: 40 },
     tutor: { start: 110, end: 235, radius: 44 },
+    case: { start: 95, end: 220, radius: 47 },
     concept: { start: 205, end: 335, radius: 36 },
     section: { start: 175, end: 265, radius: 30 },
     formula: { start: 300, end: 420, radius: 25 },

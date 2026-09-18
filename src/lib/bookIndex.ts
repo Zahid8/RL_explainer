@@ -29,6 +29,7 @@ import { codeLabCardsForChapter } from "@/lib/codeLab";
 import { sectionMasteryCardsForChapter } from "@/lib/sectionMastery";
 import { sectionLessonsForChapter } from "@/lib/sectionNarratives";
 import { socraticTutorCardsForChapter } from "@/lib/socraticTutor";
+import { caseStudiesForChapter } from "@/lib/caseStudies";
 import { standaloneLectureForChapter } from "@/lib/standaloneBook";
 import { symbolCardsForChapter } from "@/lib/symbolAtlas";
 import { zeroKnowledgeLadderForChapter } from "@/lib/zeroKnowledgeLadders";
@@ -41,6 +42,7 @@ export type BookIndexLayer =
   | "visual story"
   | "analogy bridge"
   | "socratic tutor"
+  | "case study"
   | "lecture theater"
   | "symbol decoder"
   | "implementation code lab"
@@ -119,6 +121,7 @@ function buildBookIndexEntries(): BookIndexEntry[] {
     const visualStories = visualStoriesForChapter(chapter.n);
     const analogies = analogiesForChapter(chapter.n);
     const tutorCards = socraticTutorCardsForChapter(chapter.n);
+    const caseStudies = caseStudiesForChapter(chapter.n);
     const theater = lectureTheaterForChapter(chapter.n);
     const symbolCards = symbolCardsForChapter(chapter.n);
     const codeCards = codeLabCardsForChapter(chapter.n);
@@ -268,6 +271,18 @@ function buildBookIndexEntries(): BookIndexEntry[] {
       technical: `${card.technicalAnswer} Try it: ${card.tryIt} Expected answer: ${card.expectedAnswer}`,
       tags: [card.sourceLabel, card.anchor, ...card.tags, `Chapter ${chapter.n}`],
       weight: 91,
+    }));
+
+    caseStudies.forEach((card) => add({
+      ...chapterBase,
+      id: card.id,
+      title: `Case study: ${card.title}`,
+      layer: "case study",
+      route: `/chapters/${chapter.n}#case-studies`,
+      summary: `${card.scene} Walkthrough: ${card.walkthrough} Board: ${card.boardFrames.join(" ")}`,
+      technical: `${card.technicalPass} Debug: ${card.debugProbe} Transfer: ${card.transferChallenge}`,
+      tags: [card.sourceLabel, card.anchor, ...card.tags, `Chapter ${chapter.n}`],
+      weight: 90,
     }));
 
     theater.slides.forEach((slide) => add({
