@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AnimatedConceptGraphic } from "@/components/AnimatedConceptGraphic";
 import { ChapterPracticeCoach } from "@/components/ChapterPracticeCoach";
+import { CodeLab } from "@/components/CodeLab";
 import { ChapterLectureTheater } from "@/components/ChapterLectureTheater";
 import { ChapterSimulatorLab } from "@/components/ChapterSimulatorLab";
 import { ConceptLectureDeck } from "@/components/ConceptLectureDeck";
@@ -16,6 +17,7 @@ import { Chip } from "@/components/Section";
 import { ZeroKnowledgeLadderReader } from "@/components/ZeroKnowledgeLadderReader";
 import { manuscriptForChapter, manuscriptSectionCount, type ChapterManuscript } from "@/lib/chapterManuscripts";
 import { bookIndexEntryCount, bookIndexLayerCount } from "@/lib/bookIndex";
+import { codeLabCardsForChapter, codeLabModeCount, type CodeLabCard } from "@/lib/codeLab";
 import { learningGraphEdgeCount, learningGraphNodeCount } from "@/lib/learningGraph";
 import { blackboardForChapter, blackboardStageCount, type ChapterBlackboard } from "@/lib/interactiveBlackboards";
 import { practiceCardsForChapter, practiceModeCount, type ChapterPracticeCard } from "@/lib/chapterPractice";
@@ -60,6 +62,8 @@ const lectures = chapters.map((chapter) => ({
   sectionLessons: sectionLessonsForChapter(chapter.n),
   symbolCards: symbolCardsForChapter(chapter.n),
   symbolModes: symbolLectureModeCount(chapter.n),
+  codeCards: codeLabCardsForChapter(chapter.n),
+  codeModes: codeLabModeCount(chapter.n),
   formulas: formulasForChapter(chapter.n),
   formulaModes: formulaLectureModeCount(chapter.n),
 }));
@@ -86,6 +90,7 @@ export default function BookPage() {
   const graphNodes = learningGraphNodeCount();
   const graphEdges = learningGraphEdgeCount();
   const symbolModes = symbolLectureModeCount();
+  const codeModes = codeLabModeCount();
 
   return (
     <main className="min-h-screen bg-bg text-ink">
@@ -96,6 +101,7 @@ export default function BookPage() {
             <Link href="/search" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Search index</Link>
             <Link href="/graph" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Learning graph</Link>
             <Link href="/symbols" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Symbol decoder</Link>
+            <Link href="/code" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Code lab</Link>
             <Link href="/coverage" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Coverage audit</Link>
           </div>
           <div className="grid gap-8 lg:grid-cols-[1fr_440px] lg:items-end">
@@ -127,6 +133,7 @@ export default function BookPage() {
                 <Chip accent="lime">{graphNodes} graph nodes</Chip>
                 <Chip accent="cyan">{graphEdges} graph links</Chip>
                 <Chip accent="violet">{symbolModes} symbol modes</Chip>
+                <Chip accent="orange">{codeModes} code modes</Chip>
                 <Chip accent="lime">{lectureBeats} lecture beats</Chip>
                 <Chip accent="violet">beginner → advanced</Chip>
                 <Chip accent="orange">original wording</Chip>
@@ -144,6 +151,7 @@ export default function BookPage() {
                   <li>5. Use the search index when you remember a term but not the chapter.</li>
                   <li>6. Use the learning graph when you need to see why a concept, formula, algorithm, and example belong together.</li>
                   <li>7. Use the symbol decoder whenever a mathematical mark needs a plain meaning, technical role, pitfall, and self-check.</li>
+                  <li>8. Use the implementation code lab to translate algorithm names into state, target, update, invariants, tests, and debug checks.</li>
                 </ol>
               </div>
             </div>
@@ -167,19 +175,19 @@ export default function BookPage() {
         </aside>
 
         <div className="grid gap-12">
-          {lectures.map(({ chapter, lecture, starter, starterModes, theater, theaterSlides, theaterModes, practiceCards, practiceModes, conceptCards, conceptModes, workedExamples, workedExampleModes, misconceptionCards, misconceptionModes, simulator, simulatorControls, simulatorReadouts, manuscript, blackboard, sectionLessons, symbolCards, symbolModes, formulas, formulaModes }) => <BookChapter key={chapter.n} chapter={chapter} lecture={lecture} starter={starter} starterModes={starterModes} theater={theater} theaterSlides={theaterSlides} theaterModes={theaterModes} practiceCards={practiceCards} practiceModes={practiceModes} conceptCards={conceptCards} conceptModes={conceptModes} workedExamples={workedExamples} workedExampleModes={workedExampleModes} misconceptionCards={misconceptionCards} misconceptionModes={misconceptionModes} simulator={simulator} simulatorControls={simulatorControls} simulatorReadouts={simulatorReadouts} manuscript={manuscript} blackboard={blackboard} sectionLessons={sectionLessons} symbolCards={symbolCards} symbolModes={symbolModes} formulas={formulas} formulaModes={formulaModes} />)}
+          {lectures.map(({ chapter, lecture, starter, starterModes, theater, theaterSlides, theaterModes, practiceCards, practiceModes, conceptCards, conceptModes, workedExamples, workedExampleModes, misconceptionCards, misconceptionModes, simulator, simulatorControls, simulatorReadouts, manuscript, blackboard, sectionLessons, symbolCards, symbolModes, codeCards, codeModes, formulas, formulaModes }) => <BookChapter key={chapter.n} chapter={chapter} lecture={lecture} starter={starter} starterModes={starterModes} theater={theater} theaterSlides={theaterSlides} theaterModes={theaterModes} practiceCards={practiceCards} practiceModes={practiceModes} conceptCards={conceptCards} conceptModes={conceptModes} workedExamples={workedExamples} workedExampleModes={workedExampleModes} misconceptionCards={misconceptionCards} misconceptionModes={misconceptionModes} simulator={simulator} simulatorControls={simulatorControls} simulatorReadouts={simulatorReadouts} manuscript={manuscript} blackboard={blackboard} sectionLessons={sectionLessons} symbolCards={symbolCards} symbolModes={symbolModes} codeCards={codeCards} codeModes={codeModes} formulas={formulas} formulaModes={formulaModes} />)}
         </div>
       </div>
     </main>
   );
 }
 
-function BookChapter({ chapter, lecture, starter, starterModes, theater, theaterSlides, theaterModes, practiceCards, practiceModes, conceptCards, conceptModes, workedExamples, workedExampleModes, misconceptionCards, misconceptionModes, simulator, simulatorControls, simulatorReadouts, manuscript, blackboard, sectionLessons, symbolCards, symbolModes, formulas, formulaModes }: { chapter: (typeof chapters)[number]; lecture: StandaloneChapterLecture; starter: ZeroKnowledgeLadder; starterModes: number; theater: ChapterLectureTheaterData; theaterSlides: number; theaterModes: number; practiceCards: ChapterPracticeCard[]; practiceModes: number; conceptCards: ChapterConceptCard[]; conceptModes: number; workedExamples: ChapterWorkedExample[]; workedExampleModes: number; misconceptionCards: ChapterMisconceptionCard[]; misconceptionModes: number; simulator: ChapterSimulator; simulatorControls: number; simulatorReadouts: number; manuscript: ChapterManuscript; blackboard: ChapterBlackboard; sectionLessons: SectionTextbookLesson[]; symbolCards: SymbolCard[]; symbolModes: number; formulas: FormulaNote[]; formulaModes: number }) {
+function BookChapter({ chapter, lecture, starter, starterModes, theater, theaterSlides, theaterModes, practiceCards, practiceModes, conceptCards, conceptModes, workedExamples, workedExampleModes, misconceptionCards, misconceptionModes, simulator, simulatorControls, simulatorReadouts, manuscript, blackboard, sectionLessons, symbolCards, symbolModes, codeCards, codeModes, formulas, formulaModes }: { chapter: (typeof chapters)[number]; lecture: StandaloneChapterLecture; starter: ZeroKnowledgeLadder; starterModes: number; theater: ChapterLectureTheaterData; theaterSlides: number; theaterModes: number; practiceCards: ChapterPracticeCard[]; practiceModes: number; conceptCards: ChapterConceptCard[]; conceptModes: number; workedExamples: ChapterWorkedExample[]; workedExampleModes: number; misconceptionCards: ChapterMisconceptionCard[]; misconceptionModes: number; simulator: ChapterSimulator; simulatorControls: number; simulatorReadouts: number; manuscript: ChapterManuscript; blackboard: ChapterBlackboard; sectionLessons: SectionTextbookLesson[]; symbolCards: SymbolCard[]; symbolModes: number; codeCards: CodeLabCard[]; codeModes: number; formulas: FormulaNote[]; formulaModes: number }) {
   return (
     <article id={`book-chapter-${chapter.n}`} className="scroll-mt-24 overflow-hidden rounded-2xl border border-line bg-panel">
       <div className="grid gap-px bg-line lg:grid-cols-[0.9fr_1.1fr]">
         <div className="bg-panel p-6 lg:p-7">
-          <div className="flex flex-wrap gap-2"><Chip accent="cyan">Chapter {chapter.n}</Chip><Chip accent="blue">{chapter.part}</Chip><Chip accent="lime">{lecture.beats.length} section lessons</Chip><Chip accent="cyan">{theaterSlides} theater slides</Chip><Chip accent="blue">{theaterModes} theater modes</Chip><Chip accent="violet">{conceptCards.length} concepts</Chip><Chip accent="violet">{symbolCards.length} symbols</Chip><Chip accent="orange">{workedExamples.length} examples</Chip><Chip accent="orange">{misconceptionCards.length} clinics</Chip><Chip accent="cyan">{simulatorControls} sim controls</Chip><Chip accent="blue">{simulatorReadouts} readouts</Chip></div>
+          <div className="flex flex-wrap gap-2"><Chip accent="cyan">Chapter {chapter.n}</Chip><Chip accent="blue">{chapter.part}</Chip><Chip accent="lime">{lecture.beats.length} section lessons</Chip><Chip accent="cyan">{theaterSlides} theater slides</Chip><Chip accent="blue">{theaterModes} theater modes</Chip><Chip accent="violet">{conceptCards.length} concepts</Chip><Chip accent="violet">{symbolCards.length} symbols</Chip><Chip accent="orange">{codeCards.length} code labs</Chip><Chip accent="orange">{workedExamples.length} examples</Chip><Chip accent="orange">{misconceptionCards.length} clinics</Chip><Chip accent="cyan">{simulatorControls} sim controls</Chip><Chip accent="blue">{simulatorReadouts} readouts</Chip></div>
           <h2 className="display mt-5 text-[clamp(32px,5vw,56px)] font-medium text-ink">{chapter.title}</h2>
           <p className="mt-4 text-base leading-relaxed text-muted">{lecture.promise}</p>
           <div className="mt-5 grid gap-3">
@@ -265,6 +273,14 @@ function BookChapter({ chapter, lecture, starter, starterModes, theater, theater
             <p className="mt-2 text-sm leading-relaxed text-muted">{symbolCards.length} contextual symbol cards become {symbolModes} plain, technical, formula-context, pitfall, and self-check modes for this chapter.</p>
           </div>
           <SymbolDecoder cards={symbolCards} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} compact />
+        </section>
+        <section className="grid gap-4">
+          <div>
+            <p className="eyebrow">Implementation code lab</p>
+            <h3 className="display mt-2 text-3xl font-medium text-ink">Translate methods into state, targets, updates, tests, and debug checks.</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted">{codeCards.length} implementation labs become {codeModes} plain, code, invariant, tiny-test, and debug modes for this chapter.</p>
+          </div>
+          <CodeLab cards={codeCards} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} compact />
         </section>
         <section className="grid gap-4">
           <div>

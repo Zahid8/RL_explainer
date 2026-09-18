@@ -9,6 +9,7 @@ const links = [
   ["search", "Search"],
   ["graph", "Graph"],
   ["symbols", "Symbols"],
+  ["code", "Code"],
   ["recall", "Recall"],
   ["concepts", "Concepts"],
   ["worked", "Worked"],
@@ -77,6 +78,7 @@ export function Nav() {
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/search">Search</a>
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/graph">Graph</a>
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/symbols">Symbols</a>
+          <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/code">Code</a>
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/algorithms">109 algorithms</a>
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/coverage">Coverage</a>
         </div>
