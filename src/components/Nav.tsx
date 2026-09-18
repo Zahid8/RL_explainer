@@ -6,6 +6,7 @@ const links = [
   ["book", "Book"],
   ["primer", "Primer"],
   ["recall", "Recall"],
+  ["concepts", "Concepts"],
   ["terms", "Terms"],
   ["map", "Map"],
   ["chapters", "Chapters"],

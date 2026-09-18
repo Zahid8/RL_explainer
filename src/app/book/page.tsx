@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AnimatedConceptGraphic } from "@/components/AnimatedConceptGraphic";
 import { ChapterPracticeCoach } from "@/components/ChapterPracticeCoach";
+import { ConceptLectureDeck } from "@/components/ConceptLectureDeck";
 import { FormulaLectureReader } from "@/components/FormulaLectureReader";
 import { InteractiveBlackboard } from "@/components/InteractiveBlackboard";
 import { SectionLessonReader } from "@/components/SectionLessonReader";
@@ -11,6 +12,7 @@ import { ZeroKnowledgeLadderReader } from "@/components/ZeroKnowledgeLadderReade
 import { manuscriptForChapter, manuscriptSectionCount, type ChapterManuscript } from "@/lib/chapterManuscripts";
 import { blackboardForChapter, blackboardStageCount, type ChapterBlackboard } from "@/lib/interactiveBlackboards";
 import { practiceCardsForChapter, practiceModeCount, type ChapterPracticeCard } from "@/lib/chapterPractice";
+import { conceptCardsForChapter, conceptModeCount, type ChapterConceptCard } from "@/lib/conceptAtlas";
 import { formulaLectureModeCount, formulasForChapter, type FormulaNote } from "@/lib/formulaAtlas";
 import { chapters } from "@/lib/paper";
 import { sectionLessonModeCount, sectionLessonsForChapter, sectionNarrativeCount, type SectionTextbookLesson } from "@/lib/sectionNarratives";
@@ -22,7 +24,21 @@ export const metadata: Metadata = {
   description: "A linear standalone web-book reader for the RLbook explainer: from basics to advanced, chapter by chapter, in original words.",
 };
 
-const lectures = chapters.map((chapter) => ({ chapter, lecture: standaloneLectureForChapter(chapter), starter: zeroKnowledgeLadderForChapter(chapter.n), starterModes: zeroKnowledgeModeCount(chapter.n), practiceCards: practiceCardsForChapter(chapter.n), practiceModes: practiceModeCount(chapter.n), manuscript: manuscriptForChapter(chapter.n), blackboard: blackboardForChapter(chapter.n), sectionLessons: sectionLessonsForChapter(chapter.n), formulas: formulasForChapter(chapter.n), formulaModes: formulaLectureModeCount(chapter.n) }));
+const lectures = chapters.map((chapter) => ({
+  chapter,
+  lecture: standaloneLectureForChapter(chapter),
+  starter: zeroKnowledgeLadderForChapter(chapter.n),
+  starterModes: zeroKnowledgeModeCount(chapter.n),
+  practiceCards: practiceCardsForChapter(chapter.n),
+  practiceModes: practiceModeCount(chapter.n),
+  conceptCards: conceptCardsForChapter(chapter.n),
+  conceptModes: conceptModeCount(chapter.n),
+  manuscript: manuscriptForChapter(chapter.n),
+  blackboard: blackboardForChapter(chapter.n),
+  sectionLessons: sectionLessonsForChapter(chapter.n),
+  formulas: formulasForChapter(chapter.n),
+  formulaModes: formulaLectureModeCount(chapter.n),
+}));
 
 export default function BookPage() {
   const lectureBeats = standaloneLectureTileCount();
@@ -34,6 +50,7 @@ export default function BookPage() {
   const starterRungs = zeroKnowledgeRungCount();
   const starterModes = zeroKnowledgeModeCount();
   const activeRecallModes = practiceModeCount();
+  const conceptModes = conceptModeCount();
 
   return (
     <main className="min-h-screen bg-bg text-ink">
@@ -55,6 +72,7 @@ export default function BookPage() {
                 <Chip accent="lime">{starterRungs} starter rungs</Chip>
                 <Chip accent="cyan">{starterModes} primer modes</Chip>
                 <Chip accent="lime">{activeRecallModes} practice modes</Chip>
+                <Chip accent="violet">{conceptModes} concept modes</Chip>
                 <Chip accent="blue">{manuscriptSections} manuscript moves</Chip>
                 <Chip accent="violet">{blackboardStages} blackboard stages</Chip>
                 <Chip accent="cyan">{sectionNarratives} section manuscripts</Chip>
@@ -97,19 +115,19 @@ export default function BookPage() {
         </aside>
 
         <div className="grid gap-12">
-          {lectures.map(({ chapter, lecture, starter, starterModes, practiceCards, practiceModes, manuscript, blackboard, sectionLessons, formulas, formulaModes }) => <BookChapter key={chapter.n} chapter={chapter} lecture={lecture} starter={starter} starterModes={starterModes} practiceCards={practiceCards} practiceModes={practiceModes} manuscript={manuscript} blackboard={blackboard} sectionLessons={sectionLessons} formulas={formulas} formulaModes={formulaModes} />)}
+          {lectures.map(({ chapter, lecture, starter, starterModes, practiceCards, practiceModes, conceptCards, conceptModes, manuscript, blackboard, sectionLessons, formulas, formulaModes }) => <BookChapter key={chapter.n} chapter={chapter} lecture={lecture} starter={starter} starterModes={starterModes} practiceCards={practiceCards} practiceModes={practiceModes} conceptCards={conceptCards} conceptModes={conceptModes} manuscript={manuscript} blackboard={blackboard} sectionLessons={sectionLessons} formulas={formulas} formulaModes={formulaModes} />)}
         </div>
       </div>
     </main>
   );
 }
 
-function BookChapter({ chapter, lecture, starter, starterModes, practiceCards, practiceModes, manuscript, blackboard, sectionLessons, formulas, formulaModes }: { chapter: (typeof chapters)[number]; lecture: StandaloneChapterLecture; starter: ZeroKnowledgeLadder; starterModes: number; practiceCards: ChapterPracticeCard[]; practiceModes: number; manuscript: ChapterManuscript; blackboard: ChapterBlackboard; sectionLessons: SectionTextbookLesson[]; formulas: FormulaNote[]; formulaModes: number }) {
+function BookChapter({ chapter, lecture, starter, starterModes, practiceCards, practiceModes, conceptCards, conceptModes, manuscript, blackboard, sectionLessons, formulas, formulaModes }: { chapter: (typeof chapters)[number]; lecture: StandaloneChapterLecture; starter: ZeroKnowledgeLadder; starterModes: number; practiceCards: ChapterPracticeCard[]; practiceModes: number; conceptCards: ChapterConceptCard[]; conceptModes: number; manuscript: ChapterManuscript; blackboard: ChapterBlackboard; sectionLessons: SectionTextbookLesson[]; formulas: FormulaNote[]; formulaModes: number }) {
   return (
     <article id={`book-chapter-${chapter.n}`} className="scroll-mt-24 overflow-hidden rounded-2xl border border-line bg-panel">
       <div className="grid gap-px bg-line lg:grid-cols-[0.9fr_1.1fr]">
         <div className="bg-panel p-6 lg:p-7">
-          <div className="flex flex-wrap gap-2"><Chip accent="cyan">Chapter {chapter.n}</Chip><Chip accent="blue">{chapter.part}</Chip><Chip accent="lime">{lecture.beats.length} section lessons</Chip></div>
+          <div className="flex flex-wrap gap-2"><Chip accent="cyan">Chapter {chapter.n}</Chip><Chip accent="blue">{chapter.part}</Chip><Chip accent="lime">{lecture.beats.length} section lessons</Chip><Chip accent="violet">{conceptCards.length} concepts</Chip></div>
           <h2 className="display mt-5 text-[clamp(32px,5vw,56px)] font-medium text-ink">{chapter.title}</h2>
           <p className="mt-4 text-base leading-relaxed text-muted">{lecture.promise}</p>
           <div className="mt-5 grid gap-3">
@@ -171,6 +189,14 @@ function BookChapter({ chapter, lecture, starter, starterModes, practiceCards, p
             <p className="mt-2 text-sm leading-relaxed text-muted">{practiceCards.length} checkpoints become {practiceModes} prompt, hint, solution, trap, and transfer modes for this chapter.</p>
           </div>
           <ChapterPracticeCoach cards={practiceCards} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} compact />
+        </section>
+        <section className="grid gap-4">
+          <div>
+            <p className="eyebrow">Concept microscope</p>
+            <h3 className="display mt-2 text-3xl font-medium text-ink">Make the chapter vocabulary earn its meaning before dense notation.</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted">{conceptCards.length} concept cards become {conceptModes} plain, visual, technical, contrast, and self-check modes for this chapter.</p>
+          </div>
+          <ConceptLectureDeck concepts={conceptCards} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} compact />
         </section>
         <section className="grid gap-4">
           <div>

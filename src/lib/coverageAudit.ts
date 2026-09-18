@@ -10,6 +10,7 @@ import { chapterDeepDives } from "@/lib/deepDives";
 import { evidenceGuideItems } from "@/lib/evidenceGuide";
 import { exerciseCoachCards } from "@/lib/exerciseCoach";
 import { practiceCardCount, practiceCardsForChapter, practiceModeCount, practiceModes } from "@/lib/chapterPractice";
+import { conceptCardCount, conceptCardsForChapter, conceptLectureModes, conceptModeCount } from "@/lib/conceptAtlas";
 import { formulaAtlas, formulaLectureModeCount, formulaLectureModes, formulasForChapter } from "@/lib/formulaAtlas";
 import { chapterMastery } from "@/lib/mastery";
 import { manuscriptForChapter, manuscriptSectionCount } from "@/lib/chapterManuscripts";
@@ -37,6 +38,8 @@ export interface ChapterCoverageRow {
   zeroKnowledgeModes: number;
   practiceCards: number;
   practiceInteractiveModes: number;
+  conceptCards: number;
+  conceptInteractiveModes: number;
   manuscriptSections: number;
   blackboardStages: number;
   sectionNarratives: number;
@@ -89,6 +92,8 @@ export interface CoverageAudit {
     zeroKnowledgeModes: number;
     practiceCards: number;
     practiceInteractiveModes: number;
+    conceptCards: number;
+    conceptInteractiveModes: number;
     manuscriptSections: number;
     blackboardStages: number;
     sectionNarratives: number;
@@ -116,6 +121,8 @@ export function buildCoverageAudit(): CoverageAudit {
   const zeroKnowledgeModeTotal = zeroKnowledgeModeCount();
   const activeRecallCards = practiceCardCount();
   const activeRecallModes = practiceModeCount();
+  const conceptCards = conceptCardCount();
+  const conceptModes = conceptModeCount();
   const manuscriptSections = manuscriptSectionCount();
   const blackboardStages = blackboardStageCount();
   const sectionNarratives = sectionNarrativeCount();
@@ -138,6 +145,8 @@ export function buildCoverageAudit(): CoverageAudit {
     zeroKnowledgeModes: zeroKnowledgeModeTotal,
     practiceCards: activeRecallCards,
     practiceInteractiveModes: activeRecallModes,
+    conceptCards,
+    conceptInteractiveModes: conceptModes,
     manuscriptSections,
     blackboardStages,
     sectionNarratives,
@@ -179,6 +188,8 @@ function chapterCoverageRow(chapterNumber: number): ChapterCoverageRow {
   const starter = zeroKnowledgeLadderForChapter(chapterNumber);
   const practiceCards = practiceCardsForChapter(chapterNumber);
   const activeRecallModes = practiceModeCount(chapterNumber);
+  const conceptCards = conceptCardsForChapter(chapterNumber);
+  const conceptModes = conceptModeCount(chapterNumber);
   const manuscript = manuscriptForChapter(chapterNumber);
   const blackboard = blackboardForChapter(chapterNumber);
   const sectionLessons = sectionLessonsForChapter(chapterNumber);
@@ -189,6 +200,7 @@ function chapterCoverageRow(chapterNumber: number): ChapterCoverageRow {
     "standalone route",
     "zero-knowledge starter ladder",
     "active recall practice coach",
+    "concept microscope",
     "original manuscript",
     "interactive blackboard",
     "section textbook manuscript",
@@ -212,6 +224,8 @@ function chapterCoverageRow(chapterNumber: number): ChapterCoverageRow {
     starter.rungs.length * zeroKnowledgeModes.length >= 20 ? "" : "Zero-knowledge starter ladder does not expose all four modes for every rung.",
     practiceCards.length >= 5 ? "" : "Active recall practice coach has fewer than five checkpoints.",
     practiceCards.length * practiceModes.length === activeRecallModes ? "" : "Active recall practice coach count does not match practice mode coverage.",
+    conceptCards.length >= 6 ? "" : "Concept microscope has fewer than six chapter concepts.",
+    conceptCards.length * conceptLectureModes.length === conceptModes ? "" : "Concept microscope count does not match concept mode coverage.",
     manuscript.sections.length >= 3 ? "" : "Original manuscript has fewer than three chapter-specific moves.",
     blackboard.stages.length >= 4 ? "" : "Interactive blackboard has fewer than four stages.",
     sectionLessons.length >= (deep?.sectionDetails.length ?? chapter.sections.length) ? "" : "Section textbook manuscript does not cover every section.",
@@ -232,6 +246,8 @@ function chapterCoverageRow(chapterNumber: number): ChapterCoverageRow {
     zeroKnowledgeModes: starter.rungs.length * zeroKnowledgeModes.length,
     practiceCards: practiceCards.length,
     practiceInteractiveModes: activeRecallModes,
+    conceptCards: conceptCards.length,
+    conceptInteractiveModes: conceptModes,
     manuscriptSections: manuscript.sections.length,
     blackboardStages: blackboard.stages.length,
     sectionNarratives: sectionLessons.length,
@@ -288,10 +304,10 @@ function requirementProofs(totals: CoverageAudit["totals"]): RequirementProof[] 
   return [
     {
       label: "Linear standalone book reader",
-      status: totals.bookReaderRoutes === 1 && totals.zeroKnowledgeRungs >= totals.chapters * 5 && totals.zeroKnowledgeModes >= totals.zeroKnowledgeRungs * zeroKnowledgeModes.length && totals.practiceCards >= totals.chapters * 5 && totals.practiceInteractiveModes >= totals.practiceCards * practiceModes.length && totals.lectureBeats >= totals.sectionNotes && totals.sectionNarratives >= totals.sectionNotes && totals.sectionInteractiveModes >= totals.sectionNotes * 6 && totals.formulaInteractiveModes >= totals.formulas * formulaLectureModes.length && totals.manuscriptSections >= 51 && totals.blackboardStages >= 68 ? "complete" : "warning",
-      evidence: `/book is the continuous web-book route and renders ${totals.zeroKnowledgeRungs} zero-knowledge starter rungs, ${totals.practiceCards} active-recall checkpoints, ${totals.manuscriptSections} bespoke manuscript moves, ${totals.blackboardStages} interactive blackboard stages, ${totals.sectionNarratives} section textbook manuscripts, ${totals.sectionInteractiveModes} guided section lecture modes, ${totals.formulaInteractiveModes} formula lecture modes, plus the same ${totals.lectureBeats} lecture beats used by the chapter lessons.`,
+      status: totals.bookReaderRoutes === 1 && totals.zeroKnowledgeRungs >= totals.chapters * 5 && totals.zeroKnowledgeModes >= totals.zeroKnowledgeRungs * zeroKnowledgeModes.length && totals.practiceCards >= totals.chapters * 5 && totals.practiceInteractiveModes >= totals.practiceCards * practiceModes.length && totals.conceptCards >= totals.chapters * 6 && totals.conceptInteractiveModes >= totals.conceptCards * conceptLectureModes.length && totals.lectureBeats >= totals.sectionNotes && totals.sectionNarratives >= totals.sectionNotes && totals.sectionInteractiveModes >= totals.sectionNotes * 6 && totals.formulaInteractiveModes >= totals.formulas * formulaLectureModes.length && totals.manuscriptSections >= 51 && totals.blackboardStages >= 68 ? "complete" : "warning",
+      evidence: `/book is the continuous web-book route and renders ${totals.zeroKnowledgeRungs} zero-knowledge starter rungs, ${totals.practiceCards} active-recall checkpoints, ${totals.conceptCards} concept microscope cards, ${totals.manuscriptSections} bespoke manuscript moves, ${totals.blackboardStages} interactive blackboard stages, ${totals.sectionNarratives} section textbook manuscripts, ${totals.sectionInteractiveModes} guided section lecture modes, ${totals.formulaInteractiveModes} formula lecture modes, plus the same ${totals.lectureBeats} lecture beats used by the chapter lessons.`,
       easy: "Readers can now read the whole course in order without jumping between chapter cards.",
-      technical: "The App Router `/book` page imports the chapter dataset, zero-knowledge ladders, active-recall practice cards, standaloneLectureForChapter() output, section manuscripts, and chapter-filtered formula props, then renders every chapter sequentially with table of contents anchors and links to full chapter labs.",
+      technical: "The App Router `/book` page imports the chapter dataset, zero-knowledge ladders, active-recall practice cards, concept microscope cards, standaloneLectureForChapter() output, section manuscripts, and chapter-filtered formula props, then renders every chapter sequentially with table of contents anchors and links to full chapter labs.",
     },
     {
       label: "Zero-knowledge starter ladders",
@@ -306,6 +322,13 @@ function requirementProofs(totals: CoverageAudit["totals"]): RequirementProof[] 
       evidence: `${totals.practiceCards} active-recall checkpoints and ${totals.practiceInteractiveModes} reveal modes are present: five checkpoints for each of the ${totals.chapters} chapters, with prompt, hint, solution, trap, and transfer modes.`,
       easy: "Readers can test whether they can teach the chapter instead of passively reading it.",
       technical: "chapterPractice.ts derives chapter-specific active-recall checkpoints from the original data modules, and ChapterPracticeCoach renders prompt/hint/solution/trap/transfer controls on the homepage, /book, and chapter routes.",
+    },
+    {
+      label: "Concept microscope vocabulary lectures",
+      status: totals.conceptCards >= totals.chapters * 6 && totals.conceptInteractiveModes >= totals.conceptCards * conceptLectureModes.length ? "complete" : "warning",
+      evidence: `${totals.conceptCards} concept microscope cards and ${totals.conceptInteractiveModes} concept lecture modes are present across the ${totals.chapters} chapters, with plain role, board picture, technical use, contrast, and self-check modes.`,
+      easy: "Important RL words are no longer just glossary entries; each one gets a mini lecture that starts from plain language and ends with a self-check.",
+      technical: "conceptAtlas.ts derives chapter-filtered concept cards from original deep-dive and chapter metadata, and ConceptLectureDeck renders the interactive mode switcher on the homepage, /book, and chapter routes.",
     },
     {
       label: "Interactive graphical lecture boards",
@@ -358,10 +381,10 @@ function requirementProofs(totals: CoverageAudit["totals"]): RequirementProof[] 
     },
     {
       label: "Highly detailed chapter explanations",
-      status: totals.lectureBeats >= 161 && totals.sectionInteractiveModes >= 966 && totals.sectionNarratives >= 161 && totals.sectionNotes >= 161 && totals.masteryTiles >= 170 ? "complete" : "warning",
-      evidence: `${totals.zeroKnowledgeRungs} starter rungs, ${totals.zeroKnowledgeModes} primer modes, ${totals.practiceCards} active-recall checkpoints, ${totals.practiceInteractiveModes} practice reveal modes, ${totals.sectionNarratives} section textbook manuscripts, ${totals.sectionInteractiveModes} guided section modes, ${totals.formulaInteractiveModes} formula lecture modes, ${totals.lectureBeats} lecture beats, ${totals.sectionNotes} section notes, ${totals.masteryTiles} mastery tiles, ${totals.formulas} formulas, ${totals.evidenceAnchors} anchors, and ${totals.exerciseGuides} exercise guides are connected to chapters.`,
+      status: totals.lectureBeats >= 161 && totals.sectionInteractiveModes >= 966 && totals.sectionNarratives >= 161 && totals.sectionNotes >= 161 && totals.conceptCards >= 102 && totals.masteryTiles >= 170 ? "complete" : "warning",
+      evidence: `${totals.zeroKnowledgeRungs} starter rungs, ${totals.zeroKnowledgeModes} primer modes, ${totals.practiceCards} active-recall checkpoints, ${totals.practiceInteractiveModes} practice reveal modes, ${totals.conceptCards} concept cards, ${totals.conceptInteractiveModes} concept lecture modes, ${totals.sectionNarratives} section textbook manuscripts, ${totals.sectionInteractiveModes} guided section modes, ${totals.formulaInteractiveModes} formula lecture modes, ${totals.lectureBeats} lecture beats, ${totals.sectionNotes} section notes, ${totals.masteryTiles} mastery tiles, ${totals.formulas} formulas, ${totals.evidenceAnchors} anchors, and ${totals.exerciseGuides} exercise guides are connected to chapters.`,
       easy: "Each chapter has a from-scratch lecture, story, sections, formulas, examples, exercises, traps, and review scaffolding.",
-      technical: "Chapter pages now compose zero-knowledge starter ladders, active-recall practice, interactive section lecture controls, interactive formula lecture controls, section textbook manuscripts, standalone lectures, synthesis, dependency maps, source audits, algorithm cards, deep dives, mastery notes, formula atlas entries, evidence anchors, and exercise coaching.",
+      technical: "Chapter pages now compose zero-knowledge starter ladders, active-recall practice, concept microscope lectures, interactive section lecture controls, interactive formula lecture controls, section textbook manuscripts, standalone lectures, synthesis, dependency maps, source audits, algorithm cards, deep dives, mastery notes, formula atlas entries, evidence anchors, and exercise coaching.",
     },
     {
       label: "Every algorithm has technical and easy explanation",
