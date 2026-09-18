@@ -6,8 +6,9 @@ import { workedExamplesForChapter } from "@/lib/chapterWorkedExamples";
 import { conceptCardsForChapter } from "@/lib/conceptAtlas";
 import { formulasForChapter } from "@/lib/formulaAtlas";
 import { chapters } from "@/lib/paper";
+import { symbolCardsForChapter } from "@/lib/symbolAtlas";
 
-export type LearningGraphNodeKind = "chapter" | "concept" | "formula" | "algorithm" | "example" | "practice" | "simulator" | "prerequisite" | "unlock";
+export type LearningGraphNodeKind = "chapter" | "concept" | "formula" | "symbol" | "algorithm" | "example" | "practice" | "simulator" | "prerequisite" | "unlock";
 
 export interface LearningGraphNode {
   id: string;
@@ -57,6 +58,7 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
   const algorithms = algorithmsForChapter(chapterNumber);
   const concepts = conceptCardsForChapter(chapterNumber).slice(0, 6);
   const formulas = formulasForChapter(chapterNumber).slice(0, 4);
+  const symbols = symbolCardsForChapter(chapterNumber).slice(0, 5);
   const examples = workedExamplesForChapter(chapterNumber).slice(0, 4);
   const practice = practiceCardsForChapter(chapterNumber).slice(0, 3);
   const simulator = simulatorForChapter(chapterNumber);
@@ -127,6 +129,31 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
       relation: "concept becomes notation",
       easy: `The visual idea becomes a formula handle: ${formula.label}.`,
       technical: `The formula node formalizes a concept through symbols ${formula.symbols.slice(0, 4).join(", ")}.`,
+    });
+  });
+
+  symbols.forEach((symbol, index) => {
+    const id = nodeId(chapterNumber, "symbol", symbol.symbol);
+    const formula = formulas.find((item) => symbol.formulaLabels.includes(item.label)) ?? formulas[index % Math.max(formulas.length, 1)];
+    addNode({
+      id,
+      chapter: chapterNumber,
+      kind: "symbol",
+      title: symbol.symbol,
+      easy: `${symbol.spokenAs}: ${symbol.plain}`,
+      technical: `${symbol.technical} Pitfall: ${symbol.pitfall}`,
+      route: `/chapters/${chapterNumber}#symbols`,
+      tags: [symbol.spokenAs, symbol.role, ...symbol.tags],
+      ...ringPoint("symbol", index, symbols.length),
+    });
+    addEdge({
+      id: edgeId(formula ? nodeId(chapterNumber, "formula", formula.label) : centerId, id, "symbol"),
+      chapter: chapterNumber,
+      from: formula ? nodeId(chapterNumber, "formula", formula.label) : centerId,
+      to: id,
+      relation: "formula exposes symbol",
+      easy: `The formula becomes less scary when ${symbol.spokenAs} has a plain role.`,
+      technical: `The symbol node records notation semantics, formula context, pitfall, and self-check before the formula is manipulated.`,
     });
   });
 
@@ -281,7 +308,7 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
   return {
     chapter: chapterNumber,
     title: chapter.title,
-    promise: `Graphical map for Chapter ${chapterNumber}: start from the chapter node, move through concepts, notation, methods, examples, practice, and simulator knobs, then check prerequisites and unlocks.`,
+    promise: `Graphical map for Chapter ${chapterNumber}: start from the chapter node, move through concepts, formulas, decoded symbols, methods, examples, practice, and simulator knobs, then check prerequisites and unlocks.`,
     route: `/chapters/${chapterNumber}`,
     nodes,
     edges,
@@ -289,7 +316,7 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
       "Read the center chapter promise.",
       "Click concept nodes until the plain story is clear.",
       "Move to formulas only after you can draw the concept.",
-      "Use algorithm nodes to see how notation becomes update steps.",
+      "Decode symbol nodes before using algorithm nodes to see how notation becomes update steps.",
       "Use examples, practice, and simulator nodes to prove transfer.",
     ],
     legend: graphLegend,
@@ -314,6 +341,7 @@ export const graphLegend: ChapterLearningGraph["legend"] = [
   { kind: "chapter", label: "Chapter center", easy: "The main question of the chapter.", technical: "The formal objects and assumptions that define the chapter." },
   { kind: "concept", label: "Concept", easy: "A word or idea you should be able to draw.", technical: "A chapter-specific object, distinction, or warning." },
   { kind: "formula", label: "Formula", easy: "A compact way to say the idea exactly.", technical: "Symbols, targets, expectations, and watch-outs." },
+  { kind: "symbol", label: "Symbol", easy: "A mathematical mark decoded in plain English.", technical: "Notation semantics, formula context, pitfalls, and self-checks." },
   { kind: "algorithm", label: "Algorithm", easy: "The procedure that changes estimates or behavior.", technical: "Target, residual, update, control pressure, and failure mode." },
   { kind: "example", label: "Worked example", easy: "A tiny world where the idea moves.", technical: "Trace-level evidence for the update." },
   { kind: "practice", label: "Practice", easy: "A checkpoint to test ownership.", technical: "Prompt, solution, trap, and transfer." },
@@ -326,6 +354,7 @@ function ringPoint(kind: LearningGraphNodeKind, index: number, total: number): {
   const lanes: Record<string, { start: number; end: number; radius: number }> = {
     concept: { start: 205, end: 335, radius: 34 },
     formula: { start: 300, end: 420, radius: 25 },
+    symbol: { start: 255, end: 375, radius: 41 },
     algorithm: { start: 25, end: 155, radius: 34 },
     example: { start: 65, end: 150, radius: 48 },
     practice: { start: 210, end: 300, radius: 49 },
@@ -351,6 +380,7 @@ function compactTags(tags: Array<string | undefined | null>) {
 function slug(value: string) {
   return value
     .toLowerCase()
+    .replace(/'/g, "-prime")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "")
     .slice(0, 64) || "node";

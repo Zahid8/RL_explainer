@@ -18,12 +18,14 @@ import { workedExamplesForChapter } from "@/lib/chapterWorkedExamples";
 import { conceptCardsForChapter } from "@/lib/conceptAtlas";
 import { sectionLessonsForChapter } from "@/lib/sectionNarratives";
 import { standaloneLectureForChapter } from "@/lib/standaloneBook";
+import { symbolCardsForChapter } from "@/lib/symbolAtlas";
 import { zeroKnowledgeLadderForChapter } from "@/lib/zeroKnowledgeLadders";
 
 export type BookIndexLayer =
   | "chapter overview"
   | "zero primer"
   | "lecture theater"
+  | "symbol decoder"
   | "active recall"
   | "concept microscope"
   | "worked example"
@@ -89,6 +91,7 @@ function buildBookIndexEntries(): BookIndexEntry[] {
     const lecture = standaloneLectureForChapter(chapter);
     const starter = zeroKnowledgeLadderForChapter(chapter.n);
     const theater = lectureTheaterForChapter(chapter.n);
+    const symbolCards = symbolCardsForChapter(chapter.n);
     const practiceCards = practiceCardsForChapter(chapter.n);
     const concepts = conceptCardsForChapter(chapter.n);
     const workedExamples = workedExamplesForChapter(chapter.n);
@@ -181,6 +184,18 @@ function buildBookIndexEntries(): BookIndexEntry[] {
       technical: `${slide.technical} ${slide.equation} ${slide.check}`,
       tags: [slide.label, ...slide.tags, `Chapter ${chapter.n}`],
       weight: 95,
+    }));
+
+    symbolCards.forEach((card) => add({
+      ...chapterBase,
+      id: card.id,
+      title: `Symbol: ${card.spokenAs}`,
+      layer: "symbol decoder",
+      route: `/chapters/${chapter.n}#symbols`,
+      summary: `${card.symbol} means ${card.plain} Pitfall: ${card.pitfall}`,
+      technical: `${card.technical} Formula context: ${card.formulaLabels.join("; ")}. Self-check: ${card.selfCheck}`,
+      tags: [card.symbol, card.spokenAs, card.role, ...card.tags, `Chapter ${chapter.n}`],
+      weight: 89,
     }));
 
     practiceCards.forEach((card) => add({

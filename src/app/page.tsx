@@ -17,6 +17,7 @@ import { MasteryNotebook } from "@/components/MasteryNotebook";
 import { MotionGlyph } from "@/components/MotionGlyph";
 import { Nav } from "@/components/Nav";
 import { Section, Note } from "@/components/Section";
+import { SymbolDecoder } from "@/components/SymbolDecoder";
 import { TermLab } from "@/components/TermLab";
 import { WorkedExampleStudio } from "@/components/WorkedExampleStudio";
 import { MisconceptionClinic } from "@/components/MisconceptionClinic";
@@ -38,6 +39,7 @@ import { allLectureTheaters, lectureTheaterCount, lectureTheaterModeCount, lectu
 import { allSimulators, simulatorControlCount, simulatorCount, simulatorReadoutCount } from "@/lib/chapterSimulators";
 import { sectionLessonModeCount, sectionNarrativeCount } from "@/lib/sectionNarratives";
 import { standaloneLectureTileCount } from "@/lib/standaloneBook";
+import { allSymbolCards, symbolCardCount, symbolChapterCount, symbolLectureModeCount, uniqueSymbolCount } from "@/lib/symbolAtlas";
 import { zeroKnowledgeLadders, zeroKnowledgeModeCount, zeroKnowledgeRungCount } from "@/lib/zeroKnowledgeLadders";
 
 export default function Home() {
@@ -77,6 +79,11 @@ export default function Home() {
   const graphNodeTotal = learningGraphNodeCount();
   const graphEdgeTotal = learningGraphEdgeCount();
   const graphChapterTotal = learningGraphChapterCount();
+  const symbolCards = allSymbolCards();
+  const symbolCardTotal = symbolCardCount();
+  const symbolModeTotal = symbolLectureModeCount();
+  const uniqueSymbols = uniqueSymbolCount();
+  const symbolChapterTotal = symbolChapterCount();
 
   return (
     <main>
@@ -89,7 +96,7 @@ export default function Home() {
         lead="The site now teaches the material as a first-principles course: each chapter starts from zero, uses graphical mental models, then builds the technical definitions, equations, algorithms, and checkpoints in its own words."
         tint
       >
-        <StandaloneBookPledge lectureBeats={lectureBeats} manuscriptMoves={manuscriptMoves} blackboardStages={blackboardStages} sectionNarratives={sectionNarratives} guidedSectionModes={guidedSectionModes} formulaLectureModes={formulaLectureModes} zeroKnowledgeRungs={zeroKnowledgeRungs} zeroKnowledgeModes={zeroKnowledgeModes} practiceCardTotal={practiceCardTotal} practiceModes={practiceModes} conceptCardTotal={conceptCardTotal} conceptModes={conceptModes} workedExampleTotal={workedExampleTotal} workedExampleModes={workedExampleModes} misconceptionTotal={misconceptionTotal} misconceptionModes={misconceptionModes} simulatorTotal={simulatorTotal} simulatorControls={simulatorControls} simulatorReadouts={simulatorReadouts} theaterTotal={theaterTotal} theaterSlides={theaterSlides} theaterModes={theaterModes} searchEntryTotal={searchEntryTotal} searchLayerTotal={searchLayerTotal} searchChapterTotal={searchChapterTotal} graphNodeTotal={graphNodeTotal} graphEdgeTotal={graphEdgeTotal} graphChapterTotal={graphChapterTotal} />
+        <StandaloneBookPledge lectureBeats={lectureBeats} manuscriptMoves={manuscriptMoves} blackboardStages={blackboardStages} sectionNarratives={sectionNarratives} guidedSectionModes={guidedSectionModes} formulaLectureModes={formulaLectureModes} zeroKnowledgeRungs={zeroKnowledgeRungs} zeroKnowledgeModes={zeroKnowledgeModes} practiceCardTotal={practiceCardTotal} practiceModes={practiceModes} conceptCardTotal={conceptCardTotal} conceptModes={conceptModes} workedExampleTotal={workedExampleTotal} workedExampleModes={workedExampleModes} misconceptionTotal={misconceptionTotal} misconceptionModes={misconceptionModes} simulatorTotal={simulatorTotal} simulatorControls={simulatorControls} simulatorReadouts={simulatorReadouts} theaterTotal={theaterTotal} theaterSlides={theaterSlides} theaterModes={theaterModes} searchEntryTotal={searchEntryTotal} searchLayerTotal={searchLayerTotal} searchChapterTotal={searchChapterTotal} graphNodeTotal={graphNodeTotal} graphEdgeTotal={graphEdgeTotal} graphChapterTotal={graphChapterTotal} symbolCardTotal={symbolCardTotal} symbolModeTotal={symbolModeTotal} uniqueSymbols={uniqueSymbols} symbolChapterTotal={symbolChapterTotal} />
       </Section>
       <Section
         id="primer"
@@ -126,8 +133,16 @@ export default function Home() {
         <LearningGraphExplorer graphs={learningGraphs} contextTitle="Whole-book graphical learning map" compact />
       </Section>
       <Section
+        id="symbols"
+        eyebrow="00f - Symbol decoder"
+        title={<>Every recurring RL mark gets a plain-English and technical explanation.</>}
+        lead="The contextual symbol decoder turns notation into mini lectures: say the mark, learn its role, see the formulas it appears in, watch for the trap, then answer a self-check before using it."
+      >
+        <SymbolDecoder cards={symbolCards} contextTitle="Whole-book contextual symbol decoder" compact />
+      </Section>
+      <Section
         id="recall"
-        eyebrow="00f - Active recall coach"
+        eyebrow="00g - Active recall coach"
         title={<>Do not just read the chapter — prove you can teach it.</>}
         lead="The practice coach gives every chapter five oral-exam checkpoints: explain the idea, draw it, read the math, choose the method, and repair a misconception. Reveal the hint, solution, trap, and transfer only after trying."
         tint
@@ -136,7 +151,7 @@ export default function Home() {
       </Section>
       <Section
         id="concepts"
-        eyebrow="00g - Concept microscope"
+        eyebrow="00h - Concept microscope"
         title={<>Every important RL word is taught as a mini lecture.</>}
         lead="The concept microscope sits between practice and the notation lab: choose a chapter concept, then switch among plain role, board picture, technical use, contrast, and self-check so terminology is learned from scratch instead of memorized."
       >
@@ -144,7 +159,7 @@ export default function Home() {
       </Section>
       <Section
         id="worked"
-        eyebrow="00h - Worked example studio"
+        eyebrow="00i - Worked example studio"
         title={<>Every chapter gets concrete toy worlds and hand traces.</>}
         lead="The worked example studio turns chapter ideas into tiny examples: read the scenario, draw the board, follow a trace, inspect the pitfall, then solve a mini exercise. It is the bridge from explanation to doing."
         tint
@@ -153,7 +168,7 @@ export default function Home() {
       </Section>
       <Section
         id="clinic"
-        eyebrow="00i - Misconception clinic"
+        eyebrow="00j - Misconception clinic"
         title={<>Repair the wrong ideas before they become habits.</>}
         lead="A standalone lecture has to say why tempting shortcuts fail. The clinic shows the wrong sentence, why it sounds plausible, how to repair it on the board, what changes technically, and how to test the repair."
       >
@@ -161,7 +176,7 @@ export default function Home() {
       </Section>
       <Section
         id="simulators"
-        eyebrow="00j - Chapter simulator lab"
+        eyebrow="00k - Chapter simulator lab"
         title={<>Experiment with the knobs behind every chapter.</>}
         lead="Each chapter gets a live teaching simulator with sliders for exploration pressure, update strength, and future horizon. The readouts show how learning speed, stability, bias, and variance trade off before the dense math arrives."
         tint
@@ -302,13 +317,14 @@ export default function Home() {
   );
 }
 
-function StandaloneBookPledge({ lectureBeats, manuscriptMoves, blackboardStages, sectionNarratives, guidedSectionModes, formulaLectureModes, zeroKnowledgeRungs, zeroKnowledgeModes, practiceCardTotal, practiceModes, conceptCardTotal, conceptModes, workedExampleTotal, workedExampleModes, misconceptionTotal, misconceptionModes, simulatorTotal, simulatorControls, simulatorReadouts, theaterTotal, theaterSlides, theaterModes, searchEntryTotal, searchLayerTotal, searchChapterTotal, graphNodeTotal, graphEdgeTotal, graphChapterTotal }: { lectureBeats: number; manuscriptMoves: number; blackboardStages: number; sectionNarratives: number; guidedSectionModes: number; formulaLectureModes: number; zeroKnowledgeRungs: number; zeroKnowledgeModes: number; practiceCardTotal: number; practiceModes: number; conceptCardTotal: number; conceptModes: number; workedExampleTotal: number; workedExampleModes: number; misconceptionTotal: number; misconceptionModes: number; simulatorTotal: number; simulatorControls: number; simulatorReadouts: number; theaterTotal: number; theaterSlides: number; theaterModes: number; searchEntryTotal: number; searchLayerTotal: number; searchChapterTotal: number; graphNodeTotal: number; graphEdgeTotal: number; graphChapterTotal: number }) {
+function StandaloneBookPledge({ lectureBeats, manuscriptMoves, blackboardStages, sectionNarratives, guidedSectionModes, formulaLectureModes, zeroKnowledgeRungs, zeroKnowledgeModes, practiceCardTotal, practiceModes, conceptCardTotal, conceptModes, workedExampleTotal, workedExampleModes, misconceptionTotal, misconceptionModes, simulatorTotal, simulatorControls, simulatorReadouts, theaterTotal, theaterSlides, theaterModes, searchEntryTotal, searchLayerTotal, searchChapterTotal, graphNodeTotal, graphEdgeTotal, graphChapterTotal, symbolCardTotal, symbolModeTotal, uniqueSymbols, symbolChapterTotal }: { lectureBeats: number; manuscriptMoves: number; blackboardStages: number; sectionNarratives: number; guidedSectionModes: number; formulaLectureModes: number; zeroKnowledgeRungs: number; zeroKnowledgeModes: number; practiceCardTotal: number; practiceModes: number; conceptCardTotal: number; conceptModes: number; workedExampleTotal: number; workedExampleModes: number; misconceptionTotal: number; misconceptionModes: number; simulatorTotal: number; simulatorControls: number; simulatorReadouts: number; theaterTotal: number; theaterSlides: number; theaterModes: number; searchEntryTotal: number; searchLayerTotal: number; searchChapterTotal: number; graphNodeTotal: number; graphEdgeTotal: number; graphChapterTotal: number; symbolCardTotal: number; symbolModeTotal: number; uniqueSymbols: number; symbolChapterTotal: number }) {
   const cards = [
     ["Start from zero", `${zeroKnowledgeRungs} zero-knowledge starter rungs and ${zeroKnowledgeModes} primer modes make every chapter begin with everyday intuition, a board picture, technical wording, and a practice check.`],
     ["Draw before equations", `${blackboardStages} clickable blackboard stages let each chapter show a visual model, beginner explanation, technical explanation, board note, and self-check before the dense cards.`],
     ["Lecture in slides", `${theaterTotal} guided lecture theaters, ${theaterSlides} slide stages, and ${theaterModes} explanation modes walk each chapter from beginner story to board picture, technical pass, equation lens, and teach-back check.`],
     ["Search everything", `${searchEntryTotal} searchable explanation entries across ${searchLayerTotal} layers and ${searchChapterTotal} chapters put the standalone book at your fingertips: type a word, choose a layer, and jump directly into the right chapter explanation.`],
     ["Map relationships", `${graphNodeTotal} learning-graph nodes and ${graphEdgeTotal} links across ${graphChapterTotal} chapter maps show how prerequisites, concepts, formulas, algorithms, examples, practice, simulators, and later unlocks connect.`],
+    ["Decode notation", `${symbolCardTotal} contextual symbol cards decode ${uniqueSymbols} unique marks across ${symbolChapterTotal} chapters with ${symbolModeTotal} plain, technical, formula-context, pitfall, and self-check modes before equations become dense.`],
     ["Teach each section", `${sectionNarratives} section-level textbook manuscripts, ${guidedSectionModes} guided section modes, ${manuscriptMoves} bespoke manuscript moves, and ${lectureBeats} section-level lecture beats turn the chapter outline into prose lessons, questions, visual metaphors, technical builds, board-work steps, and checkpoints.`],
     ["Go technical", `${formulaLectureModes} formula lecture modes sit beside algorithms, derivations, profiles, worked microscopes, traps, and implementation checks so equations are taught as stories, symbol maps, traces, use cases, and pitfalls.`],
     ["Name each idea", `${conceptCardTotal} concept microscope cards and ${conceptModes} lecture modes make key terms earn plain-language roles, board pictures, technical uses, contrasts, and self-checks.`],
@@ -320,7 +336,7 @@ function StandaloneBookPledge({ lectureBeats, manuscriptMoves, blackboardStages,
   ];
 
   return (
-    <div className="grid gap-5 lg:grid-cols-3 xl:grid-cols-11">
+    <div className="grid gap-5 lg:grid-cols-3 xl:grid-cols-12">
       {cards.map(([title, text], index) => (
         <article key={title} className="rounded-xl border border-line bg-panel p-6">
           <div className="flex items-start justify-between gap-3">

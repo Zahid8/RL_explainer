@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { ChapterLearningGraph, LearningGraphNode, LearningGraphNodeKind } from "@/lib/learningGraph";
+import type { ChapterLearningGraph, LearningGraphNodeKind } from "@/lib/learningGraph";
 
 type Accent = "cyan" | "orange" | "blue" | "violet" | "lime";
 type ViewMode = "plain" | "technical" | "path";
@@ -144,6 +144,7 @@ function kindColor(kind: LearningGraphNodeKind) {
     chapter: "#0ea5e9",
     concept: "#22c55e",
     formula: "#8b5cf6",
+    symbol: "#a855f7",
     algorithm: "#f97316",
     example: "#14b8a6",
     practice: "#84cc16",
@@ -156,6 +157,7 @@ function kindColor(kind: LearningGraphNodeKind) {
 
 function accentForKind(kind: LearningGraphNodeKind): Accent {
   if (kind === "formula") return "violet";
+  if (kind === "symbol") return "violet";
   if (kind === "algorithm" || kind === "unlock") return "orange";
   if (kind === "concept" || kind === "practice") return "lime";
   if (kind === "prerequisite" || kind === "chapter") return "blue";

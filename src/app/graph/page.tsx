@@ -8,7 +8,7 @@ import { allLearningGraphs, learningGraphChapterCount, learningGraphEdgeCount, l
 
 export const metadata: Metadata = {
   title: "Interactive Learning Graph | RLbook Explainer",
-  description: "A clickable graphical map connecting RLbook concepts, formulas, algorithms, examples, practice, and simulators chapter by chapter.",
+  description: "A clickable graphical map connecting RLbook concepts, formulas, decoded symbols, algorithms, examples, practice, and simulators chapter by chapter.",
 };
 
 export default function GraphPage() {
@@ -26,6 +26,7 @@ export default function GraphPage() {
             <Link href="/" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">← Home overview</Link>
             <Link href="/book" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Linear book</Link>
             <Link href="/search" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Search index</Link>
+            <Link href="/symbols" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Symbol decoder</Link>
             <Link href="/coverage" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Coverage audit</Link>
           </div>
           <div className="grid gap-8 lg:grid-cols-[1fr_440px] lg:items-end">
@@ -33,7 +34,7 @@ export default function GraphPage() {
               <p className="eyebrow">Interactive learning graph</p>
               <h1 className="display mt-4 max-w-5xl text-[clamp(42px,7vw,88px)] font-medium text-ink">See how every chapter idea connects before you dive into details.</h1>
               <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted">
-                This is the graphical lecture map for the standalone book. Each chapter becomes a clickable network of prerequisites, concepts, formulas, algorithms, worked examples, practice checkpoints, simulator knobs, and later unlocks.
+                This is the graphical lecture map for the standalone book. Each chapter becomes a clickable network of prerequisites, concepts, formulas, decoded symbols, algorithms, worked examples, practice checkpoints, simulator knobs, and later unlocks.
               </p>
               <div className="mt-6 flex flex-wrap gap-2">
                 <Chip accent="cyan">{chapterCount} chapter maps</Chip>
