@@ -11,6 +11,7 @@ import { SectionLessonReader } from "@/components/SectionLessonReader";
 import { ZeroKnowledgeLadderReader } from "@/components/ZeroKnowledgeLadderReader";
 import { MotionGlyph } from "@/components/MotionGlyph";
 import { WorkedExampleStudio } from "@/components/WorkedExampleStudio";
+import { MisconceptionClinic } from "@/components/MisconceptionClinic";
 import { Chip, Plain } from "@/components/Section";
 import { algorithmsForChapter, type AlgorithmDetail } from "@/lib/algorithmCatalog";
 import { algorithmDerivation, type AlgorithmDerivation } from "@/lib/algorithmDerivations";
@@ -26,6 +27,7 @@ import { exerciseCoachCards } from "@/lib/exerciseCoach";
 import { practiceCardsForChapter, practiceModeCount, type ChapterPracticeCard } from "@/lib/chapterPractice";
 import { conceptCardsForChapter, conceptModeCount, type ChapterConceptCard } from "@/lib/conceptAtlas";
 import { workedExamplesForChapter, workedExampleModeCount, type ChapterWorkedExample } from "@/lib/chapterWorkedExamples";
+import { misconceptionCardsForChapter, misconceptionModeCount, type ChapterMisconceptionCard } from "@/lib/chapterMisconceptions";
 import { formulaLectureModeCount, formulasForChapter } from "@/lib/formulaAtlas";
 import { blackboardForChapter } from "@/lib/interactiveBlackboards";
 import { chapterMastery } from "@/lib/mastery";
@@ -78,6 +80,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
   const conceptModes = conceptModeCount(item.n);
   const workedExamples = workedExamplesForChapter(item.n);
   const workedExampleModes = workedExampleModeCount(item.n);
+  const misconceptionCards = misconceptionCardsForChapter(item.n);
+  const misconceptionModes = misconceptionModeCount(item.n);
   const manuscript = manuscriptForChapter(item.n);
   const blackboard = blackboardForChapter(item.n);
   const sectionLessons = sectionLessonsForChapter(item.n);
@@ -113,6 +117,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
                 <Stat value={String(conceptModes)} label="concept modes" />
                 <Stat value={String(workedExamples.length)} label="worked examples" />
                 <Stat value={String(workedExampleModes)} label="worked modes" />
+                <Stat value={String(misconceptionCards.length)} label="clinic cards" />
+                <Stat value={String(misconceptionModes)} label="clinic modes" />
                 <Stat value={String(sourceAudits.length)} label="source cues" />
               </div>
             </div>
@@ -130,7 +136,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
           <AnimatedConceptGraphic label="Story loop" variant="loop" caption="The easy story and the technical story update each other: intuition points at notation, notation checks intuition." compact />
         </section>
 
-        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, starterRungs: starter.rungs.length, starterModes, practiceCards: practiceCards.length, practiceModes, conceptCards: conceptCards.length, conceptModes, workedExamples: workedExamples.length, workedExampleModes, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, sectionLessons: sectionLessons.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, formulaModes, evidence: evidence.length, exercises: exercises.length, sourceAudits: sourceAudits.length }} />
+        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, starterRungs: starter.rungs.length, starterModes, practiceCards: practiceCards.length, practiceModes, conceptCards: conceptCards.length, conceptModes, workedExamples: workedExamples.length, workedExampleModes, misconceptionCards: misconceptionCards.length, misconceptionModes, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, sectionLessons: sectionLessons.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, formulaModes, evidence: evidence.length, exercises: exercises.length, sourceAudits: sourceAudits.length }} />
 
         <ChapterStarterLadderBlock chapter={item} starter={starter} starterModes={starterModes} />
 
@@ -139,6 +145,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
         <ChapterConceptBlock chapter={item} cards={conceptCards} conceptModes={conceptModes} />
 
         <ChapterWorkedExampleBlock chapter={item} examples={workedExamples} workedExampleModes={workedExampleModes} />
+
+        <ChapterMisconceptionBlock chapter={item} cards={misconceptionCards} misconceptionModes={misconceptionModes} />
 
         <ChapterManuscriptBlock manuscript={manuscript} />
 
@@ -313,12 +321,13 @@ function Stat({ value, label }: { value: string; label: string }) {
   );
 }
 
-function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; starterRungs: number; starterModes: number; practiceCards: number; practiceModes: number; conceptCards: number; conceptModes: number; workedExamples: number; workedExampleModes: number; manuscriptSections: number; blackboardStages: number; sectionLessons: number; lectureBeats: number; sections: number; formulas: number; formulaModes: number; evidence: number; exercises: number; sourceAudits: number } }) {
+function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; starterRungs: number; starterModes: number; practiceCards: number; practiceModes: number; conceptCards: number; conceptModes: number; workedExamples: number; workedExampleModes: number; misconceptionCards: number; misconceptionModes: number; manuscriptSections: number; blackboardStages: number; sectionLessons: number; lectureBeats: number; sections: number; formulas: number; formulaModes: number; evidence: number; exercises: number; sourceAudits: number } }) {
   const items = [
     ["starter", `${counts.starterRungs} starter rungs · ${counts.starterModes} modes`],
     ["practice", `${counts.practiceCards} practice checks · ${counts.practiceModes} modes`],
     ["concepts", `${counts.conceptCards} concepts · ${counts.conceptModes} modes`],
     ["worked", `${counts.workedExamples} worked examples · ${counts.workedExampleModes} modes`],
+    ["clinic", `${counts.misconceptionCards} misconception cards · ${counts.misconceptionModes} modes`],
     ["manuscript", `${counts.manuscriptSections} manuscript moves`],
     ["blackboard", `${counts.blackboardStages} blackboard stages`],
     ["section-reader", `${counts.sectionLessons * 6} guided modes`],
@@ -445,6 +454,24 @@ function ChapterWorkedExampleBlock({ chapter, examples, workedExampleModes }: { 
           <p className="text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Chapter {chapter.n} worked set:</span> {examples.length} worked examples expose {workedExampleModes} scenario, board, technical trace, pitfall, and self-check modes, so readers can see the chapter operate on tiny concrete cases.</p>
         </div>
         <WorkedExampleStudio examples={examples} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} />
+      </div>
+    </section>
+  );
+}
+
+function ChapterMisconceptionBlock({ chapter, cards, misconceptionModes }: { chapter: (typeof chapters)[number]; cards: ChapterMisconceptionCard[]; misconceptionModes: number }) {
+  return (
+    <section id="clinic" className="scroll-mt-24">
+      <SectionTitle
+        eyebrow="00v - Misconception clinic"
+        title="Repair the wrong idea, not just the answer."
+        lead="This layer shows why a tempting shortcut sounds reasonable, redraws the missing distinction, names the technical consequence, and gives a self-check so the repair transfers."
+      />
+      <div className="mt-6 grid gap-4">
+        <div className="rounded-xl border border-orange/30 bg-orange/[0.06] p-4">
+          <p className="text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Chapter {chapter.n} clinic:</span> {cards.length} misconception cards expose {misconceptionModes} mistake, temptation, repair, technical consequence, and self-check modes.</p>
+        </div>
+        <MisconceptionClinic cards={cards} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} />
       </div>
     </section>
   );

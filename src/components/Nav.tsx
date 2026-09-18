@@ -8,6 +8,7 @@ const links = [
   ["recall", "Recall"],
   ["concepts", "Concepts"],
   ["worked", "Worked"],
+  ["clinic", "Clinic"],
   ["terms", "Terms"],
   ["map", "Map"],
   ["chapters", "Chapters"],

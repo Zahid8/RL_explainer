@@ -15,6 +15,7 @@ import { Nav } from "@/components/Nav";
 import { Section, Note } from "@/components/Section";
 import { TermLab } from "@/components/TermLab";
 import { WorkedExampleStudio } from "@/components/WorkedExampleStudio";
+import { MisconceptionClinic } from "@/components/MisconceptionClinic";
 import { ZeroKnowledgeLadderReader } from "@/components/ZeroKnowledgeLadderReader";
 import { BanditLab } from "@/components/figures/BanditLab";
 import { BellmanLab } from "@/components/figures/BellmanLab";
@@ -26,6 +27,7 @@ import { chapters } from "@/lib/paper";
 import { allPracticeCards, practiceCardCount, practiceModeCount } from "@/lib/chapterPractice";
 import { allConceptCards, conceptCardCount, conceptModeCount } from "@/lib/conceptAtlas";
 import { allWorkedExamples, workedExampleCount, workedExampleModeCount } from "@/lib/chapterWorkedExamples";
+import { allMisconceptionCards, misconceptionCardCount, misconceptionModeCount } from "@/lib/chapterMisconceptions";
 import { sectionLessonModeCount, sectionNarrativeCount } from "@/lib/sectionNarratives";
 import { standaloneLectureTileCount } from "@/lib/standaloneBook";
 import { zeroKnowledgeLadders, zeroKnowledgeModeCount, zeroKnowledgeRungCount } from "@/lib/zeroKnowledgeLadders";
@@ -48,6 +50,9 @@ export default function Home() {
   const workedExamples = allWorkedExamples();
   const workedExampleTotal = workedExampleCount();
   const workedExampleModes = workedExampleModeCount();
+  const misconceptionCards = allMisconceptionCards();
+  const misconceptionTotal = misconceptionCardCount();
+  const misconceptionModes = misconceptionModeCount();
 
   return (
     <main>
@@ -60,7 +65,7 @@ export default function Home() {
         lead="The site now teaches the material as a first-principles course: each chapter starts from zero, uses graphical mental models, then builds the technical definitions, equations, algorithms, and checkpoints in its own words."
         tint
       >
-        <StandaloneBookPledge lectureBeats={lectureBeats} manuscriptMoves={manuscriptMoves} blackboardStages={blackboardStages} sectionNarratives={sectionNarratives} guidedSectionModes={guidedSectionModes} formulaLectureModes={formulaLectureModes} zeroKnowledgeRungs={zeroKnowledgeRungs} zeroKnowledgeModes={zeroKnowledgeModes} practiceCardTotal={practiceCardTotal} practiceModes={practiceModes} conceptCardTotal={conceptCardTotal} conceptModes={conceptModes} workedExampleTotal={workedExampleTotal} workedExampleModes={workedExampleModes} />
+        <StandaloneBookPledge lectureBeats={lectureBeats} manuscriptMoves={manuscriptMoves} blackboardStages={blackboardStages} sectionNarratives={sectionNarratives} guidedSectionModes={guidedSectionModes} formulaLectureModes={formulaLectureModes} zeroKnowledgeRungs={zeroKnowledgeRungs} zeroKnowledgeModes={zeroKnowledgeModes} practiceCardTotal={practiceCardTotal} practiceModes={practiceModes} conceptCardTotal={conceptCardTotal} conceptModes={conceptModes} workedExampleTotal={workedExampleTotal} workedExampleModes={workedExampleModes} misconceptionTotal={misconceptionTotal} misconceptionModes={misconceptionModes} />
       </Section>
       <Section
         id="primer"
@@ -95,6 +100,14 @@ export default function Home() {
         tint
       >
         <WorkedExampleStudio examples={workedExamples} contextTitle="Whole-book worked example studio" />
+      </Section>
+      <Section
+        id="clinic"
+        eyebrow="00f - Misconception clinic"
+        title={<>Repair the wrong ideas before they become habits.</>}
+        lead="A standalone lecture has to say why tempting shortcuts fail. The clinic shows the wrong sentence, why it sounds plausible, how to repair it on the board, what changes technically, and how to test the repair."
+      >
+        <MisconceptionClinic cards={misconceptionCards} contextTitle="Whole-book misconception clinic" />
       </Section>
       <Section
         id="terms"
@@ -203,7 +216,7 @@ export default function Home() {
             <p>This is an original standalone teaching site organized around the book&apos;s chapter and section structure. It avoids copying the book&apos;s prose and labels synthetic diagrams/labs as illustrative.</p>
           </Note>
           <Note title="Coverage note">
-            <p>The chapter list covers {chapters.length} chapters, {zeroKnowledgeRungs} zero-knowledge starter rungs, {zeroKnowledgeModes} primer modes, {practiceCardTotal} active-recall checkpoints, {practiceModes} practice reveal modes, {conceptCardTotal} concept microscope cards, {conceptModes} concept lecture modes, {workedExampleTotal} worked examples, {workedExampleModes} worked-example modes, {manuscriptMoves} bespoke manuscript moves, {blackboardStages} interactive blackboard stages, {sectionNarratives} section-level textbook manuscripts, {guidedSectionModes} guided section modes, {formulaLectureModes} formula lecture modes, {lectureBeats} standalone lecture beats, all top-level sections shown in the PDF contents, 161 section notes, a 170-tile mastery notebook, a 44-item formula atlas, a 147-card figure/example atlas, and 145 exercise-coach cards. Use the route pages as a complete original lecture path, then use the practice prompts to check whether the ideas are really yours.</p>
+            <p>The chapter list covers {chapters.length} chapters, {zeroKnowledgeRungs} zero-knowledge starter rungs, {zeroKnowledgeModes} primer modes, {practiceCardTotal} active-recall checkpoints, {practiceModes} practice reveal modes, {conceptCardTotal} concept microscope cards, {conceptModes} concept lecture modes, {workedExampleTotal} worked examples, {workedExampleModes} worked-example modes, {misconceptionTotal} misconception clinic cards, {misconceptionModes} misconception repair modes, {manuscriptMoves} bespoke manuscript moves, {blackboardStages} interactive blackboard stages, {sectionNarratives} section-level textbook manuscripts, {guidedSectionModes} guided section modes, {formulaLectureModes} formula lecture modes, {lectureBeats} standalone lecture beats, all top-level sections shown in the PDF contents, 161 section notes, a 170-tile mastery notebook, a 44-item formula atlas, a 147-card figure/example atlas, and 145 exercise-coach cards. Use the route pages as a complete original lecture path, then use the practice prompts to check whether the ideas are really yours.</p>
           </Note>
         </div>
       </Section>
@@ -230,7 +243,7 @@ export default function Home() {
   );
 }
 
-function StandaloneBookPledge({ lectureBeats, manuscriptMoves, blackboardStages, sectionNarratives, guidedSectionModes, formulaLectureModes, zeroKnowledgeRungs, zeroKnowledgeModes, practiceCardTotal, practiceModes, conceptCardTotal, conceptModes, workedExampleTotal, workedExampleModes }: { lectureBeats: number; manuscriptMoves: number; blackboardStages: number; sectionNarratives: number; guidedSectionModes: number; formulaLectureModes: number; zeroKnowledgeRungs: number; zeroKnowledgeModes: number; practiceCardTotal: number; practiceModes: number; conceptCardTotal: number; conceptModes: number; workedExampleTotal: number; workedExampleModes: number }) {
+function StandaloneBookPledge({ lectureBeats, manuscriptMoves, blackboardStages, sectionNarratives, guidedSectionModes, formulaLectureModes, zeroKnowledgeRungs, zeroKnowledgeModes, practiceCardTotal, practiceModes, conceptCardTotal, conceptModes, workedExampleTotal, workedExampleModes, misconceptionTotal, misconceptionModes }: { lectureBeats: number; manuscriptMoves: number; blackboardStages: number; sectionNarratives: number; guidedSectionModes: number; formulaLectureModes: number; zeroKnowledgeRungs: number; zeroKnowledgeModes: number; practiceCardTotal: number; practiceModes: number; conceptCardTotal: number; conceptModes: number; workedExampleTotal: number; workedExampleModes: number; misconceptionTotal: number; misconceptionModes: number }) {
   const cards = [
     ["Start from zero", `${zeroKnowledgeRungs} zero-knowledge starter rungs and ${zeroKnowledgeModes} primer modes make every chapter begin with everyday intuition, a board picture, technical wording, and a practice check.`],
     ["Draw before equations", `${blackboardStages} clickable blackboard stages let each chapter show a visual model, beginner explanation, technical explanation, board note, and self-check before the dense cards.`],
@@ -238,12 +251,13 @@ function StandaloneBookPledge({ lectureBeats, manuscriptMoves, blackboardStages,
     ["Go technical", `${formulaLectureModes} formula lecture modes sit beside algorithms, derivations, profiles, worked microscopes, traps, and implementation checks so equations are taught as stories, symbol maps, traces, use cases, and pitfalls.`],
     ["Name each idea", `${conceptCardTotal} concept microscope cards and ${conceptModes} lecture modes make key terms earn plain-language roles, board pictures, technical uses, contrasts, and self-checks.`],
     ["Work examples", `${workedExampleTotal} worked examples and ${workedExampleModes} example modes turn abstractions into toy worlds, board traces, tiny target calculations, method traces, and debug repairs.`],
+    ["Repair mistakes", `${misconceptionTotal} misconception clinic cards and ${misconceptionModes} repair modes show why tempting shortcuts fail, how to redraw them, and what changes technically.`],
     ["Teach it back", `${practiceCardTotal} active-recall checkpoints and ${practiceModes} reveal modes ask readers to explain, draw, translate math, choose methods, repair traps, and transfer each chapter to a new domain.`],
     ["Stay original", "The wording is newly written for this web book: it follows the chapter structure and technical ideas without copying the copyrighted prose or figures."],
   ];
 
   return (
-    <div className="grid gap-5 lg:grid-cols-4 xl:grid-cols-8">
+    <div className="grid gap-5 lg:grid-cols-3 xl:grid-cols-9">
       {cards.map(([title, text], index) => (
         <article key={title} className="rounded-xl border border-line bg-panel p-6">
           <div className="flex items-start justify-between gap-3">

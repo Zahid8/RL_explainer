@@ -12,6 +12,7 @@ import { exerciseCoachCards } from "@/lib/exerciseCoach";
 import { practiceCardCount, practiceCardsForChapter, practiceModeCount, practiceModes } from "@/lib/chapterPractice";
 import { conceptCardCount, conceptCardsForChapter, conceptLectureModes, conceptModeCount } from "@/lib/conceptAtlas";
 import { workedExampleCount, workedExampleModeCount, workedExampleModes, workedExamplesForChapter } from "@/lib/chapterWorkedExamples";
+import { misconceptionCardCount, misconceptionCardsForChapter, misconceptionModeCount, misconceptionModes } from "@/lib/chapterMisconceptions";
 import { formulaAtlas, formulaLectureModeCount, formulaLectureModes, formulasForChapter } from "@/lib/formulaAtlas";
 import { chapterMastery } from "@/lib/mastery";
 import { manuscriptForChapter, manuscriptSectionCount } from "@/lib/chapterManuscripts";
@@ -43,6 +44,8 @@ export interface ChapterCoverageRow {
   conceptInteractiveModes: number;
   workedExamples: number;
   workedExampleInteractiveModes: number;
+  misconceptionCards: number;
+  misconceptionInteractiveModes: number;
   manuscriptSections: number;
   blackboardStages: number;
   sectionNarratives: number;
@@ -99,6 +102,8 @@ export interface CoverageAudit {
     conceptInteractiveModes: number;
     workedExamples: number;
     workedExampleInteractiveModes: number;
+    misconceptionCards: number;
+    misconceptionInteractiveModes: number;
     manuscriptSections: number;
     blackboardStages: number;
     sectionNarratives: number;
@@ -130,6 +135,8 @@ export function buildCoverageAudit(): CoverageAudit {
   const conceptModes = conceptModeCount();
   const workedExamples = workedExampleCount();
   const workedExampleModesTotal = workedExampleModeCount();
+  const misconceptionCards = misconceptionCardCount();
+  const misconceptionModeTotal = misconceptionModeCount();
   const manuscriptSections = manuscriptSectionCount();
   const blackboardStages = blackboardStageCount();
   const sectionNarratives = sectionNarrativeCount();
@@ -156,6 +163,8 @@ export function buildCoverageAudit(): CoverageAudit {
     conceptInteractiveModes: conceptModes,
     workedExamples,
     workedExampleInteractiveModes: workedExampleModesTotal,
+    misconceptionCards,
+    misconceptionInteractiveModes: misconceptionModeTotal,
     manuscriptSections,
     blackboardStages,
     sectionNarratives,
@@ -201,6 +210,8 @@ function chapterCoverageRow(chapterNumber: number): ChapterCoverageRow {
   const conceptModes = conceptModeCount(chapterNumber);
   const workedExamples = workedExamplesForChapter(chapterNumber);
   const workedModes = workedExampleModeCount(chapterNumber);
+  const misconceptionCards = misconceptionCardsForChapter(chapterNumber);
+  const clinicModes = misconceptionModeCount(chapterNumber);
   const manuscript = manuscriptForChapter(chapterNumber);
   const blackboard = blackboardForChapter(chapterNumber);
   const sectionLessons = sectionLessonsForChapter(chapterNumber);
@@ -213,6 +224,7 @@ function chapterCoverageRow(chapterNumber: number): ChapterCoverageRow {
     "active recall practice coach",
     "concept microscope",
     "worked example studio",
+    "misconception clinic",
     "original manuscript",
     "interactive blackboard",
     "section textbook manuscript",
@@ -240,6 +252,8 @@ function chapterCoverageRow(chapterNumber: number): ChapterCoverageRow {
     conceptCards.length * conceptLectureModes.length === conceptModes ? "" : "Concept microscope count does not match concept mode coverage.",
     workedExamples.length >= 5 ? "" : "Worked example studio has fewer than five examples.",
     workedExamples.length * workedExampleModes.length === workedModes ? "" : "Worked example studio count does not match mode coverage.",
+    misconceptionCards.length >= 5 ? "" : "Misconception clinic has fewer than five cards.",
+    misconceptionCards.length * misconceptionModes.length === clinicModes ? "" : "Misconception clinic count does not match mode coverage.",
     manuscript.sections.length >= 3 ? "" : "Original manuscript has fewer than three chapter-specific moves.",
     blackboard.stages.length >= 4 ? "" : "Interactive blackboard has fewer than four stages.",
     sectionLessons.length >= (deep?.sectionDetails.length ?? chapter.sections.length) ? "" : "Section textbook manuscript does not cover every section.",
@@ -264,6 +278,8 @@ function chapterCoverageRow(chapterNumber: number): ChapterCoverageRow {
     conceptInteractiveModes: conceptModes,
     workedExamples: workedExamples.length,
     workedExampleInteractiveModes: workedModes,
+    misconceptionCards: misconceptionCards.length,
+    misconceptionInteractiveModes: clinicModes,
     manuscriptSections: manuscript.sections.length,
     blackboardStages: blackboard.stages.length,
     sectionNarratives: sectionLessons.length,
@@ -320,10 +336,10 @@ function requirementProofs(totals: CoverageAudit["totals"]): RequirementProof[] 
   return [
     {
       label: "Linear standalone book reader",
-      status: totals.bookReaderRoutes === 1 && totals.zeroKnowledgeRungs >= totals.chapters * 5 && totals.zeroKnowledgeModes >= totals.zeroKnowledgeRungs * zeroKnowledgeModes.length && totals.practiceCards >= totals.chapters * 5 && totals.practiceInteractiveModes >= totals.practiceCards * practiceModes.length && totals.conceptCards >= totals.chapters * 6 && totals.conceptInteractiveModes >= totals.conceptCards * conceptLectureModes.length && totals.workedExamples >= totals.chapters * 5 && totals.workedExampleInteractiveModes >= totals.workedExamples * workedExampleModes.length && totals.lectureBeats >= totals.sectionNotes && totals.sectionNarratives >= totals.sectionNotes && totals.sectionInteractiveModes >= totals.sectionNotes * 6 && totals.formulaInteractiveModes >= totals.formulas * formulaLectureModes.length && totals.manuscriptSections >= 51 && totals.blackboardStages >= 68 ? "complete" : "warning",
-      evidence: `/book is the continuous web-book route and renders ${totals.zeroKnowledgeRungs} zero-knowledge starter rungs, ${totals.practiceCards} active-recall checkpoints, ${totals.conceptCards} concept microscope cards, ${totals.workedExamples} worked examples, ${totals.manuscriptSections} bespoke manuscript moves, ${totals.blackboardStages} interactive blackboard stages, ${totals.sectionNarratives} section textbook manuscripts, ${totals.sectionInteractiveModes} guided section lecture modes, ${totals.formulaInteractiveModes} formula lecture modes, plus the same ${totals.lectureBeats} lecture beats used by the chapter lessons.`,
+      status: totals.bookReaderRoutes === 1 && totals.zeroKnowledgeRungs >= totals.chapters * 5 && totals.zeroKnowledgeModes >= totals.zeroKnowledgeRungs * zeroKnowledgeModes.length && totals.practiceCards >= totals.chapters * 5 && totals.practiceInteractiveModes >= totals.practiceCards * practiceModes.length && totals.conceptCards >= totals.chapters * 6 && totals.conceptInteractiveModes >= totals.conceptCards * conceptLectureModes.length && totals.workedExamples >= totals.chapters * 5 && totals.workedExampleInteractiveModes >= totals.workedExamples * workedExampleModes.length && totals.misconceptionCards >= totals.chapters * 5 && totals.misconceptionInteractiveModes >= totals.misconceptionCards * misconceptionModes.length && totals.lectureBeats >= totals.sectionNotes && totals.sectionNarratives >= totals.sectionNotes && totals.sectionInteractiveModes >= totals.sectionNotes * 6 && totals.formulaInteractiveModes >= totals.formulas * formulaLectureModes.length && totals.manuscriptSections >= 51 && totals.blackboardStages >= 68 ? "complete" : "warning",
+      evidence: `/book is the continuous web-book route and renders ${totals.zeroKnowledgeRungs} zero-knowledge starter rungs, ${totals.practiceCards} active-recall checkpoints, ${totals.conceptCards} concept microscope cards, ${totals.workedExamples} worked examples, ${totals.misconceptionCards} misconception clinic cards, ${totals.manuscriptSections} bespoke manuscript moves, ${totals.blackboardStages} interactive blackboard stages, ${totals.sectionNarratives} section textbook manuscripts, ${totals.sectionInteractiveModes} guided section lecture modes, ${totals.formulaInteractiveModes} formula lecture modes, plus the same ${totals.lectureBeats} lecture beats used by the chapter lessons.`,
       easy: "Readers can now read the whole course in order without jumping between chapter cards.",
-      technical: "The App Router `/book` page imports the chapter dataset, zero-knowledge ladders, active-recall practice cards, concept microscope cards, worked example cards, standaloneLectureForChapter() output, section manuscripts, and chapter-filtered formula props, then renders every chapter sequentially with table of contents anchors and links to full chapter labs.",
+      technical: "The App Router `/book` page imports the chapter dataset, zero-knowledge ladders, active-recall practice cards, concept microscope cards, worked example cards, misconception clinic cards, standaloneLectureForChapter() output, section manuscripts, and chapter-filtered formula props, then renders every chapter sequentially with table of contents anchors and links to full chapter labs.",
     },
     {
       label: "Zero-knowledge starter ladders",
@@ -352,6 +368,13 @@ function requirementProofs(totals: CoverageAudit["totals"]): RequirementProof[] 
       evidence: `${totals.workedExamples} worked examples and ${totals.workedExampleInteractiveModes} worked-example modes are present: five examples for each of the ${totals.chapters} chapters, with scenario, board, technical trace, pitfall, and self-check modes.`,
       easy: "Every chapter now has tiny concrete cases that show the idea operating before the reader tries exercises alone.",
       technical: "chapterWorkedExamples.ts derives chapter-specific toy worlds, board traces, numeric traces, method traces, and debug repairs from the original data modules, and WorkedExampleStudio renders the interactive mode switcher on the homepage, /book, and chapter routes.",
+    },
+    {
+      label: "Misconception clinic",
+      status: totals.misconceptionCards >= totals.chapters * 5 && totals.misconceptionInteractiveModes >= totals.misconceptionCards * misconceptionModes.length ? "complete" : "warning",
+      evidence: `${totals.misconceptionCards} misconception clinic cards and ${totals.misconceptionInteractiveModes} repair modes are present: five cards for each of the ${totals.chapters} chapters, with mistake, temptation, repair, technical consequence, and self-check modes.`,
+      easy: "Readers can see why tempting wrong shortcuts fail and how to repair them before those shortcuts become habits.",
+      technical: "chapterMisconceptions.ts derives chapter-specific repair cards from common confusions, concept cards, formulas, algorithms, and worked examples; MisconceptionClinic renders the mode switcher on the homepage, /book, and chapter routes.",
     },
     {
       label: "Interactive graphical lecture boards",
@@ -404,10 +427,10 @@ function requirementProofs(totals: CoverageAudit["totals"]): RequirementProof[] 
     },
     {
       label: "Highly detailed chapter explanations",
-      status: totals.lectureBeats >= 161 && totals.sectionInteractiveModes >= 966 && totals.sectionNarratives >= 161 && totals.sectionNotes >= 161 && totals.conceptCards >= 102 && totals.workedExamples >= 85 && totals.masteryTiles >= 170 ? "complete" : "warning",
-      evidence: `${totals.zeroKnowledgeRungs} starter rungs, ${totals.zeroKnowledgeModes} primer modes, ${totals.practiceCards} active-recall checkpoints, ${totals.practiceInteractiveModes} practice reveal modes, ${totals.conceptCards} concept cards, ${totals.conceptInteractiveModes} concept lecture modes, ${totals.workedExamples} worked examples, ${totals.workedExampleInteractiveModes} worked-example modes, ${totals.sectionNarratives} section textbook manuscripts, ${totals.sectionInteractiveModes} guided section modes, ${totals.formulaInteractiveModes} formula lecture modes, ${totals.lectureBeats} lecture beats, ${totals.sectionNotes} section notes, ${totals.masteryTiles} mastery tiles, ${totals.formulas} formulas, ${totals.evidenceAnchors} anchors, and ${totals.exerciseGuides} exercise guides are connected to chapters.`,
+      status: totals.lectureBeats >= 161 && totals.sectionInteractiveModes >= 966 && totals.sectionNarratives >= 161 && totals.sectionNotes >= 161 && totals.conceptCards >= 102 && totals.workedExamples >= 85 && totals.misconceptionCards >= 85 && totals.masteryTiles >= 170 ? "complete" : "warning",
+      evidence: `${totals.zeroKnowledgeRungs} starter rungs, ${totals.zeroKnowledgeModes} primer modes, ${totals.practiceCards} active-recall checkpoints, ${totals.practiceInteractiveModes} practice reveal modes, ${totals.conceptCards} concept cards, ${totals.conceptInteractiveModes} concept lecture modes, ${totals.workedExamples} worked examples, ${totals.workedExampleInteractiveModes} worked-example modes, ${totals.misconceptionCards} misconception clinic cards, ${totals.misconceptionInteractiveModes} repair modes, ${totals.sectionNarratives} section textbook manuscripts, ${totals.sectionInteractiveModes} guided section modes, ${totals.formulaInteractiveModes} formula lecture modes, ${totals.lectureBeats} lecture beats, ${totals.sectionNotes} section notes, ${totals.masteryTiles} mastery tiles, ${totals.formulas} formulas, ${totals.evidenceAnchors} anchors, and ${totals.exerciseGuides} exercise guides are connected to chapters.`,
       easy: "Each chapter has a from-scratch lecture, story, sections, formulas, examples, exercises, traps, and review scaffolding.",
-      technical: "Chapter pages now compose zero-knowledge starter ladders, active-recall practice, concept microscope lectures, worked example studio, interactive section lecture controls, interactive formula lecture controls, section textbook manuscripts, standalone lectures, synthesis, dependency maps, source audits, algorithm cards, deep dives, mastery notes, formula atlas entries, evidence anchors, and exercise coaching.",
+      technical: "Chapter pages now compose zero-knowledge starter ladders, active-recall practice, concept microscope lectures, worked example studio, misconception clinic, interactive section lecture controls, interactive formula lecture controls, section textbook manuscripts, standalone lectures, synthesis, dependency maps, source audits, algorithm cards, deep dives, mastery notes, formula atlas entries, evidence anchors, and exercise coaching.",
     },
     {
       label: "Every algorithm has technical and easy explanation",

@@ -8,6 +8,7 @@ import { InteractiveBlackboard } from "@/components/InteractiveBlackboard";
 import { SectionLessonReader } from "@/components/SectionLessonReader";
 import { MotionGlyph } from "@/components/MotionGlyph";
 import { WorkedExampleStudio } from "@/components/WorkedExampleStudio";
+import { MisconceptionClinic } from "@/components/MisconceptionClinic";
 import { Chip } from "@/components/Section";
 import { ZeroKnowledgeLadderReader } from "@/components/ZeroKnowledgeLadderReader";
 import { manuscriptForChapter, manuscriptSectionCount, type ChapterManuscript } from "@/lib/chapterManuscripts";
@@ -15,6 +16,7 @@ import { blackboardForChapter, blackboardStageCount, type ChapterBlackboard } fr
 import { practiceCardsForChapter, practiceModeCount, type ChapterPracticeCard } from "@/lib/chapterPractice";
 import { conceptCardsForChapter, conceptModeCount, type ChapterConceptCard } from "@/lib/conceptAtlas";
 import { workedExamplesForChapter, workedExampleModeCount, type ChapterWorkedExample } from "@/lib/chapterWorkedExamples";
+import { misconceptionCardsForChapter, misconceptionModeCount, type ChapterMisconceptionCard } from "@/lib/chapterMisconceptions";
 import { formulaLectureModeCount, formulasForChapter, type FormulaNote } from "@/lib/formulaAtlas";
 import { chapters } from "@/lib/paper";
 import { sectionLessonModeCount, sectionLessonsForChapter, sectionNarrativeCount, type SectionTextbookLesson } from "@/lib/sectionNarratives";
@@ -37,6 +39,8 @@ const lectures = chapters.map((chapter) => ({
   conceptModes: conceptModeCount(chapter.n),
   workedExamples: workedExamplesForChapter(chapter.n),
   workedExampleModes: workedExampleModeCount(chapter.n),
+  misconceptionCards: misconceptionCardsForChapter(chapter.n),
+  misconceptionModes: misconceptionModeCount(chapter.n),
   manuscript: manuscriptForChapter(chapter.n),
   blackboard: blackboardForChapter(chapter.n),
   sectionLessons: sectionLessonsForChapter(chapter.n),
@@ -56,6 +60,7 @@ export default function BookPage() {
   const activeRecallModes = practiceModeCount();
   const conceptModes = conceptModeCount();
   const workedExampleModes = workedExampleModeCount();
+  const misconceptionModes = misconceptionModeCount();
 
   return (
     <main className="min-h-screen bg-bg text-ink">
@@ -79,6 +84,7 @@ export default function BookPage() {
                 <Chip accent="lime">{activeRecallModes} practice modes</Chip>
                 <Chip accent="violet">{conceptModes} concept modes</Chip>
                 <Chip accent="orange">{workedExampleModes} worked modes</Chip>
+                <Chip accent="orange">{misconceptionModes} clinic modes</Chip>
                 <Chip accent="blue">{manuscriptSections} manuscript moves</Chip>
                 <Chip accent="violet">{blackboardStages} blackboard stages</Chip>
                 <Chip accent="cyan">{sectionNarratives} section manuscripts</Chip>
@@ -121,19 +127,19 @@ export default function BookPage() {
         </aside>
 
         <div className="grid gap-12">
-          {lectures.map(({ chapter, lecture, starter, starterModes, practiceCards, practiceModes, conceptCards, conceptModes, workedExamples, workedExampleModes, manuscript, blackboard, sectionLessons, formulas, formulaModes }) => <BookChapter key={chapter.n} chapter={chapter} lecture={lecture} starter={starter} starterModes={starterModes} practiceCards={practiceCards} practiceModes={practiceModes} conceptCards={conceptCards} conceptModes={conceptModes} workedExamples={workedExamples} workedExampleModes={workedExampleModes} manuscript={manuscript} blackboard={blackboard} sectionLessons={sectionLessons} formulas={formulas} formulaModes={formulaModes} />)}
+          {lectures.map(({ chapter, lecture, starter, starterModes, practiceCards, practiceModes, conceptCards, conceptModes, workedExamples, workedExampleModes, misconceptionCards, misconceptionModes, manuscript, blackboard, sectionLessons, formulas, formulaModes }) => <BookChapter key={chapter.n} chapter={chapter} lecture={lecture} starter={starter} starterModes={starterModes} practiceCards={practiceCards} practiceModes={practiceModes} conceptCards={conceptCards} conceptModes={conceptModes} workedExamples={workedExamples} workedExampleModes={workedExampleModes} misconceptionCards={misconceptionCards} misconceptionModes={misconceptionModes} manuscript={manuscript} blackboard={blackboard} sectionLessons={sectionLessons} formulas={formulas} formulaModes={formulaModes} />)}
         </div>
       </div>
     </main>
   );
 }
 
-function BookChapter({ chapter, lecture, starter, starterModes, practiceCards, practiceModes, conceptCards, conceptModes, workedExamples, workedExampleModes, manuscript, blackboard, sectionLessons, formulas, formulaModes }: { chapter: (typeof chapters)[number]; lecture: StandaloneChapterLecture; starter: ZeroKnowledgeLadder; starterModes: number; practiceCards: ChapterPracticeCard[]; practiceModes: number; conceptCards: ChapterConceptCard[]; conceptModes: number; workedExamples: ChapterWorkedExample[]; workedExampleModes: number; manuscript: ChapterManuscript; blackboard: ChapterBlackboard; sectionLessons: SectionTextbookLesson[]; formulas: FormulaNote[]; formulaModes: number }) {
+function BookChapter({ chapter, lecture, starter, starterModes, practiceCards, practiceModes, conceptCards, conceptModes, workedExamples, workedExampleModes, misconceptionCards, misconceptionModes, manuscript, blackboard, sectionLessons, formulas, formulaModes }: { chapter: (typeof chapters)[number]; lecture: StandaloneChapterLecture; starter: ZeroKnowledgeLadder; starterModes: number; practiceCards: ChapterPracticeCard[]; practiceModes: number; conceptCards: ChapterConceptCard[]; conceptModes: number; workedExamples: ChapterWorkedExample[]; workedExampleModes: number; misconceptionCards: ChapterMisconceptionCard[]; misconceptionModes: number; manuscript: ChapterManuscript; blackboard: ChapterBlackboard; sectionLessons: SectionTextbookLesson[]; formulas: FormulaNote[]; formulaModes: number }) {
   return (
     <article id={`book-chapter-${chapter.n}`} className="scroll-mt-24 overflow-hidden rounded-2xl border border-line bg-panel">
       <div className="grid gap-px bg-line lg:grid-cols-[0.9fr_1.1fr]">
         <div className="bg-panel p-6 lg:p-7">
-          <div className="flex flex-wrap gap-2"><Chip accent="cyan">Chapter {chapter.n}</Chip><Chip accent="blue">{chapter.part}</Chip><Chip accent="lime">{lecture.beats.length} section lessons</Chip><Chip accent="violet">{conceptCards.length} concepts</Chip><Chip accent="orange">{workedExamples.length} examples</Chip></div>
+          <div className="flex flex-wrap gap-2"><Chip accent="cyan">Chapter {chapter.n}</Chip><Chip accent="blue">{chapter.part}</Chip><Chip accent="lime">{lecture.beats.length} section lessons</Chip><Chip accent="violet">{conceptCards.length} concepts</Chip><Chip accent="orange">{workedExamples.length} examples</Chip><Chip accent="orange">{misconceptionCards.length} clinics</Chip></div>
           <h2 className="display mt-5 text-[clamp(32px,5vw,56px)] font-medium text-ink">{chapter.title}</h2>
           <p className="mt-4 text-base leading-relaxed text-muted">{lecture.promise}</p>
           <div className="mt-5 grid gap-3">
@@ -211,6 +217,14 @@ function BookChapter({ chapter, lecture, starter, starterModes, practiceCards, p
             <p className="mt-2 text-sm leading-relaxed text-muted">{workedExamples.length} worked examples become {workedExampleModes} scenario, board, trace, pitfall, and self-check modes for this chapter.</p>
           </div>
           <WorkedExampleStudio examples={workedExamples} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} compact />
+        </section>
+        <section className="grid gap-4">
+          <div>
+            <p className="eyebrow">Misconception clinic</p>
+            <h3 className="display mt-2 text-3xl font-medium text-ink">Repair tempting wrong shortcuts before moving on.</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted">{misconceptionCards.length} misconception cards become {misconceptionModes} mistake, temptation, repair, technical, and self-check modes for this chapter.</p>
+          </div>
+          <MisconceptionClinic cards={misconceptionCards} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} compact />
         </section>
         <section className="grid gap-4">
           <div>
