@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { TeX } from "@/components/Math";
 import { AnimatedConceptGraphic } from "@/components/AnimatedConceptGraphic";
 import { ChapterPracticeCoach } from "@/components/ChapterPracticeCoach";
+import { ChapterSimulatorLab } from "@/components/ChapterSimulatorLab";
 import { ConceptLectureDeck } from "@/components/ConceptLectureDeck";
 import { FormulaLectureReader } from "@/components/FormulaLectureReader";
 import { InteractiveBlackboard } from "@/components/InteractiveBlackboard";
@@ -28,6 +29,7 @@ import { practiceCardsForChapter, practiceModeCount, type ChapterPracticeCard } 
 import { conceptCardsForChapter, conceptModeCount, type ChapterConceptCard } from "@/lib/conceptAtlas";
 import { workedExamplesForChapter, workedExampleModeCount, type ChapterWorkedExample } from "@/lib/chapterWorkedExamples";
 import { misconceptionCardsForChapter, misconceptionModeCount, type ChapterMisconceptionCard } from "@/lib/chapterMisconceptions";
+import { simulatorControlCount, simulatorForChapter, simulatorReadoutCount, type ChapterSimulator } from "@/lib/chapterSimulators";
 import { formulaLectureModeCount, formulasForChapter } from "@/lib/formulaAtlas";
 import { blackboardForChapter } from "@/lib/interactiveBlackboards";
 import { chapterMastery } from "@/lib/mastery";
@@ -82,6 +84,9 @@ export default async function ChapterPage({ params }: { params: Params }) {
   const workedExampleModes = workedExampleModeCount(item.n);
   const misconceptionCards = misconceptionCardsForChapter(item.n);
   const misconceptionModes = misconceptionModeCount(item.n);
+  const simulator = simulatorForChapter(item.n);
+  const simulatorControls = simulatorControlCount(item.n);
+  const simulatorReadouts = simulatorReadoutCount(item.n);
   const manuscript = manuscriptForChapter(item.n);
   const blackboard = blackboardForChapter(item.n);
   const sectionLessons = sectionLessonsForChapter(item.n);
@@ -119,6 +124,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
                 <Stat value={String(workedExampleModes)} label="worked modes" />
                 <Stat value={String(misconceptionCards.length)} label="clinic cards" />
                 <Stat value={String(misconceptionModes)} label="clinic modes" />
+                <Stat value={String(simulatorControls)} label="sim controls" />
+                <Stat value={String(simulatorReadouts)} label="sim readouts" />
                 <Stat value={String(sourceAudits.length)} label="source cues" />
               </div>
             </div>
@@ -136,7 +143,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
           <AnimatedConceptGraphic label="Story loop" variant="loop" caption="The easy story and the technical story update each other: intuition points at notation, notation checks intuition." compact />
         </section>
 
-        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, starterRungs: starter.rungs.length, starterModes, practiceCards: practiceCards.length, practiceModes, conceptCards: conceptCards.length, conceptModes, workedExamples: workedExamples.length, workedExampleModes, misconceptionCards: misconceptionCards.length, misconceptionModes, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, sectionLessons: sectionLessons.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, formulaModes, evidence: evidence.length, exercises: exercises.length, sourceAudits: sourceAudits.length }} />
+        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, starterRungs: starter.rungs.length, starterModes, practiceCards: practiceCards.length, practiceModes, conceptCards: conceptCards.length, conceptModes, workedExamples: workedExamples.length, workedExampleModes, misconceptionCards: misconceptionCards.length, misconceptionModes, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, sectionLessons: sectionLessons.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, formulaModes, evidence: evidence.length, exercises: exercises.length, simulatorControls, simulatorReadouts, sourceAudits: sourceAudits.length }} />
 
         <ChapterStarterLadderBlock chapter={item} starter={starter} starterModes={starterModes} />
 
@@ -147,6 +154,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
         <ChapterWorkedExampleBlock chapter={item} examples={workedExamples} workedExampleModes={workedExampleModes} />
 
         <ChapterMisconceptionBlock chapter={item} cards={misconceptionCards} misconceptionModes={misconceptionModes} />
+
+        <ChapterSimulatorBlock chapter={item} simulator={simulator} simulatorControls={simulatorControls} simulatorReadouts={simulatorReadouts} />
 
         <ChapterManuscriptBlock manuscript={manuscript} />
 
@@ -321,13 +330,14 @@ function Stat({ value, label }: { value: string; label: string }) {
   );
 }
 
-function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; starterRungs: number; starterModes: number; practiceCards: number; practiceModes: number; conceptCards: number; conceptModes: number; workedExamples: number; workedExampleModes: number; misconceptionCards: number; misconceptionModes: number; manuscriptSections: number; blackboardStages: number; sectionLessons: number; lectureBeats: number; sections: number; formulas: number; formulaModes: number; evidence: number; exercises: number; sourceAudits: number } }) {
+function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; starterRungs: number; starterModes: number; practiceCards: number; practiceModes: number; conceptCards: number; conceptModes: number; workedExamples: number; workedExampleModes: number; misconceptionCards: number; misconceptionModes: number; simulatorControls: number; simulatorReadouts: number; manuscriptSections: number; blackboardStages: number; sectionLessons: number; lectureBeats: number; sections: number; formulas: number; formulaModes: number; evidence: number; exercises: number; sourceAudits: number } }) {
   const items = [
     ["starter", `${counts.starterRungs} starter rungs · ${counts.starterModes} modes`],
     ["practice", `${counts.practiceCards} practice checks · ${counts.practiceModes} modes`],
     ["concepts", `${counts.conceptCards} concepts · ${counts.conceptModes} modes`],
     ["worked", `${counts.workedExamples} worked examples · ${counts.workedExampleModes} modes`],
     ["clinic", `${counts.misconceptionCards} misconception cards · ${counts.misconceptionModes} modes`],
+    ["simulators", `${counts.simulatorControls} simulator controls · ${counts.simulatorReadouts} readouts`],
     ["manuscript", `${counts.manuscriptSections} manuscript moves`],
     ["blackboard", `${counts.blackboardStages} blackboard stages`],
     ["section-reader", `${counts.sectionLessons * 6} guided modes`],
@@ -472,6 +482,24 @@ function ChapterMisconceptionBlock({ chapter, cards, misconceptionModes }: { cha
           <p className="text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Chapter {chapter.n} clinic:</span> {cards.length} misconception cards expose {misconceptionModes} mistake, temptation, repair, technical consequence, and self-check modes.</p>
         </div>
         <MisconceptionClinic cards={cards} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} />
+      </div>
+    </section>
+  );
+}
+
+function ChapterSimulatorBlock({ chapter, simulator, simulatorControls, simulatorReadouts }: { chapter: (typeof chapters)[number]; simulator: ChapterSimulator; simulatorControls: number; simulatorReadouts: number }) {
+  return (
+    <section id="simulators" className="scroll-mt-24">
+      <SectionTitle
+        eyebrow="00u - Chapter simulator lab"
+        title="Move the chapter's control knobs and explain the tradeoff."
+        lead="This layer is a live teaching board, not a benchmark: exploration pressure changes the data, update strength changes how strongly estimates move, and future horizon changes how delayed consequences enter the target."
+      />
+      <div className="mt-6 grid gap-4">
+        <div className="rounded-xl border border-cyan/30 bg-cyan/[0.06] p-4">
+          <p className="text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Chapter {chapter.n} simulator:</span> {simulatorControls} live controls drive {simulatorReadouts} learning, stability, bias, and variance readouts, so readers can test the chapter&apos;s central tradeoff before dense notation.</p>
+        </div>
+        <ChapterSimulatorLab simulators={[simulator]} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} />
       </div>
     </section>
   );

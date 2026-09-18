@@ -9,7 +9,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/eslint.config.mjs",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_eslint_config_mjs",
-      "community": 46,
+      "community": 49,
       "norm_label": "eslint.config.mjs"
     },
     {
@@ -18,7 +18,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/next-env.d.ts",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_next_env_d_ts",
-      "community": 47,
+      "community": 50,
       "norm_label": "next-env.d.ts"
     },
     {
@@ -27,7 +27,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/postcss.config.mjs",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_postcss_config_mjs",
-      "community": 48,
+      "community": 51,
       "norm_label": "postcss.config.mjs"
     },
     {
@@ -36,7 +36,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/next.config.ts",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_next_config_ts",
-      "community": 49,
+      "community": 52,
       "norm_label": "next.config.ts"
     },
     {
@@ -45,7 +45,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/MasteryNotebook.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_masterynotebook_tsx",
-      "community": 23,
+      "community": 25,
       "norm_label": "masterynotebook.tsx"
     },
     {
@@ -54,7 +54,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/MasteryNotebook.tsx",
       "source_location": "L7",
       "id": "components_masterynotebook_partlabel",
-      "community": 23,
+      "community": 25,
       "norm_label": "partlabel()"
     },
     {
@@ -63,7 +63,7 @@
       "source_file": "src/components/EvidenceGuide.tsx",
       "source_location": "L1",
       "id": "src_components_evidenceguide_tsx",
-      "community": 24,
+      "community": 26,
       "norm_label": "evidenceguide.tsx"
     },
     {
@@ -72,7 +72,7 @@
       "source_file": "src/components/EvidenceGuide.tsx",
       "source_location": "L17",
       "id": "components_evidenceguide_partlabel",
-      "community": 24,
+      "community": 26,
       "norm_label": "partlabel()"
     },
     {
@@ -81,7 +81,7 @@
       "source_file": "src/components/SectionLessonReader.tsx",
       "source_location": "L1",
       "id": "src_components_sectionlessonreader_tsx",
-      "community": 25,
+      "community": 27,
       "norm_label": "sectionlessonreader.tsx"
     },
     {
@@ -90,7 +90,7 @@
       "source_file": "src/components/SectionLessonReader.tsx",
       "source_location": "L19",
       "id": "components_sectionlessonreader_sectionlessonreader",
-      "community": 25,
+      "community": 27,
       "norm_label": "sectionlessonreader()"
     },
     {
@@ -99,16 +99,16 @@
       "source_file": "src/components/Nav.tsx",
       "source_location": "L1",
       "id": "src_components_nav_tsx",
-      "community": 26,
+      "community": 28,
       "norm_label": "nav.tsx"
     },
     {
       "label": "onScroll()",
       "file_type": "code",
       "source_file": "src/components/Nav.tsx",
-      "source_location": "L30",
+      "source_location": "L31",
       "id": "components_nav_onscroll",
-      "community": 26,
+      "community": 28,
       "norm_label": "onscroll()"
     },
     {
@@ -117,7 +117,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/AnimatedConceptGraphic.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_animatedconceptgraphic_tsx",
-      "community": 27,
+      "community": 29,
       "norm_label": "animatedconceptgraphic.tsx"
     },
     {
@@ -126,7 +126,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/AnimatedConceptGraphic.tsx",
       "source_location": "L34",
       "id": "components_animatedconceptgraphic_animatedconceptgraphic",
-      "community": 27,
+      "community": 29,
       "norm_label": "animatedconceptgraphic()"
     },
     {
@@ -135,7 +135,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/TermLab.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_termlab_tsx",
-      "community": 28,
+      "community": 30,
       "norm_label": "termlab.tsx"
     },
     {
@@ -144,7 +144,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/TermLab.tsx",
       "source_location": "L16",
       "id": "components_termlab_onkey",
-      "community": 28,
+      "community": 30,
       "norm_label": "onkey()"
     },
     {
@@ -153,7 +153,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/MotionGlyph.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_motionglyph_tsx",
-      "community": 29,
+      "community": 31,
       "norm_label": "motionglyph.tsx"
     },
     {
@@ -162,7 +162,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/MotionGlyph.tsx",
       "source_location": "L12",
       "id": "components_motionglyph_motionglyph",
-      "community": 29,
+      "community": 31,
       "norm_label": "motionglyph()"
     },
     {
@@ -171,7 +171,7 @@
       "source_file": "src/components/WorkedExampleStudio.tsx",
       "source_location": "L1",
       "id": "src_components_workedexamplestudio_tsx",
-      "community": 30,
+      "community": 32,
       "norm_label": "workedexamplestudio.tsx"
     },
     {
@@ -180,7 +180,7 @@
       "source_file": "src/components/WorkedExampleStudio.tsx",
       "source_location": "L18",
       "id": "components_workedexamplestudio_workedexamplestudio",
-      "community": 30,
+      "community": 32,
       "norm_label": "workedexamplestudio()"
     },
     {
@@ -189,7 +189,7 @@
       "source_file": "src/components/FormulaLectureReader.tsx",
       "source_location": "L1",
       "id": "src_components_formulalecturereader_tsx",
-      "community": 50,
+      "community": 53,
       "norm_label": "formulalecturereader.tsx"
     },
     {
@@ -198,7 +198,7 @@
       "source_file": "src/components/ChapterPracticeCoach.tsx",
       "source_location": "L1",
       "id": "src_components_chapterpracticecoach_tsx",
-      "community": 31,
+      "community": 33,
       "norm_label": "chapterpracticecoach.tsx"
     },
     {
@@ -207,7 +207,7 @@
       "source_file": "src/components/ChapterPracticeCoach.tsx",
       "source_location": "L18",
       "id": "components_chapterpracticecoach_chapterpracticecoach",
-      "community": 31,
+      "community": 33,
       "norm_label": "chapterpracticecoach()"
     },
     {
@@ -216,7 +216,7 @@
       "source_file": "src/components/ConceptLectureDeck.tsx",
       "source_location": "L1",
       "id": "src_components_conceptlecturedeck_tsx",
-      "community": 32,
+      "community": 34,
       "norm_label": "conceptlecturedeck.tsx"
     },
     {
@@ -225,7 +225,7 @@
       "source_file": "src/components/ConceptLectureDeck.tsx",
       "source_location": "L18",
       "id": "components_conceptlecturedeck_conceptlecturedeck",
-      "community": 32,
+      "community": 34,
       "norm_label": "conceptlecturedeck()"
     },
     {
@@ -234,7 +234,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/Glossary.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_glossary_tsx",
-      "community": 51,
+      "community": 54,
       "norm_label": "glossary.tsx"
     },
     {
@@ -243,7 +243,7 @@
       "source_file": "src/components/Hero.tsx",
       "source_location": "L1",
       "id": "src_components_hero_tsx",
-      "community": 33,
+      "community": 35,
       "norm_label": "hero.tsx"
     },
     {
@@ -252,7 +252,7 @@
       "source_file": "src/components/Hero.tsx",
       "source_location": "L4",
       "id": "components_hero_hero",
-      "community": 33,
+      "community": 35,
       "norm_label": "hero()"
     },
     {
@@ -261,8 +261,26 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/AlgorithmPlayer.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_algorithmplayer_tsx",
-      "community": 52,
+      "community": 55,
       "norm_label": "algorithmplayer.tsx"
+    },
+    {
+      "label": "ChapterSimulatorLab.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ChapterSimulatorLab.tsx",
+      "source_location": "L1",
+      "id": "src_components_chaptersimulatorlab_tsx",
+      "community": 36,
+      "norm_label": "chaptersimulatorlab.tsx"
+    },
+    {
+      "label": "ChapterSimulatorLab()",
+      "file_type": "code",
+      "source_file": "src/components/ChapterSimulatorLab.tsx",
+      "source_location": "L9",
+      "id": "components_chaptersimulatorlab_chaptersimulatorlab",
+      "community": 36,
+      "norm_label": "chaptersimulatorlab()"
     },
     {
       "label": "ExerciseCoach.tsx",
@@ -270,7 +288,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/ExerciseCoach.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_exercisecoach_tsx",
-      "community": 20,
+      "community": 22,
       "norm_label": "exercisecoach.tsx"
     },
     {
@@ -279,7 +297,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/ExerciseCoach.tsx",
       "source_location": "L19",
       "id": "components_exercisecoach_partlabel",
-      "community": 20,
+      "community": 22,
       "norm_label": "partlabel()"
     },
     {
@@ -288,7 +306,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/ExerciseCoach.tsx",
       "source_location": "L21",
       "id": "components_exercisecoach_exercisecoach",
-      "community": 20,
+      "community": 22,
       "norm_label": "exercisecoach()"
     },
     {
@@ -297,7 +315,7 @@
       "source_file": "src/components/InteractiveBlackboard.tsx",
       "source_location": "L1",
       "id": "src_components_interactiveblackboard_tsx",
-      "community": 53,
+      "community": 56,
       "norm_label": "interactiveblackboard.tsx"
     },
     {
@@ -306,7 +324,7 @@
       "source_file": "src/components/ZeroKnowledgeLadderReader.tsx",
       "source_location": "L1",
       "id": "src_components_zeroknowledgeladderreader_tsx",
-      "community": 34,
+      "community": 37,
       "norm_label": "zeroknowledgeladderreader.tsx"
     },
     {
@@ -315,7 +333,7 @@
       "source_file": "src/components/ZeroKnowledgeLadderReader.tsx",
       "source_location": "L17",
       "id": "components_zeroknowledgeladderreader_zeroknowledgeladderreader",
-      "community": 34,
+      "community": 37,
       "norm_label": "zeroknowledgeladderreader()"
     },
     {
@@ -324,7 +342,7 @@
       "source_file": "src/components/MisconceptionClinic.tsx",
       "source_location": "L1",
       "id": "src_components_misconceptionclinic_tsx",
-      "community": 35,
+      "community": 38,
       "norm_label": "misconceptionclinic.tsx"
     },
     {
@@ -333,7 +351,7 @@
       "source_file": "src/components/MisconceptionClinic.tsx",
       "source_location": "L18",
       "id": "components_misconceptionclinic_misconceptionclinic",
-      "community": 35,
+      "community": 38,
       "norm_label": "misconceptionclinic()"
     },
     {
@@ -342,7 +360,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/Math.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_math_tsx",
-      "community": 36,
+      "community": 39,
       "norm_label": "math.tsx"
     },
     {
@@ -351,7 +369,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/Math.tsx",
       "source_location": "L6",
       "id": "components_math_tex",
-      "community": 36,
+      "community": 39,
       "norm_label": "tex()"
     },
     {
@@ -360,7 +378,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/ChapterExplorer.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_chapterexplorer_tsx",
-      "community": 54,
+      "community": 57,
       "norm_label": "chapterexplorer.tsx"
     },
     {
@@ -369,7 +387,7 @@
       "source_file": "src/components/FormulaAtlas.tsx",
       "source_location": "L1",
       "id": "src_components_formulaatlas_tsx",
-      "community": 37,
+      "community": 40,
       "norm_label": "formulaatlas.tsx"
     },
     {
@@ -378,7 +396,7 @@
       "source_file": "src/components/FormulaAtlas.tsx",
       "source_location": "L13",
       "id": "components_formulaatlas_formulaatlas",
-      "community": 37,
+      "community": 40,
       "norm_label": "formulaatlas()"
     },
     {
@@ -387,7 +405,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/Section.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_section_tsx",
-      "community": 13,
+      "community": 14,
       "norm_label": "section.tsx"
     },
     {
@@ -396,7 +414,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/Section.tsx",
       "source_location": "L5",
       "id": "components_section_section",
-      "community": 13,
+      "community": 14,
       "norm_label": "section()"
     },
     {
@@ -405,7 +423,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/Section.tsx",
       "source_location": "L37",
       "id": "components_section_visualvariantforsection",
-      "community": 13,
+      "community": 14,
       "norm_label": "visualvariantforsection()"
     },
     {
@@ -414,7 +432,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/Section.tsx",
       "source_location": "L46",
       "id": "components_section_glyphvariantfortext",
-      "community": 13,
+      "community": 14,
       "norm_label": "glyphvariantfortext()"
     },
     {
@@ -423,7 +441,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/EquationWall.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_equationwall_tsx",
-      "community": 38,
+      "community": 41,
       "norm_label": "equationwall.tsx"
     },
     {
@@ -432,7 +450,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/EquationWall.tsx",
       "source_location": "L5",
       "id": "components_equationwall_equationwall",
-      "community": 38,
+      "community": 41,
       "norm_label": "equationwall()"
     },
     {
@@ -441,7 +459,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/BookMap.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_bookmap_tsx",
-      "community": 39,
+      "community": 42,
       "norm_label": "bookmap.tsx"
     },
     {
@@ -450,7 +468,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/BookMap.tsx",
       "source_location": "L4",
       "id": "components_bookmap_bookmap",
-      "community": 39,
+      "community": 42,
       "norm_label": "bookmap()"
     },
     {
@@ -459,7 +477,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/three/SceneMount.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_three_scenemount_tsx",
-      "community": 40,
+      "community": 43,
       "norm_label": "scenemount.tsx"
     },
     {
@@ -468,7 +486,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/three/SceneMount.tsx",
       "source_location": "L7",
       "id": "three_scenemount_scenemount",
-      "community": 40,
+      "community": 43,
       "norm_label": "scenemount()"
     },
     {
@@ -477,7 +495,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/three/LearningLoopScene.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_three_learningloopscene_tsx",
-      "community": 55,
+      "community": 58,
       "norm_label": "learningloopscene.tsx"
     },
     {
@@ -486,7 +504,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/figures/BellmanLab.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_figures_bellmanlab_tsx",
-      "community": 21,
+      "community": 23,
       "norm_label": "bellmanlab.tsx"
     },
     {
@@ -495,7 +513,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/figures/BellmanLab.tsx",
       "source_location": "L6",
       "id": "figures_bellmanlab_bellmanlab",
-      "community": 21,
+      "community": 23,
       "norm_label": "bellmanlab()"
     },
     {
@@ -504,7 +522,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/figures/BellmanLab.tsx",
       "source_location": "L47",
       "id": "figures_bellmanlab_control",
-      "community": 21,
+      "community": 23,
       "norm_label": "control()"
     },
     {
@@ -513,7 +531,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/figures/TermGlyph.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_figures_termglyph_tsx",
-      "community": 41,
+      "community": 44,
       "norm_label": "termglyph.tsx"
     },
     {
@@ -522,7 +540,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/figures/TermGlyph.tsx",
       "source_location": "L3",
       "id": "figures_termglyph_bars",
-      "community": 41,
+      "community": 44,
       "norm_label": "bars()"
     },
     {
@@ -531,7 +549,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/figures/TraceLab.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_figures_tracelab_tsx",
-      "community": 56,
+      "community": 59,
       "norm_label": "tracelab.tsx"
     },
     {
@@ -540,7 +558,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/figures/BanditLab.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_figures_banditlab_tsx",
-      "community": 22,
+      "community": 24,
       "norm_label": "banditlab.tsx"
     },
     {
@@ -549,7 +567,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/figures/BanditLab.tsx",
       "source_location": "L8",
       "id": "figures_banditlab_nextrng",
-      "community": 22,
+      "community": 24,
       "norm_label": "nextrng()"
     },
     {
@@ -558,7 +576,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/figures/BanditLab.tsx",
       "source_location": "L12",
       "id": "figures_banditlab_banditlab",
-      "community": 22,
+      "community": 24,
       "norm_label": "banditlab()"
     },
     {
@@ -574,7 +592,7 @@
       "label": "buildCoverageAudit()",
       "file_type": "code",
       "source_file": "src/lib/coverageAudit.ts",
-      "source_location": "L126",
+      "source_location": "L133",
       "id": "lib_coverageaudit_buildcoverageaudit",
       "community": 0,
       "norm_label": "buildcoverageaudit()"
@@ -583,7 +601,7 @@
       "label": "chapterCoverageRow()",
       "file_type": "code",
       "source_file": "src/lib/coverageAudit.ts",
-      "source_location": "L192",
+      "source_location": "L205",
       "id": "lib_coverageaudit_chaptercoveragerow",
       "community": 0,
       "norm_label": "chaptercoveragerow()"
@@ -592,7 +610,7 @@
       "label": "algorithmCoverageRow()",
       "file_type": "code",
       "source_file": "src/lib/coverageAudit.ts",
-      "source_location": "L301",
+      "source_location": "L323",
       "id": "lib_coverageaudit_algorithmcoveragerow",
       "community": 2,
       "norm_label": "algorithmcoveragerow()"
@@ -601,7 +619,7 @@
       "label": "requirementProofs()",
       "file_type": "code",
       "source_file": "src/lib/coverageAudit.ts",
-      "source_location": "L335",
+      "source_location": "L357",
       "id": "lib_coverageaudit_requirementproofs",
       "community": 0,
       "norm_label": "requirementproofs()"
@@ -720,7 +738,7 @@
       "source_file": "src/lib/standaloneBook.ts",
       "source_location": "L255",
       "id": "lib_standalonebook_standalonelecturetilecount",
-      "community": 0,
+      "community": 5,
       "norm_label": "standalonelecturetilecount()"
     },
     {
@@ -972,7 +990,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/mastery.ts",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_lib_mastery_ts",
-      "community": 57,
+      "community": 60,
       "norm_label": "mastery.ts"
     },
     {
@@ -981,7 +999,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/evidenceGuide.ts",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_lib_evidenceguide_ts",
-      "community": 42,
+      "community": 45,
       "norm_label": "evidenceguide.ts"
     },
     {
@@ -990,7 +1008,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/evidenceGuide.ts",
       "source_location": "L13",
       "id": "lib_evidenceguide_item",
-      "community": 42,
+      "community": 45,
       "norm_label": "item()"
     },
     {
@@ -999,7 +1017,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/deepDives.ts",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_lib_deepdives_ts",
-      "community": 43,
+      "community": 46,
       "norm_label": "deepdives.ts"
     },
     {
@@ -1008,7 +1026,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/deepDives.ts",
       "source_location": "L16",
       "id": "lib_deepdives_d",
-      "community": 43,
+      "community": 46,
       "norm_label": "d()"
     },
     {
@@ -1017,7 +1035,7 @@
       "source_file": "src/lib/paper.ts",
       "source_location": "L1",
       "id": "src_lib_paper_ts",
-      "community": 58,
+      "community": 61,
       "norm_label": "paper.ts"
     },
     {
@@ -1026,7 +1044,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/gsap.ts",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_lib_gsap_ts",
-      "community": 59,
+      "community": 62,
       "norm_label": "gsap.ts"
     },
     {
@@ -1057,12 +1075,93 @@
       "norm_label": "manuscriptsectioncount()"
     },
     {
+      "label": "chapterSimulators.ts",
+      "file_type": "code",
+      "source_file": "src/lib/chapterSimulators.ts",
+      "source_location": "L1",
+      "id": "src_lib_chaptersimulators_ts",
+      "community": 0,
+      "norm_label": "chaptersimulators.ts"
+    },
+    {
+      "label": "simulatorForChapter()",
+      "file_type": "code",
+      "source_file": "src/lib/chapterSimulators.ts",
+      "source_location": "L37",
+      "id": "lib_chaptersimulators_simulatorforchapter",
+      "community": 0,
+      "norm_label": "simulatorforchapter()"
+    },
+    {
+      "label": "allSimulators()",
+      "file_type": "code",
+      "source_file": "src/lib/chapterSimulators.ts",
+      "source_location": "L105",
+      "id": "lib_chaptersimulators_allsimulators",
+      "community": 0,
+      "norm_label": "allsimulators()"
+    },
+    {
+      "label": "simulatorCount()",
+      "file_type": "code",
+      "source_file": "src/lib/chapterSimulators.ts",
+      "source_location": "L109",
+      "id": "lib_chaptersimulators_simulatorcount",
+      "community": 0,
+      "norm_label": "simulatorcount()"
+    },
+    {
+      "label": "simulatorControlCount()",
+      "file_type": "code",
+      "source_file": "src/lib/chapterSimulators.ts",
+      "source_location": "L113",
+      "id": "lib_chaptersimulators_simulatorcontrolcount",
+      "community": 0,
+      "norm_label": "simulatorcontrolcount()"
+    },
+    {
+      "label": "simulatorReadoutCount()",
+      "file_type": "code",
+      "source_file": "src/lib/chapterSimulators.ts",
+      "source_location": "L117",
+      "id": "lib_chaptersimulators_simulatorreadoutcount",
+      "community": 0,
+      "norm_label": "simulatorreadoutcount()"
+    },
+    {
+      "label": "defaultExploration()",
+      "file_type": "code",
+      "source_file": "src/lib/chapterSimulators.ts",
+      "source_location": "L121",
+      "id": "lib_chaptersimulators_defaultexploration",
+      "community": 0,
+      "norm_label": "defaultexploration()"
+    },
+    {
+      "label": "defaultStepSize()",
+      "file_type": "code",
+      "source_file": "src/lib/chapterSimulators.ts",
+      "source_location": "L128",
+      "id": "lib_chaptersimulators_defaultstepsize",
+      "community": 0,
+      "norm_label": "defaultstepsize()"
+    },
+    {
+      "label": "defaultHorizon()",
+      "file_type": "code",
+      "source_file": "src/lib/chapterSimulators.ts",
+      "source_location": "L135",
+      "id": "lib_chaptersimulators_defaulthorizon",
+      "community": 0,
+      "norm_label": "defaulthorizon()"
+    },
+    {
       "label": "exerciseCoach.ts",
       "file_type": "code",
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/exerciseCoach.ts",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_lib_exercisecoach_ts",
-      "community": 60,
+      "community": 63,
       "norm_label": "exercisecoach.ts"
     },
     {
@@ -1359,7 +1458,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/motion.ts",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_lib_motion_ts",
-      "community": 44,
+      "community": 47,
       "norm_label": "motion.ts"
     },
     {
@@ -1368,7 +1467,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/motion.ts",
       "source_location": "L2",
       "id": "lib_motion_reduced",
-      "community": 44,
+      "community": 47,
       "norm_label": "reduced()"
     },
     {
@@ -1683,7 +1782,7 @@
       "source_file": "src/lib/sectionNarratives.ts",
       "source_location": "L1",
       "id": "src_lib_sectionnarratives_ts",
-      "community": 0,
+      "community": 10,
       "norm_label": "sectionnarratives.ts"
     },
     {
@@ -1701,7 +1800,7 @@
       "source_file": "src/lib/sectionNarratives.ts",
       "source_location": "L72",
       "id": "lib_sectionnarratives_sectionnarrativecount",
-      "community": 0,
+      "community": 10,
       "norm_label": "sectionnarrativecount()"
     },
     {
@@ -1710,7 +1809,7 @@
       "source_file": "src/lib/sectionNarratives.ts",
       "source_location": "L76",
       "id": "lib_sectionnarratives_sectionlessonmodecount",
-      "community": 0,
+      "community": 10,
       "norm_label": "sectionlessonmodecount()"
     },
     {
@@ -1719,7 +1818,7 @@
       "source_file": "src/lib/sectionNarratives.ts",
       "source_location": "L80",
       "id": "lib_sectionnarratives_stripsectionnumber",
-      "community": 0,
+      "community": 10,
       "norm_label": "stripsectionnumber()"
     },
     {
@@ -1728,7 +1827,7 @@
       "source_file": "src/lib/sectionNarratives.ts",
       "source_location": "L84",
       "id": "lib_sectionnarratives_misconceptionguard",
-      "community": 0,
+      "community": 10,
       "norm_label": "misconceptionguard()"
     },
     {
@@ -1962,7 +2061,7 @@
       "source_file": "src/app/page.tsx",
       "source_location": "L1",
       "id": "src_app_page_tsx",
-      "community": 61,
+      "community": 64,
       "norm_label": "page.tsx"
     },
     {
@@ -1971,7 +2070,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/app/layout.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_app_layout_tsx",
-      "community": 62,
+      "community": 65,
       "norm_label": "layout.tsx"
     },
     {
@@ -1980,16 +2079,16 @@
       "source_file": "src/app/coverage/page.tsx",
       "source_location": "L1",
       "id": "src_app_coverage_page_tsx",
-      "community": 45,
+      "community": 48,
       "norm_label": "page.tsx"
     },
     {
       "label": "SectionTitle()",
       "file_type": "code",
       "source_file": "src/app/coverage/page.tsx",
-      "source_location": "L240",
+      "source_location": "L246",
       "id": "coverage_page_sectiontitle",
-      "community": 45,
+      "community": 48,
       "norm_label": "sectiontitle()"
     },
     {
@@ -1998,7 +2097,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/app/algorithms/page.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_app_algorithms_page_tsx",
-      "community": 63,
+      "community": 66,
       "norm_label": "page.tsx"
     },
     {
@@ -2014,7 +2113,7 @@
       "label": "glyphVariantForLabel()",
       "file_type": "code",
       "source_file": "src/app/book/page.tsx",
-      "source_location": "L357",
+      "source_location": "L374",
       "id": "book_page_glyphvariantforlabel",
       "community": 4,
       "norm_label": "glyphvariantforlabel()"
@@ -2032,7 +2131,7 @@
       "label": "generateStaticParams()",
       "file_type": "code",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L44",
+      "source_location": "L46",
       "id": "chapter_page_generatestaticparams",
       "community": 4,
       "norm_label": "generatestaticparams()"
@@ -2041,7 +2140,7 @@
       "label": "generateMetadata()",
       "file_type": "code",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L48",
+      "source_location": "L50",
       "id": "chapter_page_generatemetadata",
       "community": 4,
       "norm_label": "generatemetadata()"
@@ -2050,7 +2149,7 @@
       "label": "glyphAccentForLabel()",
       "file_type": "code",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L381",
+      "source_location": "L391",
       "id": "chapter_page_glyphaccentforlabel",
       "community": 4,
       "norm_label": "glyphaccentforlabel()"
@@ -2059,7 +2158,7 @@
       "label": "ChapterStarterLadderBlock()",
       "file_type": "code",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L389",
+      "source_location": "L399",
       "id": "chapter_page_chapterstarterladderblock",
       "community": 4,
       "norm_label": "chapterstarterladderblock()"
@@ -2068,7 +2167,7 @@
       "label": "ChapterPracticeBlock()",
       "file_type": "code",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L407",
+      "source_location": "L417",
       "id": "chapter_page_chapterpracticeblock",
       "community": 4,
       "norm_label": "chapterpracticeblock()"
@@ -2077,7 +2176,7 @@
       "label": "ChapterConceptBlock()",
       "file_type": "code",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L426",
+      "source_location": "L436",
       "id": "chapter_page_chapterconceptblock",
       "community": 4,
       "norm_label": "chapterconceptblock()"
@@ -2086,7 +2185,7 @@
       "label": "ChapterWorkedExampleBlock()",
       "file_type": "code",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L444",
+      "source_location": "L454",
       "id": "chapter_page_chapterworkedexampleblock",
       "community": 4,
       "norm_label": "chapterworkedexampleblock()"
@@ -2095,16 +2194,25 @@
       "label": "ChapterMisconceptionBlock()",
       "file_type": "code",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L462",
+      "source_location": "L472",
       "id": "chapter_page_chaptermisconceptionblock",
       "community": 4,
       "norm_label": "chaptermisconceptionblock()"
     },
     {
+      "label": "ChapterSimulatorBlock()",
+      "file_type": "code",
+      "source_file": "src/app/chapters/[chapter]/page.tsx",
+      "source_location": "L490",
+      "id": "chapter_page_chaptersimulatorblock",
+      "community": 4,
+      "norm_label": "chaptersimulatorblock()"
+    },
+    {
       "label": "glyphVariantForLabel()",
       "file_type": "code",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L599",
+      "source_location": "L627",
       "id": "chapter_page_glyphvariantforlabel",
       "community": 4,
       "norm_label": "glyphvariantforlabel()"
@@ -2115,7 +2223,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-animation-routes.mjs",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_tmp_qa_audit_animation_routes_mjs",
-      "community": 10,
+      "community": 11,
       "norm_label": "audit-animation-routes.mjs"
     },
     {
@@ -2124,7 +2232,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-animation-routes.mjs",
       "source_location": "L10",
       "id": "qa_audit_animation_routes_waitjson",
-      "community": 10,
+      "community": 11,
       "norm_label": "waitjson()"
     },
     {
@@ -2133,7 +2241,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-animation-routes.mjs",
       "source_location": "L17",
       "id": "qa_audit_animation_routes_send",
-      "community": 10,
+      "community": 11,
       "norm_label": "send()"
     },
     {
@@ -2142,7 +2250,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-animation-routes.mjs",
       "source_location": "L18",
       "id": "qa_audit_animation_routes_evaljs",
-      "community": 10,
+      "community": 11,
       "norm_label": "evaljs()"
     },
     {
@@ -2151,7 +2259,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-animation-routes.mjs",
       "source_location": "L20",
       "id": "qa_audit_animation_routes_audit",
-      "community": 10,
+      "community": 11,
       "norm_label": "audit()"
     },
     {
@@ -2160,7 +2268,7 @@
       "source_file": "tmp/qa/audit-worked-example-studio.mjs",
       "source_location": "L1",
       "id": "tmp_qa_audit_worked_example_studio_mjs",
-      "community": 14,
+      "community": 15,
       "norm_label": "audit-worked-example-studio.mjs"
     },
     {
@@ -2169,7 +2277,7 @@
       "source_file": "tmp/qa/audit-worked-example-studio.mjs",
       "source_location": "L11",
       "id": "qa_audit_worked_example_studio_waitjson",
-      "community": 14,
+      "community": 15,
       "norm_label": "waitjson()"
     },
     {
@@ -2178,7 +2286,7 @@
       "source_file": "tmp/qa/audit-worked-example-studio.mjs",
       "source_location": "L36",
       "id": "qa_audit_worked_example_studio_send",
-      "community": 14,
+      "community": 15,
       "norm_label": "send()"
     },
     {
@@ -2187,7 +2295,7 @@
       "source_file": "tmp/qa/audit-worked-example-studio.mjs",
       "source_location": "L41",
       "id": "qa_audit_worked_example_studio_evaljs",
-      "community": 14,
+      "community": 15,
       "norm_label": "evaljs()"
     },
     {
@@ -2196,7 +2304,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-all-routes-no-overflow.mjs",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_tmp_qa_audit_all_routes_no_overflow_mjs",
-      "community": 11,
+      "community": 12,
       "norm_label": "audit-all-routes-no-overflow.mjs"
     },
     {
@@ -2205,7 +2313,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-all-routes-no-overflow.mjs",
       "source_location": "L4",
       "id": "qa_audit_all_routes_no_overflow_waitjson",
-      "community": 11,
+      "community": 12,
       "norm_label": "waitjson()"
     },
     {
@@ -2214,7 +2322,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-all-routes-no-overflow.mjs",
       "source_location": "L5",
       "id": "qa_audit_all_routes_no_overflow_send",
-      "community": 11,
+      "community": 12,
       "norm_label": "send()"
     },
     {
@@ -2223,7 +2331,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-all-routes-no-overflow.mjs",
       "source_location": "L5",
       "id": "qa_audit_all_routes_no_overflow_evaljs",
-      "community": 11,
+      "community": 12,
       "norm_label": "evaljs()"
     },
     {
@@ -2232,7 +2340,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-all-routes-no-overflow.mjs",
       "source_location": "L7",
       "id": "qa_audit_all_routes_no_overflow_audit",
-      "community": 11,
+      "community": 12,
       "norm_label": "audit()"
     },
     {
@@ -2241,7 +2349,7 @@
       "source_file": "tmp/qa/audit-zero-knowledge-reader.mjs",
       "source_location": "L1",
       "id": "tmp_qa_audit_zero_knowledge_reader_mjs",
-      "community": 15,
+      "community": 16,
       "norm_label": "audit-zero-knowledge-reader.mjs"
     },
     {
@@ -2250,7 +2358,7 @@
       "source_file": "tmp/qa/audit-zero-knowledge-reader.mjs",
       "source_location": "L11",
       "id": "qa_audit_zero_knowledge_reader_waitjson",
-      "community": 15,
+      "community": 16,
       "norm_label": "waitjson()"
     },
     {
@@ -2259,7 +2367,7 @@
       "source_file": "tmp/qa/audit-zero-knowledge-reader.mjs",
       "source_location": "L36",
       "id": "qa_audit_zero_knowledge_reader_send",
-      "community": 15,
+      "community": 16,
       "norm_label": "send()"
     },
     {
@@ -2268,7 +2376,7 @@
       "source_file": "tmp/qa/audit-zero-knowledge-reader.mjs",
       "source_location": "L41",
       "id": "qa_audit_zero_knowledge_reader_evaljs",
-      "community": 15,
+      "community": 16,
       "norm_label": "evaljs()"
     },
     {
@@ -2277,7 +2385,7 @@
       "source_file": "tmp/qa/audit-concept-deck.mjs",
       "source_location": "L1",
       "id": "tmp_qa_audit_concept_deck_mjs",
-      "community": 16,
+      "community": 17,
       "norm_label": "audit-concept-deck.mjs"
     },
     {
@@ -2286,7 +2394,7 @@
       "source_file": "tmp/qa/audit-concept-deck.mjs",
       "source_location": "L11",
       "id": "qa_audit_concept_deck_waitjson",
-      "community": 16,
+      "community": 17,
       "norm_label": "waitjson()"
     },
     {
@@ -2295,7 +2403,7 @@
       "source_file": "tmp/qa/audit-concept-deck.mjs",
       "source_location": "L36",
       "id": "qa_audit_concept_deck_send",
-      "community": 16,
+      "community": 17,
       "norm_label": "send()"
     },
     {
@@ -2304,7 +2412,7 @@
       "source_file": "tmp/qa/audit-concept-deck.mjs",
       "source_location": "L41",
       "id": "qa_audit_concept_deck_evaljs",
-      "community": 16,
+      "community": 17,
       "norm_label": "evaljs()"
     },
     {
@@ -2313,7 +2421,7 @@
       "source_file": "tmp/qa/audit-formula-reader.mjs",
       "source_location": "L1",
       "id": "tmp_qa_audit_formula_reader_mjs",
-      "community": 17,
+      "community": 18,
       "norm_label": "audit-formula-reader.mjs"
     },
     {
@@ -2322,7 +2430,7 @@
       "source_file": "tmp/qa/audit-formula-reader.mjs",
       "source_location": "L11",
       "id": "qa_audit_formula_reader_waitjson",
-      "community": 17,
+      "community": 18,
       "norm_label": "waitjson()"
     },
     {
@@ -2331,7 +2439,7 @@
       "source_file": "tmp/qa/audit-formula-reader.mjs",
       "source_location": "L36",
       "id": "qa_audit_formula_reader_send",
-      "community": 17,
+      "community": 18,
       "norm_label": "send()"
     },
     {
@@ -2340,7 +2448,7 @@
       "source_file": "tmp/qa/audit-formula-reader.mjs",
       "source_location": "L41",
       "id": "qa_audit_formula_reader_evaljs",
-      "community": 17,
+      "community": 18,
       "norm_label": "evaljs()"
     },
     {
@@ -2349,7 +2457,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-animation-summary.mjs",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_tmp_qa_audit_animation_summary_mjs",
-      "community": 12,
+      "community": 13,
       "norm_label": "audit-animation-summary.mjs"
     },
     {
@@ -2358,7 +2466,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-animation-summary.mjs",
       "source_location": "L5",
       "id": "qa_audit_animation_summary_waitjson",
-      "community": 12,
+      "community": 13,
       "norm_label": "waitjson()"
     },
     {
@@ -2367,7 +2475,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-animation-summary.mjs",
       "source_location": "L10",
       "id": "qa_audit_animation_summary_send",
-      "community": 12,
+      "community": 13,
       "norm_label": "send()"
     },
     {
@@ -2376,7 +2484,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-animation-summary.mjs",
       "source_location": "L11",
       "id": "qa_audit_animation_summary_evaljs",
-      "community": 12,
+      "community": 13,
       "norm_label": "evaljs()"
     },
     {
@@ -2385,7 +2493,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-animation-summary.mjs",
       "source_location": "L13",
       "id": "qa_audit_animation_summary_audit",
-      "community": 12,
+      "community": 13,
       "norm_label": "audit()"
     },
     {
@@ -2394,7 +2502,7 @@
       "source_file": "tmp/qa/audit-practice-coach.mjs",
       "source_location": "L1",
       "id": "tmp_qa_audit_practice_coach_mjs",
-      "community": 18,
+      "community": 19,
       "norm_label": "audit-practice-coach.mjs"
     },
     {
@@ -2403,7 +2511,7 @@
       "source_file": "tmp/qa/audit-practice-coach.mjs",
       "source_location": "L11",
       "id": "qa_audit_practice_coach_waitjson",
-      "community": 18,
+      "community": 19,
       "norm_label": "waitjson()"
     },
     {
@@ -2412,7 +2520,7 @@
       "source_file": "tmp/qa/audit-practice-coach.mjs",
       "source_location": "L36",
       "id": "qa_audit_practice_coach_send",
-      "community": 18,
+      "community": 19,
       "norm_label": "send()"
     },
     {
@@ -2421,7 +2529,7 @@
       "source_file": "tmp/qa/audit-practice-coach.mjs",
       "source_location": "L41",
       "id": "qa_audit_practice_coach_evaljs",
-      "community": 18,
+      "community": 19,
       "norm_label": "evaljs()"
     },
     {
@@ -2430,7 +2538,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-interactions.mjs",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_tmp_qa_audit_interactions_mjs",
-      "community": 19,
+      "community": 20,
       "norm_label": "audit-interactions.mjs"
     },
     {
@@ -2439,7 +2547,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-interactions.mjs",
       "source_location": "L13",
       "id": "qa_audit_interactions_waitjson",
-      "community": 19,
+      "community": 20,
       "norm_label": "waitjson()"
     },
     {
@@ -2448,7 +2556,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-interactions.mjs",
       "source_location": "L38",
       "id": "qa_audit_interactions_send",
-      "community": 19,
+      "community": 20,
       "norm_label": "send()"
     },
     {
@@ -2457,7 +2565,43 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-interactions.mjs",
       "source_location": "L43",
       "id": "qa_audit_interactions_evaljs",
-      "community": 19,
+      "community": 20,
+      "norm_label": "evaljs()"
+    },
+    {
+      "label": "audit-misconception-clinic.mjs",
+      "file_type": "code",
+      "source_file": "tmp/qa/audit-misconception-clinic.mjs",
+      "source_location": "L1",
+      "id": "tmp_qa_audit_misconception_clinic_mjs",
+      "community": 21,
+      "norm_label": "audit-misconception-clinic.mjs"
+    },
+    {
+      "label": "waitJson()",
+      "file_type": "code",
+      "source_file": "tmp/qa/audit-misconception-clinic.mjs",
+      "source_location": "L11",
+      "id": "qa_audit_misconception_clinic_waitjson",
+      "community": 21,
+      "norm_label": "waitjson()"
+    },
+    {
+      "label": "send()",
+      "file_type": "code",
+      "source_file": "tmp/qa/audit-misconception-clinic.mjs",
+      "source_location": "L36",
+      "id": "qa_audit_misconception_clinic_send",
+      "community": 21,
+      "norm_label": "send()"
+    },
+    {
+      "label": "evalJs()",
+      "file_type": "code",
+      "source_file": "tmp/qa/audit-misconception-clinic.mjs",
+      "source_location": "L41",
+      "id": "qa_audit_misconception_clinic_evaljs",
+      "community": 21,
       "norm_label": "evaljs()"
     }
   ],
@@ -2502,7 +2646,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/Nav.tsx",
-      "source_location": "L30",
+      "source_location": "L31",
       "weight": 1.0,
       "_src": "src_components_nav_tsx",
       "_tgt": "components_nav_onscroll",
@@ -2592,6 +2736,18 @@
       "_tgt": "components_hero_hero",
       "source": "src_components_hero_tsx",
       "target": "components_hero_hero",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/ChapterSimulatorLab.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_src": "src_components_chaptersimulatorlab_tsx",
+      "_tgt": "components_chaptersimulatorlab_chaptersimulatorlab",
+      "source": "src_components_chaptersimulatorlab_tsx",
+      "target": "components_chaptersimulatorlab_chaptersimulatorlab",
       "confidence_score": 1.0
     },
     {
@@ -2802,7 +2958,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/coverageAudit.ts",
-      "source_location": "L126",
+      "source_location": "L133",
       "weight": 1.0,
       "_src": "src_lib_coverageaudit_ts",
       "_tgt": "lib_coverageaudit_buildcoverageaudit",
@@ -2814,7 +2970,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/coverageAudit.ts",
-      "source_location": "L192",
+      "source_location": "L205",
       "weight": 1.0,
       "_src": "src_lib_coverageaudit_ts",
       "_tgt": "lib_coverageaudit_chaptercoveragerow",
@@ -2826,7 +2982,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/coverageAudit.ts",
-      "source_location": "L301",
+      "source_location": "L323",
       "weight": 1.0,
       "_src": "src_lib_coverageaudit_ts",
       "_tgt": "lib_coverageaudit_algorithmcoveragerow",
@@ -2838,7 +2994,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/coverageAudit.ts",
-      "source_location": "L335",
+      "source_location": "L357",
       "weight": 1.0,
       "_src": "src_lib_coverageaudit_ts",
       "_tgt": "lib_coverageaudit_requirementproofs",
@@ -2850,7 +3006,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/coverageAudit.ts",
-      "source_location": "L186",
+      "source_location": "L199",
       "weight": 1.0,
       "_src": "lib_coverageaudit_buildcoverageaudit",
       "_tgt": "lib_coverageaudit_requirementproofs",
@@ -2977,6 +3133,42 @@
       "_tgt": "lib_chaptermisconceptions_misconceptionmodecount",
       "source": "lib_coverageaudit_buildcoverageaudit",
       "target": "lib_chaptermisconceptions_misconceptionmodecount"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L147",
+      "weight": 1.0,
+      "_src": "lib_coverageaudit_buildcoverageaudit",
+      "_tgt": "lib_chaptersimulators_simulatorcount",
+      "source": "lib_coverageaudit_buildcoverageaudit",
+      "target": "lib_chaptersimulators_simulatorcount"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L148",
+      "weight": 1.0,
+      "_src": "lib_coverageaudit_buildcoverageaudit",
+      "_tgt": "lib_chaptersimulators_simulatorcontrolcount",
+      "source": "lib_coverageaudit_buildcoverageaudit",
+      "target": "lib_chaptersimulators_simulatorcontrolcount"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L149",
+      "weight": 1.0,
+      "_src": "lib_coverageaudit_buildcoverageaudit",
+      "_tgt": "lib_chaptersimulators_simulatorreadoutcount",
+      "source": "lib_coverageaudit_buildcoverageaudit",
+      "target": "lib_chaptersimulators_simulatorreadoutcount"
     },
     {
       "relation": "calls",
@@ -3229,6 +3421,42 @@
       "_tgt": "lib_chaptermisconceptions_misconceptionmodecount",
       "source": "lib_coverageaudit_chaptercoveragerow",
       "target": "lib_chaptermisconceptions_misconceptionmodecount"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L228",
+      "weight": 1.0,
+      "_src": "lib_coverageaudit_chaptercoveragerow",
+      "_tgt": "lib_chaptersimulators_simulatorforchapter",
+      "source": "lib_coverageaudit_chaptercoveragerow",
+      "target": "lib_chaptersimulators_simulatorforchapter"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L229",
+      "weight": 1.0,
+      "_src": "lib_coverageaudit_chaptercoveragerow",
+      "_tgt": "lib_chaptersimulators_simulatorcontrolcount",
+      "source": "lib_coverageaudit_chaptercoveragerow",
+      "target": "lib_chaptersimulators_simulatorcontrolcount"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L230",
+      "weight": 1.0,
+      "_src": "lib_coverageaudit_chaptercoveragerow",
+      "_tgt": "lib_chaptersimulators_simulatorreadoutcount",
+      "source": "lib_coverageaudit_chaptercoveragerow",
+      "target": "lib_chaptersimulators_simulatorreadoutcount"
     },
     {
       "relation": "calls",
@@ -3870,11 +4098,23 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
+      "source_file": "src/lib/chapterSimulators.ts",
+      "source_location": "L44",
+      "weight": 1.0,
+      "_src": "lib_chaptersimulators_simulatorforchapter",
+      "_tgt": "lib_chapterworkedexamples_workedexamplesforchapter",
+      "source": "lib_chapterworkedexamples_workedexamplesforchapter",
+      "target": "lib_chaptersimulators_simulatorforchapter"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
       "source_file": "src/lib/chapterMisconceptions.ts",
       "source_location": "L36",
       "weight": 1.0,
-      "_src": "lib_chaptermisconceptions_misconceptioncardsforchapter",
-      "_tgt": "lib_chapterworkedexamples_workedexamplesforchapter",
+      "_src": "lib_chapterworkedexamples_workedexamplesforchapter",
+      "_tgt": "lib_chaptermisconceptions_misconceptioncardsforchapter",
       "source": "lib_chapterworkedexamples_workedexamplesforchapter",
       "target": "lib_chaptermisconceptions_misconceptioncardsforchapter"
     },
@@ -4050,11 +4290,23 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
+      "source_file": "src/lib/chapterSimulators.ts",
+      "source_location": "L41",
+      "weight": 1.0,
+      "_src": "lib_chaptersimulators_simulatorforchapter",
+      "_tgt": "lib_algorithmcatalog_algorithmsforchapter",
+      "source": "lib_algorithmcatalog_algorithmsforchapter",
+      "target": "lib_chaptersimulators_simulatorforchapter"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
       "source_file": "src/lib/chapterMisconceptions.ts",
       "source_location": "L35",
       "weight": 1.0,
-      "_src": "lib_chaptermisconceptions_misconceptioncardsforchapter",
-      "_tgt": "lib_algorithmcatalog_algorithmsforchapter",
+      "_src": "lib_algorithmcatalog_algorithmsforchapter",
+      "_tgt": "lib_chaptermisconceptions_misconceptioncardsforchapter",
       "source": "lib_algorithmcatalog_algorithmsforchapter",
       "target": "lib_chaptermisconceptions_misconceptioncardsforchapter"
     },
@@ -4152,6 +4404,198 @@
       "_tgt": "lib_chaptermanuscripts_manuscriptsectioncount",
       "source": "src_lib_chaptermanuscripts_ts",
       "target": "lib_chaptermanuscripts_manuscriptsectioncount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/chapterSimulators.ts",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_src": "src_lib_chaptersimulators_ts",
+      "_tgt": "lib_chaptersimulators_simulatorforchapter",
+      "source": "src_lib_chaptersimulators_ts",
+      "target": "lib_chaptersimulators_simulatorforchapter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/chapterSimulators.ts",
+      "source_location": "L105",
+      "weight": 1.0,
+      "_src": "src_lib_chaptersimulators_ts",
+      "_tgt": "lib_chaptersimulators_allsimulators",
+      "source": "src_lib_chaptersimulators_ts",
+      "target": "lib_chaptersimulators_allsimulators",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/chapterSimulators.ts",
+      "source_location": "L109",
+      "weight": 1.0,
+      "_src": "src_lib_chaptersimulators_ts",
+      "_tgt": "lib_chaptersimulators_simulatorcount",
+      "source": "src_lib_chaptersimulators_ts",
+      "target": "lib_chaptersimulators_simulatorcount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/chapterSimulators.ts",
+      "source_location": "L113",
+      "weight": 1.0,
+      "_src": "src_lib_chaptersimulators_ts",
+      "_tgt": "lib_chaptersimulators_simulatorcontrolcount",
+      "source": "src_lib_chaptersimulators_ts",
+      "target": "lib_chaptersimulators_simulatorcontrolcount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/chapterSimulators.ts",
+      "source_location": "L117",
+      "weight": 1.0,
+      "_src": "src_lib_chaptersimulators_ts",
+      "_tgt": "lib_chaptersimulators_simulatorreadoutcount",
+      "source": "src_lib_chaptersimulators_ts",
+      "target": "lib_chaptersimulators_simulatorreadoutcount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/chapterSimulators.ts",
+      "source_location": "L121",
+      "weight": 1.0,
+      "_src": "src_lib_chaptersimulators_ts",
+      "_tgt": "lib_chaptersimulators_defaultexploration",
+      "source": "src_lib_chaptersimulators_ts",
+      "target": "lib_chaptersimulators_defaultexploration",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/chapterSimulators.ts",
+      "source_location": "L128",
+      "weight": 1.0,
+      "_src": "src_lib_chaptersimulators_ts",
+      "_tgt": "lib_chaptersimulators_defaultstepsize",
+      "source": "src_lib_chaptersimulators_ts",
+      "target": "lib_chaptersimulators_defaultstepsize",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/chapterSimulators.ts",
+      "source_location": "L135",
+      "weight": 1.0,
+      "_src": "src_lib_chaptersimulators_ts",
+      "_tgt": "lib_chaptersimulators_defaulthorizon",
+      "source": "src_lib_chaptersimulators_ts",
+      "target": "lib_chaptersimulators_defaulthorizon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/chapterSimulators.ts",
+      "source_location": "L66",
+      "weight": 1.0,
+      "_src": "lib_chaptersimulators_simulatorforchapter",
+      "_tgt": "lib_chaptersimulators_defaultexploration",
+      "source": "lib_chaptersimulators_simulatorforchapter",
+      "target": "lib_chaptersimulators_defaultexploration",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/chapterSimulators.ts",
+      "source_location": "L78",
+      "weight": 1.0,
+      "_src": "lib_chaptersimulators_simulatorforchapter",
+      "_tgt": "lib_chaptersimulators_defaultstepsize",
+      "source": "lib_chaptersimulators_simulatorforchapter",
+      "target": "lib_chaptersimulators_defaultstepsize",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/chapterSimulators.ts",
+      "source_location": "L90",
+      "weight": 1.0,
+      "_src": "lib_chaptersimulators_simulatorforchapter",
+      "_tgt": "lib_chaptersimulators_defaulthorizon",
+      "source": "lib_chaptersimulators_simulatorforchapter",
+      "target": "lib_chaptersimulators_defaulthorizon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/chapterSimulators.ts",
+      "source_location": "L114",
+      "weight": 1.0,
+      "_src": "lib_chaptersimulators_simulatorcontrolcount",
+      "_tgt": "lib_chaptersimulators_simulatorforchapter",
+      "source": "lib_chaptersimulators_simulatorforchapter",
+      "target": "lib_chaptersimulators_simulatorcontrolcount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/chapterSimulators.ts",
+      "source_location": "L42",
+      "weight": 1.0,
+      "_src": "lib_chaptersimulators_simulatorforchapter",
+      "_tgt": "lib_formulaatlas_formulasforchapter",
+      "source": "lib_chaptersimulators_simulatorforchapter",
+      "target": "lib_formulaatlas_formulasforchapter"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/chapterSimulators.ts",
+      "source_location": "L43",
+      "weight": 1.0,
+      "_src": "lib_chaptersimulators_simulatorforchapter",
+      "_tgt": "lib_conceptatlas_conceptcardsforchapter",
+      "source": "lib_chaptersimulators_simulatorforchapter",
+      "target": "lib_conceptatlas_conceptcardsforchapter"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/chapterSimulators.ts",
+      "source_location": "L114",
+      "weight": 1.0,
+      "_src": "lib_chaptersimulators_simulatorcontrolcount",
+      "_tgt": "lib_chaptersimulators_allsimulators",
+      "source": "lib_chaptersimulators_allsimulators",
+      "target": "lib_chaptersimulators_simulatorcontrolcount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/chapterSimulators.ts",
+      "source_location": "L118",
+      "weight": 1.0,
+      "_src": "lib_chaptersimulators_simulatorreadoutcount",
+      "_tgt": "lib_chaptersimulators_simulatorcount",
+      "source": "lib_chaptersimulators_simulatorcount",
+      "target": "lib_chaptersimulators_simulatorreadoutcount",
       "confidence_score": 1.0
     },
     {
@@ -6042,7 +6486,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/coverage/page.tsx",
-      "source_location": "L240",
+      "source_location": "L246",
       "weight": 1.0,
       "_src": "src_app_coverage_page_tsx",
       "_tgt": "coverage_page_sectiontitle",
@@ -6054,7 +6498,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/book/page.tsx",
-      "source_location": "L357",
+      "source_location": "L374",
       "weight": 1.0,
       "_src": "src_app_book_page_tsx",
       "_tgt": "book_page_glyphvariantforlabel",
@@ -6078,7 +6522,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L44",
+      "source_location": "L46",
       "weight": 1.0,
       "_src": "src_app_chapters_chapter_page_tsx",
       "_tgt": "chapter_page_generatestaticparams",
@@ -6090,7 +6534,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L48",
+      "source_location": "L50",
       "weight": 1.0,
       "_src": "src_app_chapters_chapter_page_tsx",
       "_tgt": "chapter_page_generatemetadata",
@@ -6102,7 +6546,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L381",
+      "source_location": "L391",
       "weight": 1.0,
       "_src": "src_app_chapters_chapter_page_tsx",
       "_tgt": "chapter_page_glyphaccentforlabel",
@@ -6114,7 +6558,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L389",
+      "source_location": "L399",
       "weight": 1.0,
       "_src": "src_app_chapters_chapter_page_tsx",
       "_tgt": "chapter_page_chapterstarterladderblock",
@@ -6126,7 +6570,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L407",
+      "source_location": "L417",
       "weight": 1.0,
       "_src": "src_app_chapters_chapter_page_tsx",
       "_tgt": "chapter_page_chapterpracticeblock",
@@ -6138,7 +6582,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L426",
+      "source_location": "L436",
       "weight": 1.0,
       "_src": "src_app_chapters_chapter_page_tsx",
       "_tgt": "chapter_page_chapterconceptblock",
@@ -6150,7 +6594,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L444",
+      "source_location": "L454",
       "weight": 1.0,
       "_src": "src_app_chapters_chapter_page_tsx",
       "_tgt": "chapter_page_chapterworkedexampleblock",
@@ -6162,7 +6606,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L462",
+      "source_location": "L472",
       "weight": 1.0,
       "_src": "src_app_chapters_chapter_page_tsx",
       "_tgt": "chapter_page_chaptermisconceptionblock",
@@ -6174,7 +6618,19 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L931",
+      "source_location": "L490",
+      "weight": 1.0,
+      "_src": "src_app_chapters_chapter_page_tsx",
+      "_tgt": "chapter_page_chaptersimulatorblock",
+      "source": "src_app_chapters_chapter_page_tsx",
+      "target": "chapter_page_chaptersimulatorblock",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/chapters/[chapter]/page.tsx",
+      "source_location": "L959",
       "weight": 1.0,
       "_src": "src_app_chapters_chapter_page_tsx",
       "_tgt": "chapter_page_glyphvariantforlabel",
@@ -6186,7 +6642,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L599",
+      "source_location": "L627",
       "weight": 1.0,
       "_src": "chapter_page_glyphvariantforlabel",
       "_tgt": "chapter_page_glyphaccentforlabel",
@@ -6732,6 +7188,54 @@
       "_tgt": "qa_audit_interactions_send",
       "source": "qa_audit_interactions_send",
       "target": "qa_audit_interactions_evaljs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tmp/qa/audit-misconception-clinic.mjs",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_src": "tmp_qa_audit_misconception_clinic_mjs",
+      "_tgt": "qa_audit_misconception_clinic_waitjson",
+      "source": "tmp_qa_audit_misconception_clinic_mjs",
+      "target": "qa_audit_misconception_clinic_waitjson",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tmp/qa/audit-misconception-clinic.mjs",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_src": "tmp_qa_audit_misconception_clinic_mjs",
+      "_tgt": "qa_audit_misconception_clinic_send",
+      "source": "tmp_qa_audit_misconception_clinic_mjs",
+      "target": "qa_audit_misconception_clinic_send",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tmp/qa/audit-misconception-clinic.mjs",
+      "source_location": "L41",
+      "weight": 1.0,
+      "_src": "tmp_qa_audit_misconception_clinic_mjs",
+      "_tgt": "qa_audit_misconception_clinic_evaljs",
+      "source": "tmp_qa_audit_misconception_clinic_mjs",
+      "target": "qa_audit_misconception_clinic_evaljs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "tmp/qa/audit-misconception-clinic.mjs",
+      "source_location": "L42",
+      "weight": 1.0,
+      "_src": "qa_audit_misconception_clinic_evaljs",
+      "_tgt": "qa_audit_misconception_clinic_send",
+      "source": "qa_audit_misconception_clinic_send",
+      "target": "qa_audit_misconception_clinic_evaljs",
       "confidence_score": 1.0
     }
   ],

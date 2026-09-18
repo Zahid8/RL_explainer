@@ -9,6 +9,7 @@ const links = [
   ["concepts", "Concepts"],
   ["worked", "Worked"],
   ["clinic", "Clinic"],
+  ["simulators", "Sim"],
   ["terms", "Terms"],
   ["map", "Map"],
   ["chapters", "Chapters"],

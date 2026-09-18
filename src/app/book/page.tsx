@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AnimatedConceptGraphic } from "@/components/AnimatedConceptGraphic";
 import { ChapterPracticeCoach } from "@/components/ChapterPracticeCoach";
+import { ChapterSimulatorLab } from "@/components/ChapterSimulatorLab";
 import { ConceptLectureDeck } from "@/components/ConceptLectureDeck";
 import { FormulaLectureReader } from "@/components/FormulaLectureReader";
 import { InteractiveBlackboard } from "@/components/InteractiveBlackboard";
@@ -17,6 +18,7 @@ import { practiceCardsForChapter, practiceModeCount, type ChapterPracticeCard } 
 import { conceptCardsForChapter, conceptModeCount, type ChapterConceptCard } from "@/lib/conceptAtlas";
 import { workedExamplesForChapter, workedExampleModeCount, type ChapterWorkedExample } from "@/lib/chapterWorkedExamples";
 import { misconceptionCardsForChapter, misconceptionModeCount, type ChapterMisconceptionCard } from "@/lib/chapterMisconceptions";
+import { simulatorControlCount, simulatorForChapter, simulatorReadoutCount, type ChapterSimulator } from "@/lib/chapterSimulators";
 import { formulaLectureModeCount, formulasForChapter, type FormulaNote } from "@/lib/formulaAtlas";
 import { chapters } from "@/lib/paper";
 import { sectionLessonModeCount, sectionLessonsForChapter, sectionNarrativeCount, type SectionTextbookLesson } from "@/lib/sectionNarratives";
@@ -41,6 +43,9 @@ const lectures = chapters.map((chapter) => ({
   workedExampleModes: workedExampleModeCount(chapter.n),
   misconceptionCards: misconceptionCardsForChapter(chapter.n),
   misconceptionModes: misconceptionModeCount(chapter.n),
+  simulator: simulatorForChapter(chapter.n),
+  simulatorControls: simulatorControlCount(chapter.n),
+  simulatorReadouts: simulatorReadoutCount(chapter.n),
   manuscript: manuscriptForChapter(chapter.n),
   blackboard: blackboardForChapter(chapter.n),
   sectionLessons: sectionLessonsForChapter(chapter.n),
@@ -61,6 +66,8 @@ export default function BookPage() {
   const conceptModes = conceptModeCount();
   const workedExampleModes = workedExampleModeCount();
   const misconceptionModes = misconceptionModeCount();
+  const simulatorControls = simulatorControlCount();
+  const simulatorReadouts = simulatorReadoutCount();
 
   return (
     <main className="min-h-screen bg-bg text-ink">
@@ -85,6 +92,8 @@ export default function BookPage() {
                 <Chip accent="violet">{conceptModes} concept modes</Chip>
                 <Chip accent="orange">{workedExampleModes} worked modes</Chip>
                 <Chip accent="orange">{misconceptionModes} clinic modes</Chip>
+                <Chip accent="cyan">{simulatorControls} simulator controls</Chip>
+                <Chip accent="blue">{simulatorReadouts} simulator readouts</Chip>
                 <Chip accent="blue">{manuscriptSections} manuscript moves</Chip>
                 <Chip accent="violet">{blackboardStages} blackboard stages</Chip>
                 <Chip accent="cyan">{sectionNarratives} section manuscripts</Chip>
@@ -127,19 +136,19 @@ export default function BookPage() {
         </aside>
 
         <div className="grid gap-12">
-          {lectures.map(({ chapter, lecture, starter, starterModes, practiceCards, practiceModes, conceptCards, conceptModes, workedExamples, workedExampleModes, misconceptionCards, misconceptionModes, manuscript, blackboard, sectionLessons, formulas, formulaModes }) => <BookChapter key={chapter.n} chapter={chapter} lecture={lecture} starter={starter} starterModes={starterModes} practiceCards={practiceCards} practiceModes={practiceModes} conceptCards={conceptCards} conceptModes={conceptModes} workedExamples={workedExamples} workedExampleModes={workedExampleModes} misconceptionCards={misconceptionCards} misconceptionModes={misconceptionModes} manuscript={manuscript} blackboard={blackboard} sectionLessons={sectionLessons} formulas={formulas} formulaModes={formulaModes} />)}
+          {lectures.map(({ chapter, lecture, starter, starterModes, practiceCards, practiceModes, conceptCards, conceptModes, workedExamples, workedExampleModes, misconceptionCards, misconceptionModes, simulator, simulatorControls, simulatorReadouts, manuscript, blackboard, sectionLessons, formulas, formulaModes }) => <BookChapter key={chapter.n} chapter={chapter} lecture={lecture} starter={starter} starterModes={starterModes} practiceCards={practiceCards} practiceModes={practiceModes} conceptCards={conceptCards} conceptModes={conceptModes} workedExamples={workedExamples} workedExampleModes={workedExampleModes} misconceptionCards={misconceptionCards} misconceptionModes={misconceptionModes} simulator={simulator} simulatorControls={simulatorControls} simulatorReadouts={simulatorReadouts} manuscript={manuscript} blackboard={blackboard} sectionLessons={sectionLessons} formulas={formulas} formulaModes={formulaModes} />)}
         </div>
       </div>
     </main>
   );
 }
 
-function BookChapter({ chapter, lecture, starter, starterModes, practiceCards, practiceModes, conceptCards, conceptModes, workedExamples, workedExampleModes, misconceptionCards, misconceptionModes, manuscript, blackboard, sectionLessons, formulas, formulaModes }: { chapter: (typeof chapters)[number]; lecture: StandaloneChapterLecture; starter: ZeroKnowledgeLadder; starterModes: number; practiceCards: ChapterPracticeCard[]; practiceModes: number; conceptCards: ChapterConceptCard[]; conceptModes: number; workedExamples: ChapterWorkedExample[]; workedExampleModes: number; misconceptionCards: ChapterMisconceptionCard[]; misconceptionModes: number; manuscript: ChapterManuscript; blackboard: ChapterBlackboard; sectionLessons: SectionTextbookLesson[]; formulas: FormulaNote[]; formulaModes: number }) {
+function BookChapter({ chapter, lecture, starter, starterModes, practiceCards, practiceModes, conceptCards, conceptModes, workedExamples, workedExampleModes, misconceptionCards, misconceptionModes, simulator, simulatorControls, simulatorReadouts, manuscript, blackboard, sectionLessons, formulas, formulaModes }: { chapter: (typeof chapters)[number]; lecture: StandaloneChapterLecture; starter: ZeroKnowledgeLadder; starterModes: number; practiceCards: ChapterPracticeCard[]; practiceModes: number; conceptCards: ChapterConceptCard[]; conceptModes: number; workedExamples: ChapterWorkedExample[]; workedExampleModes: number; misconceptionCards: ChapterMisconceptionCard[]; misconceptionModes: number; simulator: ChapterSimulator; simulatorControls: number; simulatorReadouts: number; manuscript: ChapterManuscript; blackboard: ChapterBlackboard; sectionLessons: SectionTextbookLesson[]; formulas: FormulaNote[]; formulaModes: number }) {
   return (
     <article id={`book-chapter-${chapter.n}`} className="scroll-mt-24 overflow-hidden rounded-2xl border border-line bg-panel">
       <div className="grid gap-px bg-line lg:grid-cols-[0.9fr_1.1fr]">
         <div className="bg-panel p-6 lg:p-7">
-          <div className="flex flex-wrap gap-2"><Chip accent="cyan">Chapter {chapter.n}</Chip><Chip accent="blue">{chapter.part}</Chip><Chip accent="lime">{lecture.beats.length} section lessons</Chip><Chip accent="violet">{conceptCards.length} concepts</Chip><Chip accent="orange">{workedExamples.length} examples</Chip><Chip accent="orange">{misconceptionCards.length} clinics</Chip></div>
+          <div className="flex flex-wrap gap-2"><Chip accent="cyan">Chapter {chapter.n}</Chip><Chip accent="blue">{chapter.part}</Chip><Chip accent="lime">{lecture.beats.length} section lessons</Chip><Chip accent="violet">{conceptCards.length} concepts</Chip><Chip accent="orange">{workedExamples.length} examples</Chip><Chip accent="orange">{misconceptionCards.length} clinics</Chip><Chip accent="cyan">{simulatorControls} sim controls</Chip><Chip accent="blue">{simulatorReadouts} readouts</Chip></div>
           <h2 className="display mt-5 text-[clamp(32px,5vw,56px)] font-medium text-ink">{chapter.title}</h2>
           <p className="mt-4 text-base leading-relaxed text-muted">{lecture.promise}</p>
           <div className="mt-5 grid gap-3">
@@ -225,6 +234,14 @@ function BookChapter({ chapter, lecture, starter, starterModes, practiceCards, p
             <p className="mt-2 text-sm leading-relaxed text-muted">{misconceptionCards.length} misconception cards become {misconceptionModes} mistake, temptation, repair, technical, and self-check modes for this chapter.</p>
           </div>
           <MisconceptionClinic cards={misconceptionCards} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} compact />
+        </section>
+        <section className="grid gap-4">
+          <div>
+            <p className="eyebrow">Chapter simulator lab</p>
+            <h3 className="display mt-2 text-3xl font-medium text-ink">Move the chapter&apos;s tradeoff knobs and watch the readouts.</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted">{simulatorControls} live controls drive {simulatorReadouts} learning, stability, bias, and variance readouts for this chapter.</p>
+          </div>
+          <ChapterSimulatorLab simulators={[simulator]} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} compact />
         </section>
         <section className="grid gap-4">
           <div>
