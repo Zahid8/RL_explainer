@@ -20,9 +20,10 @@ import { sectionMasteryCardsForChapter } from "@/lib/sectionMastery";
 import { socraticTutorCardsForChapter } from "@/lib/socraticTutor";
 import { caseStudiesForChapter } from "@/lib/caseStudies";
 import { projectCardsForChapter } from "@/lib/projectStudio";
+import { evidenceReplayCardsForChapter } from "@/lib/evidenceReplay";
 import { symbolCardsForChapter } from "@/lib/symbolAtlas";
 
-export type LearningGraphNodeKind = "chapter" | "foundation" | "math" | "story" | "analogy" | "tutor" | "case" | "concept" | "section" | "formula" | "symbol" | "proof" | "algorithm" | "compare" | "code" | "assumption" | "example" | "practice" | "exercise" | "exam" | "project" | "simulator" | "prerequisite" | "unlock";
+export type LearningGraphNodeKind = "chapter" | "foundation" | "math" | "story" | "analogy" | "tutor" | "case" | "concept" | "section" | "formula" | "symbol" | "proof" | "algorithm" | "compare" | "code" | "assumption" | "example" | "practice" | "exercise" | "exam" | "project" | "evidence" | "simulator" | "prerequisite" | "unlock";
 
 export interface LearningGraphNode {
   id: string;
@@ -77,6 +78,7 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
   const tutorCards = socraticTutorCardsForChapter(chapterNumber).slice(0, 4);
   const caseStudies = caseStudiesForChapter(chapterNumber).slice(0, 4);
   const projectCards = projectCardsForChapter(chapterNumber).slice(0, 4);
+  const evidenceReplays = evidenceReplayCardsForChapter(chapterNumber).slice(0, 5);
   const concepts = conceptCardsForChapter(chapterNumber).slice(0, 6);
   const sectionMasteryCards = sectionMasteryCardsForChapter(chapterNumber).slice(0, 4);
   const formulas = formulasForChapter(chapterNumber).slice(0, 4);
@@ -639,6 +641,34 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
     });
   });
 
+  evidenceReplays.forEach((card, index) => {
+    const id = nodeId(chapterNumber, "evidence", `${card.ref}-${card.title}`);
+    const project = projectCards[index % Math.max(projectCards.length, 1)];
+    const examCard = examCards[index % Math.max(examCards.length, 1)];
+    const caseStudy = caseStudies[index % Math.max(caseStudies.length, 1)];
+    const priorNode = project ? nodeId(chapterNumber, "project", project.title) : examCard ? nodeId(chapterNumber, "exam", examCard.title) : caseStudy ? nodeId(chapterNumber, "case", caseStudy.title) : centerId;
+    addNode({
+      id,
+      chapter: chapterNumber,
+      kind: "evidence",
+      title: `${card.ref}: ${card.title}`,
+      easy: card.plainRead,
+      technical: `${card.technicalFrame} Pitfall: ${card.pitfall}`,
+      route: `/chapters/${chapterNumber}#evidence-replay`,
+      tags: [card.kind, card.ref, ...card.tags],
+      ...ringPoint("evidence", index, evidenceReplays.length),
+    });
+    addEdge({
+      id: edgeId(priorNode, id, "evidence replay"),
+      chapter: chapterNumber,
+      from: priorNode,
+      to: id,
+      relation: "chapter artifact becomes evidence replay",
+      easy: `The evidence node turns ${card.ref} into read, reconstruct, technical, pitfall, and transfer practice.`,
+      technical: `The evidence replay node preserves the original anchor as an interpreted mechanism without reproducing source artwork or prose.`,
+    });
+  });
+
   const simulatorId = nodeId(chapterNumber, "simulator", simulator.title);
   addNode({
     id: simulatorId,
@@ -715,7 +745,7 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
   return {
     chapter: chapterNumber,
     title: chapter.title,
-    promise: `Graphical map for Chapter ${chapterNumber}: start from the chapter node, move through foundation terms, math rescue objects, visual story scenes, analogy bridges, Socratic tutor dialogues, case studies, concepts, section mastery checks, formulas, decoded symbols, proof sketches, methods, comparison boards, code scaffolds, assumptions, examples, practice, exercise solutions, chapter exams, project builds, and simulator knobs, then check prerequisites and unlocks.`,
+    promise: `Graphical map for Chapter ${chapterNumber}: start from the chapter node, move through foundation terms, math rescue objects, visual story scenes, analogy bridges, Socratic tutor dialogues, case studies, concepts, section mastery checks, formulas, decoded symbols, proof sketches, methods, comparison boards, code scaffolds, assumptions, examples, practice, exercise solutions, chapter exams, project builds, evidence replays, and simulator knobs, then check prerequisites and unlocks.`,
     route: `/chapters/${chapterNumber}`,
     nodes,
     edges,
@@ -737,6 +767,7 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
       "Use examples and practice nodes to rehearse the idea, then open exercise solution nodes to attempt, debug, and extend numbered problems.",
       "Open exam nodes to grade and transfer mastery.",
       "Open project nodes to build an artifact, run an experiment, grade it with a rubric, and transfer it.",
+      "Open evidence nodes to read, reconstruct, translate, debug, and transfer the chapter figures, tables, and examples.",
       "Use simulator nodes to test whether the chapter story survives knob changes.",
     ],
     legend: graphLegend,
@@ -779,6 +810,7 @@ export const graphLegend: ChapterLearningGraph["legend"] = [
   { kind: "exercise", label: "Exercise solution", easy: "A numbered practice problem turned into an attempt-hint-solution loop.", technical: "Attempt prompt, mini-world, hint, technical solution, debug checklist, rubric, and extension." },
   { kind: "exam", label: "Chapter exam", easy: "A self-graded mastery prompt.", technical: "Prompt, plan, solution, rubric, diagnostic, and transfer." },
   { kind: "project", label: "Project studio", easy: "A buildable proof that the chapter can be used.", technical: "Driving question, build milestones, experiment plan, technical frame, rubric, deliverables, and extension." },
+  { kind: "evidence", label: "Evidence replay", easy: "A figure, table, or example rebuilt as a reusable mechanism.", technical: "Read, reconstruct, technical frame, pitfall, and transfer modes for book anchors." },
   { kind: "simulator", label: "Simulator", easy: "A live knob model of the chapter.", technical: "Exploration, step-size, horizon, and stability tradeoffs." },
   { kind: "prerequisite", label: "Prerequisite", easy: "Earlier chapters feeding this one.", technical: "Incoming assumptions and notation." },
   { kind: "unlock", label: "Unlock", easy: "Later chapters made easier.", technical: "Outgoing abstractions and limitations." },
@@ -806,6 +838,7 @@ function ringPoint(kind: LearningGraphNodeKind, index: number, total: number): {
     exercise: { start: 95, end: 190, radius: 54 },
     exam: { start: 150, end: 245, radius: 56 },
     project: { start: 300, end: 390, radius: 55 },
+    evidence: { start: 235, end: 330, radius: 58 },
   };
   const lane = lanes[kind] ?? { start: 0, end: 360, radius: 38 };
   const angle = total <= 1 ? (lane.start + lane.end) / 2 : lane.start + ((lane.end - lane.start) * index) / (total - 1);

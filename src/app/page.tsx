@@ -15,6 +15,7 @@ import { ChapterSimulatorLab } from "@/components/ChapterSimulatorLab";
 import { ConceptLectureDeck } from "@/components/ConceptLectureDeck";
 import { EquationWall } from "@/components/EquationWall";
 import { EvidenceGuide } from "@/components/EvidenceGuide";
+import { EvidenceReplayStudio } from "@/components/EvidenceReplayStudio";
 import { ExerciseCoach } from "@/components/ExerciseCoach";
 import { ExerciseSolutionStudio } from "@/components/ExerciseSolutionStudio";
 import { FormulaAtlas } from "@/components/FormulaAtlas";
@@ -48,6 +49,7 @@ import { allAnalogyCards, analogyAnchorCount, analogyCardCount, analogyChapterCo
 import { allSocraticTutorCards, socraticTutorAnchorCount, socraticTutorBoardStepCount, socraticTutorCardCount, socraticTutorChapterCount, socraticTutorModeCount, socraticTutorSourceCount, socraticTutorTurnCount } from "@/lib/socraticTutor";
 import { allCaseStudies, caseStudyAnchorCount, caseStudyBoardFrameCount, caseStudyCardCount, caseStudyChapterCount, caseStudyModeCount, caseStudySourceCount, caseStudySuccessCriteriaCount } from "@/lib/caseStudies";
 import { allProjectCards, projectCardCount, projectChapterCount, projectDeliverableCount, projectMilestoneCount, projectModeCount, projectRubricCount, projectSourceCount } from "@/lib/projectStudio";
+import { allEvidenceReplayCards, evidenceReplayCardCount, evidenceReplayModeCount, evidenceReplayReconstructionStepCount } from "@/lib/evidenceReplay";
 import { allBookIndexEntries, bookIndexChapterCount, bookIndexEntryCount, bookIndexLayerCount } from "@/lib/bookIndex";
 import { allAssumptionClinicCards, assumptionCardCount, assumptionChapterCount, assumptionModeCount } from "@/lib/assumptionClinic";
 import { allChapterExamCards, chapterExamCardCount, chapterExamChapterCount, chapterExamModeCount } from "@/lib/chapterExam";
@@ -131,6 +133,10 @@ export default function Home() {
   const projectRubrics = projectRubricCount();
   const projectDeliverables = projectDeliverableCount();
   const projectSources = projectSourceCount();
+  const evidenceReplayCards = allEvidenceReplayCards();
+  const evidenceReplayTotal = evidenceReplayCardCount();
+  const evidenceReplayModes = evidenceReplayModeCount();
+  const evidenceReplaySteps = evidenceReplayReconstructionStepCount();
   const practiceCards = allPracticeCards();
   const practiceCardTotal = practiceCardCount();
   const practiceModes = practiceModeCount();
@@ -450,12 +456,15 @@ export default function Home() {
       </Section>
       <Section
         id="evidence"
-        eyebrow="06 - Figure and example lecture atlas"
-        title={<>Every major visual anchor becomes a study card: what it shows and why it matters.</>}
-        lead="The course teaches through plots, backup diagrams, tasks, and named examples. This atlas makes those anchors searchable and explains the idea without copying the original figures."
+        eyebrow="06 - Evidence replay and figure atlas"
+        title={<>Every major visual anchor becomes a replayable lecture.</>}
+        lead="The course teaches through plots, backup diagrams, tasks, tables, and named examples. The replay studio makes each anchor interactive without copying the original figures: read it, reconstruct it, translate it technically, avoid the trap, and transfer it."
         tint
       >
-        <EvidenceGuide />
+        <div className="grid gap-8">
+          <EvidenceReplayStudio cards={evidenceReplayCards} contextTitle="Whole-book evidence replay studio" compact />
+          <EvidenceGuide />
+        </div>
       </Section>
       <Section
         id="exercises"
@@ -515,7 +524,7 @@ export default function Home() {
             <p>This is an original standalone teaching site organized around the book&apos;s chapter and section structure. It avoids copying the book&apos;s prose and labels synthetic diagrams/labs as illustrative.</p>
           </Note>
           <Note title="Coverage note">
-            <p>The chapter list covers {chapters.length} chapters, {searchEntryTotal} searchable explanation entries across {searchLayerTotal} index layers, {graphNodeTotal} learning-graph nodes and {graphEdgeTotal} learning links across {graphChapterTotal} chapter maps, {foundationTotal} foundation dictionary cards, {foundationModes} foundation modes, {foundationTerms} unique foundation terms, {mathTotal} math rescue cards, {mathModes} math rescue modes, {mathObjects} math objects, {mathSymbols} symbol handles, {storyTotal} visual story scenes, {storyModes} story modes, {storyActors} actor handles, {storyProps} visual props, {analogyTotal} analogy cards, {analogyModes} analogy modes, {tutorTotal} tutor cards, {tutorModes} tutor modes, {caseTotal} case studies, {caseModes} case modes, {caseFrames} board frames, {caseCriteria} success checks, {projectTotal} hands-on projects, {projectModes} project modes, {projectMilestones} project milestones, {projectRubrics} rubric checks, {projectDeliverables} project deliverables, {zeroKnowledgeRungs} zero-knowledge starter rungs, {zeroKnowledgeModes} primer modes, {theaterTotal} lecture theaters, {theaterSlides} guided lecture slides, {theaterModes} theater explanation modes, {sectionMasteryTotal} section mastery cards, {sectionMasteryModes} section mastery modes, {practiceCardTotal} active-recall checkpoints, {practiceModes} practice reveal modes, {conceptCardTotal} concept microscope cards, {conceptModes} concept lecture modes, {workedExampleTotal} worked examples, {workedExampleModes} worked-example modes, {misconceptionTotal} misconception clinic cards, {misconceptionModes} misconception repair modes, {simulatorTotal} chapter simulators, {simulatorControls} simulator controls, {simulatorReadouts} simulator readouts, {codeLabTotal} implementation code labs, {codeLabModes} code modes, {assumptionTotal} assumption clinics, {assumptionModes} assumption modes, {compareTotal} method comparison cards, {compareModes} comparison modes, {proofTotal} proof cards, {proofModes} proof modes, {examTotal} exam cards, {examModes} exam modes, {manuscriptMoves} bespoke manuscript moves, {blackboardStages} interactive blackboard stages, {sectionNarratives} section-level textbook manuscripts, {guidedSectionModes} guided section modes, {formulaLectureModes} formula lecture modes, {lectureBeats} standalone lecture beats, all top-level sections shown in the PDF contents, 161 section notes, a 170-tile mastery notebook, a 44-item formula atlas, a 147-card figure/example atlas, 145 exercise-coach cards, and {exerciseSolutionTotal} exercise solution cards with {exerciseSolutionModes} solution modes. Use the route pages as a complete original lecture path, then use the practice prompts to check whether the ideas are really yours.</p>
+            <p>The chapter list covers {chapters.length} chapters, {searchEntryTotal} searchable explanation entries across {searchLayerTotal} index layers, {graphNodeTotal} learning-graph nodes and {graphEdgeTotal} learning links across {graphChapterTotal} chapter maps, {foundationTotal} foundation dictionary cards, {foundationModes} foundation modes, {foundationTerms} unique foundation terms, {mathTotal} math rescue cards, {mathModes} math rescue modes, {mathObjects} math objects, {mathSymbols} symbol handles, {storyTotal} visual story scenes, {storyModes} story modes, {storyActors} actor handles, {storyProps} visual props, {analogyTotal} analogy cards, {analogyModes} analogy modes, {tutorTotal} tutor cards, {tutorModes} tutor modes, {caseTotal} case studies, {caseModes} case modes, {caseFrames} board frames, {caseCriteria} success checks, {projectTotal} hands-on projects, {projectModes} project modes, {projectMilestones} project milestones, {projectRubrics} rubric checks, {projectDeliverables} project deliverables, {zeroKnowledgeRungs} zero-knowledge starter rungs, {zeroKnowledgeModes} primer modes, {theaterTotal} lecture theaters, {theaterSlides} guided lecture slides, {theaterModes} theater explanation modes, {sectionMasteryTotal} section mastery cards, {sectionMasteryModes} section mastery modes, {practiceCardTotal} active-recall checkpoints, {practiceModes} practice reveal modes, {conceptCardTotal} concept microscope cards, {conceptModes} concept lecture modes, {workedExampleTotal} worked examples, {workedExampleModes} worked-example modes, {misconceptionTotal} misconception clinic cards, {misconceptionModes} misconception repair modes, {simulatorTotal} chapter simulators, {simulatorControls} simulator controls, {simulatorReadouts} simulator readouts, {codeLabTotal} implementation code labs, {codeLabModes} code modes, {assumptionTotal} assumption clinics, {assumptionModes} assumption modes, {compareTotal} method comparison cards, {compareModes} comparison modes, {proofTotal} proof cards, {proofModes} proof modes, {examTotal} exam cards, {examModes} exam modes, {manuscriptMoves} bespoke manuscript moves, {blackboardStages} interactive blackboard stages, {sectionNarratives} section-level textbook manuscripts, {guidedSectionModes} guided section modes, {formulaLectureModes} formula lecture modes, {lectureBeats} standalone lecture beats, all top-level sections shown in the PDF contents, 161 section notes, a 170-tile mastery notebook, a 44-item formula atlas, {evidenceReplayTotal} evidence replay cards with {evidenceReplayModes} replay modes, {evidenceReplaySteps} reconstruction steps, a 147-card figure/example atlas, 145 exercise-coach cards, and {exerciseSolutionTotal} exercise solution cards with {exerciseSolutionModes} solution modes. Use the route pages as a complete original lecture path, then use the practice prompts to check whether the ideas are really yours.</p>
           </Note>
         </div>
       </Section>

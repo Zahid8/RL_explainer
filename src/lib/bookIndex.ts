@@ -31,6 +31,7 @@ import { sectionLessonsForChapter } from "@/lib/sectionNarratives";
 import { socraticTutorCardsForChapter } from "@/lib/socraticTutor";
 import { caseStudiesForChapter } from "@/lib/caseStudies";
 import { projectCardsForChapter } from "@/lib/projectStudio";
+import { evidenceReplayCardsForChapter } from "@/lib/evidenceReplay";
 import { standaloneLectureForChapter } from "@/lib/standaloneBook";
 import { symbolCardsForChapter } from "@/lib/symbolAtlas";
 import { zeroKnowledgeLadderForChapter } from "@/lib/zeroKnowledgeLadders";
@@ -45,6 +46,7 @@ export type BookIndexLayer =
   | "socratic tutor"
   | "case study"
   | "project studio"
+  | "evidence replay"
   | "lecture theater"
   | "symbol decoder"
   | "implementation code lab"
@@ -125,6 +127,7 @@ function buildBookIndexEntries(): BookIndexEntry[] {
     const tutorCards = socraticTutorCardsForChapter(chapter.n);
     const caseStudies = caseStudiesForChapter(chapter.n);
     const projects = projectCardsForChapter(chapter.n);
+    const evidenceReplays = evidenceReplayCardsForChapter(chapter.n);
     const theater = lectureTheaterForChapter(chapter.n);
     const symbolCards = symbolCardsForChapter(chapter.n);
     const codeCards = codeLabCardsForChapter(chapter.n);
@@ -297,6 +300,18 @@ function buildBookIndexEntries(): BookIndexEntry[] {
       summary: `${card.drivingQuestion} Brief: ${card.brief} Build: ${card.buildSteps.join(" ")}`,
       technical: `${card.technicalFrame} Experiment: ${card.experimentPlan} Rubric: ${card.rubric.join(" ")} Extension: ${card.extension}`,
       tags: [card.sourceLabel, ...card.tags, `Chapter ${chapter.n}`],
+      weight: 90,
+    }));
+
+    evidenceReplays.forEach((card) => add({
+      ...chapterBase,
+      id: card.id,
+      title: `Evidence replay: ${card.ref} ${card.title}`,
+      layer: "evidence replay",
+      route: `/chapters/${chapter.n}#evidence-replay`,
+      summary: `${card.plainRead} Reconstruct: ${card.reconstruction.join(" ")}`,
+      technical: `${card.technicalFrame} Pitfall: ${card.pitfall} Transfer: ${card.transfer}`,
+      tags: [card.kind, card.ref, ...card.tags, `Chapter ${chapter.n}`],
       weight: 90,
     }));
 

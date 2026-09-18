@@ -12,6 +12,7 @@ const links = [
   ["tutor", "Tutor"],
   ["cases", "Cases"],
   ["projects", "Projects"],
+  ["evidence", "Evidence"],
   ["theater", "Theater"],
   ["sections", "Sections"],
   ["search", "Search"],
@@ -31,7 +32,6 @@ const links = [
   ["chapters", "Chapters"],
   ["mastery", "Mastery"],
   ["equations", "Equations"],
-  ["evidence", "Evidence"],
   ["exercises", "Exercises"],
   ["algorithms", "Algorithms"],
   ["compare", "Compare"],
@@ -94,6 +94,7 @@ export function Nav() {
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/tutor">Tutor</a>
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/cases">Cases</a>
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/projects">Projects</a>
+          <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/evidence">Evidence</a>
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/sections">Sections</a>
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/search">Search</a>
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/graph">Graph</a>
