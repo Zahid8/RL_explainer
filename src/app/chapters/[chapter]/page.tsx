@@ -5,6 +5,7 @@ import { TeX } from "@/components/Math";
 import { AnimatedConceptGraphic } from "@/components/AnimatedConceptGraphic";
 import { AnalogyStudio } from "@/components/AnalogyStudio";
 import { CaseStudyStudio } from "@/components/CaseStudyStudio";
+import { ProjectStudio } from "@/components/ProjectStudio";
 import { SocraticTutorStudio } from "@/components/SocraticTutorStudio";
 import { AssumptionClinic } from "@/components/AssumptionClinic";
 import { BookSearch } from "@/components/BookSearch";
@@ -56,6 +57,7 @@ import { visualStoriesForChapter, visualStoryModeCount, type VisualStoryCard } f
 import { analogiesForChapter, analogyModeCount, type AnalogyCard } from "@/lib/analogies";
 import { socraticTutorCardsForChapter, socraticTutorModeCount, type SocraticTutorCard } from "@/lib/socraticTutor";
 import { caseStudiesForChapter, caseStudyModeCount, type ChapterCaseStudy } from "@/lib/caseStudies";
+import { projectCardsForChapter, projectModeCount, type ChapterProjectCard } from "@/lib/projectStudio";
 import { bookIndexEntriesForChapter, bookIndexEntryCount } from "@/lib/bookIndex";
 import { codeLabCardsForChapter, codeLabModeCount, type CodeLabCard } from "@/lib/codeLab";
 import { chapterExamCardsForChapter, chapterExamModeCount, type ChapterExamCard } from "@/lib/chapterExam";
@@ -124,6 +126,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
   const tutorModes = socraticTutorModeCount(item.n);
   const caseStudies = caseStudiesForChapter(item.n);
   const caseModes = caseStudyModeCount(item.n);
+  const projects = projectCardsForChapter(item.n);
+  const projectModes = projectModeCount(item.n);
   const theater = lectureTheaterForChapter(item.n);
   const theaterSlides = lectureTheaterSlideCount(item.n);
   const theaterModes = lectureTheaterModeCount(item.n);
@@ -196,6 +200,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
                 <Stat value={String(tutorModes)} label="tutor modes" />
                 <Stat value={String(caseStudies.length)} label="case studies" />
                 <Stat value={String(caseModes)} label="case modes" />
+                <Stat value={String(projects.length)} label="projects" />
+                <Stat value={String(projectModes)} label="project modes" />
                 <Stat value={String(theaterSlides)} label="theater slides" />
                 <Stat value={String(theaterModes)} label="theater modes" />
                 <Stat value={String(deep?.sectionDetails.length ?? item.sections.length)} label="section notes" />
@@ -246,7 +252,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
           <AnimatedConceptGraphic label="Story loop" variant="loop" caption="The easy story and the technical story update each other: intuition points at notation, notation checks intuition." compact />
         </section>
 
-        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, starterRungs: starter.rungs.length, starterModes, foundationCards: foundationCards.length, foundationModes, mathCards: mathCards.length, mathModes, storyCards: storyCards.length, storyModes, analogyCards: analogyCards.length, analogyModes, tutorCards: tutorCards.length, tutorModes, caseStudies: caseStudies.length, caseModes, theaterSlides, theaterModes, practiceCards: practiceCards.length, practiceModes, conceptCards: conceptCards.length, conceptModes, workedExamples: workedExamples.length, workedExampleModes, misconceptionCards: misconceptionCards.length, misconceptionModes, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, sectionLessons: sectionLessons.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, formulaModes, evidence: evidence.length, exercises: exercises.length, simulatorControls, simulatorReadouts, sourceAudits: sourceAudits.length, searchEntries: searchEntryTotal, graphNodes, graphEdges, symbolCards: symbolCards.length, symbolModes, codeCards: codeCards.length, codeModes, assumptionCards: assumptionCards.length, assumptionModes, compareCards: compareCards.length, compareModes, proofCards: proofCards.length, proofModes, examCards: examCards.length, examModes, sectionMasteryCards: sectionMasteryCards.length, sectionMasteryModes, exerciseSolutions: exerciseSolutions.length, exerciseSolutionModes }} />
+        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, starterRungs: starter.rungs.length, starterModes, foundationCards: foundationCards.length, foundationModes, mathCards: mathCards.length, mathModes, storyCards: storyCards.length, storyModes, analogyCards: analogyCards.length, analogyModes, tutorCards: tutorCards.length, tutorModes, caseStudies: caseStudies.length, caseModes, projects: projects.length, projectModes, theaterSlides, theaterModes, practiceCards: practiceCards.length, practiceModes, conceptCards: conceptCards.length, conceptModes, workedExamples: workedExamples.length, workedExampleModes, misconceptionCards: misconceptionCards.length, misconceptionModes, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, sectionLessons: sectionLessons.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, formulaModes, evidence: evidence.length, exercises: exercises.length, simulatorControls, simulatorReadouts, sourceAudits: sourceAudits.length, searchEntries: searchEntryTotal, graphNodes, graphEdges, symbolCards: symbolCards.length, symbolModes, codeCards: codeCards.length, codeModes, assumptionCards: assumptionCards.length, assumptionModes, compareCards: compareCards.length, compareModes, proofCards: proofCards.length, proofModes, examCards: examCards.length, examModes, sectionMasteryCards: sectionMasteryCards.length, sectionMasteryModes, exerciseSolutions: exerciseSolutions.length, exerciseSolutionModes }} />
 
         <section id="search" className="scroll-mt-24">
           <SectionTitle eyebrow="00a - Chapter search index" title="Search this chapter's explanations without leaving the page." lead="Use this chapter-local index when you remember a term, formula, trap, method, or example but do not know which layer contains it. It searches the original standalone prose and technical explanations for this chapter." />
@@ -266,6 +272,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
         <ChapterTutorBlock chapter={item} cards={tutorCards} tutorModes={tutorModes} />
 
         <ChapterCaseStudyBlock chapter={item} cases={caseStudies} caseModes={caseModes} />
+
+        <ChapterProjectBlock chapter={item} projects={projects} projectModes={projectModes} />
 
         <section id="learning-graph" className="scroll-mt-24">
           <SectionTitle eyebrow="00b - Interactive learning graph" title="Map the chapter before memorizing the details." lead="Click nodes to see how prerequisites feed the chapter, how concepts become formulas, how formulas become methods, and how examples, practice, and simulator knobs prove understanding." />
@@ -477,7 +485,7 @@ function Stat({ value, label }: { value: string; label: string }) {
   );
 }
 
-function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; starterRungs: number; starterModes: number; foundationCards: number; foundationModes: number; mathCards: number; mathModes: number; storyCards: number; storyModes: number; analogyCards: number; analogyModes: number; tutorCards: number; tutorModes: number; caseStudies: number; caseModes: number; theaterSlides: number; theaterModes: number; practiceCards: number; practiceModes: number; conceptCards: number; conceptModes: number; workedExamples: number; workedExampleModes: number; misconceptionCards: number; misconceptionModes: number; simulatorControls: number; simulatorReadouts: number; manuscriptSections: number; blackboardStages: number; sectionLessons: number; sectionMasteryCards: number; sectionMasteryModes: number; lectureBeats: number; sections: number; formulas: number; formulaModes: number; evidence: number; exercises: number; sourceAudits: number; searchEntries: number; graphNodes: number; graphEdges: number; symbolCards: number; symbolModes: number; codeCards: number; codeModes: number; assumptionCards: number; assumptionModes: number; compareCards: number; compareModes: number; proofCards: number; proofModes: number; examCards: number; examModes: number; exerciseSolutions: number; exerciseSolutionModes: number } }) {
+function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; starterRungs: number; starterModes: number; foundationCards: number; foundationModes: number; mathCards: number; mathModes: number; storyCards: number; storyModes: number; analogyCards: number; analogyModes: number; tutorCards: number; tutorModes: number; caseStudies: number; caseModes: number; projects: number; projectModes: number; theaterSlides: number; theaterModes: number; practiceCards: number; practiceModes: number; conceptCards: number; conceptModes: number; workedExamples: number; workedExampleModes: number; misconceptionCards: number; misconceptionModes: number; simulatorControls: number; simulatorReadouts: number; manuscriptSections: number; blackboardStages: number; sectionLessons: number; sectionMasteryCards: number; sectionMasteryModes: number; lectureBeats: number; sections: number; formulas: number; formulaModes: number; evidence: number; exercises: number; sourceAudits: number; searchEntries: number; graphNodes: number; graphEdges: number; symbolCards: number; symbolModes: number; codeCards: number; codeModes: number; assumptionCards: number; assumptionModes: number; compareCards: number; compareModes: number; proofCards: number; proofModes: number; examCards: number; examModes: number; exerciseSolutions: number; exerciseSolutionModes: number } }) {
   const items = [
     ["search", `${counts.searchEntries} search entries`],
     ["foundations", `${counts.foundationCards} foundation terms · ${counts.foundationModes} modes`],
@@ -486,6 +494,7 @@ function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; 
     ["analogies", `${counts.analogyCards} analogies · ${counts.analogyModes} modes`],
     ["socratic-tutor", `${counts.tutorCards} tutor cards · ${counts.tutorModes} modes`],
     ["case-studies", `${counts.caseStudies} case studies · ${counts.caseModes} modes`],
+    ["projects", `${counts.projects} projects · ${counts.projectModes} modes`],
     ["learning-graph", `${counts.graphNodes} graph nodes · ${counts.graphEdges} links`],
     ["symbols", `${counts.symbolCards} symbols · ${counts.symbolModes} modes`],
     ["code-lab", `${counts.codeCards} code labs · ${counts.codeModes} modes`],
@@ -632,6 +641,24 @@ function ChapterCaseStudyBlock({ chapter, cases, caseModes }: { chapter: (typeof
           <p className="text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Chapter {chapter.n} case-study promise:</span> {cases.length} case studies become {caseModes} scene, walkthrough, technical, debug, and transfer modes so chapter ideas are tested inside complete learner-world-feedback scenarios.</p>
         </div>
         <CaseStudyStudio cases={cases} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} compact />
+      </div>
+    </section>
+  );
+}
+
+function ChapterProjectBlock({ chapter, projects, projectModes }: { chapter: (typeof chapters)[number]; projects: ChapterProjectCard[]; projectModes: number }) {
+  return (
+    <section id="projects" className="scroll-mt-24">
+      <SectionTitle
+        eyebrow="00h - Project studio"
+        title="Turn the chapter into buildable evidence."
+        lead="Each project asks for a visible artifact, a tiny experiment, a rubric-based self-grade, and an extension so the chapter becomes something you can build and defend."
+      />
+      <div className="mt-6 grid gap-4">
+        <div className="rounded-xl border border-lime/30 bg-lime/[0.06] p-4">
+          <p className="text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Chapter {chapter.n} project promise:</span> {projects.length} projects become {projectModes} brief, build, experiment, rubric, and extension modes so explanations turn into artifacts, experiments, and transfer evidence.</p>
+        </div>
+        <ProjectStudio projects={projects} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} compact />
       </div>
     </section>
   );

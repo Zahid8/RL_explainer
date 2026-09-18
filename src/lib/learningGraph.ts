@@ -19,9 +19,10 @@ import { chapters } from "@/lib/paper";
 import { sectionMasteryCardsForChapter } from "@/lib/sectionMastery";
 import { socraticTutorCardsForChapter } from "@/lib/socraticTutor";
 import { caseStudiesForChapter } from "@/lib/caseStudies";
+import { projectCardsForChapter } from "@/lib/projectStudio";
 import { symbolCardsForChapter } from "@/lib/symbolAtlas";
 
-export type LearningGraphNodeKind = "chapter" | "foundation" | "math" | "story" | "analogy" | "tutor" | "case" | "concept" | "section" | "formula" | "symbol" | "proof" | "algorithm" | "compare" | "code" | "assumption" | "example" | "practice" | "exercise" | "exam" | "simulator" | "prerequisite" | "unlock";
+export type LearningGraphNodeKind = "chapter" | "foundation" | "math" | "story" | "analogy" | "tutor" | "case" | "concept" | "section" | "formula" | "symbol" | "proof" | "algorithm" | "compare" | "code" | "assumption" | "example" | "practice" | "exercise" | "exam" | "project" | "simulator" | "prerequisite" | "unlock";
 
 export interface LearningGraphNode {
   id: string;
@@ -75,6 +76,7 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
   const analogyCards = analogiesForChapter(chapterNumber).slice(0, 4);
   const tutorCards = socraticTutorCardsForChapter(chapterNumber).slice(0, 4);
   const caseStudies = caseStudiesForChapter(chapterNumber).slice(0, 4);
+  const projectCards = projectCardsForChapter(chapterNumber).slice(0, 4);
   const concepts = conceptCardsForChapter(chapterNumber).slice(0, 6);
   const sectionMasteryCards = sectionMasteryCardsForChapter(chapterNumber).slice(0, 4);
   const formulas = formulasForChapter(chapterNumber).slice(0, 4);
@@ -609,6 +611,34 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
     });
   });
 
+  projectCards.forEach((card, index) => {
+    const id = nodeId(chapterNumber, "project", card.title);
+    const examCard = examCards[index % Math.max(examCards.length, 1)];
+    const codeCard = codeCards[index % Math.max(codeCards.length, 1)];
+    const caseStudy = caseStudies[index % Math.max(caseStudies.length, 1)];
+    const priorNode = examCard ? nodeId(chapterNumber, "exam", examCard.title) : codeCard ? nodeId(chapterNumber, "code", codeCard.title) : caseStudy ? nodeId(chapterNumber, "case", caseStudy.title) : centerId;
+    addNode({
+      id,
+      chapter: chapterNumber,
+      kind: "project",
+      title: card.title,
+      easy: `${card.drivingQuestion} ${card.brief}`,
+      technical: `${card.technicalFrame} Rubric: ${card.rubric.join(" ")}`,
+      route: `/chapters/${chapterNumber}#projects`,
+      tags: [card.sourceLabel, ...card.tags],
+      ...ringPoint("project", index, projectCards.length),
+    });
+    addEdge({
+      id: edgeId(priorNode, id, "project"),
+      chapter: chapterNumber,
+      from: priorNode,
+      to: id,
+      relation: "mastery becomes project",
+      easy: `The project node turns chapter study into a buildable artifact, tiny experiment, rubric check, and transfer extension.`,
+      technical: `The project node exposes driving question, build milestones, experiment plan, technical frame, rubric, deliverables, and extension challenge.`,
+    });
+  });
+
   const simulatorId = nodeId(chapterNumber, "simulator", simulator.title);
   addNode({
     id: simulatorId,
@@ -685,7 +715,7 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
   return {
     chapter: chapterNumber,
     title: chapter.title,
-    promise: `Graphical map for Chapter ${chapterNumber}: start from the chapter node, move through foundation terms, math rescue objects, visual story scenes, analogy bridges, Socratic tutor dialogues, case studies, concepts, section mastery checks, formulas, decoded symbols, proof sketches, methods, comparison boards, code scaffolds, assumptions, examples, practice, exercise solutions, chapter exams, and simulator knobs, then check prerequisites and unlocks.`,
+    promise: `Graphical map for Chapter ${chapterNumber}: start from the chapter node, move through foundation terms, math rescue objects, visual story scenes, analogy bridges, Socratic tutor dialogues, case studies, concepts, section mastery checks, formulas, decoded symbols, proof sketches, methods, comparison boards, code scaffolds, assumptions, examples, practice, exercise solutions, chapter exams, project builds, and simulator knobs, then check prerequisites and unlocks.`,
     route: `/chapters/${chapterNumber}`,
     nodes,
     edges,
@@ -706,6 +736,7 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
       "Open assumption nodes to see when the method is valid, what guarantee it wants, and how to repair broken conditions.",
       "Use examples and practice nodes to rehearse the idea, then open exercise solution nodes to attempt, debug, and extend numbered problems.",
       "Open exam nodes to grade and transfer mastery.",
+      "Open project nodes to build an artifact, run an experiment, grade it with a rubric, and transfer it.",
       "Use simulator nodes to test whether the chapter story survives knob changes.",
     ],
     legend: graphLegend,
@@ -747,6 +778,7 @@ export const graphLegend: ChapterLearningGraph["legend"] = [
   { kind: "practice", label: "Practice", easy: "A checkpoint to test ownership.", technical: "Prompt, solution, trap, and transfer." },
   { kind: "exercise", label: "Exercise solution", easy: "A numbered practice problem turned into an attempt-hint-solution loop.", technical: "Attempt prompt, mini-world, hint, technical solution, debug checklist, rubric, and extension." },
   { kind: "exam", label: "Chapter exam", easy: "A self-graded mastery prompt.", technical: "Prompt, plan, solution, rubric, diagnostic, and transfer." },
+  { kind: "project", label: "Project studio", easy: "A buildable proof that the chapter can be used.", technical: "Driving question, build milestones, experiment plan, technical frame, rubric, deliverables, and extension." },
   { kind: "simulator", label: "Simulator", easy: "A live knob model of the chapter.", technical: "Exploration, step-size, horizon, and stability tradeoffs." },
   { kind: "prerequisite", label: "Prerequisite", easy: "Earlier chapters feeding this one.", technical: "Incoming assumptions and notation." },
   { kind: "unlock", label: "Unlock", easy: "Later chapters made easier.", technical: "Outgoing abstractions and limitations." },
@@ -773,6 +805,7 @@ function ringPoint(kind: LearningGraphNodeKind, index: number, total: number): {
     practice: { start: 210, end: 300, radius: 49 },
     exercise: { start: 95, end: 190, radius: 54 },
     exam: { start: 150, end: 245, radius: 56 },
+    project: { start: 300, end: 390, radius: 55 },
   };
   const lane = lanes[kind] ?? { start: 0, end: 360, radius: 38 };
   const angle = total <= 1 ? (lane.start + lane.end) / 2 : lane.start + ((lane.end - lane.start) * index) / (total - 1);

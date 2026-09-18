@@ -148,6 +148,7 @@ function kindColor(kind: LearningGraphNodeKind) {
     analogy: "#8b5cf6",
     tutor: "#06b6d4",
     case: "#14b8a6",
+  project: "#22c55e",
     concept: "#22c55e",
     section: "#0d9488",
     formula: "#8b5cf6",
@@ -175,6 +176,7 @@ function accentForKind(kind: LearningGraphNodeKind): Accent {
   if (kind === "analogy") return "violet";
   if (kind === "tutor") return "cyan";
   if (kind === "case") return "lime";
+  if (kind === "project") return "lime";
   if (kind === "formula") return "violet";
   if (kind === "symbol") return "violet";
   if (kind === "proof") return "violet";

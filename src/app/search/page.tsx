@@ -8,7 +8,7 @@ import { allBookIndexEntries, bookIndexChapterCount, bookIndexEntryCount, bookIn
 
 export const metadata: Metadata = {
   title: "Whole-book Search | RLbook Explainer",
-  description: "Search the standalone RL web book across chapters, algorithms, formulas, examples, misconceptions, implementation code labs, assumption clinics, proof labs, chapter exams, section mastery checks, and practice layers.",
+  description: "Search the standalone RL web book across chapters, algorithms, formulas, examples, misconceptions, implementation code labs, assumption clinics, proof labs, chapter exams, project studios, section mastery checks, and practice layers.",
 };
 
 type SearchParams = Promise<{ q?: string; query?: string; chapter?: string; layer?: string }>;
@@ -37,6 +37,7 @@ export default async function SearchPage({ searchParams }: { searchParams?: Sear
             <Link href="/analogies" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-violet">Analogies</Link>
             <Link href="/tutor" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Tutor</Link>
             <Link href="/cases" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Cases</Link>
+            <Link href="/projects" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-lime">Projects</Link>
             <Link href="/sections" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Section mastery</Link>
             <Link href="/symbols" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Symbol decoder</Link>
             <Link href="/code" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Code lab</Link>

@@ -30,6 +30,7 @@ import { sectionMasteryCardsForChapter } from "@/lib/sectionMastery";
 import { sectionLessonsForChapter } from "@/lib/sectionNarratives";
 import { socraticTutorCardsForChapter } from "@/lib/socraticTutor";
 import { caseStudiesForChapter } from "@/lib/caseStudies";
+import { projectCardsForChapter } from "@/lib/projectStudio";
 import { standaloneLectureForChapter } from "@/lib/standaloneBook";
 import { symbolCardsForChapter } from "@/lib/symbolAtlas";
 import { zeroKnowledgeLadderForChapter } from "@/lib/zeroKnowledgeLadders";
@@ -43,6 +44,7 @@ export type BookIndexLayer =
   | "analogy bridge"
   | "socratic tutor"
   | "case study"
+  | "project studio"
   | "lecture theater"
   | "symbol decoder"
   | "implementation code lab"
@@ -122,6 +124,7 @@ function buildBookIndexEntries(): BookIndexEntry[] {
     const analogies = analogiesForChapter(chapter.n);
     const tutorCards = socraticTutorCardsForChapter(chapter.n);
     const caseStudies = caseStudiesForChapter(chapter.n);
+    const projects = projectCardsForChapter(chapter.n);
     const theater = lectureTheaterForChapter(chapter.n);
     const symbolCards = symbolCardsForChapter(chapter.n);
     const codeCards = codeLabCardsForChapter(chapter.n);
@@ -282,6 +285,18 @@ function buildBookIndexEntries(): BookIndexEntry[] {
       summary: `${card.scene} Walkthrough: ${card.walkthrough} Board: ${card.boardFrames.join(" ")}`,
       technical: `${card.technicalPass} Debug: ${card.debugProbe} Transfer: ${card.transferChallenge}`,
       tags: [card.sourceLabel, card.anchor, ...card.tags, `Chapter ${chapter.n}`],
+      weight: 90,
+    }));
+
+    projects.forEach((card) => add({
+      ...chapterBase,
+      id: card.id,
+      title: `Project: ${card.title}`,
+      layer: "project studio",
+      route: `/chapters/${chapter.n}#projects`,
+      summary: `${card.drivingQuestion} Brief: ${card.brief} Build: ${card.buildSteps.join(" ")}`,
+      technical: `${card.technicalFrame} Experiment: ${card.experimentPlan} Rubric: ${card.rubric.join(" ")} Extension: ${card.extension}`,
+      tags: [card.sourceLabel, ...card.tags, `Chapter ${chapter.n}`],
       weight: 90,
     }));
 
