@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { TeX } from "@/components/Math";
 import { AnimatedConceptGraphic } from "@/components/AnimatedConceptGraphic";
+import { AssumptionClinic } from "@/components/AssumptionClinic";
 import { BookSearch } from "@/components/BookSearch";
 import { ChapterPracticeCoach } from "@/components/ChapterPracticeCoach";
 import { CodeLab } from "@/components/CodeLab";
@@ -39,6 +40,7 @@ import { simulatorControlCount, simulatorForChapter, simulatorReadoutCount, type
 import { formulaLectureModeCount, formulasForChapter } from "@/lib/formulaAtlas";
 import { bookIndexEntriesForChapter, bookIndexEntryCount } from "@/lib/bookIndex";
 import { codeLabCardsForChapter, codeLabModeCount, type CodeLabCard } from "@/lib/codeLab";
+import { assumptionCardsForChapter, assumptionModeCount, type AssumptionClinicCard } from "@/lib/assumptionClinic";
 import { blackboardForChapter } from "@/lib/interactiveBlackboards";
 import { learningGraphEdgeCount, learningGraphForChapter, learningGraphNodeCount } from "@/lib/learningGraph";
 import { chapterMastery } from "@/lib/mastery";
@@ -112,6 +114,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
   const symbolModes = symbolLectureModeCount(item.n);
   const codeCards = codeLabCardsForChapter(item.n);
   const codeModes = codeLabModeCount(item.n);
+  const assumptionCards = assumptionCardsForChapter(item.n);
+  const assumptionModes = assumptionModeCount(item.n);
   const prev = chapters.find((entry) => entry.n === item.n - 1);
   const next = chapters.find((entry) => entry.n === item.n + 1);
 
@@ -158,6 +162,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
                 <Stat value={String(symbolModes)} label="symbol modes" />
                 <Stat value={String(codeCards.length)} label="code labs" />
                 <Stat value={String(codeModes)} label="code modes" />
+                <Stat value={String(assumptionCards.length)} label="trust clinics" />
+                <Stat value={String(assumptionModes)} label="trust modes" />
               </div>
             </div>
           </div>
@@ -174,7 +180,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
           <AnimatedConceptGraphic label="Story loop" variant="loop" caption="The easy story and the technical story update each other: intuition points at notation, notation checks intuition." compact />
         </section>
 
-        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, starterRungs: starter.rungs.length, starterModes, theaterSlides, theaterModes, practiceCards: practiceCards.length, practiceModes, conceptCards: conceptCards.length, conceptModes, workedExamples: workedExamples.length, workedExampleModes, misconceptionCards: misconceptionCards.length, misconceptionModes, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, sectionLessons: sectionLessons.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, formulaModes, evidence: evidence.length, exercises: exercises.length, simulatorControls, simulatorReadouts, sourceAudits: sourceAudits.length, searchEntries: searchEntryTotal, graphNodes, graphEdges, symbolCards: symbolCards.length, symbolModes, codeCards: codeCards.length, codeModes }} />
+        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, starterRungs: starter.rungs.length, starterModes, theaterSlides, theaterModes, practiceCards: practiceCards.length, practiceModes, conceptCards: conceptCards.length, conceptModes, workedExamples: workedExamples.length, workedExampleModes, misconceptionCards: misconceptionCards.length, misconceptionModes, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, sectionLessons: sectionLessons.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, formulaModes, evidence: evidence.length, exercises: exercises.length, simulatorControls, simulatorReadouts, sourceAudits: sourceAudits.length, searchEntries: searchEntryTotal, graphNodes, graphEdges, symbolCards: symbolCards.length, symbolModes, codeCards: codeCards.length, codeModes, assumptionCards: assumptionCards.length, assumptionModes }} />
 
         <section id="search" className="scroll-mt-24">
           <SectionTitle eyebrow="00a - Chapter search index" title="Search this chapter's explanations without leaving the page." lead="Use this chapter-local index when you remember a term, formula, trap, method, or example but do not know which layer contains it. It searches the original standalone prose and technical explanations for this chapter." />
@@ -193,6 +199,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
         <ChapterSymbolDecoderBlock chapter={item} cards={symbolCards} symbolModes={symbolModes} />
 
         <ChapterCodeLabBlock chapter={item} cards={codeCards} codeModes={codeModes} />
+
+        <ChapterAssumptionClinicBlock chapter={item} cards={assumptionCards} assumptionModes={assumptionModes} />
 
         <ChapterStarterLadderBlock chapter={item} starter={starter} starterModes={starterModes} />
 
@@ -381,12 +389,13 @@ function Stat({ value, label }: { value: string; label: string }) {
   );
 }
 
-function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; starterRungs: number; starterModes: number; theaterSlides: number; theaterModes: number; practiceCards: number; practiceModes: number; conceptCards: number; conceptModes: number; workedExamples: number; workedExampleModes: number; misconceptionCards: number; misconceptionModes: number; simulatorControls: number; simulatorReadouts: number; manuscriptSections: number; blackboardStages: number; sectionLessons: number; lectureBeats: number; sections: number; formulas: number; formulaModes: number; evidence: number; exercises: number; sourceAudits: number; searchEntries: number; graphNodes: number; graphEdges: number; symbolCards: number; symbolModes: number; codeCards: number; codeModes: number } }) {
+function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; starterRungs: number; starterModes: number; theaterSlides: number; theaterModes: number; practiceCards: number; practiceModes: number; conceptCards: number; conceptModes: number; workedExamples: number; workedExampleModes: number; misconceptionCards: number; misconceptionModes: number; simulatorControls: number; simulatorReadouts: number; manuscriptSections: number; blackboardStages: number; sectionLessons: number; lectureBeats: number; sections: number; formulas: number; formulaModes: number; evidence: number; exercises: number; sourceAudits: number; searchEntries: number; graphNodes: number; graphEdges: number; symbolCards: number; symbolModes: number; codeCards: number; codeModes: number; assumptionCards: number; assumptionModes: number } }) {
   const items = [
     ["search", `${counts.searchEntries} search entries`],
     ["learning-graph", `${counts.graphNodes} graph nodes · ${counts.graphEdges} links`],
     ["symbols", `${counts.symbolCards} symbols · ${counts.symbolModes} modes`],
     ["code-lab", `${counts.codeCards} code labs · ${counts.codeModes} modes`],
+    ["assumptions", `${counts.assumptionCards} trust clinics · ${counts.assumptionModes} modes`],
     ["starter", `${counts.starterRungs} starter rungs · ${counts.starterModes} modes`],
     ["theater", `${counts.theaterSlides} lecture slides · ${counts.theaterModes} modes`],
     ["practice", `${counts.practiceCards} practice checks · ${counts.practiceModes} modes`],
@@ -455,6 +464,25 @@ function ChapterCodeLabBlock({ chapter, cards, codeModes }: { chapter: (typeof c
   );
 }
 
+
+function ChapterAssumptionClinicBlock({ chapter, cards, assumptionModes }: { chapter: (typeof chapters)[number]; cards: AssumptionClinicCard[]; assumptionModes: number }) {
+  return (
+    <section id="assumptions" className="scroll-mt-24">
+      <SectionTitle
+        eyebrow="00e - Assumption and guarantee clinic"
+        title="Ask when each method's promise is valid."
+        lead="This layer makes the advanced contract explicit: data coverage, target legitimacy, update stability, representation limits, guarantee, failure mode, and repair plan."
+      />
+      <div className="mt-6 grid gap-4">
+        <div className="rounded-xl border border-lime/30 bg-lime/[0.06] p-4">
+          <p className="text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Chapter {chapter.n} trust promise:</span> {cards.length} assumption clinics become {assumptionModes} plain, assumption, guarantee, failure, and repair modes tied back to chapter algorithms.</p>
+        </div>
+        <AssumptionClinic cards={cards} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} compact />
+      </div>
+    </section>
+  );
+}
+
 function SectionTitle({ eyebrow, title, lead }: { eyebrow: string; title: string; lead: string }) {
   return (
     <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start">
@@ -465,7 +493,7 @@ function SectionTitle({ eyebrow, title, lead }: { eyebrow: string; title: string
 }
 
 function visualVariantForTitle(text: string) {
-  if (/algorithm|source|coverage|code|implementation/i.test(text)) return "algorithm";
+  if (/algorithm|source|coverage|code|implementation|assumption|guarantee/i.test(text)) return "algorithm";
   if (/formula|equation|symbol/i.test(text)) return "formula";
   if (/dependency|synthesis/i.test(text)) return "tree";
   if (/mastery|section/i.test(text)) return "gradient";
@@ -476,7 +504,7 @@ function glyphVariantForLabel(label: string): "loop" | "bars" | "tree" | "target
   if (/formula|equation|technical|core|proof|target|update/i.test(label)) return "formula";
   if (/step|process|protocol|trace|pseudo|calculation|code|scaffold/i.test(label)) return "bars";
   if (/dependency|gate|source|coverage|chapter|related/i.test(label)) return "tree";
-  if (/check|warning|trap|debug|failure|risk|status/i.test(label)) return "check";
+  if (/check|warning|trap|debug|failure|risk|status|trust|guarantee|assumption/i.test(label)) return "check";
   if (/objective|goal|profile|metric|axis/i.test(label)) return "target";
   return "loop";
 }

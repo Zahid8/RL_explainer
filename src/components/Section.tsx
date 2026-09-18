@@ -35,7 +35,7 @@ export function Section({
 }
 
 function visualVariantForSection(id: string) {
-  if (/algorithm|chapter|mastery|code/.test(id)) return "algorithm";
+  if (/algorithm|chapter|mastery|code|assumption/.test(id)) return "algorithm";
   if (/equation|formula|term|symbol/.test(id)) return "formula";
   if (/evidence|exercise|coverage/.test(id)) return "coverage";
   if (/map|study|glossary/.test(id)) return "tree";

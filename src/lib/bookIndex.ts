@@ -1,4 +1,5 @@
 import { algorithmCatalog, algorithmsForChapter } from "@/lib/algorithmCatalog";
+import { assumptionCardsForChapter } from "@/lib/assumptionClinic";
 import { sourceAuditsForChapter } from "@/lib/algorithmSourceAudit";
 import { chapterDependencyMap } from "@/lib/chapterDependencyMap";
 import { lectureTheaterForChapter } from "@/lib/chapterLectureTheater";
@@ -28,6 +29,7 @@ export type BookIndexLayer =
   | "lecture theater"
   | "symbol decoder"
   | "implementation code lab"
+  | "assumption clinic"
   | "active recall"
   | "concept microscope"
   | "worked example"
@@ -95,6 +97,7 @@ function buildBookIndexEntries(): BookIndexEntry[] {
     const theater = lectureTheaterForChapter(chapter.n);
     const symbolCards = symbolCardsForChapter(chapter.n);
     const codeCards = codeLabCardsForChapter(chapter.n);
+    const assumptionCards = assumptionCardsForChapter(chapter.n);
     const practiceCards = practiceCardsForChapter(chapter.n);
     const concepts = conceptCardsForChapter(chapter.n);
     const workedExamples = workedExamplesForChapter(chapter.n);
@@ -211,6 +214,18 @@ function buildBookIndexEntries(): BookIndexEntry[] {
       technical: `Code scaffold: ${card.codeLines.slice(0, 6).join(" ")} Invariants: ${card.invariants.join(" ")}`,
       tags: [card.family, card.algorithmId, ...card.tags, `Chapter ${chapter.n}`],
       weight: 87,
+    }));
+
+    assumptionCards.forEach((card) => add({
+      ...chapterBase,
+      id: card.id,
+      title: `Assumption clinic: ${card.title}`,
+      layer: "assumption clinic",
+      route: `/chapters/${chapter.n}#assumptions`,
+      summary: `${card.plain} Failure: ${card.failure}`,
+      technical: `Assumptions: ${card.assumptions.join(" ")} Guarantee: ${card.guarantee} Repair: ${card.repair.join(" ")}`,
+      tags: [card.family, card.algorithmId, ...card.tags, `Chapter ${chapter.n}`],
+      weight: 86,
     }));
 
     practiceCards.forEach((card) => add({

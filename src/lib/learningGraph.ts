@@ -1,4 +1,5 @@
 import { algorithmsForChapter } from "@/lib/algorithmCatalog";
+import { assumptionCardsForChapter } from "@/lib/assumptionClinic";
 import { chapterDependencyMap } from "@/lib/chapterDependencyMap";
 import { practiceCardsForChapter } from "@/lib/chapterPractice";
 import { simulatorForChapter } from "@/lib/chapterSimulators";
@@ -9,7 +10,7 @@ import { formulasForChapter } from "@/lib/formulaAtlas";
 import { chapters } from "@/lib/paper";
 import { symbolCardsForChapter } from "@/lib/symbolAtlas";
 
-export type LearningGraphNodeKind = "chapter" | "concept" | "formula" | "symbol" | "algorithm" | "code" | "example" | "practice" | "simulator" | "prerequisite" | "unlock";
+export type LearningGraphNodeKind = "chapter" | "concept" | "formula" | "symbol" | "algorithm" | "code" | "assumption" | "example" | "practice" | "simulator" | "prerequisite" | "unlock";
 
 export interface LearningGraphNode {
   id: string;
@@ -61,6 +62,7 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
   const formulas = formulasForChapter(chapterNumber).slice(0, 4);
   const symbols = symbolCardsForChapter(chapterNumber).slice(0, 5);
   const codeCards = codeLabCardsForChapter(chapterNumber).slice(0, 5);
+  const assumptionCards = assumptionCardsForChapter(chapterNumber).slice(0, 5);
   const examples = workedExamplesForChapter(chapterNumber).slice(0, 4);
   const practice = practiceCardsForChapter(chapterNumber).slice(0, 3);
   const simulator = simulatorForChapter(chapterNumber);
@@ -209,6 +211,31 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
     });
   });
 
+  assumptionCards.forEach((card, index) => {
+    const id = nodeId(chapterNumber, "assumption", card.title);
+    const algorithm = algorithms.find((item) => item.id === card.algorithmId) ?? algorithms[index % Math.max(algorithms.length, 1)];
+    addNode({
+      id,
+      chapter: chapterNumber,
+      kind: "assumption",
+      title: card.title.replace(" assumptions and guarantee", ""),
+      easy: card.plain,
+      technical: `${card.guarantee} Failure: ${card.failure}`,
+      route: `/chapters/${chapterNumber}#assumptions`,
+      tags: [card.family, ...card.tags],
+      ...ringPoint("assumption", index, assumptionCards.length),
+    });
+    addEdge({
+      id: edgeId(algorithm ? nodeId(chapterNumber, "algorithm", algorithm.name) : centerId, id, "assumption"),
+      chapter: chapterNumber,
+      from: algorithm ? nodeId(chapterNumber, "algorithm", algorithm.name) : centerId,
+      to: id,
+      relation: "method earns conditions",
+      easy: `The assumption clinic asks when the method deserves trust and what breaks first.`,
+      technical: `The assumption node exposes data, target, update, representation, guarantee, failure, and repair conditions.`,
+    });
+  });
+
   examples.forEach((example, index) => {
     const id = nodeId(chapterNumber, "example", example.title);
     const algorithm = algorithms[index % Math.max(algorithms.length, 1)];
@@ -335,7 +362,7 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
   return {
     chapter: chapterNumber,
     title: chapter.title,
-    promise: `Graphical map for Chapter ${chapterNumber}: start from the chapter node, move through concepts, formulas, decoded symbols, methods, code scaffolds, examples, practice, and simulator knobs, then check prerequisites and unlocks.`,
+    promise: `Graphical map for Chapter ${chapterNumber}: start from the chapter node, move through concepts, formulas, decoded symbols, methods, code scaffolds, assumptions, examples, practice, and simulator knobs, then check prerequisites and unlocks.`,
     route: `/chapters/${chapterNumber}`,
     nodes,
     edges,
@@ -345,6 +372,7 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
       "Move to formulas only after you can draw the concept.",
       "Decode symbol nodes before using algorithm nodes to see how notation becomes update steps.",
       "Open code nodes to turn the update into variables, loops, invariants, and tests.",
+      "Open assumption nodes to see when the method is valid, what guarantee it wants, and how to repair broken conditions.",
       "Use examples, practice, and simulator nodes to prove transfer.",
     ],
     legend: graphLegend,
@@ -372,6 +400,7 @@ export const graphLegend: ChapterLearningGraph["legend"] = [
   { kind: "symbol", label: "Symbol", easy: "A mathematical mark decoded in plain English.", technical: "Notation semantics, formula context, pitfalls, and self-checks." },
   { kind: "algorithm", label: "Algorithm", easy: "The procedure that changes estimates or behavior.", technical: "Target, residual, update, control pressure, and failure mode." },
   { kind: "code", label: "Code lab", easy: "A method rewritten as implementation scaffolding.", technical: "State, target, update, invariants, tests, and debug checks." },
+  { kind: "assumption", label: "Assumption", easy: "When the method deserves trust.", technical: "Data, target, update, representation, guarantee, failure, and repair conditions." },
   { kind: "example", label: "Worked example", easy: "A tiny world where the idea moves.", technical: "Trace-level evidence for the update." },
   { kind: "practice", label: "Practice", easy: "A checkpoint to test ownership.", technical: "Prompt, solution, trap, and transfer." },
   { kind: "simulator", label: "Simulator", easy: "A live knob model of the chapter.", technical: "Exploration, step-size, horizon, and stability tradeoffs." },
@@ -386,6 +415,7 @@ function ringPoint(kind: LearningGraphNodeKind, index: number, total: number): {
     symbol: { start: 255, end: 375, radius: 41 },
     algorithm: { start: 25, end: 155, radius: 34 },
     code: { start: 15, end: 145, radius: 43 },
+    assumption: { start: 335, end: 455, radius: 45 },
     example: { start: 65, end: 150, radius: 48 },
     practice: { start: 210, end: 300, radius: 49 },
   };
