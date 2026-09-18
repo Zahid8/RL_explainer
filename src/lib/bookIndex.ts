@@ -7,6 +7,7 @@ import { chapterDeepDives } from "@/lib/deepDives";
 import { evidenceGuideItems } from "@/lib/evidenceGuide";
 import { exerciseCoachCards } from "@/lib/exerciseCoach";
 import { formulasForChapter } from "@/lib/formulaAtlas";
+import { proofCardsForChapter } from "@/lib/proofLab";
 import { blackboardForChapter } from "@/lib/interactiveBlackboards";
 import { chapterMastery } from "@/lib/mastery";
 import { chapters } from "@/lib/paper";
@@ -30,6 +31,7 @@ export type BookIndexLayer =
   | "symbol decoder"
   | "implementation code lab"
   | "assumption clinic"
+  | "proof lab"
   | "active recall"
   | "concept microscope"
   | "worked example"
@@ -98,6 +100,7 @@ function buildBookIndexEntries(): BookIndexEntry[] {
     const symbolCards = symbolCardsForChapter(chapter.n);
     const codeCards = codeLabCardsForChapter(chapter.n);
     const assumptionCards = assumptionCardsForChapter(chapter.n);
+    const proofCards = proofCardsForChapter(chapter.n);
     const practiceCards = practiceCardsForChapter(chapter.n);
     const concepts = conceptCardsForChapter(chapter.n);
     const workedExamples = workedExamplesForChapter(chapter.n);
@@ -226,6 +229,18 @@ function buildBookIndexEntries(): BookIndexEntry[] {
       technical: `Assumptions: ${card.assumptions.join(" ")} Guarantee: ${card.guarantee} Repair: ${card.repair.join(" ")}`,
       tags: [card.family, card.algorithmId, ...card.tags, `Chapter ${chapter.n}`],
       weight: 86,
+    }));
+
+    proofCards.forEach((card) => add({
+      ...chapterBase,
+      id: card.id,
+      title: `Proof lab: ${card.title}`,
+      layer: "proof lab",
+      route: `/chapters/${chapter.n}#proofs`,
+      summary: `${card.plain} Claim: ${card.claim}`,
+      technical: `Proof sketch: ${card.proofSketch.join(" ")} Equation bridge: ${card.equationBridge} Stress test: ${card.stressTest}`,
+      tags: [card.family, card.kind, ...card.tags, `Chapter ${chapter.n}`],
+      weight: 85,
     }));
 
     practiceCards.forEach((card) => add({

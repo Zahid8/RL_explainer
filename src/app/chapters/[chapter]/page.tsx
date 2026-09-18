@@ -17,6 +17,7 @@ import { SectionLessonReader } from "@/components/SectionLessonReader";
 import { SymbolDecoder } from "@/components/SymbolDecoder";
 import { ZeroKnowledgeLadderReader } from "@/components/ZeroKnowledgeLadderReader";
 import { MotionGlyph } from "@/components/MotionGlyph";
+import { ProofLab } from "@/components/ProofLab";
 import { WorkedExampleStudio } from "@/components/WorkedExampleStudio";
 import { MisconceptionClinic } from "@/components/MisconceptionClinic";
 import { Chip, Plain } from "@/components/Section";
@@ -45,6 +46,7 @@ import { blackboardForChapter } from "@/lib/interactiveBlackboards";
 import { learningGraphEdgeCount, learningGraphForChapter, learningGraphNodeCount } from "@/lib/learningGraph";
 import { chapterMastery } from "@/lib/mastery";
 import { chapters } from "@/lib/paper";
+import { proofCardsForChapter, proofModeCount, type ProofLabCard } from "@/lib/proofLab";
 import { manuscriptForChapter, type ChapterManuscript } from "@/lib/chapterManuscripts";
 import { sectionLessonsForChapter, type SectionTextbookLesson } from "@/lib/sectionNarratives";
 import { standaloneLectureForChapter, type StandaloneChapterLecture } from "@/lib/standaloneBook";
@@ -116,6 +118,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
   const codeModes = codeLabModeCount(item.n);
   const assumptionCards = assumptionCardsForChapter(item.n);
   const assumptionModes = assumptionModeCount(item.n);
+  const proofCards = proofCardsForChapter(item.n);
+  const proofModes = proofModeCount(item.n);
   const prev = chapters.find((entry) => entry.n === item.n - 1);
   const next = chapters.find((entry) => entry.n === item.n + 1);
 
@@ -164,6 +168,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
                 <Stat value={String(codeModes)} label="code modes" />
                 <Stat value={String(assumptionCards.length)} label="trust clinics" />
                 <Stat value={String(assumptionModes)} label="trust modes" />
+                <Stat value={String(proofCards.length)} label="proof cards" />
+                <Stat value={String(proofModes)} label="proof modes" />
               </div>
             </div>
           </div>
@@ -180,7 +186,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
           <AnimatedConceptGraphic label="Story loop" variant="loop" caption="The easy story and the technical story update each other: intuition points at notation, notation checks intuition." compact />
         </section>
 
-        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, starterRungs: starter.rungs.length, starterModes, theaterSlides, theaterModes, practiceCards: practiceCards.length, practiceModes, conceptCards: conceptCards.length, conceptModes, workedExamples: workedExamples.length, workedExampleModes, misconceptionCards: misconceptionCards.length, misconceptionModes, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, sectionLessons: sectionLessons.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, formulaModes, evidence: evidence.length, exercises: exercises.length, simulatorControls, simulatorReadouts, sourceAudits: sourceAudits.length, searchEntries: searchEntryTotal, graphNodes, graphEdges, symbolCards: symbolCards.length, symbolModes, codeCards: codeCards.length, codeModes, assumptionCards: assumptionCards.length, assumptionModes }} />
+        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, starterRungs: starter.rungs.length, starterModes, theaterSlides, theaterModes, practiceCards: practiceCards.length, practiceModes, conceptCards: conceptCards.length, conceptModes, workedExamples: workedExamples.length, workedExampleModes, misconceptionCards: misconceptionCards.length, misconceptionModes, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, sectionLessons: sectionLessons.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, formulaModes, evidence: evidence.length, exercises: exercises.length, simulatorControls, simulatorReadouts, sourceAudits: sourceAudits.length, searchEntries: searchEntryTotal, graphNodes, graphEdges, symbolCards: symbolCards.length, symbolModes, codeCards: codeCards.length, codeModes, assumptionCards: assumptionCards.length, assumptionModes, proofCards: proofCards.length, proofModes }} />
 
         <section id="search" className="scroll-mt-24">
           <SectionTitle eyebrow="00a - Chapter search index" title="Search this chapter's explanations without leaving the page." lead="Use this chapter-local index when you remember a term, formula, trap, method, or example but do not know which layer contains it. It searches the original standalone prose and technical explanations for this chapter." />
@@ -201,6 +207,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
         <ChapterCodeLabBlock chapter={item} cards={codeCards} codeModes={codeModes} />
 
         <ChapterAssumptionClinicBlock chapter={item} cards={assumptionCards} assumptionModes={assumptionModes} />
+
+        <ChapterProofLabBlock chapter={item} cards={proofCards} proofModes={proofModes} />
 
         <ChapterStarterLadderBlock chapter={item} starter={starter} starterModes={starterModes} />
 
@@ -389,13 +397,14 @@ function Stat({ value, label }: { value: string; label: string }) {
   );
 }
 
-function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; starterRungs: number; starterModes: number; theaterSlides: number; theaterModes: number; practiceCards: number; practiceModes: number; conceptCards: number; conceptModes: number; workedExamples: number; workedExampleModes: number; misconceptionCards: number; misconceptionModes: number; simulatorControls: number; simulatorReadouts: number; manuscriptSections: number; blackboardStages: number; sectionLessons: number; lectureBeats: number; sections: number; formulas: number; formulaModes: number; evidence: number; exercises: number; sourceAudits: number; searchEntries: number; graphNodes: number; graphEdges: number; symbolCards: number; symbolModes: number; codeCards: number; codeModes: number; assumptionCards: number; assumptionModes: number } }) {
+function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; starterRungs: number; starterModes: number; theaterSlides: number; theaterModes: number; practiceCards: number; practiceModes: number; conceptCards: number; conceptModes: number; workedExamples: number; workedExampleModes: number; misconceptionCards: number; misconceptionModes: number; simulatorControls: number; simulatorReadouts: number; manuscriptSections: number; blackboardStages: number; sectionLessons: number; lectureBeats: number; sections: number; formulas: number; formulaModes: number; evidence: number; exercises: number; sourceAudits: number; searchEntries: number; graphNodes: number; graphEdges: number; symbolCards: number; symbolModes: number; codeCards: number; codeModes: number; assumptionCards: number; assumptionModes: number; proofCards: number; proofModes: number } }) {
   const items = [
     ["search", `${counts.searchEntries} search entries`],
     ["learning-graph", `${counts.graphNodes} graph nodes · ${counts.graphEdges} links`],
     ["symbols", `${counts.symbolCards} symbols · ${counts.symbolModes} modes`],
     ["code-lab", `${counts.codeCards} code labs · ${counts.codeModes} modes`],
     ["assumptions", `${counts.assumptionCards} trust clinics · ${counts.assumptionModes} modes`],
+    ["proofs", `${counts.proofCards} proofs · ${counts.proofModes} modes`],
     ["starter", `${counts.starterRungs} starter rungs · ${counts.starterModes} modes`],
     ["theater", `${counts.theaterSlides} lecture slides · ${counts.theaterModes} modes`],
     ["practice", `${counts.practiceCards} practice checks · ${counts.practiceModes} modes`],
@@ -483,6 +492,24 @@ function ChapterAssumptionClinicBlock({ chapter, cards, assumptionModes }: { cha
   );
 }
 
+function ChapterProofLabBlock({ chapter, cards, proofModes }: { chapter: (typeof chapters)[number]; cards: ProofLabCard[]; proofModes: number }) {
+  return (
+    <section id="proofs" className="scroll-mt-24">
+      <SectionTitle
+        eyebrow="00f - Proof intuition lab"
+        title="Ask why the chapter's equations and claims are true."
+        lead="This layer turns advanced formal material into proof thinking: claim, ingredients, proof sketch, equation bridge, stress test, and repair move."
+      />
+      <div className="mt-6 grid gap-4">
+        <div className="rounded-xl border border-violet/30 bg-violet/[0.06] p-4">
+          <p className="text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Chapter {chapter.n} proof promise:</span> {cards.length} proof cards become {proofModes} plain, claim, proof-sketch, equation-bridge, and stress-test modes tied back to chapter formulas and claims.</p>
+        </div>
+        <ProofLab cards={cards} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} compact />
+      </div>
+    </section>
+  );
+}
+
 function SectionTitle({ eyebrow, title, lead }: { eyebrow: string; title: string; lead: string }) {
   return (
     <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start">
@@ -494,7 +521,7 @@ function SectionTitle({ eyebrow, title, lead }: { eyebrow: string; title: string
 
 function visualVariantForTitle(text: string) {
   if (/algorithm|source|coverage|code|implementation|assumption|guarantee/i.test(text)) return "algorithm";
-  if (/formula|equation|symbol/i.test(text)) return "formula";
+  if (/formula|equation|symbol|proof/i.test(text)) return "formula";
   if (/dependency|synthesis/i.test(text)) return "tree";
   if (/mastery|section/i.test(text)) return "gradient";
   return "loop";

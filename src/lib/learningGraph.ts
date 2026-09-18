@@ -7,10 +7,11 @@ import { workedExamplesForChapter } from "@/lib/chapterWorkedExamples";
 import { codeLabCardsForChapter } from "@/lib/codeLab";
 import { conceptCardsForChapter } from "@/lib/conceptAtlas";
 import { formulasForChapter } from "@/lib/formulaAtlas";
+import { proofCardsForChapter } from "@/lib/proofLab";
 import { chapters } from "@/lib/paper";
 import { symbolCardsForChapter } from "@/lib/symbolAtlas";
 
-export type LearningGraphNodeKind = "chapter" | "concept" | "formula" | "symbol" | "algorithm" | "code" | "assumption" | "example" | "practice" | "simulator" | "prerequisite" | "unlock";
+export type LearningGraphNodeKind = "chapter" | "concept" | "formula" | "symbol" | "proof" | "algorithm" | "code" | "assumption" | "example" | "practice" | "simulator" | "prerequisite" | "unlock";
 
 export interface LearningGraphNode {
   id: string;
@@ -61,6 +62,7 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
   const concepts = conceptCardsForChapter(chapterNumber).slice(0, 6);
   const formulas = formulasForChapter(chapterNumber).slice(0, 4);
   const symbols = symbolCardsForChapter(chapterNumber).slice(0, 5);
+  const proofCards = proofCardsForChapter(chapterNumber).slice(0, 4);
   const codeCards = codeLabCardsForChapter(chapterNumber).slice(0, 5);
   const assumptionCards = assumptionCardsForChapter(chapterNumber).slice(0, 5);
   const examples = workedExamplesForChapter(chapterNumber).slice(0, 4);
@@ -158,6 +160,31 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
       relation: "formula exposes symbol",
       easy: `The formula becomes less scary when ${symbol.spokenAs} has a plain role.`,
       technical: `The symbol node records notation semantics, formula context, pitfall, and self-check before the formula is manipulated.`,
+    });
+  });
+
+  proofCards.forEach((card, index) => {
+    const id = nodeId(chapterNumber, "proof", card.title);
+    const formula = formulas[index % Math.max(formulas.length, 1)];
+    addNode({
+      id,
+      chapter: chapterNumber,
+      kind: "proof",
+      title: card.title,
+      easy: `${card.plain} Claim: ${card.claim}`,
+      technical: `${card.proofSketch.join(" ")} Stress test: ${card.stressTest}`,
+      route: `/chapters/${chapterNumber}#proofs`,
+      tags: [card.kind, card.family, ...card.tags],
+      ...ringPoint("proof", index, proofCards.length),
+    });
+    addEdge({
+      id: edgeId(formula ? nodeId(chapterNumber, "formula", formula.label) : centerId, id, "proof"),
+      chapter: chapterNumber,
+      from: formula ? nodeId(chapterNumber, "formula", formula.label) : centerId,
+      to: id,
+      relation: "formula earns proof",
+      easy: `The proof card explains why the equation or chapter claim should be believed rather than memorized.`,
+      technical: `The proof node exposes claim, ingredients, proof sketch, equation bridge, and stress-test counterexample.`,
     });
   });
 
@@ -362,7 +389,7 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
   return {
     chapter: chapterNumber,
     title: chapter.title,
-    promise: `Graphical map for Chapter ${chapterNumber}: start from the chapter node, move through concepts, formulas, decoded symbols, methods, code scaffolds, assumptions, examples, practice, and simulator knobs, then check prerequisites and unlocks.`,
+    promise: `Graphical map for Chapter ${chapterNumber}: start from the chapter node, move through concepts, formulas, decoded symbols, proof sketches, methods, code scaffolds, assumptions, examples, practice, and simulator knobs, then check prerequisites and unlocks.`,
     route: `/chapters/${chapterNumber}`,
     nodes,
     edges,
@@ -370,8 +397,8 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
       "Read the center chapter promise.",
       "Click concept nodes until the plain story is clear.",
       "Move to formulas only after you can draw the concept.",
-      "Decode symbol nodes before using algorithm nodes to see how notation becomes update steps.",
-      "Open code nodes to turn the update into variables, loops, invariants, and tests.",
+      "Decode symbol nodes before opening proof nodes that explain why the equation or chapter claim is valid.",
+      "Use algorithm and code nodes to turn the proven target into variables, loops, invariants, and tests.",
       "Open assumption nodes to see when the method is valid, what guarantee it wants, and how to repair broken conditions.",
       "Use examples, practice, and simulator nodes to prove transfer.",
     ],
@@ -398,6 +425,7 @@ export const graphLegend: ChapterLearningGraph["legend"] = [
   { kind: "concept", label: "Concept", easy: "A word or idea you should be able to draw.", technical: "A chapter-specific object, distinction, or warning." },
   { kind: "formula", label: "Formula", easy: "A compact way to say the idea exactly.", technical: "Symbols, targets, expectations, and watch-outs." },
   { kind: "symbol", label: "Symbol", easy: "A mathematical mark decoded in plain English.", technical: "Notation semantics, formula context, pitfalls, and self-checks." },
+  { kind: "proof", label: "Proof", easy: "Why the claim should be believed.", technical: "Claim, ingredients, proof sketch, equation bridge, and stress test." },
   { kind: "algorithm", label: "Algorithm", easy: "The procedure that changes estimates or behavior.", technical: "Target, residual, update, control pressure, and failure mode." },
   { kind: "code", label: "Code lab", easy: "A method rewritten as implementation scaffolding.", technical: "State, target, update, invariants, tests, and debug checks." },
   { kind: "assumption", label: "Assumption", easy: "When the method deserves trust.", technical: "Data, target, update, representation, guarantee, failure, and repair conditions." },
@@ -413,6 +441,7 @@ function ringPoint(kind: LearningGraphNodeKind, index: number, total: number): {
     concept: { start: 205, end: 335, radius: 34 },
     formula: { start: 300, end: 420, radius: 25 },
     symbol: { start: 255, end: 375, radius: 41 },
+    proof: { start: 285, end: 405, radius: 33 },
     algorithm: { start: 25, end: 155, radius: 34 },
     code: { start: 15, end: 145, radius: 43 },
     assumption: { start: 335, end: 455, radius: 45 },
