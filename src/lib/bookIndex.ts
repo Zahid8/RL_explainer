@@ -9,6 +9,7 @@ import { evidenceGuideItems } from "@/lib/evidenceGuide";
 import { exerciseCoachCards } from "@/lib/exerciseCoach";
 import { exerciseSolutionCardsForChapter } from "@/lib/exerciseSolutionStudio";
 import { formulasForChapter } from "@/lib/formulaAtlas";
+import { foundationDictionaryCardsForChapter } from "@/lib/foundationDictionary";
 import { methodCompareCardsForChapter } from "@/lib/methodCompare";
 import { proofCardsForChapter } from "@/lib/proofLab";
 import { blackboardForChapter } from "@/lib/interactiveBlackboards";
@@ -31,6 +32,7 @@ import { zeroKnowledgeLadderForChapter } from "@/lib/zeroKnowledgeLadders";
 export type BookIndexLayer =
   | "chapter overview"
   | "zero primer"
+  | "foundation dictionary"
   | "lecture theater"
   | "symbol decoder"
   | "implementation code lab"
@@ -104,6 +106,7 @@ function buildBookIndexEntries(): BookIndexEntry[] {
     const algorithms = algorithmsForChapter(chapter.n);
     const lecture = standaloneLectureForChapter(chapter);
     const starter = zeroKnowledgeLadderForChapter(chapter.n);
+    const foundationCards = foundationDictionaryCardsForChapter(chapter.n);
     const theater = lectureTheaterForChapter(chapter.n);
     const symbolCards = symbolCardsForChapter(chapter.n);
     const codeCards = codeLabCardsForChapter(chapter.n);
@@ -193,6 +196,18 @@ function buildBookIndexEntries(): BookIndexEntry[] {
       technical: `${rung.technical} Practice: ${rung.practice}`,
       tags: ["starter", "zero knowledge", ...rung.tags, `Chapter ${chapter.n}`],
       weight: 96,
+    }));
+
+    foundationCards.forEach((card) => add({
+      ...chapterBase,
+      id: card.id,
+      title: `Foundation term: ${card.term}`,
+      layer: "foundation dictionary",
+      route: `/chapters/${chapter.n}#foundations`,
+      summary: `${card.beginnerMeaning} Picture: ${card.boardPicture}`,
+      technical: `${card.technicalMeaning} Trap: ${card.commonTrap} Teach-back: ${card.teachBack}`,
+      tags: [card.sourceLabel, card.term, ...card.tags, `Chapter ${chapter.n}`],
+      weight: 95,
     }));
 
     theater.slides.forEach((slide) => add({

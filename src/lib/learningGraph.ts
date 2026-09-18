@@ -9,13 +9,14 @@ import { workedExamplesForChapter } from "@/lib/chapterWorkedExamples";
 import { codeLabCardsForChapter } from "@/lib/codeLab";
 import { conceptCardsForChapter } from "@/lib/conceptAtlas";
 import { formulasForChapter } from "@/lib/formulaAtlas";
+import { foundationDictionaryCardsForChapter } from "@/lib/foundationDictionary";
 import { methodCompareCardsForChapter } from "@/lib/methodCompare";
 import { proofCardsForChapter } from "@/lib/proofLab";
 import { chapters } from "@/lib/paper";
 import { sectionMasteryCardsForChapter } from "@/lib/sectionMastery";
 import { symbolCardsForChapter } from "@/lib/symbolAtlas";
 
-export type LearningGraphNodeKind = "chapter" | "concept" | "section" | "formula" | "symbol" | "proof" | "algorithm" | "compare" | "code" | "assumption" | "example" | "practice" | "exercise" | "exam" | "simulator" | "prerequisite" | "unlock";
+export type LearningGraphNodeKind = "chapter" | "foundation" | "concept" | "section" | "formula" | "symbol" | "proof" | "algorithm" | "compare" | "code" | "assumption" | "example" | "practice" | "exercise" | "exam" | "simulator" | "prerequisite" | "unlock";
 
 export interface LearningGraphNode {
   id: string;
@@ -63,6 +64,7 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
   if (!chapter) throw new Error(`Missing chapter ${chapterNumber}`);
 
   const algorithms = algorithmsForChapter(chapterNumber);
+  const foundations = foundationDictionaryCardsForChapter(chapterNumber).slice(0, 5);
   const concepts = conceptCardsForChapter(chapterNumber).slice(0, 6);
   const sectionMasteryCards = sectionMasteryCardsForChapter(chapterNumber).slice(0, 4);
   const formulas = formulasForChapter(chapterNumber).slice(0, 4);
@@ -97,6 +99,30 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
     y: 50,
   });
 
+  foundations.forEach((card, index) => {
+    const id = nodeId(chapterNumber, "foundation", card.term);
+    addNode({
+      id,
+      chapter: chapterNumber,
+      kind: "foundation",
+      title: card.term,
+      easy: card.beginnerMeaning,
+      technical: `${card.technicalMeaning} Trap: ${card.commonTrap}`,
+      route: `/chapters/${chapterNumber}#foundations`,
+      tags: [card.sourceLabel, ...card.tags],
+      ...ringPoint("foundation", index, foundations.length),
+    });
+    addEdge({
+      id: edgeId(centerId, id, "foundation"),
+      chapter: chapterNumber,
+      from: centerId,
+      to: id,
+      relation: "chapter defines foundation term",
+      easy: `The foundation node makes ${card.term} usable before the dense chapter layer depends on it.`,
+      technical: `The foundation node packages plain meaning, board picture, technical role, trap, and teach-back check.`,
+    });
+  });
+
   concepts.forEach((concept, index) => {
     const id = nodeId(chapterNumber, "concept", concept.term);
     addNode({
@@ -110,14 +136,16 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
       tags: [concept.kind, concept.section, ...concept.tags],
       ...ringPoint("concept", index, concepts.length),
     });
+    const foundation = foundations[index % Math.max(foundations.length, 1)];
+    const foundationId = foundation ? nodeId(chapterNumber, "foundation", foundation.term) : centerId;
     addEdge({
-      id: edgeId(centerId, id, "concept"),
+      id: edgeId(foundationId, id, "concept"),
       chapter: chapterNumber,
-      from: centerId,
+      from: foundationId,
       to: id,
-      relation: "chapter explains concept",
-      easy: `Chapter ${chapterNumber} uses ${concept.term} as a named handle for the learner's story.`,
-      technical: `The concept node inherits the chapter's formal objects and narrows them through ${concept.section}.`,
+      relation: "foundation term becomes concept",
+      easy: `The learner first defines a foundation term, then uses ${concept.term} as a named handle for the chapter story.`,
+      technical: `The concept node inherits foundation vocabulary plus the chapter's formal objects and narrows them through ${concept.section}.`,
     });
   });
 
@@ -500,12 +528,13 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
   return {
     chapter: chapterNumber,
     title: chapter.title,
-    promise: `Graphical map for Chapter ${chapterNumber}: start from the chapter node, move through concepts, section mastery checks, formulas, decoded symbols, proof sketches, methods, comparison boards, code scaffolds, assumptions, examples, practice, exercise solutions, chapter exams, and simulator knobs, then check prerequisites and unlocks.`,
+    promise: `Graphical map for Chapter ${chapterNumber}: start from the chapter node, move through foundation terms, concepts, section mastery checks, formulas, decoded symbols, proof sketches, methods, comparison boards, code scaffolds, assumptions, examples, practice, exercise solutions, chapter exams, and simulator knobs, then check prerequisites and unlocks.`,
     route: `/chapters/${chapterNumber}`,
     nodes,
     edges,
     readingPath: [
       "Read the center chapter promise.",
+      "Click foundation nodes until the vocabulary has a plain meaning, board picture, technical role, trap, and teach-back check.",
       "Click concept nodes until the plain story is clear.",
       "Open section mastery nodes to test whether you can teach each named section cold.",
       "Move to formulas only after you can draw the concept and pass the section check.",
@@ -537,6 +566,7 @@ export function learningGraphChapterCount(): number {
 
 export const graphLegend: ChapterLearningGraph["legend"] = [
   { kind: "chapter", label: "Chapter center", easy: "The main question of the chapter.", technical: "The formal objects and assumptions that define the chapter." },
+  { kind: "foundation", label: "Foundation term", easy: "A word learned from scratch before formulas use it.", technical: "Plain meaning, board picture, technical role, trap, and teach-back." },
   { kind: "concept", label: "Concept", easy: "A word or idea you should be able to draw.", technical: "A chapter-specific object, distinction, or warning." },
   { kind: "section", label: "Section mastery", easy: "A named section turned into a teach-back checkpoint.", technical: "Prompt, hint, answer, technical pass, diagnostic, and transfer for a section." },
   { kind: "formula", label: "Formula", easy: "A compact way to say the idea exactly.", technical: "Symbols, targets, expectations, and watch-outs." },
@@ -557,6 +587,7 @@ export const graphLegend: ChapterLearningGraph["legend"] = [
 
 function ringPoint(kind: LearningGraphNodeKind, index: number, total: number): { x: number; y: number } {
   const lanes: Record<string, { start: number; end: number; radius: number }> = {
+    foundation: { start: 185, end: 325, radius: 24 },
     concept: { start: 205, end: 335, radius: 34 },
     section: { start: 175, end: 265, radius: 30 },
     formula: { start: 300, end: 420, radius: 25 },
