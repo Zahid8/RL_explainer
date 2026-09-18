@@ -5,6 +5,7 @@ import { TeX } from "@/components/Math";
 import { AnimatedConceptGraphic } from "@/components/AnimatedConceptGraphic";
 import { AssumptionClinic } from "@/components/AssumptionClinic";
 import { BookSearch } from "@/components/BookSearch";
+import { ChapterExamStudio } from "@/components/ChapterExamStudio";
 import { ChapterPracticeCoach } from "@/components/ChapterPracticeCoach";
 import { CodeLab } from "@/components/CodeLab";
 import { ChapterLectureTheater } from "@/components/ChapterLectureTheater";
@@ -41,6 +42,7 @@ import { simulatorControlCount, simulatorForChapter, simulatorReadoutCount, type
 import { formulaLectureModeCount, formulasForChapter } from "@/lib/formulaAtlas";
 import { bookIndexEntriesForChapter, bookIndexEntryCount } from "@/lib/bookIndex";
 import { codeLabCardsForChapter, codeLabModeCount, type CodeLabCard } from "@/lib/codeLab";
+import { chapterExamCardsForChapter, chapterExamModeCount, type ChapterExamCard } from "@/lib/chapterExam";
 import { assumptionCardsForChapter, assumptionModeCount, type AssumptionClinicCard } from "@/lib/assumptionClinic";
 import { blackboardForChapter } from "@/lib/interactiveBlackboards";
 import { learningGraphEdgeCount, learningGraphForChapter, learningGraphNodeCount } from "@/lib/learningGraph";
@@ -120,6 +122,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
   const assumptionModes = assumptionModeCount(item.n);
   const proofCards = proofCardsForChapter(item.n);
   const proofModes = proofModeCount(item.n);
+  const examCards = chapterExamCardsForChapter(item.n);
+  const examModes = chapterExamModeCount(item.n);
   const prev = chapters.find((entry) => entry.n === item.n - 1);
   const next = chapters.find((entry) => entry.n === item.n + 1);
 
@@ -170,6 +174,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
                 <Stat value={String(assumptionModes)} label="trust modes" />
                 <Stat value={String(proofCards.length)} label="proof cards" />
                 <Stat value={String(proofModes)} label="proof modes" />
+                <Stat value={String(examCards.length)} label="exam cards" />
+                <Stat value={String(examModes)} label="exam modes" />
               </div>
             </div>
           </div>
@@ -186,7 +192,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
           <AnimatedConceptGraphic label="Story loop" variant="loop" caption="The easy story and the technical story update each other: intuition points at notation, notation checks intuition." compact />
         </section>
 
-        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, starterRungs: starter.rungs.length, starterModes, theaterSlides, theaterModes, practiceCards: practiceCards.length, practiceModes, conceptCards: conceptCards.length, conceptModes, workedExamples: workedExamples.length, workedExampleModes, misconceptionCards: misconceptionCards.length, misconceptionModes, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, sectionLessons: sectionLessons.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, formulaModes, evidence: evidence.length, exercises: exercises.length, simulatorControls, simulatorReadouts, sourceAudits: sourceAudits.length, searchEntries: searchEntryTotal, graphNodes, graphEdges, symbolCards: symbolCards.length, symbolModes, codeCards: codeCards.length, codeModes, assumptionCards: assumptionCards.length, assumptionModes, proofCards: proofCards.length, proofModes }} />
+        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, starterRungs: starter.rungs.length, starterModes, theaterSlides, theaterModes, practiceCards: practiceCards.length, practiceModes, conceptCards: conceptCards.length, conceptModes, workedExamples: workedExamples.length, workedExampleModes, misconceptionCards: misconceptionCards.length, misconceptionModes, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, sectionLessons: sectionLessons.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, formulaModes, evidence: evidence.length, exercises: exercises.length, simulatorControls, simulatorReadouts, sourceAudits: sourceAudits.length, searchEntries: searchEntryTotal, graphNodes, graphEdges, symbolCards: symbolCards.length, symbolModes, codeCards: codeCards.length, codeModes, assumptionCards: assumptionCards.length, assumptionModes, proofCards: proofCards.length, proofModes, examCards: examCards.length, examModes }} />
 
         <section id="search" className="scroll-mt-24">
           <SectionTitle eyebrow="00a - Chapter search index" title="Search this chapter's explanations without leaving the page." lead="Use this chapter-local index when you remember a term, formula, trap, method, or example but do not know which layer contains it. It searches the original standalone prose and technical explanations for this chapter." />
@@ -209,6 +215,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
         <ChapterAssumptionClinicBlock chapter={item} cards={assumptionCards} assumptionModes={assumptionModes} />
 
         <ChapterProofLabBlock chapter={item} cards={proofCards} proofModes={proofModes} />
+
+        <ChapterExamBlock chapter={item} cards={examCards} examModes={examModes} />
 
         <ChapterStarterLadderBlock chapter={item} starter={starter} starterModes={starterModes} />
 
@@ -397,7 +405,7 @@ function Stat({ value, label }: { value: string; label: string }) {
   );
 }
 
-function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; starterRungs: number; starterModes: number; theaterSlides: number; theaterModes: number; practiceCards: number; practiceModes: number; conceptCards: number; conceptModes: number; workedExamples: number; workedExampleModes: number; misconceptionCards: number; misconceptionModes: number; simulatorControls: number; simulatorReadouts: number; manuscriptSections: number; blackboardStages: number; sectionLessons: number; lectureBeats: number; sections: number; formulas: number; formulaModes: number; evidence: number; exercises: number; sourceAudits: number; searchEntries: number; graphNodes: number; graphEdges: number; symbolCards: number; symbolModes: number; codeCards: number; codeModes: number; assumptionCards: number; assumptionModes: number; proofCards: number; proofModes: number } }) {
+function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; starterRungs: number; starterModes: number; theaterSlides: number; theaterModes: number; practiceCards: number; practiceModes: number; conceptCards: number; conceptModes: number; workedExamples: number; workedExampleModes: number; misconceptionCards: number; misconceptionModes: number; simulatorControls: number; simulatorReadouts: number; manuscriptSections: number; blackboardStages: number; sectionLessons: number; lectureBeats: number; sections: number; formulas: number; formulaModes: number; evidence: number; exercises: number; sourceAudits: number; searchEntries: number; graphNodes: number; graphEdges: number; symbolCards: number; symbolModes: number; codeCards: number; codeModes: number; assumptionCards: number; assumptionModes: number; proofCards: number; proofModes: number; examCards: number; examModes: number } }) {
   const items = [
     ["search", `${counts.searchEntries} search entries`],
     ["learning-graph", `${counts.graphNodes} graph nodes · ${counts.graphEdges} links`],
@@ -405,6 +413,7 @@ function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; 
     ["code-lab", `${counts.codeCards} code labs · ${counts.codeModes} modes`],
     ["assumptions", `${counts.assumptionCards} trust clinics · ${counts.assumptionModes} modes`],
     ["proofs", `${counts.proofCards} proofs · ${counts.proofModes} modes`],
+    ["exam", `${counts.examCards} exams · ${counts.examModes} modes`],
     ["starter", `${counts.starterRungs} starter rungs · ${counts.starterModes} modes`],
     ["theater", `${counts.theaterSlides} lecture slides · ${counts.theaterModes} modes`],
     ["practice", `${counts.practiceCards} practice checks · ${counts.practiceModes} modes`],
@@ -510,6 +519,24 @@ function ChapterProofLabBlock({ chapter, cards, proofModes }: { chapter: (typeof
   );
 }
 
+function ChapterExamBlock({ chapter, cards, examModes }: { chapter: (typeof chapters)[number]; cards: ChapterExamCard[]; examModes: number }) {
+  return (
+    <section id="exam" className="scroll-mt-24">
+      <SectionTitle
+        eyebrow="00g - Chapter exam studio"
+        title="Prove you can explain, draw, compute, trust-check, and transfer the chapter."
+        lead="This layer closes the standalone chapter loop: try an oral exam prompt, inspect a plan, reveal a strong solution, grade with a rubric, and transfer the idea to a new task."
+      />
+      <div className="mt-6 grid gap-4">
+        <div className="rounded-xl border border-cyan/30 bg-cyan/[0.06] p-4">
+          <p className="text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Chapter {chapter.n} exam promise:</span> {cards.length} exam cards become {examModes} prompt, plan, solution, rubric, and transfer modes tied back to concepts, formulas, code, assumptions, proofs, examples, and simulator knobs.</p>
+        </div>
+        <ChapterExamStudio cards={cards} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} compact />
+      </div>
+    </section>
+  );
+}
+
 function SectionTitle({ eyebrow, title, lead }: { eyebrow: string; title: string; lead: string }) {
   return (
     <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start">
@@ -520,7 +547,7 @@ function SectionTitle({ eyebrow, title, lead }: { eyebrow: string; title: string
 }
 
 function visualVariantForTitle(text: string) {
-  if (/algorithm|source|coverage|code|implementation|assumption|guarantee/i.test(text)) return "algorithm";
+  if (/algorithm|source|coverage|code|implementation|assumption|guarantee|exam/i.test(text)) return "algorithm";
   if (/formula|equation|symbol|proof/i.test(text)) return "formula";
   if (/dependency|synthesis/i.test(text)) return "tree";
   if (/mastery|section/i.test(text)) return "gradient";
@@ -529,9 +556,10 @@ function visualVariantForTitle(text: string) {
 
 function glyphVariantForLabel(label: string): "loop" | "bars" | "tree" | "target" | "formula" | "check" {
   if (/formula|equation|technical|core|proof|target|update/i.test(label)) return "formula";
+  if (/exam|rubric|transfer/i.test(label)) return "check";
   if (/step|process|protocol|trace|pseudo|calculation|code|scaffold/i.test(label)) return "bars";
   if (/dependency|gate|source|coverage|chapter|related/i.test(label)) return "tree";
-  if (/check|warning|trap|debug|failure|risk|status|trust|guarantee|assumption/i.test(label)) return "check";
+  if (/check|warning|trap|debug|failure|risk|status|trust|guarantee|assumption|exam|rubric|transfer/i.test(label)) return "check";
   if (/objective|goal|profile|metric|axis/i.test(label)) return "target";
   return "loop";
 }
@@ -539,7 +567,7 @@ function glyphVariantForLabel(label: string): "loop" | "bars" | "tree" | "target
 function glyphAccentForLabel(label: string): "cyan" | "orange" | "blue" | "violet" | "lime" {
   if (/warning|trap|debug|failure|risk|watch/i.test(label)) return "orange";
   if (/formula|equation|technical|profile|axis/i.test(label)) return "violet";
-  if (/check|complete|implementation|test/i.test(label)) return "lime";
+  if (/check|complete|implementation|test|exam|rubric|transfer/i.test(label)) return "lime";
   if (/source|chapter|dependency|coverage/i.test(label)) return "blue";
   return "cyan";
 }

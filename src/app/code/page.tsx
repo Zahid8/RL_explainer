@@ -27,13 +27,14 @@ export default function CodePage() {
             <Link href="/symbols" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Symbols</Link>
             <Link href="/assumptions" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Trust clinic</Link>
             <Link href="/proofs" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Proof lab</Link>
+            <Link href="/exam" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Exam studio</Link>
             <Link href="/coverage" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Coverage audit</Link>
           </div>
           <div className="grid gap-8 lg:grid-cols-[1fr_440px] lg:items-end">
             <div>
               <p className="eyebrow">Implementation code lab</p>
               <h1 className="display mt-4 max-w-5xl text-[clamp(42px,7vw,88px)] font-medium text-ink">Turn each RL algorithm into code you can debug by hand.</h1>
-              <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted">This layer converts every algorithm card into a Python-style teaching scaffold: plain implementation plan, code structure, invariants, tiny tests, debugging checks, a bridge to the proof lab that asks why the target is valid, and a bridge to the assumption clinic that asks when the implementation deserves trust.</p>
+              <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted">This layer converts every algorithm card into a Python-style teaching scaffold: plain implementation plan, code structure, invariants, tiny tests, debugging checks, a bridge to the proof lab that asks why the target is valid, and a bridge to the assumption clinic that asks when the implementation deserves trust, and a bridge to the exam studio that asks you to debug and transfer the method.</p>
               <div className="mt-6 flex flex-wrap gap-2">
                 <Chip accent="cyan">{codeLabCardCount()} implementation labs</Chip>
                 <Chip accent="lime">{codeLabModeCount()} code modes</Chip>

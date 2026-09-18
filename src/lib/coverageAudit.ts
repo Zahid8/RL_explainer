@@ -7,6 +7,7 @@ import { sourceAuditsForChapter } from "@/lib/algorithmSourceAudit";
 import { workedExampleForAlgorithm } from "@/lib/algorithmWorkedExamples";
 import { bookIndexChapterCount, bookIndexEntryCount, bookIndexLayerCount } from "@/lib/bookIndex";
 import { chapterDependencyMap } from "@/lib/chapterDependencyMap";
+import { chapterExamCardCount, chapterExamCardsForChapter, chapterExamChapterCount, chapterExamModeCount, chapterExamModes } from "@/lib/chapterExam";
 import { chapterSynthesis } from "@/lib/chapterSynthesis";
 import { chapterDeepDives } from "@/lib/deepDives";
 import { evidenceGuideItems } from "@/lib/evidenceGuide";
@@ -71,6 +72,8 @@ export interface ChapterCoverageRow {
   assumptionModes: number;
   proofCards: number;
   proofModes: number;
+  examCards: number;
+  examModes: number;
   manuscriptSections: number;
   blackboardStages: number;
   sectionNarratives: number;
@@ -154,6 +157,9 @@ export interface CoverageAudit {
     proofCards: number;
     proofModes: number;
     proofChapters: number;
+    examCards: number;
+    examModes: number;
+    examChapters: number;
     manuscriptSections: number;
     blackboardStages: number;
     sectionNarratives: number;
@@ -212,6 +218,9 @@ export function buildCoverageAudit(): CoverageAudit {
   const proofCards = proofCardCount();
   const proofModes = proofModeCount();
   const proofChapters = proofChapterCount();
+  const examCards = chapterExamCardCount();
+  const examModes = chapterExamModeCount();
+  const examChapters = chapterExamChapterCount();
   const manuscriptSections = manuscriptSectionCount();
   const blackboardStages = blackboardStageCount();
   const sectionNarratives = sectionNarrativeCount();
@@ -265,6 +274,9 @@ export function buildCoverageAudit(): CoverageAudit {
     proofCards,
     proofModes,
     proofChapters,
+    examCards,
+    examModes,
+    examChapters,
     manuscriptSections,
     blackboardStages,
     sectionNarratives,
@@ -330,6 +342,8 @@ function chapterCoverageRow(chapterNumber: number): ChapterCoverageRow {
   const assumptionModeTotal = assumptionModeCount(chapterNumber);
   const proofCards = proofCardsForChapter(chapterNumber);
   const proofModeTotal = proofModeCount(chapterNumber);
+  const examCards = chapterExamCardsForChapter(chapterNumber);
+  const examModeTotal = chapterExamModeCount(chapterNumber);
   const manuscript = manuscriptForChapter(chapterNumber);
   const blackboard = blackboardForChapter(chapterNumber);
   const sectionLessons = sectionLessonsForChapter(chapterNumber);
@@ -351,6 +365,7 @@ function chapterCoverageRow(chapterNumber: number): ChapterCoverageRow {
     "implementation code lab",
     "assumption guarantee clinic",
     "proof intuition lab",
+    "chapter exam studio",
     "original manuscript",
     "interactive blackboard",
     "section textbook manuscript",
@@ -395,6 +410,8 @@ function chapterCoverageRow(chapterNumber: number): ChapterCoverageRow {
     assumptionClinics.length * assumptionClinicModes.length === assumptionModeTotal ? "" : "Assumption clinic count does not match mode coverage.",
     proofCards.length >= formulas.length + 1 ? "" : "Proof lab has fewer cards than chapter formulas plus the chapter proof spine.",
     proofCards.length * proofLabModes.length === proofModeTotal ? "" : "Proof lab count does not match mode coverage.",
+    examCards.length >= 7 ? "" : "Chapter exam studio has fewer than seven exam cards.",
+    examCards.length * chapterExamModes.length === examModeTotal ? "" : "Chapter exam studio count does not match mode coverage.",
     manuscript.sections.length >= 3 ? "" : "Original manuscript has fewer than three chapter-specific moves.",
     blackboard.stages.length >= 4 ? "" : "Interactive blackboard has fewer than four stages.",
     sectionLessons.length >= (deep?.sectionDetails.length ?? chapter.sections.length) ? "" : "Section textbook manuscript does not cover every section.",
@@ -438,6 +455,8 @@ function chapterCoverageRow(chapterNumber: number): ChapterCoverageRow {
     assumptionModes: assumptionModeTotal,
     proofCards: proofCards.length,
     proofModes: proofModeTotal,
+    examCards: examCards.length,
+    examModes: examModeTotal,
     manuscriptSections: manuscript.sections.length,
     blackboardStages: blackboard.stages.length,
     sectionNarratives: sectionLessons.length,
@@ -494,10 +513,10 @@ function requirementProofs(totals: CoverageAudit["totals"]): RequirementProof[] 
   return [
     {
       label: "Linear standalone book reader",
-      status: totals.bookReaderRoutes === 1 && totals.zeroKnowledgeRungs >= totals.chapters * 5 && totals.zeroKnowledgeModes >= totals.zeroKnowledgeRungs * zeroKnowledgeModes.length && totals.lectureTheaters >= totals.chapters && totals.lectureTheaterSlides >= totals.chapters * 5 && totals.lectureTheaterModes >= totals.lectureTheaterSlides * theaterModeKinds.length && totals.practiceCards >= totals.chapters * 5 && totals.practiceInteractiveModes >= totals.practiceCards * practiceModes.length && totals.conceptCards >= totals.chapters * 6 && totals.conceptInteractiveModes >= totals.conceptCards * conceptLectureModes.length && totals.workedExamples >= totals.chapters * 5 && totals.workedExampleInteractiveModes >= totals.workedExamples * workedExampleModes.length && totals.misconceptionCards >= totals.chapters * 5 && totals.misconceptionInteractiveModes >= totals.misconceptionCards * misconceptionModes.length && totals.simulators >= totals.chapters && totals.simulatorControls >= totals.chapters * 3 && totals.simulatorReadouts >= totals.chapters * simulatorReadouts.length && totals.searchIndexEntries >= totals.chapters * 30 && totals.searchIndexLayers >= 20 && totals.searchIndexedChapters === totals.chapters && totals.learningGraphNodes >= totals.chapters * 20 && totals.learningGraphEdges >= totals.chapters * 18 && totals.learningGraphChapters === totals.chapters && totals.symbolCards >= totals.formulas && totals.symbolModes >= totals.symbolCards * symbolLectureModes.length && totals.symbolChapters === totals.chapters && totals.codeLabs >= totals.algorithms && totals.codeLabModes >= totals.codeLabs * codeLabModes.length && totals.codeLabChapters === totals.chapters && totals.assumptionClinics >= totals.algorithms && totals.assumptionModes >= totals.assumptionClinics * assumptionClinicModes.length && totals.assumptionChapters === totals.chapters && totals.proofCards >= totals.formulas + totals.chapters && totals.proofModes >= totals.proofCards * proofLabModes.length && totals.proofChapters === totals.chapters && totals.lectureBeats >= totals.sectionNotes && totals.sectionNarratives >= totals.sectionNotes && totals.sectionInteractiveModes >= totals.sectionNotes * 6 && totals.formulaInteractiveModes >= totals.formulas * formulaLectureModes.length && totals.manuscriptSections >= 51 && totals.blackboardStages >= 68 ? "complete" : "warning",
-      evidence: `/book is the continuous web-book route and renders ${totals.zeroKnowledgeRungs} zero-knowledge starter rungs, ${totals.lectureTheaters} guided lecture theaters, ${totals.lectureTheaterSlides} lecture slides, ${totals.lectureTheaterModes} theater modes, ${totals.practiceCards} active-recall checkpoints, ${totals.conceptCards} concept microscope cards, ${totals.workedExamples} worked examples, ${totals.misconceptionCards} misconception clinic cards, ${totals.simulators} chapter simulator labs, ${totals.simulatorControls} simulator controls, ${totals.simulatorReadouts} simulator readouts, ${totals.searchIndexEntries} whole-book search entries across ${totals.searchIndexLayers} layers, ${totals.learningGraphNodes} learning-graph nodes and ${totals.learningGraphEdges} learning links, ${totals.symbolCards} contextual symbol cards with ${totals.symbolModes} symbol modes, ${totals.codeLabs} implementation code labs with ${totals.codeLabModes} code modes, ${totals.assumptionClinics} assumption clinics with ${totals.assumptionModes} trust modes, ${totals.proofCards} proof cards with ${totals.proofModes} proof modes, ${totals.manuscriptSections} bespoke manuscript moves, ${totals.blackboardStages} interactive blackboard stages, ${totals.sectionNarratives} section textbook manuscripts, ${totals.sectionInteractiveModes} guided section lecture modes, ${totals.formulaInteractiveModes} formula lecture modes, plus the same ${totals.lectureBeats} lecture beats used by the chapter lessons.`,
+      status: totals.bookReaderRoutes === 1 && totals.zeroKnowledgeRungs >= totals.chapters * 5 && totals.zeroKnowledgeModes >= totals.zeroKnowledgeRungs * zeroKnowledgeModes.length && totals.lectureTheaters >= totals.chapters && totals.lectureTheaterSlides >= totals.chapters * 5 && totals.lectureTheaterModes >= totals.lectureTheaterSlides * theaterModeKinds.length && totals.practiceCards >= totals.chapters * 5 && totals.practiceInteractiveModes >= totals.practiceCards * practiceModes.length && totals.conceptCards >= totals.chapters * 6 && totals.conceptInteractiveModes >= totals.conceptCards * conceptLectureModes.length && totals.workedExamples >= totals.chapters * 5 && totals.workedExampleInteractiveModes >= totals.workedExamples * workedExampleModes.length && totals.misconceptionCards >= totals.chapters * 5 && totals.misconceptionInteractiveModes >= totals.misconceptionCards * misconceptionModes.length && totals.simulators >= totals.chapters && totals.simulatorControls >= totals.chapters * 3 && totals.simulatorReadouts >= totals.chapters * simulatorReadouts.length && totals.searchIndexEntries >= totals.chapters * 30 && totals.searchIndexLayers >= 20 && totals.searchIndexedChapters === totals.chapters && totals.learningGraphNodes >= totals.chapters * 20 && totals.learningGraphEdges >= totals.chapters * 18 && totals.learningGraphChapters === totals.chapters && totals.symbolCards >= totals.formulas && totals.symbolModes >= totals.symbolCards * symbolLectureModes.length && totals.symbolChapters === totals.chapters && totals.codeLabs >= totals.algorithms && totals.codeLabModes >= totals.codeLabs * codeLabModes.length && totals.codeLabChapters === totals.chapters && totals.assumptionClinics >= totals.algorithms && totals.assumptionModes >= totals.assumptionClinics * assumptionClinicModes.length && totals.assumptionChapters === totals.chapters && totals.proofCards >= totals.formulas + totals.chapters && totals.proofModes >= totals.proofCards * proofLabModes.length && totals.proofChapters === totals.chapters && totals.examCards >= totals.chapters * 7 && totals.examModes >= totals.examCards * chapterExamModes.length && totals.examChapters === totals.chapters && totals.lectureBeats >= totals.sectionNotes && totals.sectionNarratives >= totals.sectionNotes && totals.sectionInteractiveModes >= totals.sectionNotes * 6 && totals.formulaInteractiveModes >= totals.formulas * formulaLectureModes.length && totals.manuscriptSections >= 51 && totals.blackboardStages >= 68 ? "complete" : "warning",
+      evidence: `/book is the continuous web-book route and renders ${totals.zeroKnowledgeRungs} zero-knowledge starter rungs, ${totals.lectureTheaters} guided lecture theaters, ${totals.lectureTheaterSlides} lecture slides, ${totals.lectureTheaterModes} theater modes, ${totals.practiceCards} active-recall checkpoints, ${totals.conceptCards} concept microscope cards, ${totals.workedExamples} worked examples, ${totals.misconceptionCards} misconception clinic cards, ${totals.simulators} chapter simulator labs, ${totals.simulatorControls} simulator controls, ${totals.simulatorReadouts} simulator readouts, ${totals.searchIndexEntries} whole-book search entries across ${totals.searchIndexLayers} layers, ${totals.learningGraphNodes} learning-graph nodes and ${totals.learningGraphEdges} learning links, ${totals.symbolCards} contextual symbol cards with ${totals.symbolModes} symbol modes, ${totals.codeLabs} implementation code labs with ${totals.codeLabModes} code modes, ${totals.assumptionClinics} assumption clinics with ${totals.assumptionModes} trust modes, ${totals.proofCards} proof cards with ${totals.proofModes} proof modes, ${totals.examCards} chapter exam cards with ${totals.examModes} exam modes, ${totals.manuscriptSections} bespoke manuscript moves, ${totals.blackboardStages} interactive blackboard stages, ${totals.sectionNarratives} section textbook manuscripts, ${totals.sectionInteractiveModes} guided section lecture modes, ${totals.formulaInteractiveModes} formula lecture modes, plus the same ${totals.lectureBeats} lecture beats used by the chapter lessons.`,
       easy: "Readers can now read the whole course in order without jumping between chapter cards.",
-      technical: "The App Router `/book` page imports the chapter dataset, zero-knowledge ladders, guided lecture theaters, active-recall practice cards, concept microscope cards, worked example cards, misconception clinic cards, chapter simulators, standaloneLectureForChapter() output, section manuscripts, chapter-filtered symbol props, chapter-filtered code-lab props, chapter-filtered assumption-clinic props, chapter-filtered proof-lab props, and chapter-filtered formula props, then renders every chapter sequentially with table of contents anchors and links to full chapter labs.",
+      technical: "The App Router `/book` page imports the chapter dataset, zero-knowledge ladders, guided lecture theaters, active-recall practice cards, concept microscope cards, worked example cards, misconception clinic cards, chapter simulators, standaloneLectureForChapter() output, section manuscripts, chapter-filtered symbol props, chapter-filtered code-lab props, chapter-filtered assumption-clinic props, chapter-filtered proof-lab props, chapter-filtered exam-studio props, and chapter-filtered formula props, then renders every chapter sequentially with table of contents anchors and links to full chapter labs.",
     },
     {
       label: "Zero-knowledge starter ladders",
@@ -554,6 +573,13 @@ function requirementProofs(totals: CoverageAudit["totals"]): RequirementProof[] 
       evidence: `${totals.proofCards} proof cards cover ${totals.proofChapters}/${totals.chapters} chapters with ${totals.proofModes} plain/claim/proof/equation/stress modes.`,
       easy: "Readers can learn why chapter claims and equations are believable instead of memorizing formulas by faith.",
       technical: "proofLab.ts derives chapter proof spines plus formula-level proof cards from chapters, formulaAtlas.ts, concept cards, and algorithm cards; ProofLab renders claim, ingredient, proof sketch, equation bridge, and stress-test modes on /proofs, home, /book, and chapter routes.",
+    },
+    {
+      label: "Chapter exam studios",
+      status: totals.examCards >= totals.chapters * 7 && totals.examModes >= totals.examCards * chapterExamModes.length && totals.examChapters === totals.chapters ? "complete" : "warning",
+      evidence: `${totals.examCards} chapter exam cards cover ${totals.examChapters}/${totals.chapters} chapters with ${totals.examModes} prompt/plan/solution/rubric/transfer modes.`,
+      easy: "Readers can prove chapter ownership by trying a prompt, inspecting a plan, revealing a model solution, grading with a rubric, and transferring the idea.",
+      technical: "chapterExam.ts synthesizes chapter-end mastery cards from concepts, formulas, code labs, assumptions, proof cards, worked examples, and simulators; ChapterExamStudio renders the mode-switching exam console on /exam, home, /book, and chapter routes.",
     },
     {
       label: "Active recall practice coach",
@@ -641,10 +667,10 @@ function requirementProofs(totals: CoverageAudit["totals"]): RequirementProof[] 
     },
     {
       label: "Highly detailed chapter explanations",
-      status: totals.lectureBeats >= 161 && totals.sectionInteractiveModes >= 966 && totals.sectionNarratives >= 161 && totals.sectionNotes >= 161 && totals.lectureTheaterSlides >= 85 && totals.lectureTheaterModes >= 425 && totals.conceptCards >= 102 && totals.workedExamples >= 85 && totals.misconceptionCards >= 85 && totals.simulators >= 17 && totals.simulatorControls >= 51 && totals.simulatorReadouts >= 68 && totals.symbolCards >= totals.formulas && totals.symbolModes >= totals.symbolCards * symbolLectureModes.length && totals.codeLabs >= totals.algorithms && totals.codeLabModes >= totals.codeLabs * codeLabModes.length && totals.assumptionClinics >= totals.algorithms && totals.assumptionModes >= totals.assumptionClinics * assumptionClinicModes.length && totals.proofCards >= totals.formulas + totals.chapters && totals.proofModes >= totals.proofCards * proofLabModes.length && totals.masteryTiles >= 170 ? "complete" : "warning",
-      evidence: `${totals.zeroKnowledgeRungs} starter rungs, ${totals.zeroKnowledgeModes} primer modes, ${totals.lectureTheaterSlides} guided lecture slides, ${totals.lectureTheaterModes} theater modes, ${totals.practiceCards} active-recall checkpoints, ${totals.practiceInteractiveModes} practice reveal modes, ${totals.conceptCards} concept cards, ${totals.conceptInteractiveModes} concept lecture modes, ${totals.workedExamples} worked examples, ${totals.workedExampleInteractiveModes} worked-example modes, ${totals.misconceptionCards} misconception clinic cards, ${totals.misconceptionInteractiveModes} repair modes, ${totals.simulators} chapter simulators, ${totals.simulatorControls} simulator controls, ${totals.simulatorReadouts} simulator readouts, ${totals.sectionNarratives} section textbook manuscripts, ${totals.sectionInteractiveModes} guided section modes, ${totals.symbolCards} contextual symbol cards, ${totals.symbolModes} symbol decoder modes, ${totals.codeLabs} implementation code labs, ${totals.codeLabModes} code modes, ${totals.assumptionClinics} assumption clinics, ${totals.assumptionModes} trust modes, ${totals.proofCards} proof cards, ${totals.proofModes} proof modes, ${totals.formulaInteractiveModes} formula lecture modes, ${totals.lectureBeats} lecture beats, ${totals.sectionNotes} section notes, ${totals.masteryTiles} mastery tiles, ${totals.formulas} formulas, ${totals.evidenceAnchors} anchors, and ${totals.exerciseGuides} exercise guides are connected to chapters.`,
+      status: totals.lectureBeats >= 161 && totals.sectionInteractiveModes >= 966 && totals.sectionNarratives >= 161 && totals.sectionNotes >= 161 && totals.lectureTheaterSlides >= 85 && totals.lectureTheaterModes >= 425 && totals.conceptCards >= 102 && totals.workedExamples >= 85 && totals.misconceptionCards >= 85 && totals.simulators >= 17 && totals.simulatorControls >= 51 && totals.simulatorReadouts >= 68 && totals.symbolCards >= totals.formulas && totals.symbolModes >= totals.symbolCards * symbolLectureModes.length && totals.codeLabs >= totals.algorithms && totals.codeLabModes >= totals.codeLabs * codeLabModes.length && totals.assumptionClinics >= totals.algorithms && totals.assumptionModes >= totals.assumptionClinics * assumptionClinicModes.length && totals.proofCards >= totals.formulas + totals.chapters && totals.proofModes >= totals.proofCards * proofLabModes.length && totals.examCards >= totals.chapters * 7 && totals.examModes >= totals.examCards * chapterExamModes.length && totals.masteryTiles >= 170 ? "complete" : "warning",
+      evidence: `${totals.zeroKnowledgeRungs} starter rungs, ${totals.zeroKnowledgeModes} primer modes, ${totals.lectureTheaterSlides} guided lecture slides, ${totals.lectureTheaterModes} theater modes, ${totals.practiceCards} active-recall checkpoints, ${totals.practiceInteractiveModes} practice reveal modes, ${totals.conceptCards} concept cards, ${totals.conceptInteractiveModes} concept lecture modes, ${totals.workedExamples} worked examples, ${totals.workedExampleInteractiveModes} worked-example modes, ${totals.misconceptionCards} misconception clinic cards, ${totals.misconceptionInteractiveModes} repair modes, ${totals.simulators} chapter simulators, ${totals.simulatorControls} simulator controls, ${totals.simulatorReadouts} simulator readouts, ${totals.sectionNarratives} section textbook manuscripts, ${totals.sectionInteractiveModes} guided section modes, ${totals.symbolCards} contextual symbol cards, ${totals.symbolModes} symbol decoder modes, ${totals.codeLabs} implementation code labs, ${totals.codeLabModes} code modes, ${totals.assumptionClinics} assumption clinics, ${totals.assumptionModes} trust modes, ${totals.proofCards} proof cards, ${totals.proofModes} proof modes, ${totals.examCards} exam cards, ${totals.examModes} exam modes, ${totals.formulaInteractiveModes} formula lecture modes, ${totals.lectureBeats} lecture beats, ${totals.sectionNotes} section notes, ${totals.masteryTiles} mastery tiles, ${totals.formulas} formulas, ${totals.evidenceAnchors} anchors, and ${totals.exerciseGuides} exercise guides are connected to chapters.`,
       easy: "Each chapter has a from-scratch lecture, story, sections, formulas, examples, exercises, traps, and review scaffolding.",
-      technical: "Chapter pages now compose zero-knowledge starter ladders, guided lecture theaters, active-recall practice, concept microscope lectures, worked example studio, misconception clinic, chapter simulator labs, contextual symbol decoders, implementation code labs, assumption and guarantee clinics, proof intuition labs, interactive section lecture controls, interactive formula lecture controls, section textbook manuscripts, standalone lectures, synthesis, dependency maps, source audits, algorithm cards, deep dives, mastery notes, formula atlas entries, evidence anchors, and exercise coaching.",
+      technical: "Chapter pages now compose zero-knowledge starter ladders, guided lecture theaters, active-recall practice, concept microscope lectures, worked example studio, misconception clinic, chapter simulator labs, contextual symbol decoders, implementation code labs, assumption and guarantee clinics, proof intuition labs, chapter exam studios, interactive section lecture controls, interactive formula lecture controls, section textbook manuscripts, standalone lectures, synthesis, dependency maps, source audits, algorithm cards, deep dives, mastery notes, formula atlas entries, evidence anchors, and exercise coaching.",
     },
     {
       label: "Every algorithm has technical and easy explanation",

@@ -3,6 +3,7 @@ import { assumptionCardsForChapter } from "@/lib/assumptionClinic";
 import { sourceAuditsForChapter } from "@/lib/algorithmSourceAudit";
 import { chapterDependencyMap } from "@/lib/chapterDependencyMap";
 import { lectureTheaterForChapter } from "@/lib/chapterLectureTheater";
+import { chapterExamCardsForChapter } from "@/lib/chapterExam";
 import { chapterDeepDives } from "@/lib/deepDives";
 import { evidenceGuideItems } from "@/lib/evidenceGuide";
 import { exerciseCoachCards } from "@/lib/exerciseCoach";
@@ -32,6 +33,7 @@ export type BookIndexLayer =
   | "implementation code lab"
   | "assumption clinic"
   | "proof lab"
+  | "chapter exam"
   | "active recall"
   | "concept microscope"
   | "worked example"
@@ -101,6 +103,7 @@ function buildBookIndexEntries(): BookIndexEntry[] {
     const codeCards = codeLabCardsForChapter(chapter.n);
     const assumptionCards = assumptionCardsForChapter(chapter.n);
     const proofCards = proofCardsForChapter(chapter.n);
+    const examCards = chapterExamCardsForChapter(chapter.n);
     const practiceCards = practiceCardsForChapter(chapter.n);
     const concepts = conceptCardsForChapter(chapter.n);
     const workedExamples = workedExamplesForChapter(chapter.n);
@@ -241,6 +244,18 @@ function buildBookIndexEntries(): BookIndexEntry[] {
       technical: `Proof sketch: ${card.proofSketch.join(" ")} Equation bridge: ${card.equationBridge} Stress test: ${card.stressTest}`,
       tags: [card.family, card.kind, ...card.tags, `Chapter ${chapter.n}`],
       weight: 85,
+    }));
+
+    examCards.forEach((card) => add({
+      ...chapterBase,
+      id: card.id,
+      title: `Exam: ${card.title}`,
+      layer: "chapter exam",
+      route: `/chapters/${chapter.n}#exam`,
+      summary: `${card.prompt} Diagnostic: ${card.diagnostic}`,
+      technical: `Plan: ${card.plan.join(" ")} Solution: ${card.solution} Rubric: ${card.rubric.join(" ")} Transfer: ${card.transfer}`,
+      tags: [card.kind, ...card.tags, `Chapter ${chapter.n}`],
+      weight: 84,
     }));
 
     practiceCards.forEach((card) => add({

@@ -26,13 +26,14 @@ export default function AssumptionsPage() {
             <Link href="/code" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Code lab</Link>
             <Link href="/search" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Search index</Link>
             <Link href="/proofs" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Proof lab</Link>
+            <Link href="/exam" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Exam studio</Link>
             <Link href="/coverage" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Coverage audit</Link>
           </div>
           <div className="grid gap-8 lg:grid-cols-[1fr_440px] lg:items-end">
             <div>
               <p className="eyebrow">Assumption and guarantee clinic</p>
               <h1 className="display mt-4 max-w-5xl text-[clamp(42px,7vw,88px)] font-medium text-ink">Know when an RL method deserves trust.</h1>
-              <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted">A complete book cannot only say how to run an update; it has to say when the update is valid. This clinic explains the world each method assumes, the guarantee it wants, how the promise breaks, how to repair the setup, and how the proof lab justifies the claims being trusted.</p>
+              <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted">A complete book cannot only say how to run an update; it has to say when the update is valid. This clinic explains the world each method assumes, the guarantee it wants, how the promise breaks, how to repair the setup, and how the proof lab justifies the claims being trusted, and how the exam studio grades whether you can transfer the contract.</p>
               <div className="mt-6 flex flex-wrap gap-2">
                 <Chip accent="cyan">{assumptionCardCount()} assumption clinics</Chip>
                 <Chip accent="lime">{assumptionModeCount()} clinic modes</Chip>

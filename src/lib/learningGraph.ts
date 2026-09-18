@@ -1,6 +1,7 @@
 import { algorithmsForChapter } from "@/lib/algorithmCatalog";
 import { assumptionCardsForChapter } from "@/lib/assumptionClinic";
 import { chapterDependencyMap } from "@/lib/chapterDependencyMap";
+import { chapterExamCardsForChapter } from "@/lib/chapterExam";
 import { practiceCardsForChapter } from "@/lib/chapterPractice";
 import { simulatorForChapter } from "@/lib/chapterSimulators";
 import { workedExamplesForChapter } from "@/lib/chapterWorkedExamples";
@@ -11,7 +12,7 @@ import { proofCardsForChapter } from "@/lib/proofLab";
 import { chapters } from "@/lib/paper";
 import { symbolCardsForChapter } from "@/lib/symbolAtlas";
 
-export type LearningGraphNodeKind = "chapter" | "concept" | "formula" | "symbol" | "proof" | "algorithm" | "code" | "assumption" | "example" | "practice" | "simulator" | "prerequisite" | "unlock";
+export type LearningGraphNodeKind = "chapter" | "concept" | "formula" | "symbol" | "proof" | "algorithm" | "code" | "assumption" | "example" | "practice" | "exam" | "simulator" | "prerequisite" | "unlock";
 
 export interface LearningGraphNode {
   id: string;
@@ -67,6 +68,7 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
   const assumptionCards = assumptionCardsForChapter(chapterNumber).slice(0, 5);
   const examples = workedExamplesForChapter(chapterNumber).slice(0, 4);
   const practice = practiceCardsForChapter(chapterNumber).slice(0, 3);
+  const examCards = chapterExamCardsForChapter(chapterNumber).slice(0, 4);
   const simulator = simulatorForChapter(chapterNumber);
   const dependencies = chapterDependencyMap(chapter, chapters, algorithms);
   const nodes: LearningGraphNode[] = [];
@@ -313,6 +315,31 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
     });
   });
 
+  examCards.forEach((card, index) => {
+    const id = nodeId(chapterNumber, "exam", card.title);
+    const practiceCard = practice[index % Math.max(practice.length, 1)];
+    addNode({
+      id,
+      chapter: chapterNumber,
+      kind: "exam",
+      title: card.title,
+      easy: `${card.prompt} Diagnostic: ${card.diagnostic}`,
+      technical: `${card.solution} Rubric: ${card.rubric.join(" ")}`,
+      route: `/chapters/${chapterNumber}#exam`,
+      tags: [card.kind, ...card.tags],
+      ...ringPoint("exam", index, examCards.length),
+    });
+    addEdge({
+      id: edgeId(practiceCard ? nodeId(chapterNumber, "practice", practiceCard.title) : centerId, id, "exam"),
+      chapter: chapterNumber,
+      from: practiceCard ? nodeId(chapterNumber, "practice", practiceCard.title) : centerId,
+      to: id,
+      relation: "practice becomes exam",
+      easy: `The exam card asks the learner to prove the chapter without passive hints.`,
+      technical: `The exam node packages prompt, plan, solution, rubric, diagnostic, and transfer into a mastery check.`,
+    });
+  });
+
   const simulatorId = nodeId(chapterNumber, "simulator", simulator.title);
   addNode({
     id: simulatorId,
@@ -389,7 +416,7 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
   return {
     chapter: chapterNumber,
     title: chapter.title,
-    promise: `Graphical map for Chapter ${chapterNumber}: start from the chapter node, move through concepts, formulas, decoded symbols, proof sketches, methods, code scaffolds, assumptions, examples, practice, and simulator knobs, then check prerequisites and unlocks.`,
+    promise: `Graphical map for Chapter ${chapterNumber}: start from the chapter node, move through concepts, formulas, decoded symbols, proof sketches, methods, code scaffolds, assumptions, examples, practice, chapter exams, and simulator knobs, then check prerequisites and unlocks.`,
     route: `/chapters/${chapterNumber}`,
     nodes,
     edges,
@@ -400,7 +427,8 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
       "Decode symbol nodes before opening proof nodes that explain why the equation or chapter claim is valid.",
       "Use algorithm and code nodes to turn the proven target into variables, loops, invariants, and tests.",
       "Open assumption nodes to see when the method is valid, what guarantee it wants, and how to repair broken conditions.",
-      "Use examples, practice, and simulator nodes to prove transfer.",
+      "Use examples and practice nodes to rehearse the idea, then open exam nodes to grade and transfer mastery.",
+      "Use simulator nodes to test whether the chapter story survives knob changes.",
     ],
     legend: graphLegend,
   };
@@ -431,6 +459,7 @@ export const graphLegend: ChapterLearningGraph["legend"] = [
   { kind: "assumption", label: "Assumption", easy: "When the method deserves trust.", technical: "Data, target, update, representation, guarantee, failure, and repair conditions." },
   { kind: "example", label: "Worked example", easy: "A tiny world where the idea moves.", technical: "Trace-level evidence for the update." },
   { kind: "practice", label: "Practice", easy: "A checkpoint to test ownership.", technical: "Prompt, solution, trap, and transfer." },
+  { kind: "exam", label: "Chapter exam", easy: "A self-graded mastery prompt.", technical: "Prompt, plan, solution, rubric, diagnostic, and transfer." },
   { kind: "simulator", label: "Simulator", easy: "A live knob model of the chapter.", technical: "Exploration, step-size, horizon, and stability tradeoffs." },
   { kind: "prerequisite", label: "Prerequisite", easy: "Earlier chapters feeding this one.", technical: "Incoming assumptions and notation." },
   { kind: "unlock", label: "Unlock", easy: "Later chapters made easier.", technical: "Outgoing abstractions and limitations." },
@@ -447,6 +476,7 @@ function ringPoint(kind: LearningGraphNodeKind, index: number, total: number): {
     assumption: { start: 335, end: 455, radius: 45 },
     example: { start: 65, end: 150, radius: 48 },
     practice: { start: 210, end: 300, radius: 49 },
+    exam: { start: 150, end: 245, radius: 56 },
   };
   const lane = lanes[kind] ?? { start: 0, end: 360, radius: 38 };
   const angle = total <= 1 ? (lane.start + lane.end) / 2 : lane.start + ((lane.end - lane.start) * index) / (total - 1);

@@ -27,6 +27,7 @@ export default function ProofsPage() {
             <div className="flex flex-wrap gap-2">
               <Link href="/book" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-violet">Book mode</Link>
               <Link href="/assumptions" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-violet">Trust clinic</Link>
+              <Link href="/exam" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-violet">Exam studio</Link>
               <Link href="/coverage" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-violet">Coverage audit</Link>
             </div>
           </div>
@@ -35,7 +36,7 @@ export default function ProofsPage() {
               <p className="eyebrow">Proof intuition lab</p>
               <h1 className="display mt-4 max-w-5xl text-[clamp(42px,7vw,88px)] font-medium text-ink">Believe the equations, not by faith, but by tracing the argument.</h1>
               <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted">
-                This route teaches theorem-style thinking in original words. Each card states the claim, names the objects, walks the proof as a board argument, translates the equation, and stress-tests the counterexample that would break it.
+                This route teaches theorem-style thinking in original words. Each card states the claim, names the objects, walks the proof as a board argument, translates the equation, and stress-tests the counterexample that would break it, then feeds the chapter exam studio where readers grade and transfer the argument.
               </p>
             </div>
             <div className="grid gap-4">
