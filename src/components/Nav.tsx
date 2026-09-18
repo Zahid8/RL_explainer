@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 const links = [
   ["book", "Book"],
   ["primer", "Primer"],
+  ["readiness", "Ready"],
   ["foundations", "Foundations"],
   ["math", "Math"],
   ["stories", "Stories"],
@@ -88,6 +89,7 @@ export function Nav() {
         </div>
         <div className="flex items-center gap-2">
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/book">Book mode</a>
+          <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/readiness">Ready</a>
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/foundations">Foundations</a>
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/math">Math</a>
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/stories">Stories</a>

@@ -12,6 +12,7 @@ import { exerciseCoachCards } from "@/lib/exerciseCoach";
 import { exerciseSolutionCardsForChapter } from "@/lib/exerciseSolutionStudio";
 import { formulasForChapter } from "@/lib/formulaAtlas";
 import { foundationDictionaryCardsForChapter } from "@/lib/foundationDictionary";
+import { readinessCardsForChapter } from "@/lib/readinessCoach";
 import { mathRescueCardsForChapter } from "@/lib/mathRescue";
 import { visualStoriesForChapter } from "@/lib/visualStory";
 import { methodCompareCardsForChapter } from "@/lib/methodCompare";
@@ -40,6 +41,7 @@ import { zeroKnowledgeLadderForChapter } from "@/lib/zeroKnowledgeLadders";
 export type BookIndexLayer =
   | "chapter overview"
   | "zero primer"
+  | "readiness coach"
   | "foundation dictionary"
   | "math rescue"
   | "visual story"
@@ -122,6 +124,7 @@ function buildBookIndexEntries(): BookIndexEntry[] {
     const algorithms = algorithmsForChapter(chapter.n);
     const lecture = standaloneLectureForChapter(chapter);
     const starter = zeroKnowledgeLadderForChapter(chapter.n);
+    const readinessCards = readinessCardsForChapter(chapter.n);
     const foundationCards = foundationDictionaryCardsForChapter(chapter.n);
     const mathCards = mathRescueCardsForChapter(chapter.n);
     const visualStories = visualStoriesForChapter(chapter.n);
@@ -219,6 +222,18 @@ function buildBookIndexEntries(): BookIndexEntry[] {
       summary: `${rung.plain} ${rung.visual}`,
       technical: `${rung.technical} Practice: ${rung.practice}`,
       tags: ["starter", "zero knowledge", ...rung.tags, `Chapter ${chapter.n}`],
+      weight: 96,
+    }));
+
+    readinessCards.forEach((card) => add({
+      ...chapterBase,
+      id: card.id,
+      title: `Readiness: ${card.stageLabel}`,
+      layer: "readiness coach",
+      route: `/chapters/${chapter.n}#readiness`,
+      summary: `${card.entryQuestion} ${card.noviceBridge} Exit: ${card.exitCheck}`,
+      technical: `${card.technicalTarget} Rescue: ${card.rescueSteps.join(" ")}`,
+      tags: [card.stage, ...card.prerequisites, ...card.tags, `Chapter ${chapter.n}`],
       weight: 96,
     }));
 

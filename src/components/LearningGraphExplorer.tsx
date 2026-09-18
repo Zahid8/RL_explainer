@@ -142,7 +142,8 @@ function GraphChip({ children, accent = "cyan" }: { children: React.ReactNode; a
 function kindColor(kind: LearningGraphNodeKind) {
   const colors: Record<LearningGraphNodeKind, string> = {
     chapter: "#0ea5e9",
-    foundation: "#06b6d4",
+    readiness: "#22d3ee",
+  foundation: "#06b6d4",
     math: "#f97316",
     story: "#06b6d4",
     analogy: "#8b5cf6",

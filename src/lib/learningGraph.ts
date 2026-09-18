@@ -12,6 +12,7 @@ import { codeLabCardsForChapter } from "@/lib/codeLab";
 import { conceptCardsForChapter } from "@/lib/conceptAtlas";
 import { formulasForChapter } from "@/lib/formulaAtlas";
 import { foundationDictionaryCardsForChapter } from "@/lib/foundationDictionary";
+import { readinessCardsForChapter } from "@/lib/readinessCoach";
 import { mathRescueCardsForChapter } from "@/lib/mathRescue";
 import { visualStoriesForChapter } from "@/lib/visualStory";
 import { methodCompareCardsForChapter } from "@/lib/methodCompare";
@@ -24,7 +25,7 @@ import { projectCardsForChapter } from "@/lib/projectStudio";
 import { evidenceReplayCardsForChapter } from "@/lib/evidenceReplay";
 import { symbolCardsForChapter } from "@/lib/symbolAtlas";
 
-export type LearningGraphNodeKind = "chapter" | "foundation" | "math" | "story" | "analogy" | "tutor" | "case" | "concept" | "section" | "formula" | "symbol" | "proof" | "algorithm" | "compare" | "code" | "debug" | "assumption" | "example" | "practice" | "exercise" | "exam" | "project" | "evidence" | "simulator" | "prerequisite" | "unlock";
+export type LearningGraphNodeKind = "chapter" | "readiness" | "foundation" | "math" | "story" | "analogy" | "tutor" | "case" | "concept" | "section" | "formula" | "symbol" | "proof" | "algorithm" | "compare" | "code" | "debug" | "assumption" | "example" | "practice" | "exercise" | "exam" | "project" | "evidence" | "simulator" | "prerequisite" | "unlock";
 
 export interface LearningGraphNode {
   id: string;
@@ -72,6 +73,7 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
   if (!chapter) throw new Error(`Missing chapter ${chapterNumber}`);
 
   const algorithms = algorithmsForChapter(chapterNumber);
+  const readinessCards = readinessCardsForChapter(chapterNumber).slice(0, 3);
   const foundations = foundationDictionaryCardsForChapter(chapterNumber).slice(0, 5);
   const mathCards = mathRescueCardsForChapter(chapterNumber).slice(0, 4);
   const storyCards = visualStoriesForChapter(chapterNumber).slice(0, 4);
@@ -113,6 +115,30 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
     tags: [chapter.part, ...chapter.keyIdeas.slice(0, 4)],
     x: 50,
     y: 50,
+  });
+
+  readinessCards.forEach((card, index) => {
+    const id = nodeId(chapterNumber, "readiness", card.stageLabel);
+    addNode({
+      id,
+      chapter: chapterNumber,
+      kind: "readiness",
+      title: card.stageLabel,
+      easy: card.entryQuestion,
+      technical: `${card.technicalTarget} Exit: ${card.exitCheck}`,
+      route: `/chapters/${chapterNumber}#readiness`,
+      tags: [card.stage, ...card.prerequisites, ...card.tags],
+      ...ringPoint("readiness", index, readinessCards.length),
+    });
+    addEdge({
+      id: edgeId(centerId, id, "requires readiness"),
+      chapter: chapterNumber,
+      from: centerId,
+      to: id,
+      relation: "requires readiness",
+      easy: "Before dense chapter material, this checkpoint asks what prerequisite must be repaired.",
+      technical: "Readiness nodes gate entry, math, and method traces with diagnose/bridge/visual/technical/exit checks.",
+    });
   });
 
   foundations.forEach((card, index) => {
@@ -774,12 +800,13 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
   return {
     chapter: chapterNumber,
     title: chapter.title,
-    promise: `Graphical map for Chapter ${chapterNumber}: start from the chapter node, move through foundation terms, math rescue objects, visual story scenes, analogy bridges, Socratic tutor dialogues, case studies, concepts, section mastery checks, formulas, decoded symbols, proof sketches, methods, comparison boards, code scaffolds, debugging clinics, assumptions, examples, practice, exercise solutions, chapter exams, project builds, evidence replays, and simulator knobs, then check prerequisites and unlocks.`,
+    promise: `Graphical map for Chapter ${chapterNumber}: start from the chapter node, pass readiness diagnostics, move through foundation terms, math rescue objects, visual story scenes, analogy bridges, Socratic tutor dialogues, case studies, concepts, section mastery checks, formulas, decoded symbols, proof sketches, methods, comparison boards, code scaffolds, debugging clinics, assumptions, examples, practice, exercise solutions, chapter exams, project builds, evidence replays, and simulator knobs, then check prerequisites and unlocks.`,
     route: `/chapters/${chapterNumber}`,
     nodes,
     edges,
     readingPath: [
       "Read the center chapter promise.",
+      "Click readiness nodes first: diagnose whether entry, math, or method prerequisites need repair before technical reading.",
       "Click foundation nodes until the vocabulary has a plain meaning, board picture, technical role, trap, and teach-back check.",
       "Click math rescue nodes until returns, expectations, backups, gradients, ratios, traces, and updates have intuition before notation.",
       "Click visual story nodes to watch learner, world, choice, feedback, memory, and next move before formulas appear.",
@@ -820,6 +847,7 @@ export function learningGraphChapterCount(): number {
 
 export const graphLegend: ChapterLearningGraph["legend"] = [
   { kind: "chapter", label: "Chapter center", easy: "The main question of the chapter.", technical: "The formal objects and assumptions that define the chapter." },
+  { kind: "readiness", label: "Readiness", easy: "A prerequisite check before dense material.", technical: "Entry, math, and method diagnostics with repair, visual, technical, and exit checks." },
   { kind: "foundation", label: "Foundation term", easy: "A word learned from scratch before formulas use it.", technical: "Plain meaning, board picture, technical role, trap, and teach-back." },
   { kind: "math", label: "Math rescue", easy: "A calculation learned before notation gets dense.", technical: "Intuition, board picture, notation bridge, chapter use, pitfall, and self-check." },
   { kind: "story", label: "Visual story", easy: "A scene that makes the chapter visible before formulas.", technical: "Scene, observation, move, board animation, technical translation, pitfall, and check." },
@@ -849,6 +877,7 @@ export const graphLegend: ChapterLearningGraph["legend"] = [
 
 function ringPoint(kind: LearningGraphNodeKind, index: number, total: number): { x: number; y: number } {
   const lanes: Record<string, { start: number; end: number; radius: number }> = {
+    readiness: { start: 175, end: 305, radius: 19 },
     foundation: { start: 185, end: 325, radius: 24 },
     math: { start: 250, end: 390, radius: 28 },
     story: { start: 145, end: 285, radius: 32 },

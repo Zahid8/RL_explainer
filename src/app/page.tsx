@@ -21,6 +21,7 @@ import { ExerciseCoach } from "@/components/ExerciseCoach";
 import { ExerciseSolutionStudio } from "@/components/ExerciseSolutionStudio";
 import { FormulaAtlas } from "@/components/FormulaAtlas";
 import { FoundationDictionaryStudio } from "@/components/FoundationDictionaryStudio";
+import { ReadinessCoach } from "@/components/ReadinessCoach";
 import { MathRescueStudio } from "@/components/MathRescueStudio";
 import { VisualStoryStudio } from "@/components/VisualStoryStudio";
 import { Glossary } from "@/components/Glossary";
@@ -44,6 +45,7 @@ import { TraceLab } from "@/components/figures/TraceLab";
 import { manuscriptSectionCount } from "@/lib/chapterManuscripts";
 import { formulaLectureModeCount } from "@/lib/formulaAtlas";
 import { allFoundationDictionaryCards, foundationDictionaryCardCount, foundationDictionaryChapterCount, foundationDictionaryModeCount, foundationDictionarySourceCount, foundationDictionaryTermCount } from "@/lib/foundationDictionary";
+import { allReadinessCards, readinessCardCount, readinessChapterCount, readinessModeCount, readinessPrerequisiteCount, readinessRescueStepCount } from "@/lib/readinessCoach";
 import { allMathRescueCards, mathRescueCardCount, mathRescueChapterCount, mathRescueModeCount, mathRescueObjectCount, mathRescueSourceCount, mathRescueSymbolCount } from "@/lib/mathRescue";
 import { allVisualStoryCards, visualStoryActorCount, visualStoryCardCount, visualStoryChapterCount, visualStoryModeCount, visualStoryPropCount, visualStorySceneCount, visualStorySourceCount } from "@/lib/visualStory";
 import { allAnalogyCards, analogyAnchorCount, analogyCardCount, analogyChapterCount, analogyMappingCount, analogyModeCount, analogySourceCount } from "@/lib/analogies";
@@ -83,6 +85,12 @@ export default function Home() {
   const formulaLectureModes = formulaLectureModeCount();
   const zeroKnowledgeRungs = zeroKnowledgeRungCount();
   const zeroKnowledgeModes = zeroKnowledgeModeCount();
+  const readinessCards = allReadinessCards();
+  const readinessTotal = readinessCardCount();
+  const readinessModes = readinessModeCount();
+  const readinessChapters = readinessChapterCount();
+  const readinessRescueSteps = readinessRescueStepCount();
+  const readinessPrerequisites = readinessPrerequisiteCount();
   const foundationCards = allFoundationDictionaryCards();
   const foundationTotal = foundationDictionaryCardCount();
   const foundationModes = foundationDictionaryModeCount();
@@ -219,7 +227,7 @@ export default function Home() {
         lead="The site now teaches the material as a first-principles course: each chapter starts from zero, uses graphical mental models, then builds the technical definitions, equations, algorithms, and checkpoints in its own words."
         tint
       >
-        <StandaloneBookPledge lectureBeats={lectureBeats} manuscriptMoves={manuscriptMoves} blackboardStages={blackboardStages} sectionNarratives={sectionNarratives} guidedSectionModes={guidedSectionModes} formulaLectureModes={formulaLectureModes} zeroKnowledgeRungs={zeroKnowledgeRungs} zeroKnowledgeModes={zeroKnowledgeModes} foundationTotal={foundationTotal} foundationModes={foundationModes} foundationChapters={foundationChapters} foundationTerms={foundationTerms} foundationSources={foundationSources} mathTotal={mathTotal} mathModes={mathModes} mathChapters={mathChapters} mathObjects={mathObjects} mathSymbols={mathSymbols} mathSources={mathSources} storyTotal={storyTotal} storyModes={storyModes} storyChapters={storyChapters} storyScenes={storyScenes} storyActors={storyActors} storyProps={storyProps} storySources={storySources} analogyTotal={analogyTotal} analogyModes={analogyModes} analogyChapters={analogyChapters} analogyMappings={analogyMappings} analogyAnchors={analogyAnchors} analogySources={analogySources} tutorTotal={tutorTotal} tutorModes={tutorModes} tutorChapters={tutorChapters} tutorTurns={tutorTurns} tutorBoardSteps={tutorBoardSteps} tutorAnchors={tutorAnchors} tutorSources={tutorSources} caseTotal={caseTotal} caseModes={caseModes} caseChapters={caseChapters} caseFrames={caseFrames} caseCriteria={caseCriteria} caseAnchors={caseAnchors} caseSources={caseSources} projectTotal={projectTotal} projectModes={projectModes} projectChapters={projectChapters} projectMilestones={projectMilestones} projectRubrics={projectRubrics} projectDeliverables={projectDeliverables} projectSources={projectSources} practiceCardTotal={practiceCardTotal} practiceModes={practiceModes} conceptCardTotal={conceptCardTotal} conceptModes={conceptModes} workedExampleTotal={workedExampleTotal} workedExampleModes={workedExampleModes} misconceptionTotal={misconceptionTotal} misconceptionModes={misconceptionModes} simulatorTotal={simulatorTotal} simulatorControls={simulatorControls} simulatorReadouts={simulatorReadouts} theaterTotal={theaterTotal} theaterSlides={theaterSlides} theaterModes={theaterModes} searchEntryTotal={searchEntryTotal} searchLayerTotal={searchLayerTotal} searchChapterTotal={searchChapterTotal} graphNodeTotal={graphNodeTotal} graphEdgeTotal={graphEdgeTotal} graphChapterTotal={graphChapterTotal} symbolCardTotal={symbolCardTotal} symbolModeTotal={symbolModeTotal} uniqueSymbols={uniqueSymbols} symbolChapterTotal={symbolChapterTotal} codeLabTotal={codeLabTotal} codeLabModes={codeLabModes} codeLabChapters={codeLabChapters} debugTotal={debugTotal} debugModes={debugModes} debugChapters={debugChapters} debugRepairSteps={debugRepairSteps} debugTestSteps={debugTestSteps} assumptionTotal={assumptionTotal} assumptionModes={assumptionModes} assumptionChapters={assumptionChapters} proofTotal={proofTotal} proofModes={proofModes} proofChapters={proofChapters} examTotal={examTotal} examModes={examModes} examChapters={examChapters} sectionMasteryTotal={sectionMasteryTotal} sectionMasteryModes={sectionMasteryModes} sectionMasteryChapters={sectionMasteryChapters} exerciseSolutionTotal={exerciseSolutionTotal} exerciseSolutionModes={exerciseSolutionModes} exerciseSolutionChapters={exerciseSolutionChapters} compareTotal={compareTotal} compareModes={compareModes} compareChapters={compareChapters} compareFamilies={compareFamilies} />
+        <StandaloneBookPledge lectureBeats={lectureBeats} manuscriptMoves={manuscriptMoves} blackboardStages={blackboardStages} sectionNarratives={sectionNarratives} guidedSectionModes={guidedSectionModes} formulaLectureModes={formulaLectureModes} zeroKnowledgeRungs={zeroKnowledgeRungs} zeroKnowledgeModes={zeroKnowledgeModes} readinessTotal={readinessTotal} readinessModes={readinessModes} readinessChapters={readinessChapters} readinessRescueSteps={readinessRescueSteps} readinessPrerequisites={readinessPrerequisites} foundationTotal={foundationTotal} foundationModes={foundationModes} foundationChapters={foundationChapters} foundationTerms={foundationTerms} foundationSources={foundationSources} mathTotal={mathTotal} mathModes={mathModes} mathChapters={mathChapters} mathObjects={mathObjects} mathSymbols={mathSymbols} mathSources={mathSources} storyTotal={storyTotal} storyModes={storyModes} storyChapters={storyChapters} storyScenes={storyScenes} storyActors={storyActors} storyProps={storyProps} storySources={storySources} analogyTotal={analogyTotal} analogyModes={analogyModes} analogyChapters={analogyChapters} analogyMappings={analogyMappings} analogyAnchors={analogyAnchors} analogySources={analogySources} tutorTotal={tutorTotal} tutorModes={tutorModes} tutorChapters={tutorChapters} tutorTurns={tutorTurns} tutorBoardSteps={tutorBoardSteps} tutorAnchors={tutorAnchors} tutorSources={tutorSources} caseTotal={caseTotal} caseModes={caseModes} caseChapters={caseChapters} caseFrames={caseFrames} caseCriteria={caseCriteria} caseAnchors={caseAnchors} caseSources={caseSources} projectTotal={projectTotal} projectModes={projectModes} projectChapters={projectChapters} projectMilestones={projectMilestones} projectRubrics={projectRubrics} projectDeliverables={projectDeliverables} projectSources={projectSources} practiceCardTotal={practiceCardTotal} practiceModes={practiceModes} conceptCardTotal={conceptCardTotal} conceptModes={conceptModes} workedExampleTotal={workedExampleTotal} workedExampleModes={workedExampleModes} misconceptionTotal={misconceptionTotal} misconceptionModes={misconceptionModes} simulatorTotal={simulatorTotal} simulatorControls={simulatorControls} simulatorReadouts={simulatorReadouts} theaterTotal={theaterTotal} theaterSlides={theaterSlides} theaterModes={theaterModes} searchEntryTotal={searchEntryTotal} searchLayerTotal={searchLayerTotal} searchChapterTotal={searchChapterTotal} graphNodeTotal={graphNodeTotal} graphEdgeTotal={graphEdgeTotal} graphChapterTotal={graphChapterTotal} symbolCardTotal={symbolCardTotal} symbolModeTotal={symbolModeTotal} uniqueSymbols={uniqueSymbols} symbolChapterTotal={symbolChapterTotal} codeLabTotal={codeLabTotal} codeLabModes={codeLabModes} codeLabChapters={codeLabChapters} debugTotal={debugTotal} debugModes={debugModes} debugChapters={debugChapters} debugRepairSteps={debugRepairSteps} debugTestSteps={debugTestSteps} assumptionTotal={assumptionTotal} assumptionModes={assumptionModes} assumptionChapters={assumptionChapters} proofTotal={proofTotal} proofModes={proofModes} proofChapters={proofChapters} examTotal={examTotal} examModes={examModes} examChapters={examChapters} sectionMasteryTotal={sectionMasteryTotal} sectionMasteryModes={sectionMasteryModes} sectionMasteryChapters={sectionMasteryChapters} exerciseSolutionTotal={exerciseSolutionTotal} exerciseSolutionModes={exerciseSolutionModes} exerciseSolutionChapters={exerciseSolutionChapters} compareTotal={compareTotal} compareModes={compareModes} compareChapters={compareChapters} compareFamilies={compareFamilies} />
       </Section>
       <Section
         id="primer"
@@ -230,8 +238,17 @@ export default function Home() {
         <ZeroKnowledgeLadderReader ladders={zeroKnowledgeLadders} contextTitle="Whole-book beginner-to-technical starter ladder" />
       </Section>
       <Section
+        id="readiness"
+        eyebrow="00c - Readiness coach"
+        title={<>Check and repair prerequisites before every chapter gets technical.</>}
+        lead="The readiness coach adds entry, math, and method diagnostics for each chapter: if a reader cannot explain, draw, and technically name the prerequisite, the coach repairs it before the dense lecture continues."
+        tint
+      >
+        <ReadinessCoach cards={readinessCards} contextTitle="Whole-book readiness coach" compact />
+      </Section>
+      <Section
         id="foundations"
-        eyebrow="00c - Foundation dictionary studio"
+        eyebrow="00d - Foundation dictionary studio"
         title={<>Learn every RL word before it turns into math.</>}
         lead="The foundation dictionary turns chapter vocabulary into a plain definition, board picture, technical role, common trap, and teach-back check so readers with no RL background can build the language from scratch."
         tint
@@ -241,7 +258,7 @@ export default function Home() {
 
       <Section
         id="math"
-        eyebrow="00d - Math rescue studio"
+        eyebrow="00e - Math rescue studio"
         title={<>Learn the calculation before the notation gets dense.</>}
         lead="The math rescue studio teaches expectations, returns, Bellman backups, update errors, gradients, importance ratios, traces, projections, and optimization steps from intuition to board picture to notation to chapter use."
       >
@@ -250,7 +267,7 @@ export default function Home() {
 
       <Section
         id="stories"
-        eyebrow="00e - Visual story studio"
+        eyebrow="00f - Visual story studio"
         title={<>Turn every chapter into a mental movie before formulas appear.</>}
         lead="The story studio is the graphical lecture camera: each scene sets a concrete world, asks what the learner can observe, animates the next move, translates the picture into technical RL language, and ends with a blank-board check."
         tint
@@ -260,7 +277,7 @@ export default function Home() {
 
       <Section
         id="analogies"
-        eyebrow="00f - Analogy bridge studio"
+        eyebrow="00g - Analogy bridge studio"
         title={<>Use familiar stories without losing technical precision.</>}
         lead="The analogy bridge gives every chapter an everyday doorway, a careful object-by-object mapping, the exact technical translation, a limits warning, and a transfer check so intuition helps instead of misleading."
       >
@@ -268,7 +285,7 @@ export default function Home() {
       </Section>
       <Section
         id="tutor"
-        eyebrow="00g - Socratic tutor studio"
+        eyebrow="00h - Socratic tutor studio"
         title={<>Ask beginner questions, then climb to technical answers.</>}
         lead="The Socratic tutor turns every chapter into a guided dialogue: ask the naive question, take a hint, draw the board, translate to exact RL language, and try a fresh case before continuing."
         tint
@@ -277,7 +294,7 @@ export default function Home() {
       </Section>
       <Section
         id="cases"
-        eyebrow="00h - Case study studio"
+        eyebrow="00i - Case study studio"
         title={<>See each chapter working inside a complete scenario.</>}
         lead="The case study studio ties the pieces together: a concrete world, board-frame walkthrough, exact technical translation, debug probe, and transfer challenge for every chapter."
       >
@@ -285,7 +302,7 @@ export default function Home() {
       </Section>
       <Section
         id="projects"
-        eyebrow="00i - Project studio"
+        eyebrow="00j - Project studio"
         title={<>Build, test, grade, and transfer every chapter.</>}
         lead="The project studio turns explanations into visible work: case artifacts, implementation experiments, capstone teach-backs, rubric checks, and transfer extensions for every chapter."
         tint
@@ -294,7 +311,7 @@ export default function Home() {
       </Section>
       <Section
         id="theater"
-        eyebrow="00j - Guided lecture theater"
+        eyebrow="00k - Guided lecture theater"
         title={<>Walk every chapter like a live lecture from zero to advanced.</>}
         lead="Each chapter now has a five-slide lecture arc: start from nothing, draw the world, name the technical objects, run one method by hand, and transfer the idea forward. Switch modes to see the beginner story, board picture, technical pass, equation lens, and teach-back check."
         tint
@@ -567,9 +584,10 @@ export default function Home() {
   );
 }
 
-function StandaloneBookPledge({ lectureBeats, manuscriptMoves, blackboardStages, sectionNarratives, guidedSectionModes, formulaLectureModes, zeroKnowledgeRungs, zeroKnowledgeModes, foundationTotal, foundationModes, foundationChapters, foundationTerms, foundationSources, mathTotal, mathModes, mathChapters, mathObjects, mathSymbols, mathSources, storyTotal, storyModes, storyChapters, storyScenes, storyActors, storyProps, storySources, analogyTotal, analogyModes, analogyChapters, analogyMappings, analogyAnchors, analogySources, tutorTotal, tutorModes, tutorChapters, tutorTurns, tutorBoardSteps, tutorAnchors, tutorSources, caseTotal, caseModes, caseChapters, caseFrames, caseCriteria, caseAnchors, caseSources, projectTotal, projectModes, projectChapters, projectMilestones, projectRubrics, projectDeliverables, projectSources, practiceCardTotal, practiceModes, conceptCardTotal, conceptModes, workedExampleTotal, workedExampleModes, misconceptionTotal, misconceptionModes, simulatorTotal, simulatorControls, simulatorReadouts, theaterTotal, theaterSlides, theaterModes, sectionMasteryTotal, sectionMasteryModes, sectionMasteryChapters, exerciseSolutionTotal, exerciseSolutionModes, exerciseSolutionChapters, searchEntryTotal, searchLayerTotal, searchChapterTotal, graphNodeTotal, graphEdgeTotal, graphChapterTotal, symbolCardTotal, symbolModeTotal, uniqueSymbols, symbolChapterTotal, codeLabTotal, codeLabModes, codeLabChapters, debugTotal, debugModes, debugChapters, debugRepairSteps, debugTestSteps, assumptionTotal, assumptionModes, assumptionChapters, proofTotal, proofModes, proofChapters, compareTotal, compareModes, compareChapters, compareFamilies, examTotal, examModes, examChapters }: { lectureBeats: number; manuscriptMoves: number; blackboardStages: number; sectionNarratives: number; guidedSectionModes: number; formulaLectureModes: number; zeroKnowledgeRungs: number; zeroKnowledgeModes: number; foundationTotal: number; foundationModes: number; foundationChapters: number; foundationTerms: number; foundationSources: number; mathTotal: number; mathModes: number; mathChapters: number; mathObjects: number; mathSymbols: number; mathSources: number; storyTotal: number; storyModes: number; storyChapters: number; storyScenes: number; storyActors: number; storyProps: number; storySources: number; analogyTotal: number; analogyModes: number; analogyChapters: number; analogyMappings: number; analogyAnchors: number; analogySources: number; tutorTotal: number; tutorModes: number; tutorChapters: number; tutorTurns: number; tutorBoardSteps: number; tutorAnchors: number; tutorSources: number; caseTotal: number; caseModes: number; caseChapters: number; caseFrames: number; caseCriteria: number; caseAnchors: number; caseSources: number; projectTotal: number; projectModes: number; projectChapters: number; projectMilestones: number; projectRubrics: number; projectDeliverables: number; projectSources: number; practiceCardTotal: number; practiceModes: number; conceptCardTotal: number; conceptModes: number; workedExampleTotal: number; workedExampleModes: number; misconceptionTotal: number; misconceptionModes: number; simulatorTotal: number; simulatorControls: number; simulatorReadouts: number; theaterTotal: number; theaterSlides: number; theaterModes: number; sectionMasteryTotal: number; sectionMasteryModes: number; sectionMasteryChapters: number; exerciseSolutionTotal: number; exerciseSolutionModes: number; exerciseSolutionChapters: number; searchEntryTotal: number; searchLayerTotal: number; searchChapterTotal: number; graphNodeTotal: number; graphEdgeTotal: number; graphChapterTotal: number; symbolCardTotal: number; symbolModeTotal: number; uniqueSymbols: number; symbolChapterTotal: number; codeLabTotal: number; codeLabModes: number; codeLabChapters: number; debugTotal: number; debugModes: number; debugChapters: number; debugRepairSteps: number; debugTestSteps: number; assumptionTotal: number; assumptionModes: number; assumptionChapters: number; proofTotal: number; proofModes: number; proofChapters: number; compareTotal: number; compareModes: number; compareChapters: number; compareFamilies: number; examTotal: number; examModes: number; examChapters: number }) {
+function StandaloneBookPledge({ lectureBeats, manuscriptMoves, blackboardStages, sectionNarratives, guidedSectionModes, formulaLectureModes, zeroKnowledgeRungs, zeroKnowledgeModes, readinessTotal, readinessModes, readinessChapters, readinessRescueSteps, readinessPrerequisites, foundationTotal, foundationModes, foundationChapters, foundationTerms, foundationSources, mathTotal, mathModes, mathChapters, mathObjects, mathSymbols, mathSources, storyTotal, storyModes, storyChapters, storyScenes, storyActors, storyProps, storySources, analogyTotal, analogyModes, analogyChapters, analogyMappings, analogyAnchors, analogySources, tutorTotal, tutorModes, tutorChapters, tutorTurns, tutorBoardSteps, tutorAnchors, tutorSources, caseTotal, caseModes, caseChapters, caseFrames, caseCriteria, caseAnchors, caseSources, projectTotal, projectModes, projectChapters, projectMilestones, projectRubrics, projectDeliverables, projectSources, practiceCardTotal, practiceModes, conceptCardTotal, conceptModes, workedExampleTotal, workedExampleModes, misconceptionTotal, misconceptionModes, simulatorTotal, simulatorControls, simulatorReadouts, theaterTotal, theaterSlides, theaterModes, sectionMasteryTotal, sectionMasteryModes, sectionMasteryChapters, exerciseSolutionTotal, exerciseSolutionModes, exerciseSolutionChapters, searchEntryTotal, searchLayerTotal, searchChapterTotal, graphNodeTotal, graphEdgeTotal, graphChapterTotal, symbolCardTotal, symbolModeTotal, uniqueSymbols, symbolChapterTotal, codeLabTotal, codeLabModes, codeLabChapters, debugTotal, debugModes, debugChapters, debugRepairSteps, debugTestSteps, assumptionTotal, assumptionModes, assumptionChapters, proofTotal, proofModes, proofChapters, compareTotal, compareModes, compareChapters, compareFamilies, examTotal, examModes, examChapters }: { lectureBeats: number; manuscriptMoves: number; blackboardStages: number; sectionNarratives: number; guidedSectionModes: number; formulaLectureModes: number; zeroKnowledgeRungs: number; zeroKnowledgeModes: number; readinessTotal: number; readinessModes: number; readinessChapters: number; readinessRescueSteps: number; readinessPrerequisites: number; foundationTotal: number; foundationModes: number; foundationChapters: number; foundationTerms: number; foundationSources: number; mathTotal: number; mathModes: number; mathChapters: number; mathObjects: number; mathSymbols: number; mathSources: number; storyTotal: number; storyModes: number; storyChapters: number; storyScenes: number; storyActors: number; storyProps: number; storySources: number; analogyTotal: number; analogyModes: number; analogyChapters: number; analogyMappings: number; analogyAnchors: number; analogySources: number; tutorTotal: number; tutorModes: number; tutorChapters: number; tutorTurns: number; tutorBoardSteps: number; tutorAnchors: number; tutorSources: number; caseTotal: number; caseModes: number; caseChapters: number; caseFrames: number; caseCriteria: number; caseAnchors: number; caseSources: number; projectTotal: number; projectModes: number; projectChapters: number; projectMilestones: number; projectRubrics: number; projectDeliverables: number; projectSources: number; practiceCardTotal: number; practiceModes: number; conceptCardTotal: number; conceptModes: number; workedExampleTotal: number; workedExampleModes: number; misconceptionTotal: number; misconceptionModes: number; simulatorTotal: number; simulatorControls: number; simulatorReadouts: number; theaterTotal: number; theaterSlides: number; theaterModes: number; sectionMasteryTotal: number; sectionMasteryModes: number; sectionMasteryChapters: number; exerciseSolutionTotal: number; exerciseSolutionModes: number; exerciseSolutionChapters: number; searchEntryTotal: number; searchLayerTotal: number; searchChapterTotal: number; graphNodeTotal: number; graphEdgeTotal: number; graphChapterTotal: number; symbolCardTotal: number; symbolModeTotal: number; uniqueSymbols: number; symbolChapterTotal: number; codeLabTotal: number; codeLabModes: number; codeLabChapters: number; debugTotal: number; debugModes: number; debugChapters: number; debugRepairSteps: number; debugTestSteps: number; assumptionTotal: number; assumptionModes: number; assumptionChapters: number; proofTotal: number; proofModes: number; proofChapters: number; compareTotal: number; compareModes: number; compareChapters: number; compareFamilies: number; examTotal: number; examModes: number; examChapters: number }) {
   const cards = [
     ["Start from zero", `${zeroKnowledgeRungs} zero-knowledge starter rungs and ${zeroKnowledgeModes} primer modes make every chapter begin with everyday intuition, a board picture, technical wording, and a practice check.`],
+    ["Check readiness", `${readinessTotal} readiness checks cover ${readinessChapters} chapters with ${readinessModes} diagnose, bridge, visual, technical, and exit modes, plus ${readinessRescueSteps} rescue steps and ${readinessPrerequisites} prerequisite handles so readers do not enter dense material cold.`],
     ["Define the language", `${foundationTotal} foundation dictionary cards cover ${foundationTerms} unique terms across ${foundationChapters} chapters and ${foundationSources} source layers with ${foundationModes} meaning, picture, technical, trap, and teach-back modes.`],
     ["Rescue the math", `${mathTotal} math rescue cards cover ${mathObjects} mathematical objects, ${mathSymbols} symbol handles, ${mathSources} source layers, and ${mathModes} intuition, picture, notation, chapter-use, and self-check modes across ${mathChapters} chapters.`],
     ["Visualize the story", `${storyTotal} visual story scenes cover ${storyScenes} scene titles, ${storyActors} actor handles, ${storyProps} visual props, ${storySources} source layers, and ${storyModes} scene, observe, move, technical, and check modes across ${storyChapters} chapters.`],
