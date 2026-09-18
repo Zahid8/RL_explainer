@@ -1,4 +1,5 @@
 import { algorithmCatalog, algorithmsForChapter } from "@/lib/algorithmCatalog";
+import { analogiesForChapter } from "@/lib/analogies";
 import { assumptionCardsForChapter } from "@/lib/assumptionClinic";
 import { sourceAuditsForChapter } from "@/lib/algorithmSourceAudit";
 import { chapterDependencyMap } from "@/lib/chapterDependencyMap";
@@ -37,6 +38,7 @@ export type BookIndexLayer =
   | "foundation dictionary"
   | "math rescue"
   | "visual story"
+  | "analogy bridge"
   | "lecture theater"
   | "symbol decoder"
   | "implementation code lab"
@@ -113,6 +115,7 @@ function buildBookIndexEntries(): BookIndexEntry[] {
     const foundationCards = foundationDictionaryCardsForChapter(chapter.n);
     const mathCards = mathRescueCardsForChapter(chapter.n);
     const visualStories = visualStoriesForChapter(chapter.n);
+    const analogies = analogiesForChapter(chapter.n);
     const theater = lectureTheaterForChapter(chapter.n);
     const symbolCards = symbolCardsForChapter(chapter.n);
     const codeCards = codeLabCardsForChapter(chapter.n);
@@ -238,6 +241,18 @@ function buildBookIndexEntries(): BookIndexEntry[] {
       technical: `${card.learnerMoves} Board animation: ${card.boardAnimation} Technical translation: ${card.technicalTranslation} Pitfall: ${card.pitfall} Check: ${card.checkpoint}`,
       tags: [card.sourceLabel, card.title, ...card.tags, `Chapter ${chapter.n}`],
       weight: 93,
+    }));
+
+    analogies.forEach((card) => add({
+      ...chapterBase,
+      id: card.id,
+      title: `Analogy bridge: ${card.title}`,
+      layer: "analogy bridge",
+      route: `/chapters/${chapter.n}#analogies`,
+      summary: `${card.everyday} Mapping: ${card.mapping.join(" ")}`,
+      technical: `${card.technical} Limits: ${card.limits} Transfer: ${card.transfer}`,
+      tags: [card.sourceLabel, card.anchor, ...card.tags, `Chapter ${chapter.n}`],
+      weight: 92,
     }));
 
     theater.slides.forEach((slide) => add({

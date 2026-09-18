@@ -8,6 +8,7 @@ const links = [
   ["foundations", "Foundations"],
   ["math", "Math"],
   ["stories", "Stories"],
+  ["analogies", "Analogies"],
   ["theater", "Theater"],
   ["sections", "Sections"],
   ["search", "Search"],
@@ -86,6 +87,7 @@ export function Nav() {
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/foundations">Foundations</a>
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/math">Math</a>
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/stories">Stories</a>
+          <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/analogies">Analogies</a>
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/sections">Sections</a>
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/search">Search</a>
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/graph">Graph</a>

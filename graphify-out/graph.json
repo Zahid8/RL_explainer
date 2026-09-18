@@ -9,7 +9,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/eslint.config.mjs",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_eslint_config_mjs",
-      "community": 86,
+      "community": 87,
       "norm_label": "eslint.config.mjs"
     },
     {
@@ -18,7 +18,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/next-env.d.ts",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_next_env_d_ts",
-      "community": 87,
+      "community": 88,
       "norm_label": "next-env.d.ts"
     },
     {
@@ -27,7 +27,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/postcss.config.mjs",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_postcss_config_mjs",
-      "community": 88,
+      "community": 89,
       "norm_label": "postcss.config.mjs"
     },
     {
@@ -36,7 +36,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/next.config.ts",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_next_config_ts",
-      "community": 89,
+      "community": 90,
       "norm_label": "next.config.ts"
     },
     {
@@ -108,7 +108,7 @@
       "source_file": "src/components/BookSearch.tsx",
       "source_location": "L1",
       "id": "src_components_booksearch_tsx",
-      "community": 90,
+      "community": 91,
       "norm_label": "booksearch.tsx"
     },
     {
@@ -223,7 +223,7 @@
       "label": "onScroll()",
       "file_type": "code",
       "source_file": "src/components/Nav.tsx",
-      "source_location": "L44",
+      "source_location": "L45",
       "id": "components_nav_onscroll",
       "community": 62,
       "norm_label": "onscroll()"
@@ -247,12 +247,30 @@
       "norm_label": "animatedconceptgraphic()"
     },
     {
+      "label": "AnalogyStudio.tsx",
+      "file_type": "code",
+      "source_file": "src/components/AnalogyStudio.tsx",
+      "source_location": "L1",
+      "id": "src_components_analogystudio_tsx",
+      "community": 64,
+      "norm_label": "analogystudio.tsx"
+    },
+    {
+      "label": "AnalogyStudio()",
+      "file_type": "code",
+      "source_file": "src/components/AnalogyStudio.tsx",
+      "source_location": "L18",
+      "id": "components_analogystudio_analogystudio",
+      "community": 64,
+      "norm_label": "analogystudio()"
+    },
+    {
       "label": "TermLab.tsx",
       "file_type": "code",
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/TermLab.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_termlab_tsx",
-      "community": 64,
+      "community": 65,
       "norm_label": "termlab.tsx"
     },
     {
@@ -261,7 +279,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/TermLab.tsx",
       "source_location": "L16",
       "id": "components_termlab_onkey",
-      "community": 64,
+      "community": 65,
       "norm_label": "onkey()"
     },
     {
@@ -270,7 +288,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/MotionGlyph.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_motionglyph_tsx",
-      "community": 65,
+      "community": 66,
       "norm_label": "motionglyph.tsx"
     },
     {
@@ -279,7 +297,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/MotionGlyph.tsx",
       "source_location": "L12",
       "id": "components_motionglyph_motionglyph",
-      "community": 65,
+      "community": 66,
       "norm_label": "motionglyph()"
     },
     {
@@ -288,7 +306,7 @@
       "source_file": "src/components/WorkedExampleStudio.tsx",
       "source_location": "L1",
       "id": "src_components_workedexamplestudio_tsx",
-      "community": 66,
+      "community": 67,
       "norm_label": "workedexamplestudio.tsx"
     },
     {
@@ -297,7 +315,7 @@
       "source_file": "src/components/WorkedExampleStudio.tsx",
       "source_location": "L18",
       "id": "components_workedexamplestudio_workedexamplestudio",
-      "community": 66,
+      "community": 67,
       "norm_label": "workedexamplestudio()"
     },
     {
@@ -306,7 +324,7 @@
       "source_file": "src/components/SectionMasteryStudio.tsx",
       "source_location": "L1",
       "id": "src_components_sectionmasterystudio_tsx",
-      "community": 67,
+      "community": 68,
       "norm_label": "sectionmasterystudio.tsx"
     },
     {
@@ -315,7 +333,7 @@
       "source_file": "src/components/SectionMasteryStudio.tsx",
       "source_location": "L18",
       "id": "components_sectionmasterystudio_sectionmasterystudio",
-      "community": 67,
+      "community": 68,
       "norm_label": "sectionmasterystudio()"
     },
     {
@@ -324,7 +342,7 @@
       "source_file": "src/components/FormulaLectureReader.tsx",
       "source_location": "L1",
       "id": "src_components_formulalecturereader_tsx",
-      "community": 91,
+      "community": 92,
       "norm_label": "formulalecturereader.tsx"
     },
     {
@@ -333,7 +351,7 @@
       "source_file": "src/components/ChapterPracticeCoach.tsx",
       "source_location": "L1",
       "id": "src_components_chapterpracticecoach_tsx",
-      "community": 68,
+      "community": 69,
       "norm_label": "chapterpracticecoach.tsx"
     },
     {
@@ -342,7 +360,7 @@
       "source_file": "src/components/ChapterPracticeCoach.tsx",
       "source_location": "L18",
       "id": "components_chapterpracticecoach_chapterpracticecoach",
-      "community": 68,
+      "community": 69,
       "norm_label": "chapterpracticecoach()"
     },
     {
@@ -351,7 +369,7 @@
       "source_file": "src/components/ConceptLectureDeck.tsx",
       "source_location": "L1",
       "id": "src_components_conceptlecturedeck_tsx",
-      "community": 69,
+      "community": 70,
       "norm_label": "conceptlecturedeck.tsx"
     },
     {
@@ -360,7 +378,7 @@
       "source_file": "src/components/ConceptLectureDeck.tsx",
       "source_location": "L18",
       "id": "components_conceptlecturedeck_conceptlecturedeck",
-      "community": 69,
+      "community": 70,
       "norm_label": "conceptlecturedeck()"
     },
     {
@@ -369,7 +387,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/Glossary.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_glossary_tsx",
-      "community": 92,
+      "community": 93,
       "norm_label": "glossary.tsx"
     },
     {
@@ -405,7 +423,7 @@
       "source_file": "src/components/Hero.tsx",
       "source_location": "L1",
       "id": "src_components_hero_tsx",
-      "community": 70,
+      "community": 71,
       "norm_label": "hero.tsx"
     },
     {
@@ -414,7 +432,7 @@
       "source_file": "src/components/Hero.tsx",
       "source_location": "L4",
       "id": "components_hero_hero",
-      "community": 70,
+      "community": 71,
       "norm_label": "hero()"
     },
     {
@@ -423,7 +441,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/AlgorithmPlayer.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_algorithmplayer_tsx",
-      "community": 93,
+      "community": 94,
       "norm_label": "algorithmplayer.tsx"
     },
     {
@@ -432,7 +450,7 @@
       "source_file": "src/components/ChapterSimulatorLab.tsx",
       "source_location": "L1",
       "id": "src_components_chaptersimulatorlab_tsx",
-      "community": 71,
+      "community": 72,
       "norm_label": "chaptersimulatorlab.tsx"
     },
     {
@@ -441,7 +459,7 @@
       "source_file": "src/components/ChapterSimulatorLab.tsx",
       "source_location": "L9",
       "id": "components_chaptersimulatorlab_chaptersimulatorlab",
-      "community": 71,
+      "community": 72,
       "norm_label": "chaptersimulatorlab()"
     },
     {
@@ -477,7 +495,7 @@
       "source_file": "src/components/InteractiveBlackboard.tsx",
       "source_location": "L1",
       "id": "src_components_interactiveblackboard_tsx",
-      "community": 94,
+      "community": 95,
       "norm_label": "interactiveblackboard.tsx"
     },
     {
@@ -486,7 +504,7 @@
       "source_file": "src/components/ZeroKnowledgeLadderReader.tsx",
       "source_location": "L1",
       "id": "src_components_zeroknowledgeladderreader_tsx",
-      "community": 72,
+      "community": 73,
       "norm_label": "zeroknowledgeladderreader.tsx"
     },
     {
@@ -495,7 +513,7 @@
       "source_file": "src/components/ZeroKnowledgeLadderReader.tsx",
       "source_location": "L17",
       "id": "components_zeroknowledgeladderreader_zeroknowledgeladderreader",
-      "community": 72,
+      "community": 73,
       "norm_label": "zeroknowledgeladderreader()"
     },
     {
@@ -531,7 +549,7 @@
       "source_file": "src/components/MisconceptionClinic.tsx",
       "source_location": "L1",
       "id": "src_components_misconceptionclinic_tsx",
-      "community": 73,
+      "community": 74,
       "norm_label": "misconceptionclinic.tsx"
     },
     {
@@ -540,7 +558,7 @@
       "source_file": "src/components/MisconceptionClinic.tsx",
       "source_location": "L18",
       "id": "components_misconceptionclinic_misconceptionclinic",
-      "community": 73,
+      "community": 74,
       "norm_label": "misconceptionclinic()"
     },
     {
@@ -576,7 +594,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/Math.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_math_tsx",
-      "community": 74,
+      "community": 75,
       "norm_label": "math.tsx"
     },
     {
@@ -585,7 +603,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/Math.tsx",
       "source_location": "L6",
       "id": "components_math_tex",
-      "community": 74,
+      "community": 75,
       "norm_label": "tex()"
     },
     {
@@ -594,7 +612,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/ChapterExplorer.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_chapterexplorer_tsx",
-      "community": 95,
+      "community": 96,
       "norm_label": "chapterexplorer.tsx"
     },
     {
@@ -603,7 +621,7 @@
       "source_file": "src/components/FormulaAtlas.tsx",
       "source_location": "L1",
       "id": "src_components_formulaatlas_tsx",
-      "community": 75,
+      "community": 76,
       "norm_label": "formulaatlas.tsx"
     },
     {
@@ -612,7 +630,7 @@
       "source_file": "src/components/FormulaAtlas.tsx",
       "source_location": "L13",
       "id": "components_formulaatlas_formulaatlas",
-      "community": 75,
+      "community": 76,
       "norm_label": "formulaatlas()"
     },
     {
@@ -621,7 +639,7 @@
       "source_file": "src/components/AssumptionClinic.tsx",
       "source_location": "L1",
       "id": "src_components_assumptionclinic_tsx",
-      "community": 24,
+      "community": 22,
       "norm_label": "assumptionclinic.tsx"
     },
     {
@@ -630,7 +648,7 @@
       "source_file": "src/components/AssumptionClinic.tsx",
       "source_location": "L17",
       "id": "components_assumptionclinic_assumptionclinic",
-      "community": 24,
+      "community": 22,
       "norm_label": "assumptionclinic()"
     },
     {
@@ -639,7 +657,7 @@
       "source_file": "src/components/AssumptionClinic.tsx",
       "source_location": "L105",
       "id": "components_assumptionclinic_numberedlist",
-      "community": 24,
+      "community": 22,
       "norm_label": "numberedlist()"
     },
     {
@@ -648,7 +666,7 @@
       "source_file": "src/components/AssumptionClinic.tsx",
       "source_location": "L109",
       "id": "components_assumptionclinic_modeheadline",
-      "community": 24,
+      "community": 22,
       "norm_label": "modeheadline()"
     },
     {
@@ -657,7 +675,7 @@
       "source_file": "src/components/ProofLab.tsx",
       "source_location": "L1",
       "id": "src_components_prooflab_tsx",
-      "community": 76,
+      "community": 77,
       "norm_label": "prooflab.tsx"
     },
     {
@@ -666,7 +684,7 @@
       "source_file": "src/components/ProofLab.tsx",
       "source_location": "L16",
       "id": "components_prooflab_prooflab",
-      "community": 76,
+      "community": 77,
       "norm_label": "prooflab()"
     },
     {
@@ -675,7 +693,7 @@
       "source_file": "src/components/Section.tsx",
       "source_location": "L1",
       "id": "src_components_section_tsx",
-      "community": 25,
+      "community": 23,
       "norm_label": "section.tsx"
     },
     {
@@ -684,7 +702,7 @@
       "source_file": "src/components/Section.tsx",
       "source_location": "L5",
       "id": "components_section_section",
-      "community": 25,
+      "community": 23,
       "norm_label": "section()"
     },
     {
@@ -693,7 +711,7 @@
       "source_file": "src/components/Section.tsx",
       "source_location": "L37",
       "id": "components_section_visualvariantforsection",
-      "community": 25,
+      "community": 23,
       "norm_label": "visualvariantforsection()"
     },
     {
@@ -702,7 +720,7 @@
       "source_file": "src/components/Section.tsx",
       "source_location": "L46",
       "id": "components_section_glyphvariantfortext",
-      "community": 25,
+      "community": 23,
       "norm_label": "glyphvariantfortext()"
     },
     {
@@ -738,7 +756,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/EquationWall.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_equationwall_tsx",
-      "community": 77,
+      "community": 78,
       "norm_label": "equationwall.tsx"
     },
     {
@@ -747,7 +765,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/EquationWall.tsx",
       "source_location": "L5",
       "id": "components_equationwall_equationwall",
-      "community": 77,
+      "community": 78,
       "norm_label": "equationwall()"
     },
     {
@@ -756,7 +774,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/BookMap.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_bookmap_tsx",
-      "community": 78,
+      "community": 79,
       "norm_label": "bookmap.tsx"
     },
     {
@@ -765,7 +783,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/BookMap.tsx",
       "source_location": "L4",
       "id": "components_bookmap_bookmap",
-      "community": 78,
+      "community": 79,
       "norm_label": "bookmap()"
     },
     {
@@ -774,7 +792,7 @@
       "source_file": "src/components/ChapterLectureTheater.tsx",
       "source_location": "L1",
       "id": "src_components_chapterlecturetheater_tsx",
-      "community": 79,
+      "community": 80,
       "norm_label": "chapterlecturetheater.tsx"
     },
     {
@@ -783,7 +801,7 @@
       "source_file": "src/components/ChapterLectureTheater.tsx",
       "source_location": "L16",
       "id": "components_chapterlecturetheater_chapterlecturetheater",
-      "community": 79,
+      "community": 80,
       "norm_label": "chapterlecturetheater()"
     },
     {
@@ -792,7 +810,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/three/SceneMount.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_three_scenemount_tsx",
-      "community": 80,
+      "community": 81,
       "norm_label": "scenemount.tsx"
     },
     {
@@ -801,7 +819,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/three/SceneMount.tsx",
       "source_location": "L7",
       "id": "three_scenemount_scenemount",
-      "community": 80,
+      "community": 81,
       "norm_label": "scenemount()"
     },
     {
@@ -810,7 +828,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/three/LearningLoopScene.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_three_learningloopscene_tsx",
-      "community": 96,
+      "community": 97,
       "norm_label": "learningloopscene.tsx"
     },
     {
@@ -846,7 +864,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/figures/TermGlyph.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_figures_termglyph_tsx",
-      "community": 81,
+      "community": 82,
       "norm_label": "termglyph.tsx"
     },
     {
@@ -855,7 +873,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/figures/TermGlyph.tsx",
       "source_location": "L3",
       "id": "figures_termglyph_bars",
-      "community": 81,
+      "community": 82,
       "norm_label": "bars()"
     },
     {
@@ -864,7 +882,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/components/figures/TraceLab.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_figures_tracelab_tsx",
-      "community": 97,
+      "community": 98,
       "norm_label": "tracelab.tsx"
     },
     {
@@ -907,7 +925,7 @@
       "label": "buildCoverageAudit()",
       "file_type": "code",
       "source_file": "src/lib/coverageAudit.ts",
-      "source_location": "L228",
+      "source_location": "L237",
       "id": "lib_coverageaudit_buildcoverageaudit",
       "community": 0,
       "norm_label": "buildcoverageaudit()"
@@ -916,7 +934,7 @@
       "label": "chapterCoverageRow()",
       "file_type": "code",
       "source_file": "src/lib/coverageAudit.ts",
-      "source_location": "L406",
+      "source_location": "L427",
       "id": "lib_coverageaudit_chaptercoveragerow",
       "community": 1,
       "norm_label": "chaptercoveragerow()"
@@ -925,7 +943,7 @@
       "label": "algorithmCoverageRow()",
       "file_type": "code",
       "source_file": "src/lib/coverageAudit.ts",
-      "source_location": "L622",
+      "source_location": "L650",
       "id": "lib_coverageaudit_algorithmcoveragerow",
       "community": 2,
       "norm_label": "algorithmcoveragerow()"
@@ -934,7 +952,7 @@
       "label": "requirementProofs()",
       "file_type": "code",
       "source_file": "src/lib/coverageAudit.ts",
-      "source_location": "L656",
+      "source_location": "L684",
       "id": "lib_coverageaudit_requirementproofs",
       "community": 0,
       "norm_label": "requirementproofs()"
@@ -945,7 +963,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/chapterSynthesis.ts",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_lib_chaptersynthesis_ts",
-      "community": 15,
+      "community": 17,
       "norm_label": "chaptersynthesis.ts"
     },
     {
@@ -954,7 +972,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/chapterSynthesis.ts",
       "source_location": "L39",
       "id": "lib_chaptersynthesis_chaptersynthesis",
-      "community": 15,
+      "community": 17,
       "norm_label": "chaptersynthesis()"
     },
     {
@@ -963,7 +981,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/chapterSynthesis.ts",
       "source_location": "L55",
       "id": "lib_chaptersynthesis_dependencystack",
-      "community": 15,
+      "community": 17,
       "norm_label": "dependencystack()"
     },
     {
@@ -972,7 +990,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/chapterSynthesis.ts",
       "source_location": "L94",
       "id": "lib_chaptersynthesis_ladderitem",
-      "community": 15,
+      "community": 17,
       "norm_label": "ladderitem()"
     },
     {
@@ -981,7 +999,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/chapterSynthesis.ts",
       "source_location": "L110",
       "id": "lib_chaptersynthesis_comparisonaxes",
-      "community": 15,
+      "community": 17,
       "norm_label": "comparisonaxes()"
     },
     {
@@ -990,7 +1008,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/chapterSynthesis.ts",
       "source_location": "L142",
       "id": "lib_chaptersynthesis_studyprotocol",
-      "community": 15,
+      "community": 17,
       "norm_label": "studyprotocol()"
     },
     {
@@ -999,7 +1017,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/chapterSynthesis.ts",
       "source_location": "L152",
       "id": "lib_chaptersynthesis_oralexamprompts",
-      "community": 15,
+      "community": 17,
       "norm_label": "oralexamprompts()"
     },
     {
@@ -1008,7 +1026,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/chapterSynthesis.ts",
       "source_location": "L175",
       "id": "lib_chaptersynthesis_implementationtest",
-      "community": 15,
+      "community": 17,
       "norm_label": "implementationtest()"
     },
     {
@@ -1017,7 +1035,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/chapterSynthesis.ts",
       "source_location": "L187",
       "id": "lib_chaptersynthesis_groupby",
-      "community": 15,
+      "community": 17,
       "norm_label": "groupby()"
     },
     {
@@ -1026,7 +1044,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/chapterSynthesis.ts",
       "source_location": "L196",
       "id": "lib_chaptersynthesis_summarizegroups",
-      "community": 15,
+      "community": 17,
       "norm_label": "summarizegroups()"
     },
     {
@@ -1035,7 +1053,7 @@
       "source_file": "src/lib/standaloneBook.ts",
       "source_location": "L1",
       "id": "src_lib_standalonebook_ts",
-      "community": 12,
+      "community": 15,
       "norm_label": "standalonebook.ts"
     },
     {
@@ -1053,7 +1071,7 @@
       "source_file": "src/lib/standaloneBook.ts",
       "source_location": "L255",
       "id": "lib_standalonebook_standalonelecturetilecount",
-      "community": 12,
+      "community": 15,
       "norm_label": "standalonelecturetilecount()"
     },
     {
@@ -1062,7 +1080,7 @@
       "source_file": "src/lib/standaloneBook.ts",
       "source_location": "L259",
       "id": "lib_standalonebook_vocabularyforchapter",
-      "community": 12,
+      "community": 15,
       "norm_label": "vocabularyforchapter()"
     },
     {
@@ -1071,7 +1089,7 @@
       "source_file": "src/lib/standaloneBook.ts",
       "source_location": "L274",
       "id": "lib_standalonebook_vocabularyitem",
-      "community": 12,
+      "community": 15,
       "norm_label": "vocabularyitem()"
     },
     {
@@ -1080,7 +1098,7 @@
       "source_file": "src/lib/standaloneBook.ts",
       "source_location": "L283",
       "id": "lib_standalonebook_uniqueterms",
-      "community": 12,
+      "community": 15,
       "norm_label": "uniqueterms()"
     },
     {
@@ -1089,7 +1107,7 @@
       "source_file": "src/lib/standaloneBook.ts",
       "source_location": "L294",
       "id": "lib_standalonebook_lecturebeat",
-      "community": 12,
+      "community": 15,
       "norm_label": "lecturebeat()"
     },
     {
@@ -1098,7 +1116,7 @@
       "source_file": "src/lib/standaloneBook.ts",
       "source_location": "L316",
       "id": "lib_standalonebook_questionforsection",
-      "community": 12,
+      "community": 15,
       "norm_label": "questionforsection()"
     },
     {
@@ -1107,7 +1125,7 @@
       "source_file": "src/lib/standaloneBook.ts",
       "source_location": "L326",
       "id": "lib_standalonebook_visualforsection",
-      "community": 12,
+      "community": 15,
       "norm_label": "visualforsection()"
     },
     {
@@ -1116,7 +1134,7 @@
       "source_file": "src/lib/standaloneBook.ts",
       "source_location": "L343",
       "id": "lib_standalonebook_handsonsequence",
-      "community": 12,
+      "community": 15,
       "norm_label": "handsonsequence()"
     },
     {
@@ -1125,7 +1143,7 @@
       "source_file": "src/lib/standaloneBook.ts",
       "source_location": "L353",
       "id": "lib_standalonebook_normalize",
-      "community": 12,
+      "community": 15,
       "norm_label": "normalize()"
     },
     {
@@ -1134,7 +1152,7 @@
       "source_file": "src/lib/standaloneBook.ts",
       "source_location": "L357",
       "id": "lib_standalonebook_termappearsinchapter",
-      "community": 12,
+      "community": 15,
       "norm_label": "termappearsinchapter()"
     },
     {
@@ -1143,7 +1161,7 @@
       "source_file": "src/lib/codeLab.ts",
       "source_location": "L1",
       "id": "src_lib_codelab_ts",
-      "community": 5,
+      "community": 6,
       "norm_label": "codelab.ts"
     },
     {
@@ -1152,7 +1170,7 @@
       "source_file": "src/lib/codeLab.ts",
       "source_location": "L25",
       "id": "lib_codelab_allcodelabcards",
-      "community": 5,
+      "community": 6,
       "norm_label": "allcodelabcards()"
     },
     {
@@ -1170,7 +1188,7 @@
       "source_file": "src/lib/codeLab.ts",
       "source_location": "L34",
       "id": "lib_codelab_codelabcardcount",
-      "community": 5,
+      "community": 6,
       "norm_label": "codelabcardcount()"
     },
     {
@@ -1179,7 +1197,7 @@
       "source_file": "src/lib/codeLab.ts",
       "source_location": "L38",
       "id": "lib_codelab_codelabmodecount",
-      "community": 5,
+      "community": 6,
       "norm_label": "codelabmodecount()"
     },
     {
@@ -1188,7 +1206,7 @@
       "source_file": "src/lib/codeLab.ts",
       "source_location": "L42",
       "id": "lib_codelab_codelabchaptercount",
-      "community": 5,
+      "community": 6,
       "norm_label": "codelabchaptercount()"
     },
     {
@@ -1197,7 +1215,7 @@
       "source_file": "src/lib/codeLab.ts",
       "source_location": "L46",
       "id": "lib_codelab_codelabcardforalgorithm",
-      "community": 5,
+      "community": 6,
       "norm_label": "codelabcardforalgorithm()"
     },
     {
@@ -1206,7 +1224,7 @@
       "source_file": "src/lib/codeLab.ts",
       "source_location": "L85",
       "id": "lib_codelab_pythonlikeskeleton",
-      "community": 5,
+      "community": 6,
       "norm_label": "pythonlikeskeleton()"
     },
     {
@@ -1215,7 +1233,7 @@
       "source_file": "src/lib/codeLab.ts",
       "source_location": "L107",
       "id": "lib_codelab_setupphrase",
-      "community": 5,
+      "community": 6,
       "norm_label": "setupphrase()"
     },
     {
@@ -1224,7 +1242,7 @@
       "source_file": "src/lib/codeLab.ts",
       "source_location": "L117",
       "id": "lib_codelab_targetphrase",
-      "community": 5,
+      "community": 6,
       "norm_label": "targetphrase()"
     },
     {
@@ -1233,7 +1251,7 @@
       "source_file": "src/lib/codeLab.ts",
       "source_location": "L127",
       "id": "lib_codelab_updatephrase",
-      "community": 5,
+      "community": 6,
       "norm_label": "updatephrase()"
     },
     {
@@ -1242,7 +1260,7 @@
       "source_file": "src/lib/codeLab.ts",
       "source_location": "L136",
       "id": "lib_codelab_statephrase",
-      "community": 5,
+      "community": 6,
       "norm_label": "statephrase()"
     },
     {
@@ -1251,7 +1269,7 @@
       "source_file": "src/lib/codeLab.ts",
       "source_location": "L146",
       "id": "lib_codelab_haystack",
-      "community": 5,
+      "community": 6,
       "norm_label": "haystack()"
     },
     {
@@ -1260,7 +1278,7 @@
       "source_file": "src/lib/codeLab.ts",
       "source_location": "L150",
       "id": "lib_codelab_compactlist",
-      "community": 5,
+      "community": 6,
       "norm_label": "compactlist()"
     },
     {
@@ -1269,7 +1287,7 @@
       "source_file": "src/lib/codeLab.ts",
       "source_location": "L154",
       "id": "lib_codelab_compacttags",
-      "community": 5,
+      "community": 6,
       "norm_label": "compacttags()"
     },
     {
@@ -1278,7 +1296,7 @@
       "source_file": "src/lib/codeLab.ts",
       "source_location": "L158",
       "id": "lib_codelab_slugfunction",
-      "community": 5,
+      "community": 6,
       "norm_label": "slugfunction()"
     },
     {
@@ -1287,7 +1305,7 @@
       "source_file": "src/lib/codeLab.ts",
       "source_location": "L163",
       "id": "lib_codelab_escapedoc",
-      "community": 5,
+      "community": 6,
       "norm_label": "escapedoc()"
     },
     {
@@ -1296,7 +1314,7 @@
       "source_file": "src/lib/codeLab.ts",
       "source_location": "L167",
       "id": "lib_codelab_codelabcardsforalgorithmfamily",
-      "community": 5,
+      "community": 6,
       "norm_label": "codelabcardsforalgorithmfamily()"
     },
     {
@@ -1530,7 +1548,7 @@
       "source_file": "src/lib/proofLab.ts",
       "source_location": "L51",
       "id": "lib_prooflab_chapterproofcard",
-      "community": 1,
+      "community": 7,
       "norm_label": "chapterproofcard()"
     },
     {
@@ -1611,7 +1629,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/mastery.ts",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_lib_mastery_ts",
-      "community": 98,
+      "community": 99,
       "norm_label": "mastery.ts"
     },
     {
@@ -1620,7 +1638,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/evidenceGuide.ts",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_lib_evidenceguide_ts",
-      "community": 82,
+      "community": 83,
       "norm_label": "evidenceguide.ts"
     },
     {
@@ -1629,7 +1647,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/evidenceGuide.ts",
       "source_location": "L13",
       "id": "lib_evidenceguide_item",
-      "community": 82,
+      "community": 83,
       "norm_label": "item()"
     },
     {
@@ -1638,7 +1656,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/deepDives.ts",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_lib_deepdives_ts",
-      "community": 83,
+      "community": 84,
       "norm_label": "deepdives.ts"
     },
     {
@@ -1647,8 +1665,134 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/deepDives.ts",
       "source_location": "L16",
       "id": "lib_deepdives_d",
-      "community": 83,
+      "community": 84,
       "norm_label": "d()"
+    },
+    {
+      "label": "analogies.ts",
+      "file_type": "code",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L1",
+      "id": "src_lib_analogies_ts",
+      "community": 9,
+      "norm_label": "analogies.ts"
+    },
+    {
+      "label": "allAnalogyCards()",
+      "file_type": "code",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L37",
+      "id": "lib_analogies_allanalogycards",
+      "community": 9,
+      "norm_label": "allanalogycards()"
+    },
+    {
+      "label": "analogiesForChapter()",
+      "file_type": "code",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L42",
+      "id": "lib_analogies_analogiesforchapter",
+      "community": 9,
+      "norm_label": "analogiesforchapter()"
+    },
+    {
+      "label": "analogyCardCount()",
+      "file_type": "code",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L60",
+      "id": "lib_analogies_analogycardcount",
+      "community": 9,
+      "norm_label": "analogycardcount()"
+    },
+    {
+      "label": "analogyModeCount()",
+      "file_type": "code",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L64",
+      "id": "lib_analogies_analogymodecount",
+      "community": 9,
+      "norm_label": "analogymodecount()"
+    },
+    {
+      "label": "analogyChapterCount()",
+      "file_type": "code",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L68",
+      "id": "lib_analogies_analogychaptercount",
+      "community": 9,
+      "norm_label": "analogychaptercount()"
+    },
+    {
+      "label": "analogySourceCount()",
+      "file_type": "code",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L72",
+      "id": "lib_analogies_analogysourcecount",
+      "community": 9,
+      "norm_label": "analogysourcecount()"
+    },
+    {
+      "label": "analogyAnchorCount()",
+      "file_type": "code",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L76",
+      "id": "lib_analogies_analogyanchorcount",
+      "community": 9,
+      "norm_label": "analogyanchorcount()"
+    },
+    {
+      "label": "analogyMappingCount()",
+      "file_type": "code",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L80",
+      "id": "lib_analogies_analogymappingcount",
+      "community": 9,
+      "norm_label": "analogymappingcount()"
+    },
+    {
+      "label": "analogyCandidatesForChapter()",
+      "file_type": "code",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L85",
+      "id": "lib_analogies_analogycandidatesforchapter",
+      "community": 1,
+      "norm_label": "analogycandidatesforchapter()"
+    },
+    {
+      "label": "roundRobinUnique()",
+      "file_type": "code",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L203",
+      "id": "lib_analogies_roundrobinunique",
+      "community": 9,
+      "norm_label": "roundrobinunique()"
+    },
+    {
+      "label": "compactTags()",
+      "file_type": "code",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L221",
+      "id": "lib_analogies_compacttags",
+      "community": 9,
+      "norm_label": "compacttags()"
+    },
+    {
+      "label": "normalize()",
+      "file_type": "code",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L225",
+      "id": "lib_analogies_normalize",
+      "community": 9,
+      "norm_label": "normalize()"
+    },
+    {
+      "label": "slug()",
+      "file_type": "code",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L229",
+      "id": "lib_analogies_slug",
+      "community": 9,
+      "norm_label": "slug()"
     },
     {
       "label": "paper.ts",
@@ -1656,7 +1800,7 @@
       "source_file": "src/lib/paper.ts",
       "source_location": "L1",
       "id": "src_lib_paper_ts",
-      "community": 99,
+      "community": 100,
       "norm_label": "paper.ts"
     },
     {
@@ -1665,7 +1809,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/gsap.ts",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_lib_gsap_ts",
-      "community": 100,
+      "community": 101,
       "norm_label": "gsap.ts"
     },
     {
@@ -1728,7 +1872,7 @@
       "source_file": "src/lib/chapterSimulators.ts",
       "source_location": "L109",
       "id": "lib_chaptersimulators_simulatorcount",
-      "community": 0,
+      "community": 1,
       "norm_label": "simulatorcount()"
     },
     {
@@ -1746,7 +1890,7 @@
       "source_file": "src/lib/chapterSimulators.ts",
       "source_location": "L117",
       "id": "lib_chaptersimulators_simulatorreadoutcount",
-      "community": 0,
+      "community": 1,
       "norm_label": "simulatorreadoutcount()"
     },
     {
@@ -1782,7 +1926,7 @@
       "source_file": "src/lib/foundationDictionary.ts",
       "source_location": "L1",
       "id": "src_lib_foundationdictionary_ts",
-      "community": 0,
+      "community": 10,
       "norm_label": "foundationdictionary.ts"
     },
     {
@@ -1791,7 +1935,7 @@
       "source_file": "src/lib/foundationDictionary.ts",
       "source_location": "L36",
       "id": "lib_foundationdictionary_allfoundationdictionarycards",
-      "community": 0,
+      "community": 10,
       "norm_label": "allfoundationdictionarycards()"
     },
     {
@@ -1800,7 +1944,7 @@
       "source_file": "src/lib/foundationDictionary.ts",
       "source_location": "L41",
       "id": "lib_foundationdictionary_foundationdictionarycardsforchapter",
-      "community": 1,
+      "community": 10,
       "norm_label": "foundationdictionarycardsforchapter()"
     },
     {
@@ -1809,7 +1953,7 @@
       "source_file": "src/lib/foundationDictionary.ts",
       "source_location": "L61",
       "id": "lib_foundationdictionary_foundationdictionarycardcount",
-      "community": 0,
+      "community": 10,
       "norm_label": "foundationdictionarycardcount()"
     },
     {
@@ -1818,7 +1962,7 @@
       "source_file": "src/lib/foundationDictionary.ts",
       "source_location": "L65",
       "id": "lib_foundationdictionary_foundationdictionarymodecount",
-      "community": 0,
+      "community": 10,
       "norm_label": "foundationdictionarymodecount()"
     },
     {
@@ -1827,7 +1971,7 @@
       "source_file": "src/lib/foundationDictionary.ts",
       "source_location": "L69",
       "id": "lib_foundationdictionary_foundationdictionarychaptercount",
-      "community": 0,
+      "community": 10,
       "norm_label": "foundationdictionarychaptercount()"
     },
     {
@@ -1836,7 +1980,7 @@
       "source_file": "src/lib/foundationDictionary.ts",
       "source_location": "L73",
       "id": "lib_foundationdictionary_foundationdictionarytermcount",
-      "community": 0,
+      "community": 10,
       "norm_label": "foundationdictionarytermcount()"
     },
     {
@@ -1845,7 +1989,7 @@
       "source_file": "src/lib/foundationDictionary.ts",
       "source_location": "L77",
       "id": "lib_foundationdictionary_foundationdictionarysourcecount",
-      "community": 0,
+      "community": 10,
       "norm_label": "foundationdictionarysourcecount()"
     },
     {
@@ -1863,7 +2007,7 @@
       "source_file": "src/lib/foundationDictionary.ts",
       "source_location": "L151",
       "id": "lib_foundationdictionary_roundrobinunique",
-      "community": 0,
+      "community": 10,
       "norm_label": "roundrobinunique()"
     },
     {
@@ -1872,7 +2016,7 @@
       "source_file": "src/lib/foundationDictionary.ts",
       "source_location": "L169",
       "id": "lib_foundationdictionary_neighboringterms",
-      "community": 0,
+      "community": 10,
       "norm_label": "neighboringterms()"
     },
     {
@@ -1881,7 +2025,7 @@
       "source_file": "src/lib/foundationDictionary.ts",
       "source_location": "L175",
       "id": "lib_foundationdictionary_compacttags",
-      "community": 0,
+      "community": 10,
       "norm_label": "compacttags()"
     },
     {
@@ -1890,7 +2034,7 @@
       "source_file": "src/lib/foundationDictionary.ts",
       "source_location": "L179",
       "id": "lib_foundationdictionary_normalize",
-      "community": 0,
+      "community": 10,
       "norm_label": "normalize()"
     },
     {
@@ -1899,7 +2043,7 @@
       "source_file": "src/lib/foundationDictionary.ts",
       "source_location": "L183",
       "id": "lib_foundationdictionary_slug",
-      "community": 0,
+      "community": 10,
       "norm_label": "slug()"
     },
     {
@@ -1908,7 +2052,7 @@
       "source_file": "src/lib/chapterExam.ts",
       "source_location": "L1",
       "id": "src_lib_chapterexam_ts",
-      "community": 17,
+      "community": 0,
       "norm_label": "chapterexam.ts"
     },
     {
@@ -1917,7 +2061,7 @@
       "source_file": "src/lib/chapterExam.ts",
       "source_location": "L33",
       "id": "lib_chapterexam_allchapterexamcards",
-      "community": 17,
+      "community": 0,
       "norm_label": "allchapterexamcards()"
     },
     {
@@ -1935,7 +2079,7 @@
       "source_file": "src/lib/chapterExam.ts",
       "source_location": "L241",
       "id": "lib_chapterexam_chapterexamcardcount",
-      "community": 17,
+      "community": 0,
       "norm_label": "chapterexamcardcount()"
     },
     {
@@ -1944,7 +2088,7 @@
       "source_file": "src/lib/chapterExam.ts",
       "source_location": "L245",
       "id": "lib_chapterexam_chapterexammodecount",
-      "community": 17,
+      "community": 0,
       "norm_label": "chapterexammodecount()"
     },
     {
@@ -1953,7 +2097,7 @@
       "source_file": "src/lib/chapterExam.ts",
       "source_location": "L249",
       "id": "lib_chapterexam_chapterexamchaptercount",
-      "community": 17,
+      "community": 0,
       "norm_label": "chapterexamchaptercount()"
     },
     {
@@ -1962,7 +2106,7 @@
       "source_file": "src/lib/chapterExam.ts",
       "source_location": "L253",
       "id": "lib_chapterexam_compactsentence",
-      "community": 17,
+      "community": 0,
       "norm_label": "compactsentence()"
     },
     {
@@ -1971,7 +2115,7 @@
       "source_file": "src/lib/chapterExam.ts",
       "source_location": "L258",
       "id": "lib_chapterexam_compacttags",
-      "community": 17,
+      "community": 0,
       "norm_label": "compacttags()"
     },
     {
@@ -1980,7 +2124,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/exerciseCoach.ts",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_lib_exercisecoach_ts",
-      "community": 101,
+      "community": 102,
       "norm_label": "exercisecoach.ts"
     },
     {
@@ -1989,7 +2133,7 @@
       "source_file": "src/lib/methodCompare.ts",
       "source_location": "L1",
       "id": "src_lib_methodcompare_ts",
-      "community": 6,
+      "community": 8,
       "norm_label": "methodcompare.ts"
     },
     {
@@ -1998,7 +2142,7 @@
       "source_file": "src/lib/methodCompare.ts",
       "source_location": "L32",
       "id": "lib_methodcompare_allmethodcomparecards",
-      "community": 6,
+      "community": 8,
       "norm_label": "allmethodcomparecards()"
     },
     {
@@ -2016,7 +2160,7 @@
       "source_file": "src/lib/methodCompare.ts",
       "source_location": "L41",
       "id": "lib_methodcompare_methodcomparecardsforfamily",
-      "community": 6,
+      "community": 8,
       "norm_label": "methodcomparecardsforfamily()"
     },
     {
@@ -2025,7 +2169,7 @@
       "source_file": "src/lib/methodCompare.ts",
       "source_location": "L45",
       "id": "lib_methodcompare_methodcomparecardcount",
-      "community": 6,
+      "community": 8,
       "norm_label": "methodcomparecardcount()"
     },
     {
@@ -2034,7 +2178,7 @@
       "source_file": "src/lib/methodCompare.ts",
       "source_location": "L49",
       "id": "lib_methodcompare_methodcomparemodecount",
-      "community": 6,
+      "community": 8,
       "norm_label": "methodcomparemodecount()"
     },
     {
@@ -2043,7 +2187,7 @@
       "source_file": "src/lib/methodCompare.ts",
       "source_location": "L53",
       "id": "lib_methodcompare_methodcomparechaptercount",
-      "community": 6,
+      "community": 8,
       "norm_label": "methodcomparechaptercount()"
     },
     {
@@ -2052,7 +2196,7 @@
       "source_file": "src/lib/methodCompare.ts",
       "source_location": "L57",
       "id": "lib_methodcompare_methodcomparefamilycount",
-      "community": 6,
+      "community": 8,
       "norm_label": "methodcomparefamilycount()"
     },
     {
@@ -2061,7 +2205,7 @@
       "source_file": "src/lib/methodCompare.ts",
       "source_location": "L61",
       "id": "lib_methodcompare_methodcomparecardforalgorithm",
-      "community": 6,
+      "community": 8,
       "norm_label": "methodcomparecardforalgorithm()"
     },
     {
@@ -2070,7 +2214,7 @@
       "source_file": "src/lib/methodCompare.ts",
       "source_location": "L106",
       "id": "lib_methodcompare_contrastalgorithm",
-      "community": 6,
+      "community": 8,
       "norm_label": "contrastalgorithm()"
     },
     {
@@ -2079,7 +2223,7 @@
       "source_file": "src/lib/methodCompare.ts",
       "source_location": "L120",
       "id": "lib_methodcompare_tradeoffframe",
-      "community": 6,
+      "community": 8,
       "norm_label": "tradeoffframe()"
     },
     {
@@ -2088,7 +2232,7 @@
       "source_file": "src/lib/methodCompare.ts",
       "source_location": "L124",
       "id": "lib_methodcompare_failureframe",
-      "community": 6,
+      "community": 8,
       "norm_label": "failureframe()"
     },
     {
@@ -2097,7 +2241,7 @@
       "source_file": "src/lib/methodCompare.ts",
       "source_location": "L130",
       "id": "lib_methodcompare_bridgeframe",
-      "community": 6,
+      "community": 8,
       "norm_label": "bridgeframe()"
     },
     {
@@ -2106,7 +2250,7 @@
       "source_file": "src/lib/methodCompare.ts",
       "source_location": "L134",
       "id": "lib_methodcompare_compactlist",
-      "community": 6,
+      "community": 8,
       "norm_label": "compactlist()"
     },
     {
@@ -2115,7 +2259,7 @@
       "source_file": "src/lib/methodCompare.ts",
       "source_location": "L138",
       "id": "lib_methodcompare_compacttags",
-      "community": 6,
+      "community": 8,
       "norm_label": "compacttags()"
     },
     {
@@ -2124,7 +2268,7 @@
       "source_file": "src/lib/methodCompare.ts",
       "source_location": "L142",
       "id": "lib_methodcompare_slug",
-      "community": 6,
+      "community": 8,
       "norm_label": "slug()"
     },
     {
@@ -2133,7 +2277,7 @@
       "source_file": "src/lib/mathRescue.ts",
       "source_location": "L1",
       "id": "src_lib_mathrescue_ts",
-      "community": 8,
+      "community": 0,
       "norm_label": "mathrescue.ts"
     },
     {
@@ -2142,7 +2286,7 @@
       "source_file": "src/lib/mathRescue.ts",
       "source_location": "L35",
       "id": "lib_mathrescue_allmathrescuecards",
-      "community": 8,
+      "community": 0,
       "norm_label": "allmathrescuecards()"
     },
     {
@@ -2151,7 +2295,7 @@
       "source_file": "src/lib/mathRescue.ts",
       "source_location": "L40",
       "id": "lib_mathrescue_mathrescuecardsforchapter",
-      "community": 8,
+      "community": 1,
       "norm_label": "mathrescuecardsforchapter()"
     },
     {
@@ -2160,7 +2304,7 @@
       "source_file": "src/lib/mathRescue.ts",
       "source_location": "L58",
       "id": "lib_mathrescue_mathrescuecardcount",
-      "community": 8,
+      "community": 0,
       "norm_label": "mathrescuecardcount()"
     },
     {
@@ -2169,7 +2313,7 @@
       "source_file": "src/lib/mathRescue.ts",
       "source_location": "L62",
       "id": "lib_mathrescue_mathrescuemodecount",
-      "community": 8,
+      "community": 0,
       "norm_label": "mathrescuemodecount()"
     },
     {
@@ -2178,7 +2322,7 @@
       "source_file": "src/lib/mathRescue.ts",
       "source_location": "L66",
       "id": "lib_mathrescue_mathrescuechaptercount",
-      "community": 8,
+      "community": 0,
       "norm_label": "mathrescuechaptercount()"
     },
     {
@@ -2187,7 +2331,7 @@
       "source_file": "src/lib/mathRescue.ts",
       "source_location": "L70",
       "id": "lib_mathrescue_mathrescueobjectcount",
-      "community": 8,
+      "community": 0,
       "norm_label": "mathrescueobjectcount()"
     },
     {
@@ -2196,7 +2340,7 @@
       "source_file": "src/lib/mathRescue.ts",
       "source_location": "L74",
       "id": "lib_mathrescue_mathrescuesymbolcount",
-      "community": 8,
+      "community": 0,
       "norm_label": "mathrescuesymbolcount()"
     },
     {
@@ -2205,7 +2349,7 @@
       "source_file": "src/lib/mathRescue.ts",
       "source_location": "L78",
       "id": "lib_mathrescue_mathrescuesourcecount",
-      "community": 8,
+      "community": 0,
       "norm_label": "mathrescuesourcecount()"
     },
     {
@@ -2223,7 +2367,7 @@
       "source_file": "src/lib/mathRescue.ts",
       "source_location": "L142",
       "id": "lib_mathrescue_roundrobinunique",
-      "community": 8,
+      "community": 0,
       "norm_label": "roundrobinunique()"
     },
     {
@@ -2232,7 +2376,7 @@
       "source_file": "src/lib/mathRescue.ts",
       "source_location": "L160",
       "id": "lib_mathrescue_infersymbols",
-      "community": 8,
+      "community": 0,
       "norm_label": "infersymbols()"
     },
     {
@@ -2241,7 +2385,7 @@
       "source_file": "src/lib/mathRescue.ts",
       "source_location": "L165",
       "id": "lib_mathrescue_compacttags",
-      "community": 8,
+      "community": 0,
       "norm_label": "compacttags()"
     },
     {
@@ -2250,7 +2394,7 @@
       "source_file": "src/lib/mathRescue.ts",
       "source_location": "L169",
       "id": "lib_mathrescue_normalize",
-      "community": 8,
+      "community": 0,
       "norm_label": "normalize()"
     },
     {
@@ -2259,7 +2403,7 @@
       "source_file": "src/lib/mathRescue.ts",
       "source_location": "L173",
       "id": "lib_mathrescue_slug",
-      "community": 8,
+      "community": 0,
       "norm_label": "slug()"
     },
     {
@@ -2268,7 +2412,7 @@
       "source_file": "src/lib/symbolAtlas.ts",
       "source_location": "L1",
       "id": "src_lib_symbolatlas_ts",
-      "community": 9,
+      "community": 11,
       "norm_label": "symbolatlas.ts"
     },
     {
@@ -2277,7 +2421,7 @@
       "source_file": "src/lib/symbolAtlas.ts",
       "source_location": "L25",
       "id": "lib_symbolatlas_allsymbolcards",
-      "community": 9,
+      "community": 11,
       "norm_label": "allsymbolcards()"
     },
     {
@@ -2286,7 +2430,7 @@
       "source_file": "src/lib/symbolAtlas.ts",
       "source_location": "L30",
       "id": "lib_symbolatlas_symbolcardsforchapter",
-      "community": 1,
+      "community": 11,
       "norm_label": "symbolcardsforchapter()"
     },
     {
@@ -2295,7 +2439,7 @@
       "source_file": "src/lib/symbolAtlas.ts",
       "source_location": "L34",
       "id": "lib_symbolatlas_symbolcardcount",
-      "community": 9,
+      "community": 11,
       "norm_label": "symbolcardcount()"
     },
     {
@@ -2304,7 +2448,7 @@
       "source_file": "src/lib/symbolAtlas.ts",
       "source_location": "L38",
       "id": "lib_symbolatlas_symbollecturemodecount",
-      "community": 9,
+      "community": 11,
       "norm_label": "symbollecturemodecount()"
     },
     {
@@ -2313,7 +2457,7 @@
       "source_file": "src/lib/symbolAtlas.ts",
       "source_location": "L42",
       "id": "lib_symbolatlas_uniquesymbolcount",
-      "community": 9,
+      "community": 11,
       "norm_label": "uniquesymbolcount()"
     },
     {
@@ -2322,7 +2466,7 @@
       "source_file": "src/lib/symbolAtlas.ts",
       "source_location": "L46",
       "id": "lib_symbolatlas_symbolchaptercount",
-      "community": 9,
+      "community": 11,
       "norm_label": "symbolchaptercount()"
     },
     {
@@ -2331,7 +2475,7 @@
       "source_file": "src/lib/symbolAtlas.ts",
       "source_location": "L50",
       "id": "lib_symbolatlas_buildsymbolcards",
-      "community": 9,
+      "community": 11,
       "norm_label": "buildsymbolcards()"
     },
     {
@@ -2340,7 +2484,7 @@
       "source_file": "src/lib/symbolAtlas.ts",
       "source_location": "L86",
       "id": "lib_symbolatlas_guideforsymbol",
-      "community": 9,
+      "community": 11,
       "norm_label": "guideforsymbol()"
     },
     {
@@ -2349,7 +2493,7 @@
       "source_file": "src/lib/symbolAtlas.ts",
       "source_location": "L185",
       "id": "lib_symbolatlas_guide",
-      "community": 9,
+      "community": 11,
       "norm_label": "guide()"
     },
     {
@@ -2358,7 +2502,7 @@
       "source_file": "src/lib/symbolAtlas.ts",
       "source_location": "L189",
       "id": "lib_symbolatlas_cleanspoken",
-      "community": 9,
+      "community": 11,
       "norm_label": "cleanspoken()"
     },
     {
@@ -2367,7 +2511,7 @@
       "source_file": "src/lib/symbolAtlas.ts",
       "source_location": "L199",
       "id": "lib_symbolatlas_compacttags",
-      "community": 9,
+      "community": 11,
       "norm_label": "compacttags()"
     },
     {
@@ -2376,7 +2520,7 @@
       "source_file": "src/lib/symbolAtlas.ts",
       "source_location": "L203",
       "id": "lib_symbolatlas_unique",
-      "community": 9,
+      "community": 11,
       "norm_label": "unique()"
     },
     {
@@ -2385,7 +2529,7 @@
       "source_file": "src/lib/symbolAtlas.ts",
       "source_location": "L207",
       "id": "lib_symbolatlas_slug",
-      "community": 9,
+      "community": 11,
       "norm_label": "slug()"
     },
     {
@@ -2394,7 +2538,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/algorithmDerivations.ts",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_lib_algorithmderivations_ts",
-      "community": 2,
+      "community": 13,
       "norm_label": "algorithmderivations.ts"
     },
     {
@@ -2403,7 +2547,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/algorithmDerivations.ts",
       "source_location": "L37",
       "id": "lib_algorithmderivations_algorithmderivation",
-      "community": 2,
+      "community": 13,
       "norm_label": "algorithmderivation()"
     },
     {
@@ -2412,7 +2556,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/algorithmDerivations.ts",
       "source_location": "L89",
       "id": "lib_algorithmderivations_derivationpreview",
-      "community": 2,
+      "community": 13,
       "norm_label": "derivationpreview()"
     },
     {
@@ -2421,7 +2565,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/algorithmDerivations.ts",
       "source_location": "L98",
       "id": "lib_algorithmderivations_classifyalgorithm",
-      "community": 2,
+      "community": 13,
       "norm_label": "classifyalgorithm()"
     },
     {
@@ -2430,7 +2574,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/algorithmDerivations.ts",
       "source_location": "L117",
       "id": "lib_algorithmderivations_estimatesubject",
-      "community": 2,
+      "community": 13,
       "norm_label": "estimatesubject()"
     },
     {
@@ -2439,7 +2583,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/algorithmDerivations.ts",
       "source_location": "L156",
       "id": "lib_algorithmderivations_targetconstruction",
-      "community": 2,
+      "community": 13,
       "norm_label": "targetconstruction()"
     },
     {
@@ -2448,7 +2592,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/algorithmDerivations.ts",
       "source_location": "L242",
       "id": "lib_algorithmderivations_errorsignal",
-      "community": 2,
+      "community": 13,
       "norm_label": "errorsignal()"
     },
     {
@@ -2457,7 +2601,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/algorithmDerivations.ts",
       "source_location": "L284",
       "id": "lib_algorithmderivations_creditassignment",
-      "community": 2,
+      "community": 13,
       "norm_label": "creditassignment()"
     },
     {
@@ -2466,7 +2610,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/algorithmDerivations.ts",
       "source_location": "L334",
       "id": "lib_algorithmderivations_controlmove",
-      "community": 2,
+      "community": 13,
       "norm_label": "controlmove()"
     },
     {
@@ -2475,7 +2619,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/algorithmDerivations.ts",
       "source_location": "L371",
       "id": "lib_algorithmderivations_stabilityrequirement",
-      "community": 2,
+      "community": 13,
       "norm_label": "stabilityrequirement()"
     },
     {
@@ -2484,7 +2628,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/algorithmDerivations.ts",
       "source_location": "L430",
       "id": "lib_algorithmderivations_equationnotes",
-      "community": 2,
+      "community": 13,
       "norm_label": "equationnotes()"
     },
     {
@@ -2493,7 +2637,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/algorithmDerivations.ts",
       "source_location": "L455",
       "id": "lib_algorithmderivations_codingtrace",
-      "community": 2,
+      "community": 13,
       "norm_label": "codingtrace()"
     },
     {
@@ -2754,23 +2898,23 @@
       "source_file": "src/lib/learningGraph.ts",
       "source_location": "L1",
       "id": "src_lib_learninggraph_ts",
-      "community": 11,
+      "community": 14,
       "norm_label": "learninggraph.ts"
     },
     {
       "label": "allLearningGraphs()",
       "file_type": "code",
       "source_file": "src/lib/learningGraph.ts",
-      "source_location": "L59",
+      "source_location": "L60",
       "id": "lib_learninggraph_alllearninggraphs",
-      "community": 11,
+      "community": 14,
       "norm_label": "alllearninggraphs()"
     },
     {
       "label": "learningGraphForChapter()",
       "file_type": "code",
       "source_file": "src/lib/learningGraph.ts",
-      "source_location": "L64",
+      "source_location": "L65",
       "id": "lib_learninggraph_learninggraphforchapter",
       "community": 1,
       "norm_label": "learninggraphforchapter()"
@@ -2779,72 +2923,72 @@
       "label": "learningGraphNodeCount()",
       "file_type": "code",
       "source_file": "src/lib/learningGraph.ts",
-      "source_location": "L618",
+      "source_location": "L651",
       "id": "lib_learninggraph_learninggraphnodecount",
-      "community": 11,
+      "community": 14,
       "norm_label": "learninggraphnodecount()"
     },
     {
       "label": "learningGraphEdgeCount()",
       "file_type": "code",
       "source_file": "src/lib/learningGraph.ts",
-      "source_location": "L623",
+      "source_location": "L656",
       "id": "lib_learninggraph_learninggraphedgecount",
-      "community": 11,
+      "community": 14,
       "norm_label": "learninggraphedgecount()"
     },
     {
       "label": "learningGraphChapterCount()",
       "file_type": "code",
       "source_file": "src/lib/learningGraph.ts",
-      "source_location": "L628",
+      "source_location": "L661",
       "id": "lib_learninggraph_learninggraphchaptercount",
-      "community": 11,
+      "community": 14,
       "norm_label": "learninggraphchaptercount()"
     },
     {
       "label": "ringPoint()",
       "file_type": "code",
       "source_file": "src/lib/learningGraph.ts",
-      "source_location": "L655",
+      "source_location": "L689",
       "id": "lib_learninggraph_ringpoint",
-      "community": 11,
+      "community": 14,
       "norm_label": "ringpoint()"
     },
     {
       "label": "nodeId()",
       "file_type": "code",
       "source_file": "src/lib/learningGraph.ts",
-      "source_location": "L680",
+      "source_location": "L715",
       "id": "lib_learninggraph_nodeid",
-      "community": 11,
+      "community": 14,
       "norm_label": "nodeid()"
     },
     {
       "label": "edgeId()",
       "file_type": "code",
       "source_file": "src/lib/learningGraph.ts",
-      "source_location": "L684",
+      "source_location": "L719",
       "id": "lib_learninggraph_edgeid",
-      "community": 11,
+      "community": 14,
       "norm_label": "edgeid()"
     },
     {
       "label": "compactTags()",
       "file_type": "code",
       "source_file": "src/lib/learningGraph.ts",
-      "source_location": "L688",
+      "source_location": "L723",
       "id": "lib_learninggraph_compacttags",
-      "community": 11,
+      "community": 14,
       "norm_label": "compacttags()"
     },
     {
       "label": "slug()",
       "file_type": "code",
       "source_file": "src/lib/learningGraph.ts",
-      "source_location": "L692",
+      "source_location": "L727",
       "id": "lib_learninggraph_slug",
-      "community": 11,
+      "community": 14,
       "norm_label": "slug()"
     },
     {
@@ -2853,7 +2997,7 @@
       "source_file": "src/lib/sectionMastery.ts",
       "source_location": "L1",
       "id": "src_lib_sectionmastery_ts",
-      "community": 13,
+      "community": 5,
       "norm_label": "sectionmastery.ts"
     },
     {
@@ -2862,7 +3006,7 @@
       "source_file": "src/lib/sectionMastery.ts",
       "source_location": "L26",
       "id": "lib_sectionmastery_allsectionmasterycards",
-      "community": 13,
+      "community": 5,
       "norm_label": "allsectionmasterycards()"
     },
     {
@@ -2880,7 +3024,7 @@
       "source_file": "src/lib/sectionMastery.ts",
       "source_location": "L61",
       "id": "lib_sectionmastery_sectionmasterycardcount",
-      "community": 13,
+      "community": 5,
       "norm_label": "sectionmasterycardcount()"
     },
     {
@@ -2889,7 +3033,7 @@
       "source_file": "src/lib/sectionMastery.ts",
       "source_location": "L65",
       "id": "lib_sectionmastery_sectionmasterymodecount",
-      "community": 13,
+      "community": 5,
       "norm_label": "sectionmasterymodecount()"
     },
     {
@@ -2898,7 +3042,7 @@
       "source_file": "src/lib/sectionMastery.ts",
       "source_location": "L69",
       "id": "lib_sectionmastery_sectionmasterychaptercount",
-      "community": 13,
+      "community": 5,
       "norm_label": "sectionmasterychaptercount()"
     },
     {
@@ -2907,7 +3051,7 @@
       "source_file": "src/lib/sectionMastery.ts",
       "source_location": "L73",
       "id": "lib_sectionmastery_compactlist",
-      "community": 13,
+      "community": 5,
       "norm_label": "compactlist()"
     },
     {
@@ -2916,7 +3060,7 @@
       "source_file": "src/lib/sectionMastery.ts",
       "source_location": "L77",
       "id": "lib_sectionmastery_compacttags",
-      "community": 13,
+      "community": 5,
       "norm_label": "compacttags()"
     },
     {
@@ -2925,7 +3069,7 @@
       "source_file": "src/lib/sectionMastery.ts",
       "source_location": "L81",
       "id": "lib_sectionmastery_stripsectionnumber",
-      "community": 13,
+      "community": 5,
       "norm_label": "stripsectionnumber()"
     },
     {
@@ -2934,7 +3078,7 @@
       "source_file": "src/lib/sectionMastery.ts",
       "source_location": "L85",
       "id": "lib_sectionmastery_slug",
-      "community": 13,
+      "community": 5,
       "norm_label": "slug()"
     },
     {
@@ -3087,7 +3231,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/motion.ts",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_lib_motion_ts",
-      "community": 84,
+      "community": 85,
       "norm_label": "motion.ts"
     },
     {
@@ -3096,7 +3240,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/motion.ts",
       "source_location": "L2",
       "id": "lib_motion_reduced",
-      "community": 84,
+      "community": 85,
       "norm_label": "reduced()"
     },
     {
@@ -3240,7 +3384,7 @@
       "source_file": "src/lib/conceptAtlas.ts",
       "source_location": "L1",
       "id": "src_lib_conceptatlas_ts",
-      "community": 19,
+      "community": 5,
       "norm_label": "conceptatlas.ts"
     },
     {
@@ -3258,7 +3402,7 @@
       "source_file": "src/lib/conceptAtlas.ts",
       "source_location": "L92",
       "id": "lib_conceptatlas_allconceptcards",
-      "community": 19,
+      "community": 5,
       "norm_label": "allconceptcards()"
     },
     {
@@ -3267,7 +3411,7 @@
       "source_file": "src/lib/conceptAtlas.ts",
       "source_location": "L96",
       "id": "lib_conceptatlas_conceptcardcount",
-      "community": 19,
+      "community": 5,
       "norm_label": "conceptcardcount()"
     },
     {
@@ -3276,7 +3420,7 @@
       "source_file": "src/lib/conceptAtlas.ts",
       "source_location": "L100",
       "id": "lib_conceptatlas_conceptmodecount",
-      "community": 19,
+      "community": 5,
       "norm_label": "conceptmodecount()"
     },
     {
@@ -3285,7 +3429,7 @@
       "source_file": "src/lib/conceptAtlas.ts",
       "source_location": "L104",
       "id": "lib_conceptatlas_candidatefromsection",
-      "community": 19,
+      "community": 5,
       "norm_label": "candidatefromsection()"
     },
     {
@@ -3294,7 +3438,7 @@
       "source_file": "src/lib/conceptAtlas.ts",
       "source_location": "L108",
       "id": "lib_conceptatlas_uniquecandidates",
-      "community": 19,
+      "community": 5,
       "norm_label": "uniquecandidates()"
     },
     {
@@ -3303,7 +3447,7 @@
       "source_file": "src/lib/conceptAtlas.ts",
       "source_location": "L120",
       "id": "lib_conceptatlas_inferkind",
-      "community": 19,
+      "community": 5,
       "norm_label": "inferkind()"
     },
     {
@@ -3312,7 +3456,7 @@
       "source_file": "src/lib/conceptAtlas.ts",
       "source_location": "L128",
       "id": "lib_conceptatlas_normalize",
-      "community": 19,
+      "community": 5,
       "norm_label": "normalize()"
     },
     {
@@ -3321,7 +3465,7 @@
       "source_file": "src/lib/conceptAtlas.ts",
       "source_location": "L132",
       "id": "lib_conceptatlas_slug",
-      "community": 19,
+      "community": 5,
       "norm_label": "slug()"
     },
     {
@@ -3465,59 +3609,59 @@
       "source_file": "src/lib/bookIndex.ts",
       "source_location": "L1",
       "id": "src_lib_bookindex_ts",
-      "community": 14,
+      "community": 16,
       "norm_label": "bookindex.ts"
     },
     {
       "label": "allBookIndexEntries()",
       "file_type": "code",
       "source_file": "src/lib/bookIndex.ts",
-      "source_location": "L83",
+      "source_location": "L85",
       "id": "lib_bookindex_allbookindexentries",
-      "community": 14,
+      "community": 16,
       "norm_label": "allbookindexentries()"
     },
     {
       "label": "bookIndexEntriesForChapter()",
       "file_type": "code",
       "source_file": "src/lib/bookIndex.ts",
-      "source_location": "L88",
+      "source_location": "L90",
       "id": "lib_bookindex_bookindexentriesforchapter",
-      "community": 14,
+      "community": 16,
       "norm_label": "bookindexentriesforchapter()"
     },
     {
       "label": "bookIndexEntryCount()",
       "file_type": "code",
       "source_file": "src/lib/bookIndex.ts",
-      "source_location": "L92",
+      "source_location": "L94",
       "id": "lib_bookindex_bookindexentrycount",
-      "community": 14,
+      "community": 16,
       "norm_label": "bookindexentrycount()"
     },
     {
       "label": "bookIndexLayerCount()",
       "file_type": "code",
       "source_file": "src/lib/bookIndex.ts",
-      "source_location": "L96",
+      "source_location": "L98",
       "id": "lib_bookindex_bookindexlayercount",
-      "community": 14,
+      "community": 16,
       "norm_label": "bookindexlayercount()"
     },
     {
       "label": "bookIndexChapterCount()",
       "file_type": "code",
       "source_file": "src/lib/bookIndex.ts",
-      "source_location": "L100",
+      "source_location": "L102",
       "id": "lib_bookindex_bookindexchaptercount",
-      "community": 14,
+      "community": 16,
       "norm_label": "bookindexchaptercount()"
     },
     {
       "label": "buildBookIndexEntries()",
       "file_type": "code",
       "source_file": "src/lib/bookIndex.ts",
-      "source_location": "L104",
+      "source_location": "L106",
       "id": "lib_bookindex_buildbookindexentries",
       "community": 1,
       "norm_label": "buildbookindexentries()"
@@ -3526,18 +3670,18 @@
       "label": "compactTags()",
       "file_type": "code",
       "source_file": "src/lib/bookIndex.ts",
-      "source_location": "L640",
+      "source_location": "L655",
       "id": "lib_bookindex_compacttags",
-      "community": 14,
+      "community": 16,
       "norm_label": "compacttags()"
     },
     {
       "label": "slug()",
       "file_type": "code",
       "source_file": "src/lib/bookIndex.ts",
-      "source_location": "L644",
+      "source_location": "L659",
       "id": "lib_bookindex_slug",
-      "community": 14,
+      "community": 16,
       "norm_label": "slug()"
     },
     {
@@ -3573,7 +3717,7 @@
       "source_file": "src/lib/chapterLectureTheater.ts",
       "source_location": "L178",
       "id": "lib_chapterlecturetheater_lecturetheatercount",
-      "community": 1,
+      "community": 0,
       "norm_label": "lecturetheatercount()"
     },
     {
@@ -3618,7 +3762,7 @@
       "source_file": "src/lib/exerciseSolutionStudio.ts",
       "source_location": "L1",
       "id": "src_lib_exercisesolutionstudio_ts",
-      "community": 10,
+      "community": 12,
       "norm_label": "exercisesolutionstudio.ts"
     },
     {
@@ -3627,7 +3771,7 @@
       "source_file": "src/lib/exerciseSolutionStudio.ts",
       "source_location": "L30",
       "id": "lib_exercisesolutionstudio_allexercisesolutioncards",
-      "community": 10,
+      "community": 12,
       "norm_label": "allexercisesolutioncards()"
     },
     {
@@ -3645,7 +3789,7 @@
       "source_file": "src/lib/exerciseSolutionStudio.ts",
       "source_location": "L39",
       "id": "lib_exercisesolutionstudio_exercisesolutioncardcount",
-      "community": 10,
+      "community": 12,
       "norm_label": "exercisesolutioncardcount()"
     },
     {
@@ -3654,7 +3798,7 @@
       "source_file": "src/lib/exerciseSolutionStudio.ts",
       "source_location": "L43",
       "id": "lib_exercisesolutionstudio_exercisesolutionmodecount",
-      "community": 10,
+      "community": 12,
       "norm_label": "exercisesolutionmodecount()"
     },
     {
@@ -3663,7 +3807,7 @@
       "source_file": "src/lib/exerciseSolutionStudio.ts",
       "source_location": "L47",
       "id": "lib_exercisesolutionstudio_exercisesolutionchaptercount",
-      "community": 10,
+      "community": 12,
       "norm_label": "exercisesolutionchaptercount()"
     },
     {
@@ -3672,7 +3816,7 @@
       "source_file": "src/lib/exerciseSolutionStudio.ts",
       "source_location": "L51",
       "id": "lib_exercisesolutionstudio_exercisesolutioncardforcoach",
-      "community": 10,
+      "community": 12,
       "norm_label": "exercisesolutioncardforcoach()"
     },
     {
@@ -3681,7 +3825,7 @@
       "source_file": "src/lib/exerciseSolutionStudio.ts",
       "source_location": "L105",
       "id": "lib_exercisesolutionstudio_solutionframe",
-      "community": 10,
+      "community": 12,
       "norm_label": "solutionframe()"
     },
     {
@@ -3690,7 +3834,7 @@
       "source_file": "src/lib/exerciseSolutionStudio.ts",
       "source_location": "L110",
       "id": "lib_exercisesolutionstudio_technicalframe",
-      "community": 10,
+      "community": 12,
       "norm_label": "technicalframe()"
     },
     {
@@ -3699,7 +3843,7 @@
       "source_file": "src/lib/exerciseSolutionStudio.ts",
       "source_location": "L114",
       "id": "lib_exercisesolutionstudio_kindframe",
-      "community": 10,
+      "community": 12,
       "norm_label": "kindframe()"
     },
     {
@@ -3708,7 +3852,7 @@
       "source_file": "src/lib/exerciseSolutionStudio.ts",
       "source_location": "L155",
       "id": "lib_exercisesolutionstudio_compactlist",
-      "community": 10,
+      "community": 12,
       "norm_label": "compactlist()"
     },
     {
@@ -3717,7 +3861,7 @@
       "source_file": "src/lib/exerciseSolutionStudio.ts",
       "source_location": "L159",
       "id": "lib_exercisesolutionstudio_compacttags",
-      "community": 10,
+      "community": 12,
       "norm_label": "compacttags()"
     },
     {
@@ -3726,7 +3870,7 @@
       "source_file": "src/lib/exerciseSolutionStudio.ts",
       "source_location": "L163",
       "id": "lib_exercisesolutionstudio_slug",
-      "community": 10,
+      "community": 12,
       "norm_label": "slug()"
     },
     {
@@ -3735,7 +3879,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/algorithmDossier.ts",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_lib_algorithmdossier_ts",
-      "community": 16,
+      "community": 2,
       "norm_label": "algorithmdossier.ts"
     },
     {
@@ -3744,7 +3888,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/algorithmDossier.ts",
       "source_location": "L12",
       "id": "lib_algorithmdossier_algorithmdossier",
-      "community": 16,
+      "community": 2,
       "norm_label": "algorithmdossier()"
     },
     {
@@ -3753,7 +3897,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/algorithmDossier.ts",
       "source_location": "L84",
       "id": "lib_algorithmdossier_inferknobs",
-      "community": 16,
+      "community": 2,
       "norm_label": "inferknobs()"
     },
     {
@@ -3762,7 +3906,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/algorithmDossier.ts",
       "source_location": "L115",
       "id": "lib_algorithmdossier_inferestimatorshape",
-      "community": 16,
+      "community": 2,
       "norm_label": "inferestimatorshape()"
     },
     {
@@ -3771,7 +3915,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/algorithmDossier.ts",
       "source_location": "L130",
       "id": "lib_algorithmdossier_inferbiasvarianceposition",
-      "community": 16,
+      "community": 2,
       "norm_label": "inferbiasvarianceposition()"
     },
     {
@@ -3780,7 +3924,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/algorithmDossier.ts",
       "source_location": "L142",
       "id": "lib_algorithmdossier_inferstabilitycontract",
-      "community": 16,
+      "community": 2,
       "norm_label": "inferstabilitycontract()"
     },
     {
@@ -3789,7 +3933,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/algorithmDossier.ts",
       "source_location": "L159",
       "id": "lib_algorithmdossier_inferimplementationinvariants",
-      "community": 16,
+      "community": 2,
       "norm_label": "inferimplementationinvariants()"
     },
     {
@@ -3798,7 +3942,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/algorithmDossier.ts",
       "source_location": "L182",
       "id": "lib_algorithmdossier_inferdiagnostics",
-      "community": 16,
+      "community": 2,
       "norm_label": "inferdiagnostics()"
     },
     {
@@ -3807,7 +3951,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/lib/algorithmDossier.ts",
       "source_location": "L199",
       "id": "lib_algorithmdossier_outputphrase",
-      "community": 16,
+      "community": 2,
       "norm_label": "outputphrase()"
     },
     {
@@ -4095,7 +4239,7 @@
       "source_file": "src/app/page.tsx",
       "source_location": "L1",
       "id": "src_app_page_tsx",
-      "community": 102,
+      "community": 103,
       "norm_label": "page.tsx"
     },
     {
@@ -4104,7 +4248,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/src/app/layout.tsx",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_src_app_layout_tsx",
-      "community": 103,
+      "community": 104,
       "norm_label": "layout.tsx"
     },
     {
@@ -4113,7 +4257,7 @@
       "source_file": "src/app/graph/page.tsx",
       "source_location": "L1",
       "id": "src_app_graph_page_tsx",
-      "community": 11,
+      "community": 14,
       "norm_label": "page.tsx"
     },
     {
@@ -4122,7 +4266,7 @@
       "source_file": "src/app/graph/page.tsx",
       "source_location": "L14",
       "id": "graph_page_graphpage",
-      "community": 11,
+      "community": 14,
       "norm_label": "graphpage()"
     },
     {
@@ -4131,7 +4275,7 @@
       "source_file": "src/app/math/page.tsx",
       "source_location": "L1",
       "id": "src_app_math_page_tsx",
-      "community": 8,
+      "community": 0,
       "norm_label": "page.tsx"
     },
     {
@@ -4140,16 +4284,16 @@
       "source_file": "src/app/math/page.tsx",
       "source_location": "L15",
       "id": "math_page_mathpage",
-      "community": 8,
+      "community": 0,
       "norm_label": "mathpage()"
     },
     {
       "label": "slug()",
       "file_type": "code",
       "source_file": "src/app/math/page.tsx",
-      "source_location": "L92",
+      "source_location": "L93",
       "id": "math_page_slug",
-      "community": 8,
+      "community": 0,
       "norm_label": "slug()"
     },
     {
@@ -4158,7 +4302,7 @@
       "source_file": "src/app/search/page.tsx",
       "source_location": "L1",
       "id": "src_app_search_page_tsx",
-      "community": 14,
+      "community": 16,
       "norm_label": "page.tsx"
     },
     {
@@ -4167,16 +4311,16 @@
       "source_file": "src/app/search/page.tsx",
       "source_location": "L16",
       "id": "search_page_searchpage",
-      "community": 14,
+      "community": 16,
       "norm_label": "searchpage()"
     },
     {
       "label": "layerBreakdown()",
       "file_type": "code",
       "source_file": "src/app/search/page.tsx",
-      "source_location": "L90",
+      "source_location": "L91",
       "id": "search_page_layerbreakdown",
-      "community": 14,
+      "community": 16,
       "norm_label": "layerbreakdown()"
     },
     {
@@ -4185,7 +4329,7 @@
       "source_file": "src/app/code/page.tsx",
       "source_location": "L1",
       "id": "src_app_code_page_tsx",
-      "community": 5,
+      "community": 6,
       "norm_label": "page.tsx"
     },
     {
@@ -4194,7 +4338,7 @@
       "source_file": "src/app/code/page.tsx",
       "source_location": "L14",
       "id": "code_page_codepage",
-      "community": 5,
+      "community": 6,
       "norm_label": "codepage()"
     },
     {
@@ -4218,6 +4362,33 @@
     {
       "label": "page.tsx",
       "file_type": "code",
+      "source_file": "src/app/analogies/page.tsx",
+      "source_location": "L1",
+      "id": "src_app_analogies_page_tsx",
+      "community": 9,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "AnalogiesPage()",
+      "file_type": "code",
+      "source_file": "src/app/analogies/page.tsx",
+      "source_location": "L15",
+      "id": "analogies_page_analogiespage",
+      "community": 9,
+      "norm_label": "analogiespage()"
+    },
+    {
+      "label": "slug()",
+      "file_type": "code",
+      "source_file": "src/app/analogies/page.tsx",
+      "source_location": "L92",
+      "id": "analogies_page_slug",
+      "community": 9,
+      "norm_label": "slug()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
       "source_file": "src/app/stories/page.tsx",
       "source_location": "L1",
       "id": "src_app_stories_page_tsx",
@@ -4237,7 +4408,7 @@
       "label": "slug()",
       "file_type": "code",
       "source_file": "src/app/stories/page.tsx",
-      "source_location": "L93",
+      "source_location": "L94",
       "id": "stories_page_slug",
       "community": 0,
       "norm_label": "slug()"
@@ -4248,16 +4419,16 @@
       "source_file": "src/app/coverage/page.tsx",
       "source_location": "L1",
       "id": "src_app_coverage_page_tsx",
-      "community": 85,
+      "community": 86,
       "norm_label": "page.tsx"
     },
     {
       "label": "SectionTitle()",
       "file_type": "code",
       "source_file": "src/app/coverage/page.tsx",
-      "source_location": "L314",
+      "source_location": "L320",
       "id": "coverage_page_sectiontitle",
-      "community": 85,
+      "community": 86,
       "norm_label": "sectiontitle()"
     },
     {
@@ -4266,7 +4437,7 @@
       "source_file": "src/app/symbols/page.tsx",
       "source_location": "L1",
       "id": "src_app_symbols_page_tsx",
-      "community": 9,
+      "community": 11,
       "norm_label": "page.tsx"
     },
     {
@@ -4275,7 +4446,7 @@
       "source_file": "src/app/symbols/page.tsx",
       "source_location": "L14",
       "id": "symbols_page_symbolspage",
-      "community": 9,
+      "community": 11,
       "norm_label": "symbolspage()"
     },
     {
@@ -4300,7 +4471,7 @@
       "label": "Stat()",
       "file_type": "code",
       "source_file": "src/app/proofs/page.tsx",
-      "source_location": "L89",
+      "source_location": "L90",
       "id": "proofs_page_stat",
       "community": 7,
       "norm_label": "stat()"
@@ -4311,7 +4482,7 @@
       "source_file": "src/app/algorithms/page.tsx",
       "source_location": "L1",
       "id": "src_app_algorithms_page_tsx",
-      "community": 104,
+      "community": 105,
       "norm_label": "page.tsx"
     },
     {
@@ -4320,7 +4491,7 @@
       "source_file": "src/app/sections/page.tsx",
       "source_location": "L1",
       "id": "src_app_sections_page_tsx",
-      "community": 13,
+      "community": 5,
       "norm_label": "page.tsx"
     },
     {
@@ -4329,7 +4500,7 @@
       "source_file": "src/app/sections/page.tsx",
       "source_location": "L15",
       "id": "sections_page_sectionspage",
-      "community": 13,
+      "community": 5,
       "norm_label": "sectionspage()"
     },
     {
@@ -4338,14 +4509,14 @@
       "source_file": "src/app/book/page.tsx",
       "source_location": "L1",
       "id": "src_app_book_page_tsx",
-      "community": 20,
+      "community": 0,
       "norm_label": "page.tsx"
     },
     {
       "label": "BookPage()",
       "file_type": "code",
       "source_file": "src/app/book/page.tsx",
-      "source_location": "L105",
+      "source_location": "L109",
       "id": "book_page_bookpage",
       "community": 0,
       "norm_label": "bookpage()"
@@ -4354,9 +4525,9 @@
       "label": "glyphVariantForLabel()",
       "file_type": "code",
       "source_file": "src/app/book/page.tsx",
-      "source_location": "L591",
+      "source_location": "L619",
       "id": "book_page_glyphvariantforlabel",
-      "community": 20,
+      "community": 0,
       "norm_label": "glyphvariantforlabel()"
     },
     {
@@ -4365,7 +4536,7 @@
       "source_file": "src/app/exercises/page.tsx",
       "source_location": "L1",
       "id": "src_app_exercises_page_tsx",
-      "community": 10,
+      "community": 12,
       "norm_label": "page.tsx"
     },
     {
@@ -4374,7 +4545,7 @@
       "source_file": "src/app/exercises/page.tsx",
       "source_location": "L15",
       "id": "exercises_page_exercisespage",
-      "community": 10,
+      "community": 12,
       "norm_label": "exercisespage()"
     },
     {
@@ -4383,7 +4554,7 @@
       "source_file": "src/app/compare/page.tsx",
       "source_location": "L1",
       "id": "src_app_compare_page_tsx",
-      "community": 6,
+      "community": 8,
       "norm_label": "page.tsx"
     },
     {
@@ -4392,16 +4563,16 @@
       "source_file": "src/app/compare/page.tsx",
       "source_location": "L15",
       "id": "compare_page_comparepage",
-      "community": 6,
+      "community": 8,
       "norm_label": "comparepage()"
     },
     {
       "label": "slug()",
       "file_type": "code",
       "source_file": "src/app/compare/page.tsx",
-      "source_location": "L95",
+      "source_location": "L96",
       "id": "compare_page_slug",
-      "community": 6,
+      "community": 8,
       "norm_label": "slug()"
     },
     {
@@ -4410,7 +4581,7 @@
       "source_file": "src/app/exam/page.tsx",
       "source_location": "L1",
       "id": "src_app_exam_page_tsx",
-      "community": 17,
+      "community": 0,
       "norm_label": "page.tsx"
     },
     {
@@ -4419,7 +4590,7 @@
       "source_file": "src/app/exam/page.tsx",
       "source_location": "L15",
       "id": "exam_page_exampage",
-      "community": 17,
+      "community": 0,
       "norm_label": "exampage()"
     },
     {
@@ -4428,7 +4599,7 @@
       "source_file": "src/app/foundations/page.tsx",
       "source_location": "L1",
       "id": "src_app_foundations_page_tsx",
-      "community": 0,
+      "community": 10,
       "norm_label": "page.tsx"
     },
     {
@@ -4437,16 +4608,16 @@
       "source_file": "src/app/foundations/page.tsx",
       "source_location": "L15",
       "id": "foundations_page_foundationspage",
-      "community": 0,
+      "community": 10,
       "norm_label": "foundationspage()"
     },
     {
       "label": "slug()",
       "file_type": "code",
       "source_file": "src/app/foundations/page.tsx",
-      "source_location": "L93",
+      "source_location": "L94",
       "id": "foundations_page_slug",
-      "community": 0,
+      "community": 10,
       "norm_label": "slug()"
     },
     {
@@ -4455,52 +4626,34 @@
       "source_file": "src/app/chapters/[chapter]/page.tsx",
       "source_location": "L1",
       "id": "src_app_chapters_chapter_page_tsx",
-      "community": 20,
+      "community": 24,
       "norm_label": "page.tsx"
     },
     {
       "label": "generateStaticParams()",
       "file_type": "code",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L74",
+      "source_location": "L76",
       "id": "chapter_page_generatestaticparams",
-      "community": 20,
+      "community": 24,
       "norm_label": "generatestaticparams()"
     },
     {
       "label": "generateMetadata()",
       "file_type": "code",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L78",
+      "source_location": "L80",
       "id": "chapter_page_generatemetadata",
-      "community": 20,
+      "community": 24,
       "norm_label": "generatemetadata()"
-    },
-    {
-      "label": "glyphAccentForLabel()",
-      "file_type": "code",
-      "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L713",
-      "id": "chapter_page_glyphaccentforlabel",
-      "community": 20,
-      "norm_label": "glyphaccentforlabel()"
-    },
-    {
-      "label": "ChapterExerciseSolutionBlock()",
-      "file_type": "code",
-      "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L721",
-      "id": "chapter_page_chapterexercisesolutionblock",
-      "community": 20,
-      "norm_label": "chapterexercisesolutionblock()"
     },
     {
       "label": "glyphVariantForLabel()",
       "file_type": "code",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L985",
+      "source_location": "L1013",
       "id": "chapter_page_glyphvariantforlabel",
-      "community": 20,
+      "community": 24,
       "norm_label": "glyphvariantforlabel()"
     },
     {
@@ -4509,7 +4662,7 @@
       "source_file": "tmp/check-section-mastery-audit.ts",
       "source_location": "L1",
       "id": "tmp_check_section_mastery_audit_ts",
-      "community": 105,
+      "community": 106,
       "norm_label": "check-section-mastery-audit.ts"
     },
     {
@@ -4518,7 +4671,7 @@
       "source_file": "tmp/qa/audit-section-mastery-studio.mjs",
       "source_location": "L1",
       "id": "tmp_qa_audit_section_mastery_studio_mjs",
-      "community": 26,
+      "community": 25,
       "norm_label": "audit-section-mastery-studio.mjs"
     },
     {
@@ -4527,7 +4680,7 @@
       "source_file": "tmp/qa/audit-section-mastery-studio.mjs",
       "source_location": "L11",
       "id": "qa_audit_section_mastery_studio_waitjson",
-      "community": 26,
+      "community": 25,
       "norm_label": "waitjson()"
     },
     {
@@ -4536,7 +4689,7 @@
       "source_file": "tmp/qa/audit-section-mastery-studio.mjs",
       "source_location": "L36",
       "id": "qa_audit_section_mastery_studio_send",
-      "community": 26,
+      "community": 25,
       "norm_label": "send()"
     },
     {
@@ -4545,7 +4698,7 @@
       "source_file": "tmp/qa/audit-section-mastery-studio.mjs",
       "source_location": "L41",
       "id": "qa_audit_section_mastery_studio_evaljs",
-      "community": 26,
+      "community": 25,
       "norm_label": "evaljs()"
     },
     {
@@ -4554,7 +4707,7 @@
       "source_file": "tmp/qa/audit-proof-lab.mjs",
       "source_location": "L1",
       "id": "tmp_qa_audit_proof_lab_mjs",
-      "community": 27,
+      "community": 26,
       "norm_label": "audit-proof-lab.mjs"
     },
     {
@@ -4563,7 +4716,7 @@
       "source_file": "tmp/qa/audit-proof-lab.mjs",
       "source_location": "L11",
       "id": "qa_audit_proof_lab_waitjson",
-      "community": 27,
+      "community": 26,
       "norm_label": "waitjson()"
     },
     {
@@ -4572,7 +4725,7 @@
       "source_file": "tmp/qa/audit-proof-lab.mjs",
       "source_location": "L36",
       "id": "qa_audit_proof_lab_send",
-      "community": 27,
+      "community": 26,
       "norm_label": "send()"
     },
     {
@@ -4581,7 +4734,7 @@
       "source_file": "tmp/qa/audit-proof-lab.mjs",
       "source_location": "L41",
       "id": "qa_audit_proof_lab_evaljs",
-      "community": 27,
+      "community": 26,
       "norm_label": "evaljs()"
     },
     {
@@ -4590,7 +4743,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-animation-routes.mjs",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_tmp_qa_audit_animation_routes_mjs",
-      "community": 21,
+      "community": 19,
       "norm_label": "audit-animation-routes.mjs"
     },
     {
@@ -4599,7 +4752,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-animation-routes.mjs",
       "source_location": "L10",
       "id": "qa_audit_animation_routes_waitjson",
-      "community": 21,
+      "community": 19,
       "norm_label": "waitjson()"
     },
     {
@@ -4608,7 +4761,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-animation-routes.mjs",
       "source_location": "L17",
       "id": "qa_audit_animation_routes_send",
-      "community": 21,
+      "community": 19,
       "norm_label": "send()"
     },
     {
@@ -4617,7 +4770,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-animation-routes.mjs",
       "source_location": "L18",
       "id": "qa_audit_animation_routes_evaljs",
-      "community": 21,
+      "community": 19,
       "norm_label": "evaljs()"
     },
     {
@@ -4626,7 +4779,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-animation-routes.mjs",
       "source_location": "L20",
       "id": "qa_audit_animation_routes_audit",
-      "community": 21,
+      "community": 19,
       "norm_label": "audit()"
     },
     {
@@ -4635,7 +4788,7 @@
       "source_file": "tmp/qa/audit-worked-example-studio.mjs",
       "source_location": "L1",
       "id": "tmp_qa_audit_worked_example_studio_mjs",
-      "community": 28,
+      "community": 27,
       "norm_label": "audit-worked-example-studio.mjs"
     },
     {
@@ -4644,7 +4797,7 @@
       "source_file": "tmp/qa/audit-worked-example-studio.mjs",
       "source_location": "L11",
       "id": "qa_audit_worked_example_studio_waitjson",
-      "community": 28,
+      "community": 27,
       "norm_label": "waitjson()"
     },
     {
@@ -4653,7 +4806,7 @@
       "source_file": "tmp/qa/audit-worked-example-studio.mjs",
       "source_location": "L36",
       "id": "qa_audit_worked_example_studio_send",
-      "community": 28,
+      "community": 27,
       "norm_label": "send()"
     },
     {
@@ -4662,7 +4815,7 @@
       "source_file": "tmp/qa/audit-worked-example-studio.mjs",
       "source_location": "L41",
       "id": "qa_audit_worked_example_studio_evaljs",
-      "community": 28,
+      "community": 27,
       "norm_label": "evaljs()"
     },
     {
@@ -4671,7 +4824,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-all-routes-no-overflow.mjs",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_tmp_qa_audit_all_routes_no_overflow_mjs",
-      "community": 22,
+      "community": 20,
       "norm_label": "audit-all-routes-no-overflow.mjs"
     },
     {
@@ -4680,7 +4833,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-all-routes-no-overflow.mjs",
       "source_location": "L4",
       "id": "qa_audit_all_routes_no_overflow_waitjson",
-      "community": 22,
+      "community": 20,
       "norm_label": "waitjson()"
     },
     {
@@ -4689,7 +4842,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-all-routes-no-overflow.mjs",
       "source_location": "L5",
       "id": "qa_audit_all_routes_no_overflow_send",
-      "community": 22,
+      "community": 20,
       "norm_label": "send()"
     },
     {
@@ -4698,7 +4851,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-all-routes-no-overflow.mjs",
       "source_location": "L5",
       "id": "qa_audit_all_routes_no_overflow_evaljs",
-      "community": 22,
+      "community": 20,
       "norm_label": "evaljs()"
     },
     {
@@ -4707,7 +4860,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-all-routes-no-overflow.mjs",
       "source_location": "L7",
       "id": "qa_audit_all_routes_no_overflow_audit",
-      "community": 22,
+      "community": 20,
       "norm_label": "audit()"
     },
     {
@@ -4716,7 +4869,7 @@
       "source_file": "tmp/qa/audit-zero-knowledge-reader.mjs",
       "source_location": "L1",
       "id": "tmp_qa_audit_zero_knowledge_reader_mjs",
-      "community": 29,
+      "community": 28,
       "norm_label": "audit-zero-knowledge-reader.mjs"
     },
     {
@@ -4725,7 +4878,7 @@
       "source_file": "tmp/qa/audit-zero-knowledge-reader.mjs",
       "source_location": "L11",
       "id": "qa_audit_zero_knowledge_reader_waitjson",
-      "community": 29,
+      "community": 28,
       "norm_label": "waitjson()"
     },
     {
@@ -4734,7 +4887,7 @@
       "source_file": "tmp/qa/audit-zero-knowledge-reader.mjs",
       "source_location": "L36",
       "id": "qa_audit_zero_knowledge_reader_send",
-      "community": 29,
+      "community": 28,
       "norm_label": "send()"
     },
     {
@@ -4743,7 +4896,7 @@
       "source_file": "tmp/qa/audit-zero-knowledge-reader.mjs",
       "source_location": "L41",
       "id": "qa_audit_zero_knowledge_reader_evaljs",
-      "community": 29,
+      "community": 28,
       "norm_label": "evaljs()"
     },
     {
@@ -4752,7 +4905,7 @@
       "source_file": "tmp/qa/audit-chapter-lecture-theater.mjs",
       "source_location": "L1",
       "id": "tmp_qa_audit_chapter_lecture_theater_mjs",
-      "community": 30,
+      "community": 29,
       "norm_label": "audit-chapter-lecture-theater.mjs"
     },
     {
@@ -4761,7 +4914,7 @@
       "source_file": "tmp/qa/audit-chapter-lecture-theater.mjs",
       "source_location": "L11",
       "id": "qa_audit_chapter_lecture_theater_waitjson",
-      "community": 30,
+      "community": 29,
       "norm_label": "waitjson()"
     },
     {
@@ -4770,7 +4923,7 @@
       "source_file": "tmp/qa/audit-chapter-lecture-theater.mjs",
       "source_location": "L36",
       "id": "qa_audit_chapter_lecture_theater_send",
-      "community": 30,
+      "community": 29,
       "norm_label": "send()"
     },
     {
@@ -4779,7 +4932,7 @@
       "source_file": "tmp/qa/audit-chapter-lecture-theater.mjs",
       "source_location": "L41",
       "id": "qa_audit_chapter_lecture_theater_evaljs",
-      "community": 30,
+      "community": 29,
       "norm_label": "evaljs()"
     },
     {
@@ -4788,7 +4941,7 @@
       "source_file": "tmp/qa/audit-concept-deck.mjs",
       "source_location": "L1",
       "id": "tmp_qa_audit_concept_deck_mjs",
-      "community": 31,
+      "community": 30,
       "norm_label": "audit-concept-deck.mjs"
     },
     {
@@ -4797,7 +4950,7 @@
       "source_file": "tmp/qa/audit-concept-deck.mjs",
       "source_location": "L11",
       "id": "qa_audit_concept_deck_waitjson",
-      "community": 31,
+      "community": 30,
       "norm_label": "waitjson()"
     },
     {
@@ -4806,7 +4959,7 @@
       "source_file": "tmp/qa/audit-concept-deck.mjs",
       "source_location": "L36",
       "id": "qa_audit_concept_deck_send",
-      "community": 31,
+      "community": 30,
       "norm_label": "send()"
     },
     {
@@ -4815,7 +4968,7 @@
       "source_file": "tmp/qa/audit-concept-deck.mjs",
       "source_location": "L41",
       "id": "qa_audit_concept_deck_evaljs",
-      "community": 31,
+      "community": 30,
       "norm_label": "evaljs()"
     },
     {
@@ -4824,7 +4977,7 @@
       "source_file": "tmp/qa/audit-formula-reader.mjs",
       "source_location": "L1",
       "id": "tmp_qa_audit_formula_reader_mjs",
-      "community": 32,
+      "community": 31,
       "norm_label": "audit-formula-reader.mjs"
     },
     {
@@ -4833,7 +4986,7 @@
       "source_file": "tmp/qa/audit-formula-reader.mjs",
       "source_location": "L11",
       "id": "qa_audit_formula_reader_waitjson",
-      "community": 32,
+      "community": 31,
       "norm_label": "waitjson()"
     },
     {
@@ -4842,7 +4995,7 @@
       "source_file": "tmp/qa/audit-formula-reader.mjs",
       "source_location": "L36",
       "id": "qa_audit_formula_reader_send",
-      "community": 32,
+      "community": 31,
       "norm_label": "send()"
     },
     {
@@ -4851,7 +5004,7 @@
       "source_file": "tmp/qa/audit-formula-reader.mjs",
       "source_location": "L41",
       "id": "qa_audit_formula_reader_evaljs",
-      "community": 32,
+      "community": 31,
       "norm_label": "evaljs()"
     },
     {
@@ -4860,7 +5013,7 @@
       "source_file": "tmp/qa/audit-code-lab.mjs",
       "source_location": "L1",
       "id": "tmp_qa_audit_code_lab_mjs",
-      "community": 33,
+      "community": 32,
       "norm_label": "audit-code-lab.mjs"
     },
     {
@@ -4869,7 +5022,7 @@
       "source_file": "tmp/qa/audit-code-lab.mjs",
       "source_location": "L11",
       "id": "qa_audit_code_lab_waitjson",
-      "community": 33,
+      "community": 32,
       "norm_label": "waitjson()"
     },
     {
@@ -4878,7 +5031,7 @@
       "source_file": "tmp/qa/audit-code-lab.mjs",
       "source_location": "L36",
       "id": "qa_audit_code_lab_send",
-      "community": 33,
+      "community": 32,
       "norm_label": "send()"
     },
     {
@@ -4887,7 +5040,7 @@
       "source_file": "tmp/qa/audit-code-lab.mjs",
       "source_location": "L41",
       "id": "qa_audit_code_lab_evaljs",
-      "community": 33,
+      "community": 32,
       "norm_label": "evaljs()"
     },
     {
@@ -4896,7 +5049,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-animation-summary.mjs",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_tmp_qa_audit_animation_summary_mjs",
-      "community": 23,
+      "community": 21,
       "norm_label": "audit-animation-summary.mjs"
     },
     {
@@ -4905,7 +5058,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-animation-summary.mjs",
       "source_location": "L5",
       "id": "qa_audit_animation_summary_waitjson",
-      "community": 23,
+      "community": 21,
       "norm_label": "waitjson()"
     },
     {
@@ -4914,7 +5067,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-animation-summary.mjs",
       "source_location": "L10",
       "id": "qa_audit_animation_summary_send",
-      "community": 23,
+      "community": 21,
       "norm_label": "send()"
     },
     {
@@ -4923,7 +5076,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-animation-summary.mjs",
       "source_location": "L11",
       "id": "qa_audit_animation_summary_evaljs",
-      "community": 23,
+      "community": 21,
       "norm_label": "evaljs()"
     },
     {
@@ -4932,7 +5085,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-animation-summary.mjs",
       "source_location": "L13",
       "id": "qa_audit_animation_summary_audit",
-      "community": 23,
+      "community": 21,
       "norm_label": "audit()"
     },
     {
@@ -4941,7 +5094,7 @@
       "source_file": "tmp/qa/audit-practice-coach.mjs",
       "source_location": "L1",
       "id": "tmp_qa_audit_practice_coach_mjs",
-      "community": 34,
+      "community": 33,
       "norm_label": "audit-practice-coach.mjs"
     },
     {
@@ -4950,7 +5103,7 @@
       "source_file": "tmp/qa/audit-practice-coach.mjs",
       "source_location": "L11",
       "id": "qa_audit_practice_coach_waitjson",
-      "community": 34,
+      "community": 33,
       "norm_label": "waitjson()"
     },
     {
@@ -4959,7 +5112,7 @@
       "source_file": "tmp/qa/audit-practice-coach.mjs",
       "source_location": "L36",
       "id": "qa_audit_practice_coach_send",
-      "community": 34,
+      "community": 33,
       "norm_label": "send()"
     },
     {
@@ -4968,7 +5121,7 @@
       "source_file": "tmp/qa/audit-practice-coach.mjs",
       "source_location": "L41",
       "id": "qa_audit_practice_coach_evaljs",
-      "community": 34,
+      "community": 33,
       "norm_label": "evaljs()"
     },
     {
@@ -4977,7 +5130,7 @@
       "source_file": "tmp/qa/audit-method-compare-studio.mjs",
       "source_location": "L1",
       "id": "tmp_qa_audit_method_compare_studio_mjs",
-      "community": 35,
+      "community": 34,
       "norm_label": "audit-method-compare-studio.mjs"
     },
     {
@@ -4986,7 +5139,7 @@
       "source_file": "tmp/qa/audit-method-compare-studio.mjs",
       "source_location": "L11",
       "id": "qa_audit_method_compare_studio_waitjson",
-      "community": 35,
+      "community": 34,
       "norm_label": "waitjson()"
     },
     {
@@ -4995,7 +5148,7 @@
       "source_file": "tmp/qa/audit-method-compare-studio.mjs",
       "source_location": "L36",
       "id": "qa_audit_method_compare_studio_send",
-      "community": 35,
+      "community": 34,
       "norm_label": "send()"
     },
     {
@@ -5004,7 +5157,7 @@
       "source_file": "tmp/qa/audit-method-compare-studio.mjs",
       "source_location": "L41",
       "id": "qa_audit_method_compare_studio_evaljs",
-      "community": 35,
+      "community": 34,
       "norm_label": "evaljs()"
     },
     {
@@ -5013,7 +5166,7 @@
       "source_file": "tmp/qa/audit-chapter-simulator-lab.mjs",
       "source_location": "L1",
       "id": "tmp_qa_audit_chapter_simulator_lab_mjs",
-      "community": 36,
+      "community": 35,
       "norm_label": "audit-chapter-simulator-lab.mjs"
     },
     {
@@ -5022,7 +5175,7 @@
       "source_file": "tmp/qa/audit-chapter-simulator-lab.mjs",
       "source_location": "L11",
       "id": "qa_audit_chapter_simulator_lab_waitjson",
-      "community": 36,
+      "community": 35,
       "norm_label": "waitjson()"
     },
     {
@@ -5031,7 +5184,7 @@
       "source_file": "tmp/qa/audit-chapter-simulator-lab.mjs",
       "source_location": "L36",
       "id": "qa_audit_chapter_simulator_lab_send",
-      "community": 36,
+      "community": 35,
       "norm_label": "send()"
     },
     {
@@ -5040,7 +5193,7 @@
       "source_file": "tmp/qa/audit-chapter-simulator-lab.mjs",
       "source_location": "L41",
       "id": "qa_audit_chapter_simulator_lab_evaljs",
-      "community": 36,
+      "community": 35,
       "norm_label": "evaljs()"
     },
     {
@@ -5049,7 +5202,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-interactions.mjs",
       "source_location": "L1",
       "id": "home_zahid_projects_rl_bok_rlbook_explainer_tmp_qa_audit_interactions_mjs",
-      "community": 37,
+      "community": 36,
       "norm_label": "audit-interactions.mjs"
     },
     {
@@ -5058,7 +5211,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-interactions.mjs",
       "source_location": "L13",
       "id": "qa_audit_interactions_waitjson",
-      "community": 37,
+      "community": 36,
       "norm_label": "waitjson()"
     },
     {
@@ -5067,7 +5220,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-interactions.mjs",
       "source_location": "L38",
       "id": "qa_audit_interactions_send",
-      "community": 37,
+      "community": 36,
       "norm_label": "send()"
     },
     {
@@ -5076,7 +5229,7 @@
       "source_file": "/home/zahid/Projects/rl_bok/rlbook-explainer/tmp/qa/audit-interactions.mjs",
       "source_location": "L43",
       "id": "qa_audit_interactions_evaljs",
-      "community": 37,
+      "community": 36,
       "norm_label": "evaljs()"
     },
     {
@@ -5085,7 +5238,7 @@
       "source_file": "tmp/qa/audit-learning-graph.mjs",
       "source_location": "L1",
       "id": "tmp_qa_audit_learning_graph_mjs",
-      "community": 38,
+      "community": 37,
       "norm_label": "audit-learning-graph.mjs"
     },
     {
@@ -5094,7 +5247,7 @@
       "source_file": "tmp/qa/audit-learning-graph.mjs",
       "source_location": "L11",
       "id": "qa_audit_learning_graph_waitjson",
-      "community": 38,
+      "community": 37,
       "norm_label": "waitjson()"
     },
     {
@@ -5103,7 +5256,7 @@
       "source_file": "tmp/qa/audit-learning-graph.mjs",
       "source_location": "L36",
       "id": "qa_audit_learning_graph_send",
-      "community": 38,
+      "community": 37,
       "norm_label": "send()"
     },
     {
@@ -5112,7 +5265,7 @@
       "source_file": "tmp/qa/audit-learning-graph.mjs",
       "source_location": "L41",
       "id": "qa_audit_learning_graph_evaljs",
-      "community": 38,
+      "community": 37,
       "norm_label": "evaljs()"
     },
     {
@@ -5121,7 +5274,7 @@
       "source_file": "tmp/qa/audit-book-search.mjs",
       "source_location": "L1",
       "id": "tmp_qa_audit_book_search_mjs",
-      "community": 39,
+      "community": 38,
       "norm_label": "audit-book-search.mjs"
     },
     {
@@ -5130,7 +5283,7 @@
       "source_file": "tmp/qa/audit-book-search.mjs",
       "source_location": "L11",
       "id": "qa_audit_book_search_waitjson",
-      "community": 39,
+      "community": 38,
       "norm_label": "waitjson()"
     },
     {
@@ -5139,7 +5292,7 @@
       "source_file": "tmp/qa/audit-book-search.mjs",
       "source_location": "L36",
       "id": "qa_audit_book_search_send",
-      "community": 39,
+      "community": 38,
       "norm_label": "send()"
     },
     {
@@ -5148,7 +5301,7 @@
       "source_file": "tmp/qa/audit-book-search.mjs",
       "source_location": "L41",
       "id": "qa_audit_book_search_evaljs",
-      "community": 39,
+      "community": 38,
       "norm_label": "evaljs()"
     },
     {
@@ -5157,7 +5310,7 @@
       "source_file": "tmp/qa/audit-foundation-dictionary-studio.mjs",
       "source_location": "L1",
       "id": "tmp_qa_audit_foundation_dictionary_studio_mjs",
-      "community": 40,
+      "community": 39,
       "norm_label": "audit-foundation-dictionary-studio.mjs"
     },
     {
@@ -5166,7 +5319,7 @@
       "source_file": "tmp/qa/audit-foundation-dictionary-studio.mjs",
       "source_location": "L11",
       "id": "qa_audit_foundation_dictionary_studio_waitjson",
-      "community": 40,
+      "community": 39,
       "norm_label": "waitjson()"
     },
     {
@@ -5175,7 +5328,7 @@
       "source_file": "tmp/qa/audit-foundation-dictionary-studio.mjs",
       "source_location": "L36",
       "id": "qa_audit_foundation_dictionary_studio_send",
-      "community": 40,
+      "community": 39,
       "norm_label": "send()"
     },
     {
@@ -5184,7 +5337,7 @@
       "source_file": "tmp/qa/audit-foundation-dictionary-studio.mjs",
       "source_location": "L41",
       "id": "qa_audit_foundation_dictionary_studio_evaljs",
-      "community": 40,
+      "community": 39,
       "norm_label": "evaljs()"
     },
     {
@@ -5193,7 +5346,7 @@
       "source_file": "tmp/qa/audit-math-rescue-studio.mjs",
       "source_location": "L1",
       "id": "tmp_qa_audit_math_rescue_studio_mjs",
-      "community": 41,
+      "community": 40,
       "norm_label": "audit-math-rescue-studio.mjs"
     },
     {
@@ -5202,7 +5355,7 @@
       "source_file": "tmp/qa/audit-math-rescue-studio.mjs",
       "source_location": "L11",
       "id": "qa_audit_math_rescue_studio_waitjson",
-      "community": 41,
+      "community": 40,
       "norm_label": "waitjson()"
     },
     {
@@ -5211,7 +5364,7 @@
       "source_file": "tmp/qa/audit-math-rescue-studio.mjs",
       "source_location": "L36",
       "id": "qa_audit_math_rescue_studio_send",
-      "community": 41,
+      "community": 40,
       "norm_label": "send()"
     },
     {
@@ -5220,7 +5373,7 @@
       "source_file": "tmp/qa/audit-math-rescue-studio.mjs",
       "source_location": "L41",
       "id": "qa_audit_math_rescue_studio_evaljs",
-      "community": 41,
+      "community": 40,
       "norm_label": "evaljs()"
     },
     {
@@ -5229,7 +5382,7 @@
       "source_file": "tmp/qa/audit-misconception-clinic.mjs",
       "source_location": "L1",
       "id": "tmp_qa_audit_misconception_clinic_mjs",
-      "community": 42,
+      "community": 41,
       "norm_label": "audit-misconception-clinic.mjs"
     },
     {
@@ -5238,7 +5391,7 @@
       "source_file": "tmp/qa/audit-misconception-clinic.mjs",
       "source_location": "L11",
       "id": "qa_audit_misconception_clinic_waitjson",
-      "community": 42,
+      "community": 41,
       "norm_label": "waitjson()"
     },
     {
@@ -5247,7 +5400,7 @@
       "source_file": "tmp/qa/audit-misconception-clinic.mjs",
       "source_location": "L36",
       "id": "qa_audit_misconception_clinic_send",
-      "community": 42,
+      "community": 41,
       "norm_label": "send()"
     },
     {
@@ -5256,7 +5409,7 @@
       "source_file": "tmp/qa/audit-misconception-clinic.mjs",
       "source_location": "L41",
       "id": "qa_audit_misconception_clinic_evaljs",
-      "community": 42,
+      "community": 41,
       "norm_label": "evaljs()"
     },
     {
@@ -5265,7 +5418,7 @@
       "source_file": "tmp/qa/audit-assumption-clinic.mjs",
       "source_location": "L1",
       "id": "tmp_qa_audit_assumption_clinic_mjs",
-      "community": 43,
+      "community": 42,
       "norm_label": "audit-assumption-clinic.mjs"
     },
     {
@@ -5274,7 +5427,7 @@
       "source_file": "tmp/qa/audit-assumption-clinic.mjs",
       "source_location": "L11",
       "id": "qa_audit_assumption_clinic_waitjson",
-      "community": 43,
+      "community": 42,
       "norm_label": "waitjson()"
     },
     {
@@ -5283,7 +5436,7 @@
       "source_file": "tmp/qa/audit-assumption-clinic.mjs",
       "source_location": "L36",
       "id": "qa_audit_assumption_clinic_send",
-      "community": 43,
+      "community": 42,
       "norm_label": "send()"
     },
     {
@@ -5292,7 +5445,7 @@
       "source_file": "tmp/qa/audit-assumption-clinic.mjs",
       "source_location": "L41",
       "id": "qa_audit_assumption_clinic_evaljs",
-      "community": 43,
+      "community": 42,
       "norm_label": "evaljs()"
     },
     {
@@ -5301,7 +5454,7 @@
       "source_file": "tmp/qa/audit-symbol-decoder.mjs",
       "source_location": "L1",
       "id": "tmp_qa_audit_symbol_decoder_mjs",
-      "community": 44,
+      "community": 43,
       "norm_label": "audit-symbol-decoder.mjs"
     },
     {
@@ -5310,7 +5463,7 @@
       "source_file": "tmp/qa/audit-symbol-decoder.mjs",
       "source_location": "L11",
       "id": "qa_audit_symbol_decoder_waitjson",
-      "community": 44,
+      "community": 43,
       "norm_label": "waitjson()"
     },
     {
@@ -5319,7 +5472,7 @@
       "source_file": "tmp/qa/audit-symbol-decoder.mjs",
       "source_location": "L36",
       "id": "qa_audit_symbol_decoder_send",
-      "community": 44,
+      "community": 43,
       "norm_label": "send()"
     },
     {
@@ -5328,7 +5481,7 @@
       "source_file": "tmp/qa/audit-symbol-decoder.mjs",
       "source_location": "L41",
       "id": "qa_audit_symbol_decoder_evaljs",
-      "community": 44,
+      "community": 43,
       "norm_label": "evaljs()"
     },
     {
@@ -5337,7 +5490,7 @@
       "source_file": "tmp/qa/audit-exercise-solution-studio.mjs",
       "source_location": "L1",
       "id": "tmp_qa_audit_exercise_solution_studio_mjs",
-      "community": 45,
+      "community": 44,
       "norm_label": "audit-exercise-solution-studio.mjs"
     },
     {
@@ -5346,7 +5499,7 @@
       "source_file": "tmp/qa/audit-exercise-solution-studio.mjs",
       "source_location": "L11",
       "id": "qa_audit_exercise_solution_studio_waitjson",
-      "community": 45,
+      "community": 44,
       "norm_label": "waitjson()"
     },
     {
@@ -5355,7 +5508,7 @@
       "source_file": "tmp/qa/audit-exercise-solution-studio.mjs",
       "source_location": "L36",
       "id": "qa_audit_exercise_solution_studio_send",
-      "community": 45,
+      "community": 44,
       "norm_label": "send()"
     },
     {
@@ -5364,6 +5517,42 @@
       "source_file": "tmp/qa/audit-exercise-solution-studio.mjs",
       "source_location": "L41",
       "id": "qa_audit_exercise_solution_studio_evaljs",
+      "community": 44,
+      "norm_label": "evaljs()"
+    },
+    {
+      "label": "audit-visual-story-studio.mjs",
+      "file_type": "code",
+      "source_file": "tmp/qa/audit-visual-story-studio.mjs",
+      "source_location": "L1",
+      "id": "tmp_qa_audit_visual_story_studio_mjs",
+      "community": 45,
+      "norm_label": "audit-visual-story-studio.mjs"
+    },
+    {
+      "label": "waitJson()",
+      "file_type": "code",
+      "source_file": "tmp/qa/audit-visual-story-studio.mjs",
+      "source_location": "L11",
+      "id": "qa_audit_visual_story_studio_waitjson",
+      "community": 45,
+      "norm_label": "waitjson()"
+    },
+    {
+      "label": "send()",
+      "file_type": "code",
+      "source_file": "tmp/qa/audit-visual-story-studio.mjs",
+      "source_location": "L36",
+      "id": "qa_audit_visual_story_studio_send",
+      "community": 45,
+      "norm_label": "send()"
+    },
+    {
+      "label": "evalJs()",
+      "file_type": "code",
+      "source_file": "tmp/qa/audit-visual-story-studio.mjs",
+      "source_location": "L41",
+      "id": "qa_audit_visual_story_studio_evaljs",
       "community": 45,
       "norm_label": "evaljs()"
     },
@@ -5529,7 +5718,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/Nav.tsx",
-      "source_location": "L44",
+      "source_location": "L45",
       "weight": 1.0,
       "_src": "src_components_nav_tsx",
       "_tgt": "components_nav_onscroll",
@@ -5547,6 +5736,18 @@
       "_tgt": "components_animatedconceptgraphic_animatedconceptgraphic",
       "source": "home_zahid_projects_rl_bok_rlbook_explainer_src_components_animatedconceptgraphic_tsx",
       "target": "components_animatedconceptgraphic_animatedconceptgraphic",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/AnalogyStudio.tsx",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_src": "src_components_analogystudio_tsx",
+      "_tgt": "components_analogystudio_analogystudio",
+      "source": "src_components_analogystudio_tsx",
+      "target": "components_analogystudio_analogystudio",
       "confidence_score": 1.0
     },
     {
@@ -6009,7 +6210,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/coverageAudit.ts",
-      "source_location": "L228",
+      "source_location": "L237",
       "weight": 1.0,
       "_src": "src_lib_coverageaudit_ts",
       "_tgt": "lib_coverageaudit_buildcoverageaudit",
@@ -6021,7 +6222,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/coverageAudit.ts",
-      "source_location": "L406",
+      "source_location": "L427",
       "weight": 1.0,
       "_src": "src_lib_coverageaudit_ts",
       "_tgt": "lib_coverageaudit_chaptercoveragerow",
@@ -6033,7 +6234,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/coverageAudit.ts",
-      "source_location": "L622",
+      "source_location": "L650",
       "weight": 1.0,
       "_src": "src_lib_coverageaudit_ts",
       "_tgt": "lib_coverageaudit_algorithmcoveragerow",
@@ -6045,7 +6246,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/coverageAudit.ts",
-      "source_location": "L656",
+      "source_location": "L684",
       "weight": 1.0,
       "_src": "src_lib_coverageaudit_ts",
       "_tgt": "lib_coverageaudit_requirementproofs",
@@ -6057,7 +6258,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/coverageAudit.ts",
-      "source_location": "L400",
+      "source_location": "L421",
       "weight": 1.0,
       "_src": "lib_coverageaudit_buildcoverageaudit",
       "_tgt": "lib_coverageaudit_requirementproofs",
@@ -6304,6 +6505,78 @@
       "_tgt": "lib_visualstory_visualstorysourcecount",
       "source": "lib_coverageaudit_buildcoverageaudit",
       "target": "lib_visualstory_visualstorysourcecount"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L261",
+      "weight": 1.0,
+      "_src": "lib_coverageaudit_buildcoverageaudit",
+      "_tgt": "lib_analogies_analogycardcount",
+      "source": "lib_coverageaudit_buildcoverageaudit",
+      "target": "lib_analogies_analogycardcount"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L262",
+      "weight": 1.0,
+      "_src": "lib_coverageaudit_buildcoverageaudit",
+      "_tgt": "lib_analogies_analogymodecount",
+      "source": "lib_coverageaudit_buildcoverageaudit",
+      "target": "lib_analogies_analogymodecount"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L263",
+      "weight": 1.0,
+      "_src": "lib_coverageaudit_buildcoverageaudit",
+      "_tgt": "lib_analogies_analogychaptercount",
+      "source": "lib_coverageaudit_buildcoverageaudit",
+      "target": "lib_analogies_analogychaptercount"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L264",
+      "weight": 1.0,
+      "_src": "lib_coverageaudit_buildcoverageaudit",
+      "_tgt": "lib_analogies_analogymappingcount",
+      "source": "lib_coverageaudit_buildcoverageaudit",
+      "target": "lib_analogies_analogymappingcount"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L265",
+      "weight": 1.0,
+      "_src": "lib_coverageaudit_buildcoverageaudit",
+      "_tgt": "lib_analogies_analogyanchorcount",
+      "source": "lib_coverageaudit_buildcoverageaudit",
+      "target": "lib_analogies_analogyanchorcount"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L266",
+      "weight": 1.0,
+      "_src": "lib_coverageaudit_buildcoverageaudit",
+      "_tgt": "lib_analogies_analogysourcecount",
+      "source": "lib_coverageaudit_buildcoverageaudit",
+      "target": "lib_analogies_analogysourcecount"
     },
     {
       "relation": "calls",
@@ -7108,6 +7381,30 @@
       "_tgt": "lib_visualstory_visualstorymodecount",
       "source": "lib_coverageaudit_chaptercoveragerow",
       "target": "lib_visualstory_visualstorymodecount"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L450",
+      "weight": 1.0,
+      "_src": "lib_coverageaudit_chaptercoveragerow",
+      "_tgt": "lib_analogies_analogiesforchapter",
+      "source": "lib_coverageaudit_chaptercoveragerow",
+      "target": "lib_analogies_analogiesforchapter"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/coverageAudit.ts",
+      "source_location": "L451",
+      "weight": 1.0,
+      "_src": "lib_coverageaudit_chaptercoveragerow",
+      "_tgt": "lib_analogies_analogymodecount",
+      "source": "lib_coverageaudit_chaptercoveragerow",
+      "target": "lib_analogies_analogymodecount"
     },
     {
       "relation": "calls",
@@ -8721,6 +9018,18 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L143",
+      "weight": 1.0,
+      "_src": "lib_analogies_analogycandidatesforchapter",
+      "_tgt": "lib_chapterworkedexamples_workedexamplesforchapter",
+      "source": "lib_chapterworkedexamples_workedexamplesforchapter",
+      "target": "lib_analogies_analogycandidatesforchapter"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
       "source_file": "src/lib/chapterSimulators.ts",
       "source_location": "L44",
       "weight": 1.0,
@@ -8772,8 +9081,8 @@
       "source_file": "src/lib/visualStory.ts",
       "source_location": "L92",
       "weight": 1.0,
-      "_src": "lib_visualstory_visualstorycandidatesforchapter",
-      "_tgt": "lib_chapterworkedexamples_workedexamplesforchapter",
+      "_src": "lib_chapterworkedexamples_workedexamplesforchapter",
+      "_tgt": "lib_visualstory_visualstorycandidatesforchapter",
       "source": "lib_chapterworkedexamples_workedexamplesforchapter",
       "target": "lib_visualstory_visualstorycandidatesforchapter"
     },
@@ -9045,6 +9354,18 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L181",
+      "weight": 1.0,
+      "_src": "lib_analogies_analogycandidatesforchapter",
+      "_tgt": "lib_algorithmcatalog_algorithmsforchapter",
+      "source": "lib_algorithmcatalog_algorithmsforchapter",
+      "target": "lib_analogies_analogycandidatesforchapter"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
       "source_file": "src/lib/chapterSimulators.ts",
       "source_location": "L41",
       "weight": 1.0,
@@ -9144,8 +9465,8 @@
       "source_file": "src/lib/visualStory.ts",
       "source_location": "L93",
       "weight": 1.0,
-      "_src": "lib_visualstory_visualstorycandidatesforchapter",
-      "_tgt": "lib_algorithmcatalog_algorithmsforchapter",
+      "_src": "lib_algorithmcatalog_algorithmsforchapter",
+      "_tgt": "lib_visualstory_visualstorycandidatesforchapter",
       "source": "lib_algorithmcatalog_algorithmsforchapter",
       "target": "lib_visualstory_visualstorycandidatesforchapter"
     },
@@ -9752,6 +10073,426 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_src": "src_lib_analogies_ts",
+      "_tgt": "lib_analogies_allanalogycards",
+      "source": "src_lib_analogies_ts",
+      "target": "lib_analogies_allanalogycards",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L42",
+      "weight": 1.0,
+      "_src": "src_lib_analogies_ts",
+      "_tgt": "lib_analogies_analogiesforchapter",
+      "source": "src_lib_analogies_ts",
+      "target": "lib_analogies_analogiesforchapter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L60",
+      "weight": 1.0,
+      "_src": "src_lib_analogies_ts",
+      "_tgt": "lib_analogies_analogycardcount",
+      "source": "src_lib_analogies_ts",
+      "target": "lib_analogies_analogycardcount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L64",
+      "weight": 1.0,
+      "_src": "src_lib_analogies_ts",
+      "_tgt": "lib_analogies_analogymodecount",
+      "source": "src_lib_analogies_ts",
+      "target": "lib_analogies_analogymodecount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L68",
+      "weight": 1.0,
+      "_src": "src_lib_analogies_ts",
+      "_tgt": "lib_analogies_analogychaptercount",
+      "source": "src_lib_analogies_ts",
+      "target": "lib_analogies_analogychaptercount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L72",
+      "weight": 1.0,
+      "_src": "src_lib_analogies_ts",
+      "_tgt": "lib_analogies_analogysourcecount",
+      "source": "src_lib_analogies_ts",
+      "target": "lib_analogies_analogysourcecount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L76",
+      "weight": 1.0,
+      "_src": "src_lib_analogies_ts",
+      "_tgt": "lib_analogies_analogyanchorcount",
+      "source": "src_lib_analogies_ts",
+      "target": "lib_analogies_analogyanchorcount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L80",
+      "weight": 1.0,
+      "_src": "src_lib_analogies_ts",
+      "_tgt": "lib_analogies_analogymappingcount",
+      "source": "src_lib_analogies_ts",
+      "target": "lib_analogies_analogymappingcount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L85",
+      "weight": 1.0,
+      "_src": "src_lib_analogies_ts",
+      "_tgt": "lib_analogies_analogycandidatesforchapter",
+      "source": "src_lib_analogies_ts",
+      "target": "lib_analogies_analogycandidatesforchapter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L203",
+      "weight": 1.0,
+      "_src": "src_lib_analogies_ts",
+      "_tgt": "lib_analogies_roundrobinunique",
+      "source": "src_lib_analogies_ts",
+      "target": "lib_analogies_roundrobinunique",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L221",
+      "weight": 1.0,
+      "_src": "src_lib_analogies_ts",
+      "_tgt": "lib_analogies_compacttags",
+      "source": "src_lib_analogies_ts",
+      "target": "lib_analogies_compacttags",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L225",
+      "weight": 1.0,
+      "_src": "src_lib_analogies_ts",
+      "_tgt": "lib_analogies_normalize",
+      "source": "src_lib_analogies_ts",
+      "target": "lib_analogies_normalize",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L229",
+      "weight": 1.0,
+      "_src": "src_lib_analogies_ts",
+      "_tgt": "lib_analogies_slug",
+      "source": "src_lib_analogies_ts",
+      "target": "lib_analogies_slug",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L61",
+      "weight": 1.0,
+      "_src": "lib_analogies_analogycardcount",
+      "_tgt": "lib_analogies_allanalogycards",
+      "source": "lib_analogies_allanalogycards",
+      "target": "lib_analogies_analogycardcount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L69",
+      "weight": 1.0,
+      "_src": "lib_analogies_analogychaptercount",
+      "_tgt": "lib_analogies_allanalogycards",
+      "source": "lib_analogies_allanalogycards",
+      "target": "lib_analogies_analogychaptercount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L73",
+      "weight": 1.0,
+      "_src": "lib_analogies_analogysourcecount",
+      "_tgt": "lib_analogies_allanalogycards",
+      "source": "lib_analogies_allanalogycards",
+      "target": "lib_analogies_analogysourcecount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L77",
+      "weight": 1.0,
+      "_src": "lib_analogies_analogyanchorcount",
+      "_tgt": "lib_analogies_allanalogycards",
+      "source": "lib_analogies_allanalogycards",
+      "target": "lib_analogies_analogyanchorcount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L81",
+      "weight": 1.0,
+      "_src": "lib_analogies_analogymappingcount",
+      "_tgt": "lib_analogies_allanalogycards",
+      "source": "lib_analogies_allanalogycards",
+      "target": "lib_analogies_analogymappingcount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/app/analogies/page.tsx",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_src": "analogies_page_analogiespage",
+      "_tgt": "lib_analogies_allanalogycards",
+      "source": "lib_analogies_allanalogycards",
+      "target": "analogies_page_analogiespage"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L46",
+      "weight": 1.0,
+      "_src": "lib_analogies_analogiesforchapter",
+      "_tgt": "lib_analogies_analogycandidatesforchapter",
+      "source": "lib_analogies_analogiesforchapter",
+      "target": "lib_analogies_analogycandidatesforchapter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L47",
+      "weight": 1.0,
+      "_src": "lib_analogies_analogiesforchapter",
+      "_tgt": "lib_analogies_roundrobinunique",
+      "source": "lib_analogies_analogiesforchapter",
+      "target": "lib_analogies_roundrobinunique",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L61",
+      "weight": 1.0,
+      "_src": "lib_analogies_analogycardcount",
+      "_tgt": "lib_analogies_analogiesforchapter",
+      "source": "lib_analogies_analogiesforchapter",
+      "target": "lib_analogies_analogycardcount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L81",
+      "weight": 1.0,
+      "_src": "lib_analogies_analogymappingcount",
+      "_tgt": "lib_analogies_analogiesforchapter",
+      "source": "lib_analogies_analogiesforchapter",
+      "target": "lib_analogies_analogymappingcount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/learningGraph.ts",
+      "source_location": "L73",
+      "weight": 1.0,
+      "_src": "lib_learninggraph_learninggraphforchapter",
+      "_tgt": "lib_analogies_analogiesforchapter",
+      "source": "lib_analogies_analogiesforchapter",
+      "target": "lib_learninggraph_learninggraphforchapter"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/bookIndex.ts",
+      "source_location": "L118",
+      "weight": 1.0,
+      "_src": "lib_bookindex_buildbookindexentries",
+      "_tgt": "lib_analogies_analogiesforchapter",
+      "source": "lib_analogies_analogiesforchapter",
+      "target": "lib_bookindex_buildbookindexentries"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L65",
+      "weight": 1.0,
+      "_src": "lib_analogies_analogymodecount",
+      "_tgt": "lib_analogies_analogycardcount",
+      "source": "lib_analogies_analogycardcount",
+      "target": "lib_analogies_analogymodecount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/app/book/page.tsx",
+      "source_location": "L128",
+      "weight": 1.0,
+      "_src": "book_page_bookpage",
+      "_tgt": "lib_analogies_analogycardcount",
+      "source": "lib_analogies_analogycardcount",
+      "target": "book_page_bookpage"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/app/book/page.tsx",
+      "source_location": "L129",
+      "weight": 1.0,
+      "_src": "book_page_bookpage",
+      "_tgt": "lib_analogies_analogymodecount",
+      "source": "lib_analogies_analogymodecount",
+      "target": "book_page_bookpage"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/app/book/page.tsx",
+      "source_location": "L130",
+      "weight": 1.0,
+      "_src": "book_page_bookpage",
+      "_tgt": "lib_analogies_analogymappingcount",
+      "source": "lib_analogies_analogymappingcount",
+      "target": "book_page_bookpage"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L86",
+      "weight": 1.0,
+      "_src": "lib_analogies_analogycandidatesforchapter",
+      "_tgt": "lib_zeroknowledgeladders_zeroknowledgeladderforchapter",
+      "source": "lib_analogies_analogycandidatesforchapter",
+      "target": "lib_zeroknowledgeladders_zeroknowledgeladderforchapter"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L105",
+      "weight": 1.0,
+      "_src": "lib_analogies_analogycandidatesforchapter",
+      "_tgt": "lib_conceptatlas_conceptcardsforchapter",
+      "source": "lib_analogies_analogycandidatesforchapter",
+      "target": "lib_conceptatlas_conceptcardsforchapter"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L124",
+      "weight": 1.0,
+      "_src": "lib_analogies_analogycandidatesforchapter",
+      "_tgt": "lib_mathrescue_mathrescuecardsforchapter",
+      "source": "lib_analogies_analogycandidatesforchapter",
+      "target": "lib_mathrescue_mathrescuecardsforchapter"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L162",
+      "weight": 1.0,
+      "_src": "lib_analogies_analogycandidatesforchapter",
+      "_tgt": "lib_visualstory_visualstoriesforchapter",
+      "source": "lib_analogies_analogycandidatesforchapter",
+      "target": "lib_visualstory_visualstoriesforchapter"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L211",
+      "weight": 1.0,
+      "_src": "lib_analogies_roundrobinunique",
+      "_tgt": "lib_analogies_normalize",
+      "source": "lib_analogies_roundrobinunique",
+      "target": "lib_analogies_normalize",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/analogies.ts",
+      "source_location": "L230",
+      "weight": 1.0,
+      "_src": "lib_analogies_slug",
+      "_tgt": "lib_analogies_normalize",
+      "source": "lib_analogies_normalize",
+      "target": "lib_analogies_slug",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "src/lib/chapterManuscripts.ts",
       "source_location": "L495",
       "weight": 1.0,
@@ -9996,8 +10737,8 @@
       "source_file": "src/lib/visualStory.ts",
       "source_location": "L94",
       "weight": 1.0,
-      "_src": "lib_visualstory_visualstorycandidatesforchapter",
-      "_tgt": "lib_chaptersimulators_simulatorforchapter",
+      "_src": "lib_chaptersimulators_simulatorforchapter",
+      "_tgt": "lib_visualstory_visualstorycandidatesforchapter",
       "source": "lib_chaptersimulators_simulatorforchapter",
       "target": "lib_visualstory_visualstorycandidatesforchapter"
     },
@@ -12768,8 +13509,8 @@
       "source_file": "src/lib/visualStory.ts",
       "source_location": "L90",
       "weight": 1.0,
-      "_src": "lib_visualstory_visualstorycandidatesforchapter",
-      "_tgt": "lib_zeroknowledgeladders_zeroknowledgeladderforchapter",
+      "_src": "lib_zeroknowledgeladders_zeroknowledgeladderforchapter",
+      "_tgt": "lib_visualstory_visualstorycandidatesforchapter",
       "source": "lib_zeroknowledgeladders_zeroknowledgeladderforchapter",
       "target": "lib_visualstory_visualstorycandidatesforchapter"
     },
@@ -12825,7 +13566,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/learningGraph.ts",
-      "source_location": "L59",
+      "source_location": "L60",
       "weight": 1.0,
       "_src": "src_lib_learninggraph_ts",
       "_tgt": "lib_learninggraph_alllearninggraphs",
@@ -12837,7 +13578,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/learningGraph.ts",
-      "source_location": "L64",
+      "source_location": "L65",
       "weight": 1.0,
       "_src": "src_lib_learninggraph_ts",
       "_tgt": "lib_learninggraph_learninggraphforchapter",
@@ -12849,7 +13590,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/learningGraph.ts",
-      "source_location": "L618",
+      "source_location": "L651",
       "weight": 1.0,
       "_src": "src_lib_learninggraph_ts",
       "_tgt": "lib_learninggraph_learninggraphnodecount",
@@ -12861,7 +13602,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/learningGraph.ts",
-      "source_location": "L623",
+      "source_location": "L656",
       "weight": 1.0,
       "_src": "src_lib_learninggraph_ts",
       "_tgt": "lib_learninggraph_learninggraphedgecount",
@@ -12873,7 +13614,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/learningGraph.ts",
-      "source_location": "L628",
+      "source_location": "L661",
       "weight": 1.0,
       "_src": "src_lib_learninggraph_ts",
       "_tgt": "lib_learninggraph_learninggraphchaptercount",
@@ -12885,7 +13626,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/learningGraph.ts",
-      "source_location": "L655",
+      "source_location": "L689",
       "weight": 1.0,
       "_src": "src_lib_learninggraph_ts",
       "_tgt": "lib_learninggraph_ringpoint",
@@ -12897,7 +13638,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/learningGraph.ts",
-      "source_location": "L680",
+      "source_location": "L715",
       "weight": 1.0,
       "_src": "src_lib_learninggraph_ts",
       "_tgt": "lib_learninggraph_nodeid",
@@ -12909,7 +13650,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/learningGraph.ts",
-      "source_location": "L684",
+      "source_location": "L719",
       "weight": 1.0,
       "_src": "src_lib_learninggraph_ts",
       "_tgt": "lib_learninggraph_edgeid",
@@ -12921,7 +13662,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/learningGraph.ts",
-      "source_location": "L688",
+      "source_location": "L723",
       "weight": 1.0,
       "_src": "src_lib_learninggraph_ts",
       "_tgt": "lib_learninggraph_compacttags",
@@ -12933,7 +13674,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/learningGraph.ts",
-      "source_location": "L692",
+      "source_location": "L727",
       "weight": 1.0,
       "_src": "src_lib_learninggraph_ts",
       "_tgt": "lib_learninggraph_slug",
@@ -12945,7 +13686,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/learningGraph.ts",
-      "source_location": "L619",
+      "source_location": "L652",
       "weight": 1.0,
       "_src": "lib_learninggraph_learninggraphnodecount",
       "_tgt": "lib_learninggraph_alllearninggraphs",
@@ -12957,7 +13698,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/learningGraph.ts",
-      "source_location": "L624",
+      "source_location": "L657",
       "weight": 1.0,
       "_src": "lib_learninggraph_learninggraphedgecount",
       "_tgt": "lib_learninggraph_alllearninggraphs",
@@ -12969,7 +13710,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/learningGraph.ts",
-      "source_location": "L629",
+      "source_location": "L662",
       "weight": 1.0,
       "_src": "lib_learninggraph_learninggraphchaptercount",
       "_tgt": "lib_learninggraph_alllearninggraphs",
@@ -12993,7 +13734,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/learningGraph.ts",
-      "source_location": "L88",
+      "source_location": "L90",
       "weight": 1.0,
       "_src": "lib_learninggraph_learninggraphforchapter",
       "_tgt": "lib_learninggraph_nodeid",
@@ -13005,7 +13746,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/learningGraph.ts",
-      "source_location": "L532",
+      "source_location": "L564",
       "weight": 1.0,
       "_src": "lib_learninggraph_learninggraphforchapter",
       "_tgt": "lib_learninggraph_edgeid",
@@ -13017,7 +13758,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/learningGraph.ts",
-      "source_location": "L619",
+      "source_location": "L652",
       "weight": 1.0,
       "_src": "lib_learninggraph_learninggraphnodecount",
       "_tgt": "lib_learninggraph_learninggraphforchapter",
@@ -13029,7 +13770,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/learningGraph.ts",
-      "source_location": "L624",
+      "source_location": "L657",
       "weight": 1.0,
       "_src": "lib_learninggraph_learninggraphedgecount",
       "_tgt": "lib_learninggraph_learninggraphforchapter",
@@ -13173,7 +13914,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/learningGraph.ts",
-      "source_location": "L681",
+      "source_location": "L716",
       "weight": 1.0,
       "_src": "lib_learninggraph_nodeid",
       "_tgt": "lib_learninggraph_slug",
@@ -13185,7 +13926,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/learningGraph.ts",
-      "source_location": "L685",
+      "source_location": "L720",
       "weight": 1.0,
       "_src": "lib_learninggraph_edgeid",
       "_tgt": "lib_learninggraph_slug",
@@ -14196,8 +14937,8 @@
       "source_file": "src/lib/visualStory.ts",
       "source_location": "L91",
       "weight": 1.0,
-      "_src": "lib_visualstory_visualstorycandidatesforchapter",
-      "_tgt": "lib_conceptatlas_conceptcardsforchapter",
+      "_src": "lib_conceptatlas_conceptcardsforchapter",
+      "_tgt": "lib_visualstory_visualstorycandidatesforchapter",
       "source": "lib_conceptatlas_conceptcardsforchapter",
       "target": "lib_visualstory_visualstorycandidatesforchapter"
     },
@@ -14532,8 +15273,8 @@
       "source_file": "src/app/stories/page.tsx",
       "source_location": "L16",
       "weight": 1.0,
-      "_src": "stories_page_storiespage",
-      "_tgt": "lib_visualstory_allvisualstorycards",
+      "_src": "lib_visualstory_allvisualstorycards",
+      "_tgt": "stories_page_storiespage",
       "source": "lib_visualstory_allvisualstorycards",
       "target": "stories_page_storiespage"
     },
@@ -14580,8 +15321,8 @@
       "source_file": "src/lib/bookIndex.ts",
       "source_location": "L115",
       "weight": 1.0,
-      "_src": "lib_bookindex_buildbookindexentries",
-      "_tgt": "lib_visualstory_visualstoriesforchapter",
+      "_src": "lib_visualstory_visualstoriesforchapter",
+      "_tgt": "lib_bookindex_buildbookindexentries",
       "source": "lib_visualstory_visualstoriesforchapter",
       "target": "lib_bookindex_buildbookindexentries"
     },
@@ -14604,8 +15345,8 @@
       "source_file": "src/app/book/page.tsx",
       "source_location": "L120",
       "weight": 1.0,
-      "_src": "book_page_bookpage",
-      "_tgt": "lib_visualstory_visualstorycardcount",
+      "_src": "lib_visualstory_visualstorycardcount",
+      "_tgt": "book_page_bookpage",
       "source": "lib_visualstory_visualstorycardcount",
       "target": "book_page_bookpage"
     },
@@ -14616,8 +15357,8 @@
       "source_file": "src/app/book/page.tsx",
       "source_location": "L121",
       "weight": 1.0,
-      "_src": "book_page_bookpage",
-      "_tgt": "lib_visualstory_visualstorymodecount",
+      "_src": "lib_visualstory_visualstorymodecount",
+      "_tgt": "book_page_bookpage",
       "source": "lib_visualstory_visualstorymodecount",
       "target": "book_page_bookpage"
     },
@@ -14628,8 +15369,8 @@
       "source_file": "src/app/book/page.tsx",
       "source_location": "L122",
       "weight": 1.0,
-      "_src": "book_page_bookpage",
-      "_tgt": "lib_visualstory_visualstoryactorcount",
+      "_src": "lib_visualstory_visualstoryactorcount",
+      "_tgt": "book_page_bookpage",
       "source": "lib_visualstory_visualstoryactorcount",
       "target": "book_page_bookpage"
     },
@@ -14640,8 +15381,8 @@
       "source_file": "src/app/book/page.tsx",
       "source_location": "L123",
       "weight": 1.0,
-      "_src": "book_page_bookpage",
-      "_tgt": "lib_visualstory_visualstorypropcount",
+      "_src": "lib_visualstory_visualstorypropcount",
+      "_tgt": "book_page_bookpage",
       "source": "lib_visualstory_visualstorypropcount",
       "target": "book_page_bookpage"
     },
@@ -14685,7 +15426,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/bookIndex.ts",
-      "source_location": "L83",
+      "source_location": "L85",
       "weight": 1.0,
       "_src": "src_lib_bookindex_ts",
       "_tgt": "lib_bookindex_allbookindexentries",
@@ -14697,7 +15438,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/bookIndex.ts",
-      "source_location": "L88",
+      "source_location": "L90",
       "weight": 1.0,
       "_src": "src_lib_bookindex_ts",
       "_tgt": "lib_bookindex_bookindexentriesforchapter",
@@ -14709,7 +15450,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/bookIndex.ts",
-      "source_location": "L92",
+      "source_location": "L94",
       "weight": 1.0,
       "_src": "src_lib_bookindex_ts",
       "_tgt": "lib_bookindex_bookindexentrycount",
@@ -14721,7 +15462,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/bookIndex.ts",
-      "source_location": "L96",
+      "source_location": "L98",
       "weight": 1.0,
       "_src": "src_lib_bookindex_ts",
       "_tgt": "lib_bookindex_bookindexlayercount",
@@ -14733,7 +15474,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/bookIndex.ts",
-      "source_location": "L100",
+      "source_location": "L102",
       "weight": 1.0,
       "_src": "src_lib_bookindex_ts",
       "_tgt": "lib_bookindex_bookindexchaptercount",
@@ -14745,7 +15486,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/bookIndex.ts",
-      "source_location": "L104",
+      "source_location": "L106",
       "weight": 1.0,
       "_src": "src_lib_bookindex_ts",
       "_tgt": "lib_bookindex_buildbookindexentries",
@@ -14757,7 +15498,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/bookIndex.ts",
-      "source_location": "L640",
+      "source_location": "L655",
       "weight": 1.0,
       "_src": "src_lib_bookindex_ts",
       "_tgt": "lib_bookindex_compacttags",
@@ -14769,7 +15510,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/bookIndex.ts",
-      "source_location": "L644",
+      "source_location": "L659",
       "weight": 1.0,
       "_src": "src_lib_bookindex_ts",
       "_tgt": "lib_bookindex_slug",
@@ -14781,7 +15522,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/bookIndex.ts",
-      "source_location": "L84",
+      "source_location": "L86",
       "weight": 1.0,
       "_src": "lib_bookindex_allbookindexentries",
       "_tgt": "lib_bookindex_buildbookindexentries",
@@ -14793,7 +15534,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/bookIndex.ts",
-      "source_location": "L89",
+      "source_location": "L91",
       "weight": 1.0,
       "_src": "lib_bookindex_bookindexentriesforchapter",
       "_tgt": "lib_bookindex_allbookindexentries",
@@ -14805,7 +15546,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/bookIndex.ts",
-      "source_location": "L93",
+      "source_location": "L95",
       "weight": 1.0,
       "_src": "lib_bookindex_bookindexentrycount",
       "_tgt": "lib_bookindex_allbookindexentries",
@@ -14817,7 +15558,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/bookIndex.ts",
-      "source_location": "L97",
+      "source_location": "L99",
       "weight": 1.0,
       "_src": "lib_bookindex_bookindexlayercount",
       "_tgt": "lib_bookindex_allbookindexentries",
@@ -14829,7 +15570,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/bookIndex.ts",
-      "source_location": "L101",
+      "source_location": "L103",
       "weight": 1.0,
       "_src": "lib_bookindex_bookindexchaptercount",
       "_tgt": "lib_bookindex_allbookindexentries",
@@ -14853,7 +15594,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/bookIndex.ts",
-      "source_location": "L93",
+      "source_location": "L95",
       "weight": 1.0,
       "_src": "lib_bookindex_bookindexentrycount",
       "_tgt": "lib_bookindex_bookindexentriesforchapter",
@@ -16317,7 +17058,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/math/page.tsx",
-      "source_location": "L92",
+      "source_location": "L93",
       "weight": 1.0,
       "_src": "src_app_math_page_tsx",
       "_tgt": "math_page_slug",
@@ -16341,7 +17082,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/search/page.tsx",
-      "source_location": "L90",
+      "source_location": "L91",
       "weight": 1.0,
       "_src": "src_app_search_page_tsx",
       "_tgt": "search_page_layerbreakdown",
@@ -16388,6 +17129,30 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "src/app/analogies/page.tsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_src": "src_app_analogies_page_tsx",
+      "_tgt": "analogies_page_analogiespage",
+      "source": "src_app_analogies_page_tsx",
+      "target": "analogies_page_analogiespage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/analogies/page.tsx",
+      "source_location": "L92",
+      "weight": 1.0,
+      "_src": "src_app_analogies_page_tsx",
+      "_tgt": "analogies_page_slug",
+      "source": "src_app_analogies_page_tsx",
+      "target": "analogies_page_slug",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "src/app/stories/page.tsx",
       "source_location": "L15",
       "weight": 1.0,
@@ -16401,7 +17166,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/stories/page.tsx",
-      "source_location": "L93",
+      "source_location": "L94",
       "weight": 1.0,
       "_src": "src_app_stories_page_tsx",
       "_tgt": "stories_page_slug",
@@ -16413,7 +17178,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/coverage/page.tsx",
-      "source_location": "L314",
+      "source_location": "L320",
       "weight": 1.0,
       "_src": "src_app_coverage_page_tsx",
       "_tgt": "coverage_page_sectiontitle",
@@ -16449,7 +17214,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/proofs/page.tsx",
-      "source_location": "L89",
+      "source_location": "L90",
       "weight": 1.0,
       "_src": "src_app_proofs_page_tsx",
       "_tgt": "proofs_page_stat",
@@ -16473,7 +17238,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/book/page.tsx",
-      "source_location": "L105",
+      "source_location": "L109",
       "weight": 1.0,
       "_src": "src_app_book_page_tsx",
       "_tgt": "book_page_bookpage",
@@ -16485,25 +17250,13 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/book/page.tsx",
-      "source_location": "L591",
+      "source_location": "L619",
       "weight": 1.0,
       "_src": "src_app_book_page_tsx",
       "_tgt": "book_page_glyphvariantforlabel",
       "source": "src_app_book_page_tsx",
       "target": "book_page_glyphvariantforlabel",
       "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "src/app/book/page.tsx",
-      "source_location": "L591",
-      "weight": 1.0,
-      "_src": "book_page_glyphvariantforlabel",
-      "_tgt": "chapter_page_glyphaccentforlabel",
-      "source": "book_page_glyphvariantforlabel",
-      "target": "chapter_page_glyphaccentforlabel"
     },
     {
       "relation": "contains",
@@ -16533,7 +17286,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/compare/page.tsx",
-      "source_location": "L95",
+      "source_location": "L96",
       "weight": 1.0,
       "_src": "src_app_compare_page_tsx",
       "_tgt": "compare_page_slug",
@@ -16569,7 +17322,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/foundations/page.tsx",
-      "source_location": "L93",
+      "source_location": "L94",
       "weight": 1.0,
       "_src": "src_app_foundations_page_tsx",
       "_tgt": "foundations_page_slug",
@@ -16581,7 +17334,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L74",
+      "source_location": "L76",
       "weight": 1.0,
       "_src": "src_app_chapters_chapter_page_tsx",
       "_tgt": "chapter_page_generatestaticparams",
@@ -16593,7 +17346,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L78",
+      "source_location": "L80",
       "weight": 1.0,
       "_src": "src_app_chapters_chapter_page_tsx",
       "_tgt": "chapter_page_generatemetadata",
@@ -16605,47 +17358,11 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L713",
-      "weight": 1.0,
-      "_src": "src_app_chapters_chapter_page_tsx",
-      "_tgt": "chapter_page_glyphaccentforlabel",
-      "source": "src_app_chapters_chapter_page_tsx",
-      "target": "chapter_page_glyphaccentforlabel",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L721",
-      "weight": 1.0,
-      "_src": "src_app_chapters_chapter_page_tsx",
-      "_tgt": "chapter_page_chapterexercisesolutionblock",
-      "source": "src_app_chapters_chapter_page_tsx",
-      "target": "chapter_page_chapterexercisesolutionblock",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L1317",
+      "source_location": "L1345",
       "weight": 1.0,
       "_src": "src_app_chapters_chapter_page_tsx",
       "_tgt": "chapter_page_glyphvariantforlabel",
       "source": "src_app_chapters_chapter_page_tsx",
-      "target": "chapter_page_glyphvariantforlabel",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "source_file": "src/app/chapters/[chapter]/page.tsx",
-      "source_location": "L985",
-      "weight": 1.0,
-      "_src": "chapter_page_glyphvariantforlabel",
-      "_tgt": "chapter_page_glyphaccentforlabel",
-      "source": "chapter_page_glyphaccentforlabel",
       "target": "chapter_page_glyphvariantforlabel",
       "confidence_score": 1.0
     },
@@ -17859,6 +18576,54 @@
       "_tgt": "qa_audit_exercise_solution_studio_send",
       "source": "qa_audit_exercise_solution_studio_send",
       "target": "qa_audit_exercise_solution_studio_evaljs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tmp/qa/audit-visual-story-studio.mjs",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_src": "tmp_qa_audit_visual_story_studio_mjs",
+      "_tgt": "qa_audit_visual_story_studio_waitjson",
+      "source": "tmp_qa_audit_visual_story_studio_mjs",
+      "target": "qa_audit_visual_story_studio_waitjson",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tmp/qa/audit-visual-story-studio.mjs",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_src": "tmp_qa_audit_visual_story_studio_mjs",
+      "_tgt": "qa_audit_visual_story_studio_send",
+      "source": "tmp_qa_audit_visual_story_studio_mjs",
+      "target": "qa_audit_visual_story_studio_send",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tmp/qa/audit-visual-story-studio.mjs",
+      "source_location": "L41",
+      "weight": 1.0,
+      "_src": "tmp_qa_audit_visual_story_studio_mjs",
+      "_tgt": "qa_audit_visual_story_studio_evaljs",
+      "source": "tmp_qa_audit_visual_story_studio_mjs",
+      "target": "qa_audit_visual_story_studio_evaljs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "tmp/qa/audit-visual-story-studio.mjs",
+      "source_location": "L42",
+      "weight": 1.0,
+      "_src": "qa_audit_visual_story_studio_evaljs",
+      "_tgt": "qa_audit_visual_story_studio_send",
+      "source": "qa_audit_visual_story_studio_send",
+      "target": "qa_audit_visual_story_studio_evaljs",
       "confidence_score": 1.0
     },
     {
