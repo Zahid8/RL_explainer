@@ -15,6 +15,7 @@ import { Chip } from "@/components/Section";
 import { ZeroKnowledgeLadderReader } from "@/components/ZeroKnowledgeLadderReader";
 import { manuscriptForChapter, manuscriptSectionCount, type ChapterManuscript } from "@/lib/chapterManuscripts";
 import { bookIndexEntryCount, bookIndexLayerCount } from "@/lib/bookIndex";
+import { learningGraphEdgeCount, learningGraphNodeCount } from "@/lib/learningGraph";
 import { blackboardForChapter, blackboardStageCount, type ChapterBlackboard } from "@/lib/interactiveBlackboards";
 import { practiceCardsForChapter, practiceModeCount, type ChapterPracticeCard } from "@/lib/chapterPractice";
 import { conceptCardsForChapter, conceptModeCount, type ChapterConceptCard } from "@/lib/conceptAtlas";
@@ -78,6 +79,8 @@ export default function BookPage() {
   const simulatorReadouts = simulatorReadoutCount();
   const searchEntries = bookIndexEntryCount();
   const searchLayers = bookIndexLayerCount();
+  const graphNodes = learningGraphNodeCount();
+  const graphEdges = learningGraphEdgeCount();
 
   return (
     <main className="min-h-screen bg-bg text-ink">
@@ -86,6 +89,7 @@ export default function BookPage() {
           <div className="mb-8 flex flex-wrap items-center justify-between gap-3">
             <Link href="/" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">← Home overview</Link>
             <Link href="/search" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Search index</Link>
+            <Link href="/graph" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Learning graph</Link>
             <Link href="/coverage" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Coverage audit</Link>
           </div>
           <div className="grid gap-8 lg:grid-cols-[1fr_440px] lg:items-end">
@@ -114,6 +118,8 @@ export default function BookPage() {
                 <Chip accent="violet">{formulaModes} formula lecture modes</Chip>
                 <Chip accent="cyan">{searchEntries} search entries</Chip>
                 <Chip accent="blue">{searchLayers} search layers</Chip>
+                <Chip accent="lime">{graphNodes} graph nodes</Chip>
+                <Chip accent="cyan">{graphEdges} graph links</Chip>
                 <Chip accent="lime">{lectureBeats} lecture beats</Chip>
                 <Chip accent="violet">beginner → advanced</Chip>
                 <Chip accent="orange">original wording</Chip>
@@ -129,6 +135,7 @@ export default function BookPage() {
                   <li>3. Open the section beats and translate each picture into technical language.</li>
                   <li>4. Use the full chapter page for algorithms, formulas, exercises, and interactive detail.</li>
                   <li>5. Use the search index when you remember a term but not the chapter.</li>
+                  <li>6. Use the learning graph when you need to see why a concept, formula, algorithm, and example belong together.</li>
                 </ol>
               </div>
             </div>

@@ -20,6 +20,7 @@ import { formulaAtlas, formulaLectureModeCount, formulaLectureModes, formulasFor
 import { chapterMastery } from "@/lib/mastery";
 import { manuscriptForChapter, manuscriptSectionCount } from "@/lib/chapterManuscripts";
 import { blackboardForChapter, blackboardStageCount } from "@/lib/interactiveBlackboards";
+import { learningGraphChapterCount, learningGraphEdgeCount, learningGraphForChapter, learningGraphNodeCount } from "@/lib/learningGraph";
 import { chapters } from "@/lib/paper";
 import { sectionLessonModeCount, sectionLessonModes, sectionLessonsForChapter, sectionNarrativeCount } from "@/lib/sectionNarratives";
 import { standaloneLectureForChapter, standaloneLectureTileCount } from "@/lib/standaloneBook";
@@ -56,6 +57,8 @@ export interface ChapterCoverageRow {
   simulatorControls: number;
   simulatorReadouts: number;
   searchIndexEntries: number;
+  learningGraphNodes: number;
+  learningGraphEdges: number;
   manuscriptSections: number;
   blackboardStages: number;
   sectionNarratives: number;
@@ -123,6 +126,9 @@ export interface CoverageAudit {
     searchIndexEntries: number;
     searchIndexLayers: number;
     searchIndexedChapters: number;
+    learningGraphNodes: number;
+    learningGraphEdges: number;
+    learningGraphChapters: number;
     manuscriptSections: number;
     blackboardStages: number;
     sectionNarratives: number;
@@ -165,6 +171,9 @@ export function buildCoverageAudit(): CoverageAudit {
   const searchIndexEntries = bookIndexEntryCount();
   const searchIndexLayers = bookIndexLayerCount();
   const searchIndexedChapters = bookIndexChapterCount();
+  const learningGraphNodes = learningGraphNodeCount();
+  const learningGraphEdges = learningGraphEdgeCount();
+  const learningGraphChapters = learningGraphChapterCount();
   const manuscriptSections = manuscriptSectionCount();
   const blackboardStages = blackboardStageCount();
   const sectionNarratives = sectionNarrativeCount();
@@ -202,6 +211,9 @@ export function buildCoverageAudit(): CoverageAudit {
     searchIndexEntries,
     searchIndexLayers,
     searchIndexedChapters,
+    learningGraphNodes,
+    learningGraphEdges,
+    learningGraphChapters,
     manuscriptSections,
     blackboardStages,
     sectionNarratives,
@@ -256,6 +268,9 @@ function chapterCoverageRow(chapterNumber: number): ChapterCoverageRow {
   const simulatorControls = simulatorControlCount(chapterNumber);
   const simulatorReadoutTotal = simulatorReadoutCount(chapterNumber);
   const searchIndexEntries = bookIndexEntryCount(chapterNumber);
+  const learningGraph = learningGraphForChapter(chapterNumber);
+  const learningGraphNodes = learningGraphNodeCount(chapterNumber);
+  const learningGraphEdges = learningGraphEdgeCount(chapterNumber);
   const manuscript = manuscriptForChapter(chapterNumber);
   const blackboard = blackboardForChapter(chapterNumber);
   const sectionLessons = sectionLessonsForChapter(chapterNumber);
@@ -272,6 +287,7 @@ function chapterCoverageRow(chapterNumber: number): ChapterCoverageRow {
     "misconception clinic",
     "chapter simulator lab",
     "whole-book search index",
+    "interactive learning graph",
     "original manuscript",
     "interactive blackboard",
     "section textbook manuscript",
@@ -306,6 +322,8 @@ function chapterCoverageRow(chapterNumber: number): ChapterCoverageRow {
     simulator.controls.length >= 3 ? "" : "Chapter simulator has fewer than three live controls.",
     simulatorReadoutTotal >= simulatorReadouts.length ? "" : "Chapter simulator does not expose all readouts.",
     searchIndexEntries >= 30 ? "" : "Chapter search index has fewer than thirty searchable entries.",
+    learningGraph.nodes.length >= 20 ? "" : "Learning graph has fewer than twenty nodes.",
+    learningGraph.edges.length >= 18 ? "" : "Learning graph has fewer than eighteen links.",
     manuscript.sections.length >= 3 ? "" : "Original manuscript has fewer than three chapter-specific moves.",
     blackboard.stages.length >= 4 ? "" : "Interactive blackboard has fewer than four stages.",
     sectionLessons.length >= (deep?.sectionDetails.length ?? chapter.sections.length) ? "" : "Section textbook manuscript does not cover every section.",
@@ -339,6 +357,8 @@ function chapterCoverageRow(chapterNumber: number): ChapterCoverageRow {
     simulatorControls,
     simulatorReadouts: simulatorReadoutTotal,
     searchIndexEntries,
+    learningGraphNodes,
+    learningGraphEdges,
     manuscriptSections: manuscript.sections.length,
     blackboardStages: blackboard.stages.length,
     sectionNarratives: sectionLessons.length,
@@ -395,8 +415,8 @@ function requirementProofs(totals: CoverageAudit["totals"]): RequirementProof[] 
   return [
     {
       label: "Linear standalone book reader",
-      status: totals.bookReaderRoutes === 1 && totals.zeroKnowledgeRungs >= totals.chapters * 5 && totals.zeroKnowledgeModes >= totals.zeroKnowledgeRungs * zeroKnowledgeModes.length && totals.lectureTheaters >= totals.chapters && totals.lectureTheaterSlides >= totals.chapters * 5 && totals.lectureTheaterModes >= totals.lectureTheaterSlides * theaterModeKinds.length && totals.practiceCards >= totals.chapters * 5 && totals.practiceInteractiveModes >= totals.practiceCards * practiceModes.length && totals.conceptCards >= totals.chapters * 6 && totals.conceptInteractiveModes >= totals.conceptCards * conceptLectureModes.length && totals.workedExamples >= totals.chapters * 5 && totals.workedExampleInteractiveModes >= totals.workedExamples * workedExampleModes.length && totals.misconceptionCards >= totals.chapters * 5 && totals.misconceptionInteractiveModes >= totals.misconceptionCards * misconceptionModes.length && totals.simulators >= totals.chapters && totals.simulatorControls >= totals.chapters * 3 && totals.simulatorReadouts >= totals.chapters * simulatorReadouts.length && totals.searchIndexEntries >= totals.chapters * 30 && totals.searchIndexLayers >= 20 && totals.searchIndexedChapters === totals.chapters && totals.lectureBeats >= totals.sectionNotes && totals.sectionNarratives >= totals.sectionNotes && totals.sectionInteractiveModes >= totals.sectionNotes * 6 && totals.formulaInteractiveModes >= totals.formulas * formulaLectureModes.length && totals.manuscriptSections >= 51 && totals.blackboardStages >= 68 ? "complete" : "warning",
-      evidence: `/book is the continuous web-book route and renders ${totals.zeroKnowledgeRungs} zero-knowledge starter rungs, ${totals.lectureTheaters} guided lecture theaters, ${totals.lectureTheaterSlides} lecture slides, ${totals.lectureTheaterModes} theater modes, ${totals.practiceCards} active-recall checkpoints, ${totals.conceptCards} concept microscope cards, ${totals.workedExamples} worked examples, ${totals.misconceptionCards} misconception clinic cards, ${totals.simulators} chapter simulator labs, ${totals.simulatorControls} simulator controls, ${totals.simulatorReadouts} simulator readouts, ${totals.searchIndexEntries} whole-book search entries across ${totals.searchIndexLayers} layers, ${totals.manuscriptSections} bespoke manuscript moves, ${totals.blackboardStages} interactive blackboard stages, ${totals.sectionNarratives} section textbook manuscripts, ${totals.sectionInteractiveModes} guided section lecture modes, ${totals.formulaInteractiveModes} formula lecture modes, plus the same ${totals.lectureBeats} lecture beats used by the chapter lessons.`,
+      status: totals.bookReaderRoutes === 1 && totals.zeroKnowledgeRungs >= totals.chapters * 5 && totals.zeroKnowledgeModes >= totals.zeroKnowledgeRungs * zeroKnowledgeModes.length && totals.lectureTheaters >= totals.chapters && totals.lectureTheaterSlides >= totals.chapters * 5 && totals.lectureTheaterModes >= totals.lectureTheaterSlides * theaterModeKinds.length && totals.practiceCards >= totals.chapters * 5 && totals.practiceInteractiveModes >= totals.practiceCards * practiceModes.length && totals.conceptCards >= totals.chapters * 6 && totals.conceptInteractiveModes >= totals.conceptCards * conceptLectureModes.length && totals.workedExamples >= totals.chapters * 5 && totals.workedExampleInteractiveModes >= totals.workedExamples * workedExampleModes.length && totals.misconceptionCards >= totals.chapters * 5 && totals.misconceptionInteractiveModes >= totals.misconceptionCards * misconceptionModes.length && totals.simulators >= totals.chapters && totals.simulatorControls >= totals.chapters * 3 && totals.simulatorReadouts >= totals.chapters * simulatorReadouts.length && totals.searchIndexEntries >= totals.chapters * 30 && totals.searchIndexLayers >= 20 && totals.searchIndexedChapters === totals.chapters && totals.learningGraphNodes >= totals.chapters * 20 && totals.learningGraphEdges >= totals.chapters * 18 && totals.learningGraphChapters === totals.chapters && totals.lectureBeats >= totals.sectionNotes && totals.sectionNarratives >= totals.sectionNotes && totals.sectionInteractiveModes >= totals.sectionNotes * 6 && totals.formulaInteractiveModes >= totals.formulas * formulaLectureModes.length && totals.manuscriptSections >= 51 && totals.blackboardStages >= 68 ? "complete" : "warning",
+      evidence: `/book is the continuous web-book route and renders ${totals.zeroKnowledgeRungs} zero-knowledge starter rungs, ${totals.lectureTheaters} guided lecture theaters, ${totals.lectureTheaterSlides} lecture slides, ${totals.lectureTheaterModes} theater modes, ${totals.practiceCards} active-recall checkpoints, ${totals.conceptCards} concept microscope cards, ${totals.workedExamples} worked examples, ${totals.misconceptionCards} misconception clinic cards, ${totals.simulators} chapter simulator labs, ${totals.simulatorControls} simulator controls, ${totals.simulatorReadouts} simulator readouts, ${totals.searchIndexEntries} whole-book search entries across ${totals.searchIndexLayers} layers, ${totals.learningGraphNodes} learning-graph nodes and ${totals.learningGraphEdges} learning links, ${totals.manuscriptSections} bespoke manuscript moves, ${totals.blackboardStages} interactive blackboard stages, ${totals.sectionNarratives} section textbook manuscripts, ${totals.sectionInteractiveModes} guided section lecture modes, ${totals.formulaInteractiveModes} formula lecture modes, plus the same ${totals.lectureBeats} lecture beats used by the chapter lessons.`,
       easy: "Readers can now read the whole course in order without jumping between chapter cards.",
       technical: "The App Router `/book` page imports the chapter dataset, zero-knowledge ladders, guided lecture theaters, active-recall practice cards, concept microscope cards, worked example cards, misconception clinic cards, chapter simulators, standaloneLectureForChapter() output, section manuscripts, and chapter-filtered formula props, then renders every chapter sequentially with table of contents anchors and links to full chapter labs.",
     },
@@ -420,6 +440,13 @@ function requirementProofs(totals: CoverageAudit["totals"]): RequirementProof[] 
       evidence: `${totals.searchIndexEntries} searchable entries cover ${totals.searchIndexedChapters}/${totals.chapters} chapters across ${totals.searchIndexLayers} layers, with a dedicated /search route plus chapter-local search consoles.`,
       easy: "Readers can type a term or technical phrase and jump directly to the relevant standalone explanation instead of hunting through pages.",
       technical: "bookIndex.ts aggregates chapter stories, zero-primer rungs, lecture slides, active recall, concept cards, examples, misconception repairs, simulators, manuscripts, section lessons, synthesis/dependency gates, source audits, algorithms, mastery notes, formulas, evidence anchors, and exercise coaches into serialized search entries consumed by BookSearch.",
+    },
+    {
+      label: "Interactive learning graph",
+      status: totals.learningGraphNodes >= totals.chapters * 20 && totals.learningGraphEdges >= totals.chapters * 18 && totals.learningGraphChapters === totals.chapters ? "complete" : "warning",
+      evidence: `${totals.learningGraphNodes} graph nodes and ${totals.learningGraphEdges} learning links cover ${totals.learningGraphChapters}/${totals.chapters} chapters, with clickable concept/formula/algorithm/example/practice/simulator/prerequisite/unlock maps.`,
+      easy: "Readers can see each chapter as a map before diving into details, then click a node for plain explanation or technical explanation.",
+      technical: "learningGraph.ts derives typed graph nodes and edges from original chapter, concept, formula, algorithm, worked-example, practice, simulator, and dependency modules; LearningGraphExplorer renders the interactive SVG graph on /graph, home, and chapter routes.",
     },
     {
       label: "Active recall practice coach",

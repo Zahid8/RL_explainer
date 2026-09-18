@@ -10,6 +10,7 @@ import { ChapterSimulatorLab } from "@/components/ChapterSimulatorLab";
 import { ConceptLectureDeck } from "@/components/ConceptLectureDeck";
 import { FormulaLectureReader } from "@/components/FormulaLectureReader";
 import { InteractiveBlackboard } from "@/components/InteractiveBlackboard";
+import { LearningGraphExplorer } from "@/components/LearningGraphExplorer";
 import { SectionLessonReader } from "@/components/SectionLessonReader";
 import { ZeroKnowledgeLadderReader } from "@/components/ZeroKnowledgeLadderReader";
 import { MotionGlyph } from "@/components/MotionGlyph";
@@ -36,6 +37,7 @@ import { simulatorControlCount, simulatorForChapter, simulatorReadoutCount, type
 import { formulaLectureModeCount, formulasForChapter } from "@/lib/formulaAtlas";
 import { bookIndexEntriesForChapter, bookIndexEntryCount } from "@/lib/bookIndex";
 import { blackboardForChapter } from "@/lib/interactiveBlackboards";
+import { learningGraphEdgeCount, learningGraphForChapter, learningGraphNodeCount } from "@/lib/learningGraph";
 import { chapterMastery } from "@/lib/mastery";
 import { chapters } from "@/lib/paper";
 import { manuscriptForChapter, type ChapterManuscript } from "@/lib/chapterManuscripts";
@@ -99,6 +101,9 @@ export default async function ChapterPage({ params }: { params: Params }) {
   const sectionLessons = sectionLessonsForChapter(item.n);
   const searchEntries = bookIndexEntriesForChapter(item.n);
   const searchEntryTotal = bookIndexEntryCount(item.n);
+  const learningGraph = learningGraphForChapter(item.n);
+  const graphNodes = learningGraphNodeCount(item.n);
+  const graphEdges = learningGraphEdgeCount(item.n);
   const prev = chapters.find((entry) => entry.n === item.n - 1);
   const next = chapters.find((entry) => entry.n === item.n + 1);
 
@@ -139,6 +144,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
                 <Stat value={String(simulatorReadouts)} label="sim readouts" />
                 <Stat value={String(sourceAudits.length)} label="source cues" />
                 <Stat value={String(searchEntryTotal)} label="search entries" />
+                <Stat value={String(graphNodes)} label="graph nodes" />
+                <Stat value={String(graphEdges)} label="graph links" />
               </div>
             </div>
           </div>
@@ -155,12 +162,19 @@ export default async function ChapterPage({ params }: { params: Params }) {
           <AnimatedConceptGraphic label="Story loop" variant="loop" caption="The easy story and the technical story update each other: intuition points at notation, notation checks intuition." compact />
         </section>
 
-        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, starterRungs: starter.rungs.length, starterModes, theaterSlides, theaterModes, practiceCards: practiceCards.length, practiceModes, conceptCards: conceptCards.length, conceptModes, workedExamples: workedExamples.length, workedExampleModes, misconceptionCards: misconceptionCards.length, misconceptionModes, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, sectionLessons: sectionLessons.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, formulaModes, evidence: evidence.length, exercises: exercises.length, simulatorControls, simulatorReadouts, sourceAudits: sourceAudits.length, searchEntries: searchEntryTotal }} />
+        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, starterRungs: starter.rungs.length, starterModes, theaterSlides, theaterModes, practiceCards: practiceCards.length, practiceModes, conceptCards: conceptCards.length, conceptModes, workedExamples: workedExamples.length, workedExampleModes, misconceptionCards: misconceptionCards.length, misconceptionModes, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, sectionLessons: sectionLessons.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, formulaModes, evidence: evidence.length, exercises: exercises.length, simulatorControls, simulatorReadouts, sourceAudits: sourceAudits.length, searchEntries: searchEntryTotal, graphNodes, graphEdges }} />
 
         <section id="search" className="scroll-mt-24">
           <SectionTitle eyebrow="00a - Chapter search index" title="Search this chapter's explanations without leaving the page." lead="Use this chapter-local index when you remember a term, formula, trap, method, or example but do not know which layer contains it. It searches the original standalone prose and technical explanations for this chapter." />
           <div className="mt-6">
             <BookSearch entries={searchEntries} contextTitle={`Chapter ${item.n} searchable explanation index`} compact defaultChapter={item.n} />
+          </div>
+        </section>
+
+        <section id="learning-graph" className="scroll-mt-24">
+          <SectionTitle eyebrow="00b - Interactive learning graph" title="Map the chapter before memorizing the details." lead="Click nodes to see how prerequisites feed the chapter, how concepts become formulas, how formulas become methods, and how examples, practice, and simulator knobs prove understanding." />
+          <div className="mt-6">
+            <LearningGraphExplorer graphs={[learningGraph]} contextTitle={`Chapter ${item.n} graphical learning map`} compact defaultChapter={item.n} />
           </div>
         </section>
 
@@ -351,9 +365,10 @@ function Stat({ value, label }: { value: string; label: string }) {
   );
 }
 
-function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; starterRungs: number; starterModes: number; theaterSlides: number; theaterModes: number; practiceCards: number; practiceModes: number; conceptCards: number; conceptModes: number; workedExamples: number; workedExampleModes: number; misconceptionCards: number; misconceptionModes: number; simulatorControls: number; simulatorReadouts: number; manuscriptSections: number; blackboardStages: number; sectionLessons: number; lectureBeats: number; sections: number; formulas: number; formulaModes: number; evidence: number; exercises: number; sourceAudits: number; searchEntries: number } }) {
+function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; starterRungs: number; starterModes: number; theaterSlides: number; theaterModes: number; practiceCards: number; practiceModes: number; conceptCards: number; conceptModes: number; workedExamples: number; workedExampleModes: number; misconceptionCards: number; misconceptionModes: number; simulatorControls: number; simulatorReadouts: number; manuscriptSections: number; blackboardStages: number; sectionLessons: number; lectureBeats: number; sections: number; formulas: number; formulaModes: number; evidence: number; exercises: number; sourceAudits: number; searchEntries: number; graphNodes: number; graphEdges: number } }) {
   const items = [
     ["search", `${counts.searchEntries} search entries`],
+    ["learning-graph", `${counts.graphNodes} graph nodes · ${counts.graphEdges} links`],
     ["starter", `${counts.starterRungs} starter rungs · ${counts.starterModes} modes`],
     ["theater", `${counts.theaterSlides} lecture slides · ${counts.theaterModes} modes`],
     ["practice", `${counts.practiceCards} practice checks · ${counts.practiceModes} modes`],

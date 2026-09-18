@@ -1,12 +1,12 @@
 # Graph Report - rlbook-explainer  (2026-09-18)
 
 ## Corpus Check
-- 86 files · ~872,318 words
+- 89 files · ~875,945 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 325 nodes · 465 edges · 25 communities detected
-- Extraction: 78% EXTRACTED · 22% INFERRED · 0% AMBIGUOUS · INFERRED: 102 edges (avg confidence: 0.8)
+- 341 nodes · 504 edges · 25 communities detected
+- Extraction: 76% EXTRACTED · 24% INFERRED · 0% AMBIGUOUS · INFERRED: 119 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
@@ -37,16 +37,16 @@
 - [[_COMMUNITY_Community 25|Community 25]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `buildCoverageAudit()` - 27 edges
-2. `chapterCoverageRow()` - 27 edges
+1. `buildCoverageAudit()` - 30 edges
+2. `chapterCoverageRow()` - 30 edges
 3. `workedExampleForAlgorithm()` - 22 edges
 4. `buildBookIndexEntries()` - 18 edges
 5. `algorithmProfile()` - 15 edges
-6. `lectureTheaterForChapter()` - 12 edges
-7. `workedExamplesForChapter()` - 11 edges
-8. `simulatorForChapter()` - 11 edges
-9. `algorithmDerivation()` - 11 edges
-10. `algorithmsForChapter()` - 10 edges
+6. `learningGraphForChapter()` - 13 edges
+7. `workedExamplesForChapter()` - 12 edges
+8. `simulatorForChapter()` - 12 edges
+9. `lectureTheaterForChapter()` - 12 edges
+10. `algorithmsForChapter()` - 11 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `chapterCoverageRow()` --calls--> `chapterSynthesis()`  [INFERRED]
@@ -63,12 +63,12 @@
 ## Communities
 
 ### Community 0 - "Community 0"
-Cohesion: 0.09
-Nodes (20): allLectureTheaters(), compactTags(), lectureTheaterCount(), lectureTheaterModeCount(), lectureTheaterSlideCount(), theaterSlideId(), manuscriptSectionCount(), allMisconceptionCards() (+12 more)
+Cohesion: 0.07
+Nodes (26): GraphPage(), lectureTheaterCount(), manuscriptSectionCount(), allMisconceptionCards(), misconceptionCardCount(), misconceptionModeCount(), allPracticeCards(), practiceCardCount() (+18 more)
 
 ### Community 1 - "Community 1"
 Cohesion: 0.16
-Nodes (27): algorithmsForChapter(), sourceAuditsForChapter(), buildBookIndexEntries(), lectureTheaterForChapter(), manuscriptForChapter(), misconceptionCardsForChapter(), practiceCardsForChapter(), allSimulators() (+19 more)
+Nodes (30): algorithmsForChapter(), sourceAuditsForChapter(), buildBookIndexEntries(), allLectureTheaters(), compactTags(), lectureTheaterForChapter(), lectureTheaterModeCount(), lectureTheaterSlideCount() (+22 more)
 
 ### Community 2 - "Community 2"
 Cohesion: 0.18
@@ -99,16 +99,16 @@ Cohesion: 0.36
 Nodes (9): chapterSynthesis(), comparisonAxes(), dependencyStack(), groupBy(), implementationTest(), ladderItem(), oralExamPrompts(), studyProtocol() (+1 more)
 
 ### Community 9 - "Community 9"
-Cohesion: 0.42
-Nodes (8): algorithmDossier(), inferBiasVariancePosition(), inferDiagnostics(), inferEstimatorShape(), inferImplementationInvariants(), inferKnobs(), inferStabilityContract(), outputPhrase()
-
-### Community 10 - "Community 10"
 Cohesion: 0.36
 Nodes (6): chapterDependencyMap(), conceptGates(), dominantProfiles(), reviewLoop(), skipRisks(), topCounts()
 
-### Community 11 - "Community 11"
+### Community 10 - "Community 10"
 Cohesion: 0.33
 Nodes (7): allConceptCards(), candidateFromSection(), conceptCardCount(), conceptModeCount(), normalize(), slug(), uniqueCandidates()
+
+### Community 11 - "Community 11"
+Cohesion: 0.42
+Nodes (8): algorithmDossier(), inferBiasVariancePosition(), inferDiagnostics(), inferEstimatorShape(), inferImplementationInvariants(), inferKnobs(), inferStabilityContract(), outputPhrase()
 
 ### Community 12 - "Community 12"
 Cohesion: 0.7
@@ -187,16 +187,16 @@ Nodes (2): evalJs(), send()
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `algorithmCoverageRow()` connect `Community 3` to `Community 0`, `Community 1`, `Community 2`, `Community 5`, `Community 9`?**
+- **Why does `algorithmCoverageRow()` connect `Community 3` to `Community 0`, `Community 1`, `Community 2`, `Community 5`, `Community 11`?**
   _High betweenness centrality (0.148) - this node is a cross-community bridge._
-- **Why does `chapterCoverageRow()` connect `Community 1` to `Community 0`, `Community 7`, `Community 8`, `Community 10`, `Community 11`?**
-  _High betweenness centrality (0.095) - this node is a cross-community bridge._
-- **Why does `buildCoverageAudit()` connect `Community 0` to `Community 1`, `Community 11`, `Community 6`, `Community 7`?**
-  _High betweenness centrality (0.070) - this node is a cross-community bridge._
-- **Are the 25 inferred relationships involving `buildCoverageAudit()` (e.g. with `zeroKnowledgeRungCount()` and `zeroKnowledgeModeCount()`) actually correct?**
-  _`buildCoverageAudit()` has 25 INFERRED edges - model-reasoned connections that need verification._
-- **Are the 26 inferred relationships involving `chapterCoverageRow()` (e.g. with `algorithmsForChapter()` and `chapterSynthesis()`) actually correct?**
-  _`chapterCoverageRow()` has 26 INFERRED edges - model-reasoned connections that need verification._
+- **Why does `chapterCoverageRow()` connect `Community 1` to `Community 0`, `Community 7`, `Community 8`, `Community 9`, `Community 10`?**
+  _High betweenness centrality (0.104) - this node is a cross-community bridge._
+- **Why does `buildCoverageAudit()` connect `Community 0` to `Community 1`, `Community 10`, `Community 6`, `Community 7`?**
+  _High betweenness centrality (0.077) - this node is a cross-community bridge._
+- **Are the 28 inferred relationships involving `buildCoverageAudit()` (e.g. with `zeroKnowledgeRungCount()` and `zeroKnowledgeModeCount()`) actually correct?**
+  _`buildCoverageAudit()` has 28 INFERRED edges - model-reasoned connections that need verification._
+- **Are the 29 inferred relationships involving `chapterCoverageRow()` (e.g. with `algorithmsForChapter()` and `chapterSynthesis()`) actually correct?**
+  _`chapterCoverageRow()` has 29 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 16 inferred relationships involving `buildBookIndexEntries()` (e.g. with `algorithmsForChapter()` and `standaloneLectureForChapter()`) actually correct?**
   _`buildBookIndexEntries()` has 16 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 2 inferred relationships involving `algorithmProfile()` (e.g. with `algorithmCoverageRow()` and `ladderItem()`) actually correct?**
