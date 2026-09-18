@@ -152,6 +152,7 @@ function kindColor(kind: LearningGraphNodeKind) {
     assumption: "#84cc16",
     example: "#14b8a6",
     practice: "#84cc16",
+    exercise: "#f97316",
     exam: "#10b981",
     simulator: "#06b6d4",
     prerequisite: "#64748b",
@@ -165,6 +166,7 @@ function accentForKind(kind: LearningGraphNodeKind): Accent {
   if (kind === "symbol") return "violet";
   if (kind === "proof") return "violet";
   if (kind === "algorithm" || kind === "code" || kind === "unlock") return "orange";
+  if (kind === "exercise") return "orange";
   if (kind === "concept" || kind === "section" || kind === "practice" || kind === "assumption" || kind === "exam") return "lime";
   if (kind === "prerequisite" || kind === "chapter") return "blue";
   return "cyan";
@@ -175,6 +177,6 @@ function kindLabel(kind: LearningGraphNodeKind) {
 }
 
 function shortLabel(label: string) {
-  const cleaned = label.replace(/^Chapter \d+:\s*/, "").replace(/^(Formula|Algorithm|Practice|Worked example|Section mastery):\s*/i, "");
+  const cleaned = label.replace(/^Chapter \d+:\s*/, "").replace(/^(Formula|Algorithm|Practice|Exercise|Worked example|Section mastery):\s*/i, "");
   return cleaned.length > 18 ? `${cleaned.slice(0, 16)}…` : cleaned;
 }

@@ -8,6 +8,7 @@ import { CodeLab } from "@/components/CodeLab";
 import { ChapterLectureTheater } from "@/components/ChapterLectureTheater";
 import { ChapterSimulatorLab } from "@/components/ChapterSimulatorLab";
 import { ConceptLectureDeck } from "@/components/ConceptLectureDeck";
+import { ExerciseSolutionStudio } from "@/components/ExerciseSolutionStudio";
 import { FormulaLectureReader } from "@/components/FormulaLectureReader";
 import { InteractiveBlackboard } from "@/components/InteractiveBlackboard";
 import { SectionLessonReader } from "@/components/SectionLessonReader";
@@ -21,6 +22,7 @@ import { Chip } from "@/components/Section";
 import { ZeroKnowledgeLadderReader } from "@/components/ZeroKnowledgeLadderReader";
 import { manuscriptForChapter, manuscriptSectionCount, type ChapterManuscript } from "@/lib/chapterManuscripts";
 import { bookIndexEntryCount, bookIndexLayerCount } from "@/lib/bookIndex";
+import { exerciseSolutionCardCount, exerciseSolutionCardsForChapter, exerciseSolutionModeCount } from "@/lib/exerciseSolutionStudio";
 import { codeLabCardsForChapter, codeLabModeCount, type CodeLabCard } from "@/lib/codeLab";
 import { assumptionCardsForChapter, assumptionModeCount, type AssumptionClinicCard } from "@/lib/assumptionClinic";
 import { chapterExamCardsForChapter, chapterExamModeCount, type ChapterExamCard } from "@/lib/chapterExam";
@@ -111,6 +113,8 @@ export default function BookPage() {
   const proofModes = proofModeCount();
   const examModes = chapterExamModeCount();
   const sectionMasteryModes = sectionMasteryModeCount();
+  const exerciseSolutionCards = exerciseSolutionCardCount();
+  const exerciseSolutionModes = exerciseSolutionModeCount();
 
   return (
     <main className="min-h-screen bg-bg text-ink">
@@ -126,6 +130,7 @@ export default function BookPage() {
             <Link href="/assumptions" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Trust clinic</Link>
             <Link href="/proofs" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Proof lab</Link>
             <Link href="/exam" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Exam studio</Link>
+            <Link href="/exercises" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Exercise solutions</Link>
             <Link href="/coverage" className="mono rounded-full border border-line bg-white px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-muted hover:border-cyan">Coverage audit</Link>
           </div>
           <div className="grid gap-8 lg:grid-cols-[1fr_440px] lg:items-end">
@@ -152,6 +157,8 @@ export default function BookPage() {
                 <Chip accent="cyan">{sectionNarratives} section manuscripts</Chip>
                 <Chip accent="blue">{guidedSectionModes} guided section modes</Chip>
                 <Chip accent="lime">{sectionMasteryModes} section mastery modes</Chip>
+                <Chip accent="orange">{exerciseSolutionCards} exercise solutions</Chip>
+                <Chip accent="orange">{exerciseSolutionModes} solution modes</Chip>
                 <Chip accent="violet">{formulaModes} formula lecture modes</Chip>
                 <Chip accent="cyan">{searchEntries} search entries</Chip>
                 <Chip accent="blue">{searchLayers} search layers</Chip>
@@ -184,6 +191,7 @@ export default function BookPage() {
                   <li>10. Use the assumption clinic to ask when a method&apos;s data, target, update, and representation make its guarantee honest.</li>
                   <li>11. Use the proof lab to turn formulas and chapter claims into claim, ingredient, proof-sketch, equation, and stress-test arguments.</li>
                   <li>12. Use the chapter exam studio to answer, plan, reveal, grade, and transfer the chapter before moving on.</li>
+                  <li>13. Use the exercise solution studio to attempt, hint, solve, debug, and extend numbered practice problems.</li>
                 </ol>
               </div>
             </div>
@@ -215,11 +223,13 @@ export default function BookPage() {
 }
 
 function BookChapter({ chapter, lecture, starter, starterModes, theater, theaterSlides, theaterModes, practiceCards, practiceModes, conceptCards, conceptModes, workedExamples, workedExampleModes, misconceptionCards, misconceptionModes, simulator, simulatorControls, simulatorReadouts, manuscript, blackboard, sectionLessons, sectionMasteryCards, sectionMasteryModes, symbolCards, symbolModes, codeCards, codeModes, assumptionCards, assumptionModes, proofCards, proofModes, examCards, examModes, formulas, formulaModes }: { chapter: (typeof chapters)[number]; lecture: StandaloneChapterLecture; starter: ZeroKnowledgeLadder; starterModes: number; theater: ChapterLectureTheaterData; theaterSlides: number; theaterModes: number; practiceCards: ChapterPracticeCard[]; practiceModes: number; conceptCards: ChapterConceptCard[]; conceptModes: number; workedExamples: ChapterWorkedExample[]; workedExampleModes: number; misconceptionCards: ChapterMisconceptionCard[]; misconceptionModes: number; simulator: ChapterSimulator; simulatorControls: number; simulatorReadouts: number; manuscript: ChapterManuscript; blackboard: ChapterBlackboard; sectionLessons: SectionTextbookLesson[]; sectionMasteryCards: SectionMasteryCard[]; sectionMasteryModes: number; symbolCards: SymbolCard[]; symbolModes: number; codeCards: CodeLabCard[]; codeModes: number; assumptionCards: AssumptionClinicCard[]; assumptionModes: number; proofCards: ProofLabCard[]; proofModes: number; examCards: ChapterExamCard[]; examModes: number; formulas: FormulaNote[]; formulaModes: number }) {
+  const exerciseSolutions = exerciseSolutionCardsForChapter(chapter.n);
+  const exerciseSolutionModes = exerciseSolutionModeCount(chapter.n);
   return (
     <article id={`book-chapter-${chapter.n}`} className="scroll-mt-24 overflow-hidden rounded-2xl border border-line bg-panel">
       <div className="grid gap-px bg-line lg:grid-cols-[0.9fr_1.1fr]">
         <div className="bg-panel p-6 lg:p-7">
-          <div className="flex flex-wrap gap-2"><Chip accent="cyan">Chapter {chapter.n}</Chip><Chip accent="blue">{chapter.part}</Chip><Chip accent="lime">{lecture.beats.length} section lessons</Chip><Chip accent="cyan">{theaterSlides} theater slides</Chip><Chip accent="blue">{theaterModes} theater modes</Chip><Chip accent="violet">{conceptCards.length} concepts</Chip><Chip accent="violet">{symbolCards.length} symbols</Chip><Chip accent="orange">{codeCards.length} code labs</Chip><Chip accent="lime">{assumptionCards.length} trust clinics</Chip><Chip accent="violet">{proofCards.length} proofs</Chip><Chip accent="lime">{examCards.length} exams</Chip><Chip accent="cyan">{sectionMasteryCards.length} section drills</Chip><Chip accent="orange">{workedExamples.length} examples</Chip><Chip accent="orange">{misconceptionCards.length} clinics</Chip><Chip accent="cyan">{simulatorControls} sim controls</Chip><Chip accent="blue">{simulatorReadouts} readouts</Chip></div>
+          <div className="flex flex-wrap gap-2"><Chip accent="cyan">Chapter {chapter.n}</Chip><Chip accent="blue">{chapter.part}</Chip><Chip accent="lime">{lecture.beats.length} section lessons</Chip><Chip accent="cyan">{theaterSlides} theater slides</Chip><Chip accent="blue">{theaterModes} theater modes</Chip><Chip accent="violet">{conceptCards.length} concepts</Chip><Chip accent="violet">{symbolCards.length} symbols</Chip><Chip accent="orange">{codeCards.length} code labs</Chip><Chip accent="lime">{assumptionCards.length} trust clinics</Chip><Chip accent="violet">{proofCards.length} proofs</Chip><Chip accent="lime">{examCards.length} exams</Chip><Chip accent="cyan">{sectionMasteryCards.length} section drills</Chip><Chip accent="orange">{exerciseSolutions.length} exercise solutions</Chip><Chip accent="orange">{workedExamples.length} examples</Chip><Chip accent="orange">{misconceptionCards.length} clinics</Chip><Chip accent="cyan">{simulatorControls} sim controls</Chip><Chip accent="blue">{simulatorReadouts} readouts</Chip></div>
           <h2 className="display mt-5 text-[clamp(32px,5vw,56px)] font-medium text-ink">{chapter.title}</h2>
           <p className="mt-4 text-base leading-relaxed text-muted">{lecture.promise}</p>
           <div className="mt-5 grid gap-3">
@@ -405,6 +415,14 @@ function BookChapter({ chapter, lecture, starter, starterModes, theater, theater
             <p className="mt-2 text-sm leading-relaxed text-muted">{sectionMasteryCards.length} section cards become {sectionMasteryModes} prompt, hint, answer, technical, and transfer modes for this chapter.</p>
           </div>
           <SectionMasteryStudio cards={sectionMasteryCards} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} compact />
+        </section>
+        <section className="grid gap-4">
+          <div>
+            <p className="eyebrow">Exercise solution studio</p>
+            <h3 className="display mt-2 text-3xl font-medium text-ink">Attempt, hint, solve, debug, and extend practice problems.</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted">{exerciseSolutions.length} exercise solution cards become {exerciseSolutionModes} attempt, hint, solution, debug, and extension modes for this chapter.</p>
+          </div>
+          {exerciseSolutions.length ? <ExerciseSolutionStudio cards={exerciseSolutions} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} compact /> : <p className="rounded-lg border border-line bg-white p-4 text-sm leading-relaxed text-muted">This chapter has no numbered exercise anchor in the current exercise-coach data, so the solution studio defers to the chapter exam and active recall layers.</p>}
         </section>
         <section className="grid gap-4">
           <div>

@@ -7,6 +7,7 @@ import { chapterExamCardsForChapter } from "@/lib/chapterExam";
 import { chapterDeepDives } from "@/lib/deepDives";
 import { evidenceGuideItems } from "@/lib/evidenceGuide";
 import { exerciseCoachCards } from "@/lib/exerciseCoach";
+import { exerciseSolutionCardsForChapter } from "@/lib/exerciseSolutionStudio";
 import { formulasForChapter } from "@/lib/formulaAtlas";
 import { proofCardsForChapter } from "@/lib/proofLab";
 import { blackboardForChapter } from "@/lib/interactiveBlackboards";
@@ -53,7 +54,8 @@ export type BookIndexLayer =
   | "mastery notebook"
   | "formula atlas"
   | "evidence anchor"
-  | "exercise coach";
+  | "exercise coach"
+  | "exercise solution";
 
 export interface BookIndexEntry {
   id: string;
@@ -120,6 +122,7 @@ function buildBookIndexEntries(): BookIndexEntry[] {
     const formulas = formulasForChapter(chapter.n);
     const evidence = evidenceGuideItems.filter((item) => item.chapter === chapter.n);
     const exercises = exerciseCoachCards.filter((item) => item.chapter === chapter.n);
+    const exerciseSolutions = exerciseSolutionCardsForChapter(chapter.n);
     const sourceAudits = sourceAuditsForChapter(chapter.n);
     const synthesis = chapterSynthesis(chapter, algorithms);
     const dependencies = chapterDependencyMap(chapter, chapters, algorithms);
@@ -530,11 +533,24 @@ function buildBookIndexEntries(): BookIndexEntry[] {
       id: `chapter-${chapter.n}-exercise-${exercise.id}`,
       title: `Exercise guide ${exercise.id}: ${exercise.title}`,
       layer: "exercise coach",
-      route: `/chapters/${chapter.n}#exercises`,
+      route: `/chapters/${chapter.n}#anchors`,
       summary: exercise.easyGoal,
       technical: `${exercise.technicalGoal} Strategy: ${exercise.strategy.join(" ")} ${exercise.checkpoint}`,
       tags: [exercise.kind, exercise.id, ...exercise.tags, `Chapter ${chapter.n}`],
       weight: 58,
+    }));
+
+
+    exerciseSolutions.forEach((card) => add({
+      ...chapterBase,
+      id: card.id,
+      title: `Exercise solution ${card.exerciseId}: ${card.title.replace(" solution studio", "")}`,
+      layer: "exercise solution",
+      route: `/chapters/${chapter.n}#exercise-solutions`,
+      summary: `${card.attemptPrompt} ${card.miniWorld}`,
+      technical: `Hint: ${card.hint.join(" ")} Solution: ${card.solution} Technical: ${card.technicalSolution} Debug: ${card.debugChecklist.join(" ")} Extension: ${card.extension}`,
+      tags: [card.kind, card.exerciseId, ...card.tags, `Chapter ${chapter.n}`],
+      weight: 84,
     }));
   }
 

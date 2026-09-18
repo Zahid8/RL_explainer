@@ -64,7 +64,7 @@ export default function CoveragePage() {
             <div>
               <p className="eyebrow">Whole-book coverage audit</p>
               <h1 className="display mt-4 max-w-5xl text-[clamp(42px,7vw,88px)] font-medium text-ink">Proof ledger for chapters and algorithms.</h1>
-              <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted">This page is generated from the current repository data. It checks whether the site has a linear /book reader, a whole-book search index, an interactive learning graph, a contextual symbol decoder, an implementation code lab, an assumption guarantee clinic, a proof intuition lab, a chapter exam studio, a section mastery studio, every chapter has a standalone from-scratch lecture route with a chapter-local search console, chapter learning map, notation console, interactive blackboard, section-level textbook manuscript, and guided section lecture controls, and every algorithm card has the required easy, technical, derivation, profile, dossier, and worked-example layers.</p>
+              <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted">This page is generated from the current repository data. It checks whether the site has a linear /book reader, a whole-book search index, an interactive learning graph, a contextual symbol decoder, an implementation code lab, an assumption guarantee clinic, a proof intuition lab, a chapter exam studio, a section mastery studio, exercise solution studio, every chapter has a standalone from-scratch lecture route with a chapter-local search console, chapter learning map, notation console, interactive blackboard, section-level textbook manuscript, and guided section lecture controls, and every algorithm card has the required easy, technical, derivation, profile, dossier, and worked-example layers.</p>
               <p className="mt-4 text-sm leading-relaxed text-dim">Generated from: {audit.generatedFrom}.</p>
             </div>
             <div className="grid gap-4">
@@ -102,6 +102,8 @@ export default function CoveragePage() {
                 <Stat value={String(audit.totals.examModes)} label="exam modes" />
                 <Stat value={String(audit.totals.sectionMasteryCards)} label="section mastery" />
                 <Stat value={String(audit.totals.sectionMasteryModes)} label="section modes" />
+                <Stat value={String(audit.totals.exerciseSolutions)} label="exercise solutions" />
+                <Stat value={String(audit.totals.exerciseSolutionModes)} label="solution modes" />
                 <Stat value={String(audit.totals.manuscriptSections)} label="manuscript moves" />
                 <Stat value={String(audit.totals.blackboardStages)} label="blackboard stages" />
                 <Stat value={String(audit.totals.sectionNarratives)} label="section manuscripts" />
@@ -125,7 +127,7 @@ export default function CoveragePage() {
         </section>
 
         <section id="chapter-matrix" className="scroll-mt-24">
-          <SectionTitle eyebrow="02 - Chapter coverage matrix" title="Every chapter route and every major study layer in one audit table." lead="Open any chapter to inspect the rendered detail layers: chapter search index, interactive learning graph, contextual symbol decoder, implementation code lab, assumption guarantee clinic, proof intuition lab, chapter exam studio, section mastery studio, guided lecture theater, concept microscope, worked example studio, misconception clinic, chapter simulator lab, manuscript, interactive blackboard, interactive section lecturer, section-level textbook prose, standalone lecture, synthesis, dependencies, source audit, algorithms, deep dives, mastery notes, formulas, anchors, and exercises." />
+          <SectionTitle eyebrow="02 - Chapter coverage matrix" title="Every chapter route and every major study layer in one audit table." lead="Open any chapter to inspect the rendered detail layers: chapter search index, interactive learning graph, contextual symbol decoder, implementation code lab, assumption guarantee clinic, proof intuition lab, chapter exam studio, section mastery studio, exercise solution studio, guided lecture theater, concept microscope, worked example studio, misconception clinic, chapter simulator lab, manuscript, interactive blackboard, interactive section lecturer, section-level textbook prose, standalone lecture, synthesis, dependencies, source audit, algorithms, deep dives, mastery notes, formulas, anchors, and exercises." />
           <div className="mt-6 grid gap-4">
             {audit.chapters.map((chapter) => <ChapterCoverageCard key={chapter.chapter} chapter={chapter} />)}
           </div>
@@ -238,6 +240,8 @@ function ChapterCoverageCard({ chapter }: { chapter: ChapterCoverageRow }) {
         <Metric label="formula modes" value={chapter.formulaInteractiveModes} />
         <Metric label="anchors" value={chapter.evidenceAnchors} />
         <Metric label="exercises" value={chapter.exerciseGuides} />
+        <Metric label="solutions" value={chapter.exerciseSolutions} />
+        <Metric label="solution modes" value={chapter.exerciseSolutionModes} />
         <Metric label="gates" value={chapter.synthesisGates + chapter.dependencyGates} />
       </div>
       <div className="mt-4 flex flex-wrap gap-2">{chapter.layers.map((layer) => <Chip key={layer} accent="cyan">{layer}</Chip>)}</div>

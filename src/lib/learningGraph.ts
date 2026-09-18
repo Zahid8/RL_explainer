@@ -3,6 +3,7 @@ import { assumptionCardsForChapter } from "@/lib/assumptionClinic";
 import { chapterDependencyMap } from "@/lib/chapterDependencyMap";
 import { chapterExamCardsForChapter } from "@/lib/chapterExam";
 import { practiceCardsForChapter } from "@/lib/chapterPractice";
+import { exerciseSolutionCardsForChapter } from "@/lib/exerciseSolutionStudio";
 import { simulatorForChapter } from "@/lib/chapterSimulators";
 import { workedExamplesForChapter } from "@/lib/chapterWorkedExamples";
 import { codeLabCardsForChapter } from "@/lib/codeLab";
@@ -13,7 +14,7 @@ import { chapters } from "@/lib/paper";
 import { sectionMasteryCardsForChapter } from "@/lib/sectionMastery";
 import { symbolCardsForChapter } from "@/lib/symbolAtlas";
 
-export type LearningGraphNodeKind = "chapter" | "concept" | "section" | "formula" | "symbol" | "proof" | "algorithm" | "code" | "assumption" | "example" | "practice" | "exam" | "simulator" | "prerequisite" | "unlock";
+export type LearningGraphNodeKind = "chapter" | "concept" | "section" | "formula" | "symbol" | "proof" | "algorithm" | "code" | "assumption" | "example" | "practice" | "exercise" | "exam" | "simulator" | "prerequisite" | "unlock";
 
 export interface LearningGraphNode {
   id: string;
@@ -70,6 +71,7 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
   const assumptionCards = assumptionCardsForChapter(chapterNumber).slice(0, 5);
   const examples = workedExamplesForChapter(chapterNumber).slice(0, 4);
   const practice = practiceCardsForChapter(chapterNumber).slice(0, 3);
+  const exerciseSolutions = exerciseSolutionCardsForChapter(chapterNumber).slice(0, 4);
   const examCards = chapterExamCardsForChapter(chapterNumber).slice(0, 4);
   const simulator = simulatorForChapter(chapterNumber);
   const dependencies = chapterDependencyMap(chapter, chapters, algorithms);
@@ -343,9 +345,36 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
     });
   });
 
+  exerciseSolutions.forEach((card, index) => {
+    const id = nodeId(chapterNumber, "exercise", `${card.exerciseId}-${card.title}`);
+    const practiceCard = practice[index % Math.max(practice.length, 1)];
+    addNode({
+      id,
+      chapter: chapterNumber,
+      kind: "exercise",
+      title: `Exercise ${card.exerciseId}: ${card.title.replace(" solution studio", "")}`,
+      easy: `${card.attemptPrompt} Hint: ${card.hint[0]}`,
+      technical: `${card.technicalSolution} Debug: ${card.debugChecklist[0]}`,
+      route: `/chapters/${chapterNumber}#exercise-solutions`,
+      tags: [card.kind, ...card.tags],
+      ...ringPoint("exercise", index, exerciseSolutions.length),
+    });
+    addEdge({
+      id: edgeId(practiceCard ? nodeId(chapterNumber, "practice", practiceCard.title) : centerId, id, "exercise"),
+      chapter: chapterNumber,
+      from: practiceCard ? nodeId(chapterNumber, "practice", practiceCard.title) : centerId,
+      to: id,
+      relation: "recall becomes exercise solution",
+      easy: `The exercise solution node asks the learner to attempt, hint, solve, debug, and extend a numbered practice problem.`,
+      technical: `The solution node exposes attempt prompt, mini-world, hint sequence, technical solution, debug checklist, grading rubric, and extension challenge.`,
+    });
+  });
+
   examCards.forEach((card, index) => {
     const id = nodeId(chapterNumber, "exam", card.title);
+    const exerciseCard = exerciseSolutions[index % Math.max(exerciseSolutions.length, 1)];
     const practiceCard = practice[index % Math.max(practice.length, 1)];
+    const priorNode = exerciseCard ? nodeId(chapterNumber, "exercise", `${exerciseCard.exerciseId}-${exerciseCard.title}`) : practiceCard ? nodeId(chapterNumber, "practice", practiceCard.title) : centerId;
     addNode({
       id,
       chapter: chapterNumber,
@@ -358,12 +387,12 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
       ...ringPoint("exam", index, examCards.length),
     });
     addEdge({
-      id: edgeId(practiceCard ? nodeId(chapterNumber, "practice", practiceCard.title) : centerId, id, "exam"),
+      id: edgeId(priorNode, id, "exam"),
       chapter: chapterNumber,
-      from: practiceCard ? nodeId(chapterNumber, "practice", practiceCard.title) : centerId,
+      from: priorNode,
       to: id,
       relation: "practice becomes exam",
-      easy: `The exam card asks the learner to prove the chapter without passive hints.`,
+      easy: `The exam card asks the learner to prove the chapter after recall and exercise-solution practice.`,
       technical: `The exam node packages prompt, plan, solution, rubric, diagnostic, and transfer into a mastery check.`,
     });
   });
@@ -444,7 +473,7 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
   return {
     chapter: chapterNumber,
     title: chapter.title,
-    promise: `Graphical map for Chapter ${chapterNumber}: start from the chapter node, move through concepts, section mastery checks, formulas, decoded symbols, proof sketches, methods, code scaffolds, assumptions, examples, practice, chapter exams, and simulator knobs, then check prerequisites and unlocks.`,
+    promise: `Graphical map for Chapter ${chapterNumber}: start from the chapter node, move through concepts, section mastery checks, formulas, decoded symbols, proof sketches, methods, code scaffolds, assumptions, examples, practice, exercise solutions, chapter exams, and simulator knobs, then check prerequisites and unlocks.`,
     route: `/chapters/${chapterNumber}`,
     nodes,
     edges,
@@ -456,7 +485,8 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
       "Decode symbol nodes before opening proof nodes that explain why the equation or chapter claim is valid.",
       "Use algorithm and code nodes to turn the proven target into variables, loops, invariants, and tests.",
       "Open assumption nodes to see when the method is valid, what guarantee it wants, and how to repair broken conditions.",
-      "Use examples and practice nodes to rehearse the idea, then open exam nodes to grade and transfer mastery.",
+      "Use examples and practice nodes to rehearse the idea, then open exercise solution nodes to attempt, debug, and extend numbered problems.",
+      "Open exam nodes to grade and transfer mastery.",
       "Use simulator nodes to test whether the chapter story survives knob changes.",
     ],
     legend: graphLegend,
@@ -489,6 +519,7 @@ export const graphLegend: ChapterLearningGraph["legend"] = [
   { kind: "assumption", label: "Assumption", easy: "When the method deserves trust.", technical: "Data, target, update, representation, guarantee, failure, and repair conditions." },
   { kind: "example", label: "Worked example", easy: "A tiny world where the idea moves.", technical: "Trace-level evidence for the update." },
   { kind: "practice", label: "Practice", easy: "A checkpoint to test ownership.", technical: "Prompt, solution, trap, and transfer." },
+  { kind: "exercise", label: "Exercise solution", easy: "A numbered practice problem turned into an attempt-hint-solution loop.", technical: "Attempt prompt, mini-world, hint, technical solution, debug checklist, rubric, and extension." },
   { kind: "exam", label: "Chapter exam", easy: "A self-graded mastery prompt.", technical: "Prompt, plan, solution, rubric, diagnostic, and transfer." },
   { kind: "simulator", label: "Simulator", easy: "A live knob model of the chapter.", technical: "Exploration, step-size, horizon, and stability tradeoffs." },
   { kind: "prerequisite", label: "Prerequisite", easy: "Earlier chapters feeding this one.", technical: "Incoming assumptions and notation." },
@@ -507,6 +538,7 @@ function ringPoint(kind: LearningGraphNodeKind, index: number, total: number): {
     assumption: { start: 335, end: 455, radius: 45 },
     example: { start: 65, end: 150, radius: 48 },
     practice: { start: 210, end: 300, radius: 49 },
+    exercise: { start: 95, end: 190, radius: 54 },
     exam: { start: 150, end: 245, radius: 56 },
   };
   const lane = lanes[kind] ?? { start: 0, end: 360, radius: 38 };
