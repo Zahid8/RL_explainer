@@ -144,6 +144,7 @@ function kindColor(kind: LearningGraphNodeKind) {
     chapter: "#0ea5e9",
     foundation: "#06b6d4",
     math: "#f97316",
+    story: "#06b6d4",
     concept: "#22c55e",
     section: "#0d9488",
     formula: "#8b5cf6",
@@ -167,6 +168,7 @@ function kindColor(kind: LearningGraphNodeKind) {
 function accentForKind(kind: LearningGraphNodeKind): Accent {
   if (kind === "foundation") return "cyan";
   if (kind === "math") return "orange";
+  if (kind === "story") return "cyan";
   if (kind === "formula") return "violet";
   if (kind === "symbol") return "violet";
   if (kind === "proof") return "violet";

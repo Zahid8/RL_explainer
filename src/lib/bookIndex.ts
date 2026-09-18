@@ -11,6 +11,7 @@ import { exerciseSolutionCardsForChapter } from "@/lib/exerciseSolutionStudio";
 import { formulasForChapter } from "@/lib/formulaAtlas";
 import { foundationDictionaryCardsForChapter } from "@/lib/foundationDictionary";
 import { mathRescueCardsForChapter } from "@/lib/mathRescue";
+import { visualStoriesForChapter } from "@/lib/visualStory";
 import { methodCompareCardsForChapter } from "@/lib/methodCompare";
 import { proofCardsForChapter } from "@/lib/proofLab";
 import { blackboardForChapter } from "@/lib/interactiveBlackboards";
@@ -35,6 +36,7 @@ export type BookIndexLayer =
   | "zero primer"
   | "foundation dictionary"
   | "math rescue"
+  | "visual story"
   | "lecture theater"
   | "symbol decoder"
   | "implementation code lab"
@@ -110,6 +112,7 @@ function buildBookIndexEntries(): BookIndexEntry[] {
     const starter = zeroKnowledgeLadderForChapter(chapter.n);
     const foundationCards = foundationDictionaryCardsForChapter(chapter.n);
     const mathCards = mathRescueCardsForChapter(chapter.n);
+    const visualStories = visualStoriesForChapter(chapter.n);
     const theater = lectureTheaterForChapter(chapter.n);
     const symbolCards = symbolCardsForChapter(chapter.n);
     const codeCards = codeLabCardsForChapter(chapter.n);
@@ -223,6 +226,18 @@ function buildBookIndexEntries(): BookIndexEntry[] {
       technical: `${card.notationBridge} Chapter use: ${card.chapterUse} Pitfall: ${card.pitfall} Self-check: ${card.selfCheck}`,
       tags: [card.sourceLabel, card.object, ...card.tags, `Chapter ${chapter.n}`],
       weight: 94,
+    }));
+
+    visualStories.forEach((card) => add({
+      ...chapterBase,
+      id: card.id,
+      title: `Visual story: ${card.title.replace(/^Scene: /, "")}`,
+      layer: "visual story",
+      route: `/chapters/${chapter.n}#visual-story`,
+      summary: `${card.setting} Observe: ${card.learnerSees}`,
+      technical: `${card.learnerMoves} Board animation: ${card.boardAnimation} Technical translation: ${card.technicalTranslation} Pitfall: ${card.pitfall} Check: ${card.checkpoint}`,
+      tags: [card.sourceLabel, card.title, ...card.tags, `Chapter ${chapter.n}`],
+      weight: 93,
     }));
 
     theater.slides.forEach((slide) => add({

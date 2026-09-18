@@ -16,6 +16,7 @@ import { ExerciseSolutionStudio } from "@/components/ExerciseSolutionStudio";
 import { FormulaAtlas } from "@/components/FormulaAtlas";
 import { FoundationDictionaryStudio } from "@/components/FoundationDictionaryStudio";
 import { MathRescueStudio } from "@/components/MathRescueStudio";
+import { VisualStoryStudio } from "@/components/VisualStoryStudio";
 import { Glossary } from "@/components/Glossary";
 import { Hero } from "@/components/Hero";
 import { LearningGraphExplorer } from "@/components/LearningGraphExplorer";
@@ -38,6 +39,7 @@ import { manuscriptSectionCount } from "@/lib/chapterManuscripts";
 import { formulaLectureModeCount } from "@/lib/formulaAtlas";
 import { allFoundationDictionaryCards, foundationDictionaryCardCount, foundationDictionaryChapterCount, foundationDictionaryModeCount, foundationDictionarySourceCount, foundationDictionaryTermCount } from "@/lib/foundationDictionary";
 import { allMathRescueCards, mathRescueCardCount, mathRescueChapterCount, mathRescueModeCount, mathRescueObjectCount, mathRescueSourceCount, mathRescueSymbolCount } from "@/lib/mathRescue";
+import { allVisualStoryCards, visualStoryActorCount, visualStoryCardCount, visualStoryChapterCount, visualStoryModeCount, visualStoryPropCount, visualStorySceneCount, visualStorySourceCount } from "@/lib/visualStory";
 import { allBookIndexEntries, bookIndexChapterCount, bookIndexEntryCount, bookIndexLayerCount } from "@/lib/bookIndex";
 import { allAssumptionClinicCards, assumptionCardCount, assumptionChapterCount, assumptionModeCount } from "@/lib/assumptionClinic";
 import { allChapterExamCards, chapterExamCardCount, chapterExamChapterCount, chapterExamModeCount } from "@/lib/chapterExam";
@@ -82,6 +84,14 @@ export default function Home() {
   const mathObjects = mathRescueObjectCount();
   const mathSymbols = mathRescueSymbolCount();
   const mathSources = mathRescueSourceCount();
+  const storyCards = allVisualStoryCards();
+  const storyTotal = visualStoryCardCount();
+  const storyModes = visualStoryModeCount();
+  const storyChapters = visualStoryChapterCount();
+  const storyScenes = visualStorySceneCount();
+  const storyActors = visualStoryActorCount();
+  const storyProps = visualStoryPropCount();
+  const storySources = visualStorySourceCount();
   const practiceCards = allPracticeCards();
   const practiceCardTotal = practiceCardCount();
   const practiceModes = practiceModeCount();
@@ -156,7 +166,7 @@ export default function Home() {
         lead="The site now teaches the material as a first-principles course: each chapter starts from zero, uses graphical mental models, then builds the technical definitions, equations, algorithms, and checkpoints in its own words."
         tint
       >
-        <StandaloneBookPledge lectureBeats={lectureBeats} manuscriptMoves={manuscriptMoves} blackboardStages={blackboardStages} sectionNarratives={sectionNarratives} guidedSectionModes={guidedSectionModes} formulaLectureModes={formulaLectureModes} zeroKnowledgeRungs={zeroKnowledgeRungs} zeroKnowledgeModes={zeroKnowledgeModes} foundationTotal={foundationTotal} foundationModes={foundationModes} foundationChapters={foundationChapters} foundationTerms={foundationTerms} foundationSources={foundationSources} mathTotal={mathTotal} mathModes={mathModes} mathChapters={mathChapters} mathObjects={mathObjects} mathSymbols={mathSymbols} mathSources={mathSources} practiceCardTotal={practiceCardTotal} practiceModes={practiceModes} conceptCardTotal={conceptCardTotal} conceptModes={conceptModes} workedExampleTotal={workedExampleTotal} workedExampleModes={workedExampleModes} misconceptionTotal={misconceptionTotal} misconceptionModes={misconceptionModes} simulatorTotal={simulatorTotal} simulatorControls={simulatorControls} simulatorReadouts={simulatorReadouts} theaterTotal={theaterTotal} theaterSlides={theaterSlides} theaterModes={theaterModes} searchEntryTotal={searchEntryTotal} searchLayerTotal={searchLayerTotal} searchChapterTotal={searchChapterTotal} graphNodeTotal={graphNodeTotal} graphEdgeTotal={graphEdgeTotal} graphChapterTotal={graphChapterTotal} symbolCardTotal={symbolCardTotal} symbolModeTotal={symbolModeTotal} uniqueSymbols={uniqueSymbols} symbolChapterTotal={symbolChapterTotal} codeLabTotal={codeLabTotal} codeLabModes={codeLabModes} codeLabChapters={codeLabChapters} assumptionTotal={assumptionTotal} assumptionModes={assumptionModes} assumptionChapters={assumptionChapters} proofTotal={proofTotal} proofModes={proofModes} proofChapters={proofChapters} examTotal={examTotal} examModes={examModes} examChapters={examChapters} sectionMasteryTotal={sectionMasteryTotal} sectionMasteryModes={sectionMasteryModes} sectionMasteryChapters={sectionMasteryChapters} exerciseSolutionTotal={exerciseSolutionTotal} exerciseSolutionModes={exerciseSolutionModes} exerciseSolutionChapters={exerciseSolutionChapters} compareTotal={compareTotal} compareModes={compareModes} compareChapters={compareChapters} compareFamilies={compareFamilies} />
+        <StandaloneBookPledge lectureBeats={lectureBeats} manuscriptMoves={manuscriptMoves} blackboardStages={blackboardStages} sectionNarratives={sectionNarratives} guidedSectionModes={guidedSectionModes} formulaLectureModes={formulaLectureModes} zeroKnowledgeRungs={zeroKnowledgeRungs} zeroKnowledgeModes={zeroKnowledgeModes} foundationTotal={foundationTotal} foundationModes={foundationModes} foundationChapters={foundationChapters} foundationTerms={foundationTerms} foundationSources={foundationSources} mathTotal={mathTotal} mathModes={mathModes} mathChapters={mathChapters} mathObjects={mathObjects} mathSymbols={mathSymbols} mathSources={mathSources} storyTotal={storyTotal} storyModes={storyModes} storyChapters={storyChapters} storyScenes={storyScenes} storyActors={storyActors} storyProps={storyProps} storySources={storySources} practiceCardTotal={practiceCardTotal} practiceModes={practiceModes} conceptCardTotal={conceptCardTotal} conceptModes={conceptModes} workedExampleTotal={workedExampleTotal} workedExampleModes={workedExampleModes} misconceptionTotal={misconceptionTotal} misconceptionModes={misconceptionModes} simulatorTotal={simulatorTotal} simulatorControls={simulatorControls} simulatorReadouts={simulatorReadouts} theaterTotal={theaterTotal} theaterSlides={theaterSlides} theaterModes={theaterModes} searchEntryTotal={searchEntryTotal} searchLayerTotal={searchLayerTotal} searchChapterTotal={searchChapterTotal} graphNodeTotal={graphNodeTotal} graphEdgeTotal={graphEdgeTotal} graphChapterTotal={graphChapterTotal} symbolCardTotal={symbolCardTotal} symbolModeTotal={symbolModeTotal} uniqueSymbols={uniqueSymbols} symbolChapterTotal={symbolChapterTotal} codeLabTotal={codeLabTotal} codeLabModes={codeLabModes} codeLabChapters={codeLabChapters} assumptionTotal={assumptionTotal} assumptionModes={assumptionModes} assumptionChapters={assumptionChapters} proofTotal={proofTotal} proofModes={proofModes} proofChapters={proofChapters} examTotal={examTotal} examModes={examModes} examChapters={examChapters} sectionMasteryTotal={sectionMasteryTotal} sectionMasteryModes={sectionMasteryModes} sectionMasteryChapters={sectionMasteryChapters} exerciseSolutionTotal={exerciseSolutionTotal} exerciseSolutionModes={exerciseSolutionModes} exerciseSolutionChapters={exerciseSolutionChapters} compareTotal={compareTotal} compareModes={compareModes} compareChapters={compareChapters} compareFamilies={compareFamilies} />
       </Section>
       <Section
         id="primer"
@@ -184,9 +194,19 @@ export default function Home() {
       >
         <MathRescueStudio cards={mathCards} contextTitle="Whole-book math rescue studio" compact />
       </Section>
+
+      <Section
+        id="stories"
+        eyebrow="00e - Visual story studio"
+        title={<>Turn every chapter into a mental movie before formulas appear.</>}
+        lead="The story studio is the graphical lecture camera: each scene sets a concrete world, asks what the learner can observe, animates the next move, translates the picture into technical RL language, and ends with a blank-board check."
+        tint
+      >
+        <VisualStoryStudio cards={storyCards} contextTitle="Whole-book visual story studio" compact />
+      </Section>
       <Section
         id="theater"
-        eyebrow="00e - Guided lecture theater"
+        eyebrow="00f - Guided lecture theater"
         title={<>Walk every chapter like a live lecture from zero to advanced.</>}
         lead="Each chapter now has a five-slide lecture arc: start from nothing, draw the world, name the technical objects, run one method by hand, and transfer the idea forward. Switch modes to see the beginner story, board picture, technical pass, equation lens, and teach-back check."
         tint
@@ -195,7 +215,7 @@ export default function Home() {
       </Section>
       <Section
         id="sections"
-        eyebrow="00f - Section mastery studio"
+        eyebrow="00g - Section mastery studio"
         title={<>Own every named section before the chapter exam.</>}
         lead="Each named section gets a mastery loop: try a cold prompt, request a board hint, reveal a complete answer, read the technical pass, then transfer the idea to a tiny new task."
       >
@@ -203,7 +223,7 @@ export default function Home() {
       </Section>
       <Section
         id="search"
-        eyebrow="00g - Whole-book search"
+        eyebrow="00h - Whole-book search"
         title={<>The complete RL web book is now searchable from one desk.</>}
         lead="Search beginner stories, board pictures, technical formulas, algorithm cards, implementation scaffolds, assumptions, guarantees, proof sketches, worked traces, misconceptions, simulator knobs, section manuscripts, figure anchors, and exercise guides across all chapters."
       >
@@ -211,7 +231,7 @@ export default function Home() {
       </Section>
       <Section
         id="graph"
-        eyebrow="00h - Interactive learning graph"
+        eyebrow="00i - Interactive learning graph"
         title={<>See how every chapter idea connects before reading the dense cards.</>}
         lead="The learning graph turns each chapter into a clickable map: prerequisites feed concepts, concepts become notation, notation becomes algorithms, algorithms become code scaffolds, proof sketches, assumptions, guarantees, worked traces, and chapter-exam nodes; practice plus simulator nodes prove transfer."
         tint
@@ -220,7 +240,7 @@ export default function Home() {
       </Section>
       <Section
         id="symbols"
-        eyebrow="00i - Symbol decoder"
+        eyebrow="00j - Symbol decoder"
         title={<>Every recurring RL mark gets a plain-English and technical explanation.</>}
         lead="The contextual symbol decoder turns notation into mini lectures: say the mark, learn its role, see the formulas it appears in, watch for the trap, then answer a self-check before using it."
       >
@@ -228,7 +248,7 @@ export default function Home() {
       </Section>
       <Section
         id="code"
-        eyebrow="00j - Implementation code lab"
+        eyebrow="00k - Implementation code lab"
         title={<>Turn every algorithm into code you can test and debug.</>}
         lead="The implementation lab rewrites each algorithm card as a plain implementation plan, Python-style teaching scaffold, invariants, tiny tests, and debugging checklist so the methods become executable thinking instead of names."
         tint
@@ -245,7 +265,7 @@ export default function Home() {
       </Section>
       <Section
         id="compare"
-        eyebrow="00l - Method comparison studio"
+        eyebrow="00m - Method comparison studio"
         title={<>Choose among RL methods by data, target, and tradeoff.</>}
         lead="The comparison studio sits after the assumption clinic: it contrasts every method against a nearby alternative, then asks when to choose it, which technical axes matter, what it buys and spends, what breaks first, and how to transfer the comparison to a new task."
         tint
@@ -254,7 +274,7 @@ export default function Home() {
       </Section>
       <Section
         id="proofs"
-        eyebrow="00m - Proof intuition lab"
+        eyebrow="00n - Proof intuition lab"
         title={<>Learn why the equations and claims are true.</>}
         lead="The proof lab turns chapter claims and formulas into board arguments: state the claim, name the ingredients, trace the proof sketch, bridge to the equation, and stress-test the case that would break it."
       >
@@ -262,7 +282,7 @@ export default function Home() {
       </Section>
       <Section
         id="exam"
-        eyebrow="00n - Chapter exam studio"
+        eyebrow="00o - Chapter exam studio"
         title={<>Prove each chapter with prompts, solutions, rubrics, and transfer tests.</>}
         lead="The exam studio turns each chapter into an oral exam: teach the idea, draw the board, justify the formula, code the method, check assumptions, trace an example, and design a tiny experiment before moving on."
       >
@@ -270,7 +290,7 @@ export default function Home() {
       </Section>
       <Section
         id="recall"
-        eyebrow="00o - Active recall coach"
+        eyebrow="00p - Active recall coach"
         title={<>Do not just read the chapter — prove you can teach it.</>}
         lead="The practice coach gives every chapter five oral-exam checkpoints: explain the idea, draw it, read the math, choose the method, and repair a misconception. Reveal the hint, solution, trap, and transfer only after trying."
         tint
@@ -279,7 +299,7 @@ export default function Home() {
       </Section>
       <Section
         id="concepts"
-        eyebrow="00p - Concept microscope"
+        eyebrow="00q - Concept microscope"
         title={<>Every important RL word is taught as a mini lecture.</>}
         lead="The concept microscope sits between practice and the notation lab: choose a chapter concept, then switch among plain role, board picture, technical use, contrast, and self-check so terminology is learned from scratch instead of memorized."
       >
@@ -287,7 +307,7 @@ export default function Home() {
       </Section>
       <Section
         id="worked"
-        eyebrow="00q - Worked example studio"
+        eyebrow="00r - Worked example studio"
         title={<>Every chapter gets concrete toy worlds and hand traces.</>}
         lead="The worked example studio turns chapter ideas into tiny examples: read the scenario, draw the board, follow a trace, inspect the pitfall, then solve a mini exercise. It is the bridge from explanation to doing."
         tint
@@ -296,7 +316,7 @@ export default function Home() {
       </Section>
       <Section
         id="clinic"
-        eyebrow="00r - Misconception clinic"
+        eyebrow="00s - Misconception clinic"
         title={<>Repair the wrong ideas before they become habits.</>}
         lead="A standalone lecture has to say why tempting shortcuts fail. The clinic shows the wrong sentence, why it sounds plausible, how to repair it on the board, what changes technically, and how to test the repair."
       >
@@ -304,7 +324,7 @@ export default function Home() {
       </Section>
       <Section
         id="simulators"
-        eyebrow="00s - Chapter simulator lab"
+        eyebrow="00t - Chapter simulator lab"
         title={<>Experiment with the knobs behind every chapter.</>}
         lead="Each chapter gets a live teaching simulator with sliders for exploration pressure, update strength, and future horizon. The readouts show how learning speed, stability, bias, and variance trade off before the dense math arrives."
         tint
@@ -421,7 +441,7 @@ export default function Home() {
             <p>This is an original standalone teaching site organized around the book&apos;s chapter and section structure. It avoids copying the book&apos;s prose and labels synthetic diagrams/labs as illustrative.</p>
           </Note>
           <Note title="Coverage note">
-            <p>The chapter list covers {chapters.length} chapters, {searchEntryTotal} searchable explanation entries across {searchLayerTotal} index layers, {graphNodeTotal} learning-graph nodes and {graphEdgeTotal} learning links across {graphChapterTotal} chapter maps, {foundationTotal} foundation dictionary cards, {foundationModes} foundation modes, {foundationTerms} unique foundation terms, {mathTotal} math rescue cards, {mathModes} math rescue modes, {mathObjects} math objects, {mathSymbols} symbol handles, {zeroKnowledgeRungs} zero-knowledge starter rungs, {zeroKnowledgeModes} primer modes, {theaterTotal} lecture theaters, {theaterSlides} guided lecture slides, {theaterModes} theater explanation modes, {sectionMasteryTotal} section mastery cards, {sectionMasteryModes} section mastery modes, {practiceCardTotal} active-recall checkpoints, {practiceModes} practice reveal modes, {conceptCardTotal} concept microscope cards, {conceptModes} concept lecture modes, {workedExampleTotal} worked examples, {workedExampleModes} worked-example modes, {misconceptionTotal} misconception clinic cards, {misconceptionModes} misconception repair modes, {simulatorTotal} chapter simulators, {simulatorControls} simulator controls, {simulatorReadouts} simulator readouts, {codeLabTotal} implementation code labs, {codeLabModes} code modes, {assumptionTotal} assumption clinics, {assumptionModes} assumption modes, {compareTotal} method comparison cards, {compareModes} comparison modes, {proofTotal} proof cards, {proofModes} proof modes, {examTotal} exam cards, {examModes} exam modes, {manuscriptMoves} bespoke manuscript moves, {blackboardStages} interactive blackboard stages, {sectionNarratives} section-level textbook manuscripts, {guidedSectionModes} guided section modes, {formulaLectureModes} formula lecture modes, {lectureBeats} standalone lecture beats, all top-level sections shown in the PDF contents, 161 section notes, a 170-tile mastery notebook, a 44-item formula atlas, a 147-card figure/example atlas, 145 exercise-coach cards, and {exerciseSolutionTotal} exercise solution cards with {exerciseSolutionModes} solution modes. Use the route pages as a complete original lecture path, then use the practice prompts to check whether the ideas are really yours.</p>
+            <p>The chapter list covers {chapters.length} chapters, {searchEntryTotal} searchable explanation entries across {searchLayerTotal} index layers, {graphNodeTotal} learning-graph nodes and {graphEdgeTotal} learning links across {graphChapterTotal} chapter maps, {foundationTotal} foundation dictionary cards, {foundationModes} foundation modes, {foundationTerms} unique foundation terms, {mathTotal} math rescue cards, {mathModes} math rescue modes, {mathObjects} math objects, {mathSymbols} symbol handles, {storyTotal} visual story scenes, {storyModes} story modes, {storyActors} actor handles, {storyProps} visual props, {zeroKnowledgeRungs} zero-knowledge starter rungs, {zeroKnowledgeModes} primer modes, {theaterTotal} lecture theaters, {theaterSlides} guided lecture slides, {theaterModes} theater explanation modes, {sectionMasteryTotal} section mastery cards, {sectionMasteryModes} section mastery modes, {practiceCardTotal} active-recall checkpoints, {practiceModes} practice reveal modes, {conceptCardTotal} concept microscope cards, {conceptModes} concept lecture modes, {workedExampleTotal} worked examples, {workedExampleModes} worked-example modes, {misconceptionTotal} misconception clinic cards, {misconceptionModes} misconception repair modes, {simulatorTotal} chapter simulators, {simulatorControls} simulator controls, {simulatorReadouts} simulator readouts, {codeLabTotal} implementation code labs, {codeLabModes} code modes, {assumptionTotal} assumption clinics, {assumptionModes} assumption modes, {compareTotal} method comparison cards, {compareModes} comparison modes, {proofTotal} proof cards, {proofModes} proof modes, {examTotal} exam cards, {examModes} exam modes, {manuscriptMoves} bespoke manuscript moves, {blackboardStages} interactive blackboard stages, {sectionNarratives} section-level textbook manuscripts, {guidedSectionModes} guided section modes, {formulaLectureModes} formula lecture modes, {lectureBeats} standalone lecture beats, all top-level sections shown in the PDF contents, 161 section notes, a 170-tile mastery notebook, a 44-item formula atlas, a 147-card figure/example atlas, 145 exercise-coach cards, and {exerciseSolutionTotal} exercise solution cards with {exerciseSolutionModes} solution modes. Use the route pages as a complete original lecture path, then use the practice prompts to check whether the ideas are really yours.</p>
           </Note>
         </div>
       </Section>
@@ -448,11 +468,12 @@ export default function Home() {
   );
 }
 
-function StandaloneBookPledge({ lectureBeats, manuscriptMoves, blackboardStages, sectionNarratives, guidedSectionModes, formulaLectureModes, zeroKnowledgeRungs, zeroKnowledgeModes, foundationTotal, foundationModes, foundationChapters, foundationTerms, foundationSources, mathTotal, mathModes, mathChapters, mathObjects, mathSymbols, mathSources, practiceCardTotal, practiceModes, conceptCardTotal, conceptModes, workedExampleTotal, workedExampleModes, misconceptionTotal, misconceptionModes, simulatorTotal, simulatorControls, simulatorReadouts, theaterTotal, theaterSlides, theaterModes, sectionMasteryTotal, sectionMasteryModes, sectionMasteryChapters, exerciseSolutionTotal, exerciseSolutionModes, exerciseSolutionChapters, searchEntryTotal, searchLayerTotal, searchChapterTotal, graphNodeTotal, graphEdgeTotal, graphChapterTotal, symbolCardTotal, symbolModeTotal, uniqueSymbols, symbolChapterTotal, codeLabTotal, codeLabModes, codeLabChapters, assumptionTotal, assumptionModes, assumptionChapters, proofTotal, proofModes, proofChapters, compareTotal, compareModes, compareChapters, compareFamilies, examTotal, examModes, examChapters }: { lectureBeats: number; manuscriptMoves: number; blackboardStages: number; sectionNarratives: number; guidedSectionModes: number; formulaLectureModes: number; zeroKnowledgeRungs: number; zeroKnowledgeModes: number; foundationTotal: number; foundationModes: number; foundationChapters: number; foundationTerms: number; foundationSources: number; mathTotal: number; mathModes: number; mathChapters: number; mathObjects: number; mathSymbols: number; mathSources: number; practiceCardTotal: number; practiceModes: number; conceptCardTotal: number; conceptModes: number; workedExampleTotal: number; workedExampleModes: number; misconceptionTotal: number; misconceptionModes: number; simulatorTotal: number; simulatorControls: number; simulatorReadouts: number; theaterTotal: number; theaterSlides: number; theaterModes: number; sectionMasteryTotal: number; sectionMasteryModes: number; sectionMasteryChapters: number; exerciseSolutionTotal: number; exerciseSolutionModes: number; exerciseSolutionChapters: number; searchEntryTotal: number; searchLayerTotal: number; searchChapterTotal: number; graphNodeTotal: number; graphEdgeTotal: number; graphChapterTotal: number; symbolCardTotal: number; symbolModeTotal: number; uniqueSymbols: number; symbolChapterTotal: number; codeLabTotal: number; codeLabModes: number; codeLabChapters: number; assumptionTotal: number; assumptionModes: number; assumptionChapters: number; proofTotal: number; proofModes: number; proofChapters: number; compareTotal: number; compareModes: number; compareChapters: number; compareFamilies: number; examTotal: number; examModes: number; examChapters: number }) {
+function StandaloneBookPledge({ lectureBeats, manuscriptMoves, blackboardStages, sectionNarratives, guidedSectionModes, formulaLectureModes, zeroKnowledgeRungs, zeroKnowledgeModes, foundationTotal, foundationModes, foundationChapters, foundationTerms, foundationSources, mathTotal, mathModes, mathChapters, mathObjects, mathSymbols, mathSources, storyTotal, storyModes, storyChapters, storyScenes, storyActors, storyProps, storySources, practiceCardTotal, practiceModes, conceptCardTotal, conceptModes, workedExampleTotal, workedExampleModes, misconceptionTotal, misconceptionModes, simulatorTotal, simulatorControls, simulatorReadouts, theaterTotal, theaterSlides, theaterModes, sectionMasteryTotal, sectionMasteryModes, sectionMasteryChapters, exerciseSolutionTotal, exerciseSolutionModes, exerciseSolutionChapters, searchEntryTotal, searchLayerTotal, searchChapterTotal, graphNodeTotal, graphEdgeTotal, graphChapterTotal, symbolCardTotal, symbolModeTotal, uniqueSymbols, symbolChapterTotal, codeLabTotal, codeLabModes, codeLabChapters, assumptionTotal, assumptionModes, assumptionChapters, proofTotal, proofModes, proofChapters, compareTotal, compareModes, compareChapters, compareFamilies, examTotal, examModes, examChapters }: { lectureBeats: number; manuscriptMoves: number; blackboardStages: number; sectionNarratives: number; guidedSectionModes: number; formulaLectureModes: number; zeroKnowledgeRungs: number; zeroKnowledgeModes: number; foundationTotal: number; foundationModes: number; foundationChapters: number; foundationTerms: number; foundationSources: number; mathTotal: number; mathModes: number; mathChapters: number; mathObjects: number; mathSymbols: number; mathSources: number; storyTotal: number; storyModes: number; storyChapters: number; storyScenes: number; storyActors: number; storyProps: number; storySources: number; practiceCardTotal: number; practiceModes: number; conceptCardTotal: number; conceptModes: number; workedExampleTotal: number; workedExampleModes: number; misconceptionTotal: number; misconceptionModes: number; simulatorTotal: number; simulatorControls: number; simulatorReadouts: number; theaterTotal: number; theaterSlides: number; theaterModes: number; sectionMasteryTotal: number; sectionMasteryModes: number; sectionMasteryChapters: number; exerciseSolutionTotal: number; exerciseSolutionModes: number; exerciseSolutionChapters: number; searchEntryTotal: number; searchLayerTotal: number; searchChapterTotal: number; graphNodeTotal: number; graphEdgeTotal: number; graphChapterTotal: number; symbolCardTotal: number; symbolModeTotal: number; uniqueSymbols: number; symbolChapterTotal: number; codeLabTotal: number; codeLabModes: number; codeLabChapters: number; assumptionTotal: number; assumptionModes: number; assumptionChapters: number; proofTotal: number; proofModes: number; proofChapters: number; compareTotal: number; compareModes: number; compareChapters: number; compareFamilies: number; examTotal: number; examModes: number; examChapters: number }) {
   const cards = [
     ["Start from zero", `${zeroKnowledgeRungs} zero-knowledge starter rungs and ${zeroKnowledgeModes} primer modes make every chapter begin with everyday intuition, a board picture, technical wording, and a practice check.`],
     ["Define the language", `${foundationTotal} foundation dictionary cards cover ${foundationTerms} unique terms across ${foundationChapters} chapters and ${foundationSources} source layers with ${foundationModes} meaning, picture, technical, trap, and teach-back modes.`],
     ["Rescue the math", `${mathTotal} math rescue cards cover ${mathObjects} mathematical objects, ${mathSymbols} symbol handles, ${mathSources} source layers, and ${mathModes} intuition, picture, notation, chapter-use, and self-check modes across ${mathChapters} chapters.`],
+    ["Visualize the story", `${storyTotal} visual story scenes cover ${storyScenes} scene titles, ${storyActors} actor handles, ${storyProps} visual props, ${storySources} source layers, and ${storyModes} scene, observe, move, technical, and check modes across ${storyChapters} chapters.`],
     ["Draw before equations", `${blackboardStages} clickable blackboard stages let each chapter show a visual model, beginner explanation, technical explanation, board note, and self-check before the dense cards.`],
     ["Lecture in slides", `${theaterTotal} guided lecture theaters, ${theaterSlides} slide stages, and ${theaterModes} explanation modes walk each chapter from beginner story to board picture, technical pass, equation lens, and teach-back check.`],
     ["Master every section", `${sectionMasteryTotal} section mastery cards cover ${sectionMasteryChapters} chapters with ${sectionMasteryModes} prompt, hint, answer, technical, and transfer modes so named sections become teachable units instead of passive headings.`],

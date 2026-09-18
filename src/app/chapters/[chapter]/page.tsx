@@ -15,6 +15,7 @@ import { ExerciseSolutionStudio } from "@/components/ExerciseSolutionStudio";
 import { FormulaLectureReader } from "@/components/FormulaLectureReader";
 import { FoundationDictionaryStudio } from "@/components/FoundationDictionaryStudio";
 import { MathRescueStudio } from "@/components/MathRescueStudio";
+import { VisualStoryStudio } from "@/components/VisualStoryStudio";
 import { InteractiveBlackboard } from "@/components/InteractiveBlackboard";
 import { LearningGraphExplorer } from "@/components/LearningGraphExplorer";
 import { MethodCompareStudio } from "@/components/MethodCompareStudio";
@@ -48,6 +49,7 @@ import { simulatorControlCount, simulatorForChapter, simulatorReadoutCount, type
 import { formulaLectureModeCount, formulasForChapter } from "@/lib/formulaAtlas";
 import { foundationDictionaryCardsForChapter, foundationDictionaryModeCount, type FoundationDictionaryCard } from "@/lib/foundationDictionary";
 import { mathRescueCardsForChapter, mathRescueModeCount, type MathRescueCard } from "@/lib/mathRescue";
+import { visualStoriesForChapter, visualStoryModeCount, type VisualStoryCard } from "@/lib/visualStory";
 import { bookIndexEntriesForChapter, bookIndexEntryCount } from "@/lib/bookIndex";
 import { codeLabCardsForChapter, codeLabModeCount, type CodeLabCard } from "@/lib/codeLab";
 import { chapterExamCardsForChapter, chapterExamModeCount, type ChapterExamCard } from "@/lib/chapterExam";
@@ -108,6 +110,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
   const foundationModes = foundationDictionaryModeCount(item.n);
   const mathCards = mathRescueCardsForChapter(item.n);
   const mathModes = mathRescueModeCount(item.n);
+  const storyCards = visualStoriesForChapter(item.n);
+  const storyModes = visualStoryModeCount(item.n);
   const theater = lectureTheaterForChapter(item.n);
   const theaterSlides = lectureTheaterSlideCount(item.n);
   const theaterModes = lectureTheaterModeCount(item.n);
@@ -172,6 +176,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
                 <Stat value={String(foundationModes)} label="foundation modes" />
                 <Stat value={String(mathCards.length)} label="math objects" />
                 <Stat value={String(mathModes)} label="math modes" />
+                <Stat value={String(storyCards.length)} label="story scenes" />
+                <Stat value={String(storyModes)} label="story modes" />
                 <Stat value={String(theaterSlides)} label="theater slides" />
                 <Stat value={String(theaterModes)} label="theater modes" />
                 <Stat value={String(deep?.sectionDetails.length ?? item.sections.length)} label="section notes" />
@@ -222,7 +228,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
           <AnimatedConceptGraphic label="Story loop" variant="loop" caption="The easy story and the technical story update each other: intuition points at notation, notation checks intuition." compact />
         </section>
 
-        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, starterRungs: starter.rungs.length, starterModes, foundationCards: foundationCards.length, foundationModes, mathCards: mathCards.length, mathModes, theaterSlides, theaterModes, practiceCards: practiceCards.length, practiceModes, conceptCards: conceptCards.length, conceptModes, workedExamples: workedExamples.length, workedExampleModes, misconceptionCards: misconceptionCards.length, misconceptionModes, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, sectionLessons: sectionLessons.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, formulaModes, evidence: evidence.length, exercises: exercises.length, simulatorControls, simulatorReadouts, sourceAudits: sourceAudits.length, searchEntries: searchEntryTotal, graphNodes, graphEdges, symbolCards: symbolCards.length, symbolModes, codeCards: codeCards.length, codeModes, assumptionCards: assumptionCards.length, assumptionModes, compareCards: compareCards.length, compareModes, proofCards: proofCards.length, proofModes, examCards: examCards.length, examModes, sectionMasteryCards: sectionMasteryCards.length, sectionMasteryModes, exerciseSolutions: exerciseSolutions.length, exerciseSolutionModes }} />
+        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, starterRungs: starter.rungs.length, starterModes, foundationCards: foundationCards.length, foundationModes, mathCards: mathCards.length, mathModes, storyCards: storyCards.length, storyModes, theaterSlides, theaterModes, practiceCards: practiceCards.length, practiceModes, conceptCards: conceptCards.length, conceptModes, workedExamples: workedExamples.length, workedExampleModes, misconceptionCards: misconceptionCards.length, misconceptionModes, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, sectionLessons: sectionLessons.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, formulaModes, evidence: evidence.length, exercises: exercises.length, simulatorControls, simulatorReadouts, sourceAudits: sourceAudits.length, searchEntries: searchEntryTotal, graphNodes, graphEdges, symbolCards: symbolCards.length, symbolModes, codeCards: codeCards.length, codeModes, assumptionCards: assumptionCards.length, assumptionModes, compareCards: compareCards.length, compareModes, proofCards: proofCards.length, proofModes, examCards: examCards.length, examModes, sectionMasteryCards: sectionMasteryCards.length, sectionMasteryModes, exerciseSolutions: exerciseSolutions.length, exerciseSolutionModes }} />
 
         <section id="search" className="scroll-mt-24">
           <SectionTitle eyebrow="00a - Chapter search index" title="Search this chapter's explanations without leaving the page." lead="Use this chapter-local index when you remember a term, formula, trap, method, or example but do not know which layer contains it. It searches the original standalone prose and technical explanations for this chapter." />
@@ -234,6 +240,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
         <ChapterFoundationDictionaryBlock chapter={item} cards={foundationCards} foundationModes={foundationModes} />
 
         <ChapterMathRescueBlock chapter={item} cards={mathCards} mathModes={mathModes} />
+
+        <ChapterVisualStoryBlock chapter={item} cards={storyCards} storyModes={storyModes} />
 
         <section id="learning-graph" className="scroll-mt-24">
           <SectionTitle eyebrow="00b - Interactive learning graph" title="Map the chapter before memorizing the details." lead="Click nodes to see how prerequisites feed the chapter, how concepts become formulas, how formulas become methods, and how examples, practice, and simulator knobs prove understanding." />
@@ -445,11 +453,12 @@ function Stat({ value, label }: { value: string; label: string }) {
   );
 }
 
-function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; starterRungs: number; starterModes: number; foundationCards: number; foundationModes: number; mathCards: number; mathModes: number; theaterSlides: number; theaterModes: number; practiceCards: number; practiceModes: number; conceptCards: number; conceptModes: number; workedExamples: number; workedExampleModes: number; misconceptionCards: number; misconceptionModes: number; simulatorControls: number; simulatorReadouts: number; manuscriptSections: number; blackboardStages: number; sectionLessons: number; sectionMasteryCards: number; sectionMasteryModes: number; lectureBeats: number; sections: number; formulas: number; formulaModes: number; evidence: number; exercises: number; sourceAudits: number; searchEntries: number; graphNodes: number; graphEdges: number; symbolCards: number; symbolModes: number; codeCards: number; codeModes: number; assumptionCards: number; assumptionModes: number; compareCards: number; compareModes: number; proofCards: number; proofModes: number; examCards: number; examModes: number; exerciseSolutions: number; exerciseSolutionModes: number } }) {
+function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; starterRungs: number; starterModes: number; foundationCards: number; foundationModes: number; mathCards: number; mathModes: number; storyCards: number; storyModes: number; theaterSlides: number; theaterModes: number; practiceCards: number; practiceModes: number; conceptCards: number; conceptModes: number; workedExamples: number; workedExampleModes: number; misconceptionCards: number; misconceptionModes: number; simulatorControls: number; simulatorReadouts: number; manuscriptSections: number; blackboardStages: number; sectionLessons: number; sectionMasteryCards: number; sectionMasteryModes: number; lectureBeats: number; sections: number; formulas: number; formulaModes: number; evidence: number; exercises: number; sourceAudits: number; searchEntries: number; graphNodes: number; graphEdges: number; symbolCards: number; symbolModes: number; codeCards: number; codeModes: number; assumptionCards: number; assumptionModes: number; compareCards: number; compareModes: number; proofCards: number; proofModes: number; examCards: number; examModes: number; exerciseSolutions: number; exerciseSolutionModes: number } }) {
   const items = [
     ["search", `${counts.searchEntries} search entries`],
     ["foundations", `${counts.foundationCards} foundation terms · ${counts.foundationModes} modes`],
     ["math-rescue", `${counts.mathCards} math objects · ${counts.mathModes} modes`],
+    ["visual-story", `${counts.storyCards} story scenes · ${counts.storyModes} modes`],
     ["learning-graph", `${counts.graphNodes} graph nodes · ${counts.graphEdges} links`],
     ["symbols", `${counts.symbolCards} symbols · ${counts.symbolModes} modes`],
     ["code-lab", `${counts.codeCards} code labs · ${counts.codeModes} modes`],
@@ -522,6 +531,25 @@ function ChapterMathRescueBlock({ chapter, cards, mathModes }: { chapter: (typeo
           <p className="text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Chapter {chapter.n} math promise:</span> {cards.length} mathematical objects become {mathModes} intuition, picture, notation, chapter-use, and self-check modes before the chapter relies on dense formulas.</p>
         </div>
         <MathRescueStudio cards={cards} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} compact />
+      </div>
+    </section>
+  );
+}
+
+
+function ChapterVisualStoryBlock({ chapter, cards, storyModes }: { chapter: (typeof chapters)[number]; cards: VisualStoryCard[]; storyModes: number }) {
+  return (
+    <section id="visual-story" className="scroll-mt-24">
+      <SectionTitle
+        eyebrow="00d - Visual story studio"
+        title="Watch the chapter as a scene before formulas appear."
+        lead="Every story card starts with a concrete world, asks what the learner can observe, animates the next move, translates the picture into technical RL language, and ends with a blank-board check."
+      />
+      <div className="mt-6 grid gap-4">
+        <div className="rounded-xl border border-cyan/30 bg-cyan/[0.06] p-4">
+          <p className="text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Chapter {chapter.n} visual promise:</span> {cards.length} scenes become {storyModes} scene, observe, move, technical, and check modes so the chapter can be watched before it is formalized.</p>
+        </div>
+        <VisualStoryStudio cards={cards} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} compact />
       </div>
     </section>
   );
