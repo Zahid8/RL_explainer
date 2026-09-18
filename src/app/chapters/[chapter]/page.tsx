@@ -13,6 +13,7 @@ import { BookSearch } from "@/components/BookSearch";
 import { ChapterExamStudio } from "@/components/ChapterExamStudio";
 import { ChapterPracticeCoach } from "@/components/ChapterPracticeCoach";
 import { CodeLab } from "@/components/CodeLab";
+import { AlgorithmDebugClinic } from "@/components/AlgorithmDebugClinic";
 import { ChapterLectureTheater } from "@/components/ChapterLectureTheater";
 import { ChapterSimulatorLab } from "@/components/ChapterSimulatorLab";
 import { ConceptLectureDeck } from "@/components/ConceptLectureDeck";
@@ -62,6 +63,7 @@ import { projectCardsForChapter, projectModeCount, type ChapterProjectCard } fro
 import { evidenceReplayCardsForChapter, evidenceReplayModeCount, type EvidenceReplayCard } from "@/lib/evidenceReplay";
 import { bookIndexEntriesForChapter, bookIndexEntryCount } from "@/lib/bookIndex";
 import { codeLabCardsForChapter, codeLabModeCount, type CodeLabCard } from "@/lib/codeLab";
+import { algorithmDebugCardsForChapter, algorithmDebugModeCount, type AlgorithmDebugCard } from "@/lib/algorithmDebug";
 import { chapterExamCardsForChapter, chapterExamModeCount, type ChapterExamCard } from "@/lib/chapterExam";
 import { assumptionCardsForChapter, assumptionModeCount, type AssumptionClinicCard } from "@/lib/assumptionClinic";
 import { blackboardForChapter } from "@/lib/interactiveBlackboards";
@@ -160,6 +162,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
   const symbolModes = symbolLectureModeCount(item.n);
   const codeCards = codeLabCardsForChapter(item.n);
   const codeModes = codeLabModeCount(item.n);
+  const debugCards = algorithmDebugCardsForChapter(item.n);
+  const debugModes = algorithmDebugModeCount(item.n);
   const assumptionCards = assumptionCardsForChapter(item.n);
   const assumptionModes = assumptionModeCount(item.n);
   const compareCards = methodCompareCardsForChapter(item.n);
@@ -232,6 +236,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
                 <Stat value={String(symbolModes)} label="symbol modes" />
                 <Stat value={String(codeCards.length)} label="code labs" />
                 <Stat value={String(codeModes)} label="code modes" />
+                <Stat value={String(debugCards.length)} label="debug clinics" />
+                <Stat value={String(debugModes)} label="debug modes" />
                 <Stat value={String(assumptionCards.length)} label="trust clinics" />
                 <Stat value={String(assumptionModes)} label="trust modes" />
                 <Stat value={String(compareCards.length)} label="comparisons" />
@@ -258,7 +264,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
           <AnimatedConceptGraphic label="Story loop" variant="loop" caption="The easy story and the technical story update each other: intuition points at notation, notation checks intuition." compact />
         </section>
 
-        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, starterRungs: starter.rungs.length, starterModes, foundationCards: foundationCards.length, foundationModes, mathCards: mathCards.length, mathModes, storyCards: storyCards.length, storyModes, analogyCards: analogyCards.length, analogyModes, tutorCards: tutorCards.length, tutorModes, caseStudies: caseStudies.length, caseModes, projects: projects.length, projectModes, evidenceReplays: evidenceReplays.length, evidenceReplayModes, theaterSlides, theaterModes, practiceCards: practiceCards.length, practiceModes, conceptCards: conceptCards.length, conceptModes, workedExamples: workedExamples.length, workedExampleModes, misconceptionCards: misconceptionCards.length, misconceptionModes, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, sectionLessons: sectionLessons.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, formulaModes, evidence: evidence.length, exercises: exercises.length, simulatorControls, simulatorReadouts, sourceAudits: sourceAudits.length, searchEntries: searchEntryTotal, graphNodes, graphEdges, symbolCards: symbolCards.length, symbolModes, codeCards: codeCards.length, codeModes, assumptionCards: assumptionCards.length, assumptionModes, compareCards: compareCards.length, compareModes, proofCards: proofCards.length, proofModes, examCards: examCards.length, examModes, sectionMasteryCards: sectionMasteryCards.length, sectionMasteryModes, exerciseSolutions: exerciseSolutions.length, exerciseSolutionModes }} />
+        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, starterRungs: starter.rungs.length, starterModes, foundationCards: foundationCards.length, foundationModes, mathCards: mathCards.length, mathModes, storyCards: storyCards.length, storyModes, analogyCards: analogyCards.length, analogyModes, tutorCards: tutorCards.length, tutorModes, caseStudies: caseStudies.length, caseModes, projects: projects.length, projectModes, evidenceReplays: evidenceReplays.length, evidenceReplayModes, theaterSlides, theaterModes, practiceCards: practiceCards.length, practiceModes, conceptCards: conceptCards.length, conceptModes, workedExamples: workedExamples.length, workedExampleModes, misconceptionCards: misconceptionCards.length, misconceptionModes, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, sectionLessons: sectionLessons.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, formulaModes, evidence: evidence.length, exercises: exercises.length, simulatorControls, simulatorReadouts, sourceAudits: sourceAudits.length, searchEntries: searchEntryTotal, graphNodes, graphEdges, symbolCards: symbolCards.length, symbolModes, codeCards: codeCards.length, codeModes, debugCards: debugCards.length, debugModes, assumptionCards: assumptionCards.length, assumptionModes, compareCards: compareCards.length, compareModes, proofCards: proofCards.length, proofModes, examCards: examCards.length, examModes, sectionMasteryCards: sectionMasteryCards.length, sectionMasteryModes, exerciseSolutions: exerciseSolutions.length, exerciseSolutionModes }} />
 
         <section id="search" className="scroll-mt-24">
           <SectionTitle eyebrow="00a - Chapter search index" title="Search this chapter's explanations without leaving the page." lead="Use this chapter-local index when you remember a term, formula, trap, method, or example but do not know which layer contains it. It searches the original standalone prose and technical explanations for this chapter." />
@@ -293,6 +299,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
         <ChapterSymbolDecoderBlock chapter={item} cards={symbolCards} symbolModes={symbolModes} />
 
         <ChapterCodeLabBlock chapter={item} cards={codeCards} codeModes={codeModes} />
+
+        <ChapterDebugBlock chapter={item} cards={debugCards} debugModes={debugModes} />
 
         <ChapterAssumptionClinicBlock chapter={item} cards={assumptionCards} assumptionModes={assumptionModes} />
 
@@ -493,7 +501,7 @@ function Stat({ value, label }: { value: string; label: string }) {
   );
 }
 
-function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; starterRungs: number; starterModes: number; foundationCards: number; foundationModes: number; mathCards: number; mathModes: number; storyCards: number; storyModes: number; analogyCards: number; analogyModes: number; tutorCards: number; tutorModes: number; caseStudies: number; caseModes: number; projects: number; projectModes: number; evidenceReplays: number; evidenceReplayModes: number; theaterSlides: number; theaterModes: number; practiceCards: number; practiceModes: number; conceptCards: number; conceptModes: number; workedExamples: number; workedExampleModes: number; misconceptionCards: number; misconceptionModes: number; simulatorControls: number; simulatorReadouts: number; manuscriptSections: number; blackboardStages: number; sectionLessons: number; sectionMasteryCards: number; sectionMasteryModes: number; lectureBeats: number; sections: number; formulas: number; formulaModes: number; evidence: number; exercises: number; sourceAudits: number; searchEntries: number; graphNodes: number; graphEdges: number; symbolCards: number; symbolModes: number; codeCards: number; codeModes: number; assumptionCards: number; assumptionModes: number; compareCards: number; compareModes: number; proofCards: number; proofModes: number; examCards: number; examModes: number; exerciseSolutions: number; exerciseSolutionModes: number } }) {
+function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; starterRungs: number; starterModes: number; foundationCards: number; foundationModes: number; mathCards: number; mathModes: number; storyCards: number; storyModes: number; analogyCards: number; analogyModes: number; tutorCards: number; tutorModes: number; caseStudies: number; caseModes: number; projects: number; projectModes: number; evidenceReplays: number; evidenceReplayModes: number; theaterSlides: number; theaterModes: number; practiceCards: number; practiceModes: number; conceptCards: number; conceptModes: number; workedExamples: number; workedExampleModes: number; misconceptionCards: number; misconceptionModes: number; simulatorControls: number; simulatorReadouts: number; manuscriptSections: number; blackboardStages: number; sectionLessons: number; sectionMasteryCards: number; sectionMasteryModes: number; lectureBeats: number; sections: number; formulas: number; formulaModes: number; evidence: number; exercises: number; sourceAudits: number; searchEntries: number; graphNodes: number; graphEdges: number; symbolCards: number; symbolModes: number; codeCards: number; codeModes: number; debugCards: number; debugModes: number; assumptionCards: number; assumptionModes: number; compareCards: number; compareModes: number; proofCards: number; proofModes: number; examCards: number; examModes: number; exerciseSolutions: number; exerciseSolutionModes: number } }) {
   const items = [
     ["search", `${counts.searchEntries} search entries`],
     ["foundations", `${counts.foundationCards} foundation terms · ${counts.foundationModes} modes`],
@@ -507,6 +515,7 @@ function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; 
     ["learning-graph", `${counts.graphNodes} graph nodes · ${counts.graphEdges} links`],
     ["symbols", `${counts.symbolCards} symbols · ${counts.symbolModes} modes`],
     ["code-lab", `${counts.codeCards} code labs · ${counts.codeModes} modes`],
+    ["debug", `${counts.debugCards} debug clinics · ${counts.debugModes} modes`],
     ["assumptions", `${counts.assumptionCards} trust clinics · ${counts.assumptionModes} modes`],
     ["method-compare", `${counts.compareCards} comparisons · ${counts.compareModes} modes`],
     ["proofs", `${counts.proofCards} proofs · ${counts.proofModes} modes`],
@@ -724,6 +733,25 @@ function ChapterCodeLabBlock({ chapter, cards, codeModes }: { chapter: (typeof c
           <p className="text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Chapter {chapter.n} implementation promise:</span> {cards.length} code labs become {codeModes} plain, code, invariant, tiny-test, and debug modes tied back to the chapter algorithm cards.</p>
         </div>
         <CodeLab cards={cards} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} compact />
+      </div>
+    </section>
+  );
+}
+
+
+function ChapterDebugBlock({ chapter, cards, debugModes }: { chapter: (typeof chapters)[number]; cards: AlgorithmDebugCard[]; debugModes: number }) {
+  return (
+    <section id="debug" className="scroll-mt-24">
+      <SectionTitle
+        eyebrow="00e - Algorithm debugging clinic"
+        title="Diagnose failed methods before tuning more knobs."
+        lead="This layer teaches the practical failure loop: symptom, diagnostic trace, one-cause repair, tiny retest, and transfer to a new task."
+      />
+      <div className="mt-6 grid gap-4">
+        <div className="rounded-xl border border-orange/30 bg-orange/[0.06] p-4">
+          <p className="text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Chapter {chapter.n} debug promise:</span> {cards.length} debug clinics become {debugModes} symptom, diagnose, repair, test, and transfer modes tied back to chapter algorithms.</p>
+        </div>
+        <AlgorithmDebugClinic cards={cards} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} compact />
       </div>
     </section>
   );

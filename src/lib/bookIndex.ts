@@ -1,6 +1,7 @@
 import { algorithmCatalog, algorithmsForChapter } from "@/lib/algorithmCatalog";
 import { analogiesForChapter } from "@/lib/analogies";
 import { assumptionCardsForChapter } from "@/lib/assumptionClinic";
+import { algorithmDebugCardsForChapter } from "@/lib/algorithmDebug";
 import { sourceAuditsForChapter } from "@/lib/algorithmSourceAudit";
 import { chapterDependencyMap } from "@/lib/chapterDependencyMap";
 import { lectureTheaterForChapter } from "@/lib/chapterLectureTheater";
@@ -50,6 +51,7 @@ export type BookIndexLayer =
   | "lecture theater"
   | "symbol decoder"
   | "implementation code lab"
+  | "algorithm debugging clinic"
   | "assumption clinic"
   | "method comparison"
   | "proof lab"
@@ -131,6 +133,7 @@ function buildBookIndexEntries(): BookIndexEntry[] {
     const theater = lectureTheaterForChapter(chapter.n);
     const symbolCards = symbolCardsForChapter(chapter.n);
     const codeCards = codeLabCardsForChapter(chapter.n);
+    const debugCards = algorithmDebugCardsForChapter(chapter.n);
     const assumptionCards = assumptionCardsForChapter(chapter.n);
     const compareCards = methodCompareCardsForChapter(chapter.n);
     const proofCards = proofCardsForChapter(chapter.n);
@@ -347,6 +350,18 @@ function buildBookIndexEntries(): BookIndexEntry[] {
       route: `/chapters/${chapter.n}#code-lab`,
       summary: `${card.plain} ${card.implementationGoal}`,
       technical: `Code scaffold: ${card.codeLines.slice(0, 6).join(" ")} Invariants: ${card.invariants.join(" ")}`,
+      tags: [card.family, card.algorithmId, ...card.tags, `Chapter ${chapter.n}`],
+      weight: 87,
+    }));
+
+    debugCards.forEach((card) => add({
+      ...chapterBase,
+      id: card.id,
+      title: `Debug clinic: ${card.title}`,
+      layer: "algorithm debugging clinic",
+      route: `/chapters/${chapter.n}#debug`,
+      summary: `${card.plainSymptom} Transfer: ${card.transfer}`,
+      technical: `${card.technicalFrame} Diagnosis: ${card.diagnosis.join(" ")} Repair: ${card.repairPlan.join(" ")} Test: ${card.testFixture.join(" ")}`,
       tags: [card.family, card.algorithmId, ...card.tags, `Chapter ${chapter.n}`],
       weight: 87,
     }));

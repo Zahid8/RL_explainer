@@ -158,6 +158,7 @@ function kindColor(kind: LearningGraphNodeKind) {
     algorithm: "#f97316",
     compare: "#8b5cf6",
     code: "#fb923c",
+    debug: "#f97316",
     assumption: "#84cc16",
     example: "#14b8a6",
     practice: "#84cc16",
@@ -183,7 +184,7 @@ function accentForKind(kind: LearningGraphNodeKind): Accent {
   if (kind === "symbol") return "violet";
   if (kind === "proof") return "violet";
   if (kind === "compare") return "violet";
-  if (kind === "algorithm" || kind === "code" || kind === "unlock") return "orange";
+  if (kind === "algorithm" || kind === "code" || kind === "debug" || kind === "unlock") return "orange";
   if (kind === "exercise") return "orange";
   if (kind === "concept" || kind === "section" || kind === "practice" || kind === "assumption" || kind === "exam") return "lime";
   if (kind === "prerequisite" || kind === "chapter") return "blue";

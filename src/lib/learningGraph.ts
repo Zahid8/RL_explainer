@@ -1,6 +1,7 @@
 import { algorithmsForChapter } from "@/lib/algorithmCatalog";
 import { analogiesForChapter } from "@/lib/analogies";
 import { assumptionCardsForChapter } from "@/lib/assumptionClinic";
+import { algorithmDebugCardsForChapter } from "@/lib/algorithmDebug";
 import { chapterDependencyMap } from "@/lib/chapterDependencyMap";
 import { chapterExamCardsForChapter } from "@/lib/chapterExam";
 import { practiceCardsForChapter } from "@/lib/chapterPractice";
@@ -23,7 +24,7 @@ import { projectCardsForChapter } from "@/lib/projectStudio";
 import { evidenceReplayCardsForChapter } from "@/lib/evidenceReplay";
 import { symbolCardsForChapter } from "@/lib/symbolAtlas";
 
-export type LearningGraphNodeKind = "chapter" | "foundation" | "math" | "story" | "analogy" | "tutor" | "case" | "concept" | "section" | "formula" | "symbol" | "proof" | "algorithm" | "compare" | "code" | "assumption" | "example" | "practice" | "exercise" | "exam" | "project" | "evidence" | "simulator" | "prerequisite" | "unlock";
+export type LearningGraphNodeKind = "chapter" | "foundation" | "math" | "story" | "analogy" | "tutor" | "case" | "concept" | "section" | "formula" | "symbol" | "proof" | "algorithm" | "compare" | "code" | "debug" | "assumption" | "example" | "practice" | "exercise" | "exam" | "project" | "evidence" | "simulator" | "prerequisite" | "unlock";
 
 export interface LearningGraphNode {
   id: string;
@@ -86,6 +87,7 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
   const proofCards = proofCardsForChapter(chapterNumber).slice(0, 4);
   const compareCards = methodCompareCardsForChapter(chapterNumber).slice(0, 5);
   const codeCards = codeLabCardsForChapter(chapterNumber).slice(0, 5);
+  const debugCards = algorithmDebugCardsForChapter(chapterNumber).slice(0, 5);
   const assumptionCards = assumptionCardsForChapter(chapterNumber).slice(0, 5);
   const examples = workedExamplesForChapter(chapterNumber).slice(0, 4);
   const practice = practiceCardsForChapter(chapterNumber).slice(0, 3);
@@ -486,6 +488,33 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
     });
   });
 
+  debugCards.forEach((card, index) => {
+    const id = nodeId(chapterNumber, "debug", card.title);
+    const codeCard = codeCards.find((item) => item.algorithmId === card.algorithmId) ?? codeCards[index % Math.max(codeCards.length, 1)];
+    const algorithm = algorithms.find((item) => item.id === card.algorithmId) ?? algorithms[index % Math.max(algorithms.length, 1)];
+    const from = codeCard ? nodeId(chapterNumber, "code", codeCard.title) : algorithm ? nodeId(chapterNumber, "algorithm", algorithm.name) : centerId;
+    addNode({
+      id,
+      chapter: chapterNumber,
+      kind: "debug",
+      title: card.title.replace(" debugging clinic", ""),
+      easy: card.plainSymptom,
+      technical: `${card.technicalFrame} Repair: ${card.repairPlan[0]}`,
+      route: `/chapters/${chapterNumber}#debug`,
+      tags: [card.family, ...card.tags],
+      ...ringPoint("debug", index, debugCards.length),
+    });
+    addEdge({
+      id: edgeId(from, id, "debug"),
+      chapter: chapterNumber,
+      from,
+      to: id,
+      relation: "implementation gets debugged",
+      easy: `The debug node names the symptom, isolates the first broken assumption, repairs one cause, and retests the method.`,
+      technical: `The debugging clinic exposes diagnosis checks, repair steps, tiny fixtures, and transfer rules for the algorithm.`,
+    });
+  });
+
   assumptionCards.forEach((card, index) => {
     const id = nodeId(chapterNumber, "assumption", card.title);
     const algorithm = algorithms.find((item) => item.id === card.algorithmId) ?? algorithms[index % Math.max(algorithms.length, 1)];
@@ -745,7 +774,7 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
   return {
     chapter: chapterNumber,
     title: chapter.title,
-    promise: `Graphical map for Chapter ${chapterNumber}: start from the chapter node, move through foundation terms, math rescue objects, visual story scenes, analogy bridges, Socratic tutor dialogues, case studies, concepts, section mastery checks, formulas, decoded symbols, proof sketches, methods, comparison boards, code scaffolds, assumptions, examples, practice, exercise solutions, chapter exams, project builds, evidence replays, and simulator knobs, then check prerequisites and unlocks.`,
+    promise: `Graphical map for Chapter ${chapterNumber}: start from the chapter node, move through foundation terms, math rescue objects, visual story scenes, analogy bridges, Socratic tutor dialogues, case studies, concepts, section mastery checks, formulas, decoded symbols, proof sketches, methods, comparison boards, code scaffolds, debugging clinics, assumptions, examples, practice, exercise solutions, chapter exams, project builds, evidence replays, and simulator knobs, then check prerequisites and unlocks.`,
     route: `/chapters/${chapterNumber}`,
     nodes,
     edges,
@@ -763,6 +792,7 @@ export function learningGraphForChapter(chapterNumber: number): ChapterLearningG
       "Decode symbol nodes before opening proof nodes that explain why the equation or chapter claim is valid.",
       "Use algorithm nodes to name the procedure, then comparison nodes to choose among nearby methods by data, target, backup style, model use, and failure risk.",
       "Use code nodes to turn the chosen method into variables, loops, invariants, and tests.",
+      "Open debug nodes to name the failure symptom, isolate one cause, repair it, and rerun a tiny fixture before tuning.",
       "Open assumption nodes to see when the method is valid, what guarantee it wants, and how to repair broken conditions.",
       "Use examples and practice nodes to rehearse the idea, then open exercise solution nodes to attempt, debug, and extend numbered problems.",
       "Open exam nodes to grade and transfer mastery.",
@@ -804,6 +834,7 @@ export const graphLegend: ChapterLearningGraph["legend"] = [
   { kind: "algorithm", label: "Algorithm", easy: "The procedure that changes estimates or behavior.", technical: "Target, residual, update, control pressure, and failure mode." },
   { kind: "compare", label: "Method comparison", easy: "When to choose one method over a nearby alternative.", technical: "Choice criteria, profile axes, tradeoffs, failure checks, and transfer bridges." },
   { kind: "code", label: "Code lab", easy: "A method rewritten as implementation scaffolding.", technical: "State, target, update, invariants, tests, and debug checks." },
+  { kind: "debug", label: "Debug clinic", easy: "A method failure turned into diagnosis, repair, and retest practice.", technical: "Symptom, diagnostic checks, technical frame, repair plan, test fixture, and transfer rule." },
   { kind: "assumption", label: "Assumption", easy: "When the method deserves trust.", technical: "Data, target, update, representation, guarantee, failure, and repair conditions." },
   { kind: "example", label: "Worked example", easy: "A tiny world where the idea moves.", technical: "Trace-level evidence for the update." },
   { kind: "practice", label: "Practice", easy: "A checkpoint to test ownership.", technical: "Prompt, solution, trap, and transfer." },
@@ -832,6 +863,7 @@ function ringPoint(kind: LearningGraphNodeKind, index: number, total: number): {
     algorithm: { start: 25, end: 155, radius: 34 },
     compare: { start: 350, end: 470, radius: 38 },
     code: { start: 15, end: 145, radius: 43 },
+    debug: { start: 330, end: 450, radius: 50 },
     assumption: { start: 335, end: 455, radius: 45 },
     example: { start: 65, end: 150, radius: 48 },
     practice: { start: 210, end: 300, radius: 49 },

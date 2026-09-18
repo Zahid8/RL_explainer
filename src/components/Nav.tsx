@@ -19,6 +19,7 @@ const links = [
   ["graph", "Graph"],
   ["symbols", "Symbols"],
   ["code", "Code"],
+  ["debug", "Debug"],
   ["assumptions", "Trust"],
   ["proofs", "Proofs"],
   ["exam", "Exam"],
@@ -100,6 +101,7 @@ export function Nav() {
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/graph">Graph</a>
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/symbols">Symbols</a>
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/code">Code</a>
+          <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/debug">Debug</a>
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/assumptions">Trust</a>
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/proofs">Proofs</a>
           <a className="mono rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted" href="/exam">Exam</a>
