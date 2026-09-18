@@ -1,6 +1,7 @@
 import { AlgorithmPlayer } from "@/components/AlgorithmPlayer";
 import { BookMap } from "@/components/BookMap";
 import { ChapterExplorer } from "@/components/ChapterExplorer";
+import { ChapterPracticeCoach } from "@/components/ChapterPracticeCoach";
 import { EquationWall } from "@/components/EquationWall";
 import { EvidenceGuide } from "@/components/EvidenceGuide";
 import { ExerciseCoach } from "@/components/ExerciseCoach";
@@ -20,6 +21,7 @@ import { manuscriptSectionCount } from "@/lib/chapterManuscripts";
 import { formulaLectureModeCount } from "@/lib/formulaAtlas";
 import { blackboardStageCount } from "@/lib/interactiveBlackboards";
 import { chapters } from "@/lib/paper";
+import { allPracticeCards, practiceCardCount, practiceModeCount } from "@/lib/chapterPractice";
 import { sectionLessonModeCount, sectionNarrativeCount } from "@/lib/sectionNarratives";
 import { standaloneLectureTileCount } from "@/lib/standaloneBook";
 import { zeroKnowledgeLadders, zeroKnowledgeModeCount, zeroKnowledgeRungCount } from "@/lib/zeroKnowledgeLadders";
@@ -33,6 +35,9 @@ export default function Home() {
   const formulaLectureModes = formulaLectureModeCount();
   const zeroKnowledgeRungs = zeroKnowledgeRungCount();
   const zeroKnowledgeModes = zeroKnowledgeModeCount();
+  const practiceCards = allPracticeCards();
+  const practiceCardTotal = practiceCardCount();
+  const practiceModes = practiceModeCount();
 
   return (
     <main>
@@ -45,7 +50,7 @@ export default function Home() {
         lead="The site now teaches the material as a first-principles course: each chapter starts from zero, uses graphical mental models, then builds the technical definitions, equations, algorithms, and checkpoints in its own words."
         tint
       >
-        <StandaloneBookPledge lectureBeats={lectureBeats} manuscriptMoves={manuscriptMoves} blackboardStages={blackboardStages} sectionNarratives={sectionNarratives} guidedSectionModes={guidedSectionModes} formulaLectureModes={formulaLectureModes} zeroKnowledgeRungs={zeroKnowledgeRungs} zeroKnowledgeModes={zeroKnowledgeModes} />
+        <StandaloneBookPledge lectureBeats={lectureBeats} manuscriptMoves={manuscriptMoves} blackboardStages={blackboardStages} sectionNarratives={sectionNarratives} guidedSectionModes={guidedSectionModes} formulaLectureModes={formulaLectureModes} zeroKnowledgeRungs={zeroKnowledgeRungs} zeroKnowledgeModes={zeroKnowledgeModes} practiceCardTotal={practiceCardTotal} practiceModes={practiceModes} />
       </Section>
       <Section
         id="primer"
@@ -54,6 +59,15 @@ export default function Home() {
         lead="Before the dense chapter cards, every chapter gets a five-rung ladder that begins with everyday intuition, draws the board picture, names the technical object, and gives a practice prompt."
       >
         <ZeroKnowledgeLadderReader ladders={zeroKnowledgeLadders} contextTitle="Whole-book beginner-to-technical starter ladder" />
+      </Section>
+      <Section
+        id="recall"
+        eyebrow="00c - Active recall coach"
+        title={<>Do not just read the chapter — prove you can teach it.</>}
+        lead="The practice coach gives every chapter five oral-exam checkpoints: explain the idea, draw it, read the math, choose the method, and repair a misconception. Reveal the hint, solution, trap, and transfer only after trying."
+        tint
+      >
+        <ChapterPracticeCoach cards={practiceCards} contextTitle="Whole-book active recall checkpoints" />
       </Section>
       <Section
         id="terms"
@@ -162,7 +176,7 @@ export default function Home() {
             <p>This is an original standalone teaching site organized around the book&apos;s chapter and section structure. It avoids copying the book&apos;s prose and labels synthetic diagrams/labs as illustrative.</p>
           </Note>
           <Note title="Coverage note">
-            <p>The chapter list covers {chapters.length} chapters, {zeroKnowledgeRungs} zero-knowledge starter rungs, {zeroKnowledgeModes} primer modes, {manuscriptMoves} bespoke manuscript moves, {blackboardStages} interactive blackboard stages, {sectionNarratives} section-level textbook manuscripts, {guidedSectionModes} guided section modes, {formulaLectureModes} formula lecture modes, {lectureBeats} standalone lecture beats, all top-level sections shown in the PDF contents, 161 section notes, a 170-tile mastery notebook, a 44-item formula atlas, a 147-card figure/example atlas, and 145 exercise-coach cards. Use the route pages as a complete original lecture path, then use the practice prompts to check whether the ideas are really yours.</p>
+            <p>The chapter list covers {chapters.length} chapters, {zeroKnowledgeRungs} zero-knowledge starter rungs, {zeroKnowledgeModes} primer modes, {practiceCardTotal} active-recall checkpoints, {practiceModes} practice reveal modes, {manuscriptMoves} bespoke manuscript moves, {blackboardStages} interactive blackboard stages, {sectionNarratives} section-level textbook manuscripts, {guidedSectionModes} guided section modes, {formulaLectureModes} formula lecture modes, {lectureBeats} standalone lecture beats, all top-level sections shown in the PDF contents, 161 section notes, a 170-tile mastery notebook, a 44-item formula atlas, a 147-card figure/example atlas, and 145 exercise-coach cards. Use the route pages as a complete original lecture path, then use the practice prompts to check whether the ideas are really yours.</p>
           </Note>
         </div>
       </Section>
@@ -189,17 +203,18 @@ export default function Home() {
   );
 }
 
-function StandaloneBookPledge({ lectureBeats, manuscriptMoves, blackboardStages, sectionNarratives, guidedSectionModes, formulaLectureModes, zeroKnowledgeRungs, zeroKnowledgeModes }: { lectureBeats: number; manuscriptMoves: number; blackboardStages: number; sectionNarratives: number; guidedSectionModes: number; formulaLectureModes: number; zeroKnowledgeRungs: number; zeroKnowledgeModes: number }) {
+function StandaloneBookPledge({ lectureBeats, manuscriptMoves, blackboardStages, sectionNarratives, guidedSectionModes, formulaLectureModes, zeroKnowledgeRungs, zeroKnowledgeModes, practiceCardTotal, practiceModes }: { lectureBeats: number; manuscriptMoves: number; blackboardStages: number; sectionNarratives: number; guidedSectionModes: number; formulaLectureModes: number; zeroKnowledgeRungs: number; zeroKnowledgeModes: number; practiceCardTotal: number; practiceModes: number }) {
   const cards = [
     ["Start from zero", `${zeroKnowledgeRungs} zero-knowledge starter rungs and ${zeroKnowledgeModes} primer modes make every chapter begin with everyday intuition, a board picture, technical wording, and a practice check.`],
     ["Draw before equations", `${blackboardStages} clickable blackboard stages let each chapter show a visual model, beginner explanation, technical explanation, board note, and self-check before the dense cards.`],
     ["Teach each section", `${sectionNarratives} section-level textbook manuscripts, ${guidedSectionModes} guided section modes, ${manuscriptMoves} bespoke manuscript moves, and ${lectureBeats} section-level lecture beats turn the chapter outline into prose lessons, questions, visual metaphors, technical builds, board-work steps, and checkpoints.`],
     ["Go technical", `${formulaLectureModes} formula lecture modes sit beside algorithms, derivations, profiles, worked microscopes, traps, and implementation checks so equations are taught as stories, symbol maps, traces, use cases, and pitfalls.`],
+    ["Teach it back", `${practiceCardTotal} active-recall checkpoints and ${practiceModes} reveal modes ask readers to explain, draw, translate math, choose methods, repair traps, and transfer each chapter to a new domain.`],
     ["Stay original", "The wording is newly written for this web book: it follows the chapter structure and technical ideas without copying the copyrighted prose or figures."],
   ];
 
   return (
-    <div className="grid gap-5 lg:grid-cols-5">
+    <div className="grid gap-5 lg:grid-cols-6">
       {cards.map(([title, text], index) => (
         <article key={title} className="rounded-xl border border-line bg-panel p-6">
           <div className="flex items-start justify-between gap-3">

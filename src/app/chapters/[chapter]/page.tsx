@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { TeX } from "@/components/Math";
 import { AnimatedConceptGraphic } from "@/components/AnimatedConceptGraphic";
+import { ChapterPracticeCoach } from "@/components/ChapterPracticeCoach";
 import { FormulaLectureReader } from "@/components/FormulaLectureReader";
 import { InteractiveBlackboard } from "@/components/InteractiveBlackboard";
 import { SectionLessonReader } from "@/components/SectionLessonReader";
@@ -20,6 +21,7 @@ import { sourceAuditsForChapter, type AlgorithmSourceAudit } from "@/lib/algorit
 import { chapterDeepDives } from "@/lib/deepDives";
 import { evidenceGuideItems } from "@/lib/evidenceGuide";
 import { exerciseCoachCards } from "@/lib/exerciseCoach";
+import { practiceCardsForChapter, practiceModeCount, type ChapterPracticeCard } from "@/lib/chapterPractice";
 import { formulaLectureModeCount, formulasForChapter } from "@/lib/formulaAtlas";
 import { blackboardForChapter } from "@/lib/interactiveBlackboards";
 import { chapterMastery } from "@/lib/mastery";
@@ -66,6 +68,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
   const lecture = standaloneLectureForChapter(item);
   const starter = zeroKnowledgeLadderForChapter(item.n);
   const starterModes = zeroKnowledgeModeCount(item.n);
+  const practiceCards = practiceCardsForChapter(item.n);
+  const practiceModes = practiceModeCount(item.n);
   const manuscript = manuscriptForChapter(item.n);
   const blackboard = blackboardForChapter(item.n);
   const sectionLessons = sectionLessonsForChapter(item.n);
@@ -114,9 +118,11 @@ export default async function ChapterPage({ params }: { params: Params }) {
           <AnimatedConceptGraphic label="Story loop" variant="loop" caption="The easy story and the technical story update each other: intuition points at notation, notation checks intuition." compact />
         </section>
 
-        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, starterRungs: starter.rungs.length, starterModes, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, sectionLessons: sectionLessons.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, formulaModes, evidence: evidence.length, exercises: exercises.length, sourceAudits: sourceAudits.length }} />
+        <ChapterIndex n={item.n} counts={{ algorithms: algorithms.length, starterRungs: starter.rungs.length, starterModes, practiceCards: practiceCards.length, practiceModes, manuscriptSections: manuscript.sections.length, blackboardStages: blackboard.stages.length, sectionLessons: sectionLessons.length, lectureBeats: lecture.beats.length, sections: deep?.sectionDetails.length ?? 0, formulas: formulas.length, formulaModes, evidence: evidence.length, exercises: exercises.length, sourceAudits: sourceAudits.length }} />
 
         <ChapterStarterLadderBlock chapter={item} starter={starter} starterModes={starterModes} />
+
+        <ChapterPracticeBlock chapter={item} cards={practiceCards} practiceModes={practiceModes} />
 
         <ChapterManuscriptBlock manuscript={manuscript} />
 
@@ -291,9 +297,10 @@ function Stat({ value, label }: { value: string; label: string }) {
   );
 }
 
-function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; starterRungs: number; starterModes: number; manuscriptSections: number; blackboardStages: number; sectionLessons: number; lectureBeats: number; sections: number; formulas: number; formulaModes: number; evidence: number; exercises: number; sourceAudits: number } }) {
+function ChapterIndex({ n, counts }: { n: number; counts: { algorithms: number; starterRungs: number; starterModes: number; practiceCards: number; practiceModes: number; manuscriptSections: number; blackboardStages: number; sectionLessons: number; lectureBeats: number; sections: number; formulas: number; formulaModes: number; evidence: number; exercises: number; sourceAudits: number } }) {
   const items = [
     ["starter", `${counts.starterRungs} starter rungs · ${counts.starterModes} modes`],
+    ["practice", `${counts.practiceCards} practice checks · ${counts.practiceModes} modes`],
     ["manuscript", `${counts.manuscriptSections} manuscript moves`],
     ["blackboard", `${counts.blackboardStages} blackboard stages`],
     ["section-reader", `${counts.sectionLessons * 6} guided modes`],
@@ -365,6 +372,24 @@ function ChapterStarterLadderBlock({ chapter, starter, starterModes }: { chapter
           <p className="text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Chapter {chapter.n} starter promise:</span> {starter.promise} The {starter.rungs.length} rungs below expose {starterModes} learning modes before the dense chapter layers begin.</p>
         </div>
         <ZeroKnowledgeLadderReader ladders={[starter]} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} />
+      </div>
+    </section>
+  );
+}
+
+function ChapterPracticeBlock({ chapter, cards, practiceModes }: { chapter: (typeof chapters)[number]; cards: ChapterPracticeCard[]; practiceModes: number }) {
+  return (
+    <section id="practice" className="scroll-mt-24">
+      <SectionTitle
+        eyebrow="00y - Active recall practice coach"
+        title="Try explaining the chapter before you reveal the answer."
+        lead="This layer turns the chapter into an oral-exam drill: answer the prompt first, then reveal a hint, a strong solution, the common trap, and a transfer test."
+      />
+      <div className="mt-6 grid gap-4">
+        <div className="rounded-xl border border-lime/30 bg-lime/[0.06] p-4">
+          <p className="text-sm leading-relaxed text-muted"><span className="font-medium text-ink">Chapter {chapter.n} recall set:</span> {cards.length} active-recall checkpoints expose {practiceModes} prompt, hint, solution, trap, and transfer modes, so the chapter can be practiced after it is read.</p>
+        </div>
+        <ChapterPracticeCoach cards={cards} contextTitle={`Chapter ${chapter.n}: ${chapter.title}`} />
       </div>
     </section>
   );
