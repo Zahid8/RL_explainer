@@ -13,15 +13,15 @@ export const metadata: Metadata = {
 const visualInteractionRows = [
   {
     surface: "Home overview sections",
-    coverage: "All overview sections render an animated concept graphic through the shared Section wrapper or a dedicated interactive lecture console, including the guided lecture theater and chapter simulator lab.",
+    coverage: "All overview sections render an animated concept graphic through the shared Section wrapper or a dedicated interactive lecture console, including the guided lecture theater, whole-book search console, and chapter simulator lab.",
     graphics: "Large RL loop/tree/backup/gradient SVG plus section-specific captions.",
     interaction: "Hover/click phase buttons, animated flow dots, scan lines, pulse rings, and hover elevation.",
   },
   {
     surface: "Chapter detail routes",
-    coverage: "All 17 chapter pages include animated header maps, zero-knowledge starter ladders, guided lecture theaters, active-recall practice coaches, concept microscopes, worked example studios, misconception clinics, chapter simulator labs, story-loop graphics, clickable blackboards, guided section readers, and animated visuals on every major chapter section title.",
-    graphics: "Chapter motion map, starter ladder board, theater lecture board, practice coach board, simulator readout chart, interactive blackboard, guided section reader, source audit, algorithms, section dives, mastery, formulas, anchors, synthesis, and dependency graphics.",
-    interaction: "Each concept map exposes Sense, Target, Update, and Act states; each starter ladder has four learning modes; each lecture theater has five slides and five modes; each practice coach has five reveal modes; each concept microscope has five lecture modes; each worked example studio has five worked modes; each misconception clinic has five repair modes; each simulator has three sliders and four live readouts; each blackboard has four click-through stages and a technical toggle; each section reader has six mode controls; dense cards add animated micro-glyphs.",
+    coverage: "All 17 chapter pages include animated header maps, chapter-local search indexes, zero-knowledge starter ladders, guided lecture theaters, active-recall practice coaches, concept microscopes, worked example studios, misconception clinics, chapter simulator labs, story-loop graphics, clickable blackboards, guided section readers, and animated visuals on every major chapter section title.",
+    graphics: "Chapter motion map, searchable index cards, starter ladder board, theater lecture board, practice coach board, simulator readout chart, interactive blackboard, guided section reader, source audit, algorithms, section dives, mastery, formulas, anchors, synthesis, and dependency graphics.",
+    interaction: "Each concept map exposes Sense, Target, Update, and Act states; each chapter search console filters query/layer/chapter state; each starter ladder has four learning modes; each lecture theater has five slides and five modes; each practice coach has five reveal modes; each concept microscope has five lecture modes; each worked example studio has five worked modes; each misconception clinic has five repair modes; each simulator has three sliders and four live readouts; each blackboard has four click-through stages and a technical toggle; each section reader has six mode controls; dense cards add animated micro-glyphs.",
   },
   {
     surface: "Linear book interactive labs",
@@ -58,7 +58,7 @@ export default function CoveragePage() {
             <div>
               <p className="eyebrow">Whole-book coverage audit</p>
               <h1 className="display mt-4 max-w-5xl text-[clamp(42px,7vw,88px)] font-medium text-ink">Proof ledger for chapters and algorithms.</h1>
-              <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted">This page is generated from the current repository data. It checks whether the site has a linear /book reader, every chapter has a standalone from-scratch lecture route with an interactive blackboard, section-level textbook manuscript, and guided section lecture controls, and every algorithm card has the required easy, technical, derivation, profile, dossier, and worked-example layers.</p>
+              <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted">This page is generated from the current repository data. It checks whether the site has a linear /book reader, a whole-book search index, every chapter has a standalone from-scratch lecture route with a chapter-local search console, interactive blackboard, section-level textbook manuscript, and guided section lecture controls, and every algorithm card has the required easy, technical, derivation, profile, dossier, and worked-example layers.</p>
               <p className="mt-4 text-sm leading-relaxed text-dim">Generated from: {audit.generatedFrom}.</p>
             </div>
             <div className="grid gap-4">
@@ -80,6 +80,8 @@ export default function CoveragePage() {
                 <Stat value={String(audit.totals.simulators)} label="simulators" />
                 <Stat value={String(audit.totals.simulatorControls)} label="sim controls" />
                 <Stat value={String(audit.totals.simulatorReadouts)} label="sim readouts" />
+                <Stat value={String(audit.totals.searchIndexEntries)} label="search entries" />
+                <Stat value={String(audit.totals.searchIndexLayers)} label="search layers" />
                 <Stat value={String(audit.totals.manuscriptSections)} label="manuscript moves" />
                 <Stat value={String(audit.totals.blackboardStages)} label="blackboard stages" />
                 <Stat value={String(audit.totals.sectionNarratives)} label="section manuscripts" />
@@ -103,7 +105,7 @@ export default function CoveragePage() {
         </section>
 
         <section id="chapter-matrix" className="scroll-mt-24">
-          <SectionTitle eyebrow="02 - Chapter coverage matrix" title="Every chapter route and every major study layer in one audit table." lead="Open any chapter to inspect the rendered detail layers: guided lecture theater, concept microscope, worked example studio, misconception clinic, chapter simulator lab, manuscript, interactive blackboard, interactive section lecturer, section-level textbook prose, standalone lecture, synthesis, dependencies, source audit, algorithms, deep dives, mastery notes, formulas, anchors, and exercises." />
+          <SectionTitle eyebrow="02 - Chapter coverage matrix" title="Every chapter route and every major study layer in one audit table." lead="Open any chapter to inspect the rendered detail layers: chapter search index, guided lecture theater, concept microscope, worked example studio, misconception clinic, chapter simulator lab, manuscript, interactive blackboard, interactive section lecturer, section-level textbook prose, standalone lecture, synthesis, dependencies, source audit, algorithms, deep dives, mastery notes, formulas, anchors, and exercises." />
           <div className="mt-6 grid gap-4">
             {audit.chapters.map((chapter) => <ChapterCoverageCard key={chapter.chapter} chapter={chapter} />)}
           </div>
@@ -171,7 +173,7 @@ function ChapterCoverageCard({ chapter }: { chapter: ChapterCoverageRow }) {
         </div>
         <Link href={chapter.route} className="mono rounded-full border border-line bg-white px-3 py-2 text-[11px] uppercase tracking-[0.12em] text-muted hover:border-cyan hover:text-ink">Open chapter</Link>
       </div>
-      <div className="mt-4 grid gap-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-[repeat(30,minmax(0,1fr))]">
+      <div className="mt-4 grid gap-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-[repeat(31,minmax(0,1fr))]">
         <Metric label="algorithms" value={chapter.algorithms} />
         <Metric label="source cues" value={chapter.sourceCues} />
         <Metric label="starter" value={chapter.zeroKnowledgeRungs} />
@@ -190,6 +192,7 @@ function ChapterCoverageCard({ chapter }: { chapter: ChapterCoverageRow }) {
         <Metric label="sim" value={chapter.simulators} />
         <Metric label="sim controls" value={chapter.simulatorControls} />
         <Metric label="sim readouts" value={chapter.simulatorReadouts} />
+        <Metric label="search" value={chapter.searchIndexEntries} />
         <Metric label="manuscript" value={chapter.manuscriptSections} />
         <Metric label="blackboard" value={chapter.blackboardStages} />
         <Metric label="section text" value={chapter.sectionNarratives} />
